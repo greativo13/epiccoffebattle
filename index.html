@@ -2452,7 +2452,9 @@ const synthStart=musicStart;
 function trackEl(theme){
   if(MUS.els[theme])return MUS.els[theme];if(typeof Audio==='undefined')return null;
   const a=new Audio();a.loop=true;a.preload='auto';a.volume=MUS.vol;a.src='hang/'+TRACK_FILE[theme]+'.mp3';
-  a.addEventListener('error',()=>{if(MUS.broken)return;MUS.broken=true;for(const k in MUS.els)try{MUS.els[k].pause();}catch(e){}synthStart(SND.theme||theme,true);});
+  a.addEventListener('error',()=>{if(MUS.broken)return;
+    if(!a.rootTried){a.rootTried=true;a.src=TRACK_FILE[theme]+'.mp3';if(MUS.cur===theme)setTimeout(musicSync,0);return;}   // ha a zenék nem a hang/ mappában, hanem a játék mellett vannak
+    MUS.broken=true;for(const k in MUS.els)try{MUS.els[k].pause();}catch(e){}synthStart(SND.theme||theme,true);});
   // weben a hangerőt a hangrendszeren át állítjuk (iPhone-on az audio.volume nem működik)
   if(MUS.web&&SND.ctx&&SND.ctx.createMediaElementSource){try{const src=SND.ctx.createMediaElementSource(a);if(!MUS.gain){MUS.gain=SND.ctx.createGain();MUS.gain.gain.value=MUS.vol;MUS.gain.connect(SND.master);}src.connect(MUS.gain);a.volume=1;}catch(e){}}
   return MUS.els[theme]=a;
