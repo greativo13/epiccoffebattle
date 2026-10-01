@@ -13,3 +13,11 @@ Minden fájl szabadon felhasználható (CC0, közkincs), forrás: opengameart.or
 | a rövid hangminták (kard, tűz, kő, érme…) | 80 CC0 RPG SFX | rubberduck |
 
 Az eredeti, tömörítetlen fájlok a hang-forras/ mappában vannak.
+
+## Második rész
+| Fájl | Eredeti | Szerző |
+|---|---|---|
+| teaterasz.mp3 | Asianoriental1 | Tozan |
+| porcelan.mp3 | Oriental | Shadowfire452 |
+| cukorsivatag.mp3 | Desert Loop | iamoneabe |
+| alompalota.mp3 | Heavenly Loop | isaiah658 |
