@@ -218,12 +218,19 @@ button.zone-chip:focus-visible,.shop-buy:focus-visible{outline:3px solid var(--g
   .game{max-width:none;gap:8px;grid-template-columns:min(calc((100vh - 16px)*16/9),62vw) minmax(0,1fr);align-items:start}
   .hud{grid-template-columns:minmax(0,1fr);gap:6px;max-height:calc(100vh - 14px);overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;align-content:start}
   @supports (height:100dvh){.game{grid-template-columns:min(calc((100dvh - 16px)*16/9),62vw) minmax(0,1fr)}.hud{max-height:calc(100dvh - 14px)}}
-  .party{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
+  .party{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:4px}
+  .row.r-xp{display:none}
   .card{padding:3px 5px 3px 34px!important}.c-face{width:26px;height:26px;left:4px;top:4px}.c-cls{display:none}.c-name{font-size:12.5px}.row{grid-template-columns:18px minmax(0,1fr) 44px;font-size:10px}
   .cmd{padding:7px;gap:6px}.tools{position:static;justify-content:flex-end;flex-wrap:wrap}.prompt{padding-right:0;font-size:15px;min-height:0}
   .cbtn{padding:7px 8px;font-size:13px}.desc{font-size:12px}
   .ov-title{font-size:clamp(22px,5vw,40px)}.ov-box{gap:6px}.ov-btn{font-size:17px;padding:6px 18px}.overlay{padding:8px}
 }
+/* kis képernyőn a térkép gombjai (Bolt, Főmenü, nehézség, teszt) a parancspanelbe kerülnek, hogy ne takarják a pályákat */
+.btns .map-bar,.btns .map-test{position:static;grid-column:1/-1;background:none;padding:0;max-width:none;display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-start;align-items:center}
+.btns .map-bar .ov-btns{justify-content:flex-start;gap:6px}
+.btns .map-bar .ov-btn{font-size:16px;padding:7px 14px}
+.btns .map-test .hint,.btns .map-bar .hint{color:var(--muted);font-weight:800}
+@media (hover:none){.map-view .mnode{width:clamp(30px,5vw,40px);height:clamp(30px,5vw,40px)}.map-view .mnode.boss{width:clamp(34px,6vw,48px);height:clamp(34px,6vw,48px)}}
 @media (max-width:720px){.tools{position:static;justify-content:flex-end;flex-wrap:wrap}.prompt{padding-right:0}}
 @media (max-width:560px){body{padding:8px}.game{gap:8px}.hud{gap:8px}.cbtn{padding:11px 10px}.prompt{font-size:17px}.ov-text{font-size:12.5px}.ov-btn{font-size:19px;padding:8px 20px}.ov-box{gap:8px}.lvl{padding:8px 10px;font-size:14px}}
 </style>
@@ -5174,7 +5181,7 @@ function buildHUD(){
       <div class="row"><span class="lbl">ÉP</span><span class="bar"><i class="f hp"></i></span><span class="num hpn"></span></div>
       <div class="row"><span class="lbl">MP</span><span class="bar"><i class="f mp"></i></span><span class="num mpn"></span></div>
       <div class="row"><span class="lbl">LIM</span><span class="bar"><i class="f lim"></i></span><span class="num limn"></span></div>
-      <div class="row"><span class="lbl">TP</span><span class="bar"><i class="f xp"></i></span><span class="num xpn"></span></div>
+      <div class="row r-xp"><span class="lbl">TP</span><span class="bar"><i class="f xp"></i></span><span class="num xpn"></span></div>
       <div class="tags"></div>`;
     el.querySelector('.c-name').textContent=h.name;
     el.addEventListener('click',()=>choose(h));
@@ -6026,6 +6033,13 @@ function saveCodeScreen(){
 }
 {const t2=titleScreen;titleScreen=function(){t2();const wrap=ov.querySelector('.set-wrap');const b=btn('zone-chip','💾 Mentéskód',saveCodeScreen);if(wrap)wrap.appendChild(b);else{const box=ov.querySelector('.ov-box');if(box)box.appendChild(b);}
     const n=ngp().n;if(n){const box=ov.querySelector('.ov-box'),sub=box&&box.querySelector('.ov-sub');if(sub)sub.textContent+=` · Új játék+ ${n}`;}};}
+
+/* ---- 8) Kis képernyőn (telefon) a térkép alsó gombjai a parancspanelbe költöznek, így nem takarják ki a pályapontokat ---- */
+const smallStage=()=>{try{return cv.getBoundingClientRect().width<700;}catch(e){return false;}};
+{const m4=mapScreen;mapScreen=function(zi){const r=m4(zi);
+    try{if(ov.querySelector('.map-view')&&smallStage()&&btnsEl&&btnsEl.appendChild){for(const sel of ['.map-bar','.map-test']){const n=ov.querySelector(sel);if(n)btnsEl.appendChild(n);}}}catch(err){console.error(err);}
+    return r;};
+ const sl0=startLevel;startLevel=function(L){setButtons([]);return sl0(L);};}
 
 /* ================= INDÍTÁS ================= */
 resize();
