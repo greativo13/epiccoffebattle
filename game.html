@@ -221,7 +221,7 @@ button.zone-chip:focus-visible,.shop-buy:focus-visible{outline:3px solid var(--g
   .party{grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:4px}
   .row.r-xp{display:none}
   .card{padding:3px 5px 3px 34px!important}.c-face{width:26px;height:26px;left:4px;top:4px}.c-cls{display:none}.c-name{font-size:12.5px}.row{grid-template-columns:18px minmax(0,1fr) 44px;font-size:10px}
-  .cmd{padding:7px;gap:6px}.tools{position:static;justify-content:flex-end;flex-wrap:wrap}.prompt{padding-right:0;font-size:15px;min-height:0}
+  .cmd{padding:7px;gap:6px}.tools{position:static;justify-content:flex-end;flex-wrap:wrap}.tool{padding:6px 10px;font-size:12px;min-height:30px}.prompt{padding-right:0;font-size:15px;min-height:0}
   .cbtn{padding:7px 8px;font-size:13px}.desc{font-size:12px}
   .ov-title{font-size:clamp(22px,5vw,40px)}.ov-box{gap:6px}.ov-btn{font-size:17px;padding:6px 18px}.overlay{padding:8px}
 }
@@ -5852,7 +5852,7 @@ function menuSummon(h){
 // „Idézés” gomb a főmenüben
 {const mm2=menuMain;menuMain=function(h){mm2(h);if(!SUMMONS.some(summonOpen))return;
   const b=document.createElement('button');b.type='button';b.className='cbtn';b.disabled=!!S.summonUsed;
-  const l=document.createElement('span');l.className='bl';l.textContent='Idézés';b.appendChild(l);const s=document.createElement('span');s.className='bs';s.textContent=S.summonUsed?'már volt ebben a csatában':'▸ csatánként egyszer';b.appendChild(s);
+  const l=document.createElement('span');l.className='bl';l.textContent='Idézés';b.appendChild(l);const s=document.createElement('span');s.className='bs';s.textContent=S.summonUsed?'már volt':'▸ 1× csatánként';b.appendChild(s);
   b.addEventListener('click',()=>menuSummon(h));b.addEventListener('mouseenter',()=>{descEl.textContent='Megidézel egy lényt, aki egyszer közbelép. Csatánként egy idézés jár, és a hős köre elmegy rá.';});
   btnsEl.appendChild(b);};}
 
