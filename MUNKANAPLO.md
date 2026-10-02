@@ -22,6 +22,11 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
 - Fekvő telefonon a parancspanel felirata nem csúszik a gombokra.
 - Automatikus végigpróbálás (minden hős minden képessége, limit, közös támadás, tárgyak, idézések, minden ellenfél minden támadása): hiba és elakadás nélkül lefutott.
 
+## Kész (2026-10-02, második munkamenet)
+
+- **Ötfős plakát**: a `csapat5.jpg` (1776×896) bekerült a repó gyökerébe; a játék betölti.
+- **Canva-letöltés**: a hálózat már engedi (`media.canva.com`, `export-download.canva.com`). A `get-assets` csak aláírt kis előnézetet ad, ezt nem lehet nagyobbra átírni. Teljes méretű kép így szerezhető: a képet egy Canva-terv oldalára kell tenni (`edit-design` → `add_page` + `insert_fill`), majd az oldalt `export-design`-nal exportálni. Erre a „A Nagy Kávérablás csapatkép” terv (`DAHW1ZtSXrE`) 2. oldala szolgál. A „Blank white sprite container” terv elérte a 100 oldalas korlátot.
+
 ## Tesztlista
 
 Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLjSTzRX6i
@@ -29,8 +34,6 @@ Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLj
 
 ## Nyitott ügyek
 
-- **Ötfős plakát**: a Canva-kép kész (https://www.canva.com/M/MAHW1djYBZg, media id `MAHW1djYBZg`), de még fel kell tölteni a repó gyökerébe `csapat5.jpg` néven.
-- **Canva-letöltés**: a `media.canva.com` tiltva volt a hálózati beállításban, ezért Claude nem tudta letölteni a Canva-képeket. Ha az új környezetben engedélyezve van, Claude maga is letöltheti őket (a `get-assets` eszköz thumbnail URL-je helyett teljes méretet kell kérni).
 - Jázmin „eltűnése” a próbateremből: nem sikerült előidézni; valószínű ok, hogy a 💤-os csere a kiválasztott hős helyére történik (ha Jázmin a kiválasztott, ő megy pihenni). A felhasználó visszajelzésére vár.
 - Jázmin többi képessége: a felhasználó szerint „nem jók”; a limit és a Százkezű már új. A többit a tesztlista megjegyzései alapján kell átdolgozni.
 - A `canva-forras/` mappa csak a Canvának kellett forrásképnek; ha nem kell, törölhető.
