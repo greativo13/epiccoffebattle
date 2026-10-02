@@ -63,6 +63,10 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
 
 - **Tesztkör 4**: állított telefonon „alkalmazás” elrendezés (az oldal nem görget, csak a `.cmd`; nyitott ablaknál a csatatér-doboz kap helyet, a kártyák elbújnak) – a ragadós (sticky) megoldás kidobva. Napkitörés: festett nap (`sunorb`), tűzhullám (`firewave`), naposzlopok, tűzeső. Zsugorító pálca → „Zsugorítás”, zöldes-sárga (`WAND_PINK` most `let`). Ezer Kéz: sugarak helyett dharma-kerék glória, a végén ujjakkal lefelé lecsapó óriás tenyér. Pattanó nyíl: villámlánc. Füstölő: áttetsző füstgomolyok, lótusz a hősök alatt. Járvány új: `plagueRoots` (repedések, `plaguevine`, `miasmaburst`). Képlap: `fx4_sunorb_firewave_plaguevine_miasmaburst`.
 - **Betöltés**: `sw.js` service worker (képek a telefon gyorsítótárából, az oldal mindig frissen), a címkép előtöltve (`<link rel=preload>`), `BUILD` változatjelzést a `kisebb.py` állítja be.
+- **Tesztkör 5**: Napkitörés lánghullám nélkül. Ezer Kéz: gyors, ökölbe szorított óriás ököl csapódik le, nagy pusztítással (kőtörmelék, villanás, földrengés). Pattanó nyíl → „Szikranyíl” (`sparkarrow` repülő szikranyíl, láncsugarak, nincs fentről érkező villám). Füstölő-nyíl önálló, végleges változat: a földbe fúródott nyíl vége parázslik, procedurális, áttetsző szürkésfehér füstoszlop (`smokeTex`, normál keverés, nem `lighter` – világos háttéren a `lighter` láthatatlan) és alacsony köd a csapat körül. Járvány: a repedésekben buborékos zöld vegyszer folyik (`toxicstream`). Képlap: `fx4_jzfist_smokewisp_toxicstream_sparkarrow`.
+- **Próbaterem-csere**: a pihenő hős kártyájának kiválasztása után a csatatéren a figurára kattintva is lehet cserélni (pointerdown a vásznon).
+- **Akadozás**: a kivágott/átszínezett figurák IndexedDB-gyorsítótárba kerülnek (`SPR_CACHE`, `kaverablas-figurak`), második indítástól nem kell újraszámolni (7 s → <1 s akadás). Az első látogatás még akadhat.
+- **Tesztszkript-tanulság**: `multi.js`-ben az `allies` célzású képességet a hősökre kell lőni (korábban az ellenfelek kapták a buffot).
 
 ## Tesztlista
 
