@@ -275,6 +275,7 @@ button.zone-chip:focus-visible,.shop-buy:focus-visible{outline:3px solid var(--g
 /* állított telefon: a csatatér mindig látszik fent, a kártyák és a gombok alatta görgetnek */
 @media (max-width:720px) and (orientation:portrait){
   .stage{position:sticky;top:0;z-index:6}
+  .stage:has(> .overlay:not([hidden])){position:relative}   /* nyitott ablaknál (cím, térkép, szöveg) ne ragadjon, mert magasabb is lehet a képernyőnél */
   @supports (top:env(safe-area-inset-top)){.stage{top:env(safe-area-inset-top)}}
 }
 /* titkos pálya a térképen */
@@ -6489,7 +6490,7 @@ SHOP_SKILLS.orc.push(['meteorfist','5-1',2400],['magma','7-1',3800]);
 
 /* ---- 5) ötfős csapat: a csatában négyen vannak, a térkép „Csapat” gombjával választható ki, ki pihen ---- */
 HERO_TYPES.push('monk');JOIN.monk='5-2';
-JOIN_TEXT.monk='Jázmin, a Ködkolostor teamestere veletek tart. Gyors közelharcos, a teái pedig gyógyítanak, MP-t töltenek, és felébresztik az elaltatott társakat – a Teacsászárnő ellen ez aranyat ér. Mostantól öten vagytok, de csatába négyen mentek: a térkép „Csapat” gombjával választhatod ki, ki pihen.';
+JOIN_TEXT.monk='Jázmin, a Ködkolostor teamestere veletek tart. Aranynyilakkal lő, közelről Buddha-tenyérrel üt, a teái pedig gyógyítanak, MP-t töltenek, és felébresztik az elaltatott társakat – a Teacsászárnő ellen ez aranyat ér. Mostantól öten vagytok, de csatába négyen mentek: a térkép „Csapat” gombjával választhatod ki, ki pihen.';
 const joinedRoster=()=>(S.roster||S.heroes).filter(h=>joined(h.type));
 const benchOf=()=>{const b=ngp().bench;return b&&HERO_TYPES.includes(b)?b:null;};
 {const sp3=syncParty;syncParty=function(){const r=sp3();
@@ -7095,7 +7096,9 @@ const toTop=()=>{try{if(window.scrollY>0)window.scrollTo(0,0);}catch(e){}};
  const sb5=startBattle;startBattle=function(){toTop();return sb5.apply(this,arguments);};}
 
 // amíg egy támadás fut, a gombok helye megmarad (különben telefonon felugrik az oldal, és minden körben újra le kell görgetni)
-{const sb6=setButtons;setButtons=function(list){try{if(!list||!list.length){if(btnsEl.children.length)btnsEl.style.minHeight=btnsEl.offsetHeight+'px';}else btnsEl.style.minHeight='';}catch(e){}return sb6.apply(this,arguments);};}
+{const inFight=()=>!S.over&&(S.enemies||[]).some(e=>e.alive)&&ov.hidden;
+ const sb6=setButtons;setButtons=function(list){try{if((!list||!list.length)&&inFight()){if(btnsEl.children.length)btnsEl.style.minHeight=btnsEl.offsetHeight+'px';}else btnsEl.style.minHeight='';}catch(e){}return sb6.apply(this,arguments);};
+ const ov6=overlay;overlay=function(){try{btnsEl.style.minHeight='';}catch(e){}return ov6.apply(this,arguments);};}
 
 /* ================= LÁTVÁNYOSABB, EGYEDI KÉPESSÉGEK (tesztlista-visszajelzés) ================= */
 // ---- Jázmin saját pajzsa (jáde lótusz-mandala arany íjjal), a többi hős pajzsához hasonlóan: a fekete háttér átlátszó lesz

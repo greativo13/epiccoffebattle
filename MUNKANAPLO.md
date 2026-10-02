@@ -55,7 +55,9 @@ Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLj
 
 ## Nyitott ügyek
 
-- Jázmin képességei (tesztlista 5., 6., 10–15.): a felhasználó szerint gagyik. Javaslat, amit még nem csináltunk meg: mindegyik teának saját látvány (zöld levelek / gőz és csengő / vörös aura / kék kristálycseppek), Tenyércsapás bot nélküli pózzal, Gőzrúgás és Tájfun harcművészeti mozdulatként (ne hasonlítson a Varázsló szélvarázslataira), Zen arany mandalával, Ezer Kéz: Jázmin Buddhává változik, új tenyérrajzok.
+- Állított telefon: a felhasználó kétszer „Nem jó”-t jelölt megjegyzés nélkül – képernyőképet kértem. (Javítva közben: ragadós csatatér csak nyitott ablak nélkül; a gombhely-megtartás csak csata közben, a térképen nem marad üres rész.)
 - A zsugorított ellenfél neve és életerő-csíkja az eredeti magasságban marad (csak a figura kisebb).
-- A `canva-forras/` mappa csak a Canvának kellett forrásképnek; ha nem kell, törölhető.
+- A `game.html` 16 MB (minden kép és hang beágyazva) – telefonon lassan tölt be. Fejlesztési ötlet: a képeket külön fájlokba tenni.
+- A `canva-forras/` mappa és a `buddha.jpg` csak forrásnak kellett; ha nem kell, törölhető.
 - Hiányzik a repóból a `src/` mappa és a `MASODIK-RESZ.md` terv – ha a felhasználónál megvan, érdemes feltölteni.
+- Ellenőrzés: a próbateremben mind az öt hős mind a 74 képessége hiba nélkül lefut (`perform` minden képességre).
