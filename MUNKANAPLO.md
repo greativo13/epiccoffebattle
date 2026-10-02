@@ -33,6 +33,13 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
 
 - **Jázmin**: három új, bambuszbotos képesség – Bambuszugrás (`bamboovault`, 5-1), Pörgő bot (`staffspin`, 6-2, mindenkit kétszer talál), Botfal (`staffwall`, 7-2: a csapat Pajzs 2 kör, Jázmin Provokál). Saját rajzolt pörgő bot: `drawStaff`, `spinStaff`. (A felhasználó eredetileg Jázminnak kért több képességet, nem Lilinek – Lilié is marad.)
 
+- **Jázmin íjász lett** (a felhasználó választotta ki a tesztlistán): új képlap Canvával (`hero4_monk`: áll, lő, teát tölt, sérül) és egy második (`hero5_monk`: tenyérütés, égbe lövés, meditáció, erőgyűjtés – pózok: `palm`, `sky`, `meditate`, `power`). Canva-segédterv: „A Nagy Kávérablás csapatkép” (`DAHW1ZtSXrE`) 3. és 4. oldala.
+  - Alaptámadás: Aranynyíl. Új: Hármas nyíl, Nyílzápor, Lótusznyíl, Mantranyíl, Árnyékszegező nyíl, Pattanó nyíl, Teabomba-nyíl, Belső csend (a Zen helyett, `sureCrit`), Füstölő-nyíl (`incense` állapot, kör végén gyógyít a `tickStatuses`-ban).
+  - Maradt: a négy tea (most mind saját látvánnyal: `wakeTea` csengő+gőz, `greenTea` levelek, `blackTea` vörös aura, `manaTea` kék kristálycseppek), Tenyércsapás és Százkezű (íj nélkül, tenyér-pózzal), Ezer Kéz (Jázmin elhalványul, a helyén a Buddha, a végén visszaváltozik).
+  - Kikerült: Gőzrúgás, Tájfun, Zen és a három botos képesség; aki megvette, a `fixMonk` visszaadja az árát.
+  - Vigyázat: a játékban már volt `drawArrow` (az aktív hős jelzője) – a repülő nyíl rajzolója ezért `drawFlyArrow`.
+  - A `csapat5.jpg` plakáton Jázmin még bottal van: ha kell, újra kell rajzolni.
+
 ## Tesztlista
 
 Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLjSTzRX6i
