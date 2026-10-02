@@ -6497,6 +6497,136 @@ MAP_ZONE_POS.push([13,49],[24,13],[72,47],[89,7]);
   const m6=mapScreen;mapScreen=function(zi){if(cleared('8-4')&&!ngp().credits2&&!S.arena)return creditsScreen();return m6(zi);};}
 ZONES[7].finTitle='A világ felébredt!';
 
+/* ================= JÁZMIN: EZER KÉZ (új limit) ÉS KÖZÖS TÁMADÁS JÁZMINNAL ================= */
+
+// ---- Ezer Kéz: Jázmin mögött felemelkedik az ezerkezű, aranyló Buddha, a karjai sorra lecsapnak,
+// tenyérütések záporoznak minden ellenségre, a végén pedig egy óriási tenyér zúdul le rájuk
+Object.assign(LIMITS.monk,{name:'Ezer Kéz',tgt:'enemies',kind:'phys',pow:2.8,elem:'phys',anim:'thousandHands',isLimit:true,
+  desc:'Jázmin mögött felemelkedik az ezerkezű Buddha: aranyló tenyérütések záporoznak minden ellenségre, végül egy óriási tenyér csap le rájuk.'});
+const BUDDHA_GOLD='255,215,120',BUDDHA_LIGHT='255,245,200',BUDDHA_LINE='150,90,20';
+function rrFill(x,y,w,h,r){ctx.beginPath();if(ctx.roundRect)ctx.roundRect(x,y,w,h,r);else ctx.rect(x,y,w,h);ctx.fill();ctx.stroke();}
+// egy tenyér: az origó a csukló, az ujjak „felfelé” (-y) mutatnak, ang-gal forgatható
+function drawPalm(x,y,s,ang,a,glowA=.35){
+  if(a<=0)return;ctx.save();ctx.translate(x,y);ctx.rotate(ang);ctx.globalAlpha=Math.min(1,a);
+  if(glowA>0){ctx.save();ctx.globalCompositeOperation='lighter';glow(0,-s*.45,s*.95,BUDDHA_GOLD,glowA);ctx.restore();}
+  ctx.fillStyle='rgb(255,224,140)';ctx.strokeStyle=`rgb(${BUDDHA_LINE})`;ctx.lineWidth=Math.max(1,s*.045);
+  ctx.save();ctx.translate(-s*.27,-s*.22);ctx.rotate(-.75);rrFill(-s*.07,-s*.34,s*.14,s*.34,s*.07);ctx.restore();   // hüvelykujj
+  [.36,.45,.42,.33].forEach((f,i)=>rrFill(-s*.29+i*s*.148,-s*.5-f*s,s*.135,f*s+s*.08,s*.067));                    // ujjak
+  rrFill(-s*.31,-s*.56,s*.62,s*.6,s*.15);                                                                          // tenyér
+  ctx.fillStyle='rgba(255,250,225,.75)';ctx.beginPath();ctx.ellipse(-s*.04,-s*.3,s*.14,s*.1,0,0,Math.PI*2);ctx.fill();
+  ctx.restore();
+}
+// az ezerkezű Buddha (b.x,b.y: a lótuszülés alja, b.h: a magassága)
+function drawBuddha(b){
+  const {x,y,h}=b,sc=b.rise,a=b.a;if(a<=0)return;
+  ctx.save();ctx.translate(x,y);ctx.scale(sc,sc);ctx.translate(-x,-y);
+  const sy=y-h*.6,hy=y-h*.76,N=b.arms.length;
+  // fényudvar a teste mögött, forgó sugarakkal
+  ctx.save();ctx.globalCompositeOperation='lighter';glow(x,sy,h*.85,BUDDHA_GOLD,.32*a);
+  ctx.translate(x,sy);ctx.rotate(b.t*.25);ctx.fillStyle=`rgba(${BUDDHA_LIGHT},${.12*a})`;
+  for(let i=0;i<16;i++){ctx.rotate(Math.PI/8);ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(-h*.05,-h*.95);ctx.lineTo(h*.05,-h*.95);ctx.closePath();ctx.fill();}ctx.restore();
+  ctx.globalAlpha=a*.8;
+  // a sok kar legyezőként, a test mögött
+  ctx.lineCap='round';
+  for(let i=0;i<N;i++){const r=b.arms[i],an=r.an+Math.sin(b.t*2.2+i*.7)*.04,L=h*r.len*(1+r.ext*.45),ex=x+Math.cos(an)*L,ey=sy+Math.sin(an)*L;
+    ctx.strokeStyle=`rgb(${BUDDHA_LINE})`;ctx.lineWidth=h*.036+3;ctx.beginPath();ctx.moveTo(x+Math.cos(an)*h*.08,sy+Math.sin(an)*h*.05);ctx.lineTo(ex,ey);ctx.stroke();
+    ctx.strokeStyle='rgb(255,214,120)';ctx.lineWidth=h*.036;ctx.stroke();
+    drawPalm(ex,ey,h*(.085+r.ext*.05),an+Math.PI/2,1,r.ext*.6);}
+  ctx.strokeStyle=`rgb(${BUDDHA_LINE})`;ctx.lineWidth=3;
+  // lótusz
+  ctx.fillStyle='rgb(255,190,170)';for(let i=-3;i<=3;i++){ctx.beginPath();ctx.ellipse(x+i*h*.085,y-h*.02,h*.06,h*.11,i*.25,0,Math.PI*2);ctx.fill();ctx.stroke();}
+  // keresztbe tett lábak és a köpeny
+  ctx.fillStyle='rgb(245,190,90)';ctx.beginPath();ctx.ellipse(x,y-h*.1,h*.3,h*.1,0,0,Math.PI*2);ctx.fill();ctx.stroke();
+  ctx.beginPath();ctx.moveTo(x-h*.17,sy);ctx.quadraticCurveTo(x-h*.27,y-h*.3,x-h*.23,y-h*.13);ctx.lineTo(x+h*.23,y-h*.13);ctx.quadraticCurveTo(x+h*.27,y-h*.3,x+h*.17,sy);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.beginPath();ctx.moveTo(x-h*.12,sy+h*.01);ctx.quadraticCurveTo(x,sy+h*.16,x+h*.15,sy+h*.02);ctx.stroke();
+  // két összetett kéz a mellkas előtt
+  ctx.fillStyle='rgb(255,224,140)';ctx.beginPath();ctx.moveTo(x,sy+h*.04);ctx.quadraticCurveTo(x-h*.05,sy+h*.14,x-h*.02,sy+h*.22);ctx.lineTo(x+h*.02,sy+h*.22);ctx.quadraticCurveTo(x+h*.05,sy+h*.14,x,sy+h*.04);ctx.fill();ctx.stroke();
+  // fej: hosszú fülek, konty, csukott szem, mosoly
+  ctx.fillStyle='rgb(255,220,130)';for(const s of [-1,1]){ctx.beginPath();ctx.ellipse(x+s*h*.085,hy+h*.02,h*.022,h*.05,0,0,Math.PI*2);ctx.fill();ctx.stroke();}
+  ctx.beginPath();ctx.arc(x,hy,h*.085,0,Math.PI*2);ctx.fill();ctx.stroke();
+  ctx.fillStyle='rgb(120,80,40)';ctx.beginPath();ctx.arc(x,hy-h*.075,h*.045,Math.PI,0);ctx.fill();ctx.beginPath();ctx.arc(x,hy-h*.115,h*.025,0,Math.PI*2);ctx.fill();
+  ctx.lineWidth=2.5;for(const s of [-1,1]){ctx.beginPath();ctx.arc(x+s*h*.032,hy+h*.004,h*.018,.15*Math.PI,.85*Math.PI);ctx.stroke();}
+  ctx.beginPath();ctx.arc(x,hy+h*.03,h*.025,.2*Math.PI,.8*Math.PI);ctx.stroke();
+  ctx.fillStyle='rgb(255,120,90)';ctx.beginPath();ctx.arc(x,hy-h*.03,h*.008,0,Math.PI*2);ctx.fill();
+  ctx.globalAlpha=1;ctx.globalCompositeOperation='lighter';glow(x,hy,h*.16,BUDDHA_LIGHT,.25*a);
+  ctx.restore();
+}
+// egy repülő aranytenyér; becsapódáskor szikrázik, és meghívja az onHit-et
+function palmFly(x0,y0,x1,y1,ms,s,onHit,up){return new Promise(res=>{const life=ms/1000,ang=up?0:Math.atan2(y1-y0,x1-x0)+Math.PI/2;
+  effects.push({t:0,done:false,update(dt){this.t+=dt;if(this.t>=life&&!this.done){this.done=true;sparks(x1,y1,[BUDDHA_GOLD,BUDDHA_LIGHT,'255,255,255'],10,360);ring(x1,y1,BUDDHA_GOLD,60,.3);if(onHit)onHit();res();}return this.t<life+.22;},
+    draw(){if(!this.done){for(let j=3;j>=0;j--){const k=Math.max(0,Math.min(1,this.t/life-j*.09)),e=k*k;drawPalm(x0+(x1-x0)*e,y0+(y1-y0)*e,s*(.75+.25*k),ang,j?.22*(1-j/4):1,j?0:.4);}}
+      else{const k=(this.t-life)/.22;drawPalm(x1,y1+s*.4,s*(1+.5*k),ang,1-k,.6*(1-k));}}});});}
+Object.assign(A,{
+  thousandHands:async(u,ts,sk)=>{const {al,mx,my}=grp(ts);if(!al.length)return;
+    await dimTo(.72,'24,14,4',280);u.pose='cast';sfx('holy');rumble(1.6,5);
+    const N=30,arms=[];for(let i=0;i<N;i++){const k=i/(N-1);arms.push({an:-Math.PI*1.08+k*Math.PI*1.16,len:.42+((i*7)%5)*.025,ext:0});}
+    const B={x:Math.max(190,cx(u)-30),y:u.y+u.oy+26,h:340,a:0,rise:.55,t:0,arms,dying:false};
+    effects.push({update(dt){B.t+=dt;B.a=B.dying?Math.max(0,B.a-dt*2.2):Math.min(1,B.a+dt*1.8);B.rise=Math.min(1,B.rise+dt*.8);for(const r of B.arms)r.ext=Math.max(0,r.ext-dt*5);return !(B.dying&&B.a<=0);},draw(){drawBuddha(B);if(u.alive)try{drawEntity(u);}catch(err){}}});   // Jázmin a Buddha előtt áll, fényben
+    for(let i=0;i<34;i++)part({x:B.x+rnd(-160,160),y:B.y-rnd(0,60),vx:rnd(-20,20),vy:rnd(-220,-90),life:rnd(.7,1.3),size:rnd(2,4),rgb:pick([BUDDHA_GOLD,BUDDHA_LIGHT]),shape:'star'});
+    ring(B.x,B.y,BUDDHA_GOLD,260,.8);flash(BUDDHA_LIGHT,.3,.3);
+    await wait(1000);u.pose='attack';
+    // tenyérzápor: a jobbra néző karok sorra kinyúlnak, és ütnek
+    const sy=B.y-B.h*.6,fwd=B.arms.map((r,i)=>i).filter(i=>B.arms[i].an>-Math.PI*.75);
+    for(let i=0;i<40;i++){const ai=pick(fwd),r=B.arms[ai],t=al[i%al.length];if(!t.alive)continue;r.ext=1;
+      const L=B.h*r.len*1.45,x0=B.x+Math.cos(r.an)*L,y0=sy+Math.sin(r.an)*L,bw=t.w*t.scale,bh=t.h*t.scale;
+      palmFly(x0,y0,cx(t)+rnd(-.3,.3)*bw,midY(t)+rnd(-.3,.25)*bh,170,rnd(40,56),()=>{shake(4);if(i%3===0)sfx('hit');});
+      await wait(i<10?70:42);}
+    await wait(260);
+    // a végén minden kar egyszerre lecsap, és óriási tenyér zúdul minden ellenségre
+    for(const r of B.arms)r.ext=1;sfx('limit');flash(BUDDHA_LIGHT,.45,.2);
+    await Promise.all(al.map(t=>palmFly(cx(t),-160,cx(t),midY(t),300,Math.max(150,bigOf(t)*.9),()=>{
+      hitStop(110);shake(16);punch(cx(t),midY(t),.06);sfx('rock');sparks(cx(t),midY(t),[BUDDHA_GOLD,BUDDHA_LIGHT,'255,255,255'],40,640);
+      ring(cx(t),t.y+t.oy,BUDDHA_GOLD,180,.6);toss(t,46,380);hit(u,t,sk);},true)));
+    flash('255,240,190',.6,.35);
+    await wait(700);B.dying=true;u.pose='idle';await wait(450);await dimTo(0,null,300);},
+});
+NOFX.add('thousandHands');
+if(typeof QUIPS==='object')QUIPS.limit.monk=['Ezer kéz, egy szív!','A mesterem ezt sosem tanította.','Csend… aztán ütés!'];
+
+// ---- Közös támadás: csak az a négy hős vesz részt benne, aki éppen harcol.
+// A próbateremben mind az öten ott állnak: ilyenkor a pihenő hős kimarad (ha ő a kiválasztott, akkor más).
+function comboParty(h){
+  const hs=S.heroes.slice();if(hs.length<=4)return hs;
+  const out=[benchOf(),'monk','orc','fairy','witch','wizard'].find(t=>t&&(!h||t!==h.type)&&hs.some(x=>x.type===t));
+  return hs.filter(x=>x.type!==out).slice(0,4);
+}
+{const p3=perform;perform=async function(h,act){
+    if(!(act&&act.type==='skill'&&act.sk===COMBO))return p3(h,act);
+    const party=comboParty(h),rest=S.heroes.filter(x=>!party.includes(x));S.comboParty=party;rest.forEach(x=>{x.alpha0=x.alpha;x.alpha=.2;});
+    try{return await p3(party.includes(h)?h:party[0],act);}finally{S.comboParty=null;rest.forEach(x=>{x.alpha=x.alpha0==null?1:x.alpha0;delete x.alpha0;});}};}
+Object.assign(A,{
+  // Közös támadás: a négy lövedék középen találkozik, ott örvénnyé áll össze, és az csap le az ellenségre (Jázmin aranytenyeret küld)
+  combo:async(u,ts,sk)=>{const {al,mx,my}=grp(ts);if(!al.length)return;const hs=(S.comboParty||S.heroes).filter(h=>h.alive);await dimTo(.85,'8,4,28',300);rumble(3.6,5);
+    const hx=hs.reduce((s,h)=>s+cx(h),0)/hs.length,MX=(hx+mx)/2,MY=Math.min(my-150,170);
+    const shots={wizard:['fireball',{size:210,base:.33,hx:.3,hy:.06,trail:['255,160,40','255,220,90']},'255,150,50'],witch:['hole',{size:150,norot:true,spin:9,trail:['190,90,255','90,30,150']},'190,100,255'],
+      fairy:['star',{size:220,base:Math.PI/4,hx:.21,hy:.21,trail:['255,240,170','255,255,255']},'255,245,170'],orc:['boulders',{size:190,norot:true,spin:7,trail:['150,140,130','200,190,170']},'255,180,90'],
+      monk:['palm',null,BUDDHA_GOLD]};
+    for(const h of hs){h.pose='cast';magicCircle(h,(shots[h.type]||shots.monk)[2],900);}
+    await wait(550);let n=0;
+    const core={t:0,dead:false,update(dt){this.t+=dt;return !this.dead;},draw(){const im=FX_IMG.combo;if(!im||!n)return;const s=90+n*75+Math.sin(this.t*14)*8;
+      ctx.save();ctx.translate(MX,MY);ctx.rotate(this.t*6);ctx.drawImage(im,-s/2,-s/2,s,s);ctx.globalCompositeOperation='lighter';ctx.globalAlpha=.5;ctx.drawImage(im,-s*.6,-s*.6,s*1.2,s*1.2);ctx.restore();}};
+    effects.push(core);
+    for(const h of hs){const [key,o,rgb]=shots[h.type]||shots.monk,p=handPos(h),arrive=()=>{n++;flash(rgb,.35,.12);shake(7);sparks(MX,MY,[rgb,'255,255,255'],16,420);ring(MX,MY,rgb,120,.4);};h.pose='attack';
+      if(key==='palm')palmFly(p.x,p.y,MX,MY,360,70,arrive);else fxFly(key,p.x,p.y,MX,MY,360,{...o,arc:40}).then(arrive);await wait(280);}
+    await wait(650);flash('255,255,255',.5,.2);sfx('limit');core.dead=true;
+    await fxFly('combo',MX,MY,mx,my,300,{size:400,norot:true,spin:14,ease:true,trail:['255,150,50','190,100,255','255,245,170','150,255,170']});
+    flash('255,255,255',1,.5);hitStop(160);rumble(1.8,19);punch(mx,my,.08);
+    fxSpin('combo',mx,my,{size:980,life:1.5,spin:2.2,s0:.15,s1:1,out:.6});fxSpin('nova',mx,my,{size:860,life:1.2,s0:.1,s1:1,add:true,out:.5});
+    sparks(mx,my,['255,150,50','190,100,255','255,245,170','150,255,170','255,255,255'],90,800);
+    for(const h of hs){for(const t of al)if(t.alive)hit(h,t,COMBO_PART[h.type]);await wait(170);}
+    S.heroes.forEach(h=>{h.limit=0;h.pose='idle';});updateHUD();await wait(1100);await dimTo(0,null,400);},
+});
+// A közös támadás plakátján Jázmin is ott van, ha ő is harcol
+{const dc=drawCutin;drawCutin=function(){dc();const c=S.cutin;if(!c||!c.all)return;
+    const party=S.comboParty||S.heroes,sp=typeof ENEMY_SPR==='object'&&(ENEMY_SPR['monk-attack']||ENEMY_SPR.monk);if(!sp||!party.some(h=>h.type==='monk'))return;
+    const k=c.age/c.life;if(k>=1)return;const inK=Math.min(1,c.age/.18),outK=k>.82?(k-.82)/.18:0,bh=180*(1-outK)*inK,y0=275-bh/2;if(bh<2)return;
+    ctx.save();ctx.beginPath();ctx.moveTo(0,y0+24);ctx.lineTo(W,y0-6);ctx.lineTo(W,y0+bh-6);ctx.lineTo(0,y0+bh+24);ctx.closePath();ctx.clip();
+    const hh=bh*1.25,ww=hh*sp.width/sp.height,ax=470-(1-Math.min(1,Math.max(0,(c.age-.1)/.3)))*560+c.age*10;
+    ctx.globalCompositeOperation='lighter';glow(ax,y0+bh*.55,hh*.5,'110,230,190',.35);ctx.globalCompositeOperation='source-over';
+    ctx.drawImage(sp,ax-ww/2,y0+bh*.06,ww,hh);
+    ctx.restore();
+    ctx.strokeStyle='#fff';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(0,y0+24);ctx.lineTo(W,y0-6);ctx.moveTo(0,y0+bh+24);ctx.lineTo(W,y0+bh-6);ctx.stroke();};}
+
 /* ================= INDÍTÁS ================= */
 resize();
 titleScreen();
