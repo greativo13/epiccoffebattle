@@ -55,6 +55,9 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
 - **Idézések**: a felhasználó kérésére visszaállítva a korábbi (ellenfél-)képekre – a `SUM_SPR` saját idézésképek felülírása ki van kommentezve (a titkos főellenség, az Ősgólem saját képe marad).
 - **Kristálygólem idézés**: kék kristálytükör-pajzs (`crystal` állapot, `partyCrystal`, kép: `fx-crystalmirror`, Canva) – kivédi a következő találatot és kék kristálylövedékkel visszaveri, mint a Fénypajzs.
 
+- **Állított telefon**: a hőskártyák is ragadósak, közvetlenül a csatatér alatt (`--stageH` CSS-változó, ResizeObserver); állítva a TP sor elmarad. Nyitott ablaknál egyik sem ragad.
+- **Közös támadás plakát**: a `csapat5.jpg` kitölti a ferde csíkot (a csík alakjára vágva, jobbra beolvad), nem kisebb dobozként ül benne.
+
 ## Tesztlista
 
 Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLjSTzRX6i
