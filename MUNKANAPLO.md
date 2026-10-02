@@ -4,7 +4,7 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
 
 ## Fontos tudnivalók a kódról
 
-- A játék egyetlen fájl: `game.html` (és ugyanaz `index.html` néven, ezt mutatja a GitHub Pages). A kettőt mindig együtt kell módosítani.
+- A játék forrása a `game.html` (minden kép beágyazva, önmagában is működik). **Mindig ezt szerkeszd, utána futtasd: `python3 kisebb.py`** – ez elkészíti a könnyű `index.html`-t (~1,3 MB, ezt mutatja a GitHub Pages), a képeket pedig a `kepek/` mappába teszi (a fájlnévben tartalom-ujjlenyomat, így frissítéskor csak a változott kép töltődik le újra). Az `index.html`-t kézzel ne szerkeszd.
 - A `build.js` egy `src/` mappából rakná össze, de a `src/` nincs a repóban, ezért közvetlenül a `game.html`-t szerkesztjük: az új kód az `/* ================= INDÍTÁS ================= */` sor elé kerül.
 - A képek és hangok base64-ként be vannak ágyazva (`IMG_SRC`, `SND_SRC`), ezek a nagyon hosszú sorok.
 - A repó gyökerében lévő képfájlokat a játék futás közben is be tudja tölteni (pl. `csapat5.jpg`), ha a GitHub Pages-en fut.
@@ -48,6 +48,8 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
 - **Jázmin 2.0** (a felhasználó szinte minden képességére „gagyi”-t írt): három Canva-effektlap (`fx4_jzarrow_jzpalm_jzlotus_jzwheel`, `fx4_jzsplash_jzchains_jzincense_jzrain`, `fx4_jzleaf_jzbell_jzaura_jzcrystal`), ezekkel minden nyilas képesség, a négy tea, a Tenyércsapás, a Százkezű és az Ezer Kéz tenyerei új, nagyobb jelenetet kaptak (`bigArrow`, `goldImpact`, `chargeBow`, `teaScene`). Canva-segédterv 5. oldala: ide kerül be a kép, innen exportálunk.
 - **Tesztlista-szabály** (a felhasználó kérte): amit kijavítottam, annak a régi pontját a megjegyzéseivel együtt törlöm; ha újra ki kell próbálni, tiszta új pontként kerül vissza.
 
+- **Gyorsabb betöltés**: `kisebb.py` → könnyű `index.html` + `kepek/`. A `canva-forras/` és a `buddha.jpg` törölve. A zsugorított ellenfél neve, életerő-csíkja és a találatok is a kisebb figurához igazodnak (`shrinkOf` a `topY`/`midY`-ban).
+
 ## Tesztlista
 
 Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLjSTzRX6i
@@ -56,8 +58,5 @@ Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLj
 ## Nyitott ügyek
 
 - Állított telefon: a felhasználó kétszer „Nem jó”-t jelölt megjegyzés nélkül – képernyőképet kértem. (Javítva közben: ragadós csatatér csak nyitott ablak nélkül; a gombhely-megtartás csak csata közben, a térképen nem marad üres rész.)
-- A zsugorított ellenfél neve és életerő-csíkja az eredeti magasságban marad (csak a figura kisebb).
-- A `game.html` 16 MB (minden kép és hang beágyazva) – telefonon lassan tölt be. Fejlesztési ötlet: a képeket külön fájlokba tenni.
-- A `canva-forras/` mappa és a `buddha.jpg` csak forrásnak kellett; ha nem kell, törölhető.
 - Hiányzik a repóból a `src/` mappa és a `MASODIK-RESZ.md` terv – ha a felhasználónál megvan, érdemes feltölteni.
 - Ellenőrzés: a próbateremben mind az öt hős mind a 74 képessége hiba nélkül lefut (`perform` minden képességre).

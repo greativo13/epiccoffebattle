@@ -2447,8 +2447,9 @@ const heroSkills=h=>[...h.d.skills,...h.bought];
 const cleared=id=>S.save.cleared.includes(id);
 const cx=e=>e.x+e.ox;
 const liftOf=e=>e.alive?e.lift:0;
-const topY=e=>e.y+e.oy-(e.h+liftOf(e))*e.scale;
-const midY=e=>e.y+e.oy-(liftOf(e)+e.h*.5)*e.scale;
+const shrinkOf=e=>e&&e.shrinkK&&e.shrinkK<1?e.shrinkK:1;   // Lili Zsugorító pálcája: a név, az életerő-csík és a találatok is a kisebb figurához igazodnak
+const topY=e=>e.y+e.oy-(e.h+liftOf(e))*e.scale*shrinkOf(e);
+const midY=e=>e.y+e.oy-(liftOf(e)+e.h*.5)*e.scale*shrinkOf(e);
 const handPos=u=>u.d.hand?{x:cx(u)+(u.kind==='hero'?1:-1)*u.d.hand[0]*u.scale,y:u.y+u.oy+(u.d.hand[1]-liftOf(u))*u.scale}:{x:cx(u)+(u.kind==='hero'?1:-1)*u.w*u.scale*.5,y:midY(u)-u.h*u.scale*.18};
 
 /* ================= RÉSZECSKÉK ÉS EFFEKTEK ================= */
