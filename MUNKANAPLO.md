@@ -67,6 +67,8 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
 - **Próbaterem-csere**: a pihenő hős kártyájának kiválasztása után a csatatéren a figurára kattintva is lehet cserélni (pointerdown a vásznon).
 - **Akadozás**: a kivágott/átszínezett figurák IndexedDB-gyorsítótárba kerülnek (`SPR_CACHE`, `kaverablas-figurak`), második indítástól nem kell újraszámolni (7 s → <1 s akadás). Az első látogatás még akadhat.
 - **Tesztszkript-tanulság**: `multi.js`-ben az `allies` célzású képességet a hősökre kell lőni (korábban az ellenfelek kapták a buffot).
+- **Tesztkör 6**: Betöltés: a hátterek (`im.__bg`) nem várnak a figura-gyorsítótárra, és amíg a kép nincs meg, sima sötét háttér látszik a régi, kódból rajzolt helyett (ez villant fel másodszori indításkor). Napkitörés: aranysárga (nem vörös), a nap oldalt áll, és a sugarak magából a napból csapnak ferdén az ellenségekre (`sunRay`), tűzeső helyett kis napgömbök. Szikranyíl: rajzolt kék villám (`zap`, `zapPath`, `electrocute` – minden képkockán újra kanyarodó, elágazó), jól látható nyíl kék fényben; a sárga `thunder`-kép és a nagy fehér folt kidobva. Füstölő-nyíl: a nyíl a földön füstölőpálcává alakul (bronz tartó, izzó vég), vékony, kígyózó füstszál száll belőle. Járvány: Morgánától az ellenségig ugyanazok a tüskés pestisindák (`plaguevine`) és zöld-lila kitörések (`miasmaburst`) törnek fel sorban, mint az ellenség alatt; a neon repedés és a folyadéksáv kidobva.
+- **Figyelem, szerkesztésnél**: a game.html-ben sok függvény többször van definiálva (a későbbi felülírja). Python-cserénél a keresést mindig az utolsó, érvényes változat egyedi jelölőjétől indítsd, különben a köztes kód is törlődik.
 
 ## Tesztlista
 
