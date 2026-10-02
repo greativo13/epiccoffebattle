@@ -42,6 +42,9 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
 
 - **Állított telefon**: a csatatér (`.stage`) ragadós a képernyő tetején, a kártyák és gombok alatta görgetnek; újratöltéskor és új képernyőnél felülre ugrik (`history.scrollRestoration='manual'`, `toTop`); támadás közben a gombok helye megmarad (`btnsEl.style.minHeight`), így nem ugrik fel az oldal.
 
+- **Visszajelzés-kör (látványosabb, egyedi képességek)**: Jázmin saját pajzsa (`fx-guard-monk`, Canva, `FX_IMG['guard-monk']`); Lili Égi pajzsa kikerült (a Fénypajzs maradt, ár visszajár); Napkitörés új animáció (`solarFlare`: felkelő nap, napkitörések); Zsugorító pálca: varázskör, csillagspirál, háromlépcsős zsugorodás (`shrinkForce`); Égi áldás: kardok helyett glória-kapu, fénynyaláb, hulló tollak, glóriák; új ötfős plakát (`csapat5.jpg`, Jázmin íjjal) a közös támadásnál lejjebb téve (`TEAM5_IMG.pad`), hogy Lili feje látsszon; a stáblistán is az ötfős kép és Jázmin neve; Jázmin Grog helyén közelebb áll a többiekhez (`monkSlot`).
+- Nyitott: Jázmin pajzsán íj helyett két keresztbe tett arany nyíl legyen (Canva éppen korlátozott).
+
 ## Tesztlista
 
 Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLjSTzRX6i
