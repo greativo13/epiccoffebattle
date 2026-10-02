@@ -272,6 +272,11 @@ button.zone-chip:focus-visible,.shop-buy:focus-visible{outline:3px solid var(--g
   .bench-card{grid-column:auto;flex-direction:column;justify-content:center;gap:1px;padding:2px 5px}
   .bench-card .bh{display:none}.bench-card .bn{font-size:11px}.bench-card canvas{width:22px;height:22px}
 }
+/* állított telefon: a csatatér mindig látszik fent, a kártyák és a gombok alatta görgetnek */
+@media (max-width:720px) and (orientation:portrait){
+  .stage{position:sticky;top:0;z-index:6}
+  @supports (top:env(safe-area-inset-top)){.stage{top:env(safe-area-inset-top)}}
+}
 /* titkos pálya a térképen */
 .map-secret{position:absolute;transform:translate(-50%,0);font:800 clamp(10px,1.4vw,13px) var(--body);color:#fff3d0;background:rgba(90,20,10,.85);border:1px solid #e0703a;border-radius:999px;padding:1px 8px;white-space:nowrap;pointer-events:none}
 </style>
@@ -7081,6 +7086,16 @@ SK.wakeuptea.anim='wakeTea';SK.greentea.anim='greenTea';SK.blacktea.anim='blackT
     await tween(300,k=>{gl.a=k;});await tween(300,k=>{u.alpha=1-k;});flash(GOLD_B,.5,.2);
     try{await th(u,ts,sk);}finally{u.pose='power';await tween(300,k=>{u.alpha=k;gl.a=1-k;});gl.a=0;u.alpha=1;u.pose='idle';ring(cx(u),midY(u),GOLD_A,120,.5);}};}
 if(typeof NOFX==='object')for(const a of ['incenseArrow','innerCalm'])NOFX.add(a);
+
+// telefonon újratöltéskor ne a régi görgetési helyen nyíljon meg, és minden új képernyő (cím, térkép, csata) felülről induljon
+try{if('scrollRestoration' in history)history.scrollRestoration='manual';}catch(e){}
+const toTop=()=>{try{if(window.scrollY>0)window.scrollTo(0,0);}catch(e){}};
+{const t5=titleScreen;titleScreen=function(){const r=t5.apply(this,arguments);toTop();return r;};
+ const m5=mapScreen;mapScreen=function(zi){const r=m5(zi);toTop();return r;};
+ const sb5=startBattle;startBattle=function(){toTop();return sb5.apply(this,arguments);};}
+
+// amíg egy támadás fut, a gombok helye megmarad (különben telefonon felugrik az oldal, és minden körben újra le kell görgetni)
+{const sb6=setButtons;setButtons=function(list){try{if(!list||!list.length){if(btnsEl.children.length)btnsEl.style.minHeight=btnsEl.offsetHeight+'px';}else btnsEl.style.minHeight='';}catch(e){}return sb6.apply(this,arguments);};}
 
 /* ================= INDÍTÁS ================= */
 resize();

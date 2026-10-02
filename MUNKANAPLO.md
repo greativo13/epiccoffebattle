@@ -40,6 +40,8 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
   - Vigyázat: a játékban már volt `drawArrow` (az aktív hős jelzője) – a repülő nyíl rajzolója ezért `drawFlyArrow`.
   - A `csapat5.jpg` plakáton Jázmin még bottal van: ha kell, újra kell rajzolni.
 
+- **Állított telefon**: a csatatér (`.stage`) ragadós a képernyő tetején, a kártyák és gombok alatta görgetnek; újratöltéskor és új képernyőnél felülre ugrik (`history.scrollRestoration='manual'`, `toTop`); támadás közben a gombok helye megmarad (`btnsEl.style.minHeight`), így nem ugrik fel az oldal.
+
 ## Tesztlista
 
 Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLjSTzRX6i
