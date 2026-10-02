@@ -71,10 +71,13 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
 - **Figyelem, szerkesztésnél**: a game.html-ben sok függvény többször van definiálva (a későbbi felülírja). Python-cserénél a keresést mindig az utolsó, érvényes változat egyedi jelölőjétől indítsd, különben a köztes kód is törlődik.
 - **Tesztkör 7**: Logó (`logo.png`, a játékban `bg-logo` – a `bg-` előtag miatt nem fut át a figurakivágáson; a címképernyő `.ov-title` helyén `.ov-logo`). Ikon: `apple-touch-icon.png` (180, iOS kezdőképernyő) és `icon.png` (512). Állított telefon: a játék a valóban látható magasságot tölti ki (`--appH` a `visualViewport`-ból, `html.apph`), így iPhone-on nem marad üres sáv alul, a térkép is nagyobb. Címkép: `#titlepre` `<img>` a HTML-ben (a `kisebb.py` teszi be a `<!--TITLEPRE-->` helyére), a `setScene` veszi le. Összpontosítás: kék manatea-kör helyett szellő kavarog Zordon körül (`breezeAround`), amíg a Szélvihar el nem szabadul. Füstölő-nyíl: templomi füstölő (`fx-jzcenser`, Canva, előre kivágva, átlátszó webp), lassan leng, a fedeléből száll a füst. Járvány: az indák mérgezőzöldre színezve (`tint`), a barna földrepedés kivéve. Napkitörés: forgó napkorona, kicsapó napkitörés-ívek, töltődéskor beszívódó fény, a célpontokon parázsoszlop, a végén a nap felfúvódik és szétrobban.
 
-## Tesztlista
+## Tesztlista és áttekintő (egy helyen)
 
-Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLjSTzRX6i
-(Claude az `ArtifactData` eszközzel olvassa a `tests` gyűjteményt: `status` = ok / bad, `note` = a felhasználó megjegyzése, `reply` = Claude válasza.)
+Minden jelölés egy oldalon: https://claude.ai/artifact/6D1sUCKfqLohVoGNQdc8ek (a régi tesztlista, YTZqxtyqwPfqbLjSTzRX6i, már csak egy átirányító pontot tartalmaz).
+- Fent „Kipróbálandó javítások”: a `tests` gyűjteményből (title/how/expect/area/order) – új tesztpontot ide kell írni (`ArtifactData`).
+- Alatta a teljes történet, 32 pálya, 65 ellenfél (a játék adataiból generálva: scratchpad `dump.js` → `story.json` → `mkrev.py`).
+- Jelölések a `review` gyűjteményben: `status` ok/bad, `note`, `sent` (beküldve → nála eltűnik), `handled` (Claude feldolgozta), `reply` (Claude válasza a lapon). Tesztpont kulcsa `t-<id>`, pályáé `L<id>`, fejezeté `z<n>`, ellenfélé `e-<típus>`, bevezető `intro`.
+- A „Kész” gomb `meta/done`-t ír, és kommentként szól Claude-nak (`comments.sendToClaude`). Javítás után: `handled:true` + `reply`; ha újra ki kell próbálni, új `tests` pont.
 
 ## Nyitott ügyek
 
