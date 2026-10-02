@@ -51,6 +51,12 @@ light = html[:m.start(1)] + json.dumps(paths, ensure_ascii=False, separators=(',
 # a címkép elsőként töltődjön
 if 'bg-title' in paths:
     light = light.replace('<head>', '<head>\n<link rel="preload" as="image" href="%s">' % paths['bg-title'], 1) if '<head>' in light else '<link rel="preload" as="image" href="%s">\n' % paths['bg-title'] + light
+# a logó is elsőként töltődjön (a címképernyőn látszik)
+if 'bg-logo' in paths:
+    light = light.replace('<head>', '<head>\n<link rel="preload" as="image" href="%s">' % paths['bg-logo'], 1)
+# a címkép már a HTML-ben ott van, mielőtt a játék kódja lefut (a vászon később átveszi)
+if 'bg-title' in paths:
+    light = light.replace('<!--TITLEPRE-->', '<img id="titlepre" src="%s" alt="" fetchpriority="high">' % paths['bg-title'], 1)
 with open(OUT, 'w', encoding='utf-8') as f:
     f.write(light)
 print('index.html: %.1f MB (game.html: %.1f MB), %d kép a kepek/ mappában'
