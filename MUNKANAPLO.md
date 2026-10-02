@@ -31,6 +31,8 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
 - **Térkép**: a piros „?” a titkos pálya (Az Elfeledett Pörkölő, a 3-4 után nyílik); most „Titkos főellenség!” felirat van fölötte.
 - **Lili**: három új, varázspálcás képesség – Pálcakoppintás (`wandbonk`, 1-2), Zsugorító pálca (`shrink`, 2-3: Zsugor+Átok+Rozsda, kisebbre rajzolva), Álomcsillagok (`sleepdust`, 4-2). Lilinek eddig 8 gyógyító/védő és csak 4 támadó képessége volt.
 
+- **Jázmin**: három új, bambuszbotos képesség – Bambuszugrás (`bamboovault`, 5-1), Pörgő bot (`staffspin`, 6-2, mindenkit kétszer talál), Botfal (`staffwall`, 7-2: a csapat Pajzs 2 kör, Jázmin Provokál). Saját rajzolt pörgő bot: `drawStaff`, `spinStaff`. (A felhasználó eredetileg Jázminnak kért több képességet, nem Lilinek – Lilié is marad.)
+
 ## Tesztlista
 
 Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLjSTzRX6i

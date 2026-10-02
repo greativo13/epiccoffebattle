@@ -6853,6 +6853,60 @@ Object.assign(A,{
   if(Math.abs(e.shrinkK-1)<.005){e.shrinkK=1;return de(e);}
   const x=cx(e),gy=e.y+e.oy;ctx.save();ctx.translate(x,gy);ctx.scale(e.shrinkK,e.shrinkK);ctx.translate(-x,-gy);try{de(e);}finally{ctx.restore();}};}
 
+// ---- Jázmin bambuszbotja: három új képesség, amiben a botját használja
+function drawStaff(x,y,len,ang,a=1){if(a<=0)return;ctx.save();ctx.translate(x,y);ctx.rotate(ang);ctx.globalAlpha=Math.min(1,a);ctx.lineCap='round';
+  ctx.strokeStyle='#2a1806';ctx.lineWidth=12;ctx.beginPath();ctx.moveTo(-len/2,0);ctx.lineTo(len/2,0);ctx.stroke();
+  ctx.strokeStyle='#c9953a';ctx.lineWidth=7;ctx.beginPath();ctx.moveTo(-len/2,0);ctx.lineTo(len/2,0);ctx.stroke();
+  ctx.strokeStyle='#7a5418';ctx.lineWidth=3;for(let i=-2;i<=2;i++){const px=i*len/5;ctx.beginPath();ctx.moveTo(px,-4);ctx.lineTo(px,4);ctx.stroke();}   // bambuszgyűrűk
+  ctx.restore();}
+// pörgő bot a hős előtt: elmosódó ívekkel, amíg a 'on' igaz
+function spinStaff(u,o={}){const st={on:true,ang:0,a:0};effects.push({update(dt){st.ang+=dt*(o.speed||22);st.a=st.on?Math.min(1,st.a+dt*8):st.a-dt*6;return st.on||st.a>0;},
+  draw(){const x=cx(u)+(o.dx||30),y=midY(u)+(o.dy||-10),len=o.len||190;
+    ctx.save();ctx.globalCompositeOperation='lighter';ctx.strokeStyle=`rgba(255,220,150,${.35*st.a})`;ctx.lineWidth=10;ctx.beginPath();ctx.arc(x,y,len/2,st.ang-1.2,st.ang);ctx.stroke();ctx.beginPath();ctx.arc(x,y,len/2,st.ang+Math.PI-1.2,st.ang+Math.PI);ctx.stroke();ctx.restore();
+    drawStaff(x,y,len,st.ang,st.a);}});return st;}
+Object.assign(SK,{
+  bamboovault:{name:'Bambuszugrás',mp:10,cd:1,tgt:'enemy',kind:'phys',pow:2.1,elem:'phys',anim:'bambooVault',plateBreak:true,status:['stun',.3,1],desc:'Jázmin a botjára támaszkodva magasra ugrik, és a botjával lecsap az ellenségre. Páncélt tör, 30% eséllyel elkábít.'},
+  staffspin:{name:'Pörgő bot',mp:16,cd:2,tgt:'enemies',kind:'phys',pow:1.15,elem:'phys',anim:'staffSpin',desc:'Jázmin a feje fölött pörgeti a botját, és végigrohan az ellenségeken: mindegyiket kétszer eltalálja.'},
+  staffwall:{name:'Botfal',mp:12,cd:3,tgt:'allies',kind:'buff',buff:['defUp',2],anim:'staffWall',desc:'Jázmin a csapat elé áll, és olyan gyorsan pörgeti a botját, hogy fal lesz belőle: 2 körig mindenki védettebb, és az ellenségek őt támadják.'},
+});
+SHOP_SKILLS.monk.push(['bamboovault','5-1',1700],['staffspin','6-2',2500],['staffwall','7-2',3400]);
+SHOP_SKILLS.monk.sort((a,b)=>a[2]-b[2]);
+Object.assign(A,{
+  bambooVault:async(u,ts,sk)=>{const t=ts[0];if(!t||!t.alive)return;
+    const tx=t.x-((t.w*t.scale)/2+(u.w*u.scale)/2-10),dx=tx-u.x,dy=(t.y+2)-u.y,sp=520;
+    u.pose='cast';for(let i=0;i<10;i++)part({x:cx(u)+rnd(-30,30),y:u.y+u.oy,vx:rnd(-60,60),vy:rnd(-80,-20),life:.5,size:rnd(4,7),rgb:'170,140,100',add:false,shape:'smoke'});
+    await wait(180);u.pose='attack';ghosts(u,sp);sfx('slash');
+    await tween(sp,k=>{const e=easeIO(k);u.ox=dx*e;u.oy=dy*e;u.jump=Math.sin(k*Math.PI)*230;});   // magas ív a bot végén
+    const x=cx(t),gy=t.y+t.oy;
+    hitStop(90);shake(16);flash('255,230,180',.3,.15);sfx('rock');groundCrack(x,gy,'255,200,120',170);ring(x,gy,'255,210,140',120,.5);punch(x,midY(t),.06);
+    for(let i=0;i<14;i++)part({x:x+rnd(-50,50),y:gy,vx:rnd(-160,160),vy:rnd(-300,-120),g:700,life:rnd(.5,.8),size:rnd(3,6),rgb:'150,120,90',add:false,shape:'rock'});
+    hit(u,t,sk);if(t.alive)toss(t,30,260);
+    await wait(320);u.pose='idle';ghosts(u,300);
+    await tween(300,k=>{const e=easeIO(k);u.ox=dx*(1-e);u.oy=dy*(1-e);u.jump=Math.sin(k*Math.PI)*40;});u.ox=0;u.oy=0;u.jump=0;},
+  staffSpin:async(u,ts,sk)=>{const {al}=grp(ts);if(!al.length)return;
+    const order=al.slice().sort((a,b)=>a.x-b.x),x0=u.x,y0=u.y,endX=Math.min(W-60,order[order.length-1].x+90)-x0,midDy=order.reduce((s,t)=>s+t.y,0)/order.length-y0;
+    u.pose='attack';const st=spinStaff(u,{dx:10,dy:-u.h*u.scale*.35,len:200});sfx('slash');await wait(260);
+    ghosts(u,900);const done=new Set();
+    await tween(900,k=>{const e=easeIO(k);u.ox=endX*e;u.oy=midDy*Math.sin(Math.min(1,k*1.4)*Math.PI/2);
+      for(const t of order){const p=(t.x-x0)/endX;for(const n of [0,1]){const key=t.seed+':'+n,at=p-.06+n*.1;if(!done.has(key)&&e>=at){done.add(key);
+        if(t.alive){const s2={...sk,pow:sk.pow*.5};hit(u,t,s2);slash(cx(t),midY(t),1.2,'255,220,150');shake(5);sfx('hit');}}}}});
+    await wait(120);ghosts(u,500);
+    await tween(500,k=>{const e=easeIO(k);u.ox=endX*(1-e);u.oy=midDy*(1-e);});u.ox=0;u.oy=0;
+    st.on=false;u.pose='idle';await wait(250);},
+  staffWall:async(u,ts,sk)=>{const al=ts.filter(a=>a.alive);
+    u.pose='cast';const st=spinStaff(u,{dx:46,dy:-u.h*u.scale*.45,len:210,speed:30});sfx('slash');
+    const wx=cx(u)+70,wy=u.y+u.oy;
+    effects.push({t:0,update(dt){this.t+=dt;return this.t<1.5;},draw(){const k=Math.min(1,this.t/.3),a=this.t<1.1?1:1-(this.t-1.1)/.4;
+      ctx.save();ctx.globalCompositeOperation='lighter';const g=ctx.createLinearGradient(wx-30,0,wx+30,0);g.addColorStop(0,'rgba(255,210,120,0)');g.addColorStop(.5,`rgba(255,210,120,${.45*a})`);g.addColorStop(1,'rgba(255,210,120,0)');
+      ctx.fillStyle=g;ctx.fillRect(wx-30,wy-260*k,60,260*k);
+      ctx.strokeStyle=`rgba(255,240,190,${.8*a})`;ctx.lineWidth=3;for(let i=0;i<5;i++){const yy=wy-((this.t*260+i*52)%(260*k||1));ctx.beginPath();ctx.moveTo(wx-24,yy);ctx.lineTo(wx+24,yy-10);ctx.stroke();}
+      ctx.restore();}});
+    await wait(700);
+    for(const a of al){ring(cx(a),midY(a),'255,210,120',70,.45);hit(u,a,sk);}
+    if(u.alive){addStatus(u,'taunt',2);updateHUD();}
+    await wait(600);st.on=false;u.pose='idle';await wait(200);},
+});
+
 /* ================= INDÍTÁS ================= */
 resize();
 titleScreen();
