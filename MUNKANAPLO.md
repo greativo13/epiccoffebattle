@@ -45,6 +45,9 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
 - **Visszajelzés-kör (látványosabb, egyedi képességek)**: Jázmin saját pajzsa (`fx-guard-monk`, Canva, `FX_IMG['guard-monk']`); Lili Égi pajzsa kikerült (a Fénypajzs maradt, ár visszajár); Napkitörés új animáció (`solarFlare`: felkelő nap, napkitörések); Zsugorító pálca: varázskör, csillagspirál, háromlépcsős zsugorodás (`shrinkForce`); Égi áldás: kardok helyett glória-kapu, fénynyaláb, hulló tollak, glóriák; új ötfős plakát (`csapat5.jpg`, Jázmin íjjal) a közös támadásnál lejjebb téve (`TEAM5_IMG.pad`), hogy Lili feje látsszon; a stáblistán is az ötfős kép és Jázmin neve; Jázmin Grog helyén közelebb áll a többiekhez (`monkSlot`).
 - Jázmin pajzsa: két keresztbe tett arany nyíl a jáde lótusz-mandalán (a felhasználó kérésére, íj nélkül).
 
+- **Jázmin 2.0** (a felhasználó szinte minden képességére „gagyi”-t írt): három Canva-effektlap (`fx4_jzarrow_jzpalm_jzlotus_jzwheel`, `fx4_jzsplash_jzchains_jzincense_jzrain`, `fx4_jzleaf_jzbell_jzaura_jzcrystal`), ezekkel minden nyilas képesség, a négy tea, a Tenyércsapás, a Százkezű és az Ezer Kéz tenyerei új, nagyobb jelenetet kaptak (`bigArrow`, `goldImpact`, `chargeBow`, `teaScene`). Canva-segédterv 5. oldala: ide kerül be a kép, innen exportálunk.
+- **Tesztlista-szabály** (a felhasználó kérte): amit kijavítottam, annak a régi pontját a megjegyzéseivel együtt törlöm; ha újra ki kell próbálni, tiszta új pontként kerül vissza.
+
 ## Tesztlista
 
 Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLjSTzRX6i
