@@ -245,6 +245,35 @@ button.zone-chip:focus-visible,.shop-buy:focus-visible{outline:3px solid var(--g
 @media (hover:none){.map-view .mnode{width:clamp(30px,5vw,40px);height:clamp(30px,5vw,40px)}.map-view .mnode.boss{width:clamp(34px,6vw,48px);height:clamp(34px,6vw,48px)}}
 @media (max-width:720px){.tools{position:static;justify-content:flex-end;flex-wrap:wrap}.prompt{padding-right:0}}
 @media (max-width:560px){body{padding:8px}.game{gap:8px}.hud{gap:8px}.cbtn{padding:11px 10px}.prompt{font-size:17px}.ov-text{font-size:12.5px}.ov-btn{font-size:19px;padding:8px 20px}.ov-box{gap:8px}.lvl{padding:8px 10px;font-size:14px}}
+/* széles ablak: a jobb oldali sáv szélesebb, és sosem lóg ki a képernyőről – a gombok a saját dobozukban görgetnek, nem az egész oldal */
+@media (min-width:1100px) and (min-aspect-ratio:17/10){
+  .game{grid-template-columns:min(calc((100vh - 24px)*16/9),calc(100vw - 40px - clamp(400px,32vw,620px))) minmax(0,1fr)}
+  body{padding-top:10px;padding-bottom:10px}
+  .hud{position:sticky;top:10px;max-height:calc(100vh - 20px);grid-template-rows:auto minmax(0,1fr);align-self:start}
+  @supports (height:100dvh){.hud{max-height:calc(100dvh - 20px)}}
+  .party{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cmd{overflow-y:auto;min-height:0;padding:8px;gap:6px}
+  .btns{grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:5px}
+  .cbtn{padding:6px 9px;font-size:13.5px}
+  .prompt{font-size:17px}
+}
+/* próbaterem: a hőskártyára kattintva az a hős jön; a pihenő hős külön csíkon, két koppintással cserélhető */
+.party.arena-party .card:not(.dead){cursor:pointer}
+.party.arena-party .card:hover{border-color:var(--gold)}
+.bench-card{grid-column:1/-1;display:flex;align-items:center;gap:8px;font:800 13px var(--body);color:var(--ink);text-align:left;background:repeating-linear-gradient(135deg,#251b3b 0 10px,#2b2045 10px 20px);border:2px dashed var(--line);border-left:5px solid var(--c);border-radius:8px;padding:4px 8px;cursor:pointer;min-width:0}
+.bench-card:hover{border-color:var(--gold);border-left-color:var(--c)}
+.bench-card.on{border-style:solid;border-color:var(--gold);border-left-color:var(--c);box-shadow:0 0 0 2px rgba(255,201,74,.3);animation:pulse .8s infinite alternate}
+.bench-card canvas{width:30px;height:30px;border-radius:7px;background:#0b0714;border:1px solid var(--line);flex:none;filter:grayscale(.4)}
+.bench-card .bn{color:var(--c);font-family:var(--display);font-size:14px;white-space:nowrap}
+.bench-card .bh{color:var(--muted);font-size:11.5px;font-weight:700;min-width:0}
+.party.swapping .card:not(.dead){border-color:#ff8a5a;cursor:pointer}
+@media (orientation:landscape) and (max-height:520px){
+  .party.arena-party{grid-template-columns:repeat(4,minmax(0,1fr)) auto}
+  .bench-card{grid-column:auto;flex-direction:column;justify-content:center;gap:1px;padding:2px 5px}
+  .bench-card .bh{display:none}.bench-card .bn{font-size:11px}.bench-card canvas{width:22px;height:22px}
+}
+/* titkos pálya a térképen */
+.map-secret{position:absolute;transform:translate(-50%,0);font:800 clamp(10px,1.4vw,13px) var(--body);color:#fff3d0;background:rgba(90,20,10,.85);border:1px solid #e0703a;border-radius:999px;padding:1px 8px;white-space:nowrap;pointer-events:none}
 </style>
 
 <div class="game">
@@ -6733,6 +6762,96 @@ if(typeof Image!=='undefined'){const tryLoad=names=>{if(!names.length)return;con
     const keep=TEAM_IMG.im,cin=S.cutin;TEAM_IMG.im=TEAM5_IMG.im;   // a régi kép helyére az ötfős kerül, és nem kell rá külön Jázmin
     const sp=ENEMY_SPR['monk-attack'],sm=ENEMY_SPR.monk;delete ENEMY_SPR['monk-attack'];delete ENEMY_SPR.monk;
     try{dc();}finally{TEAM_IMG.im=keep;if(sp)ENEMY_SPR['monk-attack']=sp;if(sm)ENEMY_SPR.monk=sm;}};}
+
+// ---- Próbaterem: a hősválasztó gombok helyett a hőskártyák. Kártyára kattintva az a hős jön.
+// A pihenő hős a kártyák alatti csíkon van: rá kell kattintani, aztán arra a hősre, akinek a helyére álljon.
+const ARENA_UI={swap:null};
+function arenaCardClick(h){
+  if(!S.arena||S.targeting||!S.pick)return;
+  if(ARENA_UI.swap){const inn=ARENA_UI.swap;ARENA_UI.swap=null;arenaSwap(h,inn);arenaPlace();finish({type:'arena',hero:inn});return;}
+  if(h!==S.pick.h&&h.alive)finish({type:'arena',hero:h});
+}
+// mindenki a saját helyére áll; Jázmin (akinek nincs saját helye a négyes sorban) a pihenő hős helyére
+function arenaPlace(){const all=S.roster||S.heroes;for(const x of all){x.x=x.d.pos[0];x.y=x.d.pos[1];}
+  const out=all.find(x=>!S.heroes.includes(x)),mk=S.heroes.find(x=>x.type==='monk');if(out&&mk&&out!==mk){mk.x=out.d.pos[0];mk.y=out.d.pos[1];}}
+function benchFace(cvs,h){const spr=typeof ENEMY_SPR==='object'&&ENEMY_SPR[h.type];if(!spr){setTimeout(()=>benchFace(cvs,h),700);return;}
+  const F={wizard:[.5,.24,.36],witch:[.5,.2,.4],fairy:[.5,.3,.34],orc:[.5,.2,.36]}[h.type]||[.5,.25,.4],size=spr.height*F[2];
+  cvs.getContext('2d').drawImage(spr,spr.width*F[0]-size/2,spr.height*F[1]-size/2,size,size,0,0,cvs.width,cvs.height);}
+{const b1=buildHUD;buildHUD=function(){b1();
+  partyEl.classList.toggle('arena-party',!!S.arena);if(!S.arena){ARENA_UI.swap=null;partyEl.classList.remove('swapping');return;}
+  cards.forEach((c,i)=>{const h=S.heroes[i];if(!c||!h)return;c.title=h.name+' következzen';c.addEventListener('click',()=>arenaCardClick(h));});
+  for(const o of (S.roster||[]))if(!S.heroes.includes(o)){
+    const el=document.createElement('button');el.type='button';el.className='bench-card'+(ARENA_UI.swap===o?' on':'');el.style.setProperty('--c',o.d.color);
+    const f=document.createElement('canvas');f.width=f.height=64;el.appendChild(f);benchFace(f,o);
+    const n=document.createElement('span');n.className='bn';n.textContent='💤 '+o.name;el.appendChild(n);
+    const t=document.createElement('span');t.className='bh';t.textContent=ARENA_UI.swap===o?'Most kattints arra a hősre, akinek a helyére álljon!':'pihen – kattints rá a cseréhez';el.appendChild(t);
+    el.addEventListener('click',()=>{if(!S.pick||S.targeting)return;ARENA_UI.swap=ARENA_UI.swap===o?null:o;buildHUD();
+      if(ARENA_UI.swap)setPrompt('Kinek a helyére álljon '+o.name+'? Kattints a kártyájára!');else arenaMenu(S.pick.h);});
+    partyEl.appendChild(el);}
+  partyEl.classList.toggle('swapping',!!ARENA_UI.swap);
+};}
+{const am=arenaMenu;arenaMenu=function(h){
+  if(ARENA_UI.swap){ARENA_UI.swap=null;buildHUD();}
+  const sb=setButtons;setButtons=list=>sb([{header:'Másik hős: kattints a kártyájára'},...list.filter(b=>!(b&&(b.sub==='hős'||String(b.label||'').startsWith('💤 '))))]);
+  try{am(h);}finally{setButtons=sb;}
+  setPrompt('Próbaterem – '+h.name);
+};}
+
+// ---- A titkos pálya „?” jele a térképen felirattal, hogy kiderüljön, mi az
+{const m3=mapScreen;mapScreen=function(zi){m3(zi);const view=ov.querySelector('.map-view');if(!view||typeof SECRET!=='object')return;
+  const b=[...view.querySelectorAll('.mnode')].find(x=>x.style.left==='60%'&&x.style.top==='60%');if(!b)return;
+  const l=document.createElement('div');l.className='map-secret';l.textContent=cleared(SECRET.id)?'Titkos pálya ✓':'Titkos főellenség!';l.style.left='60%';l.style.top='calc(60% - clamp(16px,3vw,26px))';l.style.transform='translate(-50%,-100%)';view.appendChild(l);};}
+
+// ---- Lili varázspálcája: három új képesség, amiben a pálcát használja
+STATUS.shrink=['Zsugor','#ffd6f4'];
+Object.assign(SK,{
+  wandbonk:{name:'Pálcakoppintás',mp:4,cd:0,tgt:'enemy',kind:'mag',pow:1.3,elem:'holy',anim:'wandbonk',status:['stun',.25,1],desc:'Lili odarepül, és a varázspálcájával fejbe koppintja az ellenséget. Csillagrobbanás, 25% eséllyel el is kábítja.'},
+  shrink:{name:'Zsugorító pálca',mp:14,cd:3,tgt:'enemy',kind:'mag',pow:.7,elem:'holy',anim:'shrinkRay',desc:'Rózsaszín csillagsugár a pálcából: az ellenség 3 körre összezsugorodik. Kisebb erővel üt, és a védelme is gyengébb.'},
+  sleepdust:{name:'Álomcsillagok',mp:20,cd:3,tgt:'enemies',kind:'mag',pow:.6,elem:'holy',anim:'sleepStars',status:['sleep',.5,2],desc:'Lili meglengeti a pálcáját, és álomcsillagok hullanak minden ellenségre. 50% eséllyel elalszanak (ütésre felébrednek).'},
+});
+SHOP_SKILLS.fairy.splice(1,0,['wandbonk','1-2',140]);
+SHOP_SKILLS.fairy.push(['shrink','2-3',420],['sleepdust','4-2',1500]);
+SHOP_SKILLS.fairy.sort((a,b)=>a[2]-b[2]);
+const WAND_PINK='255,150,230',WAND_GOLD='255,240,140';
+function wandTrail(u,rgb,n=14){const h=handPos(u);for(let i=0;i<n;i++)part({x:h.x+rnd(-8,8),y:h.y+rnd(-8,8),vx:rnd(-90,90),vy:rnd(-120,30),life:rnd(.4,.8),size:rnd(3,6),rgb,shape:'star'});}
+Object.assign(A,{
+  wandbonk:async(u,ts,sk)=>{const t=ts[0];if(!t||!t.alive)return;
+    const tx=t.x-((t.w*t.scale)/2+(u.w*u.scale)/2+4),dx=tx-u.x,dy=(t.y+2)-u.y,sp=240;
+    u.pose='cast';wandTrail(u,WAND_GOLD,10);await wait(150);u.pose='idle';ghosts(u,sp);
+    await tween(sp,k=>{const e=easeIO(k);u.ox=dx*e;u.oy=dy*e;u.jump=Math.sin(k*Math.PI)*60;if(Math.random()<.5)wandTrail(u,WAND_GOLD,1);});
+    u.pose='attack';await wait(110);
+    const x=cx(t),y=topY(t)+t.h*t.scale*.18;
+    sfx('hit');shake(7);flash('255,250,210',.25,.1);ring(x,y,WAND_GOLD,90,.4);burst(x,y,WAND_GOLD,26,320);
+    for(let i=0;i<8;i++){const a=i/8*Math.PI*2;part({x,y,vx:Math.cos(a)*240,vy:Math.sin(a)*240,drag:2,life:.6,size:7,rgb:pick([WAND_GOLD,WAND_PINK]),shape:'star'});}
+    hit(u,t,sk);
+    if(t.alive)for(let i=0;i<3;i++)part({x:x+rnd(-20,20),y:y-10,vx:rnd(-40,40),vy:rnd(-90,-50),life:1,size:6,rgb:WAND_GOLD,shape:'star'});   // csillagok a feje körül
+    await wait(260);u.pose='idle';ghosts(u,sp*.7);
+    await tween(sp,k=>{const e=easeIO(k);u.ox=dx*(1-e);u.oy=dy*(1-e);u.jump=Math.sin(k*Math.PI)*30;});u.ox=0;u.oy=0;u.jump=0;},
+  shrinkRay:async(u,ts,sk)=>{const t=ts[0];if(!t||!t.alive)return;
+    await castPose(u,WAND_PINK,380);wandTrail(u,WAND_PINK,16);
+    const h=handPos(u),ex=cx(t),ey=midY(t);sfx('holy');
+    effects.push({t:0,update(dt){this.t+=dt;return this.t<.55;},draw(){const k=Math.min(1,this.t/.12),a=this.t<.4?1:1-(this.t-.4)/.15;
+      ctx.save();ctx.globalCompositeOperation='lighter';ctx.lineCap='round';
+      for(const [w,al] of [[22,.25],[11,.6],[4,1]]){ctx.strokeStyle=`rgba(${w>10?WAND_PINK:'255,255,255'},${al*a})`;ctx.lineWidth=w;ctx.beginPath();ctx.moveTo(h.x,h.y);ctx.lineTo(h.x+(ex-h.x)*k,h.y+(ey-h.y)*k);ctx.stroke();}
+      ctx.restore();}});
+    for(let i=0;i<14;i++){const k=i/14;setTimeout(()=>part({x:h.x+(ex-h.x)*k,y:h.y+(ey-h.y)*k,vx:rnd(-30,30),vy:rnd(-60,-10),life:.6,size:rnd(4,7),rgb:pick([WAND_PINK,WAND_GOLD]),shape:'star'}),i*14);}
+    await wait(160);hit(u,t,sk);
+    if(t.alive){addStatus(t,'shrink',3);if(t.st.shrink){addStatus(t,'curse',3);addStatus(t,'defDown',3);}
+      ring(ex,ey,WAND_PINK,110,.5);for(let i=0;i<3;i++)setTimeout(()=>ring(ex,ey,WAND_PINK,90-i*25,.35),120+i*110);}
+    updateHUD();await wait(500);u.pose='idle';},
+  sleepStars:async(u,ts,sk)=>{const {al}=grp(ts);if(!al.length)return;
+    await dimTo(.45,'20,10,50',200);await castPose(u,'190,170,255',380);
+    u.pose='attack';for(let i=0;i<3;i++){wandTrail(u,pick([WAND_GOLD,'190,170,255']),12);await wait(90);}   // pálcalengetés
+    sfx('holy');
+    for(const t of al){const x=cx(t),y=topY(t);for(let i=0;i<14;i++)setTimeout(()=>part({x:x+rnd(-60,60),y:y-rnd(80,180),vx:rnd(-20,20),vy:rnd(120,200),life:rnd(.6,.9),size:rnd(4,8),rgb:pick([WAND_GOLD,'190,170,255','255,255,255']),shape:'star'}),i*35);}
+    await wait(520);
+    for(const t of al){ring(cx(t),midY(t),'190,170,255',80,.45);hit(u,t,sk);}
+    await wait(500);u.pose='idle';await dimTo(0,null,250);},
+});
+// a zsugorított ellenfél kisebbre rajzolva, a talpánál fogva (fokozatosan zsugorodik és nő vissza)
+{const de=drawEntity;drawEntity=function(e){const want=e.st&&e.st.shrink?.6:1;e.shrinkK=e.shrinkK==null?1:e.shrinkK+(want-e.shrinkK)*.12;
+  if(Math.abs(e.shrinkK-1)<.005){e.shrinkK=1;return de(e);}
+  const x=cx(e),gy=e.y+e.oy;ctx.save();ctx.translate(x,gy);ctx.scale(e.shrinkK,e.shrinkK);ctx.translate(-x,-gy);try{de(e);}finally{ctx.restore();}};}
 
 /* ================= INDÍTÁS ================= */
 resize();

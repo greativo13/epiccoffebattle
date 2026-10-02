@@ -27,6 +27,10 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
 - **Ötfős plakát**: a `csapat5.jpg` (1776×896) bekerült a repó gyökerébe; a játék betölti.
 - **Canva-letöltés**: a hálózat már engedi (`media.canva.com`, `export-download.canva.com`). A `get-assets` csak aláírt kis előnézetet ad, ezt nem lehet nagyobbra átírni. Teljes méretű kép így szerezhető: a képet egy Canva-terv oldalára kell tenni (`edit-design` → `add_page` + `insert_fill`), majd az oldalt `export-design`-nal exportálni. Erre a „A Nagy Kávérablás csapatkép” terv (`DAHW1ZtSXrE`) 2. oldala szolgál. A „Blank white sprite container” terv elérte a 100 oldalas korlátot.
 
+- **Próbaterem elrendezése**: széles képernyőn a jobb sáv `clamp(400px,32vw,620px)` széles, ragadós, és csak a gombdoboz görget (az oldal nem). A hősválasztó gombok helyett a hőskártyára kell kattintani; a pihenő hős a kártyák alatti csíkon (`.bench-card`), két kattintással cserélhető (`ARENA_UI`, `arenaCardClick`, `arenaPlace`). Fekvő telefonon a csík ötödik kis kártya.
+- **Térkép**: a piros „?” a titkos pálya (Az Elfeledett Pörkölő, a 3-4 után nyílik); most „Titkos főellenség!” felirat van fölötte.
+- **Lili**: három új, varázspálcás képesség – Pálcakoppintás (`wandbonk`, 1-2), Zsugorító pálca (`shrink`, 2-3: Zsugor+Átok+Rozsda, kisebbre rajzolva), Álomcsillagok (`sleepdust`, 4-2). Lilinek eddig 8 gyógyító/védő és csak 4 támadó képessége volt.
+
 ## Tesztlista
 
 Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLjSTzRX6i
@@ -34,7 +38,7 @@ Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLj
 
 ## Nyitott ügyek
 
-- Jázmin „eltűnése” a próbateremből: nem sikerült előidézni; valószínű ok, hogy a 💤-os csere a kiválasztott hős helyére történik (ha Jázmin a kiválasztott, ő megy pihenni). A felhasználó visszajelzésére vár.
-- Jázmin többi képessége: a felhasználó szerint „nem jók”; a limit és a Százkezű már új. A többit a tesztlista megjegyzései alapján kell átdolgozni.
+- Jázmin képességei (tesztlista 5., 6., 10–15.): a felhasználó szerint gagyik. Javaslat, amit még nem csináltunk meg: mindegyik teának saját látvány (zöld levelek / gőz és csengő / vörös aura / kék kristálycseppek), Tenyércsapás bot nélküli pózzal, Gőzrúgás és Tájfun harcművészeti mozdulatként (ne hasonlítson a Varázsló szélvarázslataira), Zen arany mandalával, Ezer Kéz: Jázmin Buddhává változik, új tenyérrajzok.
+- A zsugorított ellenfél neve és életerő-csíkja az eredeti magasságban marad (csak a figura kisebb).
 - A `canva-forras/` mappa csak a Canvának kellett forrásképnek; ha nem kell, törölhető.
 - Hiányzik a repóból a `src/` mappa és a `MASODIK-RESZ.md` terv – ha a felhasználónál megvan, érdemes feltölteni.
