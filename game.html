@@ -230,7 +230,7 @@ button.zone-chip:focus-visible,.shop-buy:focus-visible{outline:3px solid var(--g
   .row{grid-template-columns:16px minmax(0,1fr) auto;font-size:9.5px;gap:3px}.bar{height:5px}.num{min-width:0}
   .tags{flex-wrap:nowrap;overflow:hidden}.tag{font-size:8.5px;padding:0 4px;white-space:nowrap}
   .tools{position:static;justify-content:flex-end;flex-wrap:nowrap;gap:4px}.tool{padding:5px 9px;font-size:13px;min-height:30px;min-width:38px}
-  .prompt{padding-right:0;font-size:15px;min-height:0}
+  .prompt{padding-right:0;font-size:15px;min-height:auto}   /* 0-ra a görgethető panel összenyomta, és a felirat rácsúszott a gombokra */
   .btns{grid-template-columns:minmax(0,1fr);gap:5px}
   .cbtn{padding:8px 9px;font-size:13.5px;flex-wrap:nowrap;min-height:40px}.cbtn .bl{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.cbtn .bs{white-space:nowrap;flex-shrink:0;font-size:11px}.cbtn .eltag{flex-shrink:0;margin-left:0;padding:1px 5px}
   .desc{font-size:12px}
@@ -6716,6 +6716,23 @@ Object.assign(A,{
     flash('255,240,190',.6,.35);
     await wait(700);B.dying=true;u.pose='idle';await wait(450);await dimTo(0,null,300);},
 });
+
+// ---- Százkezű: a három gyors ütést aranyló tenyér-utóképek kísérik (a Buddha tenyereivel)
+{const fl=A.flurry;A.flurry=async(u,ts,sk)=>{const t=ts[0];if(!t||!t.alive)return fl(u,ts,sk);
+    const bw=t.w*t.scale,bh=t.h*t.scale;
+    for(let i=0;i<3&&t.alive;i++){
+      for(let j=0;j<5;j++)setTimeout(()=>{if(t.alive)palmFly(cx(u)+rnd(10,50),midY(u)+rnd(-60,30),cx(t)+rnd(-.3,.3)*bw,midY(t)+rnd(-.3,.25)*bh,150,rnd(30,42),()=>shake(2));},(j*45)/(S.speed||1));
+      await lunge(u,t,sk,{fast:true});}
+  };}
+
+// ---- Ötfős csapatkép a közös támadás plakátjához: ha a repóban ott van a csapat5.jpg (vagy .png), Jázminnal ezt mutatja
+const TEAM5_IMG={};
+if(typeof Image!=='undefined'){const tryLoad=names=>{if(!names.length)return;const im=new Image();im.onload=()=>{TEAM5_IMG.im=im;};im.onerror=()=>tryLoad(names.slice(1));im.src=names[0];};tryLoad(['csapat5.jpg','csapat5.png']);}
+{const dc=drawCutin;drawCutin=function(){const c=S.cutin,party=S.comboParty||S.heroes;
+    if(!(c&&c.all&&TEAM5_IMG.im&&party.some(h=>h.type==='monk')&&typeof TEAM_IMG==='object'))return dc();
+    const keep=TEAM_IMG.im,cin=S.cutin;TEAM_IMG.im=TEAM5_IMG.im;   // a régi kép helyére az ötfős kerül, és nem kell rá külön Jázmin
+    const sp=ENEMY_SPR['monk-attack'],sm=ENEMY_SPR.monk;delete ENEMY_SPR['monk-attack'];delete ENEMY_SPR.monk;
+    try{dc();}finally{TEAM_IMG.im=keep;if(sp)ENEMY_SPR['monk-attack']=sp;if(sm)ENEMY_SPR.monk=sm;}};}
 
 /* ================= INDÍTÁS ================= */
 resize();
