@@ -61,6 +61,9 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
 - **Tesztkör 3**: Napkitörés lángoszlopokkal (`fxPillar`, `sunpillar`), Zsugorító pálca sugár nélkül (csillagörvény `pinkvortex`), Égi áldás angyalszárnyakkal (`angelwings`), Mana-tea kék csészével (`manacup`), új Pattanó nyíl (felizzó útvonal + kisülés), Füstölő-nyíl maga elé, sűrű füst a csapat körül, Ezer Kéz tenyereinek csóva és lökéshullám, Életszívás vonal nélkül, Járvány saját animáció (`plagueSwarm`, pestisraj). Képlap: `fx4_sunpillar_angelwings_manacup_pinkvortex`.
 - **Betöltés**: a hátterek lustán (`loadBg`, a térkép az adott fejezet hátterait előre kéri), a képek kicsomagolása `img.decode()`-dal a háttérben (globális `Image`-burkoló a `const IMG_SRC` előtt). Időkorlátos sorba állítást kipróbáltam: rossz, mert a figurák későn jelentek meg.
 
+- **Tesztkör 4**: állított telefonon „alkalmazás” elrendezés (az oldal nem görget, csak a `.cmd`; nyitott ablaknál a csatatér-doboz kap helyet, a kártyák elbújnak) – a ragadós (sticky) megoldás kidobva. Napkitörés: festett nap (`sunorb`), tűzhullám (`firewave`), naposzlopok, tűzeső. Zsugorító pálca → „Zsugorítás”, zöldes-sárga (`WAND_PINK` most `let`). Ezer Kéz: sugarak helyett dharma-kerék glória, a végén ujjakkal lefelé lecsapó óriás tenyér. Pattanó nyíl: villámlánc. Füstölő: áttetsző füstgomolyok, lótusz a hősök alatt. Járvány új: `plagueRoots` (repedések, `plaguevine`, `miasmaburst`). Képlap: `fx4_sunorb_firewave_plaguevine_miasmaburst`.
+- **Betöltés**: `sw.js` service worker (képek a telefon gyorsítótárából, az oldal mindig frissen), a címkép előtöltve (`<link rel=preload>`), `BUILD` változatjelzést a `kisebb.py` állítja be.
+
 ## Tesztlista
 
 Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLjSTzRX6i

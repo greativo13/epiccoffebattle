@@ -41,7 +41,16 @@ for fn in os.listdir(DIR):
     if fn not in keep:
         os.remove(os.path.join(DIR, fn))
 
+# változatjelzés: a feltöltés ideje (ebből látszik a főmenüben, hogy a friss játék töltődött-e be)
+import datetime
+stamp = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=2))).strftime('%m. %d. %H:%M')
+html = re.sub(r'BUILD="[^"]*"', 'BUILD="%s"' % stamp, html)
+open(SRC, 'w', encoding='utf-8').write(html)
+m = re.search(r'^const IMG_SRC=(\{.*\});\s*$', html, re.M)
 light = html[:m.start(1)] + json.dumps(paths, ensure_ascii=False, separators=(',', ':')) + html[m.end(1):]
+# a címkép elsőként töltődjön
+if 'bg-title' in paths:
+    light = light.replace('<head>', '<head>\n<link rel="preload" as="image" href="%s">' % paths['bg-title'], 1) if '<head>' in light else '<link rel="preload" as="image" href="%s">\n' % paths['bg-title'] + light
 with open(OUT, 'w', encoding='utf-8') as f:
     f.write(light)
 print('index.html: %.1f MB (game.html: %.1f MB), %d kép a kepek/ mappában'
