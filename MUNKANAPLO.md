@@ -52,6 +52,9 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
 
 - **Átnézés Zordon, Morgána, Grog képességein**: mind festett effektekkel megy (Szupernóva, Fekete lyuk, Földrengés stb.), csak az Életszívás volt gyenge – most vérvörös örvény (`fx-dark`, színeltolva, `add:true`!) és vastag életfolyam. Figyelem: az `fx-dark` stb. képek fekete hátterűek, `fxSpin`-nél kell az `add:true`, különben fekete négyzet látszik.
 
+- **Idézések**: a felhasználó kérésére visszaállítva a korábbi (ellenfél-)képekre – a `SUM_SPR` saját idézésképek felülírása ki van kommentezve (a titkos főellenség, az Ősgólem saját képe marad).
+- **Kristálygólem idézés**: kék kristálytükör-pajzs (`crystal` állapot, `partyCrystal`, kép: `fx-crystalmirror`, Canva) – kivédi a következő találatot és kék kristálylövedékkel visszaveri, mint a Fénypajzs.
+
 ## Tesztlista
 
 Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLjSTzRX6i
