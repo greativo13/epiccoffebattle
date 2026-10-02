@@ -58,6 +58,9 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
 - **Állított telefon**: a hőskártyák is ragadósak, közvetlenül a csatatér alatt (`--stageH` CSS-változó, ResizeObserver); állítva a TP sor elmarad. Nyitott ablaknál egyik sem ragad.
 - **Közös támadás plakát**: a `csapat5.jpg` kitölti a ferde csíkot (a csík alakjára vágva, jobbra beolvad), nem kisebb dobozként ül benne.
 
+- **Tesztkör 3**: Napkitörés lángoszlopokkal (`fxPillar`, `sunpillar`), Zsugorító pálca sugár nélkül (csillagörvény `pinkvortex`), Égi áldás angyalszárnyakkal (`angelwings`), Mana-tea kék csészével (`manacup`), új Pattanó nyíl (felizzó útvonal + kisülés), Füstölő-nyíl maga elé, sűrű füst a csapat körül, Ezer Kéz tenyereinek csóva és lökéshullám, Életszívás vonal nélkül, Járvány saját animáció (`plagueSwarm`, pestisraj). Képlap: `fx4_sunpillar_angelwings_manacup_pinkvortex`.
+- **Betöltés**: a hátterek lustán (`loadBg`, a térkép az adott fejezet hátterait előre kéri), a képek kicsomagolása `img.decode()`-dal a háttérben (globális `Image`-burkoló a `const IMG_SRC` előtt). Időkorlátos sorba állítást kipróbáltam: rossz, mert a figurák későn jelentek meg.
+
 ## Tesztlista
 
 Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLjSTzRX6i
