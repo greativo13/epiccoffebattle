@@ -6627,6 +6627,49 @@ Object.assign(A,{
     ctx.restore();
     ctx.strokeStyle='#fff';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(0,y0+24);ctx.lineTo(W,y0-6);ctx.moveTo(0,y0+bh+24);ctx.lineTo(W,y0+bh-6);ctx.stroke();};}
 
+// ---- Próbaterem öt hőssel: a csatatéren itt is csak négyen állnak (különben egymásra lógnak, és a hőskártyák kitolják a gombokat).
+// A pihenő hős a listában 💤-vel látszik: rákattintva beáll a kiválasztott hős helyére.
+function arenaSwap(out,inn){const i=S.heroes.indexOf(out);if(i<0||S.heroes.includes(inn))return;
+  S.heroes[i]=inn;inn.x=out.x;inn.y=out.y;out.x=out.d.pos[0];out.y=out.d.pos[1];
+  inn.alive=true;inn.hp=inn.maxHp;inn.mp=inn.maxMp;inn.st={};inn.limit=100;resetPose(inn);buildHUD();updateHUD();}
+function arenaTrim(){
+  const all=S.roster||S.heroes;if(S.heroes.length<=4)return;
+  for(const h of all){h.x=h.d.pos[0];h.y=h.d.pos[1];}
+  const b=benchOf(),out=b&&b!=='monk'?b:'orc',mk=all.find(h=>h.type==='monk');
+  S.heroes=all.filter(h=>h.type!==out);if(mk&&HERO_DEF[out]){mk.x=HERO_DEF[out].pos[0];mk.y=HERO_DEF[out].pos[1];}   // Jázmin a pihenő helyére áll
+  buildHUD();updateHUD();
+}
+arenaMenu=function(h){
+  if(S.arena&&S.heroes.length>4)arenaTrim();
+  setPrompt('Próbaterem – '+h.name+': válassz támadást!');
+  const go=x=>()=>finish({type:'arena',...x}),back=()=>arenaMenu(h),sk=id=>({...SK[id],id}),anyDead=S.heroes.some(a=>!a.alive);
+  const roster=(S.roster&&S.roster.length>S.heroes.length?S.roster:S.heroes);
+  setButtons([
+    ...roster.map(o=>S.heroes.includes(o)?{label:(o===h?'▶ ':'')+o.name,sub:'hős',cls:o===h?'back':'',on:go({hero:o})}
+      :{label:'💤 '+o.name,sub:'csere: '+h.name+' helyére',desc:o.name+' beáll '+h.name+' helyére, '+h.name+' pihen.',on:()=>{arenaSwap(h,o);finish({type:'arena',hero:o});}}),
+    {label:ATTACKS[h.type].name,sub:'alaptámadás',on:()=>target(h,ATTACKS[h.type],back)},
+    ...groupedSkills(heroSkills(h).map(id=>({sk:sk(id)})),({sk:s})=>({label:s.name,elem:skillEl(s),sub:s.tgt==='deadAlly'&&!anyDead?'nincs elesett':'',desc:s.desc,disabled:s.tgt==='deadAlly'&&!anyDead,on:()=>target(h,{...s,mp:0,hpPct:0,cd:0},back)})),
+    {header:'Egyéb'},
+    {label:LIMITS[h.type].name,sub:'LIMIT',desc:LIMITS[h.type].desc,on:()=>target(h,LIMITS[h.type],back)},
+    {label:COMBO.name,sub:'KÖZÖS TÁMADÁS',cls:'limit',desc:COMBO.desc,on:go({cmd:'combo'})},
+    {label:'Védekezés',sub:'pajzs',on:()=>finish({type:'guard'})},
+    ...Object.keys(ITEMS).map(id=>{const it=ITEMS[id],dis=it.tgt==='deadAlly'&&!anyDead;return {label:it.name,sub:dis?'nincs elesett':'tárgy',desc:it.desc,disabled:dis,on:()=>target(h,{...it,id,item:true},back)};}),
+    {label:'Idézések',sub:'▸ mind',cls:'limit',on:()=>menuSummon(h)},
+    {label:'Társ kiütése',sub:'feltámasztáshoz',cls:'back',on:go({cmd:'ko'})},
+    {label:'Ellenfél támadásai',sub:'▸ egyenként',cls:'back',on:()=>arenaFoeMenu(h,false)},
+    {label:'Következő ellenfél',sub:'▸',cls:'back',on:go({cmd:'next'})},
+    {label:'Előző ellenfél',sub:'◂',cls:'back',on:go({cmd:'prev'})},
+    {label:'Állapotok törlése',sub:'mindenki talpra',cls:'back',on:go({cmd:'clear'})},
+    // kilépéskor mind az öt hős visszakerül (a próbaterem így tudja visszaadni mindenkinek a saját megvett képességeit)
+    {label:'Kilépés',sub:'vissza a térképre',cls:'back',on:()=>{if(S.roster&&S.roster.length>S.heroes.length){for(const x of S.roster){x.x=x.d.pos[0];x.y=x.d.pos[1];}S.heroes=S.roster.slice();}finish({type:'arena',cmd:'exit'});}},
+  ]);
+};
+
+// Jázmin alapállás-képébe a képlapon átlógott a szomszédos (támadó) póz botjának vége és a lába: a negyed jobb szélét kifehérítjük
+if(typeof Image!=='undefined'&&typeof IMG_SRC==='object'&&IMG_SRC.hero4_monk){const im=new Image();im.onload=()=>{try{const w=Math.floor(Math.min(im.naturalWidth,im.naturalHeight)/2),c=document.createElement('canvas');c.width=c.height=w;
+    const g=c.getContext('2d');g.drawImage(im,0,0,w,w,0,0,w,w);g.fillStyle='#fff';g.fillRect(w*.86,w*.3,w*.14,w*.7);c.naturalWidth=c.naturalHeight=w;dropEdgeBits(c);const sp=cutWhite(c,'monk');if(sp)ENEMY_SPR.monk=sp;
+  }catch(err){console.error(err);}};im.src=IMG_SRC.hero4_monk;}
+
 /* ================= INDÍTÁS ================= */
 resize();
 titleScreen();
