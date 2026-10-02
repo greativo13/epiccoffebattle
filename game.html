@@ -7343,6 +7343,16 @@ async function teaScene(u,ts,key,rgb,fallback){if(!JZ(key))return fallback(u,ts)
   A.blackTea=async(u,ts,sk)=>{if(!JZ('jzaura'))return b0(u,ts,sk);sfx('buff');await dimTo(.35,'40,0,0',150);await teaScene(u,ts,'jzaura','210,140,90');for(const t of ts){hit(u,t,sk);ring(cx(t),midY(t),'255,80,40',90,.4);}shake(5);await wait(400);await dimTo(0,null,200);u.pose='idle';};
   A.manaTea=async(u,ts,sk)=>{if(!JZ('jzcrystal'))return m0(u,ts,sk);sfx('holy');await teaScene(u,ts,'jzcrystal','130,190,255');for(const t of ts){hit(u,t,sk);ring(cx(t),midY(t),'130,190,255',80,.4);}await wait(450);u.pose='idle';};}
 
+// ---- Életszívás (Morgána): festett sötét örvény a célponton, vastag vörös életfolyam, és a végén Morgána körül vérvörös izzás
+{const dr0=A.drain;A.drain=async(u,ts,sk)=>{const t=ts[0];if(t&&t.alive){const x=cx(t),y=midY(t);
+    fxSpin('dark',x,y,{size:Math.max(260,t.h*t.scale*1.8),life:1.6,s0:.2,s1:1,spin:-3,in:.2,out:.5,add:true,filter:'hue-rotate(70deg) saturate(1.6)'});
+    effects.push({t:0,update(dt){this.t+=dt;return this.t<1.5;},draw(){const k=Math.min(1,this.t/.4),a=this.t<1.1?1:1-(this.t-1.1)/.4,hx=cx(u),hy=midY(u);ctx.save();ctx.globalCompositeOperation='lighter';ctx.lineCap='round';
+      for(const [w,rgb,al] of [[26,'160,0,40',.35],[12,'230,40,80',.7],[4,'255,200,210',1]]){ctx.strokeStyle=`rgba(${rgb},${al*a})`;ctx.lineWidth=w;ctx.beginPath();
+        for(let i=0;i<=24;i++){const q=i/24*k,px=x+(hx-x)*q,py=y+(hy-y)*q-Math.sin(q*Math.PI)*70+Math.sin(q*14-this.t*12)*10;if(i)ctx.lineTo(px,py);else ctx.moveTo(px,py);}ctx.stroke();}
+      ctx.restore();}});}
+  await dr0(u,ts,sk);
+  fxSpin('dark',cx(u),midY(u),{size:Math.max(200,u.h*u.scale*1.3),life:.8,s0:.5,s1:1.1,spin:4,out:.4,add:true,filter:'hue-rotate(70deg) saturate(1.8) brightness(1.3)'});};}
+
 /* ================= INDÍTÁS ================= */
 resize();
 titleScreen();

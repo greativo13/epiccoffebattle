@@ -50,6 +50,8 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
 
 - **Gyorsabb betöltés**: `kisebb.py` → könnyű `index.html` + `kepek/`. A `canva-forras/` és a `buddha.jpg` törölve. A zsugorított ellenfél neve, életerő-csíkja és a találatok is a kisebb figurához igazodnak (`shrinkOf` a `topY`/`midY`-ban).
 
+- **Átnézés Zordon, Morgána, Grog képességein**: mind festett effektekkel megy (Szupernóva, Fekete lyuk, Földrengés stb.), csak az Életszívás volt gyenge – most vérvörös örvény (`fx-dark`, színeltolva, `add:true`!) és vastag életfolyam. Figyelem: az `fx-dark` stb. képek fekete hátterűek, `fxSpin`-nél kell az `add:true`, különben fekete négyzet látszik.
+
 ## Tesztlista
 
 Kipipálható lista megjegyzésekkel: https://claude.ai/artifact/YTZqxtyqwPfqbLjSTzRX6i
