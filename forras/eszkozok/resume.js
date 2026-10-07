@@ -1,0 +1,11 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage({viewport:{width:1280,height:720}});
+const errs=[];p.on('pageerror',e=>errs.push(e.message));await p.goto('http://localhost:8765/index.html');await p.waitForTimeout(6000);
+await p.evaluate(()=>{S.test=true;TEST['Mindent megvesz']();TEST['Próbaterem']();});await p.waitForTimeout(1500);
+const cl=async t=>{await p.click(`button:has-text("${t}")`);await p.waitForTimeout(400);};
+await cl('Ellenfelek és támadásaik');await cl('Suttogó Erdő');await cl('Harapós rózsa');
+console.log('előtte:',await p.evaluate(()=>document.querySelector('.prompt,#prompt')?.textContent||''));
+await cl('Tüskés inda');await p.waitForTimeout(6000);
+console.log('utána:',await p.evaluate(()=>[...document.querySelectorAll('button')].map(b=>b.textContent).join(' | ')));
+await cl('Vissza');await cl('Vissza');await cl('Vissza');await p.waitForTimeout(300);
+console.log('vissza a főmenübe:',await p.evaluate(()=>[...document.querySelectorAll('button')].some(b=>/Ellenfelek és támadásaik/.test(b.textContent))));
+console.log('hibák:',errs.join('|')||'nincs');await b.close();})();

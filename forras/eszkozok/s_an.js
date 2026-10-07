@@ -1,0 +1,1 @@
+const r={};for(const ty of ['wizard','witch','fairy','orc','monk']){r[ty]=[];for(const [id,s] of Object.entries(SK)){const own=(SHOP_SKILLS[ty]||[]).some(q=>q[0]===id)||(HERO_DEF[ty].skills||[]).includes(id);if(own)r[ty].push(id+':'+s.name+':'+s.anim+':'+s.tgt+':'+s.elem);}r[ty].push('LIMIT:'+LIMITS[ty].name+':'+LIMITS[ty].anim);}JSON.stringify(r);

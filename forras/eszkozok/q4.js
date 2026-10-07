@@ -1,0 +1,4 @@
+(async()=>{const r={};for(const k of ['map','map2']){const im=new Image();await new Promise(res=>{im.onload=res;im.src=IMG_SRC[k];});const W=1600,H=Math.round(W*im.height/im.width);const c=document.createElement('canvas');c.width=W;c.height=H;const g=c.getContext('2d');g.drawImage(im,0,0,W,H);
+ g.font='bold 18px sans-serif';for(let q=0;q<=20;q++){g.strokeStyle=q%2?'rgba(0,0,255,.35)':'rgba(255,0,0,.7)';g.lineWidth=1.5;g.beginPath();g.moveTo(W*q/20,0);g.lineTo(W*q/20,H);g.moveTo(0,H*q/20);g.lineTo(W,H*q/20);g.stroke();if(q%2==0){g.fillStyle='#f00';g.fillText(q*5,W*q/20+2,18);g.fillText(q*5,2,H*q/20-2);}}
+ const P=k==='map'?MAP_POS.slice(0,4):MAP_POS.slice(4,8);P.forEach((z,zi)=>z.forEach((p,i)=>{g.fillStyle='rgba(0,200,0,.85)';g.beginPath();g.arc(p[0]/100*W,p[1]/100*H,14,0,7);g.fill();g.fillStyle='#000';g.fillText((zi+1)+'-'+(i+1),p[0]/100*W-14,p[1]/100*H+6);}));
+ r[k]=c.toDataURL('image/jpeg',.85);}return r;})()

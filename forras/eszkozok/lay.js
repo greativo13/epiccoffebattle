@@ -1,0 +1,10 @@
+const {chromium}=require('playwright');const D=process.argv[2];
+(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage({viewport:{width:393,height:760},hasTouch:true,isMobile:true});
+p.on('pageerror',e=>console.log('ERR',e.message));
+await p.goto('http://localhost:8765/index.html');await p.waitForTimeout(3500);
+const info=async n=>{await p.screenshot({path:D+'/L'+n+'.png'});console.log(n,await p.evaluate(()=>JSON.stringify({sh:document.documentElement.scrollHeight,ih:innerHeight,cmd:[document.querySelector('.cmd').scrollHeight,document.querySelector('.cmd').clientHeight]})));};
+await info(1);
+await p.evaluate(()=>{S.test=true;mapScreen(0);});await p.waitForTimeout(1500);await info(2);
+await p.evaluate(()=>{S.save.seen=(S.save.seen||[]).concat(ZONES.map(z=>z.id));startLevel(ZONES[0].levels[0]);});await p.waitForTimeout(2500);await info(3);
+await p.evaluate(()=>{TEST['Mindent megvesz']();TEST['Próbaterem']();});await p.waitForTimeout(2500);await info(4);
+await b.close();})();

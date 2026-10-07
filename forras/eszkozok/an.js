@@ -1,0 +1,3 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage();
+await p.goto('http://localhost:8765/game.html');await p.waitForTimeout(4000);
+console.log(await p.evaluate(()=>['heal','judgement','sleepdust','sunburst','wandbonk','arrowrain','bouncearrow','flurry','lotusarrow','palm','bloodlust','earthsplit','magma','smash','whirl','darkpact','dreadnight','hex','pandemic','voodoo','glacier','tsunami'].map(id=>{const s=SK[id];return id+' | '+s.name+' | '+s.anim+' | '+s.tgt+' | '+JSON.stringify(s.status||s.buff||null)+' | '+s.elem;}).join('\n')+'\nLIMIT fairy '+LIMITS.fairy.anim+' monk '+LIMITS.monk.anim+' wizard '+LIMITS.wizard.anim));await b.close();})();

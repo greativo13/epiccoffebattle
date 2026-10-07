@@ -1,0 +1,3 @@
+const {chromium}=require('playwright');const k=process.argv[2],pts=JSON.parse(process.argv[3]);(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage();
+await p.goto('http://localhost:8765/index.html');await p.waitForTimeout(3000);
+console.log(await p.evaluate(([k,pts])=>{const im=ENEMY_SPR[k];const c=document.createElement('canvas');c.width=im.width;c.height=im.height;const g=c.getContext('2d');g.drawImage(im,0,0);return pts.map(([x,y])=>[x,y]+':'+Array.from(g.getImageData(x,y,1,1).data).join(',')).join('  ');},[k,pts]));await b.close();})();

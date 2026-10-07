@@ -1,0 +1,5458 @@
+{
+ "t-m045": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T13:35:57.526Z"
+ },
+ "t-q001": {
+  "handled": true,
+  "note": "Jo az irany de legyen meg hosszabb es nagyobb a karja mikor ut es picit gyorsabban csapjon le",
+  "reply": "A karja most hosszabbra és nagyobbra nyúlik, és gyorsabban csap le.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:00:35.469Z"
+ },
+ "s-oak": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T07:42:00.507Z"
+ },
+ "t-x03": {
+  "handled": true,
+  "note": "Zuzasnal nem csap le a fejszevel, forgoszel lehetne latvanyosabb a baltakkal, foldrepesztes jo csak tuskes sziklak legyenek es elethubbek, magmakitores legyen elethubb, ",
+  "reply": "Zúzás: látható fejszecsapás ívvel. Forgószél: hat nagy fejsze elmosódó csóvával, szikrák. Földrepesztés: hegyes, élethű sziklatüskék. Magmakitörés: sűrű, izzó lávaszökőkút, a cseppek a földön kihűlnek.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T09:36:11.324Z"
+ },
+ "t-z03": {
+  "handled": true,
+  "note": "Tunderpor mar jo csak tobb por kell h beteritse oket, tuzbomba jo, de a tobitor is legyen nagyobb latvanyosabb lehet akar harom darab is egyszerre. Es ezek a boltba vasarolhatok legyenek a targyaknal",
+  "reply": "Tündérpor: sokkal sűrűbb por teríti be a hősöket. Dobótőr: három nagy tőr egyszerre. A boltban a Tárgyak lap elején van a Dobótőr és a Tűzbomba (a Tűzbomba már az 1-2 pálya után megvehető).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T06:45:24.884Z"
+ },
+ "f-oak-leafstorm": {
+  "handled": true,
+  "note": "Nem rossz de kivitelezes gagyi",
+  "reply": "Új kivitelezés: erezett, forgó, színes falevelek és szélcsíkok söpörnek végig a csapaton.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T15:22:04.310Z"
+ },
+ "f-bamboo-bamboojab": {
+  "handled": true,
+  "note": "Jo csak gagyi kivitelezes eleg ha eldobja a dardat",
+  "reply": "A bambuszőr a saját lándzsáját hajítja el a kezéből; utána új bambusz nő a kezébe.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:30:44.985Z"
+ },
+ "f-cgolem-shardspray": {
+  "handled": true,
+  "note": "A szilnak tenyleg legyen szilank mert ezek csillagok jelenleg. Es az idezeses kepessege is legyen itt is kepessege",
+  "reply": "Valódi, csiszolt kristályszilánkok zuhannak és pattannak szét (csillagok helyett). A gólem megkapta az idézése képességét is: Tükörpajzs.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:03:17.296Z"
+ },
+ "t-m027": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T13:25:34.182Z"
+ },
+ "a-fairy-dust": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T19:02:18.331Z"
+ },
+ "t-s004": {
+  "handled": true,
+  "note": "",
+  "reply": "Köszönöm, marad.",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T11:58:52.126Z"
+ },
+ "f-frog-tongue": {
+  "handled": true,
+  "note": "A szajabol menjen a nyelve",
+  "reply": "A nyelv most a béka szájából csapódik ki (vastag, rózsaszín nyelv, ragadós véggel), és visszahúzódik.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T15:20:12.254Z"
+ },
+ "t-m013": {
+  "handled": true,
+  "note": "Nem is valtoztattal semmit legyen sziklasabb megjelenes",
+  "reply": "Teljesen újrarajzoltam: tömbszerű fekete sziklák izzó lávarepedésekkel, rádőlnek a hősökre és sziklákra törnek.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:21:45.332Z"
+ },
+ "t-n021": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:38:41.606Z"
+ },
+ "e-shroom": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:41.228Z"
+ },
+ "t-u01": {
+  "handled": true,
+  "note": "Alul megint sav van",
+  "reply": "Újabb javítás: a játék most a kijelző teljes magasságát méri ki (főképernyős módban a képernyőét). Nézd meg újra.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T16:51:55.662Z"
+ },
+ "t-p006": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T05:15:37.869Z"
+ },
+ "t-n061": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:56:03.616Z"
+ },
+ "t-r006": {
+  "handled": true,
+  "note": "Ha ez igy marad akkor a rozsaszin pamacsok legyenek baranyok amik korbe korbe mennek ",
+  "reply": "Az alvó körül kis rózsaszín bárányok ugrálnak körbe-körbe.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:58:43.533Z"
+ },
+ "L1-3": {
+  "handled": true,
+  "note": "gombaember miért van lépés pozba mindig?",
+  "reply": "Javítva: új kép, a Gombaember áll, öklét felemelve, harcra készen.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-02T12:24:28.938Z"
+ },
+ "t-n034": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:43:34.826Z"
+ },
+ "t-w04": {
+  "handled": true,
+  "note": "Mindig visszaugrik alaphelyzetbe maradjon ott ahol jartam",
+  "reply": "Javítva: támadás után a próbaterem ott marad, ahol jártál.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T19:00:24.563Z"
+ },
+ "t-q019": {
+  "handled": true,
+  "note": "Az ejjfeli rontast es a zeuszos villamcsapast idezi meg. Nem ertem",
+  "reply": "Igazad volt, ez nem volt jó. Most saját jelenet: mindketten felemelik a pálcájukat, koponyaarcú viharfelhő gyűlik, és lila villámok csapnak le.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:14:18.347Z"
+ },
+ "t-m031": {
+  "handled": true,
+  "note": "Jo csak legyen piros es sargas a robanas meg toltodes",
+  "reply": "A feltöltődés és a robbanás vörös-sárga tűz lett.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:27:10.248Z"
+ },
+ "t-p008": {
+  "handled": true,
+  "note": "",
+  "reply": "Lili hajnalpírja tölti fel Grogot, aztán Grog földrengést üt; a csapat gyógyul.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:31:49.221Z"
+ },
+ "f-mage-shadowball": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:25:54.211Z"
+ },
+ "t-r013": {
+  "handled": true,
+  "note": "Kivitelezes gagyi. De otlet jo csak latvanyosabb kell",
+  "reply": "Festett viharkoponya-kép villámokkal.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T11:04:19.950Z"
+ },
+ "t-q002": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T10:01:17.920Z"
+ },
+ "t-r004": {
+  "handled": true,
+  "note": "A kivitelezes tokeletes, csak kicsit jobban forduljon a hosok fele is szembe, es ha felfog egy tamadast ne sebezze es torjon ossze. ",
+  "reply": "A pajzs a hősök felé fordul, és ha felfog egy támadást, nem sebződik, hanem darabokra törik.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:56:09.575Z"
+ },
+ "s-squirrel": {
+  "handled": true,
+  "note": "Jo csak legyen magyobb szele, lokeshullamas ahogy szalad.",
+  "reply": "A mókus nagy széllel, porral és szélcsíkokkal száguld, minden ellenségnél lökéshullám robban, és felrepülnek.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T07:40:52.680Z"
+ },
+ "f-skeleton-slash": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T08:57:54.004Z"
+ },
+ "t-k059": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:31:08.629Z"
+ },
+ "a-orc-earthsplit": {
+  "handled": true,
+  "note": "Még finomits rajta legyen elethubb es latvanyos",
+  "reply": "Élethűbb: sötét hasadék fut végig, kőlapok emelkednek ki, kődarabok és por repül.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T03:50:52.949Z"
+ },
+ "t-h01": {
+  "handled": true,
+  "note": "Csinald vissza a megjelenitest mint volt h mikor felragyog megjelenik sok aztan kozepen marad egy es az visszaveri a tamadasok",
+  "reply": "Visszaállítottam: felragyog, minden hős elé pajzs kerül, aztán középen egy nagy marad. Egységes szabály: amíg a nagy pajzs áll, bármelyik hőst éri támadás, kivédi és visszaveri – annyiszor, ahány hős kapta.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T08:50:38.472Z"
+ },
+ "t-q011": {
+  "handled": true,
+  "note": "Eltunt a lanc es koponya",
+  "reply": "Visszakerültek a lila láncok és a halálfej; csak a szürke rajzolt lánc maradt ki.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:10:09.145Z"
+ },
+ "t-x04": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T10:54:25.570Z"
+ },
+ "f-frog-tackle": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T15:20:17.157Z"
+ },
+ "f-steamwisp-scald": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:30:15.117Z"
+ },
+ "t-k027": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:20:50.752Z"
+ },
+ "t-k056": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:30:46.563Z"
+ },
+ "t-n046": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:49:39.052Z"
+ },
+ "t-h18": {
+  "handled": true,
+  "note": "A hold sarlos fazisban legyen es ezt a bicikli csengot engedjuk el kompletten a jatekban",
+  "reply": "Sarló alakú hold; a bicikli-csengő hang az egész játékból kikerült (helyette lágy varázssuhogás).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T08:57:09.589Z"
+ },
+ "t-p003": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T05:13:24.702Z"
+ },
+ "e-harp": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:53:54.687Z"
+ },
+ "t-y02": {
+  "handled": true,
+  "note": "Zuzas igy nem jo, darabos a tamadas. Magmakitores tovabbra is gagyi.",
+  "reply": "Zúzás: egyetlen folyamatos mozdulat – Grog felugrik, hátrahajol, földet érve teljes testtel előredől és lecsap, lángoló ívvel. Magmakitörés: valódi lávaszökőkút-kép tör fel egy repedezett, izzó kéregből. Grog minden képe (álló, támadó, varázsló, sérült, ivó) és a csapatkép is az új, díszes kétélű fejszét kapta.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T15:54:07.110Z"
+ },
+ "f-king-hellfire": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:28:24.974Z"
+ },
+ "i-lifeelixir": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T06:50:16.808Z"
+ },
+ "t-u02": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T16:52:08.026Z"
+ },
+ "t-h03": {
+  "handled": true,
+  "note": "A tuzoszlop nem kell, de a tuz fujjas legyen elethubb, jobban kidolgaozot es a szajabol jojjon.",
+  "reply": "Nincs tűzoszlop: Espresszó kitátja a száját, parázs gyűlik benne, és valódi lángnyelvekből álló csóva ömlik a szájából.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T08:51:51.824Z"
+ },
+ "L6-3": {
+  "handled": true,
+  "note": "Ha nincs jazmin a kozos tamadasnal csak a 4 es kepet csinalja vagy mindig csak az legyen a kozos kepen akik epp jatekban vannak vagy akkor legyen mindig az otos csoportkep. Porcelan mandarin pajzsa es tamadasi gagyik.",
+  "reply": "Javítva: Jázmin csatlakozása után mindig az ötfős csapatkép látszik. A mandarin pajzsa jól látható „Tükörmáz”, új legyezős és tusos támadás.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T08:37:25.554Z"
+ },
+ "f-lantern-willolight": {
+  "handled": true,
+  "note": "Ragyogjon fel majd odasuhan es felrobban es meghal vegleg ilyen vegso tamadas filling",
+  "reply": "Lidércrobbanás: felragyog, odasuhan, felrobban – és a lampion végleg meghal.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:47:28.810Z"
+ },
+ "f-tbat-zapbite": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:04:06.613Z"
+ },
+ "t-r019": {
+  "handled": true,
+  "note": "Megjelenites jo de nagyon gagyi egyszerusitett ",
+  "reply": "A pöttyök díszes, fényes pecsétek lettek (arany keret, mélység).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T11:07:33.935Z"
+ },
+ "s-cannon": {
+  "handled": true,
+  "note": "Nagyobb robbanas legyen",
+  "reply": "Nagyobb robbanás: minden ágyúgolyó óriási tűzgömbbel, füsttel, szilánkokkal robban, az ellenség felrepül.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T07:42:35.852Z"
+ },
+ "t-m034": {
+  "handled": true,
+  "note": "Jobban hasonlitson a karakterre a diszitese meg alakja de nem kell szem meg ilyenek es legyen gozos robbanas mikor becsapodik ",
+  "reply": "A kanna a Szerviz stílusában (kék virág, arany perem, szem nélkül) billeg a hős fölött, lezuhan, gőzrobbanással törik.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:30:48.787Z"
+ },
+ "a-wizard-iceshard": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:51:00.853Z"
+ },
+ "t-r005": {
+  "handled": true,
+  "note": "Mar egesz jo de legyen sarkanyosabb, es a tamadasa ugy legyen h spiralbaenrol felfe megy ossze szoritja oket es visszamegy az uvegcsebe. Es a mandrin az elejen a jelet irja fel ne csak jelenjen meg",
+  "reply": "Valódi festett tussárkány (képgenerálással). A mandarin ecsettel írja fel a jelet, a sárkány kiáramlik a tintatartóból, spirálban felfelé körbetekeredik, összeszorít, és visszacsusszan az üvegbe.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:57:53.761Z"
+ },
+ "f-teaset-teaflood": {
+  "handled": true,
+  "note": "Csereld ki az idezesnel levo tamadasra",
+  "reply": "Lecseréltem: Porcelánroham – a csészekatonák serege végigrohan a hősökön (mint az idézés).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:50:44.400Z"
+ },
+ "t-m009": {
+  "handled": true,
+  "note": "Nem kell elorehajolnia, es a kezebol jojjon",
+  "reply": "Nem hajol előre; a kinyújtott kezéből árad a fagyos köd, a hőst jégkristályok zárják be.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:20:26.793Z"
+ },
+ "t-n051": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:51:34.670Z"
+ },
+ "f-snail-shellbash": {
+  "handled": true,
+  "note": "Ugyanugy nez ki mint a masik, dobja el a hazat",
+  "reply": "A csiga eldobja a házát: pörögve a hősnek csapódik, aztán visszagurul hozzá.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T15:18:22.369Z"
+ },
+ "e-fireflies": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:41.760Z"
+ },
+ "f-king-roar": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:28:26.639Z"
+ },
+ "t-s003": {
+  "handled": true,
+  "note": "Gagyi",
+  "reply": "Nagyobb és látványosabb: hatalmas ecsetjel gyorsabban, festett kék-fehér porcelán tintatartó, nagyobb tussárkány, a szorításnál tintafolt-robbanás minden hősön.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T11:58:29.512Z"
+ },
+ "i-knife": {
+  "handled": true,
+  "note": "",
+  "reply": "Látványosabb Dobótőr: három nagy, pörgő tőr repül egyszerre az ellenségbe. (Ha mást szerettél volna, írd meg!)",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T06:50:12.465Z"
+ },
+ "t-m037": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T13:32:31.440Z"
+ },
+ "f-cupsoldier-teasplash": {
+  "handled": true,
+  "note": "Gagyi",
+  "reply": "A csészéből hullámzó, cseppes, gőzölgő teasugár csap ki.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:44:34.251Z"
+ },
+ "f-whelp-clawE": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:04:35.584Z"
+ },
+ "t-n042": {
+  "handled": true,
+  "note": "A feher halvany kor nem kell",
+  "reply": "A fehér kör kikerült.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:46:49.688Z"
+ },
+ "L2-3": {
+  "handled": true,
+  "note": "Nap kitores meg mindig nem jo. Valasz mas betutipust mert a ő nem jol jelnik meg",
+  "reply": "Javítva: új betűtípus (az ő/ű jól látszik). A régi Napkitörés Lilinél Hajnalpír lett, a nap-robbanás pedig Zordon LIMIT-je.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-02T20:07:01.576Z"
+ },
+ "L5-4": {
+  "handled": true,
+  "note": "Feher reszeket a rajzokon javitsd.",
+  "reply": "Javítva: a körbezárt fehér részek eltűntek a rajzokról.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T05:35:53.713Z"
+ },
+ "L3-3": {
+  "handled": true,
+  "note": "A kepessegeknel nem mindegyiknel jelenik meg a nyilak h melyik jo az ellenfel ellen , a szokoarnal meg jelenhetne Poszeidon es o csinalja a szokoarat, morgananal meg hádesz az átoknál csak legyen nagyobb sebzese es tobb mp be keruljon igy. ",
+  "reply": "Javítva: ● jel is van, ha normál erővel hat. Szökőárnál Poszeidón, Átoknál Hádész jelenik meg; az Átok erősebb, 14 MP.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-03T05:58:03.865Z"
+ },
+ "f-tongs-sugartoss": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:44:59.595Z"
+ },
+ "t-q018": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T10:13:14.932Z"
+ },
+ "t-m047": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T13:37:14.324Z"
+ },
+ "e-gingerman": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:06.250Z"
+ },
+ "t-s011": {
+  "handled": true,
+  "note": "Megjelenites oke de a felho elobb jelenik meg mint a varazslat odaer, es a villamlas gagyi",
+  "reply": "A felhő csak akkor jelenik meg, amikor a két varázsló energiasugara odaér; a villámok festett, valódi lila villámok, nagy becsapódással.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T12:03:55.249Z"
+ },
+ "t-n041": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:46:24.177Z"
+ },
+ "t-m020": {
+  "handled": true,
+  "note": "",
+  "reply": "Több és nagyobb, valódi dobókocka zúdul le, elemi robbanásokkal.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:23:57.536Z"
+ },
+ "t-n005": {
+  "handled": true,
+  "note": "Jo de eleg ha vegig rohannak folyamatosan az ellenfeleken. ",
+  "reply": "A raj folyamatosan oda-vissza rohan végig az ellenfeleken.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:31:15.275Z"
+ },
+ "f-cgolem-crystalpunch": {
+  "handled": true,
+  "note": "Valtozzon tenyleg egy kristalya es nagyobb becsapodas legyen",
+  "reply": "A gólem saját ökle kristálytüskéket növeszt, előrecsapódik, nagy becsapódás szilánkokkal.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:02:37.187Z"
+ },
+ "t-q020": {
+  "handled": true,
+  "note": "Hajnalpirt es foldrengest idezi meg miert",
+  "reply": "Saját jelenet: Lili Grog fölé repül és aranyport szór rá, Grog aranyban izzik, megnő, és arany lökéshullámot üt.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:14:52.960Z"
+ },
+ "t-r017": {
+  "handled": true,
+  "note": "",
+  "reply": "Előkészítve festett lótuszra; a kép a következő körben kerül be (Canva-kvóta).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T11:06:43.117Z"
+ },
+ "t-o012": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T05:04:40.719Z"
+ },
+ "t-n028": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:40:51.318Z"
+ },
+ "t-k039": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:25:12.776Z"
+ },
+ "t-m039": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T13:33:32.195Z"
+ },
+ "t-n024": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:39:50.732Z"
+ },
+ "e-frog": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:40.163Z"
+ },
+ "t-r010": {
+  "handled": true,
+  "note": "Mit nem ertesz? Nagyon nem jo igy. ",
+  "reply": "Bocsánat. Új, kidolgozott kis kőtüskék törnek fel sorban, nincs nagy kitörés.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T11:02:20.574Z"
+ },
+ "e-mushking": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:39.046Z"
+ },
+ "t-k005": {
+  "handled": true,
+  "note": "A lila fust az ellensegeknel jelenlen meg es ugy h az egbol leesnek a gombak es azok felrobbanak es fust lesz ",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:12:59.183Z"
+ },
+ "e-teaimp": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:19.896Z"
+ },
+ "a-wizard-chainbolt": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:51:55.201Z"
+ },
+ "s-king": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T07:44:11.998Z"
+ },
+ "z4": {
+  "handled": true,
+  "note": "De am az egesz sztorit nem ertem igy mert ha nincs kave akkor pont h elalszanak az emberek",
+  "reply": "Javítva a történet: Morcus egyedül akar ébren maradni (Koffeinisten lenni), miközben az egész világ alszik – ezért lopta el a kávét.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-03T05:59:23.221Z"
+ },
+ "t-m008": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T13:19:30.947Z"
+ },
+ "s-shadows": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T07:44:01.981Z"
+ },
+ "L2-1": {
+  "handled": true,
+  "note": "Nem tudok kilepni a boltbol, menet kozben nem tudom az alvot host behivni égi háboru es a villam lanc kb ugyanaz.",
+  "reply": "Javítva: a boltban fent is van kilépés gomb, és vásárláskor nem ugrik vissza az elejére. Csatában a pihenő hős kártyájára kattintva (vagy a menü „💤 … beáll” gombjával) behívható. Az Égiháború új: szétnyíló felhők, Zeusz villámot hajít.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-02T20:01:36.704Z"
+ },
+ "f-gknight-soulcut": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:00:49.643Z"
+ },
+ "f-shwitch-shdrain": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:25:19.100Z"
+ },
+ "e-skeleton": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:37.371Z"
+ },
+ "f-harp-lullaby": {
+  "handled": true,
+  "note": "",
+  "reply": "Saját altatódal: a hárfa húrjai rezegnek és ragyognak, színes hangjegyek szállnak a hősökre.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:59:09.870Z"
+ },
+ "t-u06": {
+  "handled": true,
+  "note": "Forgoszel jo de gagyik a baltak, meteor okol jo de grog legyen maga a meteor ami becsapodik, novesztes jo",
+  "reply": "Új, nagy, fényes kétélű balták forgásnyommal. Meteorökölnél maga Grog zuhan lángoló üstökösként.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T16:58:03.698Z"
+ },
+ "f-steamwisp-steamveil": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:30:16.114Z"
+ },
+ "e-moth": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:53:59.662Z"
+ },
+ "t-n050": {
+  "handled": true,
+  "note": "Kicsit homalyos",
+  "reply": "Élesebb árnymások, lila körvonallal.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:51:17.632Z"
+ },
+ "L3-1": {
+  "handled": true,
+  "note": "Langvihar kevesbe hat azt irja, a fenypajzs csak 1 korig hasson, szupernova is kevesbe hat azt irja, ",
+  "reply": "A Fénypajzs most 1 körig tart. A Lángvihar/Szupernóva azért „kevésbé hat”, mert a Kristálygólem ellenáll a tűznek – a Jégelementált viszont nagyon sebzi (▲ jel mutatja).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-03T03:20:14.798Z"
+ },
+ "a-fairy-revive": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T19:03:24.916Z"
+ },
+ "t-k032": {
+  "handled": true,
+  "note": "Jojjon fentebb a fust, es a vagas nem tetszik",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:23:30.122Z"
+ },
+ "t-h17": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T08:56:32.331Z"
+ },
+ "t-k084": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:40:58.720Z"
+ },
+ "a-witch-shadowclaw": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:56:05.257Z"
+ },
+ "t-z06": {
+  "handled": true,
+  "note": "Gagyik, es van olyan tamadas aminel nincs is hang",
+  "reply": "Igazad volt: a szintetizált hangok gépiesek voltak. Mostantól valódi hangfelvételek szólnak (kardsuhogás, ütés, kő, tűz, üveg, csobbanás, nyálka, szörnyhang, robbanás, gong). Ha egy támadásnak mégsem lenne saját hangja, automatikusan az eleméhez illő hang szól.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T07:47:24.745Z"
+ },
+ "t-k038": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:25:06.551Z"
+ },
+ "f-clock-halberd": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:00:00.007Z"
+ },
+ "e-cannon": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:35.137Z"
+ },
+ "t-k087": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:41:47.542Z"
+ },
+ "a-witch-limit": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:59:55.044Z"
+ },
+ "e-cgolem": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:33.406Z"
+ },
+ "t-k028": {
+  "handled": true,
+  "note": "Miert a fejebol indul",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:21:06.396Z"
+ },
+ "t-n026": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:40:16.423Z"
+ },
+ "f-potturtle-hotpour": {
+  "handled": true,
+  "note": "",
+  "reply": "Vastag, gőzölgő teasugár ível a csőréből, tócsa a hős alatt.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:33:54.000Z"
+ },
+ "s-koffgolem": {
+  "handled": true,
+  "note": "Ne irja ki h pajzs",
+  "reply": "A „pajzs” felirat a Főnixnél volt (köszi a pontosítást): az ott kapott védelem-erősítés neve mostantól „Védelem+”, sehol nem írja ki, hogy pajzs.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T07:43:42.014Z"
+ },
+ "e-morcus": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:20.677Z"
+ },
+ "f-oknight-moltenblade": {
+  "handled": true,
+  "note": "Ez foldes nem tuzes",
+  "reply": "Tüzes: a kard izzik és lávát csöpög, lángoló vágásív.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:05:20.630Z"
+ },
+ "t-k072": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:37:06.474Z"
+ },
+ "L8-2": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T09:10:51.088Z"
+ },
+ "t-n059": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:55:03.790Z"
+ },
+ "a-fairy-sleepdust": {
+  "handled": true,
+  "note": "Nem eleg latvanyos gagyi",
+  "reply": "Új: éjszaka lesz, holdsarló kel, hullócsillagok szállnak az ellenségekre, csillagpor-örvény altatja őket.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T19:06:30.442Z"
+ },
+ "t-k043": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:26:54.552Z"
+ },
+ "f-scorpion-clawsnap": {
+  "handled": true,
+  "note": "",
+  "reply": "A SAJÁT két ollója csattan össze kétszer.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:54:33.557Z"
+ },
+ "a-witch-drain": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:55:19.795Z"
+ },
+ "e-shfairy": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:26.667Z"
+ },
+ "t-m004": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T13:18:05.849Z"
+ },
+ "f-doll-crackshard": {
+  "handled": true,
+  "note": "Tamadas jo de nem kell szivecske",
+  "reply": "Nincs szívecske: a baba nem vált a szíves támadóképére.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:43:43.898Z"
+ },
+ "t-k015": {
+  "handled": true,
+  "note": "Jelenjen meg egy kerites amin atugranak a baranyok amitol elalszuk valaki v valakkk",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:17:06.161Z"
+ },
+ "t-m042": {
+  "handled": true,
+  "note": "Idezesnel mar leirtam",
+  "reply": "Ugyanaz az új, nagy raj, mint az idézésnél.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:34:53.264Z"
+ },
+ "a-monk-arrowrain": {
+  "handled": true,
+  "note": "Sokkal tobb nyil legyen es ne forogjon az ellenseg felett az a kor",
+  "reply": "Több mint 50 nyíl, a forgó kör kivéve.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T03:57:19.900Z"
+ },
+ "L8-1": {
+  "handled": true,
+  "note": "A zsugoritas nem is feny elem, az semleges. ",
+  "reply": "Javítva: a Zsugorítás semleges.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T09:10:38.311Z"
+ },
+ "t-k081": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:40:00.213Z"
+ },
+ "t-k064": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:33:10.934Z"
+ },
+ "t-n030": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:41:57.728Z"
+ },
+ "e-sugarcube": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:08.130Z"
+ },
+ "t-o001": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T04:58:46.489Z"
+ },
+ "f-shwizard-shbolt": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:24:42.491Z"
+ },
+ "t-n054": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:53:01.947Z"
+ },
+ "t-n006": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:31:56.922Z"
+ },
+ "f-mushking-royalspore": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T15:21:14.771Z"
+ },
+ "f-skeleton-shieldbash": {
+  "handled": true,
+  "note": "Pont ugy nez ki mint a kard vagas",
+  "reply": "A csontváz a SAJÁT kerek pajzsát rántja maga elé, azzal kólint; csillagok a hős feje körül.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T08:58:06.450Z"
+ },
+ "e-whelp": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:31.526Z"
+ },
+ "t-k052": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:29:07.786Z"
+ },
+ "t-h14": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T08:56:04.859Z"
+ },
+ "f-mage-curse": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:25:56.275Z"
+ },
+ "a-monk-incense": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:54:46.244Z"
+ },
+ "s-mushking": {
+  "handled": true,
+  "note": "A lila felho eleg a zold nyalka nem kell",
+  "reply": "Csak a lila spórafelhő marad, a zöld méreg-folt kikerült.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T07:41:42.237Z"
+ },
+ "t-n015": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:36:42.494Z"
+ },
+ "f-nightmare-nightterror": {
+  "handled": true,
+  "note": "",
+  "reply": "Sötétben vörös szemű árnypéldányok tömege rohan át a hősökön.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:58:23.394Z"
+ },
+ "L7-2": {
+  "handled": true,
+  "note": "Az ejjeli romtasnal mar atvaltozik nagy macskava megjelenik egy lilas kor,  a napkitoresnel eleg ha megjelenik a nap es felrobban es a robbanas megsebzik az ellenfeleket csak a nap legyen elethubb, ",
+  "reply": "Javítva mindkettő (macskadémonos Éjféli rontás; Napkitörés: megjelenik a nap, felrobban, a robbanás sebez).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T08:54:22.882Z"
+ },
+ "t-m007": {
+  "handled": true,
+  "note": "Legyen elethubb es nagyobb raj",
+  "reply": "Új, valósághű méhek (szőrös test, erezett szárny), 380 méhből álló sűrű raj.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:19:18.816Z"
+ },
+ "t-k040": {
+  "handled": true,
+  "note": "Csak nincs furulya",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:25:52.114Z"
+ },
+ "f-clock-bigslam": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:00:01.988Z"
+ },
+ "a-orc-warcry": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:48:40.809Z"
+ },
+ "s-cgolem": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T07:43:04.224Z"
+ },
+ "t-n055": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:53:06.808Z"
+ },
+ "t-n027": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:40:33.963Z"
+ },
+ "f-mushking-shroomrain": {
+  "handled": true,
+  "note": "Akkor tenyleg gombak hulljanak ne csillagok",
+  "reply": "Csillagok helyett igazi, pöttyös gombák hullanak, pattannak és spórát pöffentenek.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T15:21:11.378Z"
+ },
+ "z8": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T09:10:45.148Z"
+ },
+ "t-r002": {
+  "handled": true,
+  "note": "Kicsit darabos legyen lenduletesebb",
+  "reply": "Most egyetlen folyamatos, lendületes ív, rugalmas becsapódással.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:54:32.429Z"
+ },
+ "e-nightmare": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:53:57.399Z"
+ },
+ "e-salamander": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:30.877Z"
+ },
+ "t-o022": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T05:08:34.329Z"
+ },
+ "t-u04": {
+  "handled": true,
+  "note": "Napkitores még finomitsd, gleccser gagyi legyen jegcsapok amik fentrol leesnek és ilyen jegbarlangos legyen.",
+  "reply": "Gleccser új: jégbarlang, fent jégcsapok nőnek ki, és az ellenségekre zuhannak. A Napkitörést írd meg, mit finomítsak rajta (gyorsabb? nagyobb robbanás? kevesebb fény?).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T16:54:00.665Z"
+ },
+ "a-orc-meteorfist": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:51:39.357Z"
+ },
+ "t-r020": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T11:06:50.768Z"
+ },
+ "t-z04": {
+  "handled": true,
+  "note": "Tisztutasnal minden elem legyen zold, palcakoppintas csinald vissza h tenyleg koppintsa a palcaval. Alomcsillagoknal a hold legyen valosaghubb latvanyosabb es altassa el akit megtamad kiveve a nagy ellensegeket, ",
+  "reply": "Tisztítás: minden zöld. Pálcakoppintás: Lili odarepül és tényleg rákoppint a pálcával. Álomcsillagok: valósághű, kráteres telihold, és akit eltalál, biztosan elalszik (a főellenségek és minibosszok nem).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T06:48:29.082Z"
+ },
+ "a-fairy-haste": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T19:03:40.641Z"
+ },
+ "t-r008": {
+  "handled": true,
+  "note": "Kerem vissza az eredeti korbe lanc es halalfejet ",
+  "reply": "Visszakerült az eredeti lánc-kör és a lecsapó kísértetkoponya (Hádész után).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:59:46.901Z"
+ },
+ "f-queenbee-royalsting": {
+  "handled": true,
+  "note": "Sarga legyen a mergezes",
+  "reply": "Sárga méreg: sárga csöppek, sárga felhő és fény.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:55:59.440Z"
+ },
+ "f-cupsoldier-spoonstab": {
+  "handled": true,
+  "note": "Gagyi",
+  "reply": "A csészekatona a saját kanállándzsáját döfi háromszor.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:44:12.716Z"
+ },
+ "t-k017": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:17:32.916Z"
+ },
+ "a-orc-taunt": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:49:30.995Z"
+ },
+ "t-h05": {
+  "handled": true,
+  "note": "Nem kell vedelem se",
+  "reply": "A Főnix már nem ad védelmet, csak feltámaszt és teljesen gyógyít.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T08:53:08.756Z"
+ },
+ "t-k037": {
+  "handled": true,
+  "note": "Ezt alkalmazd tobbinel is pl esspresszo farokcsapasa",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:25:02.824Z"
+ },
+ "t-k001": {
+  "handled": true,
+  "note": "Megjelenes oke de meg mindig nem fasza",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:10:06.927Z"
+ },
+ "t-o018": {
+  "handled": true,
+  "note": "Ennel picit lehet gyorsabb es megjelent valami szurke lanc ami nem kell",
+  "reply": "Hádész kicsit gyorsabban emelkedik és idéz; a szürke lánc törölve, csak a halálfej maradt.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:07:09.510Z"
+ },
+ "t-p011": {
+  "handled": true,
+  "note": "",
+  "reply": "Jázmin nyílzápora, aztán Lili virágvihara.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:31:52.715Z"
+ },
+ "e-imp": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:24.521Z"
+ },
+ "f-espresso-doublebreath": {
+  "handled": true,
+  "note": "Az idezesnel mar leirtam az ide is ",
+  "reply": "Ugyanaz, mint az idézésnél: lángcsóva a szájából (hamu-alakban gőzös-hamus).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:06:54.282Z"
+ },
+ "t-k062": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:31:44.719Z"
+ },
+ "a-orc-giantgrow": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:52:20.075Z"
+ },
+ "t-o005": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T05:01:25.029Z"
+ },
+ "t-k055": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:30:44.434Z"
+ },
+ "t-o016": {
+  "handled": true,
+  "note": "",
+  "reply": "Újracsinálva: telihold kel fel, a lepke felrepül, összegyűjti a holdfényt, és a saját testéből lövi a vastag sugarat; holdfény-oszlop és sarló alakú szilánkok.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:06:00.158Z"
+ },
+ "L3-2": {
+  "handled": true,
+  "note": "Égi háborunal a felhok szet nyilnak és zeusz ledob egy villamot az ellenfelekre jazmin limit plakatja gáz legyen valami harciasabb",
+  "reply": "Javítva: Égiháború – szétnyílnak a felhők, Zeusz villámot dob. Jázmin LIMIT-képén kifeszített íjjal célzó, harcias póz.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-03T05:52:44.445Z"
+ },
+ "f-beast-bite": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:26:24.797Z"
+ },
+ "t-k024": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:19:31.077Z"
+ },
+ "t-u05": {
+  "handled": true,
+  "note": "Átok legyen jobban lathato hádesz, liderc nyomas jo de maga a szorny karmolja, ejfeli rontas legyen olyan mint frissites elott csak az a kor nem kellett ami megjelent mint egy csapas mikor mar a nagy macska lett, sotet alku gagyi, pestis az jo",
+  "reply": "Hádész nagyobb, sötét háttér előtt, teljesen látszik. Lidércnyomásnál maga a szörny vetődik és karmol. Éjféli rontás: visszaállítva a régire, a kör nélkül, és többször karmol. Sötét alku új: árnyékkapu, démon nyújtja a szerződést.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T16:56:29.680Z"
+ },
+ "t-k042": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:26:19.520Z"
+ },
+ "f-harp-stringsnap": {
+  "handled": true,
+  "note": "",
+  "reply": "Három húr pattan ki villámló ostorként, a hőst áramütés éri.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:59:07.739Z"
+ },
+ "f-kamilla-fanhurricane": {
+  "handled": true,
+  "note": "",
+  "reply": "A saját legyezőjét nagyra nyitva lendíti, tealevél-forgószél söpör végig.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:59:26.625Z"
+ },
+ "z7": {
+  "handled": true,
+  "note": "Az hulyeseg h az olvadt cukorbol mez lesz.",
+  "reply": "Javítva: a méhek a sivatagi virágokból gyűjtik a mézet.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T08:38:38.154Z"
+ },
+ "t-r012": {
+  "handled": true,
+  "note": "Maskent csinald. Foleg jazminnal gaz",
+  "reply": "Másképp: minden árnymás a saját támadását csinálja a helyéről (Jázmin árnynyilat lő), Grog ugrik, a végén közös árnyrobbanás.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T11:03:48.620Z"
+ },
+ "s-gknight": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T07:42:17.947Z"
+ },
+ "t-s008": {
+  "handled": true,
+  "note": "Nem javitottal semmit",
+  "reply": "Bocsánat, megtaláltam: egy régi réteg (a földrepedés sziklaképe) rajzolta a nagy kitörést. Kivettem; most csak a repedés és sok kidolgozott kőtüske tör fel sorban.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T12:02:05.087Z"
+ },
+ "t-k077": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:39:09.873Z"
+ },
+ "t-k078": {
+  "handled": true,
+  "note": "A szajahoz tegye a kopocsovet",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:39:25.003Z"
+ },
+ "a-fairy-petalstorm": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T19:03:50.874Z"
+ },
+ "a-wizard-thunderstorm": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:53:30.366Z"
+ },
+ "t-n063": {
+  "handled": true,
+  "note": "",
+  "reply": "A plakáton a hősök saját képei vannak a régi négyes kép helyett.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:57:53.565Z"
+ },
+ "t-k069": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:36:24.742Z"
+ },
+ "a-orc-smash": {
+  "handled": true,
+  "note": "Az a nagy vagas nem kell mikor lecsak ",
+  "reply": "A nagy vágás kivéve a lecsapásnál.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T03:48:14.537Z"
+ },
+ "t-n039": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:45:57.085Z"
+ },
+ "t-n002": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:29:30.787Z"
+ },
+ "t-n014": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:36:21.659Z"
+ },
+ "t-n056": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:54:03.931Z"
+ },
+ "t-k061": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:31:37.048Z"
+ },
+ "t-q009": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T10:08:25.329Z"
+ },
+ "f-acorn-tackle": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T15:21:37.918Z"
+ },
+ "t-k041": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:25:54.877Z"
+ },
+ "e-sleepless": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:27.764Z"
+ },
+ "f-mandarin-fanblade": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:49:09.483Z"
+ },
+ "t-q027": {
+  "handled": true,
+  "note": "",
+  "reply": "A csatatér fekvőben felülre igazodik, és ha a térkép állva nyílt meg, elforgatás után az egész térkép látszik.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:15:09.582Z"
+ },
+ "e-acorn": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:38.497Z"
+ },
+ "t-p015": {
+  "handled": true,
+  "note": "A bolt jo de a tobbi elrendezes gagyi",
+  "reply": "Fekvő nézet: a csatatér kitölti a magasságot, a hőskártyák jobbra fent, alattuk közvetlenül a parancspanel, nincs üres rés; a nyitóképernyő belefér; kisebb térképpöttyök.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:32:54.929Z"
+ },
+ "f-gingerman-icingbomb": {
+  "handled": true,
+  "note": "",
+  "reply": "Habcsók-bomba repül a hősök fölé, felrobban, cukormáz-zuhatag és máz a fejükön.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:53:30.474Z"
+ },
+ "a-orc-stoneskin": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:50:56.709Z"
+ },
+ "f-rose-vine": {
+  "handled": true,
+  "note": "Gagyi",
+  "reply": "Új: tüskés inda tör fel a hős alól, rátekeredik és megszorítja.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T15:16:54.075Z"
+ },
+ "t-o020": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T05:07:57.270Z"
+ },
+ "t-k054": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:29:56.841Z"
+ },
+ "f-samovar-scald": {
+  "handled": true,
+  "note": "Gagyi",
+  "reply": "Vastag forróvíz-sugár a csapjából, gőzölög, háromszor fröccsen.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:34:39.230Z"
+ },
+ "t-k046": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:27:47.364Z"
+ },
+ "t-m010": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T13:20:37.540Z"
+ },
+ "e-koffgolem": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:22.559Z"
+ },
+ "L6-1": {
+  "handled": true,
+  "note": "A napkitores lehetne a varazslo limit kepessege csak latvanyosabban. ",
+  "reply": "Megcsinálva: Zordon LIMIT-je a Napkitörés – valósághű nap felfúvódik és felrobban.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T05:53:40.046Z"
+ },
+ "e-zombie": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:36.783Z"
+ },
+ "f-rose-thornrain": {
+  "handled": true,
+  "note": "Jo de ezek csillagok es nem tuskek, a rozsa legyintsen egyet es szembol megy a tuskezapor",
+  "reply": "A rózsa meglendül, és szemből valódi tüskék repülnek a csapatra (csillagok nélkül).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T15:17:32.466Z"
+ },
+ "t-n037": {
+  "handled": true,
+  "note": "Hadesz tul gyors",
+  "reply": "Hádész sokkal lassabban emelkedik ki, és lassabban idéz.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:44:39.890Z"
+ },
+ "t-k003": {
+  "handled": true,
+  "note": "Jo csak legyen nagyobb a legyezo es robitos a mozgasa",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:11:20.836Z"
+ },
+ "a-fairy-vines": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T19:02:14.105Z"
+ },
+ "t-k068": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:36:06.620Z"
+ },
+ "a-orc-whirl": {
+  "handled": true,
+  "note": "Legyen halvany tornado azert korulotte de a fejszek is maradjanak",
+  "reply": "Halvány tornádó Grog körül, a fejszék maradtak.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T03:49:26.601Z"
+ },
+ "a-wizard-supernova": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:52:16.517Z"
+ },
+ "t-s006": {
+  "handled": true,
+  "note": "",
+  "reply": "Köszönöm, marad.",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T12:00:06.059Z"
+ },
+ "e-shwitch": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:25.389Z"
+ },
+ "L4-4": {
+  "handled": true,
+  "note": "Nem egyertelmu h melyik pajzs milyen elemu, legyen latvanyosabb. Eleg gyengek a hősök árny változatai, es Morcus tamadasi is gagyik. Ezer keznel eleg egy nagy okol ami mindenkire hat. A betutipus a jatekben nem jo mert az Ő betu nem jo. ",
+  "reply": "Javítva: Morcus pajzsa színes buborék, fölötte a neve és hogy mi töri. Erősebb árnyak, új Káoszlövedék, Ezer Kéz végén egy óriás ököl mindenkire, új betűtípus.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T05:03:07.735Z"
+ },
+ "t-h15": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T08:56:09.269Z"
+ },
+ "t-n011": {
+  "handled": true,
+  "note": "A tamadas mar jo csak jobban latszodjon h ket sugar, es a fulenel fogja a bogreket",
+  "reply": "Két jól elkülönülő sugár, a bögréket a fülénél fogja.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:35:20.305Z"
+ },
+ "t-t03": {
+  "handled": true,
+  "note": "Most jobb igy h a logo kitakarja de a tunder szarnya kilog",
+  "reply": "Javítva: a címképen nincsenek figurák a logó mögött.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-02T19:47:09.265Z"
+ },
+ "e-teddy": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:53:56.102Z"
+ },
+ "a-monk-palm": {
+  "handled": true,
+  "note": "Az orias kez utan mar nem kell a kor",
+  "reply": "Az óriás kéz után nincs kör, csak szikrák.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T03:53:42.609Z"
+ },
+ "L5-1": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T05:26:18.677Z"
+ },
+ "f-sandman-sandstorm": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:58:04.973Z"
+ },
+ "t-k074": {
+  "handled": true,
+  "note": "Nem talalom, teljesen mas neveket irsz meg ossze vissza",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:38:07.028Z"
+ },
+ "t-x05": {
+  "handled": true,
+  "note": "Gleccser jo csak legyen latvanyosabb elethubb jéggel, szokoar tokeletes, limit is jo csak picit legyen lassabb hatasosabb latvanyba. ",
+  "reply": "Gleccser: dér terül szét a földön, hideg pára, fény csillan a jégtüskéken. Napkitörés lassabb: tovább kel, lassabban fúvódik fel, nagyobb robbanás.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T15:16:04.340Z"
+ },
+ "s-morcus": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T07:44:32.069Z"
+ },
+ "t-k002": {
+  "handled": true,
+  "note": "Az orrabol jon nem a szajabol",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:10:34.863Z"
+ },
+ "f-oolong-steambreath": {
+  "handled": true,
+  "note": "Gagyi",
+  "reply": "A gőz Oolong szájából ömlik (mint az idézésnél).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:35:28.337Z"
+ },
+ "f-shroom-spore": {
+  "handled": true,
+  "note": "Eleg a lila felho ami elaltat",
+  "reply": "Csak egy sűrű lila felhő száll a hősre, és elaltatja.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T15:19:22.344Z"
+ },
+ "t-p002": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T05:31:44.477Z"
+ },
+ "f-sugarcube-cubebash": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:52:22.863Z"
+ },
+ "t-k088": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:41:52.152Z"
+ },
+ "L1-4": {
+  "handled": true,
+  "note": "limit képen egy hősnek sincs harci beállása, gombakirályt le se győztem és már idézésnél . van. csak akkor jelenjenek meg ha legyőztem. éjjeli rontás kurva jó lett. Jo a koncepcio h lili fogsagba csak akkor ne irjuk h a ven tolgy gyokerei kozott mert ez nem igaz",
+  "reply": "Javítva: a LIMIT-képen a hősök harci (varázsló) pózban vannak. A Gomba-Király (és a Kísértetlovag, Koffein-gólem) csak a legyőzésük után jelenik meg az idézéseknél. Lili szövegeiből kivettem a „gyökerei között” részt, most „fogság”.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-02T12:43:31.789Z"
+ },
+ "a-monk-greentea": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:54:28.772Z"
+ },
+ "e-iceelem": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:32.808Z"
+ },
+ "L4-3": {
+  "handled": true,
+  "note": "Grog eltunt nem tudom valtoztatni es a sztoriba se volt bene h kiszabaditom, ",
+  "reply": "Grog nem tűnt el: amikor Jázmin csatlakozik, valakinek pihennie kell, és ez Grog lett. A térképen a Csapat gombbal válthatsz, csatában a pihenő kártyájára kattintva behívhatod. A kiszabadítását azért nem láttad, mert a „Minden pálya nyitva” gombbal a 2-4 kimaradt – ott, a Rozsdakirály csatájában láncon van.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T04:54:39.563Z"
+ },
+ "L7-3": {
+  "handled": true,
+  "note": "A villamdenever raj csak egy denever jelenik meg legyen csak villamdenever. ",
+  "reply": "Javítva: Villámdenevér a neve.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T08:58:06.000Z"
+ },
+ "t-q013": {
+  "handled": true,
+  "note": "Az elso nagy nem kell eleg a sok kisebb ",
+  "reply": "Nincs nagy kitörés: sok kisebb kőtüske tör fel egymás után a repedés mentén.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:11:28.739Z"
+ },
+ "t-u07": {
+  "handled": true,
+  "note": "Hajnalpir gagyi, zsugoritas ne legyen ott h semleges csak ne legyen ott kategoria akkor,es az ezer keznel a palkaton van feher resz ,",
+  "reply": "Hajnalpír új (hajnal kel a horizonton, sugárlegyező, szirom-vihar). Zsugorításnál nincs elem-címke. Az Ezer Kéz fehér részét nem találtam – írd meg, pontosan hol látod (a Buddhán, a lótuszon, a tenyereken?).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T17:00:34.245Z"
+ },
+ "t-q024": {
+  "handled": true,
+  "note": "",
+  "reply": "Saját jelenet: Zordon tűzzel tölti meg az íjat, a nyílból hatalmas lángsárkány lesz, amely végigszántja az ellenségeket.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:15:00.564Z"
+ },
+ "t-x06": {
+  "handled": true,
+  "note": "Tokeletes",
+  "reply": "Köszönöm!",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T15:16:25.459Z"
+ },
+ "i-limitpotion": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T06:50:19.354Z"
+ },
+ "f-jamdjinn-wish": {
+  "handled": true,
+  "note": "Nem latom a funkciojat",
+  "reply": "Látható hatás: arany lámpás jelenik meg, minden ellenség kap egy csillagot: 1 körig Erő+ és 15% gyógyulás.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:55:24.147Z"
+ },
+ "e-pillowknight": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:00.761Z"
+ },
+ "f-pillowknight-pillowbash": {
+  "handled": true,
+  "note": "Jo csak nem csap le a parnaval es legyen nagyobb a parna es tobb toll kell",
+  "reply": "A saját párnáját megnövelve a feje fölül lecsapja, 40 toll repül.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:57:21.796Z"
+ },
+ "f-samovar-ironfist": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:34:33.237Z"
+ },
+ "f-scorpion-caramelsting": {
+  "handled": true,
+  "note": "",
+  "reply": "A skorpió SAJÁT farka csap le, karamell csöpög róla.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:54:35.322Z"
+ },
+ "f-bee-honeyshot": {
+  "handled": true,
+  "note": "",
+  "reply": "A mézpálcáról nagy, csöpögő mézgömb lő ki, ami beborítja a hőst (csorgó méz rajta).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:53:12.036Z"
+ },
+ "t-k026": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:20:20.632Z"
+ },
+ "f-teddy-growl": {
+  "handled": true,
+  "note": "Nincs funkvio",
+  "reply": "Funkció: a hősök megrémülnek (1 körig Védelem−), a Maci 1 körig Erő+.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:58:51.351Z"
+ },
+ "t-m036": {
+  "handled": true,
+  "note": "Nagyobb felho kell",
+  "reply": "Óriási, az egész hőscsapatot beborító felhő.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:32:04.868Z"
+ },
+ "f-gingerman-candycane": {
+  "handled": true,
+  "note": "",
+  "reply": "A saját cukorpálcáját lendíti két kézzel, nagy ívben.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:53:24.500Z"
+ },
+ "a-monk-wakeuptea": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:54:24.810Z"
+ },
+ "f-candysheep-fluffram": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:54:19.664Z"
+ },
+ "i-ether": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T06:50:35.180Z"
+ },
+ "t-k057": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:30:48.560Z"
+ },
+ "t-m011": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T13:20:51.734Z"
+ },
+ "a-orc-limit": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:52:51.255Z"
+ },
+ "t-k013": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:15:52.989Z"
+ },
+ "t-n044": {
+  "handled": true,
+  "note": "A vegen vmi nagyon gagyi",
+  "reply": "A végén lévő földhalom kikerült.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:47:46.815Z"
+ },
+ "t-n035": {
+  "handled": true,
+  "note": "",
+  "reply": "Óriási teáscsésze jelenik meg és kiborul: abból zúdul a cunami.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:43:49.237Z"
+ },
+ "e-beast": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:23.272Z"
+ },
+ "i-megapotion": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T06:50:28.589Z"
+ },
+ "e-puffball": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:40.710Z"
+ },
+ "t-o031": {
+  "handled": true,
+  "note": "Otlet jo de kivitelezes gagyi",
+  "reply": "Újracsinálva: minden hős a saját színű ferde panelján, teljes alakban, sorban becsúsznak; fénysugarak, nagy cím.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:13:07.779Z"
+ },
+ "t-q022": {
+  "handled": true,
+  "note": "",
+  "reply": "Saját jelenet: Morgána árnylángba burkolja Grogot, aki egyetlen rohammal keresztülszáguld minden ellenségen.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:14:57.052Z"
+ },
+ "f-beetle-horn": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T15:20:36.146Z"
+ },
+ "f-slime-toxic": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:49:17.516Z"
+ },
+ "t-k060": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:31:23.039Z"
+ },
+ "a-wizard-fireball": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:50:01.865Z"
+ },
+ "s-oolong": {
+  "handled": true,
+  "note": "Terjunk vissza az eredeti goz fuggonyre ami volt",
+  "reply": "Visszaállítva az eredeti gőzfüggönyre.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T07:45:01.470Z"
+ },
+ "t-q004": {
+  "handled": true,
+  "note": "Vegyuk ki az egesz ust temat a sztoribol nem jo ",
+  "reply": "Az üst kikerült a történetből (bevezető, Vén Tölgy, 3-4 párbeszédei, Morcus és Kamilla mondatai, befejezés), és a 3-4 csatatérről is.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:03:27.666Z"
+ },
+ "t-s001": {
+  "handled": true,
+  "note": "Ugorjon fel az egbe es csapodjon be",
+  "reply": "Javítva: a sárkány felugrik az égbe (kirepül a képből), az árnyéka nő a hősön, aztán teljes súllyal becsapódik – kráter, kőzápor, rázkódás.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T11:56:23.098Z"
+ },
+ "t-m012": {
+  "handled": true,
+  "note": "",
+  "reply": "Három hullámban egyre nagyobb kristálytüskék törnek ki, megemelik a hőst, majd szilánkokra robbannak.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:21:10.255Z"
+ },
+ "t-r001": {
+  "handled": true,
+  "note": "Tokeletes ugyes vagy",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T10:54:04.110Z"
+ },
+ "t-s012": {
+  "handled": true,
+  "note": "A sarkany nagyon szep de a tamadas gagyi",
+  "reply": "Most maga a csillagsárkány támad: lecsap és végigsöpör az ellenségeken, utána festett meteorzápor.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T12:04:23.322Z"
+ },
+ "t-r003": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T10:54:41.048Z"
+ },
+ "L7-1": {
+  "handled": true,
+  "note": "A masodik terkep bossai nincsenek benne az idezesben, az arny csapat csak a arnyvarazslobol all, a kockacukor golem tamadasatol miert lesz rozsda? ",
+  "reply": "Javítva: a 2. térkép főellenségei (Oolong, Szerviz, Mézkirálynő, Kamilla) megidézhetők; az Árny-csapatban minden hős árnya kilép; a „Rozsda” helyett „Védelem−” a neve a gyengítésnek.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T08:51:06.434Z"
+ },
+ "f-imp-spit": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:25:34.724Z"
+ },
+ "t-s002": {
+  "handled": true,
+  "note": "Tokeletes egy dolog kell az a feny ami negyzetben vegig megy az vagy nem kell van a jazs alakjat vegye fel",
+  "reply": "A fénycsík most csak a pajzs alakján belül fut végig (nem négyzetben).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T11:58:04.107Z"
+ },
+ "t-k045": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:27:30.574Z"
+ },
+ "f-imp-claw": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:25:32.904Z"
+ },
+ "t-n022": {
+  "handled": true,
+  "note": "",
+  "reply": "Sokkal nagyobb pajzs, felvillanó illesztések, csillogás.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:38:58.645Z"
+ },
+ "f-monkey-cupthrow": {
+  "handled": true,
+  "note": "Jo csak a kezebol dobja el elethuen",
+  "reply": "A kezében tartott csészét lendíti hátra, és onnan dobja el; a csésze szétreped, tea fröccsen.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:33:10.570Z"
+ },
+ "t-n062": {
+  "handled": true,
+  "note": "",
+  "reply": "Morgána üstje most jól látható a sárkány előtt.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:57:23.762Z"
+ },
+ "a-wizard-tsunami": {
+  "handled": true,
+  "note": "Poszeidon idezze meg a szokoarat",
+  "reply": "Poszeidón kiemelkedik, felemeli a szigonyát, és tőle indul a hullám; a végéig ott marad.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T18:51:32.519Z"
+ },
+ "t-m017": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T13:22:53.520Z"
+ },
+ "f-teaset-potcrush": {
+  "handled": true,
+  "note": "Nem is nez ki kannanak",
+  "reply": "Igazi porcelán teáskanna (kifolyó, fül, fedő, kék minta) zuhan a hősre.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:50:13.199Z"
+ },
+ "t-o014": {
+  "handled": true,
+  "note": "Ezt masold az idezeshez is",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T05:05:37.278Z"
+ },
+ "t-m015": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T13:22:10.890Z"
+ },
+ "t-q017": {
+  "handled": true,
+  "note": "",
+  "reply": "Látványosabb: a lecsapások után az árnymások egy hatalmas árnyrobbanással mindenkit eltalálnak.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:12:58.858Z"
+ },
+ "t-n052": {
+  "handled": true,
+  "note": "",
+  "reply": "Lassabb, nagyobb lendületű ágcsapás a saját karjával.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:52:06.053Z"
+ },
+ "t-v01": {
+  "handled": true,
+  "note": "A legalaso tetel nem latszik errol kuldok kepet",
+  "reply": "Javítva: a boltban az alsó panel eltűnik, a lista a képernyő aljáig ér, az utolsó tétel is látszik. Az alsó sávot a panel tölti ki (a képernyő aljáig ér).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T17:25:29.849Z"
+ },
+ "t-n016": {
+  "handled": true,
+  "note": "",
+  "reply": "Négy nagyobb, gyorsabb csésze, erősebb törés.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:37:01.312Z"
+ },
+ "t-n040": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:46:07.950Z"
+ },
+ "f-jamdjinn-stickyhand": {
+  "handled": true,
+  "note": "Kivitelzes gagyi",
+  "reply": "A dzsinn SAJÁT karja nyúlik ki gumiszerűen, a keze rámarkol a hősre.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:55:05.409Z"
+ },
+ "a-fairy-wandbonk": {
+  "handled": true,
+  "note": "Nem kell a kard csak a zold tunder por leszall es zold aurafelvillan",
+  "reply": "Nincs odaugrás: Lili int a pálcával, zöld tündérpor gyűlik és leszáll, zöld aura villan.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T19:02:53.480Z"
+ },
+ "s-espresso": {
+  "handled": true,
+  "note": "Nagyobb lang legyen",
+  "reply": "Nagyobb láng: Espresszó vastag, folyamatos lángcsóvát lehel az ellenségekre, alattuk hatalmas tűzoszlop csap fel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T07:43:17.935Z"
+ },
+ "t-m051": {
+  "handled": true,
+  "note": "Szilusa nem tetszik a furulyanak es tedd akkor a feje fole",
+  "reply": "Díszes bambuszfurulya piros kötéssel és bojttal, a feje fölött lebeg.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:38:24.575Z"
+ },
+ "t-m002": {
+  "handled": true,
+  "note": "A diszites hullo csillagok balrol jobbra menjenek, es nagyobb es tobb csillag menjene az ellenfelre",
+  "reply": "A díszítő hullócsillagok balról jobbra húznak, és ellenségenként 5 nagy, ötágú csillag csapódik be.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:16:18.986Z"
+ },
+ "f-sleepless-stare": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:23:00.504Z"
+ },
+ "t-p004": {
+  "handled": true,
+  "note": "Tul erosek egy csapasra kiutottek a hosoket a kis ellensegek is",
+  "reply": "Javítva: a napi kihívás a csapat szintjéhez igazodik, csak olyan fejezetek ellenfelei jönnek, amelyekhez elég erős a csapat, az első csatában 2 ellenfél van.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:15:25.124Z"
+ },
+ "i-potion": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T06:50:39.007Z"
+ },
+ "t-k023": {
+  "handled": true,
+  "note": "Joncsak nem mozdul meg h tamad",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:19:25.220Z"
+ },
+ "a-witch-hex": {
+  "handled": true,
+  "note": "Eloszor morgana megidezi megjelnik hadesz majd az atok",
+  "reply": "Morgána idéz, sötét kapu nyílik, Hádész kiemelkedik belőle, utána jön az átok.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T18:55:06.350Z"
+ },
+ "t-q008": {
+  "handled": true,
+  "note": "Nem kell ratamadni csak szimplan rozsaszin felho jelenjen meg akorul ki elalszik es alszik",
+  "reply": "Nincs rátámadás és sebzés: akit elaltat, körülötte rózsaszín felhő jelenik meg, és ott marad, amíg alszik.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:07:57.088Z"
+ },
+ "t-n045": {
+  "handled": true,
+  "note": "",
+  "reply": "Grog nagyot ugrik és onnan csap le a fejszéjével.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:48:06.016Z"
+ },
+ "t-m050": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T13:38:01.693Z"
+ },
+ "L2-2": {
+  "handled": true,
+  "note": "Gleccser es hovihar ugyanaz,",
+  "reply": "Javítva: a Gleccser új – óriási jégtömb zuhan az ellenségekre és szilánkokra robban.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-02T20:04:26.853Z"
+ },
+ "t-n017": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:37:16.672Z"
+ },
+ "L4-1": {
+  "handled": true,
+  "note": "Jobb szornyek kellenek, az almatlan szem jo, a hatom nyilnal kivalasztom kit tamadok megis mindenkire hat, a teabomba szinten, az arnyek karom es a liderc ugyanugy nez ki. A szikra nyil mar egesz jo csak legyen latvanyosabb, az ezer keznel csak budha jobb oldalraol jonnek kezek balrol is jojjon",
+  "reply": "Javítva: a Hármas nyíl és a Teabomba csak a kiválasztott ellenséget sebzi; az Ezer Kéz mindkét oldalról üt; a Lidércnyomás új (óriás rémálom-árny); a Szikranyíl végén villámzápor.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-03T06:05:46.650Z"
+ },
+ "t-k030": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:21:41.788Z"
+ },
+ "t-n023": {
+  "handled": true,
+  "note": "Legyezo helyett penna es tintaval rajzolja a szornyeket",
+  "reply": "Lúdtollal és tintatartóval rajzolja a szörnyeket.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:39:32.894Z"
+ },
+ "t-n008": {
+  "handled": true,
+  "note": "Legyen magasabb a fal sokkal",
+  "reply": "A fal sokkal magasabb sziklatömbökből áll.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:32:47.862Z"
+ },
+ "t-t04": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-02T19:47:19.515Z"
+ },
+ "f-nightmare-dreadclaw": {
+  "handled": true,
+  "note": "",
+  "reply": "Árnyfüstből kinyúló, nagy lila karmok háromszor tépnek.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:58:21.847Z"
+ },
+ "f-puffball-puff": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T15:19:39.084Z"
+ },
+ "f-pillowknight-featherstorm": {
+  "handled": true,
+  "note": "Gagyi",
+  "reply": "A saját párnáját hajítja fel, szétszakad, 120 tollból örvény kavarog a hősök körül.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:57:32.642Z"
+ },
+ "t-h04": {
+  "handled": true,
+  "note": "Jo de a kivitelezes gagyi, nagyobb latvanyosabb legyen a legyezovel a legyintes a szel jo ",
+  "reply": "Kamilla a saját legyezőjét lendíti meg: kinyílik, nagyobb lesz, szellemképekkel csap le, utána jön a széllökés.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T08:52:46.258Z"
+ },
+ "t-p005": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T05:15:29.949Z"
+ },
+ "a-monk-lotusarrow": {
+  "handled": true,
+  "note": "Lehetne latvanyosabb",
+  "reply": "Látványosabb: szirom-örvény töltéskor, nagyobb lótusz fénysugarakkal, szirom-zápor, gyógyító szirmok.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T03:56:35.670Z"
+ },
+ "t-k073": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:37:21.532Z"
+ },
+ "intro": {
+  "handled": true,
+  "note": "se kávébabok, se csillámpor nincs, lehet kicsit képregényes akár képekkel illusztrálva.",
+  "reply": "Részben: amikor Morgána mondja, hogy „Nézd, kávébabok”, csillogó kávébab-nyom és tündérpor jelenik meg az ösvény felé. A képregenyes, képekkel illusztrált bevezető több új képet igényel – ha lesz rá kredit, megcsinálom.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-02T12:15:26.476Z"
+ },
+ "c-combo": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T06:49:57.737Z"
+ },
+ "t-n012": {
+  "handled": true,
+  "note": "A tamadas jo de ami vekony kor van morcus korul nem kell",
+  "reply": "A vékony kör kikerült Morcus pajzsáról.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:36:13.942Z"
+ },
+ "t-n048": {
+  "handled": true,
+  "note": "Nem a szajabol jon",
+  "reply": "A lángcsóva a szájából indul.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:50:29.856Z"
+ },
+ "a-witch-plague": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:56:02.910Z"
+ },
+ "t-u08": {
+  "handled": true,
+  "note": "Gagyik mind a pajzsok, tamadasok is,",
+  "reply": "A pajzsok most festett pajzsképek az elem színében, felirattal. Ha valamelyik támadás még gagyi, írd meg, melyik ellenfélé.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T17:02:32.245Z"
+ },
+ "t-k008": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:13:59.984Z"
+ },
+ "t-n060": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:56:00.570Z"
+ },
+ "f-zombie-rottenbun": {
+  "handled": true,
+  "note": "Latszodjon h kiflit dob",
+  "reply": "Jól látható, penészes kifli repül a kezéből, büdös gázfelhő.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T08:58:30.780Z"
+ },
+ "a-fairy-shrink": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T19:04:09.661Z"
+ },
+ "e-rose": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:42.857Z"
+ },
+ "t-k011": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:14:45.412Z"
+ },
+ "e-slime": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:43.726Z"
+ },
+ "t-t10": {
+  "handled": true,
+  "note": "Ha a boltba veszek valamit mindig visszaugrik az elejere",
+  "reply": "Javítva: vásárlás után ott marad a lista, ahol voltál.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-02T19:57:20.742Z"
+ },
+ "i-phoenix": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T06:50:31.353Z"
+ },
+ "f-jamdjinn-jamwave": {
+  "handled": true,
+  "note": "Korabbit houd vissza az jo volt",
+  "reply": "Visszaállítottam a korábbi változatot.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:54:51.614Z"
+ },
+ "f-koffgolem-steam": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:27:28.565Z"
+ },
+ "t-r011": {
+  "handled": true,
+  "note": "Nem a szajabol jon a tuz, es gaz amikor megmarad a tuz az nem kell.",
+  "reply": "A láng most pontosan a szájából indul (a képen lemértem), és nem marad tűz a földön.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T11:03:16.784Z"
+ },
+ "t-m018": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T13:23:08.697Z"
+ },
+ "t-r007": {
+  "handled": true,
+  "note": "",
+  "reply": "Új festett tea-hullám kép (kamillavirágokkal, habbal), ez gördül át a hősökön.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:59:02.088Z"
+ },
+ "e-potturtle": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:16.534Z"
+ },
+ "a-wizard-glacier": {
+  "handled": true,
+  "note": "Legyenek nagyobb elethubb jegcsapok es nem kell a jegburok, feljonnek keresztezik egymast es szettornek",
+  "reply": "Jégburok kivéve: nagy, élethű jégtüskék törnek fel keresztben, aztán szilánkokra törnek.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T18:53:18.635Z"
+ },
+ "f-iceelem-icicles": {
+  "handled": true,
+  "note": "Jo csak legyen latvanyosabb",
+  "reply": "Dérfelhőben hatalmas jégcsapok nőnek a hősök fölé, lezuhannak és szilánkokra robbannak.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:03:42.368Z"
+ },
+ "a-fairy-rebirth": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T19:05:52.002Z"
+ },
+ "f-lantern-lanternfire": {
+  "handled": true,
+  "note": "",
+  "reply": "Kék lángcsóva gyűlik a szájában, nagy kék tűzgolyóként csapódik be.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:46:48.093Z"
+ },
+ "a-fairy-cleanse": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T19:04:06.699Z"
+ },
+ "t-n032": {
+  "handled": true,
+  "note": "Pihepor legyen a neve es altason el valskit",
+  "reply": "Új neve Pihepor, és biztosan elaltatja a célpontot.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:43:07.669Z"
+ },
+ "t-k014": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:16:04.205Z"
+ },
+ "t-p001": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T05:31:42.580Z"
+ },
+ "a-witch-rust": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:55:48.935Z"
+ },
+ "f-oak-oakvine": {
+  "handled": true,
+  "note": "Ez nem ag hanem egy gagyi inda",
+  "reply": "Inda helyett vastag, kérges faág nyúlik ki gallyakkal és levelekkel, és lecsap.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T15:21:53.984Z"
+ },
+ "f-king-kingsmash": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:28:23.561Z"
+ },
+ "a-wizard-limit": {
+  "handled": true,
+  "note": "Azok a vekony korozesek nem kellenek",
+  "reply": "A vékony körök kivéve, a sugarak nem forognak.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T18:54:00.969Z"
+ },
+ "t-s014": {
+  "handled": true,
+  "note": "Nagyon sorba van nekem tetszett a regi h a fan volt meg toronyba stb, csak ott a vonalazassal volt a gond",
+  "reply": "A pöttyök visszakerültek a régi helyükre (fán, toronyban stb.), és az egyenes vonal helyett íves, pontozott ösvény köti össze őket.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T12:06:05.781Z"
+ },
+ "t-q026": {
+  "handled": true,
+  "note": "Igy tul gyengek, es nem eleg mixeltek az ellensegek",
+  "reply": "Erősebb (a csapat szintjén vagy fölötte) és vegyesebb: 3 csata, mindegyikben különböző fajták több fejezetből.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:16:39.572Z"
+ },
+ "t-m029": {
+  "handled": true,
+  "note": "De csereld le kanalra a landzsat mindenhol ahol csesze van",
+  "reply": "A lándzsa helyett mindenhol ezüstkanál van (álló- és támadóképen, a seregben is).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:26:35.368Z"
+ },
+ "t-n007": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:32:17.058Z"
+ },
+ "t-h06": {
+  "handled": true,
+  "note": "Nagyonb lila fust legyen",
+  "reply": "Hatalmas, gomolygó lila spórafüst tör ki a kalapjából, és beborítja az ellenségeket (valódi füsttextúra).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T08:53:29.920Z"
+ },
+ "t-n058": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:54:12.901Z"
+ },
+ "t-n003": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:29:56.580Z"
+ },
+ "t-k035": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:24:15.431Z"
+ },
+ "t-m048": {
+  "handled": true,
+  "note": "A hurok a harfan pattanjanak de a hangjegyek jok",
+  "reply": "A hárfa saját húrjai pendülnek és rezegnek, belőlük szállnak a hangjegyek.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:37:04.725Z"
+ },
+ "t-s015": {
+  "handled": true,
+  "note": "",
+  "reply": "Nagyobb, lassabban kígyózó festett tűzsárkány, nem takarja el a tűz; mögötte ég a föld, minden ellenségen lángrobbanás.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T14:13:59.167Z"
+ },
+ "z1": {
+  "handled": true,
+  "note": "Legyenek nagyobbak az ellenfelek ha már azt írtad.",
+  "reply": "Javítva: az 1. fejezet ellenfelei nagyobbak (óriásira nőttek).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-02T12:18:02.653Z"
+ },
+ "t-o008": {
+  "handled": true,
+  "note": "Nem a kezevel dobja",
+  "reply": "Most a saját elülső karjával dob: a kar a csészével hátralendül és előrecsap, utána új csésze kerül a kezébe.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:02:45.368Z"
+ },
+ "t-k019": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:18:17.791Z"
+ },
+ "t-o026": {
+  "handled": true,
+  "note": "Miert karmolnak? Csak csapjanak le",
+  "reply": "Nem karmolnak: minden árnymás felugrik, és a saját fegyverével lecsap, lila becsapódással.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:09:57.215Z"
+ },
+ "t-o004": {
+  "handled": true,
+  "note": "Engedjuk el nem jo, talalj ki mast",
+  "reply": "Kitaláltam mást: nem nyújtja a farkát. Odarepül a hős mellé, megfordul, és a teljes testével, a farkával csap oda.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:00:06.694Z"
+ },
+ "t-o023": {
+  "handled": true,
+  "note": "",
+  "reply": "Grog óriásira nő, leguggol, hatalmasat ugrik (kirepül a képből), az árnyéka nő a földön, és a fejszéjével zuhan le.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:08:51.851Z"
+ },
+ "f-gknight-darkwave": {
+  "handled": true,
+  "note": "Legyen kevesbe vizes hatasu",
+  "reply": "Nem vizes: fekete-lila árnyfüst és szikrák söpörnek a földön, karomnyomokkal.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:00:59.843Z"
+ },
+ "f-shfairy-shheal": {
+  "handled": true,
+  "note": "Ennek semmi ertelme",
+  "reply": "Új értelme: Árnyéklopás – életet szív egy hősből, és azzal a legsebesültebb árnytársát gyógyítja.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:24:20.565Z"
+ },
+ "t-k006": {
+  "handled": true,
+  "note": "Meg finomits nagyobb goz legyen",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:13:23.410Z"
+ },
+ "a-orc-bloodlust": {
+  "handled": true,
+  "note": "Amikor még all nem kell a piros vagas oda ",
+  "reply": "Álló helyzetben nincs piros vágás, csak vörös aura.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T03:50:08.653Z"
+ },
+ "t-w01": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:31:41.078Z"
+ },
+ "s-tbat": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T07:42:50.080Z"
+ },
+ "e-candysheep": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:05.235Z"
+ },
+ "t-o021": {
+  "handled": true,
+  "note": "Forditva eloszor a kicsi utana a nagy kitores",
+  "reply": "Megfordítva: előbb a kicsi (apró kövek pattannak fel a repedés mentén), utána a nagy kitörés. Föld elem, láva nélkül.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:08:22.499Z"
+ },
+ "z2": {
+  "handled": true,
+  "note": "Javitasd “ az alvás nem hatékony”-ra  nincs olyan szo h hatekonytalan.",
+  "reply": "Javítva: „aki szerint az alvás nem hatékony”.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-02T12:43:28.863Z"
+ },
+ "t-o019": {
+  "handled": true,
+  "note": "A langok nem tetszenek",
+  "reply": "A lángok most valódi lángtextúrából készülnek, fekete-lilára színezve (lila mag, fekete szél), és megszállás alatt Morgána körül lobognak.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:07:44.142Z"
+ },
+ "t-q003": {
+  "handled": true,
+  "note": "Legyen Lecsapas a neve, es nem kell megforgatni csak odapattan es becsapadik",
+  "reply": "Átnevezve Lecsapásra. Nincs forgatás: nagyot ugrik, odapattan a hős mellé, és teljes súlyával rázuhan.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:02:19.790Z"
+ },
+ "f-bee-sting": {
+  "handled": true,
+  "note": "",
+  "reply": "Hátrál, lendületet vesz, szellemképekkel becsapódik; zöldes méregcsöppek a találatnál.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:53:05.630Z"
+ },
+ "f-tbat-screech": {
+  "handled": true,
+  "note": "Ez legyen az idezeses tamadasa is",
+  "reply": "Vastag, villódzó hanghullámok a szájából, a hősöket áram járja át; az idézés is ez lett.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:04:22.986Z"
+ },
+ "t-o007": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T05:02:12.953Z"
+ },
+ "t-v03": {
+  "handled": true,
+  "note": "Ezerkez plakaton feher resz meg mindig.idezesek nagyon gagyik a 2. Terkep bossok. Dolgozd ki oket, ",
+  "reply": "Jázmin plakátján az íj belseje fehér volt – javítva. A 2. térkép főellenség-idézései saját világot kaptak: Oolong ködös hegycsúcs + gőzörvény, Szerviz csészekatona-roham + forró tea, Mézkirálynő mézözön + méhraj, Kamilla csillagos álomvilág + altatódal.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T18:04:25.060Z"
+ },
+ "e-oak": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:37.948Z"
+ },
+ "L7-4": {
+  "handled": true,
+  "note": "Mezkiralyno tamadasai gagyik",
+  "reply": "Javítva: új Királyi fullánk, Mézeső és méhraj-támadás.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T08:41:48.203Z"
+ },
+ "t-m022": {
+  "handled": true,
+  "note": "De maga ez a pajzs korulotte se jo nem is latszik tole gagyi",
+  "reply": "Új: a földből kinövő árnykezek ragadják meg és kaszabolják a hőst. A pajzsa elemenként látványos burok lett (tűzgyűrű, jégkristályok, villámháló, árnyörvény).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:24:21.148Z"
+ },
+ "a-fairy-limit": {
+  "handled": true,
+  "note": "Lili kepe van feher hiba",
+  "reply": "Lili képe javítva: a szárnyak áttetszők, a fehér rojtok és a csáp fehér foltja eltűnt.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T19:07:34.909Z"
+ },
+ "t-k075": {
+  "handled": true,
+  "note": "A kezebol jojjon, es ne fagyaszon.",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:38:36.132Z"
+ },
+ "t-m032": {
+  "handled": true,
+  "note": "Az tetszik h kis darabokbol alljon ossze azok legyenek nagyobbak de egy pajzsot alkossanak a vaza mindajaval nagyot de latszodjon h tobb darabbol all",
+  "reply": "Nagy darabok repülnek elő, és egy nagy, váza-mintás pajzzsá állnak össze arany illesztésekkel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:28:15.777Z"
+ },
+ "t-m040": {
+  "handled": true,
+  "note": "Legyen elethubb",
+  "reply": "Valósághű, gyapjas bárányok fekete arccal, szép régi fakerítés.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:33:49.833Z"
+ },
+ "z5": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T05:24:11.929Z"
+ },
+ "t-s009": {
+  "handled": true,
+  "note": "Nem is javitottad a szajat ",
+  "reply": "Most valóban kinyílik a szája: a saját állkapcsa leesik, a torka izzik, fogak látszanak, és onnan ömlik a láng.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T12:02:41.763Z"
+ },
+ "t-o028": {
+  "handled": true,
+  "note": "Csapjon le hatarozottabban",
+  "reply": "A levelek a korona körül gyűlnek, aztán egy éles széllökéssel becsapódnak: minden hősnél megáll a kép, rázkódik, a hős hátralökődik.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:11:21.882Z"
+ },
+ "t-n029": {
+  "handled": true,
+  "note": "Kozepen legyenek es rozsaszin barany legyen es kis felhos hatas legyen korulotte.",
+  "reply": "Középen, rózsaszín bárányok, kis felhőkkel körülöttük.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:41:29.776Z"
+ },
+ "L3-4": {
+  "handled": true,
+  "note": "Nem tunik el a fenypajzs egy kor utan.immunis a sarkany a jegre?? Miert? ",
+  "reply": "A Fénypajzs most 1 kör után eltűnik. A sárkányt a jég nagyon sebzi, csak a fagyasztás nem hat rá, mert főellenség – ezt mostantól ki is írja („FŐELLENSÉGRE NEM HAT”).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T04:02:43.396Z"
+ },
+ "f-queenbee-honeyrain": {
+  "handled": true,
+  "note": "Jo csak nincs funkcioja es legyen latvanyosabb",
+  "reply": "Funkció: a méz 1 körig sebezhetőbbé teszi a hősöket (Védelem−), és meggyógyítja a királynőt és a méheket. Mézfelhő, mézeső, csorgó méz.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:56:14.734Z"
+ },
+ "t-m041": {
+  "handled": true,
+  "note": "A lampas gagyi meg legyen valami jobb funkcioja legyen valami jo tamadas ",
+  "reply": "Nincs lámpás. Kívánság = támadás: izzó lekvárosüvegek zuhannak a hősökre (égés), a dzsinn ereje 1 körre nő.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:34:30.901Z"
+ },
+ "t-n047": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:50:03.115Z"
+ },
+ "t-k044": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:26:56.828Z"
+ },
+ "i-elixir": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T06:50:25.661Z"
+ },
+ "e-oolong": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:14.951Z"
+ },
+ "t-k031": {
+  "handled": true,
+  "note": "Tovabbra se azt csinalja amit irtam",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:21:57.179Z"
+ },
+ "a-monk-mantraarrow": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:58:24.133Z"
+ },
+ "a-wizard-focus": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:50:18.919Z"
+ },
+ "t-k048": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:28:14.753Z"
+ },
+ "t-q007": {
+  "handled": true,
+  "note": "A penna nem kell, a mandarin irjon a levegobe es az ugy jo h kijon az uvegbol csak legyen tinta sarkany ami ilyen hosszu testu csak legyen latvanyosabb",
+  "reply": "Nincs toll: a mandarin a kezével ír jeleket a levegőbe, a tintatartóból kiáramló tusból hosszú testű, pikkelyes, sörényes, lábas tussárkány lesz.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:06:36.864Z"
+ },
+ "e-sandman": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:53:58.495Z"
+ },
+ "t-s013": {
+  "handled": true,
+  "note": "Gaz, mirgana ruhazza fel sotetseggel grogot es o vegigsopor az ellensegen ",
+  "reply": "Morgána sötét szalagokat tekercsel Grogra, ő sötétségbe öltözik, majd egyetlen óriási festett árnysöpréssel végigvág az ellenségeken.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T12:05:27.590Z"
+ },
+ "t-q005": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T10:04:11.096Z"
+ },
+ "f-koffgolem-mugpunch": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:27:26.669Z"
+ },
+ "f-vase-vaseslam": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:48:02.407Z"
+ },
+ "e-teaset": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:08.946Z"
+ },
+ "f-ghost-chill": {
+  "handled": true,
+  "note": "Legyen kek es fagyaszon le egy korre es a hang nem jo mi ez a hanyas hang",
+  "reply": "Kék jeges lehelet, a hős 1 körre lefagy (jég elem); a hányásszerű hangot kivettem, jeges hang szól.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T08:59:04.410Z"
+ },
+ "e-rustking": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:34.022Z"
+ },
+ "t-n053": {
+  "handled": true,
+  "note": "Gyorsabban csapjanak a levelek",
+  "reply": "Gyorsabban csapódnak a levelek.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:52:25.307Z"
+ },
+ "e-king": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:21.824Z"
+ },
+ "t-q023": {
+  "handled": true,
+  "note": "",
+  "reply": "Saját jelenet: óriási lótusz nyílik az ellenségek alatt, a szirmok forgószélben emelkednek, Jázmin nyilai abban robbannak szét.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:14:58.668Z"
+ },
+ "t-o027": {
+  "handled": true,
+  "note": "Jo de nem kell a fold ne jojjon fel",
+  "reply": "A föld nem jön fel: nincs repedés, por, földhalom. Csak kéreg- és levéldarabok repülnek.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:11:03.094Z"
+ },
+ "a-monk-bouncearrow": {
+  "handled": true,
+  "note": "Felulrol erkezo villsm nem kell, es ez villam elem",
+  "reply": "Felülről jövő villámok kivéve, és villám elemű lett.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T03:58:21.652Z"
+ },
+ "t-k065": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:33:31.467Z"
+ },
+ "t-n025": {
+  "handled": true,
+  "note": "Nagyobb lendulettel csapodjanak be",
+  "reply": "A tányérok nagy lendülettel, gyorsulva csapódnak be.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:40:04.627Z"
+ },
+ "t-o010": {
+  "handled": true,
+  "note": "Nem a pajzs van elrepedve. Az a sarga halo nem kell csak a pajzs legyen, eltorve. Es a minta olyan legyen mint a vazan",
+  "reply": "Nincs sárga háló. Csak a pajzs van, a váza mintájával (fehér máz, kék virágok, kék görög szegély), és maga a pajzs van eltörve, sötét repedésekkel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:04:02.112Z"
+ },
+ "t-w02": {
+  "handled": true,
+  "note": "Glecsernel eleg ha feljonnek a tuskek a burok nem kell de legyen elethubb, sotet alku igy gagyi, hajnalpir is gagyi kivitelezes, lidercnyomas is gagyi, meteorokol tokeletres.",
+  "reply": "Gleccser: csak a tüskék, burok nélkül. Sötét alku, Hajnalpír, Lidércnyomás újracsinálva.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T18:36:05.743Z"
+ },
+ "t-r018": {
+  "handled": true,
+  "note": "",
+  "reply": "Előkészítve festett tűzsárkányra; a kép a következő körben kerül be (Canva-kvóta).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T11:06:45.213Z"
+ },
+ "s-rustking": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T07:42:19.776Z"
+ },
+ "f-teaset-platestorm": {
+  "handled": true,
+  "note": "Legyen latvanyosabb",
+  "reply": "18 tányér kering körülötte, majd viharként zúdul a hősökre és összetörik.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:50:26.313Z"
+ },
+ "t-k033": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:23:48.866Z"
+ },
+ "f-gingerman-snatch": {
+  "handled": true,
+  "note": "Tort v bombat lopjon es hasznalja is ellenuk",
+  "reply": "Ha van tőr vagy tűzbomba, azt lopja el (fogy a készletből), és rögtön a hősökre dobja.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:53:57.565Z"
+ },
+ "t-k049": {
+  "handled": true,
+  "note": "A neve is rossz es gagyi",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:28:39.897Z"
+ },
+ "f-ccube-dice": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:22:45.262Z"
+ },
+ "L5-2": {
+  "handled": true,
+  "note": "Kanna teknosnek van feher resze, meg a gozlodercnek is. A fekete lyuk tul eros mindig meghalnak tole, kicsit sebezzen csak h visszatudja hozni a kovetkezo korben az ellenseget. A varazslo limite tul tuz specifikus, az legyen sima tamadas mindenkire es talalj ki valami masik limit tamadast neki ami nem ennyire elemi specifikus.az idezesnel a kristalygolem tukre ne mozogjon egyutt a hosokkel ha tamadnak.",
+  "reply": "Javítva: fehér foltok eltávolítva; a Fekete lyuk csak kicsit sebez és a következő körben visszatér az ellenfél; Zordon LIMIT-je új (Napkitörés, nem elemi); a kristálytükör nem mozog a támadó hősökkel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T05:35:16.026Z"
+ },
+ "e-tbat": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:32.193Z"
+ },
+ "f-beast-frenzy": {
+  "handled": true,
+  "note": "Felvonyit es megjelenik belole meg vagy 5-6 peldany es vegig suhannak az ellenfeleken",
+  "reply": "Felvonyít (hanghullám), és 6 árnypéldánya végigsuhan a hősökön, karmolásnyomokkal.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:27:06.348Z"
+ },
+ "f-teaimp-leafcut": {
+  "handled": true,
+  "note": "Gagyi",
+  "reply": "Hat nagy, erezett tealevél kering körülötte, aztán spirálban belevág.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:29:44.581Z"
+ },
+ "t-h02": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T08:51:07.844Z"
+ },
+ "e-monkey": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:17.450Z"
+ },
+ "t-q014": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T10:11:45.075Z"
+ },
+ "f-mage-darkwave": {
+  "handled": true,
+  "note": "Kevesbe legyen vizes hatasa",
+  "reply": "Nem vizes: árnyfüst-hullám (ugyanaz, mint a sötét lovagnál).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:26:08.939Z"
+ },
+ "t-t05": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-02T19:47:37.752Z"
+ },
+ "t-o030": {
+  "handled": true,
+  "note": "Ennel azert kisebb ust kell es a kivitelezes is gagyi",
+  "reply": "Kisebb üst, rendesen kidolgozva: öntöttvas, szegecsek, lila holdsarló-jel, fortyogó kávé, gőz, alatta valódi tűz.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:12:09.887Z"
+ },
+ "f-candysheep-sweetdream": {
+  "handled": true,
+  "note": "",
+  "reply": "Rózsaszín vattacukor-felhők gördülnek a hősökre, bennük lebegő cukorkák.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:54:21.294Z"
+ },
+ "t-k051": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:29:03.925Z"
+ },
+ "t-m003": {
+  "handled": true,
+  "note": "A feje ne fustoljon a gombak meg legyen tobb es ugy szetszortabban essenek, es legyenek elethubbek",
+  "reply": "A kalap nem füstöl; 34 valósághű légyölő gomba hullik szerteszét, és spórafelhővé pukkan.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:17:36.550Z"
+ },
+ "t-m038": {
+  "handled": true,
+  "note": "Tobb lehullo cukor kell es a nyalka nem kell a vegen. ",
+  "reply": "120 lehulló cukordarab (kockacukor, kristály, szórócukor), a nyálka kikerült.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:33:17.903Z"
+ },
+ "t-m028": {
+  "handled": true,
+  "note": "Vagy o dobja vagy fentrol esnek",
+  "reply": "Ő dobja: három lendülettel szórja a porcelánszilánkokat, fentről nem esik semmi.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:25:59.713Z"
+ },
+ "a-orc-basic": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:47:44.515Z"
+ },
+ "e-bee": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:07.199Z"
+ },
+ "a-orc-avalanche": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:51:16.258Z"
+ },
+ "f-shfairy-shlight": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:24:12.306Z"
+ },
+ "a-wizard-thunderbolt": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:51:43.099Z"
+ },
+ "f-oolong-dragonbite": {
+  "handled": true,
+  "note": "Tenyleg harapas legyen",
+  "reply": "Oolong saját feje lódul előre a nyakát nyújtva, és ráharap.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:35:17.538Z"
+ },
+ "t-p007": {
+  "handled": true,
+  "note": "",
+  "reply": "A páros támadásnál most mindkét hős a saját látványos mozdulatát csinálja (Morgána: Éjféli rontás, Zordon: Égiháború), a kettőt energiaszalag köti össze.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:31:47.505Z"
+ },
+ "f-fireflies-flash": {
+  "handled": true,
+  "note": "Gagyi legyen valami latvanyosabb ",
+  "reply": "Új: a bogarak körberepülik a hőst, felizzanak, és vakító fénysugarakkal robbannak.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T15:18:51.344Z"
+ },
+ "t-o003": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T04:59:33.929Z"
+ },
+ "t-y03": {
+  "status": "ok",
+  "updatedAt": "2026-10-05T15:54:29.822Z"
+ },
+ "t-k034": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:23:50.971Z"
+ },
+ "t-m005": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T13:18:15.087Z"
+ },
+ "t-h12": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T08:55:19.498Z"
+ },
+ "t-h21": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T08:57:26.096Z"
+ },
+ "L8-4": {
+  "handled": true,
+  "note": "Az idezesnel nem latszik milyen elemu a tamadas. Eleg gagyi tamadasok ha mar ott a legyezo legalabb legyen valami hurrika tamadas, meg akar egy fuvolaval vmi altato tamadas. Kivan irva h alompajzs es nem is latszik semmi, es nem csak egy korig tart. Ha telefonom nezem allo helyzetbe nem latszik jol a terkep, es ezek a potyouesek se jok nem tudom melyik mi utan kovetkezik. ",
+  "reply": "Javítva: az idézéseknél látszik az elem; Kamilla legyezőhurrikánt és altató furulyát is használ; az Álompajzs látható buborék. Állítva a térkép oldalra görgethető, és arany vonal köti össze a pályákat sorrendben.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T09:17:05.692Z"
+ },
+ "t-n057": {
+  "handled": true,
+  "note": "",
+  "reply": "A pályapöttyök a térkép pontozott útjain ülnek.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:54:06.445Z"
+ },
+ "t-k009": {
+  "handled": true,
+  "note": "Latvanyosabb es a hold tenyleg sarlos legyen ",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:14:24.065Z"
+ },
+ "t-k016": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:17:30.549Z"
+ },
+ "t-z05": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T07:50:00.850Z"
+ },
+ "t-k010": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:14:43.397Z"
+ },
+ "t-o013": {
+  "handled": true,
+  "note": "Gagyi",
+  "reply": "Újracsinálva: csillagos éjszaka, holdsarló, kerítés középen; részletes rózsaszín vattacukor-bárányok ugranak át egymás után, nagy számlálással.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:05:08.608Z"
+ },
+ "t-o006": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T05:01:46.496Z"
+ },
+ "L2-4": {
+  "handled": true,
+  "note": "Még mindig hatékonytalan van írva nincs ilyen szó. Az alvás nem hatékony. A járvány és egyéb méreg támadások miert hatnak a robotokra? Ne hassanak. Rozsa átok azt irja kevesbe hat, egy robotnál ez logikatlan. Jazmin pajzsa mogott fekete hatter van. ",
+  "reply": "Javítva: „nem hatékony”. A méreg nem hat a gépekre/gólemekre, a Rozsda-átok viszont nagyon hat rájuk. Jázmin pajzsa mögül eltűnt a fekete háttér.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-02T20:13:45.122Z"
+ },
+ "t-w03": {
+  "handled": true,
+  "note": "Jazmin kepe tovabbra se jo. ",
+  "reply": "Jázmin plakátja újracsinálva (tiszta, teljes alakos kép).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T18:37:53.656Z"
+ },
+ "e-queenbee": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:01.809Z"
+ },
+ "t-r014": {
+  "handled": true,
+  "note": "",
+  "reply": "Előkészítve festett aranyrobbanásra; a kép a következő körben kerül be (Canva-kvóta).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T11:04:36.408Z"
+ },
+ "f-beetle-curl": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T15:20:38.993Z"
+ },
+ "e-ccube": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:28.680Z"
+ },
+ "e-beetle": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:39.614Z"
+ },
+ "e-doll": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:14.123Z"
+ },
+ "a-monk-shadowpin": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:57:23.245Z"
+ },
+ "L1-2": {
+  "handled": true,
+  "note": "mit keres itt a mókus? hiba,  nem lehet elolvasni a szöveg buborékokat tul gyorsan eltünnek\n",
+  "reply": "A mókus nem hiba: ritka bónusz-vendég (dupla kávébab, ha elkapjátok). Mostantól első alkalommal Lili elmagyarázza. A szövegbuborékok kb. kétszer annyi ideig maradnak, és koppintásra továbblépnek.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-02T12:22:30.464Z"
+ },
+ "t-q016": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T10:12:42.198Z"
+ },
+ "e-cupsoldier": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:13.257Z"
+ },
+ "t-k047": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:28:11.259Z"
+ },
+ "f-moth-moonbeam": {
+  "handled": true,
+  "note": "",
+  "reply": "Csillagos ég, sarlós hold, belőle széles ezüst fénycsóva a hősre.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:57:50.180Z"
+ },
+ "t-k025": {
+  "handled": true,
+  "note": "Nem a szajabol megy",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:20:18.137Z"
+ },
+ "e-gknight": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:34.587Z"
+ },
+ "a-monk-flurry": {
+  "handled": true,
+  "note": "Nem az igazi alakitsd at jobba",
+  "reply": "Átalakítva: Jázmin mögött aranykezek legyezője nyílik, 15 villámgyors tenyér, a végén óriás tenyér lök.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T03:56:17.449Z"
+ },
+ "a-wizard-aqua": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:50:47.257Z"
+ },
+ "t-k053": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:29:54.646Z"
+ },
+ "z6": {
+  "handled": true,
+  "note": "Grog forgoszeleben legyennek balták h azok forognak es kevesbe tornados. Az oreg olong tamadasa olyan mint a szoko ar legyen sokkal ilyen forro goz ami ket korig a hosokon all es sebez, hasznalad a fustolo nyil fustjet. Altalanossagban a konnyu szinten a kis ellensegek konnyen halnak meg a nagyobbak meg nehezen. ",
+  "reply": "Javítva: Forgószél forgó baltákkal; Oolong forró gőze 1 körig a hősökön marad és forráz; könnyű fokozaton a főellenségek is gyengébbek.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T05:50:47.386Z"
+ },
+ "t-q025": {
+  "handled": true,
+  "note": "",
+  "reply": "A titkos főellenség jele és felirata, valamint két zónanév arrébb került, így már egyik sem takar pöttyöt. Ha elforgatod a telefont a térképen, igazodik a nézet.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:15:05.639Z"
+ },
+ "e-shorc": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:27.231Z"
+ },
+ "f-oolong-mistcoil": {
+  "handled": true,
+  "note": "Legyen latvanyosabb, es legyen valami specko funkcioja",
+  "reply": "Ködkígyó tekeredik a hős köré; elszívja a varázserejét (MP), és Oolong abból gyógyul.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:36:02.599Z"
+ },
+ "f-samovar-boilover": {
+  "handled": true,
+  "note": "Legyen kicsit vizes es gozos keverek",
+  "reply": "Felforr, és forró víz meg gőz keveréke ömlik a hősökre (víz elem).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:34:50.847Z"
+ },
+ "f-iceelem-frosttouch": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:03:32.702Z"
+ },
+ "t-u09": {
+  "handled": true,
+  "note": "Gagyik",
+  "reply": "Az idézett főellenségek átrepülnek a csatatér fölött, nagyobb hatással; a Dobótőr hármas vágást, a Tűzbomba lángoszlopokat kap.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T17:03:01.500Z"
+ },
+ "t-k058": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:31:06.733Z"
+ },
+ "t-n019": {
+  "handled": true,
+  "note": "A tamadas jo de beragad a kanal kepe tamadas kozbe igy duplan latszik",
+  "reply": "A kanál feje is a mozgó karhoz tartozik, nem látszik kétszer.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:38:11.255Z"
+ },
+ "f-shorc-shsplit": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:23:44.284Z"
+ },
+ "s-teaset": {
+  "handled": true,
+  "note": "Eleg ha a cseszek vegig szaladnak ott es ugy sebeznek",
+  "reply": "Csak a csészekatonák rohannak végig a csatatéren, és ahogy elhaladnak, megsebzik az ellenséget (a kanna és a háttér kikerült).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T07:45:28.809Z"
+ },
+ "t-k036": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:24:37.181Z"
+ },
+ "t-t06": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-02T19:47:56.639Z"
+ },
+ "t-h08": {
+  "handled": true,
+  "note": "Nagyobb mehraj es legyen agresszivabb valosaghubb ",
+  "reply": "Új méhraj: 130 rajzolt, szőrös méh szétterül, újra meg újra lecsap (rohamokban), zümmögéssel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T08:54:25.467Z"
+ },
+ "f-shroom-headbutt": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T15:19:08.882Z"
+ },
+ "t-m021": {
+  "handled": true,
+  "note": "",
+  "reply": "Tarka káoszörvény a hősök fölött, és minden hősre más elem csap le (meteor, jégtüske, villám, fényoszlop, árnyrobbanás).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:23:59.632Z"
+ },
+ "f-shorc-shsmash": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:23:42.122Z"
+ },
+ "t-m026": {
+  "handled": true,
+  "note": "",
+  "reply": "Felágaskodik, a kiöntőből gőzölgő teasugár ömlik a hősre, tócsa és gőzoszlop.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:25:13.448Z"
+ },
+ "z3": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T03:15:29.749Z"
+ },
+ "a-fairy-judgement": {
+  "handled": true,
+  "note": "Villam nem kell csak feny",
+  "reply": "Villám kivéve: égből lecsapó fényoszlop és fénykard.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T19:05:49.206Z"
+ },
+ "f-slime-tackle": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:49:14.536Z"
+ },
+ "t-m014": {
+  "handled": true,
+  "note": "",
+  "reply": "Közel ugrik, a vastag farkát magasra emeli és teljes testtel lecsapja; csak mérsékelten nyúlik.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:22:05.681Z"
+ },
+ "t-o015": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T05:05:57.331Z"
+ },
+ "t-k086": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:41:43.448Z"
+ },
+ "a-wizard-blizzard": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:52:04.303Z"
+ },
+ "s-queenbee": {
+  "handled": true,
+  "note": "Eleg ha egy nagy meh rajz megtamadja oket",
+  "reply": "Csak egy nagy, rajzolt méhraj rajzik az ellenségekre és összecsípi őket (mézözön és háttér nélkül).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T07:45:54.486Z"
+ },
+ "f-sleepless-dreamsteal": {
+  "handled": true,
+  "note": "Ugyanaz mint a masik volt",
+  "reply": "Más, mint a bámulás: a hős álma buborékként kiszáll, a szem elnyeli, Álmatlan gyógyul, a hős elalszik.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:23:11.950Z"
+ },
+ "t-m019": {
+  "handled": true,
+  "note": "",
+  "reply": "A tartály felforr, gőz száll a kéményből, és a két csészéből cseppekből álló, lüktető sugár lövell.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:23:32.891Z"
+ },
+ "t-y01": {
+  "handled": true,
+  "note": "Hajnalpir jo csak ne celozzon ra igy konkretan hanem folytatjonjanak addig a sugarak,tunderpor tovabbra is kardok vannak es nem por, tuzbomba legyen nagyobb a bomba alig latszik, szikranyil tokeletes",
+  "reply": "Hajnalpír: a sugarak a félkör után tovább söpörnek, egészen az ellenségekig (nincs célzott sugár). Tündérpor: a kardot az általános fényoszlop-effekt rajzolta – ezt mindenhol lágy fényre cseréltem, a Tündérpor most csillámló porfelhő, ami leszáll a csapatra. Tűzbomba: nagy, rajzolt bomba sercegő kanóccal, nagyobb robbanás.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T15:52:28.230Z"
+ },
+ "t-v02": {
+  "handled": true,
+  "note": "Gleccser legyen elethubb es csak az ellesegek felett legyen, lidercnyomasnal eltunt a szorny, sotet alku gagyi, meteor okol mar majdnem jo de nem kell lecsapni a baltaval eleg ha becsapodik, hajnalpir mar jobb csak legyen elethubb es latvanyos,",
+  "reply": "A válaszaid szerint: Gleccser = jégbörtön (csak az ellenségeken), Sötét alku = Lelkek tükre, Hajnalpír = valódi napkelte. A Lidércnyomás szörnye és a meteor Grog már szűrő nélkül rajzolódik (telefonon ez tüntette el), Grog nem csap le a baltával, csak becsapódik.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T17:30:24.366Z"
+ },
+ "a-monk-limit": {
+  "handled": true,
+  "note": "A plakat még mindig nem jo csinald meg maga a kepesseg fasza lett",
+  "reply": "Új plakát: rojtmentes, teljes alakos Jázmin aranyfénnyel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T03:59:17.050Z"
+ },
+ "a-wizard-inferno": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:50:58.291Z"
+ },
+ "f-rustking-steam": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:01:49.213Z"
+ },
+ "a-monk-innercalm": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:54:49.903Z"
+ },
+ "t-m006": {
+  "handled": true,
+  "note": "Amikor megjelnik egy fust golyo jelenik meg mielott kifujja, nem kell az a fust golyo",
+  "reply": "A füstgolyó kikerült, a gőz rögtön a szájából tör ki.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:18:55.556Z"
+ },
+ "f-vase-vaseguard": {
+  "handled": true,
+  "note": "Legyen egy vaza darabokbol epitett fal elotte halvanyabban de olyan mintas mint a karakter ",
+  "reply": "Halvány, a váza mintájával festett vázadarab-fal áll fel előtte, amíg a védelem tart.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:48:38.069Z"
+ },
+ "t-k063": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:31:51.411Z"
+ },
+ "i-firebomb": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T06:50:04.676Z"
+ },
+ "t-m035": {
+  "handled": true,
+  "note": "Megjelennek a feje felett a tanyerok porognek es vegug sopornek rajtuk es becsapodnak de tobb tanyer kell. Es a tamadasoknal ne valtozzon a karakter",
+  "reply": "30 tányér pörög a feje fölött, végigsöpör a hősökön és becsapódik; a Szerviz képe egyik támadásnál sem vált.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:31:38.805Z"
+ },
+ "e-espresso": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:29.579Z"
+ },
+ "f-teddy-bearhug": {
+  "handled": true,
+  "note": "Nem oleli meg",
+  "reply": "A Maci SAJÁT karjaival öleli át a hőst és háromszor megszorongatja.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:58:41.833Z"
+ },
+ "t-p009": {
+  "handled": true,
+  "note": "",
+  "reply": "Lili Ítélet fénye, aztán Zordon Csillaghullása, egymás után, összekötve.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:31:50.437Z"
+ },
+ "t-q021": {
+  "handled": true,
+  "note": "",
+  "reply": "Saját jelenet: éjszaka lesz, csillagképet gyújtanak az égen, majd a csillagai üstökösként becsapódnak.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:14:55.272Z"
+ },
+ "e-tongs": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:12.440Z"
+ },
+ "t-m023": {
+  "handled": true,
+  "note": "",
+  "reply": "A két kezéből tüskezápor indul, a tüskék beleállnak a hősbe, majd levélrobbanással kipattannak.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:24:40.250Z"
+ },
+ "f-shwitch-curse": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:25:21.047Z"
+ },
+ "t-r015": {
+  "handled": true,
+  "note": "",
+  "reply": "Festett arany csillagsárkány az égen, a csillagai becsapódnak.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T11:04:53.522Z"
+ },
+ "f-koffgolem-doubleshot": {
+  "handled": true,
+  "note": "Oriasi kave sugar",
+  "reply": "Két óriási, habos kávésugár.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:28:01.831Z"
+ },
+ "t-n020": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:38:23.586Z"
+ },
+ "t-q010": {
+  "handled": true,
+  "note": "Menjen hatrebb kamilla fele, es a hullam gagyi meg a kiontes is",
+  "reply": "A csésze hátrébb, Kamilla mellett jelenik meg; vastag, csavarodó teasugár, csobbanás; a hullám áttetsző, magas falú, göndör taréjjal és permettel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:09:32.122Z"
+ },
+ "t-x02": {
+  "handled": true,
+  "note": "Szikra nyilnal mondtam h nem kell a fentrol jovo villam erre beraktal kettot is es sargat. ",
+  "reply": "Bocsánat! A két sárga villámot a villám elemű találat általános effektje rajzolta – ezt a Szikranyílnál kikapcsoltam, most csak a kék láncvillám látszik.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T04:54:05.888Z"
+ },
+ "t-r016": {
+  "handled": true,
+  "note": "Latvanyosabb",
+  "reply": "Festett lila lángoszlop burkolja Grogot, lila utóképek és hatalmas vágás.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T11:05:07.408Z"
+ },
+ "t-k071": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:36:52.131Z"
+ },
+ "t-h19": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T08:57:14.530Z"
+ },
+ "f-kamilla-teaceremony": {
+  "handled": true,
+  "note": "",
+  "reply": "Lebegő teáskanna aranyló teát tölt egy csészébe, a csésze forró sugárban a hősre zúdítja.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:59:25.162Z"
+ },
+ "t-h11": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T08:55:03.940Z"
+ },
+ "f-monkey-snatch": {
+  "handled": true,
+  "note": "Jo csak a targyakat lopja el a tort vagy a bombat es dobja is hozza",
+  "reply": "Ellopja a tőrt vagy a tűzbombát, és a hősökre dobja.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:32:57.461Z"
+ },
+ "a-fairy-sunburst": {
+  "handled": true,
+  "note": "Ahogy a napsugarak felsutnek balrol jobbra felkorben ",
+  "reply": "A nap középen kel, a sugarai félkörben, balról jobbra egyenként sütnek fel, végül egy-egy sugár az ellenségekre esik.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T19:07:07.552Z"
+ },
+ "e-vase": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:10.929Z"
+ },
+ "e-ghost": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:36.217Z"
+ },
+ "a-monk-tripleshot": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:55:42.772Z"
+ },
+ "a-monk-blacktea": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:54:35.992Z"
+ },
+ "f-sugarcube-sugardust": {
+  "handled": true,
+  "note": "Gagyi de otletnek jo",
+  "reply": "Megrázza magát, csillogó porcukor-hóvihar, porcukor a hősök fején.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:52:31.850Z"
+ },
+ "t-m016": {
+  "handled": true,
+  "note": "Tobb kocka essen",
+  "reply": "Sokkal több, valódi pöttyös dobókocka hullik, pattog, aztán elemi robbanásban szétrobban.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:22:29.460Z"
+ },
+ "a-witch-blackhole": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:58:30.612Z"
+ },
+ "e-scorpion": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:04.121Z"
+ },
+ "t-s010": {
+  "handled": true,
+  "note": "Gagyi",
+  "reply": "Újracsinálva: éles fekete árnyalakok lila fénykörvonallal, előrelépnek, mindegyik a saját nagy támadását csinálja, a végén festett lángoszlopos árnyrobbanás.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T12:02:59.351Z"
+ },
+ "t-n004": {
+  "handled": true,
+  "note": "Az orrabol fujja es pontos legyen",
+  "reply": "A gőz most az orrából indul, és pontosan a célpontokra száll.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:30:24.469Z"
+ },
+ "t-o011": {
+  "handled": true,
+  "note": "Gagyi",
+  "reply": "Újracsinálva: a lúdtollal egy hatalmas tussárkányt fest a levegőbe (vastag ecsetvonás, csöpögő tus), ami életre kel, és sorban lecsap a hősökre.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:04:26.374Z"
+ },
+ "a-wizard-starfall": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:52:13.760Z"
+ },
+ "f-cannon-broadside": {
+  "handled": true,
+  "note": "Legyen latvanyosabb",
+  "reply": "Sorban minden hősre külön lövés, mindegyik nagy robbanással.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:00:30.911Z"
+ },
+ "t-u03": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T16:52:56.450Z"
+ },
+ "a-witch-darkpact": {
+  "handled": true,
+  "note": "Valosaghubb tukor legyen, kilep a demon enje. Es megszallja egy kore kap egy piros lilas aurat es piros lesz a szeme",
+  "reply": "Aranykeretes, valósághű tükör; a tükörkép démonivá torzul, kilép, megszállja Morgánát: 1 körig vörös-lila aura és vörös szem.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T18:58:27.534Z"
+ },
+ "t-o025": {
+  "handled": true,
+  "note": "",
+  "reply": "A két kezében tartott bögréből gőz száll, koccint, kávészemek repülnek minden hőshöz; erősítés, nincs tűz.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:09:28.758Z"
+ },
+ "t-k020": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:18:32.468Z"
+ },
+ "t-k080": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:39:51.559Z"
+ },
+ "t-p010": {
+  "handled": true,
+  "note": "",
+  "reply": "Morgána fekete-lila lángba burkolja Grogot, aztán Grog lángolva pörög végig az ellenségeken.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:31:51.601Z"
+ },
+ "t-k090": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:42:24.931Z"
+ },
+ "t-n033": {
+  "handled": true,
+  "note": "",
+  "reply": "Nagyobb hold, vastagabb sugár, erősebb becsapódás.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:43:17.538Z"
+ },
+ "a-fairy-basic": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T19:01:11.654Z"
+ },
+ "a-witch-pandemic": {
+  "handled": true,
+  "note": "3 korig legyen. ",
+  "reply": "A méreg 3 körig tart.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T18:59:37.305Z"
+ },
+ "a-witch-voodoo": {
+  "handled": true,
+  "note": "Ez tok jo csak amit kilő az legyenek tűk, es 3 korig sebzi. Es a tuk belealnak es minden korben egy eltunik",
+  "reply": "Tűk repülnek ki a babából, és beleállnak az ellenségbe; 3 körig sebez, minden kör végén egy tű kihúzódik.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T18:57:17.461Z"
+ },
+ "f-kamilla-lullaby": {
+  "handled": true,
+  "note": "",
+  "reply": "Kamillaszirmok és hangjegyek úsznak a hősökre, aranyló álomköd.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:59:28.439Z"
+ },
+ "t-m044": {
+  "handled": true,
+  "note": "A holdbol jojjon a sugar",
+  "reply": "A sugár a holdsarlóból indul.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:35:41.852Z"
+ },
+ "t-n038": {
+  "handled": true,
+  "note": "Ez inkabb fust mint lang",
+  "reply": "Valódi fekete-lila lángnyelvek a füst helyett.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:45:41.626Z"
+ },
+ "a-monk-basic": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:53:04.201Z"
+ },
+ "t-k022": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:18:54.999Z"
+ },
+ "a-monk-manatea": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:54:41.019Z"
+ },
+ "f-snail-slimetrail": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T15:18:04.815Z"
+ },
+ "e-bamboo": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:18.264Z"
+ },
+ "t-n009": {
+  "handled": true,
+  "note": "Gagyi vedd peldanak a lekvar dzsin kez tamadasat ott is jol megcsinaltad itt is nyujtsd meg a farkat ",
+  "reply": "Espresszó helyből nyújtja a farkát egészen a hősig, mint a Lekvárdzsinn a kezét.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:34:04.859Z"
+ },
+ "e-mage": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:23.922Z"
+ },
+ "f-moth-dustwing": {
+  "handled": true,
+  "note": "",
+  "reply": "Három hullámban csillogó, holdfényes hímporfelhő a szárnyakról.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:57:48.316Z"
+ },
+ "t-z02": {
+  "handled": true,
+  "note": "Forgoszelnel nem kell a szel bele, a tobbi jo",
+  "reply": "Forgószél: a tornádó és a szél kikerült, csak a pörgő lángoló fejszék maradtak.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T06:42:26.911Z"
+ },
+ "a-fairy-light": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T19:02:04.919Z"
+ },
+ "e-samovar": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:15.736Z"
+ },
+ "e-jamdjinn": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:02.957Z"
+ },
+ "a-fairy-lightshield": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T19:04:12.356Z"
+ },
+ "f-shwizard-shinferno": {
+  "handled": true,
+  "note": "Nem kell ketto tuzes tamadas",
+  "reply": "A második tűz helyett Árny-jégvihar (jég elem, fagyaszthat).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:24:53.522Z"
+ },
+ "f-teaimp-teadart": {
+  "handled": true,
+  "note": "Gagyi",
+  "reply": "Fúvócsővel kilőtt mérgezett tüske, beleáll a hősbe.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:29:49.309Z"
+ },
+ "t-z01": {
+  "handled": true,
+  "note": "Negyek ereje plakaton a regi van, ",
+  "reply": "A Négyek ereje (ötfős) plakátján is kicseréltem Grog fejszéjét az újra.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T06:41:41.169Z"
+ },
+ "f-potturtle-shellspin": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:33:52.120Z"
+ },
+ "t-m049": {
+  "handled": true,
+  "note": "Idezen meg egy tea cunamit ",
+  "reply": "Hatalmas tea-cunami söpör végig az összes hősön.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:37:50.730Z"
+ },
+ "t-s016": {
+  "handled": true,
+  "note": "",
+  "reply": "A lótusz kinyílik az ellenségek alatt, festett lótuszszirmokból forgószél lesz, Jázmin belelő, végül szirmokra robban.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T14:14:13.931Z"
+ },
+ "t-k079": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:39:48.483Z"
+ },
+ "f-morcus-chaosbolt": {
+  "handled": true,
+  "note": "Csak keves a tamadasok",
+  "reply": "Morcus Káoszgömbje most öt különböző elemű gömbből álló sorozat.",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:28:52.514Z"
+ },
+ "t-h10": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T08:54:46.715Z"
+ },
+ "t-k018": {
+  "handled": true,
+  "note": "Ez jo de most a kocka esonel valt kepet",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:18:00.653Z"
+ },
+ "t-n049": {
+  "handled": true,
+  "note": "Nem a kezebe tartja es ez erosites kategoria",
+  "reply": "A bögrét a kezében fogja, és erősítés kategória.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:50:58.377Z"
+ },
+ "t-m001": {
+  "handled": true,
+  "note": "En azt szeretnem h el se jutnanak a pajzson tul se ha oda akarnak menni se ha tavoli tamadas pattanjon vissza",
+  "reply": "Most már el sem jutnak a pajzsig: a közelharcos nekicsapódik és visszapattan, a lövés a pajzsról visszarepül a támadóra, és ő kapja a sebzést.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:15:22.310Z"
+ },
+ "t-h07": {
+  "handled": true,
+  "note": "A szajabol jonn a goz es ugy latvanyosabb kegyen",
+  "reply": "Oolong kitátja a száját, és onnan ömlik a forró gőz; a célpontokon gőzfelhő.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T08:53:56.778Z"
+ },
+ "t-m046": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T13:35:59.325Z"
+ },
+ "f-rustking-gearthrow": {
+  "handled": true,
+  "note": "Gagyi hulljon az egbol csavarok egy hosre es fogaskerek hullas legyen a neve",
+  "reply": "Új neve „Fogaskerékhullás”: fogaskerekek és csavarok zuhannak az égből egy hősre, pattognak.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:01:46.934Z"
+ },
+ "t-q012": {
+  "handled": true,
+  "note": "Amikor harap es langol ott nem jok a langok ",
+  "reply": "A lángok most a Cerberus képén lévő festett lángokhoz igazodnak: kunkorodó, fekete-lila lángnyelvek (a harapásnál és a lángcsapásnál is), nem gömbök.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:10:54.110Z"
+ },
+ "s-kamilla": {
+  "handled": true,
+  "note": "Legyen egy nagy szel lokes a legyezovel ami sebzi az ellensegeekt",
+  "reply": "Kamilla meglendíti óriás legyezőjét: hatalmas széllökés söpör végig, hátralöki és megsebzi az ellenségeket.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T07:46:48.599Z"
+ },
+ "e-kamilla": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:53:51.742Z"
+ },
+ "e-shwizard": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:26.102Z"
+ },
+ "t-n043": {
+  "handled": true,
+  "note": "Megis latszik a lava",
+  "reply": "Nincs láva, csak földrepedés és sziklák.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:47:15.598Z"
+ },
+ "f-ghost-wail": {
+  "handled": true,
+  "note": "Nem kell a hullam, egy hanghullam robbanas legyen",
+  "reply": "Nincs hullám: a sikoly egy hanggömböt lő a hősök közé, ott nagy hanghullám-robbanás.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T08:59:40.537Z"
+ },
+ "t-s007": {
+  "handled": true,
+  "note": "Morgana tuze ami korulotte van gagyi, es a harapas is gagyi. A feje harapjon vagyis a szajaval, vagy akkor maradjon a helyen es egy nagy liderces kutya alaku harapas legyen",
+  "reply": "Morgána körül most hatalmas festett lila lángoszlop csap fel (nem apró lángok). A harapás: Cerberus a helyén marad, és egy óriási lidércszerű kutyafej csap le a célpontra, összezárja az állkapcsát.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T12:01:38.563Z"
+ },
+ "f-zombie-rollingpin": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T08:58:22.424Z"
+ },
+ "f-salamander-flamebite": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:04:52.073Z"
+ },
+ "f-shwizard-shfire": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:24:40.361Z"
+ },
+ "f-whelp-firebreath": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T09:04:37.548Z"
+ },
+ "t-k089": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:42:20.990Z"
+ },
+ "t-k012": {
+  "handled": true,
+  "note": "A karmolas resz nem tetszik legyen szebb",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:15:20.423Z"
+ },
+ "t-z07": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T07:49:49.718Z"
+ },
+ "f-doll-dollkiss": {
+  "handled": true,
+  "note": "Gagyi",
+  "reply": "Csókot dob: rúzsos ajkak repülnek, a csókjel megreped, sötét átokfüst.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:43:24.327Z"
+ },
+ "t-m043": {
+  "handled": true,
+  "note": "Legyen hintopor es tobb kell meg",
+  "reply": "Fehér hintőpor, sokkal több.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:35:23.092Z"
+ },
+ "t-o029": {
+  "handled": true,
+  "note": "",
+  "reply": "Minden pötty (a főellenségeké is) a rajzolt pontsorokon ül, egyenletes közökkel. A pontsorokat képfelismeréssel mértem le.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:11:26.772Z"
+ },
+ "s-slimeking": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T07:41:03.165Z"
+ },
+ "f-sandman-sandthrow": {
+  "handled": true,
+  "note": "",
+  "reply": "Aranyló álomhomok-marék és csillogó porörvény a hős feje körül.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:58:03.109Z"
+ },
+ "t-m025": {
+  "handled": true,
+  "note": "",
+  "reply": "Három kék mintás porceláncsészét hajít egymás után, tea fröccsen belőlük, szilánkokra törnek.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:24:57.256Z"
+ },
+ "t-t08": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-02T19:49:28.825Z"
+ },
+ "t-h16": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T08:56:20.117Z"
+ },
+ "t-n018": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:37:32.715Z"
+ },
+ "t-k029": {
+  "handled": true,
+  "note": "Robotos",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:21:37.644Z"
+ },
+ "t-h20": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T08:57:22.951Z"
+ },
+ "t-t07": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-02T19:48:08.003Z"
+ },
+ "f-queenbee-buzzstorm": {
+  "handled": true,
+  "note": "Ugyanaz mint az idezesnel volt komment",
+  "reply": "Ugyanaz a nagy, valósághű, agresszív méhraj, mint az idézésnél.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:56:28.394Z"
+ },
+ "t-k076": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:38:53.255Z"
+ },
+ "a-orc-magma": {
+  "handled": true,
+  "note": "Jo csak ez inkabb tuzes mint lavas legyen elethubb lava",
+  "reply": "Valódi láva: izzó olvadt kőcseppek, amik a földön kihűlnek és megfeketednek, lávató, fekete füst. Tűzoszlop kivéve.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T03:52:16.665Z"
+ },
+ "t-m030": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T13:26:51.242Z"
+ },
+ "a-fairy-heal": {
+  "handled": true,
+  "note": "Ne kard legyen inkbb ket kez aki ovoan korbeveszi es gyogyitja",
+  "reply": "Kard helyett két ragyogó zöld kéz öleli körbe, és úgy gyógyít.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T19:01:56.150Z"
+ },
+ "t-m024": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T13:24:54.361Z"
+ },
+ "t-m033": {
+  "handled": true,
+  "note": "Legyezo legyen jobban, a pajzs nem kell kore, de a tusatokat tobbra se ertem. Talalj ki inkabb mast, rajzoljon szornyeket amik rajuk tamad vagy valami",
+  "reply": "Nincs pajzs körülötte. Új: a legyezőjével tusszörnyeket fest, amelyek életre kelnek és rátámadnak a hősökre.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T13:29:51.045Z"
+ },
+ "f-salamander-lavaspit": {
+  "handled": true,
+  "note": "Ez inkabb tuzgolyo nem lava ",
+  "reply": "Új neve „Tűzgolyó”: a szájában gyűlő tűzgolyó, robbanás.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:05:02.640Z"
+ },
+ "f-mandarin-inkcurse": {
+  "handled": true,
+  "note": "Full gagyi nem ertem, es a pajzsot se korulotte",
+  "reply": "Óriás ecset fekete tusvonásokat fest a hősök elé, a tus rájuk csorog. A tükörmáz minden körben kiírja, mikor véd (és mikor nem).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:49:27.639Z"
+ },
+ "t-n036": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:44:00.686Z"
+ },
+ "t-q006": {
+  "handled": true,
+  "note": "Egyre jobb csak legyen olyan stilusu mint a hosoke h kicsit ilyen 3 d seb es kisebb darabokbol alljon ossze, es nem kell lyuk ra",
+  "reply": "A hősök stílusában: vastag fekete kontúr, telt, fényes, térhatású porcelán; sok apró darabból áll össze, és nincs rajta lyuk.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:05:28.672Z"
+ },
+ "t-t01": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-02T19:46:07.998Z"
+ },
+ "L5-3": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T05:35:27.653Z"
+ },
+ "t-k007": {
+  "handled": true,
+  "note": "Meg nagyobb",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:13:38.691Z"
+ },
+ "a-witch-dreadnight": {
+  "handled": true,
+  "note": "Az ellensegnek szembol megjelenik a liderc aki nagy karmolasokat csinal",
+  "reply": "A lidérc az ellenséggel szemben jelenik meg, és 4 hatalmas karmolást csinál.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T18:59:07.470Z"
+ },
+ "t-o024": {
+  "handled": true,
+  "note": "",
+  "reply": "A lángcsóva most a szájából indul, folyamatos, lobogó tűzsugárként (fehér mag, sárga, narancs, vörös szél). Ugyanez az ellenséges Espresszónál is.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:09:13.101Z"
+ },
+ "L6-4": {
+  "handled": true,
+  "note": "Targyak kozze jo lenne valami fegyver is amit tudok hasznalni ha pl nincs mp m",
+  "reply": "Megcsinálva: két fegyver-tárgy a boltban – Dobótőr és Tűzbomba (3-1 után), MP nélkül is jól sebeznek.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T09:01:49.192Z"
+ },
+ "L1-1": {
+  "handled": true,
+  "note": "legyenek nagyobbak",
+  "reply": "Javítva: az 1. fejezet összes ellenfele kb. negyedével nagyobb lett.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-02T12:18:33.075Z"
+ },
+ "a-witch-miasma": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:55:33.473Z"
+ },
+ "f-cannon-shot": {
+  "handled": true,
+  "note": "Legyen latvanyosabb",
+  "reply": "Torkolattűz és füst a csőből, hátrarúgás, igazi vasgolyó füstcsíkkal, nagy robbanás törmelékkel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:00:23.051Z"
+ },
+ "a-witch-basic": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:54:28.508Z"
+ },
+ "t-s005": {
+  "handled": true,
+  "note": "A hallam jo de a cseszebol jojjon ki konkretan a hullam es szebb csesze lehyen",
+  "reply": "A hullám most konkrétan a csészéből bújik ki (a peremből nő ki és zúdul le), és új, festett porcelán kamillás csésze van.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T11:59:39.868Z"
+ },
+ "f-bamboo-bamboowall": {
+  "handled": true,
+  "note": "Legyen tamadas h lerol felfele megjelenek a bambuszok egy ellenfel korul egy egy korre bezarja korbeveszi",
+  "reply": "Új támadás: Bambuszketrec – alulról bambuszok nőnek ki egy hős körül, és 1 körre bezárják (kábulat), a ketrec addig látszik.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:31:27.851Z"
+ },
+ "t-t09": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-02T19:50:27.383Z"
+ },
+ "e-steamwisp": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:19.044Z"
+ },
+ "t-k067": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:35:47.318Z"
+ },
+ "t-x01": {
+  "handled": true,
+  "note": "Hajnalpri meg finomics igy nem az igazi. A tunderpor legyen tenyleg por, tuzbombanal eleg ha felrobban nem kell tuzoszlop",
+  "reply": "Hajnalpír: lágy, ködös sugarak, nincs éles horizontvonal, a fény meleg sugárban esik az ellenségekre. A tündérpor most apró porszemekből áll. Tűzbombánál csak robbanás van, tűzoszlop nélkül.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-05T04:51:49.871Z"
+ },
+ "t-q015": {
+  "handled": true,
+  "note": "",
+  "reply": "Nagyobb, sűrűbb lángcsóva, utána ég a föld az ellenségek alatt.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T10:12:30.386Z"
+ },
+ "t-u10": {
+  "handled": true,
+  "note": "Az idezesben az a masodik terkep bossok tamadasai gagyik legyenek latvanyosabbak ",
+  "reply": "Lásd az előzőt: az idézett főellenségek látványosabbak (átrepülés, Kamillánál hold és alvó Zzz).",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T17:05:28.468Z"
+ },
+ "L4-2": {
+  "handled": true,
+  "note": "Sotet alku lenyeget jobban dolgozd ki, a mantra tamadasok maga a mantra nagyon csavar kinezetu, legyen ilyen japan irasos, a nyilzapornal eleg ha fello, megjelenik az a kor, es abbol zaporoznak a nyilak. Az ejjeli rontasnal tobbszor karmoljon, a pestis legyen egy ellenfel ellen hasznalhato es az legyen a funkcioja h az ellenfel a sajat tarsai ellen tamad a kovetkezo tamadasaval, ",
+  "reply": "Javítva: Sötét alku – égő szerződést ír alá vérrel; Mantranyíl japán írásjeles arany pecséttel; Nyílzápor: felfelé lő, megjelenik a kör, abból záporoznak a nyilak; Éjféli rontás: lila kör, macskadémonná változik, háromszor karmol; Pestis: egy ellenfél, aki a következő támadásával a társát üti.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-03T06:12:00.142Z"
+ },
+ "t-k085": {
+  "handled": true,
+  "note": "Gagyi",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:41:28.626Z"
+ },
+ "e-snail": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:42.308Z"
+ },
+ "t-h09": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T08:54:35.883Z"
+ },
+ "t-s017": {
+  "handled": true,
+  "note": "",
+  "reply": "Lili aranyfénnyel tölti meg Grogot, ő odaugrik és a földbe csap: festett aranyrobbanás, gördülő fényhullám, minden ellenség alól fényoszlop tör fel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T14:14:36.710Z"
+ },
+ "t-k082": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:40:41.483Z"
+ },
+ "t-h13": {
+  "handled": true,
+  "note": "Jo de fenteol hulljon le az osszes por rajuk, es ne ilyen bicikli csengo hang legyen",
+  "reply": "A por most az égből hullik le az egész csapatra; a csengő hangot kivettem.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T08:55:54.843Z"
+ },
+ "a-orc-titan": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:51:25.995Z"
+ },
+ "f-tongs-pinch": {
+  "handled": true,
+  "note": "",
+  "reply": "A rák SAJÁT csipeszének két szára csukódik össze, megemeli és szorongatja a hőst.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:44:48.434Z"
+ },
+ "L6-2": {
+  "handled": true,
+  "note": "Grognak jo lenne egy olyan kepesseg amitol meg nő ő vagy valamelyik hős akit valasztok es a kovetkezo korben 1,5x erosebb lesz a tamadasa. ",
+  "reply": "Megcsinálva: Grog új képessége az Óriásnövesztés (a boltban 2-2 után): egy kiválasztott hős óriásira nő, és 1 körig 1,5-szer erősebben támad.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-04T05:57:48.239Z"
+ },
+ "t-n010": {
+  "handled": true,
+  "note": "Picit lassu es lehetne tobb",
+  "reply": "Gyorsabb és sokkal több kocka.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:34:33.297Z"
+ },
+ "t-k021": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:18:53.002Z"
+ },
+ "t-n031": {
+  "handled": true,
+  "note": "Idezesnel megirtam. ",
+  "reply": "Ugyanaz az oda-vissza rohanó raj, mint az idézésnél.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T17:42:21.678Z"
+ },
+ "t-n013": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:36:18.781Z"
+ },
+ "L8-3": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T09:10:56.014Z"
+ },
+ "e-oknight": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:30.244Z"
+ },
+ "t-o002": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T04:59:03.097Z"
+ },
+ "e-mandarin": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:10.027Z"
+ },
+ "f-oknight-obswall": {
+  "handled": true,
+  "note": "Ez tamadas legyen h kozepen kitor egy lavas koves fal es ra szakad a ellenfelekre",
+  "reply": "Támadás lett: középen kitör egy lávás obszidiánfal, és rádől a hősökre.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:06:19.839Z"
+ },
+ "t-t02": {
+  "handled": true,
+  "note": "Tovabbra is van",
+  "reply": "Újabb javítás: a játék most a képernyő széleihez van rögzítve, nem csak a magasságot számolja.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-02T19:46:39.278Z"
+ },
+ "t-o009": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-07T05:02:59.826Z"
+ },
+ "t-n001": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T17:29:07.329Z"
+ },
+ "t-p012": {
+  "handled": true,
+  "note": "",
+  "reply": "Zordon tűzzel tölti meg Jázmin íját, aztán Jázmin lángoló sárkánynyila végigszántja az ellenségeket.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:31:53.832Z"
+ },
+ "e-lantern": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:11.676Z"
+ },
+ "t-r009": {
+  "handled": true,
+  "note": "Amikor cerberus megy tamadni ott maradnak morgana langjai azok ne maradjanak. Es amikor a harapas utan ne karmuljon hanem harapjon, es azok a langolas nem jo kezdjen el izzaninlila feketen a fold es ilyen szinu lang oszlopjon torjon fel a foldbol mikorbe cerberus visszater es eltunik",
+  "reply": "Morgána helyén nem maradnak lángok; harapás fogsorral; a föld lila-feketén izzik, és festett lángoszlopok törnek fel; Cerberus visszatér és eltűnik.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T11:01:55.479Z"
+ },
+ "f-ccube-chaosbolt": {
+  "handled": true,
+  "note": "Amikor lo a karakter megvaltozik ez nem tetszik. ",
+  "reply": "A kocka képe már nem változik lövés közben; a lövedék szivárványos hanghullám-robbanással csapódik be.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:22:37.062Z"
+ },
+ "e-clock": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-03T13:54:35.686Z"
+ },
+ "t-o017": {
+  "handled": true,
+  "note": "",
+  "reply": "Újracsinálva: óriási porcelán teáscsésze kamillamintával kiborul, és a sugárból habos tetejű tea-hullám lesz, ami átgördül a hősökön.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-07T05:06:14.436Z"
+ },
+ "s-phoenix": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T07:43:21.047Z"
+ },
+ "t-k004": {
+  "handled": true,
+  "note": "Megjelenik",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:11:38.027Z"
+ },
+ "t-k083": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:40:43.844Z"
+ },
+ "a-wizard-basic": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-04T18:49:43.957Z"
+ },
+ "t-k070": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-06T12:36:27.021Z"
+ },
+ "a-monk-teabomb": {
+  "handled": true,
+  "note": "",
+  "sent": true,
+  "status": "ok",
+  "updatedAt": "2026-10-05T03:57:26.057Z"
+ },
+ "t-k050": {
+  "handled": true,
+  "note": "",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:28:49.099Z"
+ },
+ "t-k066": {
+  "handled": true,
+  "note": "Nem talalom ",
+  "reply": "Javítva a 11. körben – az új tesztlistán a játék pontos útvonalával szerepel.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T12:35:40.247Z"
+ },
+ "f-espresso-tailswipe": {
+  "handled": true,
+  "note": "Gagyi",
+  "reply": "A sárkány a SAJÁT farkát lendíti: odafut, megfordul, a farka felemelkedik és lecsap.",
+  "sent": true,
+  "status": "bad",
+  "updatedAt": "2026-10-06T09:06:33.365Z"
+ }
+}

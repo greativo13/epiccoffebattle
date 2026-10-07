@@ -1,0 +1,1 @@
+S.enemies.forEach(e=>e.alive=false);const e=mkEnemy('mandarin',SLOTS[1][0][0],SLOTS[1][0][1],30);e.hp=e.maxHp=99999;S.enemies=[e];for(const h of S.heroes){h.hp=h.maxHp=99999;}S.speed=1;useEnemySkill(e,ESK.inkcurse,S.heroes[0]);

@@ -1,0 +1,2 @@
+S.speed=.6;const r=S.roster||S.heroes;const g=r.find(x=>x.type==="orc");if(!S.heroes.includes(g))arenaSwap(S.heroes.find(x=>x.type==='monk'),g);const w=S.heroes.find(x=>x.type==="wizard");const p=PAIRS.find(x=>x.name==='Sárkánynyíl');
+perform(w,{type:'skill',sk:{id:'pair',name:p.name,tgt:'enemies',kind:'mag',pow:p.pow,elem:p.elem,anim:'pairAtk',pair:p,partner:g,desc:p.desc},targets:S.enemies.filter(e=>e.alive)});

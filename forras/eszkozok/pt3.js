@@ -1,0 +1,10 @@
+const {chromium}=require('playwright');
+(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage({viewport:{width:393,height:793},hasTouch:true,isMobile:true});
+p.on('pageerror',e=>console.log('ERR',e.message));
+await p.goto('http://localhost:8765/index.html');await p.waitForTimeout(2500);
+await p.evaluate(()=>{S.test=true;TEST['Mindent megvesz']();TEST['Próbaterem']();});await p.waitForTimeout(2000);
+await p.evaluate(()=>window.scrollTo(0,700));await p.waitForTimeout(300);
+const y0=await p.evaluate(()=>scrollY);
+await p.evaluate(()=>{[...document.querySelectorAll('#btns .cbtn')].find(b=>b.textContent.includes('Védekezés')).click();});
+await p.waitForTimeout(400);const y1=await p.evaluate(()=>scrollY);await p.waitForTimeout(2500);const y2=await p.evaluate(()=>scrollY);
+console.log(y0,y1,y2);await b.close();})();

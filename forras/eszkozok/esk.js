@@ -1,0 +1,3 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage();
+await p.goto('http://localhost:8765/game.html');await p.waitForTimeout(4000);
+console.log(await p.evaluate(()=>['morcus','mandarin','queenbee','kamilla','oolong','shwizard','shwitch','shfairy','shorc'].map(k=>{const d=EN_DEF[k];return k+' hp'+d.hp+' atk'+d.atk+' mag'+d.mag+' def'+d.def+' | '+(d.skills||[]).map(([id,w])=>id+'('+(ESK[id]?ESK[id].name+'/'+ESK[id].anim+'/'+ESK[id].kind+'/'+ESK[id].tgt+'/pow'+ESK[id].pow:'?')+')').join(', ')+(d.ai?' [ai]':'');}).join('\n')));await b.close();})();

@@ -1,0 +1,107 @@
+{
+ "u011": {
+  "area": "Páros támadások",
+  "expect": "Sötét szalagok tekerednek Grogra, majd egy óriási festett árnysöprés.",
+  "how": "Válaszd, és nézd végig.",
+  "order": 510,
+  "title": "Próbaterem → Morgána → PÁROS: Árnyroham"
+ },
+ "u009": {
+  "area": "Páros támadások",
+  "expect": "A sugarak felszállnak, csak utána jön a felhő; festett lila villámok.",
+  "how": "Válaszd, és nézd végig.",
+  "order": 508,
+  "title": "Próbaterem → Morgána → PÁROS: Villámátok"
+ },
+ "u008": {
+  "area": "Idézések",
+  "expect": "Éles fekete árnyalakok lila körvonallal, mindegyik saját nagy támadással, a végén lángoszlopos árnyrobbanás.",
+  "how": "Válaszd, és nézd végig.",
+  "order": 507,
+  "title": "Próbaterem → Idézések → Árny-csapat"
+ },
+ "u004": {
+  "area": "Porcelánváros",
+  "expect": "A fénycsík csak a pajzs alakján belül fut végig.",
+  "how": "Válaszd, és nézd végig.",
+  "order": 503,
+  "title": "Próbaterem → Ellenfelek és támadásaik → Porcelánváros → Vázagólem → Mázpáncél"
+ },
+ "u012": {
+  "area": "Páros támadások",
+  "expect": "Nagy, lassan kígyózó festett tűzsárkány, égő földcsík.",
+  "how": "Válaszd, és nézd végig.",
+  "order": 511,
+  "title": "Próbaterem → Zordon → PÁROS: Sárkánynyíl"
+ },
+ "u005": {
+  "area": "Porcelánváros",
+  "expect": "Nagy ecsetjel, festett porcelán tintatartó, nagy tussárkány, tintafolt-robbanás.",
+  "how": "Válaszd, és nézd végig.",
+  "order": 504,
+  "title": "Próbaterem → Ellenfelek és támadásaik → Porcelánváros → Porcelán mandarin → Tusátok"
+ },
+ "u003": {
+  "area": "Kristály-barlangok",
+  "expect": "Felugrik az égbe, az árnyéka nő a hősön, becsapódik (kráter, kőzápor).",
+  "how": "Válaszd, és nézd végig.",
+  "order": 502,
+  "title": "Próbaterem → Ellenfelek és támadásaik → Kristály-barlangok → Espresszó → Lecsapás"
+ },
+ "u007": {
+  "area": "Idézések",
+  "expect": "Kinyílik a szája (az állkapcsa leesik), és onnan ömlik a láng.",
+  "how": "Válaszd, és nézd végig.",
+  "order": 506,
+  "title": "Próbaterem → Idézések → Espresszó, a sárkány"
+ },
+ "u002": {
+  "area": "Hősök",
+  "expect": "Nagy festett lila lángoszlop Morgána körül; a harapás óriási lidérc-kutyafej, Cerberus a helyén marad.",
+  "how": "Válaszd, és nézd végig.",
+  "order": 501,
+  "title": "Próbaterem → Morgána → Éjféli rontás (Sötét alku után: Cerberus)"
+ },
+ "u006": {
+  "area": "Az Álompalota",
+  "expect": "Festett kamillás csésze; a hullám a csésze pereméből bújik ki.",
+  "how": "Válaszd, és nézd végig.",
+  "order": 505,
+  "title": "Próbaterem → Ellenfelek és támadásaik → Az Álompalota → Kamilla → Teaszertartás"
+ },
+ "u013": {
+  "area": "Páros támadások",
+  "expect": "Kinyíló lótusz, festett szirmokból forgószél, a végén szirmokra robban.",
+  "how": "Válaszd, és nézd végig.",
+  "order": 512,
+  "title": "Próbaterem → Jázmin → PÁROS: Lótuszvihar"
+ },
+ "u001": {
+  "area": "Hősök",
+  "expect": "Nincs nagy kitörés: repedés fut végig, és sok kidolgozott kőtüske tör fel sorban.",
+  "how": "Válaszd, és nézd végig.",
+  "order": 500,
+  "title": "Próbaterem → Grog → Földrepesztés"
+ },
+ "u010": {
+  "area": "Páros támadások",
+  "expect": "A csillagsárkány maga söpör végig az ellenségeken, utána festett meteorzápor.",
+  "how": "Válaszd, és nézd végig.",
+  "order": 509,
+  "title": "Próbaterem → Zordon → PÁROS: Csillagözön"
+ },
+ "u015": {
+  "area": "Térkép és felület",
+  "expect": "A pöttyök a régi helyükön (fán, toronyban), íves pontozott ösvény köti össze őket.",
+  "how": "Nézd meg mindkét térképlapot.",
+  "order": 514,
+  "title": "Térkép"
+ },
+ "u014": {
+  "area": "Páros támadások",
+  "expect": "Grog az ellenfél elé ugrik, aranyrobbanás, fényhullám, fényoszlopok.",
+  "how": "Válaszd, és nézd végig.",
+  "order": 513,
+  "title": "Próbaterem → Lili → PÁROS: Tündérököl"
+ }
+}

@@ -1,0 +1,10 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage({viewport:{width:390,height:844}});
+await p.goto('http://localhost:8765/index.html');await p.waitForTimeout(6000);
+const txt=async()=>p.evaluate(()=>[...document.querySelectorAll('button')].filter(b=>b.offsetParent).map(b=>b.textContent.trim().replace(/\s+/g,' ')).join(' | '));
+console.log('TITLE:',await txt());
+await p.evaluate(()=>{S.diff=0;S.cleared=['1-1','1-2','1-3','1-4','2-1','2-2','2-3','2-4','3-1','3-4'];S.gold=5000;S.seen=S.seen||{};mapScreen();});await p.waitForTimeout(800);
+await p.evaluate(()=>{const b=[...document.querySelectorAll('button')].find(b=>/térképre/.test(b.textContent));b&&b.click();});await p.waitForTimeout(800);console.log('MAP:',await txt());
+const shop=await p.evaluate(()=>{const b=[...document.querySelectorAll('button')].find(b=>/Bolt/.test(b.textContent));if(b)b.click();return !!b});await p.waitForTimeout(800);
+console.log('SHOP:',shop,await txt());
+await p.evaluate(()=>{const b=[...document.querySelectorAll('button')].find(b=>/Felszerel/.test(b.textContent));if(b)b.click();});await p.waitForTimeout(500);console.log('SHOP2:',await txt());await p.evaluate(()=>{const b=[...document.querySelectorAll('button')].find(b=>/Tárgy/.test(b.textContent));if(b)b.click();});await p.waitForTimeout(500);console.log('SHOP3:',await txt());
+await b.close();})();

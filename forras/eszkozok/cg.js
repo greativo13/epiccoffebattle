@@ -1,0 +1,15 @@
+const {chromium}=require('playwright');const D=process.argv[2];
+(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage({viewport:{width:1280,height:720}});
+p.on('pageerror',e=>console.log('ERR',e.message));
+await p.goto('http://localhost:8765/index.html');await p.waitForTimeout(3000);
+await p.evaluate(()=>{S.test=true;TEST['Mindent megvesz']();TEST['Próbaterem']();});await p.waitForTimeout(1500);
+const r=p.evaluate(()=>perform(S.heroes[0],{type:'summon',def:SUMMONS.find(d=>d.id==='cgolem')}));
+await p.waitForTimeout(1500);await p.screenshot({path:D+'/cg1.png',clip:{x:0,y:0,width:860,height:484}});await r;await p.waitForTimeout(800);
+await p.screenshot({path:D+'/cg2.png',clip:{x:0,y:0,width:860,height:484}});
+console.log(await p.evaluate(()=>JSON.stringify(S.heroes.map(h=>Object.keys(h.st).join('+')))));
+const hp0=await p.evaluate(()=>S.enemies[0].hp);
+const r2=p.evaluate(()=>{const e=S.enemies[0];const sk=ESK[(e.d.skills||[])[0][0]];return useEnemySkill(e,sk,S.heroes[0]);});
+await p.waitForTimeout(900);await p.screenshot({path:D+'/cg3.png',clip:{x:0,y:0,width:860,height:484}});await r2;await p.waitForTimeout(900);
+await p.screenshot({path:D+'/cg4.png',clip:{x:0,y:0,width:860,height:484}});
+console.log('enemy hp',hp0,'->',await p.evaluate(()=>S.enemies[0].hp),await p.evaluate(()=>JSON.stringify(S.heroes.map(h=>Object.keys(h.st).join('+')))));
+await b.close();})();

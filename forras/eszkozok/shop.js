@@ -1,0 +1,5 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage({viewport:{width:430,height:932},isMobile:true,hasTouch:true,deviceScaleFactor:1});
+await p.goto('http://localhost:8765/index.html');await p.waitForTimeout(5000);
+await p.evaluate(()=>{S.test=true;TEST['Minden pálya nyitva']();TEST['Max kávébab']&&TEST['Max kávébab']();shopScreen('wizard');});await p.waitForTimeout(1200);
+await p.screenshot({path:process.argv[2]});
+console.log(await p.evaluate(()=>{const r=q=>{const e=document.querySelector(q);if(!e)return null;const b=e.getBoundingClientRect();return [Math.round(b.top),Math.round(b.height)];};return JSON.stringify({zones:r('.shop .zones'),list:r('.shop-list'),box:r('.ov-box.shop'),ov:r('#ov'),bodyH:document.body.getBoundingClientRect().height,ih:innerHeight});}));await b.close();})();

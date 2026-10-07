@@ -1,0 +1,11 @@
+const {chromium}=require('playwright');const D=process.argv[2];
+(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage({viewport:{width:393,height:851},hasTouch:true,isMobile:true,deviceScaleFactor:2});
+p.on('pageerror',e=>console.log('ERR',e.message));
+await p.goto('http://localhost:8765/index.html');await p.waitForTimeout(3000);
+await p.evaluate(()=>{S.test=true;TEST['Mindent megvesz']();TEST['Próbaterem']();});await p.waitForTimeout(2000);
+await p.evaluate(()=>window.scrollTo(0,500));await p.waitForTimeout(400);await p.screenshot({path:D+'/ph1.png'});
+await p.evaluate(()=>{[...document.querySelectorAll('#btns .cbtn')].find(b=>b.textContent.includes('Négyek ereje')).click();});await p.waitForTimeout(700);
+await p.screenshot({path:D+'/ph2.png'});await b.close();
+const b2=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const q=await b2.newPage({viewport:{width:1280,height:720}});
+await q.goto('http://localhost:8765/index.html');await q.waitForTimeout(3000);await q.evaluate(()=>{S.test=true;TEST['Mindent megvesz']();TEST['Próbaterem']();});await q.waitForTimeout(2000);
+q.evaluate(()=>perform(S.heroes[0],{type:'skill',sk:COMBO,targets:S.enemies}));await q.waitForTimeout(650);await q.screenshot({path:D+'/ph3.png',clip:{x:0,y:0,width:860,height:484}});await b2.close();})();

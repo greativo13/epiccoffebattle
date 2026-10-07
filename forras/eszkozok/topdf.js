@@ -1,0 +1,3 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage();
+await p.goto('file://'+process.cwd()+'/osszefoglalo.html');await p.waitForTimeout(2500);
+await p.pdf({path:'/home/user/epiccoffebattle/Jatek_osszefoglalo.pdf',format:'A4',printBackground:true,margin:{top:'14mm',bottom:'14mm',left:'12mm',right:'12mm'},displayHeaderFooter:true,headerTemplate:'<span></span>',footerTemplate:'<div style="font-size:8px;width:100%;text-align:center;color:#999">Az Elveszett Ízek Nyomában · <span class="pageNumber"></span>/<span class="totalPages"></span></div>'});await b.close();})();

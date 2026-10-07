@@ -1,0 +1,1 @@
+const all=JSON.stringify([INTRO,ZONES.map(z=>[z.chIntro,z.chEnd,z.levels.map(L=>Object.keys(L).filter(k=>Array.isArray(L[k])&&L[k][0]&&L[k][0].text).map(k=>L[k]))])]);const m=all.match(/[^"]{0,40}üst[^"]{0,30}/g)||[];JSON.stringify(m.filter(x=>!/füst|üstök/.test(x)));

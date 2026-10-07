@@ -1,0 +1,3056 @@
+{
+ "heroes": [
+  {
+   "type": "wizard",
+   "name": "Zordon",
+   "cls": "Varázsló",
+   "btns": [
+    {},
+    {
+     "label": "Botütés",
+     "sub": "alaptámadás"
+    },
+    {},
+    {
+     "label": "Tűzgolyó",
+     "sub": "",
+     "desc": "Tüzes lövedék egy ellenségre. 40% eséllyel meg is égeti."
+    },
+    {
+     "label": "Szupernóva",
+     "sub": "",
+     "desc": "Egy csillag robban fel az ellenségen. Hatalmas tűzsebzés egy célpontra."
+    },
+    {
+     "label": "Vízörvény",
+     "sub": "",
+     "desc": "Vízörvény ragadja el és pörgeti meg az ellenséget, majd gejzír tör fel alatta. A tüzes lények (sárkány, szalamandra, démon) és a rozsdás gépek gyengéje; a növényeket csak megöntözi."
+    },
+    {
+     "label": "Jégszilánk",
+     "sub": "",
+     "desc": "Jégszilánk egy ellenségre, ami egy körre meg is fagyasztja (a főellenségek immunisak)."
+    },
+    {
+     "label": "Villámcsapás",
+     "sub": "",
+     "desc": "Viharfelhőből lecsapó villám. 30% eséllyel elkábít. Páncélt tör."
+    },
+    {},
+    {
+     "label": "Lángvihar",
+     "sub": "",
+     "desc": "Lángoszlop minden ellenség alatt. Az erdő lakói gyengék a tűzre."
+    },
+    {
+     "label": "Szökőár",
+     "sub": "",
+     "desc": "Hatalmas hullám söpör végig minden ellenségen."
+    },
+    {
+     "label": "Hóvihar",
+     "sub": "",
+     "desc": "Jeges vihar minden ellenségre, 25% fagyasztás."
+    },
+    {
+     "label": "Gleccser",
+     "sub": "",
+     "desc": "Jéghegy zúdul minden ellenségre, 35% fagyasztás."
+    },
+    {
+     "label": "Láncvillám",
+     "sub": "",
+     "desc": "Villámlánc ugrál ellenségről ellenségre, és mindet megbéklyózza: kimaradnak a következő körükből (a főellenségek immunisak)."
+    },
+    {
+     "label": "Égiháború",
+     "sub": "",
+     "desc": "Villámok sora csap minden ellenségbe, 30% kábítás."
+    },
+    {
+     "label": "Csillaghullás",
+     "sub": "",
+     "desc": "Csillagok zuhannak az égből minden ellenségre."
+    },
+    {},
+    {
+     "label": "Összpontosítás",
+     "sub": "",
+     "desc": "Zordon összpontosít: 25 MP-t tölt vissza, a következő körében pedig magától hatalmas Szélvihart szabadít minden ellenségre."
+    },
+    {},
+    {
+     "label": "Napkitörés",
+     "sub": "LIMIT",
+     "desc": "Zordon egy valósághű napot idéz az égre: felfúvódik, felrobban, és a robbanás minden ellenséget eltalál. Nem elemi támadás, mindenkire teljes erővel hat."
+    },
+    {
+     "label": "Négyek ereje",
+     "sub": "KÖZÖS TÁMADÁS",
+     "desc": "Közös támadás: a harcoló hősök egyszerre csapnak le minden ellenségre. Mindenki limitjét elhasználja."
+    },
+    {
+     "label": "Védekezés",
+     "sub": "pajzs"
+    },
+    {
+     "label": "Gyógyital",
+     "sub": "tárgy",
+     "desc": "80 életerőt ad vissza egy társnak."
+    },
+    {
+     "label": "Mana-ital",
+     "sub": "tárgy",
+     "desc": "40 MP-t ad vissza egy társnak."
+    },
+    {
+     "label": "Főnixtoll",
+     "sub": "nincs elesett",
+     "desc": "Feléleszt egy elesett társat."
+    },
+    {
+     "label": "Nagy gyógyital",
+     "sub": "tárgy",
+     "desc": "90 életerőt ad vissza az egész csapatnak."
+    },
+    {
+     "label": "Elixír",
+     "sub": "tárgy",
+     "desc": "Az egész csapat megissza: mindenkinek megtelik a limitje. Négy hőssel így azonnal jöhet a KÖZÖS TÁMADÁS!"
+    },
+    {
+     "label": "Limit-ital",
+     "sub": "tárgy",
+     "desc": "Egy társ limitje azonnal megtelik."
+    },
+    {
+     "label": "Élet-elixír",
+     "sub": "tárgy",
+     "desc": "Minden elesett társat feltámaszt teljes életerővel, az élőket félig meggyógyítja."
+    },
+    {
+     "label": "Dobótőr",
+     "sub": "tárgy",
+     "desc": "Éles tőrt dob egy ellenségre: MP nélkül is jó sebzés (a pálya szintjével nő)."
+    },
+    {
+     "label": "Tűzbomba",
+     "sub": "tárgy",
+     "desc": "Tűzbombát dob az ellenségek közé: minden ellenségre tűzsebzés, és felgyújthatja őket."
+    },
+    {
+     "label": "Idézések",
+     "sub": "▸ mind"
+    },
+    {
+     "label": "Társ kiütése",
+     "sub": "feltámasztáshoz"
+    },
+    {
+     "label": "Ellenfelek és támadásaik",
+     "sub": "▸ fejezetenként"
+    },
+    {
+     "label": "Következő ellenfél",
+     "sub": "▸"
+    },
+    {
+     "label": "Előző ellenfél",
+     "sub": "◂"
+    },
+    {
+     "label": "Állapotok törlése",
+     "sub": "mindenki talpra"
+    },
+    {
+     "label": "Kilépés",
+     "sub": "vissza a térképre"
+    }
+   ]
+  },
+  {
+   "type": "witch",
+   "name": "Morgána",
+   "cls": "Boszorkány",
+   "btns": [
+    {},
+    {
+     "label": "Pálcavillám",
+     "sub": "alaptámadás"
+    },
+    {},
+    {
+     "label": "Rozsda-átok",
+     "sub": "",
+     "desc": "1 körre a felére csökkenti az ellenség védelmét. A gépeket és páncélosokat a rozsda sebzi is."
+    },
+    {
+     "label": "Életszívás",
+     "sub": "",
+     "desc": "Semleges szívás: kiszívja az ellenség életerejét, és a felét Morgána visszagyógyítja. Minden ellenségre egyformán hat."
+    },
+    {
+     "label": "Árnyékkarmok",
+     "sub": "",
+     "desc": "Óriási árnyékkarmok tépnek bele egy ellenségbe."
+    },
+    {
+     "label": "Átok",
+     "sub": "",
+     "desc": "Hádész átka: sötét sebzés, és 1 körre 30%-kal csökkenti az ellenség támadását."
+    },
+    {
+     "label": "Vudu baba",
+     "sub": "",
+     "desc": "Morgána tűket döf a vudu babába: a tűk kirepülnek, és beleállnak az ellenségbe. Sötét sebzés, majd 3 körön át minden kör végén egy tű kihúzódik és sebez (életereje 9%-a)."
+    },
+    {
+     "label": "Lidércnyomás",
+     "sub": "",
+     "desc": "Rémálom tépi szét az ellenséget, és megátkozza."
+    },
+    {
+     "label": "Fekete lyuk",
+     "sub": "",
+     "desc": "Fekete lyuk nyel el egy ellenséget: kis sötét sebzés, és egy körre eltűnik a csatatérről (nem támad, őt sem lehet támadni), a következő körben visszatér. A főellenségeket nem tudja eltüntetni."
+    },
+    {
+     "label": "Őrület",
+     "sub": "",
+     "desc": "Morgána megőrjít egy ellenséget: megzavarodik, és a következő támadásával a saját társát támadja meg (ha egyedül van, magát)."
+    },
+    {},
+    {
+     "label": "Méregfelhő",
+     "sub": "",
+     "desc": "Mérgező köd minden ellenségre, 4 körig tartó méreggel."
+    },
+    {
+     "label": "Járvány",
+     "sub": "",
+     "desc": "Átkos indák kúsznak a föld alatt az ellenségekhez, és mérgező kitörés tör fel alóluk: nagy sebzés és biztos méreg 3 körig. A fertőzés egyikről a másikra ugrik."
+    },
+    {},
+    {
+     "label": "Sötét alku",
+     "sub": "",
+     "desc": "Életerőt áldoz, cserébe 60 MP-t kap, és a limitje megtelik: a következő limitje Cerberus – Hádész háromfejű kutyájává változik."
+    },
+    {},
+    {
+     "label": "Éjféli rontás",
+     "sub": "LIMIT",
+     "desc": "Sötét robbanások, és minden ellenség átok alá kerül."
+    },
+    {
+     "label": "Négyek ereje",
+     "sub": "KÖZÖS TÁMADÁS",
+     "desc": "Közös támadás: a harcoló hősök egyszerre csapnak le minden ellenségre. Mindenki limitjét elhasználja."
+    },
+    {
+     "label": "Védekezés",
+     "sub": "pajzs"
+    },
+    {
+     "label": "Gyógyital",
+     "sub": "tárgy",
+     "desc": "80 életerőt ad vissza egy társnak."
+    },
+    {
+     "label": "Mana-ital",
+     "sub": "tárgy",
+     "desc": "40 MP-t ad vissza egy társnak."
+    },
+    {
+     "label": "Főnixtoll",
+     "sub": "nincs elesett",
+     "desc": "Feléleszt egy elesett társat."
+    },
+    {
+     "label": "Nagy gyógyital",
+     "sub": "tárgy",
+     "desc": "90 életerőt ad vissza az egész csapatnak."
+    },
+    {
+     "label": "Elixír",
+     "sub": "tárgy",
+     "desc": "Az egész csapat megissza: mindenkinek megtelik a limitje. Négy hőssel így azonnal jöhet a KÖZÖS TÁMADÁS!"
+    },
+    {
+     "label": "Limit-ital",
+     "sub": "tárgy",
+     "desc": "Egy társ limitje azonnal megtelik."
+    },
+    {
+     "label": "Élet-elixír",
+     "sub": "tárgy",
+     "desc": "Minden elesett társat feltámaszt teljes életerővel, az élőket félig meggyógyítja."
+    },
+    {
+     "label": "Dobótőr",
+     "sub": "tárgy",
+     "desc": "Éles tőrt dob egy ellenségre: MP nélkül is jó sebzés (a pálya szintjével nő)."
+    },
+    {
+     "label": "Tűzbomba",
+     "sub": "tárgy",
+     "desc": "Tűzbombát dob az ellenségek közé: minden ellenségre tűzsebzés, és felgyújthatja őket."
+    },
+    {
+     "label": "Idézések",
+     "sub": "▸ mind"
+    },
+    {
+     "label": "Társ kiütése",
+     "sub": "feltámasztáshoz"
+    },
+    {
+     "label": "Ellenfelek és támadásaik",
+     "sub": "▸ fejezetenként"
+    },
+    {
+     "label": "Következő ellenfél",
+     "sub": "▸"
+    },
+    {
+     "label": "Előző ellenfél",
+     "sub": "◂"
+    },
+    {
+     "label": "Állapotok törlése",
+     "sub": "mindenki talpra"
+    },
+    {
+     "label": "Kilépés",
+     "sub": "vissza a térképre"
+    }
+   ]
+  },
+  {
+   "type": "fairy",
+   "name": "Lili",
+   "cls": "Tündér",
+   "btns": [
+    {},
+    {
+     "label": "Csillagszikra",
+     "sub": "alaptámadás"
+    },
+    {},
+    {
+     "label": "Zsugorítás",
+     "sub": "",
+     "desc": "Zöldes-sárga csillagörvény: az ellenség 3 körre összezsugorodik, kisebb erővel üt, és a védelme is gyengébb."
+    },
+    {
+     "label": "Pálcakoppintás",
+     "sub": "",
+     "desc": "Lili odarepül, és a varázspálcájával fejbe koppintja az ellenséget. Csillagrobbanás, 25% eséllyel el is kábítja."
+    },
+    {
+     "label": "Fénysugár",
+     "sub": "",
+     "desc": "Szent fény egy ellenségre. A gombák gyengéje!"
+    },
+    {
+     "label": "Tüskeinda",
+     "sub": "",
+     "desc": "Tüskés indák törnek fel a földből és lekötözik az ellenséget: kimarad a következő köréből (a főellenségek nem). Kő és gép ellen erős, növények és tüzes lények ellen gyenge."
+    },
+    {},
+    {
+     "label": "Álomcsillagok",
+     "sub": "",
+     "desc": "Lili meglengeti a pálcáját: feljön a telihold, és álomcsillagok hullanak minden ellenségre. Akit eltalálnak, biztosan elalszik (a főellenségek és minibosszok nem). Ütésre felébrednek."
+    },
+    {
+     "label": "Ítélet fénye",
+     "sub": "",
+     "desc": "Szent fényoszlopok minden ellenségen."
+    },
+    {
+     "label": "Hajnalpír",
+     "sub": "",
+     "desc": "Hajnali rózsaszín-arany fényhullám söpör végig az ellenségeken (fény), a csapat pedig 10%-ot gyógyul."
+    },
+    {
+     "label": "Virágvihar",
+     "sub": "",
+     "desc": "Szirmok és levelek éles vihara minden ellenségre."
+    },
+    {},
+    {
+     "label": "Gyógyítás",
+     "sub": "",
+     "desc": "Meggyógyít egy társat."
+    },
+    {
+     "label": "Tisztítás",
+     "sub": "",
+     "desc": "Megtisztítja a csapatot: leveszi a negatív állapotokat (méreg, égés, átok, fagyás…), 2 körig újakat sem kaphatnak, és egy kicsit gyógyít is."
+    },
+    {
+     "label": "Tündérpor",
+     "sub": "",
+     "desc": "Lili pálcájából csillámló tündérpor hull az egész csapatra, és meggyógyítja őket."
+    },
+    {
+     "label": "Feltámasztás",
+     "sub": "nincs elesett",
+     "desc": "Feléleszt egy elesett társat fél életerővel."
+    },
+    {
+     "label": "Újjászületés",
+     "sub": "",
+     "desc": "Az elesett társak 60% életerővel feltámadnak, az élők nagy gyógyítást kapnak, és ha a következő két körben elesnének, maguktól feltámadnak."
+    },
+    {
+     "label": "Gyorsaság",
+     "sub": "",
+     "desc": "1 körig a kiválasztott társ körönként kétszer léphet (szárnyak jelzik, amíg tart)."
+    },
+    {
+     "label": "Fénypajzs",
+     "sub": "",
+     "desc": "Fénypajzs a csapat elé: amíg áll (a következő kör végéig), az ellenséges támadás el sem jut a hősökig – a rohamozó nekicsapódik és visszapattan, a lövés visszapattan a támadóra, és a sebzést ő kapja."
+    },
+    {},
+    {
+     "label": "Égi áldás",
+     "sub": "LIMIT",
+     "desc": "Mindenkit feléleszt és teljesen meggyógyít, és erősebb lesz a védelmük."
+    },
+    {
+     "label": "Négyek ereje",
+     "sub": "KÖZÖS TÁMADÁS",
+     "desc": "Közös támadás: a harcoló hősök egyszerre csapnak le minden ellenségre. Mindenki limitjét elhasználja."
+    },
+    {
+     "label": "Védekezés",
+     "sub": "pajzs"
+    },
+    {
+     "label": "Gyógyital",
+     "sub": "tárgy",
+     "desc": "80 életerőt ad vissza egy társnak."
+    },
+    {
+     "label": "Mana-ital",
+     "sub": "tárgy",
+     "desc": "40 MP-t ad vissza egy társnak."
+    },
+    {
+     "label": "Főnixtoll",
+     "sub": "nincs elesett",
+     "desc": "Feléleszt egy elesett társat."
+    },
+    {
+     "label": "Nagy gyógyital",
+     "sub": "tárgy",
+     "desc": "90 életerőt ad vissza az egész csapatnak."
+    },
+    {
+     "label": "Elixír",
+     "sub": "tárgy",
+     "desc": "Az egész csapat megissza: mindenkinek megtelik a limitje. Négy hőssel így azonnal jöhet a KÖZÖS TÁMADÁS!"
+    },
+    {
+     "label": "Limit-ital",
+     "sub": "tárgy",
+     "desc": "Egy társ limitje azonnal megtelik."
+    },
+    {
+     "label": "Élet-elixír",
+     "sub": "tárgy",
+     "desc": "Minden elesett társat feltámaszt teljes életerővel, az élőket félig meggyógyítja."
+    },
+    {
+     "label": "Dobótőr",
+     "sub": "tárgy",
+     "desc": "Éles tőrt dob egy ellenségre: MP nélkül is jó sebzés (a pálya szintjével nő)."
+    },
+    {
+     "label": "Tűzbomba",
+     "sub": "tárgy",
+     "desc": "Tűzbombát dob az ellenségek közé: minden ellenségre tűzsebzés, és felgyújthatja őket."
+    },
+    {
+     "label": "Idézések",
+     "sub": "▸ mind"
+    },
+    {
+     "label": "Társ kiütése",
+     "sub": "feltámasztáshoz"
+    },
+    {
+     "label": "Ellenfelek és támadásaik",
+     "sub": "▸ fejezetenként"
+    },
+    {
+     "label": "Következő ellenfél",
+     "sub": "▸"
+    },
+    {
+     "label": "Előző ellenfél",
+     "sub": "◂"
+    },
+    {
+     "label": "Állapotok törlése",
+     "sub": "mindenki talpra"
+    },
+    {
+     "label": "Kilépés",
+     "sub": "vissza a térképre"
+    }
+   ]
+  },
+  {
+   "type": "orc",
+   "name": "Grog",
+   "cls": "Ork harcos",
+   "btns": [
+    {},
+    {
+     "label": "Fejszecsapás",
+     "sub": "alaptámadás"
+    },
+    {},
+    {
+     "label": "Vérszomj",
+     "sub": "",
+     "desc": "Életerőt áldoz egy pusztító csapásért. Páncélt tör."
+    },
+    {
+     "label": "Zúzás",
+     "sub": "",
+     "desc": "Hatalmas fejszecsapás. Mana helyett Grog életerejének 6%-ába kerül. Páncélt tör."
+    },
+    {
+     "label": "Meteorököl",
+     "sub": "",
+     "desc": "Grog az égből csap le. Hatalmas földsebzés egy célpontra, páncélt tör."
+    },
+    {},
+    {
+     "label": "Forgószél",
+     "sub": "",
+     "desc": "Grog pörögni kezd, hat lángoló kétélű fejsze forog körülötte, és végigsöpör minden ellenségen. A tüskés rózsák visszaszúrnak!"
+    },
+    {
+     "label": "Földrepesztés",
+     "sub": "",
+     "desc": "Grog a földbe csap: a repedés végigfut az ellenségek alatt, és hegyes sziklák törnek fel. Föld elem."
+    },
+    {
+     "label": "Hegyomlás",
+     "sub": "",
+     "desc": "Sziklák zúdulnak az égből minden ellenségre."
+    },
+    {
+     "label": "Földrengés",
+     "sub": "",
+     "desc": "Grog életerőt áldoz, és a földbe csap: sziklák törnek fel minden ellenség alatt."
+    },
+    {
+     "label": "Magmakitörés",
+     "sub": "",
+     "desc": "A föld megnyílik, és láva tör fel minden ellenség alatt."
+    },
+    {},
+    {
+     "label": "Provokáció",
+     "sub": "",
+     "desc": "1 körig minden ellenség Grogot támadja, ő pedig 30%-kal kevesebbet sebződik. Így védi a gyengébb társakat."
+    },
+    {
+     "label": "Harci üvöltés",
+     "sub": "",
+     "desc": "Az egész csapat ereje nő 1 körig."
+    },
+    {
+     "label": "Kőbőr",
+     "sub": "",
+     "desc": "Grog bőre kővé válik: 1 körig minden őt érő sebzés a felére csökken (a Pajzzsal és a védekezéssel is összeadódik), és leveszi a negatív állapotokat."
+    },
+    {
+     "label": "Óriásnövesztés",
+     "sub": "",
+     "desc": "Grog óriásira növeszt egy kiválasztott hőst (akár magát): 1 körig 1,5-szer erősebben támad."
+    },
+    {},
+    {
+     "label": "Titáncsapás",
+     "sub": "LIMIT",
+     "desc": "Grog óriásira nő, és egyetlen csapással végigsöpör minden ellenségen. Páncélt tör."
+    },
+    {
+     "label": "Négyek ereje",
+     "sub": "KÖZÖS TÁMADÁS",
+     "desc": "Közös támadás: a harcoló hősök egyszerre csapnak le minden ellenségre. Mindenki limitjét elhasználja."
+    },
+    {
+     "label": "Védekezés",
+     "sub": "pajzs"
+    },
+    {
+     "label": "Gyógyital",
+     "sub": "tárgy",
+     "desc": "80 életerőt ad vissza egy társnak."
+    },
+    {
+     "label": "Mana-ital",
+     "sub": "tárgy",
+     "desc": "40 MP-t ad vissza egy társnak."
+    },
+    {
+     "label": "Főnixtoll",
+     "sub": "nincs elesett",
+     "desc": "Feléleszt egy elesett társat."
+    },
+    {
+     "label": "Nagy gyógyital",
+     "sub": "tárgy",
+     "desc": "90 életerőt ad vissza az egész csapatnak."
+    },
+    {
+     "label": "Elixír",
+     "sub": "tárgy",
+     "desc": "Az egész csapat megissza: mindenkinek megtelik a limitje. Négy hőssel így azonnal jöhet a KÖZÖS TÁMADÁS!"
+    },
+    {
+     "label": "Limit-ital",
+     "sub": "tárgy",
+     "desc": "Egy társ limitje azonnal megtelik."
+    },
+    {
+     "label": "Élet-elixír",
+     "sub": "tárgy",
+     "desc": "Minden elesett társat feltámaszt teljes életerővel, az élőket félig meggyógyítja."
+    },
+    {
+     "label": "Dobótőr",
+     "sub": "tárgy",
+     "desc": "Éles tőrt dob egy ellenségre: MP nélkül is jó sebzés (a pálya szintjével nő)."
+    },
+    {
+     "label": "Tűzbomba",
+     "sub": "tárgy",
+     "desc": "Tűzbombát dob az ellenségek közé: minden ellenségre tűzsebzés, és felgyújthatja őket."
+    },
+    {
+     "label": "Idézések",
+     "sub": "▸ mind"
+    },
+    {
+     "label": "Társ kiütése",
+     "sub": "feltámasztáshoz"
+    },
+    {
+     "label": "Ellenfelek és támadásaik",
+     "sub": "▸ fejezetenként"
+    },
+    {
+     "label": "Következő ellenfél",
+     "sub": "▸"
+    },
+    {
+     "label": "Előző ellenfél",
+     "sub": "◂"
+    },
+    {
+     "label": "Állapotok törlése",
+     "sub": "mindenki talpra"
+    },
+    {
+     "label": "Kilépés",
+     "sub": "vissza a térképre"
+    }
+   ]
+  },
+  {
+   "type": "monk",
+   "name": "Jázmin",
+   "cls": "Íjász",
+   "btns": [
+    {},
+    {
+     "label": "Aranynyíl",
+     "sub": "alaptámadás"
+    },
+    {},
+    {
+     "label": "Teabomba-nyíl",
+     "sub": "",
+     "desc": "Forró teával töltött nyíl robban a kiválasztott ellenségen: tűzsebzés."
+    },
+    {
+     "label": "Árnyékszegező nyíl",
+     "sub": "",
+     "desc": "A nyíl a földhöz szegezi az ellenfél árnyékát: 85% eséllyel 2 körig nem tud lépni (a főellenségek ellen nem mindig hat)."
+    },
+    {
+     "label": "Tenyércsapás",
+     "sub": "",
+     "desc": "Villámgyors tenyérütés, 20% eséllyel elkábít."
+    },
+    {
+     "label": "Hármas nyíl",
+     "sub": "",
+     "desc": "Három nyíl gyors egymásutánban, mind a kiválasztott ellenségbe."
+    },
+    {
+     "label": "Százkezű",
+     "sub": "",
+     "desc": "Három gyors ütés egymás után ugyanarra az ellenségre."
+    },
+    {
+     "label": "Lótusznyíl",
+     "sub": "",
+     "desc": "A nyíl az ellenfélbe csapódva lótuszvirággá nyílik: a szirmok az egész csapatot gyógyítják egy kicsit."
+    },
+    {
+     "label": "Mantranyíl",
+     "sub": "",
+     "desc": "Arany jelek ragyognak a nyíl mögött: áttöri a páncélt, és leveszi az ellenfél minden erősítését."
+    },
+    {},
+    {
+     "label": "Szikranyíl",
+     "sub": "",
+     "desc": "Szikrázó villámnyíl ugrál ellenségről ellenségre; a végén a teljes szikralánc felrobban."
+    },
+    {
+     "label": "Nyílzápor",
+     "sub": "",
+     "desc": "Jázmin az égbe lő, és fentről nyílesső hull minden ellenfélre."
+    },
+    {},
+    {
+     "label": "Ébresztő tea",
+     "sub": "",
+     "desc": "Az egész csapat felébred és megtisztul, 3 körig pedig védett az altatás és a többi rontás ellen."
+    },
+    {
+     "label": "Zöld tea",
+     "sub": "",
+     "desc": "Gyógyító tea az egész csapatnak."
+    },
+    {
+     "label": "Belső csend",
+     "sub": "",
+     "desc": "Jázmin lehunyt szemmel céloz: a következő találata biztosan kritikus, és 1 körig kétszer léphet."
+    },
+    {
+     "label": "Fekete tea",
+     "sub": "",
+     "desc": "Erős fekete tea: az egész csapat támadása nő 1 körig."
+    },
+    {
+     "label": "Füstölő-nyíl",
+     "sub": "",
+     "desc": "A csapat mellé lőtt nyíl füstölőként ég tovább: 1 körig minden kör végén gyógyítja a csapatot."
+    },
+    {
+     "label": "Mana-tea",
+     "sub": "",
+     "desc": "Jázmin életerőt áldoz egy különleges főzetért: mindenki 28 MP-t kap."
+    },
+    {},
+    {
+     "label": "Ezer Kéz",
+     "sub": "LIMIT",
+     "desc": "Jázmin mögött felemelkedik az ezerkezű Buddha: aranyló tenyérütések záporoznak minden ellenségre, végül egy óriási tenyér csap le rájuk."
+    },
+    {
+     "label": "Négyek ereje",
+     "sub": "KÖZÖS TÁMADÁS",
+     "desc": "Közös támadás: a harcoló hősök egyszerre csapnak le minden ellenségre. Mindenki limitjét elhasználja."
+    },
+    {
+     "label": "Védekezés",
+     "sub": "pajzs"
+    },
+    {
+     "label": "Gyógyital",
+     "sub": "tárgy",
+     "desc": "80 életerőt ad vissza egy társnak."
+    },
+    {
+     "label": "Mana-ital",
+     "sub": "tárgy",
+     "desc": "40 MP-t ad vissza egy társnak."
+    },
+    {
+     "label": "Főnixtoll",
+     "sub": "nincs elesett",
+     "desc": "Feléleszt egy elesett társat."
+    },
+    {
+     "label": "Nagy gyógyital",
+     "sub": "tárgy",
+     "desc": "90 életerőt ad vissza az egész csapatnak."
+    },
+    {
+     "label": "Elixír",
+     "sub": "tárgy",
+     "desc": "Az egész csapat megissza: mindenkinek megtelik a limitje. Négy hőssel így azonnal jöhet a KÖZÖS TÁMADÁS!"
+    },
+    {
+     "label": "Limit-ital",
+     "sub": "tárgy",
+     "desc": "Egy társ limitje azonnal megtelik."
+    },
+    {
+     "label": "Élet-elixír",
+     "sub": "tárgy",
+     "desc": "Minden elesett társat feltámaszt teljes életerővel, az élőket félig meggyógyítja."
+    },
+    {
+     "label": "Dobótőr",
+     "sub": "tárgy",
+     "desc": "Éles tőrt dob egy ellenségre: MP nélkül is jó sebzés (a pálya szintjével nő)."
+    },
+    {
+     "label": "Tűzbomba",
+     "sub": "tárgy",
+     "desc": "Tűzbombát dob az ellenségek közé: minden ellenségre tűzsebzés, és felgyújthatja őket."
+    },
+    {
+     "label": "Idézések",
+     "sub": "▸ mind"
+    },
+    {
+     "label": "Társ kiütése",
+     "sub": "feltámasztáshoz"
+    },
+    {
+     "label": "Ellenfelek és támadásaik",
+     "sub": "▸ fejezetenként"
+    },
+    {
+     "label": "Következő ellenfél",
+     "sub": "▸"
+    },
+    {
+     "label": "Előző ellenfél",
+     "sub": "◂"
+    },
+    {
+     "label": "Állapotok törlése",
+     "sub": "mindenki talpra"
+    },
+    {
+     "label": "Kilépés",
+     "sub": "vissza a térképre"
+    }
+   ]
+  }
+ ],
+ "sums": [
+  {
+   "id": "squirrel",
+   "name": "Koffeines mókus",
+   "desc": "Végigszáguld az ellenségeken, megcsipkedi őket, és a csata végén dupla arany jár."
+  },
+  {
+   "id": "slimeking",
+   "name": "Nyálkakirály",
+   "desc": "Óriási nyálka zuhan az ellenségekre: méregsebzés mindenkire, és a ragacs 3 körre csökkenti a védelmüket."
+  },
+  {
+   "id": "mushking",
+   "name": "Gomba-Király",
+   "desc": "Légyölő gombák zuhannak az égből szerteszét az ellenségekre, és lila spórafelhővé pukkadnak: méregsebzés, és mindenki elalszik (a főellenségek nem)."
+  },
+  {
+   "id": "oak",
+   "name": "Rémült Vén Tölgy",
+   "desc": "Gyökerek fogják meg az összes ellenséget (kimaradnak egy körből), a makkok 30%-ot gyógyítanak a csapaton."
+  },
+  {
+   "id": "gknight",
+   "name": "Kísértetlovag",
+   "desc": "Lélekvágás a legerősebb ellenségre: hatalmas sötét sebzés és átok."
+  },
+  {
+   "id": "rustking",
+   "name": "Rozsdakirály",
+   "desc": "Megkongatja a Nagy Órát: a csapat minden tagja 2 körig kétszer léphet."
+  },
+  {
+   "id": "cannon",
+   "name": "Óramű ágyúüteg",
+   "desc": "Sortűz minden ellenségre: nagy fegyveres sebzés, páncélt tör."
+  },
+  {
+   "id": "tbat",
+   "name": "Villámdenevér",
+   "desc": "A villámdenevérek bénító sikolya: villódzó hanghullám söpör végig az ellenségeken, villám sebzés, 40% eséllyel kábít."
+  },
+  {
+   "id": "cgolem",
+   "name": "Kristálygólem",
+   "desc": "Kék kristálytükör-pajzs a csapatra: mindenkinél kivédi a következő találatot, és visszaveri a támadóra."
+  },
+  {
+   "id": "espresso",
+   "name": "Espresszó, a sárkány",
+   "desc": "Espresszó kitátja a száját, és hatalmas lángcsóvát lehel minden ellenségre: óriási tűzsebzés és égés."
+  },
+  {
+   "id": "phoenix",
+   "name": "Főnix",
+   "desc": "Mindenkit feltámaszt és teljesen meggyógyít."
+  },
+  {
+   "id": "koffgolem",
+   "name": "Koffein-gólem",
+   "desc": "Felpörgeti a csapatot: mindenki 3 körig kétszer lép és erősebben támad."
+  },
+  {
+   "id": "shadows",
+   "name": "Árny-csapat",
+   "desc": "Minden élő hős árnymása kiemelkedik a földből, és egy-egy erős árnycsapást mér egy ellenségre."
+  },
+  {
+   "id": "king",
+   "name": "Démonkirály",
+   "desc": "Pokoltűz minden ellenségre: nagy tűzsebzés és átok."
+  },
+  {
+   "id": "morcus",
+   "name": "Morcus",
+   "desc": "Káosz: véletlen elemű, hatalmas sebzés minden ellenségre."
+  },
+  {
+   "id": "oolong",
+   "name": "Öreg Oolong",
+   "desc": "Az öreg gőzsárkány kitátja a száját, és forró gőzt lehel minden ellenségre: víz sebzés, és megforrázza őket."
+  },
+  {
+   "id": "teaset",
+   "name": "Az Ezerrészes Szerviz",
+   "desc": "A Szerviz csészekatonái végigrohannak a csatatéren, és minden ellenséget eltaposnak: nagy fegyversebzés."
+  },
+  {
+   "id": "queenbee",
+   "name": "A Mézkirálynő",
+   "desc": "Hatalmas, dühös méhraj tör ki a Mézkirálynő mögül, és újra meg újra lecsap az ellenségekre: természet sebzés és méreg."
+  },
+  {
+   "id": "kamilla",
+   "name": "Kamilla, a Teacsászárnő",
+   "desc": "Kamilla meglendíti óriás legyezőjét: hatalmas széllökés söpör végig az ellenségeken, hátralöki és megsebzi őket."
+  }
+ ],
+ "foes": [
+  {
+   "zone": "Suttogó Erdő",
+   "chapter": "I. fejezet: Koffeinmegvonás",
+   "foes": [
+    {
+     "t": "slime",
+     "name": "Zöld nyálka",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Rávetődés",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Méregköpés",
+       "",
+       "poison",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "rose",
+     "name": "Harapós rózsa",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Tüskés inda",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Tüskezápor",
+       "",
+       "phys",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "snail",
+     "name": "Mohacsiga",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Nyálkacsík",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Házcsapás",
+       "",
+       "phys",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "fireflies",
+     "name": "Szentjánosbogár-raj",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Villanás",
+       "",
+       "holy",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "shroom",
+     "name": "Gombaember",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Fejelés",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Altató spóra",
+       "",
+       "poison",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "puffball",
+     "name": "Mérgező pöfeteg",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Pöfögés",
+       "",
+       "poison",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "frog",
+     "name": "Barlangi béka",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Nyelvcsapás",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Rávetődés",
+       "",
+       "phys",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "beetle",
+     "name": "Kéregbogár",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Szarvdöfés",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Gömbbe gurulás",
+       "",
+       "",
+       "self"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "mushking",
+     "name": "Gomba-Király",
+     "boss": false,
+     "mini": true,
+     "sk": [
+      [
+       "Gombaeső",
+       "",
+       "poison",
+       "enemy"
+      ],
+      [
+       "Királyi spóra",
+       "",
+       "poison",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "acorn",
+     "name": "Makkocska",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Rávetődés",
+       "",
+       "phys",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "oak",
+     "name": "Rémült Vén Tölgy",
+     "boss": true,
+     "mini": false,
+     "sk": [
+      [
+       "Ágcsapás",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Levélvihar",
+       "",
+       "nature",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    }
+   ]
+  },
+  {
+   "zone": "Romváros",
+   "chapter": "II. fejezet: Az Álmos Királyság",
+   "foes": [
+    {
+     "t": "skeleton",
+     "name": "Csontváz őr",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Kardvágás",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Pajzscsapás",
+       "",
+       "phys",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "zombie",
+     "name": "Zombi pék",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Sodrófa",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Rothadt kifli",
+       "",
+       "poison",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "ghost",
+     "name": "Kóbor szellem",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Hideg érintés",
+       "",
+       "ice",
+       "enemy"
+      ],
+      [
+       "Jajveszékelés",
+       "",
+       "dark",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "clock",
+     "name": "Óramű katona",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Alabárdszúrás",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Felhúzott csapás",
+       "",
+       "phys",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "cannon",
+     "name": "Rozsdás ágyú",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Ágyúlövés",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Sortűz",
+       "",
+       "phys",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "gknight",
+     "name": "Kísértetlovag",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Lélekvágás",
+       "",
+       "dark",
+       "enemy"
+      ],
+      [
+       "Sötét hullám",
+       "",
+       "dark",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "rustking",
+     "name": "II. Csavar",
+     "boss": true,
+     "mini": false,
+     "sk": [
+      [
+       "Fogaskerékhullás",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Forró gőz",
+       "",
+       "fire",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    }
+   ]
+  },
+  {
+   "zone": "Kristály-barlangok",
+   "chapter": "III. fejezet: Forró Lé",
+   "foes": [
+    {
+     "t": "cgolem",
+     "name": "Kristálygólem",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Kristályököl",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Szilánkeső",
+       "",
+       "phys",
+       "enemies"
+      ],
+      [
+       "Tükörpajzs",
+       "",
+       "",
+       "self"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "iceelem",
+     "name": "Jégelementál",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Fagyos érintés",
+       "",
+       "ice",
+       "enemy"
+      ],
+      [
+       "Jégcsapok",
+       "",
+       "ice",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "tbat",
+     "name": "Villámdenevér",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Szikraharapás",
+       "",
+       "thunder",
+       "enemy"
+      ],
+      [
+       "Bénító sikoly",
+       "",
+       "thunder",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "whelp",
+     "name": "Sárkányfióka",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Karomcsapás",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Tűzlehelet",
+       "",
+       "fire",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "salamander",
+     "name": "Láva-szalamandra",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Lángharapás",
+       "",
+       "fire",
+       "enemy"
+      ],
+      [
+       "Tűzgolyó",
+       "",
+       "fire",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "oknight",
+     "name": "Obszidián lovag",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Olvadt kard",
+       "",
+       "fire",
+       "enemy"
+      ],
+      [
+       "Obszidiánfal",
+       "",
+       "fire",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "espresso",
+     "name": "Espresszó",
+     "boss": true,
+     "mini": false,
+     "sk": [
+      [
+       "Farokcsapás",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Duplán pörkölt lehelet",
+       "",
+       "fire",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    }
+   ]
+  },
+  {
+   "zone": "A Káosz Tornya",
+   "chapter": "IV. fejezet: A Káosz Tornya",
+   "foes": [
+    {
+     "t": "ccube",
+     "name": "Káoszkocka",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Káoszlövedék",
+       "",
+       "dark",
+       "enemy"
+      ],
+      [
+       "Kockaeső",
+       "",
+       "dark",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "sleepless",
+     "name": "Álmatlan szem",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Karikás bámulás",
+       "",
+       "dark",
+       "enemy"
+      ],
+      [
+       "Álomlopás",
+       "Ellopja a hős álmát (abból gyógyul), a hős elalszik.",
+       "dark",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "shorc",
+     "name": "Árny-Grog",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Árny-zúzás",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Árny-földrepesztés",
+       "",
+       "phys",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "shfairy",
+     "name": "Árny-Lili",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Hamis fény",
+       "",
+       "dark",
+       "enemy"
+      ],
+      [
+       "Árnyéklopás",
+       "",
+       "dark",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "shwizard",
+     "name": "Árny-Zordon",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Árnytűz",
+       "",
+       "fire",
+       "enemy"
+      ],
+      [
+       "Árnyvillám",
+       "",
+       "thunder",
+       "enemy"
+      ],
+      [
+       "Árny-jégvihar",
+       "",
+       "ice",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "shwitch",
+     "name": "Árny-Morgána",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Árny-életszívás",
+       "",
+       "dark",
+       "enemy"
+      ],
+      [
+       "Rontás",
+       "",
+       "dark",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "imp",
+     "name": "Démonfióka",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Karmolás",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Tűzköpés",
+       "",
+       "fire",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "mage",
+     "name": "Sötét mágus",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Árnyékgolyó",
+       "",
+       "dark",
+       "enemy"
+      ],
+      [
+       "Rontás",
+       "",
+       "dark",
+       "enemy"
+      ],
+      [
+       "Sötét hullám",
+       "",
+       "dark",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "beast",
+     "name": "Árnyfenevad",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Harapás",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Tombolás",
+       "",
+       "phys",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "koffgolem",
+     "name": "Koffein-gólem",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Bögreököl",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Forró gőz",
+       "",
+       "fire",
+       "enemies"
+      ],
+      [
+       "Dupla presszó",
+       "",
+       "fire",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "king",
+     "name": "Démonkirály",
+     "boss": true,
+     "mini": false,
+     "sk": [
+      [
+       "Pokoli csapás",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Pokoltűz",
+       "",
+       "fire",
+       "enemies"
+      ],
+      [
+       "Démoni üvöltés",
+       "",
+       "dark",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "morcus",
+     "name": "Morcus",
+     "boss": true,
+     "mini": false,
+     "sk": [
+      [
+       "Káoszlövedék",
+       "",
+       "dark",
+       "enemy"
+      ],
+      [
+       "Káoszkockák",
+       "",
+       "dark",
+       "enemies"
+      ],
+      [
+       "Káoszvihar",
+       "",
+       "dark",
+       "enemies"
+      ],
+      [
+       "Árnykarmok",
+       "",
+       "dark",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    }
+   ]
+  },
+  {
+   "zone": "Ködös Teateraszok",
+   "chapter": "V. fejezet: Ködös Teateraszok",
+   "foes": [
+    {
+     "t": "teaimp",
+     "name": "Tealevél-manó",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Levélvágás",
+       "",
+       "nature",
+       "enemy"
+      ],
+      [
+       "Teatüske",
+       "",
+       "nature",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "steamwisp",
+     "name": "Gőzlidérc",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Forrázás",
+       "",
+       "fire",
+       "enemy"
+      ],
+      [
+       "Gőzfelhő",
+       "",
+       "fire",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "bamboo",
+     "name": "Bambuszőr",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Bambuszdöfés",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Bambuszketrec",
+       "",
+       "nature",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "monkey",
+     "name": "Tealopó majom",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Elcsenés",
+       "Mindig elcsen egy tőrt vagy tűzbombát (ha a csapatnál van, onnan), és rögtön visszadobja.",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Csészedobás",
+       "",
+       "phys",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "potturtle",
+     "name": "Kannateknős",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Kannapörgés",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Forró öntet",
+       "",
+       "water",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "samovar",
+     "name": "Szamovár-gólem",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Vasököl",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Forrázás",
+       "",
+       "fire",
+       "enemy"
+      ],
+      [
+       "Kifutó forrás",
+       "",
+       "water",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "oolong",
+     "name": "Öreg Oolong",
+     "boss": true,
+     "mini": false,
+     "sk": [
+      [
+       "Sárkányharapás",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Gőzlehelet",
+       "",
+       "water",
+       "enemies"
+      ],
+      [
+       "Ködgyűrű",
+       "A köd elszívja a hős varázserejét, és Oolong abból gyógyul.",
+       "water",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    }
+   ]
+  },
+  {
+   "zone": "Porcelánváros",
+   "chapter": "VI. fejezet: Porcelánváros",
+   "foes": [
+    {
+     "t": "doll",
+     "name": "Porcelánbaba",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Porcelán csók",
+       "",
+       "dark",
+       "enemy"
+      ],
+      [
+       "Szilánkszórás",
+       "",
+       "phys",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "cupsoldier",
+     "name": "Csészekatona",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Kanáldöfés",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Teafröccs",
+       "",
+       "water",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "tongs",
+     "name": "Cukorfogó rák",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Csípés",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Cukordobás",
+       "",
+       "phys",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "lantern",
+     "name": "Lampionlidérc",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Lampionláng",
+       "",
+       "fire",
+       "enemy"
+      ],
+      [
+       "Lidércrobbanás",
+       "Végső támadás: a lampion felrobban, és örökre megsemmisül.",
+       "dark",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "vase",
+     "name": "Vázagólem",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Vázacsapás",
+       "",
+       "earth",
+       "enemy"
+      ],
+      [
+       "Mázpáncél",
+       "",
+       "",
+       "self"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "mandarin",
+     "name": "Porcelán mandarin",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Legyezőpenge",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Tusátok",
+       "",
+       "dark",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "teaset",
+     "name": "Az Ezerrészes Szerviz",
+     "boss": true,
+     "mini": false,
+     "sk": [
+      [
+       "Kannazúzás",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Tányérvihar",
+       "",
+       "phys",
+       "enemies"
+      ],
+      [
+       "Porcelánroham",
+       "",
+       "phys",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    }
+   ]
+  },
+  {
+   "zone": "Cukorsivatag",
+   "chapter": "VII. fejezet: Cukorsivatag",
+   "foes": [
+    {
+     "t": "sugarcube",
+     "name": "Kockacukor-gólem",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Kockacsapás",
+       "",
+       "earth",
+       "enemy"
+      ],
+      [
+       "Porcukorfelhő",
+       "",
+       "phys",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "bee",
+     "name": "Mézdarázs",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Fullánk",
+       "",
+       "poison",
+       "enemy"
+      ],
+      [
+       "Mézlövet",
+       "",
+       "nature",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "gingerman",
+     "name": "Mézeskalács-bandita",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Cukorpálca-ütés",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Cukormáz-bomba",
+       "",
+       "ice",
+       "enemies"
+      ],
+      [
+       "Elcsenés",
+       "Mindig elcsen egy tőrt vagy tűzbombát (ha a csapatnál van, onnan), és rögtön visszadobja.",
+       "phys",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "candysheep",
+     "name": "Vattacukor-bárány",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Pihe-roham",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Édes álom",
+       "",
+       "holy",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "scorpion",
+     "name": "Karamellskorpió",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Ollócsattanás",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Karamellfullánk",
+       "",
+       "fire",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "jamdjinn",
+     "name": "Lekvárdzsinn",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Lekvárhullám",
+       "",
+       "poison",
+       "enemies"
+      ],
+      [
+       "Ragacsos kéz",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Kívánság",
+       "Teljesíti a saját kívánságát: izzó lekvárosüvegek zuhannak minden hősre (égés), és a dzsinn támadása 1 körre megnő.",
+       "fire",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "queenbee",
+     "name": "Mézkirálynő",
+     "boss": true,
+     "mini": false,
+     "sk": [
+      [
+       "Királyi fullánk",
+       "",
+       "poison",
+       "enemy"
+      ],
+      [
+       "Mézeső",
+       "Ragacsos méz: a hősök 1 körig sebezhetőbbek, a méhek (nem a királynő) gyógyulnak.",
+       "nature",
+       "enemies"
+      ],
+      [
+       "Zümmögővihar",
+       "",
+       "phys",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    }
+   ]
+  },
+  {
+   "zone": "Az Álompalota",
+   "chapter": "VIII. fejezet: Az Álompalota",
+   "foes": [
+    {
+     "t": "pillowknight",
+     "name": "Párnalovag",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Párnacsapás",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Tollvihar",
+       "",
+       "holy",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "moth",
+     "name": "Álomlepke",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Pihepor",
+       "",
+       "dark",
+       "enemy"
+      ],
+      [
+       "Holdsugár",
+       "",
+       "holy",
+       "enemy"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "sandman",
+     "name": "Homokmanó",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Álomhomok",
+       "",
+       "earth",
+       "enemy"
+      ],
+      [
+       "Homokvihar",
+       "",
+       "earth",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "nightmare",
+     "name": "Rémálom-árny",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Rémkarom",
+       "",
+       "dark",
+       "enemy"
+      ],
+      [
+       "Rémálom",
+       "",
+       "dark",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "teddy",
+     "name": "Mackóőr",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Macióölelés",
+       "",
+       "phys",
+       "enemy"
+      ],
+      [
+       "Morgás",
+       "Megrémíti a hősöket (1 körig sebezhetőbbek), Maci erősebb lesz.",
+       "",
+       "self"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "harp",
+     "name": "Altató hárfa",
+     "boss": false,
+     "mini": false,
+     "sk": [
+      [
+       "Húrpattanás",
+       "",
+       "thunder",
+       "enemy"
+      ],
+      [
+       "Altatódal",
+       "",
+       "dark",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    },
+    {
+     "t": "kamilla",
+     "name": "Kamilla",
+     "boss": true,
+     "mini": false,
+     "sk": [
+      [
+       "Teaszertartás",
+       "",
+       "water",
+       "enemies"
+      ],
+      [
+       "Legyezőhurrikán",
+       "",
+       "wind",
+       "enemies"
+      ],
+      [
+       "Altatófurulya",
+       "",
+       "dark",
+       "enemies"
+      ]
+     ],
+     "desc": ""
+    }
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "name": "Suttogó Erdő",
+   "chapter": "I. fejezet: Koffeinmegvonás",
+   "levels": [
+    {
+     "id": "1-1",
+     "name": "Mohás Tisztás",
+     "boss": false,
+     "tag": "",
+     "foes": [
+      "Zöld nyálka",
+      "Harapós rózsa",
+      "Mohacsiga",
+      "Szentjánosbogár-raj"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "1-2",
+     "name": "Gombás Barlang",
+     "boss": false,
+     "tag": "",
+     "foes": [
+      "Gombaember",
+      "Mérgező pöfeteg",
+      "Barlangi béka"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "1-3",
+     "name": "Az Óriás Fa Törzse",
+     "boss": false,
+     "tag": "minibossz",
+     "foes": [
+      "Kéregbogár",
+      "Harapós rózsa",
+      "Gombaember",
+      "Gomba-Király"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "1-4",
+     "name": "A Rémült Vén Tölgy",
+     "boss": true,
+     "tag": "",
+     "foes": [
+      "Makkocska",
+      "Rémült Vén Tölgy"
+     ],
+     "nb": 1
+    }
+   ]
+  },
+  {
+   "name": "Romváros",
+   "chapter": "II. fejezet: Az Álmos Királyság",
+   "levels": [
+    {
+     "id": "2-1",
+     "name": "Omladozó Kapu",
+     "boss": false,
+     "tag": "",
+     "foes": [
+      "Csontváz őr",
+      "Zombi pék"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "2-2",
+     "name": "Csendes Piactér",
+     "boss": false,
+     "tag": "",
+     "foes": [
+      "Kóbor szellem",
+      "Zombi pék",
+      "Csontváz őr"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "2-3",
+     "name": "Óramű Katedrális",
+     "boss": false,
+     "tag": "elit",
+     "foes": [
+      "Óramű katona",
+      "Csontváz őr",
+      "Rozsdás ágyú",
+      "Kóbor szellem",
+      "Kísértetlovag"
+     ],
+     "nb": 4
+    },
+    {
+     "id": "2-4",
+     "name": "A Rozsdakirály",
+     "boss": true,
+     "tag": "",
+     "foes": [
+      "Óramű katona",
+      "II. Csavar"
+     ],
+     "nb": 1
+    }
+   ]
+  },
+  {
+   "name": "Kristály-barlangok",
+   "chapter": "III. fejezet: Forró Lé",
+   "levels": [
+    {
+     "id": "3-1",
+     "name": "Kristálytükrök Csarnoka",
+     "boss": false,
+     "tag": "",
+     "foes": [
+      "Kristálygólem",
+      "Jégelementál"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "3-2",
+     "name": "Visszhang-mélység",
+     "boss": false,
+     "tag": "",
+     "foes": [
+      "Villámdenevér",
+      "Jégelementál",
+      "Sárkányfióka",
+      "Kristálygólem"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "3-3",
+     "name": "Olvadt Folyó",
+     "boss": false,
+     "tag": "elit",
+     "foes": [
+      "Láva-szalamandra",
+      "Sárkányfióka",
+      "Obszidián lovag"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "3-4",
+     "name": "A Pörkölő Sárkány",
+     "boss": true,
+     "tag": "",
+     "foes": [
+      "Sárkányfióka",
+      "Espresszó"
+     ],
+     "nb": 1
+    }
+   ]
+  },
+  {
+   "name": "A Káosz Tornya",
+   "chapter": "IV. fejezet: A Káosz Tornya",
+   "levels": [
+    {
+     "id": "4-1",
+     "name": "Fordított Könyvtár",
+     "boss": false,
+     "tag": "",
+     "foes": [
+      "Káoszkocka",
+      "Álmatlan szem"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "4-2",
+     "name": "Tükörterem",
+     "boss": false,
+     "tag": "",
+     "foes": [
+      "Árny-Grog",
+      "Árny-Lili",
+      "Árny-Zordon",
+      "Árny-Morgána"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "4-3",
+     "name": "Az Ébrenlét Lépcsője",
+     "boss": false,
+     "tag": "elit",
+     "foes": [
+      "Démonfióka",
+      "Sötét mágus",
+      "Árnyfenevad",
+      "Koffein-gólem",
+      "Démonkirály"
+     ],
+     "nb": 4
+    },
+    {
+     "id": "4-4",
+     "name": "Morcus, a Káosz Főmágusa",
+     "boss": true,
+     "tag": "",
+     "foes": [
+      "Morcus"
+     ],
+     "nb": 1
+    }
+   ]
+  },
+  {
+   "name": "Ködös Teateraszok",
+   "chapter": "V. fejezet: Ködös Teateraszok",
+   "levels": [
+    {
+     "id": "5-1",
+     "name": "Harmatos Terasz",
+     "boss": false,
+     "tag": "",
+     "foes": [
+      "Tealevél-manó",
+      "Gőzlidérc",
+      "Bambuszőr"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "5-2",
+     "name": "Bambuszliget",
+     "boss": false,
+     "tag": "",
+     "foes": [
+      "Bambuszőr",
+      "Tealevél-manó",
+      "Tealopó majom",
+      "Kannateknős",
+      "Gőzlidérc"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "5-3",
+     "name": "A Néma Teaház",
+     "boss": false,
+     "tag": "elit",
+     "foes": [
+      "Kannateknős",
+      "Tealevél-manó",
+      "Gőzlidérc",
+      "Tealopó majom",
+      "Bambuszőr",
+      "Szamovár-gólem"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "5-4",
+     "name": "Öreg Oolong, a gőzsárkány",
+     "boss": true,
+     "tag": "",
+     "foes": [
+      "Gőzlidérc",
+      "Öreg Oolong"
+     ],
+     "nb": 1
+    }
+   ]
+  },
+  {
+   "name": "Porcelánváros",
+   "chapter": "VI. fejezet: Porcelánváros",
+   "levels": [
+    {
+     "id": "6-1",
+     "name": "A Kék Kapu",
+     "boss": false,
+     "tag": "",
+     "foes": [
+      "Porcelánbaba",
+      "Csészekatona",
+      "Cukorfogó rák"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "6-2",
+     "name": "Lampionok Utcája",
+     "boss": false,
+     "tag": "",
+     "foes": [
+      "Lampionlidérc",
+      "Csészekatona",
+      "Vázagólem",
+      "Porcelánbaba",
+      "Cukorfogó rák"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "6-3",
+     "name": "Az Égetőkemence",
+     "boss": false,
+     "tag": "elit",
+     "foes": [
+      "Cukorfogó rák",
+      "Lampionlidérc",
+      "Porcelánbaba",
+      "Vázagólem",
+      "Porcelán mandarin"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "6-4",
+     "name": "Az Ezerrészes Szerviz",
+     "boss": true,
+     "tag": "",
+     "foes": [
+      "Csészekatona",
+      "Az Ezerrészes Szerviz"
+     ],
+     "nb": 1
+    }
+   ]
+  },
+  {
+   "name": "Cukorsivatag",
+   "chapter": "VII. fejezet: Cukorsivatag",
+   "levels": [
+    {
+     "id": "7-1",
+     "name": "Kristálycukor-dűnék",
+     "boss": false,
+     "tag": "",
+     "foes": [
+      "Kockacukor-gólem",
+      "Mézdarázs",
+      "Mézeskalács-bandita",
+      "Vattacukor-bárány"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "7-2",
+     "name": "A Méhsejt-kanyon",
+     "boss": false,
+     "tag": "",
+     "foes": [
+      "Mézdarázs",
+      "Karamellskorpió",
+      "Kockacukor-gólem",
+      "Vattacukor-bárány"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "7-3",
+     "name": "Karamellfolyó",
+     "boss": false,
+     "tag": "elit",
+     "foes": [
+      "Mézeskalács-bandita",
+      "Vattacukor-bárány",
+      "Karamellskorpió",
+      "Mézdarázs",
+      "Lekvárdzsinn"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "7-4",
+     "name": "A Mézkirálynő",
+     "boss": true,
+     "tag": "",
+     "foes": [
+      "Mézdarázs",
+      "Mézkirálynő"
+     ],
+     "nb": 1
+    }
+   ]
+  },
+  {
+   "name": "Az Álompalota",
+   "chapter": "VIII. fejezet: Az Álompalota",
+   "levels": [
+    {
+     "id": "8-1",
+     "name": "Párnalépcső",
+     "boss": false,
+     "tag": "",
+     "foes": [
+      "Párnalovag",
+      "Álomlepke",
+      "Homokmanó"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "8-2",
+     "name": "A Szuszogók Terme",
+     "boss": false,
+     "tag": "",
+     "foes": [
+      "Rémálom-árny",
+      "Álomlepke",
+      "Mackóőr",
+      "Homokmanó"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "8-3",
+     "name": "Holdfénykert",
+     "boss": false,
+     "tag": "elit",
+     "foes": [
+      "Álomlepke",
+      "Párnalovag",
+      "Homokmanó",
+      "Mackóőr",
+      "Rémálom-árny",
+      "Altató hárfa"
+     ],
+     "nb": 3
+    },
+    {
+     "id": "8-4",
+     "name": "Kamilla, a Teacsászárnő",
+     "boss": true,
+     "tag": "",
+     "foes": [
+      "Kamilla"
+     ],
+     "nb": 1
+    }
+   ]
+  }
+ ],
+ "items": [
+  {
+   "k": "potion",
+   "name": "Gyógyital",
+   "desc": "80 életerőt ad vissza egy társnak."
+  },
+  {
+   "k": "ether",
+   "name": "Mana-ital",
+   "desc": "40 MP-t ad vissza egy társnak."
+  },
+  {
+   "k": "phoenix",
+   "name": "Főnixtoll",
+   "desc": "Feléleszt egy elesett társat."
+  },
+  {
+   "k": "megapotion",
+   "name": "Nagy gyógyital",
+   "desc": "90 életerőt ad vissza az egész csapatnak."
+  },
+  {
+   "k": "elixir",
+   "name": "Elixír",
+   "desc": "Az egész csapat megissza: mindenkinek megtelik a limitje. Négy hőssel így azonnal jöhet a KÖZÖS TÁMADÁS!"
+  },
+  {
+   "k": "limitpotion",
+   "name": "Limit-ital",
+   "desc": "Egy társ limitje azonnal megtelik."
+  },
+  {
+   "k": "lifeelixir",
+   "name": "Élet-elixír",
+   "desc": "Minden elesett társat feltámaszt teljes életerővel, az élőket félig meggyógyítja."
+  },
+  {
+   "k": "knife",
+   "name": "Dobótőr",
+   "desc": "Éles tőrt dob egy ellenségre: MP nélkül is jó sebzés (a pálya szintjével nő)."
+  },
+  {
+   "k": "firebomb",
+   "name": "Tűzbomba",
+   "desc": "Tűzbombát dob az ellenségek közé: minden ellenségre tűzsebzés, és felgyújthatja őket."
+  }
+ ],
+ "shop": [
+  [
+   "Dobótőr",
+   null,
+   50
+  ],
+  [
+   "Tűzbomba",
+   "1-2",
+   130
+  ],
+  [
+   "Gyógyital",
+   null,
+   40
+  ],
+  [
+   "Mana-ital",
+   null,
+   60
+  ],
+  [
+   "Főnixtoll",
+   null,
+   120
+  ],
+  [
+   "Nagy gyógyital",
+   "2-1",
+   150
+  ],
+  [
+   "Limit-ital",
+   "2-1",
+   220
+  ],
+  [
+   "Elixír",
+   "3-1",
+   500
+  ],
+  [
+   "Élet-elixír",
+   "2-4",
+   450
+  ]
+ ],
+ "pairs": [
+  {
+   "a": "wizard",
+   "b": "witch",
+   "name": "Villámátok",
+   "elem": "thunder",
+   "pow": 1.6,
+   "status": [
+    "curse",
+    0.8,
+    1
+   ],
+   "rgb": "190,110,255",
+   "desc": "Zordon villáma és Morgána átka egyszerre: lila villámok csapnak minden ellenségbe, és átok alá kerülnek."
+  },
+  {
+   "a": "fairy",
+   "b": "orc",
+   "name": "Tündérököl",
+   "elem": "holy",
+   "pow": 1.7,
+   "rgb": "255,230,140",
+   "desc": "Lili aranyfénnyel tölti fel Grogot, aki a földbe csap: fény-lökéshullám minden ellenségre, a csapat kicsit gyógyul.",
+   "heal": 0.12
+  },
+  {
+   "a": "wizard",
+   "b": "fairy",
+   "name": "Csillagözön",
+   "elem": "holy",
+   "pow": 1.6,
+   "rgb": "255,245,180",
+   "desc": "Zordon és Lili hullócsillagokat hív: minden ellenséget csillagzápor ér."
+  },
+  {
+   "a": "witch",
+   "b": "orc",
+   "name": "Árnyroham",
+   "elem": "dark",
+   "pow": 1.8,
+   "rgb": "150,70,230",
+   "desc": "Morgána árnyba burkolja Grogot, aki végigrohan az ellenségeken."
+  },
+  {
+   "a": "monk",
+   "b": "fairy",
+   "name": "Lótuszvihar",
+   "elem": "nature",
+   "pow": 1.6,
+   "rgb": "160,240,170",
+   "desc": "Jázmin nyilai és Lili tündérpora lótuszszirom-viharrá állnak össze."
+  },
+  {
+   "a": "monk",
+   "b": "wizard",
+   "name": "Sárkánynyíl",
+   "elem": "fire",
+   "pow": 1.7,
+   "rgb": "255,150,60",
+   "desc": "Zordon tűzzel tölti meg Jázmin nyilát: lángoló sárkánynyíl szántja végig az ellenségeket."
+  }
+ ],
+ "gear": {
+  "wizard": [
+   "Varázsbot",
+   "Köpeny"
+  ],
+  "witch": [
+   "Varázspálca",
+   "Boszorkányruha"
+  ],
+  "fairy": [
+   "Csillagpálca",
+   "Levélruha"
+  ],
+  "orc": [
+   "Csatabárd",
+   "Bőrpáncél"
+  ],
+  "monk": [
+   "Lótuszíj",
+   "Szerzetesruha"
+  ]
+ },
+ "diff": [
+  "Könnyű",
+  "Normál",
+  "Nehéz"
+ ]
+}

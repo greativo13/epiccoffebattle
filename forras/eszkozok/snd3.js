@@ -1,0 +1,3 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage();
+await p.goto('http://localhost:8765/index.html');await p.waitForTimeout(2000);await p.mouse.click(10,10);await p.waitForTimeout(3000);
+console.log(await p.evaluate(async()=>{const f=SAMPLE_FILES.slash[0];let msg='';try{const ab=await (await fetch(f)).arrayBuffer();const b=await new Promise((res,rej)=>SND.ctx.decodeAudioData(ab,res,rej));msg='ok '+b.duration;}catch(e){msg='ERR '+e;}return msg+' len='+SAMPLE_BUF.slash.length+' keys='+Object.keys(SAMPLE_BUF).length+' state='+SND.ctx.state;}));await b.close();})();

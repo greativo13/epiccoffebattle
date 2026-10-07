@@ -1,0 +1,10 @@
+const {chromium}=require('playwright');
+const [,,w,h,out,file,extra]=process.argv;
+(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage({viewport:{width:+w,height:+h}});
+p.on('pageerror',e=>console.log('ERR',e.message));
+await p.goto('http://localhost:8765/'+(file||'index.html'));await p.waitForTimeout(2500);
+await p.evaluate(()=>{S.test=true;TEST['Mindent megvesz']();TEST['Próbaterem']();});await p.waitForTimeout(2500);
+if(extra)await p.evaluate(extra);await p.waitForTimeout(800);
+await p.screenshot({path:out});
+console.log(await p.evaluate(()=>JSON.stringify({sh:document.documentElement.scrollHeight,ih:innerHeight,sw:document.documentElement.scrollWidth})));
+await b.close();})();

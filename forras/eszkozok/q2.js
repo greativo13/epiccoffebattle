@@ -1,0 +1,1 @@
+new Promise(r=>setTimeout(()=>{const im=ENEMY_SPR.koffgolem;const c=document.createElement('canvas');c.width=im.width;c.height=im.height;const g=c.getContext('2d');g.fillStyle='#456';g.fillRect(0,0,c.width,c.height);g.drawImage(im,0,0);r(c.toDataURL());},1500))

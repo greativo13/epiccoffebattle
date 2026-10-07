@@ -1,0 +1,1 @@
+S.enemies.forEach(e=>e.alive=false);const e=mkEnemy('kamilla',SLOTS[1][0][0],SLOTS[1][0][1],30);e.hp=e.maxHp=99999;S.enemies=[e];for(const h of S.heroes){h.hp=h.maxHp=99999;}S.speed=.5;useEnemySkill(e,ESK.teaceremony,S.heroes[0]);

@@ -1,0 +1,4 @@
+const {chromium}=require('playwright');const [k,x,y,w,h,s]=[process.argv[2],...process.argv.slice(3).map(Number)];(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage();
+await p.goto('http://localhost:8765/index.html');await p.waitForTimeout(3000);
+const r=await p.evaluate(([k,x,y,w,h,s])=>{const im=ENEMY_SPR[k]||FX_IMG[k];const c=document.createElement('canvas');c.width=w*s;c.height=h*s;const g=c.getContext('2d');g.imageSmoothingEnabled=false;g.fillStyle='#fff';g.fillRect(0,0,c.width,c.height);g.drawImage(im,x,y,w,h,0,0,w*s,h*s);g.strokeStyle='rgba(255,0,0,.4)';for(let i=0;i<=w;i+=10){g.beginPath();g.moveTo(i*s,0);g.lineTo(i*s,h*s);g.stroke();}for(let i=0;i<=h;i+=10){g.beginPath();g.moveTo(0,i*s);g.lineTo(w*s,i*s);g.stroke();}return c.toDataURL();},[k,x,y,w,h,s]);
+require('fs').writeFileSync('crop.png',Buffer.from(r.split(',')[1],'base64'));await b.close();})();

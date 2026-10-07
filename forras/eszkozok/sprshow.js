@@ -1,0 +1,6 @@
+// node sprshow.js out.png name1 name2 ...  – ENEMY_SPR képek egymás mellett, rácsozva (10%-os rács)
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});const p=await b.newPage({viewport:{width:1280,height:720}});
+await p.goto('http://localhost:8765/index.html');await p.waitForTimeout(5000);const [out,...names]=process.argv.slice(2);
+const url=await p.evaluate(names=>{const ims=names.map(n=>ENEMY_SPR[n]||R17I[n]||FX_IMG[n]).filter(Boolean);const H=500;const ws=ims.map(im=>H*im.width/im.height);const c=document.createElement('canvas');c.width=ws.reduce((a,b)=>a+b+10,0);c.height=H;const g=c.getContext('2d');g.fillStyle='#888';g.fillRect(0,0,c.width,H);let x=0;
+ ims.forEach((im,i)=>{g.drawImage(im,x,0,ws[i],H);g.strokeStyle='rgba(255,0,0,.5)';g.fillStyle='red';g.font='12px sans-serif';for(let k=1;k<10;k++){g.beginPath();g.moveTo(x+ws[i]*k/10,0);g.lineTo(x+ws[i]*k/10,H);g.moveTo(x,H*k/10);g.lineTo(x+ws[i],H*k/10);g.stroke();g.fillText(k,x+ws[i]*k/10+2,12);g.fillText(k,x+2,H*k/10-2);}x+=ws[i]+10;});return c.toDataURL();},names);
+require('fs').writeFileSync(out,Buffer.from(url.split(',')[1],'base64'));await b.close();})();
