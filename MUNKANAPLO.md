@@ -130,3 +130,11 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 - Térkép: az eredeti pályapozíciókat megtartó, irányjelzésekkel kiegészített íves ösvény; álló és fekvő telefonos nézet képernyőképen ellenőrizve.
 - Build: `python3 forras/ins10.py` és `python3 kisebb.py` sikeres. A négy böngészős ellenőrzés (foe.js, sumall.js, all.js, shield.js) hiba nélkül lefutott. A Chromium helyett telepített Chrome-mal futottak; a sandbox localhost-korlátozása miatt a Playwright útvonal-elfogója a frissen buildelt helyi fájlokat szolgálta ki a 8765-ös szerver helyett. A forrásrács- és álló/fekvő térképképek vizuálisan ellenőrizve. Build: `forras/ins10.py` → `kisebb.py` sikeres.
 - Kipróbálandó útvonalak: Próbaterem → Morgána → Éjféli rontás (Cerberus); Ellenfelek → Porcelánváros → Porcelán mandarin → Tusátok; Ellenfelek → Az Álompalota → Kamilla → Teaszertartás; Idézések → Espresszó, a sárkány; Idézések → Árny-csapat; a hat felsorolt PÁROS támadás; Térkép álló és fekvő telefonon.
+
+## 20. kör – második javítás (2026-10-07)
+
+- A kipróbálás utáni visszajelzések alapján a Cerberus sötétláng-oszlopa, Tusátok, Teaszertartás, Espresszó idézés, Árny-csapat és mind a hat páros támadás újabb, látványosabb változatot kapott; a meglévő Canva-festett effektképek továbbra is az animációk részei.
+- Térkép: a pályapontok új elrendezést kaptak, az új íves útvonal a sorrendet követi. Álló és fekvő telefonos képernyőkép ellenőrizve; álló képen a térképhúzás súgója két ponttal átfed, ezt a következő visszajelzésnél figyelembe kell venni.
+- Tesztlap: a 20. kör 12 pontja tiszta, második kipróbálásra előkészítve.
+- Ellenőrzés: foe.js (8 fejezet, 65 ellenfél, 141 támadás), sumall.js (19 idézés), all.js (75 képesség) és shield.js (143 próba) mind hiba nélkül futott. `forras/ins10.py` és `kisebb.py` sikeres.
+- Feltöltés és a friss tesztlista hivatkozása a sikeres ellenőrzés után.
