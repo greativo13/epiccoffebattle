@@ -117,3 +117,16 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 - Állított telefon: a felhasználó kétszer „Nem jó”-t jelölt megjegyzés nélkül – képernyőképet kértem. (Javítva közben: ragadós csatatér csak nyitott ablak nélkül; a gombhely-megtartás csak csata közben, a térképen nem marad üres rész.)
 - Hiányzik a repóból a `src/` mappa és a `MASODIK-RESZ.md` terv – ha a felhasználónál megvan, érdemes feltölteni.
 - Ellenőrzés: a próbateremben mind az öt hős mind a 74 képessége hiba nélkül lefut (`perform` minden képességre).
+
+## 20. kör (2026-10-07, ellenőrizve)
+
+- Új javító réteg: `forras/r20a.js`. A fordító (`forras/ins10.py`) most már betölti az r20a réteget, és az `r19z.js`-t hagyja utolsóként.
+- Cerberus: rajzolt fekete-lila lángnyelvek füst/képnégyzet nélkül; a három hound-fej egyszerre induló harapása.
+- Tusátok: kígyózó, spirálos tussárkány-útvonal különálló fej- és testmozgással.
+- Teaszertartás: lendületből billenő csésze és egybefüggő, a peremtől induló teaáram.
+- Espresszó idézés: új, száj elejéről indított tűzrészecske-függvény; a `.145,.302` rácspont képernyőképen ellenőrizve; a láng az ajak elejéről indul.
+- Árny-csapat: a `f86598e` Git-verzió eredeti `shadows` viselkedésének visszaállítása.
+- Páros támadások: mind a hat visszajelzett támadás új, nagyobb látvánnyal; Árnyrohamnál Morgána sötétséget ad Grogra, aki végigsöpör az ellenfeleken.
+- Térkép: az eredeti pályapozíciókat megtartó, irányjelzésekkel kiegészített íves ösvény; álló és fekvő telefonos nézet képernyőképen ellenőrizve.
+- Build: `python3 forras/ins10.py` és `python3 kisebb.py` sikeres. A négy böngészős ellenőrzés (foe.js, sumall.js, all.js, shield.js) hiba nélkül lefutott. A Chromium helyett telepített Chrome-mal futottak; a sandbox localhost-korlátozása miatt a Playwright útvonal-elfogója a frissen buildelt helyi fájlokat szolgálta ki a 8765-ös szerver helyett. A forrásrács- és álló/fekvő térképképek vizuálisan ellenőrizve. Build: `forras/ins10.py` → `kisebb.py` sikeres.
+- Kipróbálandó útvonalak: Próbaterem → Morgána → Éjféli rontás (Cerberus); Ellenfelek → Porcelánváros → Porcelán mandarin → Tusátok; Ellenfelek → Az Álompalota → Kamilla → Teaszertartás; Idézések → Espresszó, a sárkány; Idézések → Árny-csapat; a hat felsorolt PÁROS támadás; Térkép álló és fekvő telefonon.
