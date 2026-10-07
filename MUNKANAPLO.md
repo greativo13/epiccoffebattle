@@ -93,6 +93,8 @@ Minden jelölés egy oldalon: https://claude.ai/artifact/6D1sUCKfqLohVoGNQdc8ek 
 - Jelölések a `review` gyűjteményben: `status` ok/bad, `note`, `sent` (beküldve → nála eltűnik), `handled` (Claude feldolgozta), `reply` (Claude válasza a lapon). Tesztpont kulcsa `t-<id>`, pályáé `L<id>`, fejezeté `z<n>`, ellenfélé `e-<típus>`, bevezető `intro`.
 - A „Kész” gomb `meta/done`-t ír, és kommentként szól Claude-nak (`comments.sendToClaude`). Javítás után: `handled:true` + `reply`; ha újra ki kell próbálni, új `tests` pont.
 
+Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idézés/ellenfél-támadás): https://claude.ai/artifact/YETTFbipDrw3jJbPXy881Z – a pontok a lapba vannak ágyazva (scratchpad `fulldump.js` → `full.json` → `mkfull.py`), a jelölések ugyanúgy a `review` gyűjteményben (`t-<id>`, `title` mezővel); a „Jó” azonnal beküldődik.
+
 ## Nyitott ügyek
 
 - Állított telefon: a felhasználó kétszer „Nem jó”-t jelölt megjegyzés nélkül – képernyőképet kértem. (Javítva közben: ragadós csatatér csak nyitott ablak nélkül; a gombhely-megtartás csak csata közben, a térképen nem marad üres rész.)
