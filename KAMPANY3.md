@@ -87,7 +87,7 @@ A felhasználó négy ötlete, a meglévőktől megkülönböztetve:
 | Pálya | Név | Csaták | Újdonság |
 |---|---|---|---|
 | 10-1 | Gereblyézett Kert | 3 | Mozgó kavicsok (kőőrök) |
-| 10-2 | Mozaikfolyosó | 3 | „Csend” szabály: aki 2× egymás után varázsol, felriasztja a sárkányt |
+| 10-2 | Mozaikfolyosó | 3 | **Csendmérő** a képernyő tetején: minden varázslat tölti (fegyveres támadás nem); ha megtelik, a mozaiksárkány felriad és egyszer nagyot üt, majd a mérő kiürül |
 | 10-3 | Meditációs Csarnok | 4 | Meditáló ellenfelek: +100% védelem, de a villám átüti |
 | 10-F | **Zen-Kavics Sárkány** | Boss | Minden 2. körben meditál; kavicsokból újraépíti magát |
 
@@ -160,6 +160,6 @@ A felhasználó öt ellenfele + kiegészítés a 4 fejezethez (kb. 4 új / fejez
 - Lili kapcsoló a Próbateremben: „Lili: megbékítve / elérhető”; a 9–12. fejezetben Lili nincs a csapatban.
 - Hátterek (4), zene, ~14 új ellenfél + 4 főellenség képpel és támadásokkal, 4 idézés, tesztlista bővítése, `listak/` frissítése.
 
-## 9. Nyitott kérdések (később)
-- Kaelen + Lili páros (Harmatkör) maradjon-e?
-- A 10. fejezet „csend” szabálya (2 egymás utáni varázslat felriasztja a sárkányt) túl bonyolult-e?
+## 9. Eldöntve (a felhasználó rám bízta)
+- **Harmatkör (Kaelen + Lili) marad:** így Lili is kap párost Kaelennel, és a 12. fejezet után jutalomként nyílik – a kibékülés látható eredménye.
+- **A „csend” szabály egyszerűsítve:** nem rejtett feltétel (2 egymás utáni varázslat), hanem látható **Csendmérő** a 10-2 pályán. Telefonon is érthető, és a fegyveres hősöknek (Grog, Jázmin, Kaelen botja) szerepet ad.
