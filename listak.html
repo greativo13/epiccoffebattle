@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#20162c">
-<title>Kávérablás – kipróbálandó lista</title>
+<title>Kávérablás – 20. kör javításainak kipróbálása</title>
 <style>
 :root{color-scheme:dark;--bg:#17111f;--panel:#241a30;--line:#493957;--text:#f5effa;--muted:#c3b4cc;--gold:#f3c85b;--green:#64d890;--red:#ff8b83}
 *{box-sizing:border-box}
@@ -38,7 +38,7 @@ textarea{width:100%;min-height:76px;resize:vertical;border-radius:10px;border:1p
 </head>
 <body>
 <main>
-  <h1>Kávérablás – kipróbálandó lista</h1>
+  <h1>Kávérablás – 20. kör javításainak kipróbálása</h1>
   <p class="intro">Jelöld, hogy rendben van-e. A „Nem jó” mellett írd le röviden, mit tapasztaltál. A végén másold ki az eredményt, és küldd be a Codex-beszélgetésbe.</p>
   <p class="hint">A jelölések ezen az eszközön és ebben a böngészőben maradnak meg. Kipróbálás: Főmenü → Teszt → KAVE → térkép → Próbaterem.</p>
   <p class="state" id="state" role="status">A lista betöltése…</p>
@@ -52,19 +52,19 @@ textarea{width:100%;min-height:76px;resize:vertical;border-radius:10px;border:1p
   <div id="list" aria-live="polite"></div>
 </main>
 <script>
-const KEY='kaverablas-lista-v20';
+const KEY='kaverablas-lista-v21';
 const DATA=[
 {id:'cerberus',area:'Próbaterem',title:'Próbaterem → Morgána → Éjféli rontás (Cerberus)',expect:'Átváltozáskor lobogó fekete-lila lángnyelvek jelennek meg, képnégyzet és füst nélkül. Mindhárom kutyafej egyszerre harap.',how:'Nézd meg az átváltozás lángoszlopát és a három fej egyidejű harapását.'},
 {id:'ink-dragon',area:'Ellenfelek',title:'Ellenfelek → Porcelánváros → Porcelán mandarin → Tusátok',expect:'A tussárkány folyamatosan kígyózik; az ív, spirál és visszatérés sima, nem az egész kép csúszik és fordul mereven.',how:'Nézd végig a sárkány teljes útját.'},
 {id:'tea',area:'Ellenfelek',title:'Ellenfelek → Az Álompalota → Kamilla → Teaszertartás',expect:'A csésze lendületből, természetesen billen; a tea a peremtől indulva folyamatosan ömlik ki, nem ugrál.',how:'Figyeld a csésze billenését és a teljes kiömlést.'},
 {id:'espresso',area:'Idézések',title:'Idézések → Espresszó, a sárkány',expect:'A tűz a sárkány ajkánál, a szája elejénél indul. A rácsos képernyőképen is ellenőrizd az első lángrészecske helyét.',how:'Ellenőrizd a láng indulását rácsozott képernyőképen.'},
 {id:'shadows',area:'Idézések',title:'Idézések → Árny-csapat',expect:'Az Árny-csapat visszatér az eredeti, első változat szerinti idézéshez és támadássorrendhez.',how:'Nézd végig a teljes idézést és támadást.'},
-{id:'lightning-pair',area:'Páros támadások',title:'Próbaterem → Morgána → PÁROS: Villámátok',expect:'A páros támadás nagy, látványos és folyamatos villámanimációval fut le.',how:'Nézd végig a teljes támadást.'},
-{id:'stars-pair',area:'Páros támadások',title:'Próbaterem → Zordon → PÁROS: Csillagözön',expect:'A csillagözön látványos, festett csillagviharként söpör végig az ellenfeleken.',how:'Nézd végig a teljes támadást.'},
-{id:'shadow-rush',area:'Páros támadások',title:'Próbaterem → Morgána → PÁROS: Árnyroham',expect:'Morgána sötétséggel ruházza fel Grogot, aki nagy söpréssel végigmegy az ellenfeleken.',how:'Figyeld Morgána felruházását és Grog teljes söprését.'},
-{id:'dragon-arrow',area:'Páros támadások',title:'Próbaterem → Zordon → PÁROS: Sárkánynyíl',expect:'A Sárkánynyíl nagy, festett hatású, sima mozgású sárkánynyíl.',how:'Nézd végig a teljes támadást.'},
-{id:'lotus-storm',area:'Páros támadások',title:'Próbaterem → Jázmin → PÁROS: Lótuszvihar',expect:'A Lótuszvihar nagy, gazdagon festett lótusz- és sziromviharként söpör végig.',how:'Nézd végig a teljes támadást.'},
-{id:'fairy-fist',area:'Páros támadások',title:'Próbaterem → Lili → PÁROS: Tündérököl',expect:'A támadás nagy, látványos odaugrással és erőteljes festett becsapódással talál.',how:'Nézd végig a teljes támadást.'},
+{id:'lightning-pair',area:'Páros támadások',title:'Próbaterem → Morgána → PÁROS: Villámátok',expect:'A két hős támadása összefüggően épül fel, majd nagy, festett lila villámcsapás sújt le.',how:'Nézd végig a teljes támadást.'},
+{id:'stars-pair',area:'Páros támadások',title:'Próbaterem → Zordon → PÁROS: Csillagözön',expect:'A csillagsárkány maga söpör végig az ellenfeleken, utána festett meteorok csapódnak be.',how:'Nézd végig a teljes támadást.'},
+{id:'shadow-rush',area:'Páros támadások',title:'Próbaterem → Morgána → PÁROS: Árnyroham',expect:'Morgána sötétséggel ruházza fel Grogot; Grog a saját testével söpör végig az ellenfeleken.',how:'Figyeld Morgána felruházását és Grog teljes söprését.'},
+{id:'dragon-arrow',area:'Páros támadások',title:'Próbaterem → Zordon → PÁROS: Sárkánynyíl',expect:'Nagy, festett tűzsárkány-nyíl kígyózik végig a célon, égő nyomot hagyva maga után.',how:'Nézd végig a teljes támadást.'},
+{id:'lotus-storm',area:'Páros támadások',title:'Próbaterem → Jázmin → PÁROS: Lótuszvihar',expect:'A lótusz kinyílik, festett szirmok kavarognak körülötte, majd nagy sziromviharral söpör végig.',how:'Nézd végig a teljes támadást.'},
+{id:'fairy-fist',area:'Páros támadások',title:'Próbaterem → Lili → PÁROS: Tündérököl',expect:'Lili látványosan odaugrik, és nagy, festett aranybecsapódással találja el az ellenfelet.',how:'Nézd végig a teljes támadást.'},
 {id:'map',area:'Térkép és felület',title:'Térkép – álló és fekvő telefon',expect:'Az eredeti pályaelhelyezések megmaradnak; a sorrend érthető, az ösvény illik a térkép stílusához és telefonon is követhető.',how:'Ellenőrizd álló és fekvő telefonképernyőn.'}
 ];
 const $=id=>document.getElementById(id);
