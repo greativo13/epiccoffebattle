@@ -27,10 +27,11 @@ jobs:
         run: |
           mkdir site
           cp listak.html site/index.html
+          cp listak.html site/listak.html
+          mkdir site/lista
+          cp listak.html site/lista/index.html
       - uses: actions/upload-pages-artifact@v4
         with:
           path: site
-      - name: Deploy to GitHub Pages
+      - uses: actions/deploy-pages@v4
         id: deployment
-        uses: actions/deploy-pages@v4
-
