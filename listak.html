@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#20162c">
+<title>Kávérablás – kipróbálandó lista</title>
+<style>
+:root{color-scheme:dark;--bg:#17111f;--panel:#241a30;--line:#493957;--text:#f5effa;--muted:#c3b4cc;--gold:#f3c85b;--green:#64d890;--red:#ff8b83}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;padding:calc(12px + env(safe-area-inset-top,0px)) 12px calc(20px + env(safe-area-inset-bottom,0px))}
+main{width:min(100%,760px);margin:auto;display:grid;gap:12px}
+h1{font-size:clamp(24px,7vw,34px);line-height:1.12;color:var(--gold);margin:0}
+.intro,.hint,.state{margin:0;color:var(--muted)}
+.toolbar{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0;display:grid;grid-template-columns:1fr 1fr;gap:8px;border-bottom:1px solid var(--line)}
+.progress{grid-column:1/-1;font-weight:750;font-variant-numeric:tabular-nums}
+button,select,input,textarea{font:inherit;color:inherit}
+button,select{min-height:46px;border-radius:10px;border:1px solid var(--line);background:var(--panel);padding:9px 12px}
+button{font-weight:750;touch-action:manipulation;cursor:pointer}
+button.primary{background:var(--gold);color:#271a07;border-color:var(--gold)}
+button:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.search{grid-column:1/-1;min-height:46px;border-radius:10px;border:1px solid var(--line);background:var(--panel);padding:9px 12px;width:100%}
+.group{display:grid;gap:8px}
+.group h2{margin:8px 0 0;font-size:19px;color:var(--gold)}
+.item{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:12px;display:grid;gap:8px;min-width:0}
+.item.ok{border-color:var(--green)}.item.bad{border-color:var(--red)}
+.item h3{margin:0;font-size:16px;line-height:1.35;overflow-wrap:anywhere}
+.item p{margin:0;color:var(--muted);font-size:14px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.actions button{min-height:48px}
+.actions .ok.selected{background:#17472a;border-color:var(--green);color:#b8ffd0}
+.actions .bad.selected{background:#582421;border-color:var(--red);color:#ffd4d1}
+textarea{width:100%;min-height:76px;resize:vertical;border-radius:10px;border:1px solid var(--line);background:#17111f;padding:10px}
+.empty{padding:16px;background:var(--panel);border-radius:12px}
+.hidden{display:none!important}
+@media(min-width:560px){.toolbar{grid-template-columns:1fr auto auto auto}.progress{grid-column:auto}.search{grid-column:1/-1}.actions{grid-template-columns:130px 130px;justify-content:end}}
+</style>
+</head>
+<body>
+<main>
+  <h1>Kávérablás – kipróbálandó lista</h1>
+  <p class="intro">Jelöld, hogy rendben van-e. A „Nem jó” mellett írd le röviden, mit tapasztaltál. A végén másold ki az eredményt, és küldd be a Codex-beszélgetésbe.</p>
+  <p class="hint">A jelölések ezen az eszközön és ebben a böngészőben maradnak meg. Kipróbálás: Főmenü → Teszt → KAVE → térkép → Próbaterem.</p>
+  <p class="state" id="state" role="status">A lista betöltése…</p>
+  <div class="toolbar">
+    <span class="progress" id="progress">0 / 0 kipróbálva</span>
+    <select id="filter" aria-label="Lista szűrése"><option value="all">Minden pont</option><option value="todo">Még nem néztem</option><option value="bad">Nem jó</option><option value="ok">Rendben</option></select>
+    <button class="primary" id="copy" type="button">Eredmény másolása</button>
+    <button id="reset" type="button">Jelölések törlése</button>
+    <input class="search" id="search" type="search" placeholder="Keresés a listában…" aria-label="Keresés a listában">
+  </div>
+  <div id="list" aria-live="polite"></div>
+</main>
+<script>
+const KEY='kaverablas-lista-v20';
+const DATA=[
+{id:'cerberus',area:'Próbaterem',title:'Próbaterem → Morgána → Éjféli rontás (Cerberus)',expect:'Átváltozáskor lobogó fekete-lila lángnyelvek jelennek meg, képnégyzet és füst nélkül. Mindhárom kutyafej egyszerre harap.',how:'Nézd meg az átváltozás lángoszlopát és a három fej egyidejű harapását.'},
+{id:'ink-dragon',area:'Ellenfelek',title:'Ellenfelek → Porcelánváros → Porcelán mandarin → Tusátok',expect:'A tussárkány folyamatosan kígyózik; az ív, spirál és visszatérés sima, nem az egész kép csúszik és fordul mereven.',how:'Nézd végig a sárkány teljes útját.'},
+{id:'tea',area:'Ellenfelek',title:'Ellenfelek → Az Álompalota → Kamilla → Teaszertartás',expect:'A csésze lendületből, természetesen billen; a tea a peremtől indulva folyamatosan ömlik ki, nem ugrál.',how:'Figyeld a csésze billenését és a teljes kiömlést.'},
+{id:'espresso',area:'Idézések',title:'Idézések → Espresszó, a sárkány',expect:'A tűz a sárkány ajkánál, a szája elejénél indul. A rácsos képernyőképen is ellenőrizd az első lángrészecske helyét.',how:'Ellenőrizd a láng indulását rácsozott képernyőképen.'},
+{id:'shadows',area:'Idézések',title:'Idézések → Árny-csapat',expect:'Az Árny-csapat visszatér az eredeti, első változat szerinti idézéshez és támadássorrendhez.',how:'Nézd végig a teljes idézést és támadást.'},
+{id:'lightning-pair',area:'Páros támadások',title:'Próbaterem → Morgána → PÁROS: Villámátok',expect:'A páros támadás nagy, látványos és folyamatos villámanimációval fut le.',how:'Nézd végig a teljes támadást.'},
+{id:'stars-pair',area:'Páros támadások',title:'Próbaterem → Zordon → PÁROS: Csillagözön',expect:'A csillagözön látványos, festett csillagviharként söpör végig az ellenfeleken.',how:'Nézd végig a teljes támadást.'},
+{id:'shadow-rush',area:'Páros támadások',title:'Próbaterem → Morgána → PÁROS: Árnyroham',expect:'Morgána sötétséggel ruházza fel Grogot, aki nagy söpréssel végigmegy az ellenfeleken.',how:'Figyeld Morgána felruházását és Grog teljes söprését.'},
+{id:'dragon-arrow',area:'Páros támadások',title:'Próbaterem → Zordon → PÁROS: Sárkánynyíl',expect:'A Sárkánynyíl nagy, festett hatású, sima mozgású sárkánynyíl.',how:'Nézd végig a teljes támadást.'},
+{id:'lotus-storm',area:'Páros támadások',title:'Próbaterem → Jázmin → PÁROS: Lótuszvihar',expect:'A Lótuszvihar nagy, gazdagon festett lótusz- és sziromviharként söpör végig.',how:'Nézd végig a teljes támadást.'},
+{id:'fairy-fist',area:'Páros támadások',title:'Próbaterem → Lili → PÁROS: Tündérököl',expect:'A támadás nagy, látványos odaugrással és erőteljes festett becsapódással talál.',how:'Nézd végig a teljes támadást.'},
+{id:'map',area:'Térkép és felület',title:'Térkép – álló és fekvő telefon',expect:'Az eredeti pályaelhelyezések megmaradnak; a sorrend érthető, az ösvény illik a térkép stílusához és telefonon is követhető.',how:'Ellenőrizd álló és fekvő telefonképernyőn.'}
+];
+const $=id=>document.getElementById(id);
+let rows=[],marks={};
+try{marks=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch{marks={};}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(marks));}catch{$('state').textContent='A böngésző nem engedte elmenteni a jelöléseket.';}};
+const updateProgress=()=>{const done=rows.filter(x=>marks[x.id]?.status).length;const bad=rows.filter(x=>marks[x.id]?.status==='bad').length;$('progress').textContent=`${done} / ${rows.length} kipróbálva · ${bad} nem jó`;};
+function render(){
+  const filter=$('filter').value,query=$('search').value.trim().toLocaleLowerCase('hu'),list=$('list');list.replaceChildren();
+  const grouped=new Map();
+  for(const row of rows){const mark=marks[row.id]||{},status=mark.status||'todo';if(filter!=='all'&&filter!==status)continue;if(query&&!`${row.title} ${row.area} ${row.expect} ${row.how}`.toLocaleLowerCase('hu').includes(query))continue;
+    if(!grouped.has(row.area))grouped.set(row.area,[]);grouped.get(row.area).push({row,mark,status});}
+  if(!grouped.size){const p=document.createElement('p');p.className='empty';p.textContent='Nincs a szűrésnek megfelelő kipróbálandó pont.';list.append(p);return;}
+  for(const [area,items] of grouped){const section=document.createElement('section');section.className='group';const heading=document.createElement('h2');heading.textContent=area;section.append(heading);
+    for(const {row,mark,status} of items){const card=document.createElement('article');card.className=`item ${status==='todo'?'':status}`;const title=document.createElement('h3');title.textContent=row.title;const expect=document.createElement('p');expect.textContent=row.expect;const how=document.createElement('p');how.textContent=row.how;
+      const actions=document.createElement('div');actions.className='actions';for(const [value,label,cls] of [['ok','✓ Rendben','ok'],['bad','✗ Nem jó','bad']]){const button=document.createElement('button');button.type='button';button.textContent=label;button.className=`${cls} ${status===value?'selected':''}`;button.setAttribute('aria-pressed',String(status===value));button.addEventListener('click',()=>{marks[row.id]=marks[row.id]||{};marks[row.id].status=status===value?'':value;if(!marks[row.id].status&&!marks[row.id].note)delete marks[row.id];save();updateProgress();render();});actions.append(button);}
+      card.append(title,expect,how,actions);if(status==='bad'||mark.note){const note=document.createElement('textarea');note.placeholder='Mi volt a hiba?';note.setAttribute('aria-label',`Megjegyzés: ${row.title}`);note.value=mark.note||'';note.addEventListener('input',()=>{marks[row.id]=marks[row.id]||{};marks[row.id].note=note.value;save();});card.append(note);}section.append(card);}
+    list.append(section);}
+}
+function start(){rows=DATA;$('state').textContent=`Betöltve: ${rows.length} kipróbálandó pont.`;updateProgress();render();}
+$('filter').addEventListener('change',render);$('search').addEventListener('input',render);
+$('copy').addEventListener('click',async()=>{const bad=rows.filter(x=>marks[x.id]?.status==='bad').map(x=>`✗ ${x.title}\n  Elvárt: ${x.expect}\n  Kipróbálás: ${x.how}\n  Megjegyzés: ${marks[x.id]?.note||'(üres)'}`);const todo=rows.filter(x=>!marks[x.id]?.status);const text=`20. kör próbalista\n\nNEM JÓ (${bad.length}):\n${bad.join('\n\n')||'nincs'}\n\nMÉG NEM PRÓBÁLTAM (${todo.length}):\n${todo.map(x=>'· '+x.title).join('\n')||'nincs'}`;try{await navigator.clipboard.writeText(text);$('state').textContent='Az eredmény a vágólapra másolva.';}catch{$('state').textContent=text;}});
+$('reset').addEventListener('click',()=>{if(confirm('Töröljem ezen az eszközön az összes jelölést és megjegyzést?')){marks={};save();updateProgress();render();$('state').textContent='A jelölések törölve.';}});
+start();
+</script>
+</body>
+</html>
+
