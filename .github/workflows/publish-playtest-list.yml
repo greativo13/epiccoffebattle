@@ -1,0 +1,36 @@
+name: Publish playtest list
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "listak.html"
+      - ".github/workflows/publish-playtest-list.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Prepare standalone list
+        run: |
+          mkdir site
+          cp listak.html site/index.html
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
