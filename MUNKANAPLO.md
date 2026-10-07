@@ -88,6 +88,18 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
 - **Tesztlap**: csak a kipróbálandók (`tesztlap.html` a scratchpadban → ugyanaz az áttekintő artifact). A címek a Próbaterem gombfeliratai, a játék sorrendjében (scratchpad `mktests.js` + `spec.json` generálja a játékból).
 - **Stílusszabályok**: a teljes, rendezett szabálylista a `CLAUDE.md`-ben van (246 megjegyzésből). Rövid változat: valódi tárgyak (tüske, gomba, szilánk, kés, kifli) generikus csillag/részecske helyett; a hatás a megfelelő testrészből jön (lehelet a szájból, dobás a kézből), és **a figura saját testrésze mozogjon** (ne egy mellé rajzolt külön darab); kard/vágás csak pengénél, égi villám csak villám elemnél, vékony gyűrű és zöld trutyi nem kell; az elem színe illik az elemhez; „gagyi” = nagyobb, látványosabb, részletesebb, folyamatos mozgás; minden támadásnak saját hangja van, csengő sehol; erősítés/gyengítés 1 kör; magyar helyesírás; teszteket egyesével, nem csoportosítva, a játék pontos neveivel és sorrendjében; ahol egy testrész természetesen nyúlhat (kar, farok, nyelv), ott nyúljon, a figura pedig egész testével mozduljon (nem robotos forgatás); üres „Nem jó” = legyen látványosabb.
 
+- **19. kör** (`r18a–d.js`, a 18. kör tesztlapjának s001–s017 pontjai):
+  - Földrepesztés: a régi „nagy kitörés” a `groundCrack` sziklaképe volt (`fxImage('rock')`) – az új változat nem hívja; saját repedés + 3 sor kidolgozott kőtüske.
+  - Mázpáncél: a fénycsík csak a pajzs alakján belül fut (offscreen vászon, `source-atop`).
+  - Espresszó idézés: a saját állkapcsa leesik (`R18_JAW`, `r18EspImg`), izzó torok, fogak; a láng onnan indul.
+  - Lecsapás: felugrik az égbe, az árnyéka nő a hősön, becsapódik, kráter.
+  - Teaszertartás: festett kamillás csésze (`fx7-teacup`), a hullám a peremből bújik ki.
+  - Cerberus: festett lila lángoszlop nyeli el Morgánát; a harapás lidérc-kutyafej (`fx7-hound`).
+  - Tusátok: nagyobb jel, festett porcelán tintatartó (`fx7-inkpot`), nagyobb sárkány, tintafolt-robbanás.
+  - Árny-csapat: éles fekete árnyalakok lila körvonallal, mindegyik saját nagy támadás, közös lángoszlop-robbanás.
+  - Páros támadások: Villámátok (sugarak → felhő → festett villám `fx7-bolt`), Csillagözön (a sárkány maga söpör végig + festett meteorok `fx7-meteor`), Árnyroham (szalagok + söprés `fx7-darkslash`), Lótuszvihar (nyíló lótusz + festett szirmok `fx7-petal`), Sárkánynyíl (nagy, lassú festett tűzsárkány, égő földcsík), Tündérököl (saját odaugrás, aranyrobbanás, fényoszlopok).
+  - Térkép: vissza az eredeti pöttyhelyek (fa, torony stb.), íves pontozott ösvény (`.map-trail`).
+  - Canva-terv 8. oldala: négyzetes (1008×1008) exportoldal.
 - **Összefoglaló PDF**: `Jatek_osszefoglalo.pdf` (22 oldal: történet, hősök és képességek, páros támadások, idézések, pályák, bestiárium, tárgyak). Újragenerálás: scratchpad `dump.js` → `gamedata.json` → `mkpdf.py` → `topdf.js`.
 
 ## Tesztlista és áttekintő (egy helyen)
