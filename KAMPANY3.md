@@ -2,7 +2,7 @@
 
 A felhasználó terve (Kaelen, Chasen, Habosítás, matcha-világ) a felhasználó döntéseivel kiegészítve (2026-10-07):
 - **Lilit „megbékítik”** – nem elrabolják: önként megy Chasenhez békét kötni, és Chasen elveszi az akaratát. A főellenség-harcban Lili Chasen oldalán áll, a győzelem után visszatér.
-- **Átkötés:** Morcus és Kamilla közös teaházában minden ital íztelenné válik. A nyom Matcha-földre vezet.
+- **Átkötés:** Morcus és Kamilla közös teaházában minden ital íztelenné válik. A Habosítás tompítja el az ízeket Chasen csendvarázsának mellékhatásaként; a nyom Matcha-földre vezet.
 - **Chasen indítéka:** a világ túl hangos lett (a kávé óta mindenki rohan és kiabál), ezért mindenkit „megbékít”. A végén rájön, hogy a béke nem csend, és csatlakozik a közös teaházhoz.
 - **9–11. fejezet főellensége:** az elitekből lesznek (Mochi-király, Zen-Kavics Sárkány, Bambusz-békakirály), a 12.-é Chasen.
 - **Vad Alakváltás:** véletlen 25–25–25–25%.
@@ -24,7 +24,7 @@ Lili szerint aki békét akar, azzal beszélni kell, nem harcolni. Előrerepül 
 | 11. | **Bambuszhabverők Barlangja** | Kerámiacsészék, gőzölgő matcha-kádak, gongok. Az út végén a Bambusz-békakirály őrzi a palota kapuját. |
 | 12. | **A Matcha Ceremónia-palota** | Chasen és a „megbékített” Lili. Győzelem után Lili felébred, Chasen rájön, hogy a béke nem csend. Az ízek visszatérnek. |
 
-**Befejezés:** Chasen leteszi a habverőt, és először hallja a nevetést mint zenét. A közös teaház új pultot kap: reggel kávé (Morcus), este kamilla (Kamilla), délben matcha (Chasen). Kaelen a csapattal marad. Grog sütije újra sütiízű.
+**Befejezés:** A hősök közös teaceremóniát tartanak; a Habosítás feloldódik, az italok és Grog sütije visszakapják az ízüket. Chasen leteszi a habverőt, és először hallja a nevetést mint zenét. Megérti, hogy a béke nem némaság, segít helyreállítani Matcha-földet, majd csatlakozik a közös teaházhoz: reggel kávé (Morcus), este kamilla (Kamilla), délben matcha (Chasen). Kaelen a csapattal marad.
 
 ---
 
@@ -43,7 +43,7 @@ Lili szerint aki békét akar, azzal beszélni kell, nem harcolni. Előrerepül 
 | | | 🐻 **Medve:** azonnal területi mancscsapás (a forma maga a támadás – nem buff, így nem azonos Grog Harci üvöltésével). |
 | | | 🦅 **Sas:** felszáll, a kör elején elsőként lép, +50% kitérés, páncéltörő szélvihar egy célpontra. |
 | | | 🐢 **Teknős:** páncélba húzódik, mindenki őt támadja; a kapott sebzést nem visszaveri (az Morgána Vudu babája), hanem **elnyeli és a csapatot gyógyítja vele**. |
-| | | 🐍 **Átokvipera:** egy harapás: erős méreg 3 kör, 40% kábulat, a sebzés 30%-a ÉP-ként visszajön. |
+| | | 🐍 **Átokvipera:** egy harapás: erős méreg 3 kör (külön megnevezett kivétel), 40% kábulat 1 körre, a sebzés 30%-a ÉP-ként visszajön. |
 | **Limit: Bambusz-gólem** | – | A földből óriási bambuszgólem nő ki, végigtapos az ellenségeken, majd szétnyílik, és bambuszfalat emel a csapat elé (1 kör: minden támadás fele). |
 
 > Megjegyzés: a terv 2 kört írt a buffokra; a `CLAUDE.md` szerint az erősítés/gyengítés 1 körig tart, ezért 1 kör. A Mohapárna regenerációja (gyógyulás, nem erősítés) maradhat 2 kör.
@@ -68,7 +68,8 @@ A felhasználó négy ötlete, a meglévőktől megkülönböztetve:
 
 - Az ellenfelek (Chasen-manók, Matcha-gólem, Chasen) **a hősökre** teszik, **1 körre**.
 - Habos hős: **−30% fizikai sebzést kap**, de **×1,5 tűz és villám** sebzést (a hab átvezeti az áramot, a hő elpárologtatja).
-- Leszedi: Kaelen Mohapárnája, Lili Tisztítása, bármilyen tűz/villám találat (a habot elégeti – közben nagyot sebez).
+- Leszedi: Kaelen Mohapárnája, Lili Tisztítása, vagy az első beérkező tűz/villám találat. Ez a találat előbb ×1,5 sebzést okoz, utána leégeti a habot.
+- Chasen idézése ugyanezt az állapotot teszi az ellenfelekre: 30%-kal kevesebb fizikai sebzést kapnak, tűzből/villámból ×1,5-öt; az első ilyen elemi találat után a hab eltűnik.
 - Látvány: valódi, sűrű zöld matcha-hab a hős testén (nem zöld folt – a „zöld nyálka” szabály miatt fényes, buborékos habként).
 
 ---
@@ -79,38 +80,38 @@ A felhasználó négy ötlete, a meglévőktől megkülönböztetve:
 | Pálya | Név | Csaták | Újdonság |
 |---|---|---|---|
 | 9-1 | Matcha-patak | 2–3 | Habosítás, Chasen-manók |
-| 9-2 | Suttogó Bambuszos | 3 | Kaelen csatlakozik (a csata közepén lép be) |
+| 9-2 | Suttogó Bambuszos | 3 | Kaelen a második csata közben egy látványos segítő támadással lép be; a csata után rendesen csatlakozik a csapathoz. Képességei a csatlakozásától vásárolhatók. |
 | 9-3 | Mochi-tisztás | 3 | Mochi-nyálka: a fegyver beleragad |
-| 9-F | **Mochi-király** | Boss | Kettéválik (fehér, rizspor-felhő – nem zöld) |
+| 9-F | **Mochi-király** | Boss | Fél ÉP-nél egyszer kettéválik két kisebb alakra; a megmaradt ÉP megoszlik köztük. A harc mindkettő legyőzésekor ér véget. |
 
 ### 10. fejezet – A Kőmozaik Szentély (70–76)
 | Pálya | Név | Csaták | Újdonság |
 |---|---|---|---|
 | 10-1 | Gereblyézett Kert | 3 | Mozgó kavicsok (kőőrök) |
-| 10-2 | Mozaikfolyosó | 3 | **Csendmérő** a képernyő tetején: minden varázslat tölti (fegyveres támadás nem); ha megtelik, a mozaiksárkány felriad és egyszer nagyot üt, majd a mérő kiürül |
+| 10-2 | Mozaikfolyosó | 3 | **Csendmérő** a képernyő tetején: három hősi varázslat tölti tele (a fegyveres támadás és az ellenfelek varázslata nem); a következő támadáskor a mozaiksárkány felriad és egyszer nagyot üt, majd a mérő kiürül |
 | 10-3 | Meditációs Csarnok | 4 | Meditáló ellenfelek: +100% védelem, de a villám átüti |
-| 10-F | **Zen-Kavics Sárkány** | Boss | Minden 2. körben meditál; kavicsokból újraépíti magát |
+| 10-F | **Zen-Kavics Sárkány** | Boss | Minden második körben meditál, és kavicspáncélt épít maga köré, nem tölt vissza ÉP-t. Villámtámadás töri át a páncélt. |
 
 ### 11. fejezet – Bambuszhabverők Barlangja (78–84)
 | Pálya | Név | Csaták | Újdonság |
 |---|---|---|---|
 | 11-1 | Kerámia-folyosó | 3 | Matcha-gólemek: közelről ütve forró hab sebez vissza |
-| 11-2 | Matcha-kádak | 3 | Forró gőz minden körben, amíg a kád ég |
-| 11-3 | Gongterem | 4 | Gongütés: 1 körre csak alaptámadás |
+| 11-2 | Matcha-kádak | 3 | Forró gőz minden körben, amíg a kád ég. Egy hős egy akcióval elzárhatja az üst melletti szelepet; az adott üst gőzveszélye megszűnik. |
+| 11-3 | Gongterem | 4 | Gongütés: az egész csapat egy körre csak alaptámadást használhat; varázslat, idézés és limit sem választható. A hatás a kör végén lejár. |
 | 11-F | **Bambusz-békakirály** | Boss | Gong, nyelvcsapás, bambuszugrás – utána idézhető |
 
 ### 12. fejezet – A Matcha Ceremónia-palota (86–90)
 | Pálya | Név | Csaták | Újdonság |
 |---|---|---|---|
 | 12-1 | Teaszertartás-udvar | 3 | Habosítás minden ellenféltől |
-| 12-2 | A Csend Folyosója | 3 | Minden mechanika együtt |
-| 12-3 | Lili szobája | 1 | **Lili** (megbékítve) ellenfélként – nem lehet megölni, csak felébreszteni (0 ÉP-nél felébred) |
+| 12-2 | A Csend Folyosója | 3 | A Habosítás, a gong és a Csendmérő tér vissza. Meditáció és forró gőz nincs ezen a pályán, hogy a harc olvasható maradjon. |
+| 12-3 | Lili szobája | 1 | **Lili** (megbékítve) ellenfélként. Az utolsó találat megszakítja a harcot és felébreszti; a szokásos ellenfél-halálkezelés nem fut le. Ez kötelező történeti fordulat, nincs olyan ág, ahol Lili Chasent gyógyítja. |
 | 12-F | **Chasen, a Békemester** | 3 fázisú boss | lent |
 
 **Chasen (≈2400 ÉP; a terv 1850-et írt, de Kamilla 1750, és ez 30 szinttel feljebb van):**
-1. fázis – **Ceremónia:** megduplázza a hősök MP-költségét (1 körre, ismétli), habosít.
-2. fázis – **Habpajzs:** a fizikai sebzést elnyeli, tűz/villám töri át; Lili gyógyítja (amíg Lili „megbékített” – ha a 12-3-ban felébresztették, nem).
-3. fázis – **Örök Zen:** minden hőst elaltat, egyet kivéve, aki egyedül ébren van: a többieket ütéssel lehet felébreszteni. Közben Chasen nagy hablavinát készít (2 kör figyelmeztetés).
+1. fázis – **Ceremónia:** Chasen előre jelzi a ceremóniát, majd a következő körre megduplázza a hősök MP-költségét és Habosít. Ezután egy nyugodtabb köre van, majd újrakezdi a ciklust.
+2. fázis – **Habpajzs:** erősen csökkenti a fizikai sebzést. Az első tűz/villám találat sebez, majd látványosan széttöri a pajzsot. Lili nem gyógyítja Chasent, mert a 12-3-ban felébredt.
+3. fázis – **Örök Zen:** minden hőst elaltat, egyet kivéve. Az ébren maradó hős egy akcióért felrázhat egy alvó társat. Chasen két körön át jelzi a nagy hablavinát.
 
 ---
 
@@ -134,7 +135,7 @@ A felhasználó öt ellenfele + kiegészítés a 4 fejezethez (kb. 4 új / fejez
 | **Csészeharcos** *(új)* | 200 | fegyver | víz | Kerámiacsészét dob, ami szilánkokra törik. | 11 |
 | **Bambusz-békakirály** *(főellenség)* | 2200 | tűz, villám | víz, méreg | Gongütés (1 körre csak alaptámadás), nyelvcsapás. | 11-F |
 | **Teaszertartás-mester** *(új)* | 260 | jég | természet | Habosít, MP-t szív. | 12 |
-| **Lili (megbékítve)** | – | – | – | Gyógyítja Chasent; nem ölhető meg, csak felébreszthető. | 12-3 |
+| **Lili (megbékítve)** | – | – | – | Nem ölhető meg; az utolsó találatnál felébred, a szokásos legyőzés/halálkezelés nélkül. | 12-3 |
 | **Chasen, a Békemester** | 2400 | jég, villám | természet; méreg (immunis) | 3 fázis (lent). | 12-F |
 
 ---
@@ -146,8 +147,8 @@ A felhasználó öt ellenfele + kiegészítés a 4 fejezethez (kb. 4 új / fejez
   - **Zen-Kavics Sárkány** – kavicseső minden ellenségre.
   - **Bambusz-békakirály** – megkongatja a bronzgongot: minden ellenfél 1 körre elfelejti a különleges képességeit, a csapat +25 MP-t kap és megtisztul (a felhasználó „Zen Békakirály” ötlete; ugyanaz a gong, mint ellenfélként – szabály A8).
   - **Chasen** – a csapatot leszedi minden negatív állapotról, és 1 körre Habosítást ad az ellenfelekre (fordított hab).
-- **Titkos pálya (X-2): Az Ősi Habverő-műhely** – a 11-2 után nyílik. Főellenség: **Öreg Matcha-gólem (≈2800 ÉP – erősebb Chasennél, mert titkos)**. Jutalom: 5000 kávébab, Elixírek, **Arany Matcha-por** (az egész csapat Limit-csíkja megtelik – a Limit-ital csak egy hősé).
-- **Bolt:** Kaelen képességei 9-1-től; új tárgy: **Matcha-latte** (Habosítás le + 60 MP).
+- **Titkos pálya (X-2): Az Ősi Habverő-műhely** – a 11-2 után megjelenik a nyoma, de belépni csak Chasen legyőzése után lehet. Főellenség: **Öreg Matcha-gólem (≈2800 ÉP – erősebb Chasennél, mert titkos utójáték-kihívás)**. Jutalom: 5000 kávébab, Elixírek, **Arany Matcha-por** (az egész csapat Limit-csíkja megtelik – a Limit-ital csak egy hősé).
+- **Bolt:** Kaelen képességei a 9-2-es csatlakozása után jelennek meg; új tárgy: **Matcha-latte** (Habosítás le + 60 MP).
 
 ---
 
@@ -156,6 +157,7 @@ A felhasználó öt ellenfele + kiegészítés a 4 fejezethez (kb. 4 új / fejez
 - `ZONES` 9–12 (16 pálya + X-2), `MAP_POS` 3. lap, „3. térkép ▸” gomb a 2. térkép mintájára; térképkép (Canva).
 - Új hős: `HERO_DEF.druid` (Kaelen), képlap (álló, támadó, varázsló, sérült + 4 állatforma) – a meglévő hősök stílusában.
 - 6 hős: a csatában 4, 2 pihen – a Csapat menü és a Próbaterem pihenőcsíkja kezelje a 2 pihenőt.
+- A pihenőhelyek száma legfeljebb 2; a játékos választja ki a pihenő hősöket, és a csere egy akcióba kerül minden játékmódban. Ha a történeti rosterben még csak öt hős van, a második pihenőhely üres marad. Lili a 9–12. fejezet történeti csapatának nem tagja.
 - Új állapotok: `foam` (Habosítás), kitérés (`evade` – már van ilyen kódrész, ellenőrizni), némítás (csak alaptámadás).
 - Lili kapcsoló a Próbateremben: „Lili: megbékítve / elérhető”; a 9–12. fejezetben Lili nincs a csapatban.
 - Hátterek (4), zene, ~14 új ellenfél + 4 főellenség képpel és támadásokkal, 4 idézés, tesztlista bővítése, `listak/` frissítése.
@@ -163,3 +165,8 @@ A felhasználó öt ellenfele + kiegészítés a 4 fejezethez (kb. 4 új / fejez
 ## 9. Eldöntve (a felhasználó rám bízta)
 - **Harmatkör (Kaelen + Lili) marad:** így Lili is kap párost Kaelennel, és a 12. fejezet után jutalomként nyílik – a kibékülés látható eredménye.
 - **A „csend” szabály egyszerűsítve:** nem rejtett feltétel (2 egymás utáni varázslat), hanem látható **Csendmérő** a 10-2 pályán. Telefonon is érthető, és a fegyveres hősöknek (Grog, Jázmin, Kaelen botja) szerepet ad.
+- **Elfogadott megvalósítási pontosítások:** az ízeket a Habosítás veszi el Chasen csendvarázsának mellékhatásaként; a 12-3-ban Lili kötelezően felébred, a Chasen-harcban nem gyógyít; az X-2 a 11-2 után látható, de Chasen legyőzése előtt nem nyitható.
+- A Mochi-király egyszer, fél ÉP-nél kettéválik, a maradék ÉP megoszlik a két alak között. A Zen-Kavics Sárkány meditációja kavicspáncélt ad, nem gyógyít. A kádak gőzveszélyét egy akcióval elzárható szelep szünteti meg.
+- A 11-3 gongütése az egész csapatot egy körre alaptámadásra korlátozza, és a varázslatot, idézést, limitet is letiltja. A 12-2 visszatérő mechanikái a habosítás, a gong és a Csendmérő; meditáció és gőz nincs benne.
+- Chasen első fázisa előre jelzett MP-duplázó/habosító körből, majd egy szünetkörből áll. A Habpajzsot az első tűz/villám találat töri szét. Az Örök Zen alatt az ébren maradó hős egy akcióért felráz egy alvó társat.
+- Kaelen a 9-2 közepén egyszer besegít, majd a csata után rendesen csatlakozik; a képességei a csatlakozás után kerülnek a boltba. A háromkörös viperaméreg a külön megnevezett kivétel, a kábulat egy körös.

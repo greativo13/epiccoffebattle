@@ -230,3 +230,13 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 - A visszajelzés alapján a rétegzett, de csomós lángrészecske helyett folytonos, animált tűzsugarat rajzol az új `forras/r20n.js` réteg. A sugár a korábban bemért ajakpontból indul, a magja világos, a szélein külön lobogó lángnyelvek csapnak fel, a vége elvékonyodik.
 - A találatok, a tűzsebzés, a megnyitott állkapocs és az előrelendülés megmaradtak. A próbalista az összefüggő lángtestet és a lobogó széleket ellenőrzi.
 - Build: `ins10.py` és `kisebb.py` sikeres. A `foe.js` (65 ellenfél, 141 támadás), `sumall.js` (19 idézés), `all.js` (75 képesség) és `shield.js` (143 támadás) hibamentes; oldalhibát egyik sem jelzett. A célzott mobil böngészőképen a lángsugár oldalhiba nélkül megjelent. A Windows környezet nem engedte a helyi port kötését, ezért az ellenőrzések a friss helyi `index.html` útvonal-elfogásával futottak.
+
+## 21. kör – Matcha-föld kampányának első megvalósítása (2026-10-08)
+
+- A 3. térkép négy fejezetét és 17 pályapontját hozzáadtam a `forras/r21a.js` rétegben; a térkép külön festett Matcha-föld hátteret és pályánként hullámzó útvonalat kapott.
+- Kaelen bekerült druida hősként saját képességekkel. A korábban egyeztetett öt páros támadást külön névvel és eltérő hatással regisztráltam. A Lili-mentés után visszakerülhet a választható csapatba.
+- A `forras/r21b.js` megvalósítja a 4 fős aktív csapat akcióba kerülő cseréjét, a Habosítás és Bambuszkéreg működését, a csendmérőt, a gong korlátozását, a gőzszelep lezárását, a Chasen-fázisokat és az alvó társ felrázását.
+- A főellenségek győzelmi jutalmait, az X-2 feloldási feltételét, az Ősi Habverő-műhely egyszeri jutalmát és a történeti lezárást mentéshez kötöttem. Az új ellenfelek elemi gyengeségei és ellenállásai bekerültek a játékszabályba.
+- Ellenőrzés: mindkét új javítóréteg Node szintaxisellenőrzése, majd a `forras/ins10.py` és a `kisebb.py` build sikeres. A négy Playwright-kapuellenőrzés is hibátlan: 65 ellenfél / 141 támadás, 19 idézés, 75 hősképesség és 143 pajzsvizsgálat. A Windows portengedélyezése nem engedte a helyi HTTP-szerver indítását, ezért az ellenőrzések a friss `index.html`-t közvetlenül kapták útvonal-elfogással; külön, teljes kampány-végigjátszás nem történt.
+- Vizuális megjegyzés: a Matcha-föld térképképe és Kaelen képe be van kötve. Az új ellenfelekhez és négy harctérhez külön festett képek még nem készültek; jelenleg a meglévő játékképek/fallbackek adják a harci megjelenést.
+
