@@ -2,19 +2,11 @@
 // gomolygó fekete-lila füst és jól olvasható vágások. Az r20g jelenetet váltja fel.
 const R20HE=o=>{if(!o.draw)o.draw=function(){};effects.push(o);return o;};
 
-function r20hFlameColumn(x,feet,w,h,a,t,fold=0,cutout=null){
+function r20hFlameColumn(x,feet,w,h,a,t,fold=0){
   if(a<=0)return;
   const im=R17I.firepillar;if(!im)return;
   const Hh=Math.min(h,w*im.height/im.width),Ww=Hh*im.width/im.height,spread=1-.62*fold;
   ctx.save();ctx.translate(x,feet);
-  if(cutout){
-    const bodyH=cutout.h*cutout.scale,bodyW=cutout.w*cutout.scale;
-    const clearH=bodyH*1.14,clearW=Math.max(bodyW*1.55,clearH*.48);
-    // Kivágja Morgána testét a lángrajzból, de az oszlop körülötte tovább lobog.
-    ctx.beginPath();ctx.rect(-100000,-100000,200000,200000);
-    ctx.ellipse(0,-clearH*.52,clearW*.5,clearH*.5,0,0,Math.PI*2);
-    ctx.clip('evenodd');
-  }
   for(const L of [{dx:-.055,sx:1.08,a:.68,filter:'brightness(.2) saturate(.72) contrast(1.32)',phase:1.7},{dx:0,sx:1,a:.92,filter:'brightness(.58) saturate(.92) contrast(1.12)',phase:0}]){
     ctx.save();ctx.globalAlpha=a*L.a;ctx.filter=L.filter;
     const bands=20,bh=Hh/bands;
@@ -39,6 +31,8 @@ function r20hFlameColumn(x,feet,w,h,a,t,fold=0,cutout=null){
 
 A.cerberus=async(u,ts,sk)=>{
   const targets=ts.filter(t=>t.alive).slice().sort((a,b)=>cx(a)-cx(b));if(!targets.length)return;
+  // A sötét alku után Morgánán maradó aura külön rajzréteg; Cerberus alatt ezt lezárjuk.
+  u._cerb=false;u.possessed=false;
   const rel=keepPose(u),im=FX_IMG.cerberus,headImg=R17I.hound,h0=u.h*u.scale*1.42,baseX=cx(u),baseY=u.y+u.oy+8;
   const left=Math.min(...targets.map(t=>cx(t)-t.w*t.scale*.5)),right=Math.max(...targets.map(t=>cx(t)+t.w*t.scale*.5));
   const dir=(left+right)*.5<baseX?-1:1,centerY=targets.reduce((s,t)=>s+midY(t),0)/targets.length;
@@ -47,7 +41,7 @@ A.cerberus=async(u,ts,sk)=>{
   await dimTo(.8,'9,1,18',240);sfx('dark');
   R20HE({update(dt){C.t+=dt;return bodyOn;},draw(){if(!im||C.a<=0)return;const h=h0*C.s,w=h*im.width/im.height;ctx.save();ctx.globalAlpha=C.a;ctx.translate(baseX+dir*C.lunge,baseY+Math.sin(C.t*9)*2);ctx.scale(-dir,1);ctx.drawImage(im,-w/2,-h,w,h);ctx.restore();}});
   const fw=Math.max(320,u.w*u.scale*3.45),fh=Math.max(430,h0*2.65);
-  R20HE({update(){return flameOn;},draw(){r20hFlameColumn(baseX,baseY,fw,fh,F.a,C.t,F.fold,u.alpha>0?u:null);}});
+  R20HE({update(){return flameOn;},draw(){r20hFlameColumn(baseX,baseY,fw,fh,F.a,C.t,F.fold);}});
   sfx('fire');sfx('wail');rumble(1.2,9);
   await tween(420,k=>{F.a=easeIO(k);});
   await tween(360,k=>{F.a=1;u.alpha=1-.88*easeIO(k);});u.alpha=0;
@@ -122,7 +116,7 @@ A.cerberus=async(u,ts,sk)=>{
   headsOn=true;await Promise.all(bites.map((b,i)=>launchHead(b,i)));
   while(bites.some(b=>b.active))await wait(35);
   headsOn=false;C.lunge=0;
-  R20HE({update(dt){End.t+=dt;return finalOn;},draw(){if(End.a<=0)return;r20hFlameColumn(baseX,baseY,fw,fh,End.a,End.t,.25,u.alpha>0?u:null);}});
+  R20HE({update(dt){End.t+=dt;return finalOn;},draw(){if(End.a<=0)return;r20hFlameColumn(baseX,baseY,fw,fh,End.a,End.t,.25);}});
   finalOn=true;sfx('fire');sfx('wail');sfx('boom');rumble(1.1,8);flash('156,47,230',.4,.16);
   await tween(420,k=>{End.a=eOutBack(k);});
   await tween(390,k=>{const e=easeIO(k);C.a=1-e;C.s=1-.5*e;u.alpha=e;});
