@@ -1,28 +1,25 @@
 // 20. kor – térkép finomhangolás: a helyszínekhez igazított pontok,
 // kisebb jelölők és egyetlen vékony, ívelt, szaggatott ösvény.
 {
-  const R20O_MAP_POS = [
-    [[18,80],[31,81],[41,68],[25,63]],
-    [[27,42],[23,30],[44,36],[35,21]],
-    [[52,78],[58,71],[74,71],[66,47]],
-    [[77,51],[84,43],[91,37],[85,17]],
-    [[23,82],[30,71],[14,70],[19,57]],
-    [[36,55],[41,43],[29,36],[38,22]],
-    [[52,50],[58,70],[67,80],[75,62]],
-    [[69,40],[77,31],[88,33],[84,15]]
+  // A nyolc térkép saját, korábban kialakított ösvényét használjuk.
+  // A koordináták a térképfelület százalékai, balról/jobbról a pályasorrendben.
+  const R20O_ROUTES = [
+    [[17,83],[35,72],[48,58],[62,41]],
+    [[20,83],[40,72],[57,55],[75,39]],
+    [[16,80],[34,67],[57,73],[79,57]],
+    [[18,83],[39,71],[61,57],[82,38]],
+    [[20,83],[41,70],[58,54],[75,34]],
+    [[78,82],[59,68],[42,53],[24,36]],
+    [[17,82],[39,69],[62,73],[83,57]],
+    [[20,83],[43,70],[66,55],[83,34]]
   ];
-
-  // Ezek a korábbi, festett tájelemekhez igazított pozíciók adják a pályasorrendet.
-  if (Array.isArray(MAP_POS)) {
-    for (let i = 0; i < R20O_MAP_POS.length; i++) MAP_POS[i] = R20O_MAP_POS[i];
-  }
 
   const style = document.createElement('style');
   style.textContent = `
-    .map-view .map-trail {
+      .map-view .map-trail {
       display:block!important; opacity:1!important; visibility:visible!important;
       position:absolute!important; inset:0!important; width:100%!important; height:100%!important;
-      z-index:1!important; overflow:visible!important; pointer-events:none!important;
+      z-index:2!important; overflow:visible!important; pointer-events:none!important;
       filter:none!important;
     }
     .map-view .map-route { display:none!important; opacity:0!important; }
@@ -43,7 +40,7 @@
       background:radial-gradient(circle at 34% 25%,#84603a 0,#53371e 66%,#291b12 100%)!important;
       box-shadow:0 0 0 1px rgba(45,25,11,.72),0 2px 4px rgba(31,18,10,.68),
         inset 0 1px 2px rgba(255,238,190,.52)!important;
-      z-index:0!important; pointer-events:none!important;
+      z-index:-1!important; pointer-events:none!important;
     }
     .map-view .mnode.done::after {
       right:3px!important; top:3px!important; width:13px!important; height:13px!important;
@@ -64,14 +61,18 @@
       const view = ov && ov.querySelector('.map-view');
       if (!view) return;
 
-      const nodes = [...view.querySelectorAll('.mnode')]
-        .filter(node => node.style.left !== '' && node.style.top !== '');
+      const nodes = [...view.querySelectorAll('.mnode')].slice(0, 4);
       if (!nodes.length) return;
 
-      const scene = Math.max(0, Math.min(7, Number(args[0]) || 0));
-      const positions = R20O_MAP_POS[scene];
+      const mapIndex = Math.max(0, Math.min(7, Number(args[0]) || 0));
+      const pointsForMap = R20O_ROUTES[mapIndex];
+
       nodes.forEach((node, i) => {
-        const [x,y] = positions[i % positions.length];
+        const [x,y] = pointsForMap[i];
+        if (node.textContent.trim() !== String(i + 1) || node.childElementCount) {
+          node.replaceChildren(document.createTextNode(String(i + 1)));
+        }
+        node.setAttribute('aria-label', `Pálya ${i + 1}`);
         node.style.setProperty('left', `${x}%`, 'important');
         node.style.setProperty('top', `${y}%`, 'important');
         node.style.setProperty('width', '40px', 'important');
@@ -84,6 +85,10 @@
         node.style.setProperty('box-shadow', 'none', 'important');
         node.style.setProperty('transform', 'translate(-50%,-50%)', 'important');
         node.style.setProperty('z-index', '3', 'important');
+      });
+
+      view.querySelectorAll('.mnode').forEach((node, i) => {
+        if (i >= nodes.length) node.style.setProperty('display', 'none', 'important');
       });
 
       const route = view.querySelector('svg[data-r20d-route]');
@@ -118,7 +123,7 @@
       path.setAttribute('fill', 'none');
       path.setAttribute('stroke', 'rgba(105,70,39,.72)');
       path.setAttribute('stroke-width', '1.35');
-      path.setAttribute('stroke-dasharray', '2 4');
+      path.setAttribute('stroke-dasharray', '2.5 4.5');
       path.setAttribute('stroke-linecap', 'round');
       path.setAttribute('stroke-linejoin', 'round');
       path.setAttribute('vector-effect', 'non-scaling-stroke');
