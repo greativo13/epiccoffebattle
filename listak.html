@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#20162c">
-<title>Kávérablás – 20. kör második kipróbálása</title>
+<title>Kávérablás – 20. kör harmadik kipróbálása</title>
 <style>
 :root{color-scheme:dark;--bg:#17111f;--panel:#241a30;--line:#493957;--text:#f5effa;--muted:#c3b4cc;--gold:#f3c85b;--green:#64d890;--red:#ff8b83}
 *{box-sizing:border-box}
@@ -38,7 +38,7 @@ textarea{width:100%;min-height:76px;resize:vertical;border-radius:10px;border:1p
 </head>
 <body>
 <main>
-  <h1>Kávérablás – 20. kör második kipróbálása</h1>
+  <h1>Kávérablás – 20. kör harmadik kipróbálása</h1>
   <p class="intro">Jelöld, hogy rendben van-e. A „Nem jó” mellett írd le röviden, mit tapasztaltál. A végén másold ki az eredményt, és küldd be a Codex-beszélgetésbe.</p>
   <p class="hint">A jelölések ezen az eszközön és ebben a böngészőben maradnak meg. Kipróbálás: Főmenü → Teszt → KAVE → térkép → Próbaterem.</p>
   <p class="state" id="state" role="status">A lista betöltése…</p>
@@ -52,20 +52,20 @@ textarea{width:100%;min-height:76px;resize:vertical;border-radius:10px;border:1p
   <div id="list" aria-live="polite"></div>
 </main>
 <script>
-const KEY='kaverablas-lista-v22';
+const KEY='kaverablas-lista-v23';
 const DATA=[
-{id:'cerberus',area:'Próbaterem',title:'Próbaterem → Morgána → Éjféli rontás (Cerberus)',expect:'A korábbi, jól sikerült festett sötéttűz-oszlop nyeli el Morgánát. Valódi lobogó lángnyelvek látszanak; a három fej egyszerre csap le.',how:'Nézd meg az átváltozás teljes lángoszlopát és az egyidejű hármas harapást.'},
-{id:'ink-dragon',area:'Ellenfelek',title:'Ellenfelek → Porcelánváros → Porcelán mandarin → Tusátok',expect:'A nagy tussárkány több széles, folyamatos kígyózó áthaladással és nagy tintarobbanással támad; a mozgás látványos, nem merev képcsúszás.',how:'Nézd végig az ecsetes felvezetést, mindkét sárkány-rohamot és a tintatalálatokat.'},
-{id:'tea',area:'Ellenfelek',title:'Ellenfelek → Az Álompalota → Kamilla → Teaszertartás',expect:'A nagy porceláncsésze súlyosan átbillen, a pereméből megszakítás nélküli vastag teaáram ömlik, majd széles hullám söpör végig.',how:'Figyeld a csésze lendületét, a folyamatos kiöntést és a hullám becsapódásait.'},
-{id:'espresso',area:'Idézések',title:'Idézések → Espresszó, a sárkány',expect:'Espresszó látványosan kinyitja az állkapcsát, előrelendül, és nagy lángcsóvát fúj ki közvetlenül az ajkától.',how:'Ellenőrizd a szájnyitást és rácsos képen a tűz indulási pontját.'},
-{id:'shadows',area:'Idézések',title:'Idézések → Árny-csapat',expect:'Az élő hősök árnymásai egyszerre megjelennek és végig láthatók maradnak; mindegyik támad, majd együtt zárják a jelenetet.',how:'Figyeld, hogy a teljes árnycsapat megmarad-e a jelenet alatt, és minden tag végrehajtja-e a támadását.'},
+{id:'cerberus',area:'Próbaterem',title:'Próbaterem → Morgána → Éjféli rontás (Cerberus)',expect:'Morgánát nagy, fekete-lila lángnyelvek nyelik el kép és füst nélkül; Cerberus három feje egyszerre harap.',how:'Nézd meg az átváltozás teljes lángoszlopát és az egyidejű hármas harapást.'},
+{id:'ink-dragon',area:'Ellenfelek',title:'Ellenfelek → Porcelánváros → Porcelán mandarin → Tusátok',expect:'Az eredeti fekete tintasárkány marad meg, előtte a toll felírja a szimbólumot; a sárkány teste folyamatosan kígyózik.',how:'Nézd végig az ecsetes felvezetést, mindkét sárkány-rohamot és a tintatalálatokat.'},
+{id:'tea',area:'Ellenfelek',title:'Ellenfelek → Az Álompalota → Kamilla → Teaszertartás',expect:'A csésze pereméből folyamatosan ömlik ki a korábbi, teljes szélességű, kamillavirágos hullám.',how:'Figyeld a csésze lendületét, a folyamatos kiöntést és a hullám becsapódásait.'},
+{id:'espresso',area:'Idézések',title:'Idézések → Espresszó, a sárkány',expect:'A száj elejétől egybefüggő, lobogó narancs-arany lángcsóva indul; ne maradjon szétszórt apró tűzfelhő.',how:'Ellenőrizd a szájnyitást és rácsos képen a tűz indulási pontját.'},
+{id:'shadows',area:'Idézések',title:'Idézések → Árny-csapat',expect:'Az Árny-csapat legelső változata tér vissza: a hősök árnya kiemelkedik, támad, majd visszahúzódik.',how:'Figyeld, hogy a teljes árnycsapat megmarad-e a jelenet alatt, és minden tag végrehajtja-e a támadását.'},
 {id:'lightning-pair',area:'Páros támadások',title:'Próbaterem → Morgána → PÁROS: Villámátok',expect:'A két hős erejéből nagy viharkoponyás felhő épül, majd festett lila villámok csapnak le a célpontokra.',how:'Nézd végig a felvezetést, a felhő megjelenését és a három villámhullámot.'},
-{id:'stars-pair',area:'Páros támadások',title:'Próbaterem → Zordon → PÁROS: Csillagözön',expect:'A csillagsárkány két nagy ívben végigsöpör a csatatéren; utána sűrű, festett meteorzápor csapódik be.',how:'Nézd végig az éjszakai felvezetést, mindkét sárkányrohamot és a meteorzáport.'},
-{id:'shadow-rush',area:'Páros támadások',title:'Próbaterem → Morgána → PÁROS: Árnyroham',expect:'Morgána látványosan sötétséggel ruházza fel Grogot; Grog saját testével, árny-utóképekkel és nagy söpréssel végigrohan az ellenfeleken.',how:'Figyeld a sötétség átadását, Grog teljes rohamát és az egyes találatokat.'},
-{id:'dragon-arrow',area:'Páros támadások',title:'Próbaterem → Zordon → PÁROS: Sárkánynyíl',expect:'Zordon tüzet ad Jázmin nyilához; Jázmin láthatóan kifeszíti és kilövi. A nyilat festett tűzsárkány veszi körül.',how:'Kövesd a tüzet Zordontól Jázmin íjáig, majd nézd végig a kilövést és a sárkány útját.'},
-{id:'lotus-storm',area:'Páros támadások',title:'Próbaterem → Jázmin → PÁROS: Lótuszvihar',expect:'A lótusz kisebb és jól kivehető; a szirmok között arany nyilak pörögnek körbe, majd célba repülnek.',how:'Figyeld a virág méretét, a körben forgó nyilakat és azok kilövését.'},
-{id:'fairy-fist',area:'Páros támadások',title:'Próbaterem → Lili → PÁROS: Tündérököl',expect:'Lili aranyenergiát ad Grog öklébe; Grog teljes testtel végigrohan a soron, minden találatnál nagy aranybecsapódással.',how:'Nézd végig az energia átadását, Grog rohamát és az egyes becsapódásokat.'},
-{id:'map',area:'Térkép és felület',title:'Térkép – álló és fekvő telefon',expect:'Az új térképen a pályapontok is új helyre kerülnek; a sorrend világos, az ösvény festett és telefonon is követhető.',how:'Ellenőrizd az átrendezett pontokat és az útvonalat álló és fekvő telefonon.'}
+{id:'stars-pair',area:'Páros támadások',title:'Próbaterem → Zordon → PÁROS: Csillagözön',expect:'A csillagok jól látszanak a sárkány testén, a feje jó irányba néz, két nagy ívben végigsöpör; meteorzápor nincs.',how:'Nézd végig az éjszakai felvezetést, mindkét sárkányrohamot és a meteorzáport.'},
+{id:'shadow-rush',area:'Páros támadások',title:'Próbaterem → Morgána → PÁROS: Árnyroham',expect:'Morgána sötét aurát ad Grogra; Grog egy nagy lila-fekete vágással végigsöpör az ellenfeleken.',how:'Figyeld a sötétség átadását, Grog teljes rohamát és az egyes találatokat.'},
+{id:'dragon-arrow',area:'Páros támadások',title:'Próbaterem → Zordon → PÁROS: Sárkánynyíl',expect:'Zordon tüze látványosan körbefut Jázmin íján; a nyíl lendületesen repül, a tűzsárkány simán köré tekeredik.',how:'Kövesd a tüzet Zordontól Jázmin íjáig, majd nézd végig a kilövést és a sárkány útját.'},
+{id:'lotus-storm',area:'Páros támadások',title:'Próbaterem → Jázmin → PÁROS: Lótuszvihar',expect:'A nyilak és a szirmok ugyanazon a spirálpályán, összehangoltan forognak, majd a nyilak célba repülnek.',how:'Figyeld a virág méretét, a körben forgó nyilakat és azok kilövését.'},
+{id:'fairy-fist',area:'Páros támadások',title:'Próbaterem → Lili → PÁROS: Tündérököl',expect:'Lili tündérport szór Grogra; Grog kezén összeáll a fényes aranykesztyű, és azzal csap le.',how:'Nézd végig az energia átadását, Grog rohamát és az egyes becsapódásokat.'},
+{id:'map',area:'Térkép és felület',title:'Térkép – álló és fekvő telefon',expect:'Pergamenszerű térkép festett ház-, fa-, hegy- és toronyikonokkal; a sorrend jól követhető álló és fekvő telefonon.',how:'Ellenőrizd az átrendezett pontokat és az útvonalat álló és fekvő telefonon.'}
 ];
 const $=id=>document.getElementById(id);
 let rows=[],marks={};
@@ -86,7 +86,7 @@ function render(){
 }
 function start(){rows=DATA;$('state').textContent=`Betöltve: ${rows.length} kipróbálandó pont.`;updateProgress();render();}
 $('filter').addEventListener('change',render);$('search').addEventListener('input',render);
-$('copy').addEventListener('click',async()=>{const bad=rows.filter(x=>marks[x.id]?.status==='bad').map(x=>`✗ ${x.title}\n  Elvárt: ${x.expect}\n  Kipróbálás: ${x.how}\n  Megjegyzés: ${marks[x.id]?.note||'(üres)'}`);const todo=rows.filter(x=>!marks[x.id]?.status);const text=`20. kör – második próba\n\nNEM JÓ (${bad.length}):\n${bad.join('\n\n')||'nincs'}\n\nMÉG NEM PRÓBÁLTAM (${todo.length}):\n${todo.map(x=>'· '+x.title).join('\n')||'nincs'}`;try{await navigator.clipboard.writeText(text);$('state').textContent='Az eredmény a vágólapra másolva.';}catch{$('state').textContent=text;}});
+$('copy').addEventListener('click',async()=>{const bad=rows.filter(x=>marks[x.id]?.status==='bad').map(x=>`✗ ${x.title}\n  Elvárt: ${x.expect}\n  Kipróbálás: ${x.how}\n  Megjegyzés: ${marks[x.id]?.note||'(üres)'}`);const todo=rows.filter(x=>!marks[x.id]?.status);const text=`20. kör – harmadik próba\n\nNEM JÓ (${bad.length}):\n${bad.join('\n\n')||'nincs'}\n\nMÉG NEM PRÓBÁLTAM (${todo.length}):\n${todo.map(x=>'· '+x.title).join('\n')||'nincs'}`;try{await navigator.clipboard.writeText(text);$('state').textContent='Az eredmény a vágólapra másolva.';}catch{$('state').textContent=text;}});
 $('reset').addEventListener('click',()=>{if(confirm('Töröljem ezen az eszközön az összes jelölést és megjegyzést?')){marks={};save();updateProgress();render();$('state').textContent='A jelölések törölve.';}});
 start();
 </script>
