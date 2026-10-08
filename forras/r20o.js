@@ -96,15 +96,12 @@
         node.setAttribute('aria-label',node.title||`Pálya ${number}`);
       });
 
-      // A titkos pálya nincs benne a ZONES pályasorában: a saját jelét hagyjuk
-      // meg, és visszaállítjuk az eredetileg kijelölt, szabad 63% / 67% pontra.
-      const secretNode=nodes.slice(rows.length).find(node=>node.title.includes('Elfeledett Pörkölő'));
-      if(secretNode){
-        secretNode.style.removeProperty('display');
-        secretNode.style.setProperty('left','63%','important');
-        secretNode.style.setProperty('top','67%','important');
-        secretNode.style.setProperty('transform','translate(-50%,-50%)','important');
-      }
+      // A titkos főellenség piros-halálfejes jelölője a többi pályaponttal
+      // ütközik; csak ezt és a hozzá tartozó címkét távolítjuk el.
+      nodes.slice(rows.length)
+        .filter(node=>(node.title||'').includes('Elfeledett Pörkölő'))
+        .forEach(node=>node.remove());
+      view.querySelectorAll('.map-secret').forEach(node=>node.remove());
 
       const zoneLabels=[...view.querySelectorAll('.map-zone')];
       zoneLabels.forEach((node,i)=>{
