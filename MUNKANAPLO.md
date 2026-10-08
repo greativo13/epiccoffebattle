@@ -152,3 +152,15 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 - A negyedik javítások a `forras/r20d.js` rétegbe kerültek; a felhasználó korábbi „a térképet engedd el” kérését követve a térképhez nem nyúltam.
 - Friss build: `forras/ins10.py`, majd `kisebb.py` sikeres. A négy ellenőrzés hiba nélkül: foe.js (65 ellenfél, 141 támadás), sumall.js (19 idézés), all.js (75 képesség), shield.js (143 próba). A tea animáció böngészős képkockáin nem volt JavaScript-hiba.
 - A 20. kör tesztlistája frissítve; a térképpont kimaradt, ahogy korábban kérte.
+
+## 20. kör – ötödik javítás (2026-10-08)
+
+- Az ötödik próbában jelzett tíz pont javításai a `forras/r20e.js` rétegbe kerültek. A térképet nem tettem a kipróbálandó listába, mert ezen a próbán nem szerepelt visszajelzés róla.
+- Cerberus: tisztán rajzolt, lobogó fekete-lila lángnyelvek az átváltozásnál; három külön fej egyszerre lendül előre, egyszerre harap, majd visszahúzódik.
+- Teaszertartás: nagy rétegzett felhő, a felhő tetejéről hulló cseppek, gyűjtőmedence és egyetlen széles tea-hullám, ami végigsöpör a hősökön.
+- Espresszó: az r10a eredeti tűzrészecske-méretei és rajza visszaállítva; a bemért `.145,.302` szájpont marad.
+- Árny-csapat: a teljes élő hőscsapat árnyalakja együtt megjelenik, külön célpontokra támad, majd visszahúzódik.
+- Páros támadások: Villámátok sötét, kisebb felhőből három menetben vastag villámokat küld; Csillagözön csillagos ég alatt csillagképből arany sárkánnyá alakul és átrepül; Árnyroham Morgána aurájával vértezi Grogot, aki átrohan az ellenfeleken; Sárkánynyíl nagy, folyamatos tűzsárkányt repít a nyíl körül; Lótuszvihar kisebb lótuszt és azonos íven forgó, nem lángoló nyilakat használ; Tündérököl látható arany kesztyűt formál Grog kezére és azzal üt.
+- A negyedik próba összesen tíz tételét a listában tartottam. Az ötödik próba saját `ujraproba=5` jelöléseket ment, a korábbi próbák jelöléseinek törlése nélkül.
+- Build: `forras/ins10.py`, majd `kisebb.py` sikeres. JavaScript szintaxisellenőrzés sikeres. Böngészős ellenőrzések: foe.js (8 fejezet, 65 ellenfél, 141 támadás), sumall.js (19 idézés), all.js (75 képesség), shield.js (143 támadás) hiba nélkül.
+- Kipróbálandó lista: a `listak.html?kor=20&ujraproba=5` oldalon a tíz javított pont.
