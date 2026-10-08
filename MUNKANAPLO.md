@@ -192,3 +192,11 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 - Páros támadások: Villámátok kisebb, sötét felhőből több vastag elágazó villámot küld; Csillagözön csillagokból sárkányképet kapcsol össze, majd arany sárkányként végigsöpör; Árnyroham látható aurát ad Grogra, aki lendületből végigrohan a soron; Sárkánynyíl az újabb, felhúzott íjas-tűzsárkányos változatot használja; Lótuszvihar kisebb lótuszt és a szirmokkal együtt forgó, nem lángoló nyilakat mutat; Tündérökölnél a tündérpor Lilitől Grog ökléig száll, a kesztyű a kezére formálódik, és Grog azzal üt.
 - A kipróbálandó lista a kilenc új próbapontra szűkült; a Cerberus és a korábbi, megoldott pontok kikerültek belőle. A térkép továbbra sincs a listán.
 - Ellenőrzés: `foe.js`, `sumall.js`, `all.js` és `shield.js` hibamentesen lefutott; az utóbbi 143 ellenféltámadást vizsgált. A javítófájl JavaScript-szintaxisa és a lista JSON-formátuma is rendben van.
+
+## 20. kör – nyolcadik javítás: Teaszertartás (2026-10-08)
+
+- Csak Kamilla Teaszertartását módosítottam, az új `forras/r20j.js` rétegben. A másik nyolc nyitott támadáshoz nem nyúltam.
+- A nagy felhő Kamilla fölött jelenik meg. Teacsepp alakú, borostyánszínű cseppek hullanak belőle, láthatóan összegyűlnek Kamilla előtt, majd a korábbi festett hullám Kamillától jobbra-balra végigsöpör a hősökön.
+- A hullám megjelenítéséhez az R17I teahullám-képét és az R18B korábbi növekedési, végiggördülési és balra tartó söprését vettem alapul.
+- A próbajegyzék egyetlen friss pontot tartalmaz a Teaszertartás újratesztelésére.
+- Ellenőrzés: a `foe.js`, `sumall.js`, `all.js` és `shield.js` mind hibamentesen futott le; a shield 143 ellenféltámadást ellenőrzött. A célzott böngészős jelenet is végigfutott oldalhibák nélkül.
