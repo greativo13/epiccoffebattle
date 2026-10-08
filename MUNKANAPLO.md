@@ -217,3 +217,10 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 - A hullámot 88 függőleges képszelet animálja erőteljes, különböző ütemű sodrással és gördüléssel. Nagyobb méretben, Kamillától balra söpör végig.
 - A kizárólagos próbalista a felhőt, a sűrű esőt, a hullám mozgását, színeit és kamillavirágait ellenőrzi.
 - Build és ellenőrzés: az `ins10.py` → `kisebb.py` sikeres. A `foe.js` (65 ellenfél, 141 támadás), `sumall.js` (19 idézés), `all.js` (75 képesség) és `shield.js` (143 támadás) hibamentes; oldalhibát egyik sem jelzett. A célzott böngészős Teaszertartás-futásban a felhő és a hullám képe betöltött, oldalhiba nem történt. A Windows környezet nem engedte a helyi port kötését, ezért az ellenőrzések Playwright útvonal-elfogással a friss helyi `index.html`-t használták.
+
+## 20. kör – tizenegyedik javítás: Espresszó idézés (2026-10-08)
+
+- Az Espresszó idézését a friss `forras/r20m.js` rétegben írtam felül. Az ajakpont maradt a korábban bemért `.145,.302` helyen; a nyitott száj mozgása és a rövid előrelendülés megmaradt.
+- A láng az ellenfél „Duplán pörkölt leheletének” textúrázott, festett tűzrészecskéit használja: a visszafogott, apró szájrészek helyett az ellenséges támadás 7–12 px-es, növekvő lángnyelvei futnak ki az ajak elől.
+- A próbalista most csak az Espresszó idézését tartalmazza, és közvetlen összehasonlítást kér a Kristálybarlang ellenséges Espresszójával.
+- Build: `ins10.py` és `kisebb.py` sikeres. A `foe.js` (65 ellenfél, 141 támadás), `sumall.js` (19 idézés), `all.js` (75 képesség) és `shield.js` (143 támadás) hibamentes; oldalhibát egyik sem jelzett. A célzott böngészős képkocka az ajaknál induló textúrázott tüzet igazolta. A Windows környezet nem engedte a helyi port kötését, ezért az ellenőrzések a friss helyi `index.html` útvonal-elfogásával futottak.
