@@ -69,8 +69,9 @@
       const rows=[];
       ZONES.forEach((zone,zoneIndex)=>zone.levels.forEach((level,levelIndex)=>rows.push({zoneIndex,levelIndex,level})));
       const nodes=[...view.querySelectorAll('.mnode')];
-      nodes.forEach((node,i)=>{
-        const row=rows[i]||{zoneIndex:Math.floor(i/4),levelIndex:i%4};
+      const levelNodes=nodes.slice(0,rows.length);
+      levelNodes.forEach((node,i)=>{
+        const row=rows[i];
         const position=R20O_MAP_POS[row.zoneIndex]?.[row.levelIndex]||R20O_MAP_POS[0][row.levelIndex%4];
         node.style.removeProperty('display');
         node.style.setProperty('left',`${position[0]}%`,'important');
@@ -94,6 +95,16 @@
         if(node.childElementCount||node.textContent!==label)node.replaceChildren(document.createTextNode(label));
         node.setAttribute('aria-label',node.title||`Pálya ${number}`);
       });
+
+      // A titkos pálya nincs benne a ZONES pályasorában: a saját jelét hagyjuk
+      // meg, és visszaállítjuk az eredetileg kijelölt, szabad 63% / 67% pontra.
+      const secretNode=nodes.slice(rows.length).find(node=>node.title.includes('Elfeledett Pörkölő'));
+      if(secretNode){
+        secretNode.style.removeProperty('display');
+        secretNode.style.setProperty('left','63%','important');
+        secretNode.style.setProperty('top','67%','important');
+        secretNode.style.setProperty('transform','translate(-50%,-50%)','important');
+      }
 
       const zoneLabels=[...view.querySelectorAll('.map-zone')];
       zoneLabels.forEach((node,i)=>{
