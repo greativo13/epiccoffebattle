@@ -33,27 +33,47 @@ class DragonFlameEmitter{
   }
 }
 
+function drawFlameTongue(ctx,p,time,size,colors,alpha){
+  const ux=p.dx/p.len,uy=p.dy/p.len,nx=-uy,ny=ux;
+  const flick=Math.sin(time*25+p.seed),length=size*(.82+.18*Math.sin(time*19+p.seed*1.3));
+  const width=size*(.27+.045*Math.sin(time*22+p.seed)),rise=length*(.2+.1*Math.sin(time*17+p.seed));
+  const tip={x:p.x+ux*length+nx*width*flick*.18,y:p.y+uy*length-rise};
+  const point=(t,side,bulge,phase)=>({
+    x:p.x+ux*length*t+nx*width*side*bulge+Math.sin(time*21+p.seed+phase)*width*.08,
+    y:p.y+uy*length*t-rise*Math.pow(t,1.18)+ny*width*side*bulge
+  });
+  const left=[[.08,-.18,.1,0],[.2,-.54,.2,.7],[.34,-.32,.7,1.1],[.48,-.78,1.1,1.7],[.61,-.43,1.7,2.1],[.77,-.68,2.1,2.5],[1,0,2.8,2.8]];
+  const right=[[.79,.52,3.2,3.2],[.64,.38,3.7,3.7],[.49,.72,4.1,4.1],[.33,.42,4.6,4.6],[.18,.59,5.1,5.1],[.08,.18,5.6,5.6]];
+  ctx.beginPath();
+  let q=point(...left[0]);ctx.moveTo(q.x,q.y);
+  for(let i=1;i<left.length;i++){q=point(...left[i]);ctx.lineTo(q.x,q.y);}
+  ctx.lineTo(tip.x,tip.y);
+  for(const v of right){q=point(...v);ctx.lineTo(q.x,q.y);}
+  ctx.closePath();
+  const g=ctx.createLinearGradient(p.x,p.y,tip.x,tip.y);
+  for(const [at,color] of colors)g.addColorStop(at,color);
+  ctx.fillStyle=g;ctx.fill();
+}
+
 function drawDragonBeam(ctx,start,end,time,alpha=1,emitter){
   if(!emitter||!emitter.particles.length)return;
-  ctx.save();ctx.shadowBlur=13;ctx.shadowColor='#ff5b10';
+  ctx.save();ctx.shadowBlur=1;ctx.shadowColor='#7f1408';
   for(const p of emitter.particles){
-    const fade=p.alpha*alpha;
-    ctx.globalCompositeOperation='lighter';ctx.globalAlpha=fade;
-    const pulse=1+.12*Math.sin(time*15-p.u*8+p.seed),radius=p.radius*pulse;
-    const angle=Math.atan2(p.dy,p.dx),rx=radius*(.58+p.u*.12),ry=radius*(.92+p.u*.12);
-    const g=ctx.createRadialGradient(p.x-p.dx/p.len*radius*.2,p.y-p.dy/p.len*radius*.2,1,p.x,p.y,radius*1.35);
-    if(p.u<.22){g.addColorStop(0,'rgba(255,255,245,.98)');g.addColorStop(.28,'rgba(255,247,160,.94)');g.addColorStop(.68,'rgba(255,164,28,.72)');g.addColorStop(1,'rgba(255,80,12,0)');}
-    else if(p.u<.72){g.addColorStop(0,'rgba(255,255,205,.94)');g.addColorStop(.24,'rgba(255,205,35,.94)');g.addColorStop(.62,'rgba(255,94,10,.8)');g.addColorStop(1,'rgba(170,22,8,0)');}
-    else{g.addColorStop(0,'rgba(255,150,42,.78)');g.addColorStop(.36,'rgba(230,62,14,.70)');g.addColorStop(.72,'rgba(170,24,8,.42)');g.addColorStop(1,'rgba(120,12,4,0)');}
-    ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(p.x,p.y,rx,ry,angle,0,Math.PI*2);ctx.fill();
-    if(p.u<.42){ctx.globalCompositeOperation='lighter';ctx.globalAlpha=fade*.82;ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,Math.max(2,radius*.22),0,Math.PI*2);ctx.fill();}
-  }
-  if(start&&end&&emitter.emitting){
-    const dx=end.x-start.x,dy=end.y-start.y,len=Math.max(1,Math.hypot(dx,dy)),nx=-dy/len,ny=dx/len;
-    const pulse=.5+.5*Math.sin(time*18),x=end.x+nx*Math.sin(time*27)*3,y=end.y+ny*Math.sin(time*27)*3,r=34+pulse*20;
-    ctx.globalCompositeOperation='lighter';ctx.globalAlpha=alpha*.78;ctx.shadowBlur=20;ctx.shadowColor='#ff4b08';
-    const hit=ctx.createRadialGradient(x,y,1,x,y,r);hit.addColorStop(0,'rgba(255,255,210,.95)');hit.addColorStop(.3,'rgba(255,222,20,.88)');hit.addColorStop(.72,'rgba(255,67,8,.62)');hit.addColorStop(1,'rgba(255,38,0,0)');
-    ctx.fillStyle=hit;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();
+    const fade=p.alpha*alpha,pulse=1+.1*Math.sin(time*15-p.u*8+p.seed),size=p.radius*pulse;
+    const outer=p.u>.72
+      ?[[0,'#380b12'],[.32,'#761116'],[.72,'#c3260e'],[1,'rgba(190,30,8,.08)']]
+      :[[0,'#4a0b10'],[.3,'#96180d'],[.72,'#df3510'],[1,'rgba(220,54,8,.05)']];
+    const middle=[[0,'#b9290d'],[.35,'#ef5b11'],[.75,'#ffb21c'],[1,'rgba(255,176,24,.08)']];
+    ctx.globalCompositeOperation='source-over';ctx.globalAlpha=fade;
+    drawFlameTongue(ctx,p,time,size,outer,fade);
+    ctx.strokeStyle='rgba(55,7,10,.72)';ctx.lineWidth=Math.max(1.5,size*.018);ctx.stroke();
+    ctx.globalCompositeOperation='screen';ctx.globalAlpha=fade*.86;
+    drawFlameTongue(ctx,p,time,size*.64,middle,fade*.86);
+    // A vékony fehér mag csak a száj közelében és a sugár tengelyében jelenik meg.
+    if(p.u<.24||(p.u<.72&&Math.abs(p.side)<.28&&Math.sin(p.seed*31)>.25)){
+      ctx.globalCompositeOperation='lighter';ctx.globalAlpha=fade*.82;
+      drawFlameTongue(ctx,p,time,size*.19,[[0,'rgba(255,255,245,.95)'],[.55,'rgba(255,239,164,.92)'],[1,'rgba(255,217,74,.08)']],fade*.82);
+    }
   }
   ctx.restore();
 }
