@@ -164,3 +164,9 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 - A negyedik próba összesen tíz tételét a listában tartottam. Az ötödik próba saját `ujraproba=5` jelöléseket ment, a korábbi próbák jelöléseinek törlése nélkül.
 - Build: `forras/ins10.py`, majd `kisebb.py` sikeres. JavaScript szintaxisellenőrzés sikeres. Böngészős ellenőrzések: foe.js (8 fejezet, 65 ellenfél, 141 támadás), sumall.js (19 idézés), all.js (75 képesség), shield.js (143 támadás) hiba nélkül.
 - Kipróbálandó lista: a `listak.html?kor=20&ujraproba=5` oldalon a tíz javított pont.
+
+## 20. kör – hatodik javítás (2026-10-08)
+
+- Kizárólag a Cerberus-jelenethez nyúltam a felhasználó visszajelzése alapján: Morgána körüli lángrajz és a záró lángoszlop kikerült; az átváltozás bevált időzítése, a Cerberus megjelenése és a fejroham változatlan maradt.
+- A fejképből levágtam a hosszú ecsetcsóva nagy részét. A helyére külön animált, szabálytalan szélű, fekete-lila gomolyfüst került, amely a fejek mögött sodródik.
+- `forras/r20h.js` szintaxisellenőrzése és a `forras/ins10.py` → `kisebb.py` build sikeres. A Cerberus célzott Chrome-próbája hibamentes volt; a képkockát vizuálisan ellenőriztem. A többi támadás ellenőrzését ebben a javításban nem futtattam.
