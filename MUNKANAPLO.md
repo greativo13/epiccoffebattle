@@ -209,3 +209,11 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 - Csak a Teaszertartás változott a `forras/r20k.js` rétegben. A próbapont elvárása és útmutatója a függőleges esőt, a felhőt és a fodrozódást ellenőrzi.
 - Build: `forras/ins10.py`, majd `kisebb.py` sikeres. A `foe.js` (65 ellenfél, 141 támadás), `sumall.js` (19 idézés), `all.js` (75 képesség) és `shield.js` (143 támadás) hibamentes; oldalhibát egyik sem jelzett.
 - A böngészőben ellenőriztem az új felhőkép betöltését, az eső és a hullám képkockáit; a Teaszertartás célzott futása oldalhiba nélkül befejeződött. A portkötést a Windows-futtatókörnyezet tiltotta, ezért a négy szkript Playwright útvonal-elfogással a friss helyi `index.html`-t kapta.
+
+## 20. kör – tizedik javítás: Teaszertartás (2026-10-08)
+
+- A felhasználó megtartotta a felhőt, és több esőt kért. A következő verzióban a felhő rajza változatlan; 126, függőlegesen hulló borostyánszínű teacsepp tölti ki alatta az esősávot.
+- A hullámhoz új, áttetsző hátterű festett kép készült: megmaradt az eredeti mézbarna-teás paletta és a kamillavirágok, a taraj magasabb és teltebb lett.
+- A hullámot 88 függőleges képszelet animálja erőteljes, különböző ütemű sodrással és gördüléssel. Nagyobb méretben, Kamillától balra söpör végig.
+- A kizárólagos próbalista a felhőt, a sűrű esőt, a hullám mozgását, színeit és kamillavirágait ellenőrzi.
+- Build és ellenőrzés: az `ins10.py` → `kisebb.py` sikeres. A `foe.js` (65 ellenfél, 141 támadás), `sumall.js` (19 idézés), `all.js` (75 képesség) és `shield.js` (143 támadás) hibamentes; oldalhibát egyik sem jelzett. A célzott böngészős Teaszertartás-futásban a felhő és a hullám képe betöltött, oldalhiba nem történt. A Windows környezet nem engedte a helyi port kötését, ezért az ellenőrzések Playwright útvonal-elfogással a friss helyi `index.html`-t használták.
