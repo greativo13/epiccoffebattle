@@ -142,6 +142,6 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 ## 20. kör – harmadik javítás (2026-10-08)
 
 - Új visszajelzések alapján tovább finomodott a `forras/r20c.js`: Cerberus fekete-lila lángoszlopa, a Tusátok tintasárkány mozgása, a Teaszertartás kiömlő hulláma, Espresszó tűzcsóvája, az eredeti Árny-csapat és a hat páros támadás animációi.
-- A tesztlista harmadik kipróbálásra frissítve, 12 ponttal; a felhasználó tesztjelölései megmaradtak.
+- A tesztlista harmadik kipróbálásra 11 ponttal frissítve; a térképpont kimaradt a felhasználó kérésére. A felhasználó tesztjelölései megmaradtak.
 - A térképhez készített további útvonal-javítás sikertelen volt, ezért visszavonva; a felhasználó kérésére a térképet nem módosítom tovább.
 - Build: `forras/ins10.py` és `kisebb.py` sikeres. Ellenőrzések: foe.js (8 fejezet, 65 ellenfél, 141 támadás), sumall.js (19 idézés), all.js (75 képesség), shield.js (143 próba) – hiba nélkül. A négy ellenőrzés a térkép-próba előtt futott; a játéklogika utána nem változott.
