@@ -176,3 +176,8 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 - A felhasználó kép alapján pontosította, hogy a Morgána körüli megjelenésre gondolt, nem a tűzoszlopra. Visszaállítottam az átváltozás és a zárás festett tűzoszlopát.
 - Eltávolítottam a fejek becsapódásakor kirajzolt hosszú, párhuzamos vágáscsíkokat. A fejroham és a fekete-lila füst maradt.
 - Célzott Chrome-próba: nincs JavaScript-hiba; az átváltozás és a fejroham képkockáit ellenőriztem. `forras/ins10.py` és `kisebb.py` sikeres.
+
+## 20. kör – hatodik javítás, Morgána lángkivágása (2026-10-08)
+
+- A felhasználó pontosítása szerint a Cerberus-jelenetben Morgána testére rajzolódó lángokat kellett eltüntetni. A `forras/r20h.js` csak a Cerberus alatt kivágja Morgána sziluettjét a lángoszlop rajzolásából.
+- A festett lángoszlop Morgána körül megmarad; az átváltozás, a Cerberus-fejek támadása és a többi animáció nem változott.
