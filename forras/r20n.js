@@ -1,33 +1,34 @@
 // 20. kör – Espresszó idézés: a festett tűzrétegeket egybefüggő, lobogó
 // lángsugárrá formáljuk. A bemért ajakpont és a sebzés időzítése megmarad.
 const R20NE=o=>{if(!o.draw)o.draw=function(){};effects.push(o);return o;};
-function r20nFlameRibbon(L,scale,phase,time,opacity){
-  const amp=q=>{const base=(4+50*Math.sin(Math.PI*Math.pow(q,.84)))*(1-.24*q);return base*(1+.12*Math.sin(time*17+q*31+phase)+.06*Math.sin(time*11+q*15));};
-  const mid=q=>(Math.sin(time*15+q*20+phase)*(2+q*12)+Math.sin(time*8+q*9+phase*.7)*q*4)*scale;
-  ctx.beginPath();
-  for(let i=0;i<=32;i++){const q=i/32,y=mid(q)-amp(q);if(i)ctx.lineTo(L*q,y);else ctx.moveTo(0,y);}
-  for(let i=32;i>=0;i--){const q=i/32;ctx.lineTo(L*q,mid(q)+amp(q));}
-  ctx.closePath();
-  const g=ctx.createLinearGradient(0,0,L,0);
-  g.addColorStop(0,`rgba(191,35,3,${opacity*.88})`);
-  g.addColorStop(.18,`rgba(255,82,4,${opacity})`);
-  g.addColorStop(.52,`rgba(255,150,14,${opacity*.96})`);
-  g.addColorStop(.84,`rgba(255,72,3,${opacity*.83})`);
-  g.addColorStop(1,'rgba(143,17,0,0)');ctx.fillStyle=g;ctx.fill();
-}
-function r20nFlameTongue(L,q,side,index,time,opacity){
-  const x=L*q,spread=(4+50*Math.sin(Math.PI*Math.pow(q,.84)))*(1-.24*q);
-  const y=Math.sin(time*15+q*20+index*1.7)*(2+q*12)*.7;
-  const len=L*(.072+(index%3)*.014)*(1-q*.22),height=8+(index%3)*5,w=7+(index%2)*2;
-  const y0=y+side*spread*.78,tip=y+side*(spread+height);
-  ctx.beginPath();ctx.moveTo(x,y0-w*.5);
-  ctx.bezierCurveTo(x+len*.18,y+side*(spread*.86),x+len*.22,y+side*(spread+height*.72),x+len*.43,tip);
-  ctx.bezierCurveTo(x+len*.53,y+side*(spread+height*.22),x+len*.68,y+side*spread*.55,x+len*.82,y+side*spread*.5);
-  ctx.quadraticCurveTo(x+len*.52,y+side*spread*.73,x+len*.34,y0+w*.36);
-  ctx.quadraticCurveTo(x+len*.12,y0+w*.35,x,y0-w*.5);
-  ctx.closePath();const g=ctx.createLinearGradient(x,y0,x+len,tip);
-  g.addColorStop(0,`rgba(255,129,8,${opacity})`);g.addColorStop(.35,`rgba(255,207,45,${opacity*.94})`);
-  g.addColorStop(.72,`rgba(255,106,7,${opacity*.86})`);g.addColorStop(1,'rgba(196,25,0,0)');ctx.fillStyle=g;ctx.fill();
+function drawDragonBeam(ctx,start,end,time,alpha=1){
+  const dx=end.x-start.x,dy=end.y-start.y,len=Math.max(1,Math.hypot(dx,dy));
+  const nx=-dy/len,ny=dx/len,pulse=.5+.5*Math.sin(time*18),flicker=Math.sin(time*23)*.035;
+  const cone=(width,inner=false)=>{
+    const endW=width*(1+.08*Math.sin(time*13+(inner?1.2:0)));
+    const wobble=inner?2.2:6.5;
+    ctx.beginPath();ctx.moveTo(start.x-nx*2,start.y-ny*2);
+    ctx.bezierCurveTo(start.x+dx*.34-nx*(width*.13+wobble*flicker),start.y+dy*.34-ny*(width*.13+wobble*flicker),
+      end.x-dx*.18-nx*(endW*.74+wobble*Math.sin(time*12)),end.y-dy*.18-ny*(endW*.74+wobble*Math.sin(time*12)),
+      end.x-nx*endW,end.y-ny*endW);
+    ctx.quadraticCurveTo(end.x+dx*.015,end.y+dy*.015,end.x+nx*endW,end.y+ny*endW);
+    ctx.bezierCurveTo(end.x-dx*.18+nx*(endW*.74+wobble*Math.sin(time*12+.7)),end.y-dy*.18+ny*(endW*.74+wobble*Math.sin(time*12+.7)),
+      start.x+dx*.34+nx*(width*.13+wobble*flicker),start.y+dy*.34+ny*(width*.13+wobble*flicker),
+      start.x+nx*2,start.y+ny*2);ctx.closePath();
+    const g=ctx.createLinearGradient(start.x,start.y,end.x,end.y);
+    if(inner){g.addColorStop(0,`rgba(255,255,255,${.98*alpha})`);g.addColorStop(.42,`rgba(255,255,220,${.98*alpha})`);g.addColorStop(1,`rgba(255,247,0,${.96*alpha})`);}
+    else{g.addColorStop(0,`rgba(255,112,12,${.82*alpha})`);g.addColorStop(.3,`rgba(255,68,0,${.8*alpha})`);g.addColorStop(.78,`rgba(255,47,0,${.86*alpha})`);g.addColorStop(1,`rgba(255,112,0,${.9*alpha})`);}
+    ctx.fillStyle=g;ctx.fill();
+  };
+  ctx.save();ctx.globalAlpha=1;ctx.globalCompositeOperation='lighter';
+  ctx.shadowBlur=20;ctx.shadowColor='#ff3300';cone(52,false);
+  ctx.shadowBlur=8;ctx.shadowColor='#fff0a0';cone(13,true);
+  const r=15+pulse*9,ix=end.x+nx*Math.sin(time*31)*2,iy=end.y+ny*Math.sin(time*31)*2;
+  const impact=ctx.createRadialGradient(ix,iy,1,ix,iy,r*1.8);
+  impact.addColorStop(0,`rgba(255,255,210,${.98*alpha})`);impact.addColorStop(.28,`rgba(255,247,0,${.92*alpha})`);
+  impact.addColorStop(.66,`rgba(255,78,0,${.78*alpha})`);impact.addColorStop(1,'rgba(255,30,0,0)');
+  ctx.shadowBlur=18;ctx.shadowColor='#ff5a00';ctx.fillStyle=impact;ctx.beginPath();ctx.arc(ix,iy,r*1.8,0,Math.PI*2);ctx.fill();
+  ctx.globalAlpha=alpha*(.55+.4*pulse);ctx.strokeStyle='#fff36a';ctx.lineWidth=2.5+pulse*2;ctx.beginPath();ctx.arc(ix,iy,r,0,Math.PI*2);ctx.stroke();ctx.restore();
 }
 
 {const es=SUMMONS.find(x=>x.id==='espresso');if(es){let jaw=0;
@@ -40,20 +41,16 @@ function r20nFlameTongue(L,q,side,index,time,opacity){
     R20NE({update(dt){jet.time+=dt;return jet.on;},draw(){
       if(!jet.firing||jet.fade<=0)return;const p=mouth(),live=fs.filter(t=>t.alive);if(!live.length)return;
       const tx=Math.max(...live.map(cx))+75,ty=live.reduce((a,t)=>a+midY(t),0)/live.length;
-      const L=Math.max(100,Math.hypot(tx-p.x,ty-p.y)),ang=Math.atan2(ty-p.y,tx-p.x),t=jet.time;
-      const grow=Math.min(1,t/.24),fade=jet.fade;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(ang);ctx.globalAlpha=fade;
-      ctx.globalCompositeOperation='source-over';ctx.shadowColor='rgba(255,82,4,.58)';ctx.shadowBlur=11;
-      r20nFlameRibbon(L*grow,1,0,t,.96);r20nFlameRibbon(L*grow,.68,1.9,t,.88);
-      r20nFlameRibbon(L*grow,.39,3.5,t,.82);r20nFlameRibbon(L*grow,.105,5.1,t,.86);
-      ctx.shadowBlur=6;for(let i=0;i<9;i++)r20nFlameTongue(L*grow,.08+i*.1,i%2?-1:1,i,t,fade*.92);
-      ctx.restore();
+      const t=jet.time,grow=Math.min(1,t/.24),fade=jet.fade;
+      const end={x:p.x+(tx-p.x)*grow,y:p.y+(ty-p.y)*grow};
+      drawDragonBeam(ctx,p,end,t,fade);
     }});
     sfx('fire');await tween(280,k=>{jaw=easeIO(k);S0.x=x0-19*k;S0.s=s0*(1+.035*k);});
     flash('255,168,69',.32,.1);rumble(.65,7);sfx('growl');await tween(180,k=>{S0.x=x0-19+41*eOutBack(k);});
     const loop=setInterval(()=>sfx('fire'),260),part0=part;
     // A sugár adja az összefüggő lángtestet; az alap lehelet csak a parazsat
     // és az időzített találatokat szolgáltatja, a szórt lángcsomókat elnyeljük.
-    part=function(q){if(q&&q.shape==='fire'&&Math.hypot((q.x||0)-mouth().x,(q.y||0)-mouth().y)<28)return;return part0.apply(this,arguments);};
+    part=function(q){if(q&&q.shape==='fire')return;return part0.apply(this,arguments);};
     jet.firing=true;jet.time=0;
     try{await fireBreath(mouth(),fs,1,{dur:1900,speed:1000,n:34,onHit:t=>{
       if(!t.alive||hitSet.has(t))return;hitSet.add(t);shake(9);hitStop(42);
