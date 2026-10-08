@@ -170,3 +170,9 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 - Kizárólag a Cerberus-jelenethez nyúltam a felhasználó visszajelzése alapján: Morgána körüli lángrajz és a záró lángoszlop kikerült; az átváltozás bevált időzítése, a Cerberus megjelenése és a fejroham változatlan maradt.
 - A fejképből levágtam a hosszú ecsetcsóva nagy részét. A helyére külön animált, szabálytalan szélű, fekete-lila gomolyfüst került, amely a fejek mögött sodródik.
 - `forras/r20h.js` szintaxisellenőrzése és a `forras/ins10.py` → `kisebb.py` build sikeres. A Cerberus célzott Chrome-próbája hibamentes volt; a képkockát vizuálisan ellenőriztem. A többi támadás ellenőrzését ebben a javításban nem futtattam.
+
+## 20. kör – hatodik javítás pontosítása (2026-10-08)
+
+- A felhasználó kép alapján pontosította, hogy a Morgána körüli megjelenésre gondolt, nem a tűzoszlopra. Visszaállítottam az átváltozás és a zárás festett tűzoszlopát.
+- Eltávolítottam a fejek becsapódásakor kirajzolt hosszú, párhuzamos vágáscsíkokat. A fejroham és a fekete-lila füst maradt.
+- Célzott Chrome-próba: nincs JavaScript-hiba; az átváltozás és a fejroham képkockáit ellenőriztem. `forras/ins10.py` és `kisebb.py` sikeres.
