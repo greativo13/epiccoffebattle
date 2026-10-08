@@ -182,3 +182,13 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 - A felhasználó pontosította, hogy ezek a Sötét alku utáni lángok egyáltalán nem kellenek. Eltávolítottam a folyamatos Morgána-lángokat létrehozó rajzolóréteget a `forras/r15a.js`-ből; a megszállott állapot többi része változatlan marad.
 - A Cerberus festett lángoszlopa, átváltozása, fejrohamai és visszaváltozása változatlan maradt.
 - A felhasználó visszajelezte, hogy a visszaváltozás megfelelő; azt változatlanul hagytam.
+
+## 20. kör – hetedik javítás (2026-10-08)
+
+- A felhasználó kérésére a Cerberuson kívüli kilenc nyitott animációt új javítórétegben, `forras/r20i.js`-ben dolgoztam át. A térképet, a Földrepesztést, a Lecsapást és a Mázpáncélt nem módosítottam.
+- Teaszertartás: nagy, felül megjelenő felhőből teacseppek hullanak; összegyűlnek, majd egybefüggő, széles tea-hullámként söpörnek végig a hősökön.
+- Espresszó-idézés: visszakapta az r20a eredeti tűzrészecske-rétegét; a kezdőpont a bemért `.145,.302` ajakpont, a szájnyitás és a visszacsukás is animált.
+- Árny-csapat: az összes élő hős árnyalakja egyszerre megjelenik és a teljes támadás alatt látható marad; egyenként célra rohannak, támadnak, majd visszahúzódnak.
+- Páros támadások: Villámátok kisebb, sötét felhőből több vastag elágazó villámot küld; Csillagözön csillagokból sárkányképet kapcsol össze, majd arany sárkányként végigsöpör; Árnyroham látható aurát ad Grogra, aki lendületből végigrohan a soron; Sárkánynyíl az újabb, felhúzott íjas-tűzsárkányos változatot használja; Lótuszvihar kisebb lótuszt és a szirmokkal együtt forgó, nem lángoló nyilakat mutat; Tündérökölnél a tündérpor Lilitől Grog ökléig száll, a kesztyű a kezére formálódik, és Grog azzal üt.
+- A kipróbálandó lista a kilenc új próbapontra szűkült; a Cerberus és a korábbi, megoldott pontok kikerültek belőle. A térkép továbbra sincs a listán.
+- Ellenőrzés: `foe.js`, `sumall.js`, `all.js` és `shield.js` hibamentesen lefutott; az utóbbi 143 ellenféltámadást vizsgált. A javítófájl JavaScript-szintaxisa és a lista JSON-formátuma is rendben van.
