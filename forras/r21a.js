@@ -7,6 +7,7 @@
     [[68,77],[77,64],[71,45],[84,32]],
     [[84,76],[73,59],[87,48],[91,25]]
   ];
+  for(let i=0;i<R21_MAP_POS.length;i++)MAP_POS[8+i]=R21_MAP_POS[i];
   const R21_ZONE_POS = [[25,56],[54,55],[76,56],[86,19]];
   const mkLevel=(id,name,theme,elvl,battles,extra={})=>({id,name,theme,elvl,battles,...extra});
   const mkZone=(id,name,chapter,chIntro,chEnd,levels)=>({id,name,chapter,chIntro,chEnd,levels});
@@ -32,7 +33,11 @@
   };
   for(const [id,data] of Object.entries(r21Foes))if(!EN_DEF[id]){
     const elem={};for(const e of data.weak||[])elem[e]=1.65;for(const e of data.resist||[])elem[e]=.45;
-    EN_DEF[id]={...data,elem};
+    EN_DEF[id]={...data,w:data.w||(data.boss?150:82),h:data.h||(data.boss?164:96),lift:data.lift||0,scale:data.scale||1,elem};
+  }
+  if(typeof DRAW==='object'){
+    const fallback={whisk_imp:'imp',mochi_slime:'slime',bamboo_serpent:'snail',tea_dryad:'rose',mochi_king:'mushking',mosaic_guard:'mushking',zen_crow:'fireflies',zen_dragon:'mushking',matcha_golem:'mushking',steam_wraith:'ghost',cup_soldier:'imp',frog_king:'frog',tea_master:'wizard',lili_calm:'fairy',chasen:'wizard',mochi_split:'slimelet',ancient_matcha:'mushking'};
+    for(const [id,base] of Object.entries(fallback))if(!DRAW[id])DRAW[id]=DRAW[base]||DRAW.slime;
   }
 
   const r21Skills={
@@ -62,6 +67,12 @@
     quietstorm:{name:'Örök Zen',kind:'mag',tgt:'enemies',pow:.7,elem:'nature',anim:'fanHurricane',status:['sleep',.8,1]}
   };
   for(const [id,data] of Object.entries(r21Skills))if(!ESK[id])ESK[id]=data;
+  if(typeof A==='object'&&!A.lightPillar)A.lightPillar=async(u,ts,sk)=>{
+    for(const t of ts.filter(x=>x.alive)){
+      sfx('holy');lightPillar(cx(t),t.y+t.oy,Math.max(100,t.w*t.scale),.82);
+      await wait(180);hit(u,t,sk);
+    }
+  };
 
   const lvl=(id,name,theme,elvl,groups,boss=false)=>mkLevel(id,name,theme,elvl,groups,{boss});
   const chapters=[

@@ -240,3 +240,10 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 - Ellenőrzés: mindkét új javítóréteg Node szintaxisellenőrzése, majd a `forras/ins10.py` és a `kisebb.py` build sikeres. A négy Playwright-kapuellenőrzés is hibátlan: 65 ellenfél / 141 támadás, 19 idézés, 75 hősképesség és 143 pajzsvizsgálat. A Windows portengedélyezése nem engedte a helyi HTTP-szerver indítását, ezért az ellenőrzések a friss `index.html`-t közvetlenül kapták útvonal-elfogással; külön, teljes kampány-végigjátszás nem történt.
 - Vizuális megjegyzés: a Matcha-föld térképképe és Kaelen képe be van kötve. Az új ellenfelekhez és négy harctérhez külön festett képek még nem készültek; jelenleg a meglévő játékképek/fallbackek adják a harci megjelenést.
 
+### 21. kör – build- és térképhiba javítása
+
+- A `forras/ins10.py` eddig kihagyta az `r21a.js` és `r21b.js` rétegeket, ezért a telepített játékból hiányzott a kampány. A build most a 21. kör fájljait is összefűzi.
+- Pótoltam az új ellenfelek rajzolási fallbackjeit és vászonméreteit, valamint a hiányzó `lightPillar` animációs burkolót.
+- A 3. térkép fejezeteinek pályapontjai most a globális térkép-pozíciókhoz is hozzá vannak rendelve.
+- Új build után a négy kapuellenőrzés hibamentes volt: 81 ellenfél/167 támadás, 23 idézés, 75 képesség és 163 pajzsteszt. A célzott automatizált térképkattintás nem jutott át a fejezetbe, ezért a térkép mobilos megjelenését külön is ellenőrizni kell.
+
