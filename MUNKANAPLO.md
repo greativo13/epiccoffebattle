@@ -200,3 +200,12 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 - A hullám megjelenítéséhez az R17I teahullám-képét és az R18B korábbi növekedési, végiggördülési és balra tartó söprését vettem alapul.
 - A próbajegyzék egyetlen friss pontot tartalmaz a Teaszertartás újratesztelésére.
 - Ellenőrzés: a `foe.js`, `sumall.js`, `all.js` és `shield.js` mind hibamentesen futott le; a shield 143 ellenféltámadást ellenőrzött. A célzott böngészős jelenet is végigfutott oldalhibák nélkül.
+
+## 20. kör – kilencedik javítás: Teaszertartás (2026-10-08)
+
+- A legutóbbi visszajelzés alapján a teacseppek mozgása függőleges, természetesebb formájú lett; a borostyán-teaszín megmaradt.
+- A korábbi rajzolt felhőt új, áttetsző hátterű, festett felhőképre cseréltem.
+- A festett R17I tea-hullámot függőleges képszeletekre bontva animálom, így a fodor végighalad a hullámon söprés közben.
+- Csak a Teaszertartás változott a `forras/r20k.js` rétegben. A próbapont elvárása és útmutatója a függőleges esőt, a felhőt és a fodrozódást ellenőrzi.
+- Build: `forras/ins10.py`, majd `kisebb.py` sikeres. A `foe.js` (65 ellenfél, 141 támadás), `sumall.js` (19 idézés), `all.js` (75 képesség) és `shield.js` (143 támadás) hibamentes; oldalhibát egyik sem jelzett.
+- A böngészőben ellenőriztem az új felhőkép betöltését, az eső és a hullám képkockáit; a Teaszertartás célzott futása oldalhiba nélkül befejeződött. A portkötést a Windows-futtatókörnyezet tiltotta, ezért a négy szkript Playwright útvonal-elfogással a friss helyi `index.html`-t kapta.
