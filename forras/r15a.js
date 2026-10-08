@@ -242,9 +242,6 @@ const R15_DF=[];function r15DarkTex(i){if(R15_DF[i])return R15_DF[i];const im=TX
 {const df0=darkFlame;darkFlame=function(o){const L=TXP.fx.length;if(!L)return df0(o);const f={x:o.x,y:o.y,vx:o.vx||0,vy:o.vy||-80,t:0,life:(o.life||.6)*1.1,s:o.size||20,i:Math.floor(Math.random()*L),r:rnd(-.25,.25),fl:Math.random()<.5};
   effects.push({update(dt){f.t+=dt;f.x+=f.vx*dt;f.y+=f.vy*dt;f.vx*=.96;f.vy-=50*dt;return f.t<f.life;},draw(){const tex=r15DarkTex(f.i);if(!tex)return;const k=f.t/f.life,sz=f.s*2.8*(.6+.7*k),a=k<.12?k/.12:Math.max(0,1-(k-.12)/.88);
     ctx.save();ctx.translate(f.x,f.y);ctx.rotate(f.r+Math.sin(T*10+f.i)*.08);if(f.fl)ctx.scale(-1,1);ctx.globalAlpha=Math.min(1,a*1.2);ctx.drawImage(tex,-sz/2,-sz*.7,sz,sz);ctx.globalCompositeOperation='lighter';ctx.globalAlpha=a*.35;ctx.drawImage(tex,-sz/2,-sz*.7,sz,sz);ctx.restore();}});};}
-// Sötét alku után, amíg Morgána megszállott: fekete-lila lángnyelvek lobognak körülötte
-{const deP=drawEntity;drawEntity=function(e){const r=deP.apply(this,arguments);if(e&&e.possessed&&e.alive&&!FRONT_DRAW&&Math.random()<.32){const hh=e.h*e.scale;darkFlame({x:cx(e)+rnd(-hh*.22,hh*.22),y:e.y+e.oy-rnd(0,hh*.55),vx:rnd(-12,12),vy:-rnd(50,110),life:rnd(.45,.75),size:rnd(10,18)});}return r;};}
-
 // ---- Grog – Földrepesztés: föld (nem láva). Előbb a kicsi: a repedés mentén apró kövek pattannak fel, UTÁNA a nagy kitörés
 if(SK.earthsplit)SK.earthsplit.elem='earth';
 A.earthsplit=async(u,ts,sk)=>{const al=ts.filter(t=>t.alive);if(!al.length)return;u.pose='attack';const {gy}=grp(al);

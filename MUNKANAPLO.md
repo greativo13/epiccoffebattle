@@ -179,6 +179,6 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 
 ## 20. kör – hatodik javítás, Morgána lángjainak eltávolítása (2026-10-08)
 
-- A felhasználó visszajelzése alapján kiderült, hogy Morgána „megszállott” állapota a Cerberus-jelenet közben is rajzolta a fekete-lila lángokat. Ezt az állapotot a Cerberus indításakor kikapcsolom; a festett lángoszlop és a fejroham megmarad.
-- A lángoszlopból kivett korábbi sziluettkivágás helyett az eredeti, folytonos oszlop rajzolódik, így a visszaváltozásnál sem marad üres folt.
+- A felhasználó pontosította, hogy ezek a Sötét alku utáni lángok egyáltalán nem kellenek. Eltávolítottam a folyamatos Morgána-lángokat létrehozó rajzolóréteget a `forras/r15a.js`-ből; a megszállott állapot többi része változatlan marad.
+- A Cerberus festett lángoszlopa, átváltozása, fejrohamai és visszaváltozása változatlan maradt.
 - A felhasználó visszajelezte, hogy a visszaváltozás megfelelő; azt változatlanul hagytam.

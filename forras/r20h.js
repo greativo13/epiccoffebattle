@@ -31,8 +31,7 @@ function r20hFlameColumn(x,feet,w,h,a,t,fold=0){
 
 A.cerberus=async(u,ts,sk)=>{
   const targets=ts.filter(t=>t.alive).slice().sort((a,b)=>cx(a)-cx(b));if(!targets.length)return;
-  // A sötét alku után Morgánán maradó aura külön rajzréteg; Cerberus alatt ezt lezárjuk.
-  u._cerb=false;u.possessed=false;
+  u._cerb=false;
   const rel=keepPose(u),im=FX_IMG.cerberus,headImg=R17I.hound,h0=u.h*u.scale*1.42,baseX=cx(u),baseY=u.y+u.oy+8;
   const left=Math.min(...targets.map(t=>cx(t)-t.w*t.scale*.5)),right=Math.max(...targets.map(t=>cx(t)+t.w*t.scale*.5));
   const dir=(left+right)*.5<baseX?-1:1,centerY=targets.reduce((s,t)=>s+midY(t),0)/targets.length;
