@@ -145,3 +145,10 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 - A tesztlista harmadik kipróbálásra 11 ponttal frissítve; a térképpont kimaradt a felhasználó kérésére. A felhasználó tesztjelölései megmaradtak.
 - A térképhez készített további útvonal-javítás sikertelen volt, ezért visszavonva; a felhasználó kérésére a térképet nem módosítom tovább.
 - Build: `forras/ins10.py` és `kisebb.py` sikeres. Ellenőrzések: foe.js (8 fejezet, 65 ellenfél, 141 támadás), sumall.js (19 idézés), all.js (75 képesség), shield.js (143 próba) – hiba nélkül. A négy ellenőrzés a térkép-próba előtt futott; a játéklogika utána nem változott.
+
+## 20. kör – negyedik javítás (2026-10-08)
+
+- Teaszertartás újratervezve a pontosított elképzelés szerint: Kamilla megidéz egy felhőt, abból teacseppek hullanak és összegyűlnek, majd egyetlen nagy, kamillás tea-hullám söpör végig a hősökön.
+- A negyedik javítások a `forras/r20d.js` rétegbe kerültek; a felhasználó korábbi „a térképet engedd el” kérését követve a térképhez nem nyúltam.
+- Friss build: `forras/ins10.py`, majd `kisebb.py` sikeres. A négy ellenőrzés hiba nélkül: foe.js (65 ellenfél, 141 támadás), sumall.js (19 idézés), all.js (75 képesség), shield.js (143 próba). A tea animáció böngészős képkockáin nem volt JavaScript-hiba.
+- A 20. kör tesztlistája frissítve; a térképpont kimaradt, ahogy korábban kérte.

@@ -103,5 +103,89 @@
   "how": "Válaszd, és nézd végig.",
   "order": 513,
   "title": "Próbaterem → Lili → PÁROS: Tündérököl"
+ },
+ "u016": {
+  "area": "Hősök",
+  "expect": "A festett fekete-lila lángoszlop tisztán, lobogó lángként jelenik meg; Cerberus három feje egyszerre csap le.",
+  "how": "Próbaterem → Morgána → Éjféli rontás; figyeld az átváltozást, majd a három egyidejű harapást.",
+  "order": 515,
+  "title": "Próbaterem → Morgána → Éjféli rontás (Cerberus)"
+ },
+ "u017": {
+  "area": "Porcelánváros",
+  "expect": "A tussárkány a tintatartó nyílásából bújik elő, kígyózva támad, majd ugyanabba a nyílásba húzódik vissza.",
+  "how": "Ellenfelek → Porcelánváros → Porcelán mandarin → Tusátok; kövesd a tintatartótól a visszatérésig.",
+  "order": 516,
+  "title": "Ellenfelek → Porcelánváros → Porcelán mandarin → Tusátok"
+ },
+ "u018": {
+  "area": "Az Álompalota",
+  "expect": "A csésze lendületből megbillen; egyetlen összefüggő teaszalag ömlik ki, kiszélesedik, és nagy, kamillás hullámmá áll össze.",
+  "how": "Ellenfelek → Az Álompalota → Kamilla → Teaszertartás; figyeld, ahogy a peremtől induló folyadék egy nagy hullámmá válik.",
+  "order": 517,
+  "title": "Ellenfelek → Az Álompalota → Kamilla → Teaszertartás"
+ },
+ "u019": {
+  "area": "Idézések",
+  "expect": "Az eredeti festett tűz tér vissza, és a sárkány szájának elején, az ajkánál indul.",
+  "how": "Idézések → Espresszó, a sárkány; nézd meg a tűz rajzát és a szájhoz illeszkedő kezdőpontját.",
+  "order": 518,
+  "title": "Idézések → Espresszó, a sárkány"
+ },
+ "u020": {
+  "area": "Idézések",
+  "expect": "Az Árny-csapat legelső változata tér vissza: a teljes árnycsapat megjelenik, és az eredeti támadást hajtja végre.",
+  "how": "Idézések → Árny-csapat; ellenőrizd, hogy a csapat nem tűnik el, és az eredeti támadás fut le.",
+  "order": 519,
+  "title": "Idézések → Árny-csapat"
+ },
+ "u021": {
+  "area": "Páros támadások",
+  "expect": "A nagy, sötét viharfelhőből több vastag, fekete-lila villám csap le egymás után.",
+  "how": "Próbaterem → Morgána → PÁROS: Villámátok; nézd végig a teljes támadást.",
+  "order": 520,
+  "title": "Próbaterem → Morgána → PÁROS: Villámátok"
+ },
+ "u022": {
+  "area": "Páros támadások",
+  "expect": "A csillagok jól látszanak a helyes irányba néző sárkány testén; nincs lehulló csillagzápor.",
+  "how": "Próbaterem → Zordon → PÁROS: Csillagözön; nézd végig a teljes támadást.",
+  "order": 521,
+  "title": "Próbaterem → Zordon → PÁROS: Csillagözön"
+ },
+ "u023": {
+  "area": "Páros támadások",
+  "expect": "Morgána láthatóan sötét aurával vértezi fel Grogot; Grog átrohan az ellenségeken, és nagy fekete-lila vágással csap le.",
+  "how": "Próbaterem → Morgána → PÁROS: Árnyroham; figyeld Morgána felruházását és Grog teljes söprését.",
+  "order": 522,
+  "title": "Próbaterem → Morgána → PÁROS: Árnyroham"
+ },
+ "u024": {
+  "area": "Páros támadások",
+  "expect": "Zordon tüze Jázmin nyilára kerül; a nyíl és a köré tekeredő tűzsárkány nagyban, folyamatosan repül végig.",
+  "how": "Próbaterem → Zordon → PÁROS: Sárkánynyíl; nézd végig a teljes támadást.",
+  "order": 523,
+  "title": "Próbaterem → Zordon → PÁROS: Sárkánynyíl"
+ },
+ "u025": {
+  "area": "Páros támadások",
+  "expect": "A lótusz kisebb marad; sok nyíl forog a szirmokkal azonos íven, és egyik sem lángol.",
+  "how": "Próbaterem → Jázmin → PÁROS: Lótuszvihar; nézd végig a teljes támadást.",
+  "order": 524,
+  "title": "Próbaterem → Jázmin → PÁROS: Lótuszvihar"
+ },
+ "u026": {
+  "area": "Páros támadások",
+  "expect": "Lili tündérport szór Grogra, arany kesztyű formálódik a kezére, majd azzal üt nagyot.",
+  "how": "Próbaterem → Lili → PÁROS: Tündérököl; nézd végig a teljes támadást.",
+  "order": 525,
+  "title": "Próbaterem → Lili → PÁROS: Tündérököl"
+ },
+ "u027": {
+  "area": "Térkép és felület",
+  "expect": "A pályapontok a festett helyszínekre kerülnek; egyetlen tiszta, íves ösvény mutatja a sorrendet álló és fekvő telefonon is.",
+  "how": "Nyisd meg a térképet álló, majd fekvő telefonméretben; ellenőrizd a pályák sorrendjét és az összekötő ösvényt.",
+  "order": 526,
+  "title": "Térkép – álló és fekvő telefon"
  }
 }
