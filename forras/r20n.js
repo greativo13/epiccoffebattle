@@ -12,9 +12,9 @@ class DragonFlameEmitter{
         const dx=end.x-start.x,dy=end.y-start.y,len=Math.max(1,Math.hypot(dx,dy));
         for(let i=0,n=10+Math.floor(Math.random()*7);i<n;i++){
           const speed=560+Math.random()*300;
-            this.particles.push({x:start.x,y:start.y,radius:8+Math.random()*2,speed,color:'#fff7c7',alpha:1,
+            this.particles.push({x:start.x,y:start.y,radius:20,speed,color:'#fff7c7',alpha:1,
             sx:start.x,sy:start.y,dx,dy,nx:-dy/len,ny:dx/len,len,u:0,age:0,
-            maxRadius:180+Math.random()*20,seed:Math.random()*Math.PI*2,side:(Math.random()-.5)*3});
+            maxRadius:120,seed:Math.random()*Math.PI*2,side:(Math.random()-.5)*3});
         }
       }
     }else this.accumulator=0;
@@ -26,54 +26,36 @@ class DragonFlameEmitter{
       const drift=p.side+swirl;
       p.x=p.sx+p.dx*q+p.nx*drift+Math.sin(p.age*21+p.seed)*q*3;
       p.y=p.sy+p.dy*q+p.ny*drift+Math.cos(p.age*18+p.seed)*q*3;
-      p.radius=8+(p.maxRadius-8)*Math.pow(q,.78);
+      p.radius=20+(p.maxRadius-20)*Math.pow(q,.78);
       p.alpha=q>.78?Math.max(0,(1-q)/.22):1;
       p.color=q<.22?'#fff7c7':q<.48?'#ffd43b':q<.72?'#ff7b16':q<.88?'#e43b12':'#58251c';
     }
   }
 }
 
-function drawFlameTongue(ctx,p,time,size,colors,alpha){
-  const ux=p.dx/p.len,uy=p.dy/p.len,nx=-uy,ny=ux;
-  const flick=Math.sin(time*25+p.seed),length=size*(.82+.18*Math.sin(time*19+p.seed*1.3));
-  const width=size*(.27+.045*Math.sin(time*22+p.seed)),rise=length*(.2+.1*Math.sin(time*17+p.seed));
-  const tip={x:p.x+ux*length+nx*width*flick*.18,y:p.y+uy*length-rise};
-  const point=(t,side,bulge,phase)=>({
-    x:p.x+ux*length*t+nx*width*side*bulge+Math.sin(time*21+p.seed+phase)*width*.08,
-    y:p.y+uy*length*t-rise*Math.pow(t,1.18)+ny*width*side*bulge
-  });
-  const left=[[.08,-.18,.1,0],[.2,-.54,.2,.7],[.34,-.32,.7,1.1],[.48,-.78,1.1,1.7],[.61,-.43,1.7,2.1],[.77,-.68,2.1,2.5],[1,0,2.8,2.8]];
-  const right=[[.79,.52,3.2,3.2],[.64,.38,3.7,3.7],[.49,.72,4.1,4.1],[.33,.42,4.6,4.6],[.18,.59,5.1,5.1],[.08,.18,5.6,5.6]];
-  ctx.beginPath();
-  let q=point(...left[0]);ctx.moveTo(q.x,q.y);
-  for(let i=1;i<left.length;i++){q=point(...left[i]);ctx.lineTo(q.x,q.y);}
-  ctx.lineTo(tip.x,tip.y);
-  for(const v of right){q=point(...v);ctx.lineTo(q.x,q.y);}
-  ctx.closePath();
-  const g=ctx.createLinearGradient(p.x,p.y,tip.x,tip.y);
-  for(const [at,color] of colors)g.addColorStop(at,color);
-  ctx.fillStyle=g;ctx.fill();
-}
-
 function drawDragonBeam(ctx,start,end,time,alpha=1,emitter){
   if(!emitter||!emitter.particles.length)return;
-  ctx.save();ctx.shadowBlur=1;ctx.shadowColor='#7f1408';
+  ctx.save();
+  ctx.globalCompositeOperation='lighter';
+  ctx.shadowBlur=2;ctx.shadowColor='rgba(255,74,12,.28)';
   for(const p of emitter.particles){
-    const fade=p.alpha*alpha,pulse=1+.1*Math.sin(time*15-p.u*8+p.seed),size=p.radius*pulse;
-    const outer=p.u>.72
-      ?[[0,'#380b12'],[.32,'#761116'],[.72,'#c3260e'],[1,'rgba(190,30,8,.08)']]
-      :[[0,'#4a0b10'],[.3,'#96180d'],[.72,'#df3510'],[1,'rgba(220,54,8,.05)']];
-    const middle=[[0,'#b9290d'],[.35,'#ef5b11'],[.75,'#ffb21c'],[1,'rgba(255,176,24,.08)']];
-    ctx.globalCompositeOperation='source-over';ctx.globalAlpha=fade;
-    drawFlameTongue(ctx,p,time,size,outer,fade);
-    ctx.strokeStyle='rgba(55,7,10,.72)';ctx.lineWidth=Math.max(1.5,size*.018);ctx.stroke();
-    ctx.globalCompositeOperation='screen';ctx.globalAlpha=fade*.86;
-    drawFlameTongue(ctx,p,time,size*.64,middle,fade*.86);
-    // A vékony fehér mag csak a száj közelében és a sugár tengelyében jelenik meg.
-    if(p.u<.24||(p.u<.72&&Math.abs(p.side)<.28&&Math.sin(p.seed*31)>.25)){
-      ctx.globalCompositeOperation='lighter';ctx.globalAlpha=fade*.82;
-      drawFlameTongue(ctx,p,time,size*.19,[[0,'rgba(255,255,245,.95)'],[.55,'rgba(255,239,164,.92)'],[1,'rgba(255,217,74,.08)']],fade*.82);
-    }
+    const fade=Math.max(0,Math.min(1,p.alpha*alpha));
+    if(fade<=.005)continue;
+    const pulse=1+.055*Math.sin(time*17-p.u*9+p.seed);
+    const radius=Math.max(1,p.radius*pulse);
+    const x=p.x+Math.cos(time*13+p.seed)*radius*.018;
+    const y=p.y+Math.sin(time*21+p.seed)*Math.min(3,radius*.035);
+    const glow=ctx.createRadialGradient(x-radius*.08,y-radius*.08,0,x,y,radius);
+    glow.addColorStop(0,'rgba(255,255,246,1)');
+    glow.addColorStop(.12,'rgba(255,250,197,.99)');
+    glow.addColorStop(.32,'rgba(255,224,80,.96)');
+    glow.addColorStop(.56,'rgba(255,139,20,.86)');
+    glow.addColorStop(.78,'rgba(207,45,12,.58)');
+    glow.addColorStop(.93,'rgba(105,13,17,.28)');
+    glow.addColorStop(1,'rgba(63,6,14,0)');
+    ctx.globalAlpha=fade;
+    ctx.fillStyle=glow;
+    ctx.beginPath();ctx.arc(x,y,radius,0,Math.PI*2);ctx.fill();
   }
   ctx.restore();
 }
