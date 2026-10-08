@@ -224,3 +224,9 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 - A láng az ellenfél „Duplán pörkölt leheletének” textúrázott, festett tűzrészecskéit használja: a visszafogott, apró szájrészek helyett az ellenséges támadás 7–12 px-es, növekvő lángnyelvei futnak ki az ajak elől.
 - A próbalista most csak az Espresszó idézését tartalmazza, és közvetlen összehasonlítást kér a Kristálybarlang ellenséges Espresszójával.
 - Build: `ins10.py` és `kisebb.py` sikeres. A `foe.js` (65 ellenfél, 141 támadás), `sumall.js` (19 idézés), `all.js` (75 képesség) és `shield.js` (143 támadás) hibamentes; oldalhibát egyik sem jelzett. A célzott böngészős képkocka az ajaknál induló textúrázott tüzet igazolta. A Windows környezet nem engedte a helyi port kötését, ezért az ellenőrzések a friss helyi `index.html` útvonal-elfogásával futottak.
+
+## 20. kör – tizenkettedik javítás: Espresszó tűzsugár (2026-10-08)
+
+- A visszajelzés alapján a rétegzett, de csomós lángrészecske helyett folytonos, animált tűzsugarat rajzol az új `forras/r20n.js` réteg. A sugár a korábban bemért ajakpontból indul, a magja világos, a szélein külön lobogó lángnyelvek csapnak fel, a vége elvékonyodik.
+- A találatok, a tűzsebzés, a megnyitott állkapocs és az előrelendülés megmaradtak. A próbalista az összefüggő lángtestet és a lobogó széleket ellenőrzi.
+- Build: `ins10.py` és `kisebb.py` sikeres. A `foe.js` (65 ellenfél, 141 támadás), `sumall.js` (19 idézés), `all.js` (75 képesség) és `shield.js` (143 támadás) hibamentes; oldalhibát egyik sem jelzett. A célzott mobil böngészőképen a lángsugár oldalhiba nélkül megjelent. A Windows környezet nem engedte a helyi port kötését, ezért az ellenőrzések a friss helyi `index.html` útvonal-elfogásával futottak.
