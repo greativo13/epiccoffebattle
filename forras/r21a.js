@@ -5,10 +5,11 @@
     [[18,79],[32,68],[27,48],[43,35]],
     [[47,76],[57,63],[50,44],[65,30]],
     [[68,77],[77,64],[71,45],[84,32]],
-    [[84,76],[73,59],[87,48],[91,25]]
+    [[84,76],[73,59],[87,48],[91,25],[13,24]]
   ];
   for(let i=0;i<R21_MAP_POS.length;i++)MAP_POS[8+i]=R21_MAP_POS[i];
   const R21_ZONE_POS = [[25,56],[54,55],[76,56],[86,19]];
+  for(let i=0;i<R21_ZONE_POS.length;i++)MAP_ZONE_POS[8+i]=R21_ZONE_POS[i];
   const mkLevel=(id,name,theme,elvl,battles,extra={})=>({id,name,theme,elvl,battles,...extra});
   const mkZone=(id,name,chapter,chIntro,chEnd,levels)=>({id,name,chapter,chIntro,chEnd,levels});
 

@@ -246,4 +246,6 @@ Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idé
 - Pótoltam az új ellenfelek rajzolási fallbackjeit és vászonméreteit, valamint a hiányzó `lightPillar` animációs burkolót.
 - A 3. térkép fejezeteinek pályapontjai most a globális térkép-pozíciókhoz is hozzá vannak rendelve.
 - Új build után a négy kapuellenőrzés hibamentes volt: 81 ellenfél/167 támadás, 23 idézés, 75 képesség és 163 pajzsteszt. A célzott automatizált térképkattintás nem jutott át a fejezetbe, ezért a térkép mobilos megjelenését külön is ellenőrizni kell.
+- A mobilos reprodukció megmutatta, hogy a 3. térkép fejezeteinek zónacímkéi nem kaptak globális `MAP_ZONE_POS` pozíciót, ezért a `mapScreen` a zónacímke lerakásakor kivétellel megszakadt. A 12. fejezet titkos X-2 pontjának ötödik koordinátáját is pótoltam `[13,24]` helyen, hogy a teljes térképlista kirajzolható legyen.
+- Célzott ellenőrzés: a `mapScreen(8)` és `mapScreen(11)` 17 pályaponttal, négy zónacímkével és 3. térkép gombbal rajzol, oldalhiba nélkül. A módosítás utáni `foe.js`, `sumall.js` és `all.js` hibátlan; a `shield.js` ismételt futása a helyi fájlos böngészőben több percig nem adott eredményt, ezért megszakítottam. A korábbi buildben a pajzsteszt 163/163 hibamentes volt; ez a javítás kizárólag térképpozíciókat változtat.
 
