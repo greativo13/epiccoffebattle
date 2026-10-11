@@ -94,3 +94,8 @@ A.bambooGolem=async(u,ts,sk)=>{u.pose='cast';await bodyWind(u,260,.14);sfx('quak
   addStatus&&S.heroes.forEach(h=>h.alive&&addStatus(h,'defUp',1));popLabel(u,'BAMBUSZFAL!','#b8e07a');
   await tween(500,k=>{G.k=1-k*.3;G.a=1-k;});await bodySettle(u);};
 LIMITS.druid.desc='A földből óriási bambuszgólem nő ki, végigtapos minden ellenségen, és 1 körre bambuszfalat emel a csapat elé (Védelem+).';
+
+// Próbaterem hat hőssel: a csatatéren itt is csak négyen állnak (Kaelen kint van, Grog és Jázmin pihen – a kártyájukra koppintva cserélhetők)
+arenaTrim=function(){const all=S.roster||S.heroes;if(S.heroes.length<=4)return;
+  const out=all.length>5?['orc','monk']:[benchOf()&&benchOf()!=='monk'?benchOf():'orc'];
+  S.heroes=all.filter(h=>!out.includes(h.type)).slice(0,4);placeParty();buildHUD();updateHUD();};
