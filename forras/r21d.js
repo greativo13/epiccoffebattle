@@ -32,7 +32,7 @@ A.leafDance=async(u,ts,sk)=>{const t=ts[0];if(!t)return;u.pose='cast';sfx('heal'
 // --- Gyökércsapda: gyökerek törnek fel, és ketrecet fonnak az ellenfél köré – kimarad egy körből (a főellenség csak megsérül)
 SK.thornroot.status=['stun',1,1];SK.thornroot.desc='Gyökerek törnek fel, és ketrecet fonnak minden ellenség köré: kimaradnak egy körből (a főellenségek nem).';
 function rootCage(t,keep){const gx=cx(t),gy=t.y+t.oy+8,H=t.h*t.scale*1.15,W=Math.max(70,t.w*t.scale*.8),C={k:0,a:1};const N=7;
-  effects.push({update(){if(C.k>=1&&!keep())C.a-=.04;return C.a>0;},draw(){ctx.save();ctx.globalAlpha=Math.max(0,C.a);ctx.lineCap='round';
+  effects.push({update(){if(!S.enemies.includes(t))C.a=0;if(C.k>=1&&!keep())C.a-=.04;return C.a>0;},draw(){ctx.save();ctx.globalAlpha=Math.max(0,C.a);ctx.lineCap='round';
     for(let j=0;j<N;j++){const f=j/(N-1)*2-1,sx=gx+f*W,top=gy-H,k=C.k;const pts=[];for(let i=0;i<=24;i++){const q=i/24;if(q>k)break;const x=sx+(gx-sx)*Math.pow(q,2.2)+Math.sin(q*9+j)*6,y=gy-(gy-top)*q;pts.push([x,y]);}
       if(pts.length<2)continue;for(const [lw,col] of [[15-Math.abs(f)*4,'#3a2410'],[9-Math.abs(f)*3,'#6b4423'],[3,'#9a6a3a']]){ctx.strokeStyle=col;ctx.lineWidth=lw;ctx.beginPath();pts.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.stroke();}
       ctx.fillStyle='#2a180a';for(let i=3;i<pts.length;i+=3){const [x,y]=pts[i];ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+(j%2?13:-13),y-5);ctx.lineTo(x,y-9);ctx.fill();}
@@ -50,7 +50,7 @@ SK.barkskin.buff=['bamwall',2];SK.barkskin.desc='Bambuszfal nő a társ elé 1 k
    recoil(u,Math.max(1,Math.round(r*.5)),'VISSZAPATTAN!','#b8e07a');t.hp=Math.min(t.maxHp,t.hp+Math.round(r*.4));kaeLeaves(cx(t)+40,midY(t),8,200);}}catch(e){}return r;};}
 A.barkCage=async(u,ts,sk)=>{const t=ts[0];if(!t)return;u.pose='cast';await bodyWind(u,200,.08);const gx=cx(t)+t.w*t.scale*.75,gy=t.y+t.oy+12,H=t.h*t.scale*1.2,N=6,B=[];
   for(let i=0;i<N;i++)B.push({x:gx+(i%2)*14,y:gy-(i-(N-1)/2)*0,k:0,dx:(i-(N-1)/2)*16});
-  const C={a:1};effects.push({update(){if(C.ready&&!(t.alive&&t.st&&t.st.bamwall))C.fade=true;if(C.fade)C.a-=.03;return C.a>0;},draw(){ctx.save();ctx.globalAlpha=Math.max(0,C.a);
+  const C={a:1};effects.push({update(){if(S.over||!S.heroes.includes(t))C.a=0;if(C.ready&&!(t.alive&&t.st&&t.st.bamwall))C.fade=true;if(C.fade)C.a-=.03;return C.a>0;},draw(){ctx.save();ctx.globalAlpha=Math.max(0,C.a);
     for(const b of B){if(b.k<=0)continue;kaeStalk(b.x+b.dx*.6,gy+Math.abs(b.dx)*.25,H*(.8+.2*Math.cos(b.dx))*b.k,24,1,b.dx*.004);}ctx.restore();}});
   for(const b of B){sfx('hit');shake(5);kaeLeaves(b.x+b.dx*.6,gy-20,8,180,140);tween(240,k=>b.k=eOutBack(k));await wait(80);}
   await wait(250);flash('170,230,110',.2,.15);hit(u,t,sk);C.ready=true;popLabel(t,'BAMBUSZFAL!','#b8e07a');await wait(400);await bodySettle(u);u.pose='idle';};
