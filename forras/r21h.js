@@ -63,3 +63,29 @@ summonShow=async function(def,P){
         hit(P,t,{name:'Mochi-gurulás',kind:'phys',pow:2.2,elem:'phys',tgt:'enemies',status:['stun',1,1]});
         if(R17I.mochigoo){const G={a:1};const tt=t;effects.push({update(){G.a-=.008;return G.a>0&&tt.alive;},draw(){ctx.save();ctx.globalAlpha=Math.min(1,G.a*1.4);r17Draw(R17I.mochigoo,cx(tt),tt.y+tt.oy+20,tt.w*tt.scale*1.6+40,{anchor:'bottom'});ctx.restore();}});}}});
     S0.x=-120;S0.rot=0;await tween(400,k=>{S0.x=-120+(x0+120)*k;});};}}
+
+// Zen-Kavics Sárkány idézés: átrepül az ellenségek fölött, kőfelhőből kavicszápor zúdul, majd gereblyézett kőhullám söpör végig
+{const zd=SUMMONS.find(s=>s.id==='zendragon');if(zd){zd.run=async(P,S0)=>{const fs=foesAlive();if(!fs.length)return;const x0=S0.x,y0=S0.y;sfx('roar');
+  await tween(500,k=>{S0.y=y0-260*easeIO(k);S0.x=x0+120*k;});const xs=fs.map(cx),xa=Math.min(...xs)-140,xb=Math.max(...xs)+140;
+  const pb=()=>R17I.pebble,P0=[];for(let i=0;i<110;i++)P0.push({x:rnd(xa,xb),y:80+rnd(-30,30),vy:rnd(560,800),d:300+i*11,r:rnd(0,6),s:rnd(30,64),land:rnd(380,520)});
+  const E={t:0,a:1};effects.push({update(dt){E.t+=dt*1000;for(const p of P0)if(E.t>p.d&&p.y<p.land){p.y+=p.vy*dt;p.r+=dt*6;if(p.y>=p.land){shake(2);for(let j=0;j<3;j++)part({x:p.x,y:p.land,vx:rnd(-140,140),vy:rnd(-180,-60),g:600,life:.5,size:rnd(3,7),rgb:'150,140,120',add:false,shape:'rock'});}}return E.a>0;},
+    draw(){ctx.save();ctx.globalAlpha=E.a;const cl=R17I.rockcloud;if(cl)r17Draw(cl,(xa+xb)/2,60,(xb-xa)+160);for(const p of P0){if(E.t<p.d)continue;const I=pb();if(I){ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.drawImage(I,-p.s/2,-p.s/2,p.s,p.s*I.height/I.width);ctx.restore();}else{ctx.fillStyle='#8a8478';ctx.strokeStyle='#4a463e';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(p.x,p.y,p.s/2.4,p.s/3.2,p.r,0,7);ctx.fill();ctx.stroke();}}ctx.restore();}});
+  await tween(1400,k=>{S0.x=x0+120+(xb-x0-120)*k;S0.y=y0-260+Math.sin(k*Math.PI*2)*30;});for(const t of foesAlive()){shake(10);hit(P,t,{name:'Kavicsözön',kind:'phys',pow:2.0,elem:'earth',tgt:'enemies',status:['defDown',1,1]});await wait(70);}
+  const W={x:xa-200,a:1};const wim=R17I.stonewave;effects.push({update(){return W.a>0;},draw(){ctx.save();ctx.globalAlpha=W.a;if(wim)r17Draw(wim,W.x,540,420,{anchor:'bottom'});else for(let i=0;i<10;i++){ctx.fillStyle=i%2?'#a49e90':'#8a8478';ctx.beginPath();ctx.ellipse(W.x-i*30,520,60,120-i*8,0,Math.PI,0);ctx.fill();}ctx.restore();}});
+  sfx('quake');const dn=new Set();await tween(900,k=>{W.x=xa-200+(xb+400-xa)*k;for(let i=0;i<3;i++)part({x:W.x+rnd(-80,40),y:rnd(360,520),vx:rnd(40,200),vy:rnd(-300,-80),g:600,life:.7,size:rnd(5,11),rgb:pick(['170,160,140','120,110,95']),add:false,shape:'rock'});
+    for(const t of foesAlive())if(!dn.has(t)&&W.x>cx(t)){dn.add(t);shake(14);toss&&toss(t,50,380);hit(P,t,{name:'Kőhullám',kind:'phys',pow:1.0,elem:'earth',tgt:'enemies'});}});
+  W.a=0;E.a=0;await tween(500,k=>{S0.x=xb+(x0-xb)*k;S0.y=y0-260+260*k;});};}}
+// Bambusz-békakirály idézés: hosszú ragadós nyelvével egyenként elkapja és lecsapja az ellenségeket, majd megkongatja a gongot
+{const fk=SUMMONS.find(s=>s.id==='frogking');if(fk){fk.desc='Hosszú ragadós nyelvével egyenként elkapja és a földhöz csapja az ellenségeket, majd a gongjával mindet elkábítja (40%).';fk.run=async(P,S0)=>{const fs=foesAlive();if(!fs.length)return;
+  const mouth=()=>({x:S0.x+70,y:S0.y-190});for(const t of fs){if(!t.alive)continue;const T={k:0,a:1};const ex=()=>cx(t),ey=()=>midY(t);
+    effects.push({update(){return T.a>0;},draw(){const m=mouth(),x=m.x+(ex()-m.x)*T.k,y=m.y+(ey()-m.y)*T.k;ctx.save();ctx.globalAlpha=T.a;ctx.lineCap='round';ctx.strokeStyle='#7a1f3a';ctx.lineWidth=30;ctx.beginPath();ctx.moveTo(m.x,m.y);ctx.quadraticCurveTo((m.x+x)/2,Math.min(m.y,y)-80*T.k,x,y);ctx.stroke();ctx.strokeStyle='#ff7aa8';ctx.lineWidth=22;ctx.stroke();ctx.fillStyle='#ff9ec0';ctx.beginPath();ctx.ellipse(x,y,26,20,0,0,7);ctx.fill();ctx.restore();}});
+    sfx('whoosh');await tween(220,k=>T.k=easeIO(k));const y0=t.oy||0;await tween(220,k=>{t.jump=Math.sin(k*Math.PI)*120;});shake(16);sfx('rock');burst(cx(t),t.y+t.oy,'190,230,140',24,320);hit(P,t,{name:'Nyelvcsapás',kind:'phys',pow:1.4,elem:'phys',tgt:'enemy'});
+    await tween(160,k=>T.k=1-k);T.a=0;await wait(60);}
+  await wait(200);sfx('gong');shake(20);flash('255,230,150',.35,.2);const g={x:S0.x+40,y:S0.y-130},W={t:0,a:1};
+  effects.push({update(dt){W.t+=dt;return W.a>0;},draw(){ctx.save();for(let i=0;i<6;i++){const r=W.t*900-i*130;if(r<=0||r>1200)continue;ctx.globalAlpha=Math.max(0,1-r/1200)*W.a;ctx.strokeStyle='rgba(255,215,110,.85)';ctx.lineWidth=34-i*4;ctx.beginPath();ctx.arc(g.x,g.y,r,-Math.PI*.35,Math.PI*.35);ctx.stroke();}ctx.restore();}});
+  await wait(600);for(const t of foesAlive()){hit(P,t,{name:'Gongszó',kind:'mag',pow:1.4,elem:'none',tgt:'enemies',status:['stun',.4,1]});await wait(60);}await wait(500);W.a=0;};}}
+// Chasen idézés: óriási habverője megpörög – habtornádó söpör végig, mindenki elalszik, a csapat gyógyul
+{const ch=SUMMONS.find(s=>s.id==='chasen');if(ch){ch.run=async(P,S0)=>{const fs=foesAlive();sfx('whoosh');const T={x:S0.x+80,y:S0.y-60,a:1,t:0};
+  effects.push({update(dt){T.t+=dt;return T.a>0;},draw(){ctx.save();ctx.globalAlpha=T.a;for(let i=0;i<90;i++){const q=i/90,a=q*Math.PI*14+T.t*10,r=26+q*150;drawFoamBlob(T.x+Math.cos(a)*r,T.y+150-q*420+Math.sin(a)*r*.25,12+q*14,.95);}ctx.restore();}});
+  const dn=new Set(),xe=Math.max(900,...fs.map(cx))+120;await tween(1500,k=>{T.x=S0.x+80+(xe-S0.x-80)*easeIO(k);for(const t of fs)if(!dn.has(t)&&T.x>cx(t)-20){dn.add(t);shake(10);toss&&toss(t,40,320);hit(P,t,{name:'Örök Zen',kind:'mag',pow:1.6,elem:'none',tgt:'enemies',status:['sleep',1,2]});}});
+  await tween(400,k=>T.a=1-k);healAll(P,.3);for(const h of S.heroes)if(h.st&&h.st.foam)delete h.st.foam;sfx('heal');await wait(500);};}}
