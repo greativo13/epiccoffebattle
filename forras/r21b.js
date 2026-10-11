@@ -60,3 +60,8 @@ arenaPlace=placeParty;
   draw();};}
 // amikor Lili visszatér (6 hős), a térképre érve egyszer ki kell választani a két pihenőt
 {const ms=mapScreen;mapScreen=function(zi){try{if(!S.arena&&S.roster&&joinedRoster().length>5&&!ngp().bench2&&!(S.joinMsg&&S.joinMsg.length)){if(zi!=null)S.mapZone=zi;return partyScreen(true);}}catch(e){console.error(e)}return ms.apply(this,arguments);};}
+
+// 5) A III. rész nehézsége: a pályaszint lassabban nő (60 → 75, eddig 62 → 90), az új ellenfelek ereje kisebb
+{let lv=60;for(let z=8;z<=11;z++)for(const L of ZONES[z].levels){L.elvl=lv++;}SECRET3.elvl=77;
+ const NEW3=['whiskimp','mochi','bambsnake','dryad','mochiking','stoneguard','mosaicghost','zencrow','zendragon','matchagolem','steamwraith','cupwarrior','frogking','teamaster','lilicalm','chasen','oldgolem'];
+ for(const t of NEW3){const d=EN_DEF[t];if(!d)continue;const k=d.boss?.85:.9;d.hp=Math.round(d.hp*k);d.atk=Math.round(d.atk*k);d.mag=Math.round(d.mag*k);}}
