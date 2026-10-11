@@ -6,7 +6,7 @@ STATUS.silence=['Némaság','#cfd3ff'];ONE_ROUND.add('silence');
    if(t&&t.type==='mochiking'&&t.alive&&!t._mkSplit&&t.hp<t.maxHp*.5){t._mkSplit=true;
      popLabel(t,'KETTÉVÁLIK!','#f4f0e0');burst(cx(t),midY(t),'245,240,225',34,260);
      const free=5-S.enemies.filter(e=>e.alive).length;
-     for(const [dx,dy] of [[-90,-40],[70,60]].slice(0,Math.max(0,free))){
+     for(const [dx,dy] of [[-240,30],[-80,150]].slice(0,Math.max(0,free))){
        const s=mkEnemy('mochi',Math.min(915,Math.max(560,t.x+dx)),Math.min(495,Math.max(330,t.y+dy)),S.elvl);S.enemies.push(s);
        tween(420,k=>s.jump=Math.sin(k*Math.PI)*70);}}
    // 2) Gongütés: a hős 1 körig nem használhat képességet és limitet (csak alaptámadás, tárgy, védekezés)
@@ -14,8 +14,8 @@ STATUS.silence=['Némaság','#cfd3ff'];ONE_ROUND.add('silence');
  }catch(e){console.error(e)}return r;};}
 if(ESK.gongstrike)ESK.gongstrike.desc='A gong hangja 1 körig elnémítja a hősöket: csak alaptámadás, tárgy vagy védekezés.';
 {const mm=menuMain;menuMain=function(h){const r=mm.apply(this,arguments);try{if(h&&h.st&&h.st.silence){
-   setPrompt(`${h.name} elnémult a gongtól: most csak alaptámadás, tárgy vagy védekezés.`);
-   for(const b of btnsEl.querySelectorAll('button'))if(/Képességek|LIMIT/.test(b.textContent)){b.disabled=true;b.style.opacity=.4;}}}catch(e){}return r;};}
+   setPrompt(`${h.name} elnémult a gongtól: most nem használhat képességet, limitet és idézést – csak alaptámadás, tárgy vagy védekezés.`);
+   for(const b of btnsEl.querySelectorAll('button'))if(/Képességek|LIMIT|Idézés/.test(b.textContent)){b.disabled=true;b.style.opacity=.4;}}}catch(e){}return r;};}
 {const ms=menuSkills;menuSkills=function(h){if(h&&h.st&&h.st.silence)return menuMain(h);return ms.apply(this,arguments);};}
 
 // 3) Titkos pálya: X-2 Az Ősi Habverő-műhely – a 11-2 után nyílik a 3. térképen
