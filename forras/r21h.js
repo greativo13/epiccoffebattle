@@ -42,3 +42,24 @@ if(typeof ELEM_NAMES==='object'){ELEM_NAMES.earth=ELEM_NAMES.earth||'föld';ELEM
 if(typeof GUARD_RGB==='object')GUARD_RGB.druid='120,230,110';
 // Napkitörés: a nap körüli vékony sárga ívek (protuberanciák) nem kellenek
 {const ds=drawSun;drawSun=function(s){if(s&&s.proms)s.proms.length=0;return ds.apply(this,arguments);};}
+
+// Idézés: a megidézett lény foroghat is (S0.rot) – a Mochi-király gurulásához
+summonShow=async function(def,P){
+  await dimTo(.72,'10,6,30',250);showBanner('Idézés: '+def.name,true);sfx('limit');
+  const S0={a:0,s:.3,x:def.x||330,y:def.y||470,dead:false,rot:0},im=def.img&&def.img();
+  fxSpin(tint('nova','200,160,255')||'nova',S0.x,S0.y-(def.h||280)*.5,{size:460,life:.6,s0:.2,s1:1,add:true});sparks(S0.x,S0.y-120,['200,160,255','255,255,255'],30,420);
+  effects.push({t:0,update(dt){this.t+=dt;return !S0.dead;},draw(){if(!im)return;const H=(def.h||280)*S0.s,W2=H*im.width/im.height;
+    ctx.save();ctx.globalAlpha=Math.max(0,S0.a);if(def.filter&&'filter' in ctx)ctx.filter=def.filter;ctx.translate(S0.x,S0.y+Math.sin(this.t*3)*4);if(S0.rot){ctx.translate(0,-H/2);ctx.rotate(S0.rot);ctx.translate(0,H/2);}if(def.flip)ctx.scale(-1,1);ctx.drawImage(im,-W2/2,-H,W2,H);ctx.restore();}});
+  await tween(360,k=>{const e=1+2.2*Math.pow(k-1,3)+1.2*Math.pow(k-1,2);S0.a=Math.min(1,k*2);S0.s=.3+.7*e;});await wait(280);
+  try{await def.run(P,S0);}catch(err){console.error(err);}
+  await tween(300,k=>{S0.a=1-k;});S0.dead=true;await dimTo(0,null,250);};
+// Mochi-király idézés: óriás mochigolyóként végiggurul az ellenségeken, mindegyiket beragasztja (kimaradnak egy körből)
+{const mk=SUMMONS.find(s=>s.id==='mochiking');if(mk){mk.desc='Óriás mochigolyóvá gömbölyödik, végiggurul az ellenségeken, és mindegyiket beragasztja: kimaradnak egy körből (a főellenségek nem).';
+  mk.run=async(P,S0)=>{const fs=foesAlive().sort((a,b)=>cx(a)-cx(b));if(!fs.length)return;const x0=S0.x,gy=Math.max(...fs.map(t=>t.y+t.oy))+10;sfx('whoosh');
+    await tween(300,k=>{S0.y=470+(gy-470)*k;S0.rot=-k*1.2;});const done=new Set();const xEnd=Math.max(...fs.map(cx))+260;
+    await tween(1300,k=>{const e=easeIO(k);S0.x=x0+(xEnd-x0)*e;S0.rot=-1.2+e*14;S0.y=gy-Math.abs(Math.sin(e*Math.PI*4))*40;
+      for(let i=0;i<2;i++)part({x:S0.x-40,y:gy,vx:rnd(-160,-40),vy:rnd(-120,-20),g:500,life:.6,size:rnd(6,11),rgb:pick(['245,240,225','200,230,150']),add:false,shape:'drop'});
+      for(const t of fs)if(!done.has(t)&&S0.x>cx(t)-20){done.add(t);shake(14);sfx('splash');burst(cx(t),midY(t),'245,240,225',30,320);toss&&toss(t,30,300);
+        hit(P,t,{name:'Mochi-gurulás',kind:'phys',pow:2.2,elem:'phys',tgt:'enemies',status:['stun',1,1]});
+        if(R17I.mochigoo){const G={a:1};const tt=t;effects.push({update(){G.a-=.008;return G.a>0&&tt.alive;},draw(){ctx.save();ctx.globalAlpha=Math.min(1,G.a*1.4);r17Draw(R17I.mochigoo,cx(tt),tt.y+tt.oy+20,tt.w*tt.scale*1.6+40,{anchor:'bottom'});ctx.restore();}});}}});
+    S0.x=-120;S0.rot=0;await tween(400,k=>{S0.x=-120+(x0+120)*k;});};}}
