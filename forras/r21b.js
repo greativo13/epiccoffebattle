@@ -65,3 +65,28 @@ arenaPlace=placeParty;
 {let lv=60;for(let z=8;z<=11;z++)for(const L of ZONES[z].levels){L.elvl=lv++;}SECRET3.elvl=77;
  const NEW3=['whiskimp','mochi','bambsnake','dryad','mochiking','stoneguard','mosaicghost','zencrow','zendragon','matchagolem','steamwraith','cupwarrior','frogking','teamaster','lilicalm','chasen','oldgolem'];
  for(const t of NEW3){const d=EN_DEF[t];if(!d)continue;const k=d.boss?.85:.9;d.hp=Math.round(d.hp*k);d.atk=Math.round(d.atk*k);d.mag=Math.round(d.mag*k);}}
+
+// 6) Saját támadások ott, ahol eddig két ellenfél ugyanazt tudta
+// Mochi-király: Királyi hasraesés – magasra ugrik, az árnyéka nő, ráesik az egész csapatra; Rizsliszt-palást – matchás rizslisztfelhő, habos lesz tőle mindenki
+Object.assign(ESK,{
+  royalflop:{name:'Királyi hasraesés',tgt:'enemies',kind:'phys',pow:1.0,elem:'phys',anim:'royalFlop'},
+  ricecape:{name:'Rizsliszt-palást',tgt:'enemies',kind:'mag',pow:.55,elem:'none',anim:'riceCape',status:['foam',.6,1]},
+  stonemace:{name:'Kőhabverő-csapás',tgt:'enemy',kind:'phys',pow:1.3,elem:'earth',anim:'smash'},
+});
+EN_DEF.mochiking.skills=[['royalflop',3],['ricecape',2],['mochibind',1]];
+EN_DEF.stoneguard.skills=[['stoneguard',2],['stonemace',3]];
+A.royalFlop=async(u,ts,sk)=>{u.pose='attack';sfx('whoosh');const x0=u.x,tx=Math.max(330,Math.min(420,ts.reduce((s,t)=>s+cx(t),0)/Math.max(1,ts.length)));
+  const shadow={a:0,r:0};effects.push({update(){return shadow.a>0||!shadow.done;},draw(){if(shadow.a<=0)return;ctx.save();ctx.fillStyle=`rgba(0,0,0,${.35*shadow.a})`;ctx.beginPath();ctx.ellipse(tx,440,shadow.r,shadow.r*.3,0,0,7);ctx.fill();ctx.restore();}});
+  await tween(420,k=>{u.jump=Math.sin(k*Math.PI*.5)*330;u.x=x0+(tx-x0)*k;shadow.a=k;shadow.r=60+160*k;});
+  await tween(170,k=>{u.jump=330*(1-k*k);});shadow.done=true;shadow.a=0;
+  shake(26);sfx('quake');flash('255,250,235',.35,.2);ring(tx,440,'245,240,225',220,.55);burst(tx,440,'245,240,225',50,420);
+  for(const t of ts)hit(u,t,sk);await wait(380);
+  await tween(420,k=>{u.jump=Math.sin(k*Math.PI)*120;u.x=tx+(x0-tx)*k;});u.jump=0;u.x=x0;u.pose='idle';};
+A.riceCape=async(u,ts,sk)=>{u.pose='cast';sfx('whoosh');await bodyWind(u,260,.1);
+  for(let i=0;i<200;i++)setTimeout(()=>part({x:cx(u)+rnd(-70,70),y:midY(u)+rnd(-60,50),vx:rnd(-700,-320),vy:rnd(-110,110),life:rnd(1,1.5),size:rnd(24,44),grow:45,rgb:pick(['200,230,150','240,240,220','170,215,110']),add:false,shape:'smoke',drag:1.2}),i*6);
+  await wait(650);for(const t of ts)hit(u,t,sk);await wait(400);await bodySettle(u);u.pose='idle';};
+
+// Chasen fél életerő alatt belép az Örök Zenbe: egyszer kiírja, és onnantól az altató Örök Zen is a támadásai közé kerül
+{const h0=hit;hit=function(u,t,sk){const r=h0.apply(this,arguments);try{if(t&&t.type==='chasen'&&t.alive&&!t._zen&&t.hp<t.maxHp*.5){t._zen=true;
+   t.d=Object.assign({},t.d,{skills:[...t.d.skills,['eternalzen',3]]});popLabel(t,'ÖRÖK ZEN!','#e8ffd0');flash('230,255,210',.4,.35);ring(cx(t),midY(t),'220,255,200',200,.7);
+   if(typeof showBanner==='function')showBanner('Chasen belép az Örök Zenbe – mostantól altatni is fog!');}}catch(e){console.error(e)}return r;};}
