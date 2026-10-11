@@ -140,3 +140,63 @@ A.nightmareGrip=async(u,ts,sk)=>{const t=ts[0];if(!t||!t.alive)return;await dimT
     sparks(x,midY(t),['255,240,180','255,210,90','255,255,255'],34,600);toss(t,90,520);t.hurt=.5;hit(orc,t,sk);}
   await wait(500);Au.on=false;for(const h of S.heroes)if(h.alive)for(let i=0;i<8;i++)part({x:cx(h)+rnd(-30,30),y:topY(h)-rnd(0,40),vx:rnd(-10,10),vy:rnd(40,100),life:1,size:rnd(2,4),rgb:'140,255,170',shape:'star'});
   const cX=orc.ox,cY=orc.oy;await tween(380,k=>{const e=easeIO(k);orc.ox=cX+(ox0-cX)*e;orc.oy=cY+(oy0-cY)*e;orc.jump=Math.sin(k*Math.PI)*50;});orc.ox=ox0;orc.oy=oy0;orc.jump=0;orc.pose='idle';await tween(300,k=>{orc._r16tint.a=.6*(1-k);orc.scale=s0*(1.3-.3*k);});orc.scale=s0;orc._r16tint=null;await dimTo(0,null,300);};}
+
+// ---- Árny-csapat: a felhasználó kérésére vissza a legelső, eredeti változatra (sötétített varázsló-árny, minden hős árnycsapása)
+{const sh=SUMMONS.find(x=>x.id==='shadows');if(sh){sh.img=sprOf('wizard');sh.h=260;sh.filter='brightness(.3) saturate(2) hue-rotate(230deg)';sh.desc='A hősök árnymásai is lecsapnak: minden élő hős egy erős ütést mér egy ellenségre.';
+  sh.run=async(P,S0)=>{for(const h of S.heroes){if(!h.alive)continue;const t=pick(foesAlive());if(!t)break;fxSpin(tint('slash','150,90,255')||'slash',cx(t),midY(t),{size:bigOf(t)*1.2,life:.3,s0:.6,s1:1.1,rot:rnd(-1,1),add:true,in:.01,out:.2});fxImage('dark',cx(t),midY(t),{size:bigOf(t),life:.45});shake(9);hitStop(40);
+    hit(h,t,{...ATTACKS[h.type],name:'Árnycsapás',pow:2.6,anim:'midnight'});await wait(260);}await wait(350);};}}
+
+// ---- Tűzlehelet (Espresszó idézés és ellenséges támadás): a láng a SZÁJBÓL indul vékonyan, és csak menet közben hízik meg (eddig a pöttyök már a szájnál óriásiak voltak, és hátrafelé a fejre lógtak)
+{const fb3=fireBreath;fireBreath=function(o,ts,dir,o2={}){const n0=effects.length;const r=fb3.apply(this,arguments);
+  for(let i=n0;i<effects.length;i++){const e=effects[i];if(!e||!e.update||e.__fb)continue;e.__fb=1;const u0=e.update;e.update=function(dt){const p0=part;
+    part=function(q){if(q&&(q.shape==='fire'||q.shape==='smoke')&&Math.hypot((q.x||0)-o.x,(q.y||0)-o.y)<10){q.x+=dir*14;q.size=Math.min(q.size,5);q.grow=Math.min(q.grow||0,48);q.life=(q.life||.6)*1.1;}return p0(q);};
+    try{return u0.call(this,dt);}finally{part=p0;}};}
+  return r;};}
+
+// ---- Méhraj (Mézkirálynő idézés és ellenséges támadás): a méhek FOLYAMATOSAN áramlanak a királynőtől, hullámzó sorokban ÁTREPÜLNEK az ellenségeken (csípés, szikra), és kirepülnek a képből – sok száz méh
+function beeStream(src,ts,dir,dur,onHit){const bees=[],st={on:true,t:0},hitN=new Map();const tgt=()=>pick(ts.filter(t=>t.alive).length?ts.filter(t=>t.alive):ts);
+  effects.push({update(dt){st.t+=dt;if(st.t<dur)for(let i=0;i<7;i++){const t=tgt(),ty=midY(t)+rnd(-.45,.45)*t.h*t.scale,sp=rnd(520,900);
+        bees.push({x:src.x+rnd(-40,40),y:src.y+rnd(-50,50),t,ty,tx:cx(t)+dir*rnd(-20,40),sp,ph:rnd(0,6.28),amp:rnd(14,46),s:rnd(1.4,2.4),k:0,stung:false,life:0});}
+      for(const b of bees){b.life+=dt;const dx=b.tx-b.x,dy=b.ty-b.y;// a célpont felé, aztán tovább, át rajta
+        if(!b.stung){const d=Math.hypot(dx,dy)||1;b.vx=dx/d*b.sp;b.vy=dy/d*b.sp;if(d<30){b.stung=true;const t=b.t;if(t.alive){t.hurt=.25;hitN.set(t,(hitN.get(t)||0)+1);if(Math.random()<.25){sfx('needle');part({x:b.x,y:b.y,vx:rnd(-80,80),vy:rnd(-80,30),life:.3,size:rnd(2,4),rgb:pick(['255,220,60','255,255,200'])});}if(Math.random()<.05)shake(3);}}}
+        b.x+=b.vx*dt;b.y+=b.vy*dt+Math.sin(b.life*14+b.ph)*b.amp*dt*6;}
+      for(let i=bees.length-1;i>=0;i--){const b=bees[i];if(b.x<-60||b.x>W+60||b.y<-60||b.y>H+60)bees.splice(i,1);}
+      return st.on||bees.length>0;},
+    draw(){for(const b of bees)drawRealBee(b.x,b.y,b.s,st.t*70+b.ph,b.vx<0);}});
+  return (async()=>{const bz=setInterval(()=>sfx('buzz'),200);sfx('buzz');await wait(dur*1000);st.on=false;await wait(500);clearInterval(bz);for(const t of ts)if(t.alive)onHit(t);await wait(300);})();}
+{const qb=SUMMONS.find(x=>x.id==='queenbee');if(qb)qb.run=async(P,S0)=>{const fs=foesAlive();if(!fs.length)return;await beeStream({x:S0.x+40,y:S0.y-(qb.h||280)*.6},fs,1,3,t=>hit(P,t,{name:'Méhraj',kind:'phys',pow:2.2,elem:'nature',tgt:'enemies',status:['poison',.7,3]}));};}
+A.beeSwarm=async(e,ts,sk)=>{const al=ts.filter(h=>h.alive);if(!al.length)return;e.pose='cast';await beeStream({x:cx(e)-40,y:midY(e)},al,-1,2.6,h=>hit(e,h,sk));e.pose='idle';};
+
+// ---- Koffeines mókus (idézés): nagy lendület – leguggol, kilő, szélörvény és porfelhő húzódik utána, minden ellenségnél porrobbanás-lökéshullám (nem vékony gyűrű), az ellenségek magasra repülnek
+{const sq=SUMMONS.find(x=>x.id==='squirrel');if(sq)sq.run=async(P,S0)=>{const x0=S0.x,s0=S0.s||1,foes=foesAlive(),done=new Set(),gy=S0.y;
+  // felhúzás: leguggol, a farka megfeszül, por kavarog a lábánál
+  sfx('wind');await tween(380,k=>{S0.s=s0*(1-.12*Math.sin(k*Math.PI*.5));S0.rot=-.12*k;if(Math.random()<.6)part({x:S0.x+rnd(-40,20),y:gy-rnd(0,10),vx:rnd(-160,-40),vy:-rnd(20,90),life:.6,size:rnd(14,26),grow:20,rgb:'200,180,150',add:false,shape:'smoke'});});
+  sfx('whoosh');sfx('wind');shake(8);puffs&&puffs(S0.x,gy-6,14,['200,180,150','170,150,120'],[24,44],{w:120,up:70});
+  const WL=[];const wind=setInterval(()=>sfx('wind'),300);
+  // szélcsíkok: hosszú, íves fehér széllökések a mókus nyomában
+  R18E({update(){for(const w of WL)w.a-=.03;while(WL.length&&WL[0].a<=0)WL.shift();return S0.run||WL.length>0;},draw(){ctx.save();ctx.lineCap='round';for(const w of WL){ctx.strokeStyle=`rgba(255,255,255,${.55*w.a})`;ctx.lineWidth=w.w;ctx.beginPath();ctx.moveTo(w.x,w.y);ctx.quadraticCurveTo(w.x-w.L*.5,w.y-w.c,w.x-w.L,w.y);ctx.stroke();}ctx.restore();}});
+  S0.run=true;
+  await tween(700,k=>{const e=k*k*(3-2*k);S0.x=x0+(W+200-x0)*e;S0.rot=.08*Math.sin(k*40);S0.s=s0*1.08;
+    for(let i=0;i<3;i++)WL.push({x:S0.x-rnd(20,80),y:gy-rnd(10,170),L:rnd(160,340),c:rnd(-30,30),w:rnd(3,7),a:1});
+    for(let i=0;i<4;i++)part({x:S0.x-rnd(20,120),y:gy-rnd(0,30),vx:-rnd(120,320),vy:-rnd(30,140),life:rnd(.6,1),size:rnd(18,34),grow:30,rgb:pick(['200,180,150','180,160,130']),add:false,shape:'smoke'});
+    for(const t of foes)if(!done.has(t)&&S0.x>cx(t)-30){done.add(t);sfx('boom');sfx('hit');shake(16);hitStop(60);flash('255,245,220',.25,.08);
+      for(let i=0;i<26;i++){const a=rnd(0,6.28),v=rnd(200,520);part({x:cx(t),y:t.y+t.oy-10,vx:Math.cos(a)*v,vy:Math.sin(a)*v*.45-80,drag:2,life:rnd(.5,.9),size:rnd(16,30),grow:30,rgb:pick(['210,190,160','180,160,130']),add:false,shape:'smoke'});}
+      for(let i=0;i<10;i++)part({x:cx(t),y:t.y+t.oy-6,vx:rnd(-320,320),vy:-rnd(200,500),g:1000,life:rnd(.5,.9),size:rnd(4,8),rgb:'130,110,90',add:false,shape:'rock'});
+      toss(t,120,520);t.hurt=.5;fxImage('slash',cx(t),midY(t),{size:bigOf(t)*.9,life:.25,rot:rnd(-1,1)});hit(P,t,{name:'Mókus',kind:'phys',pow:.9,elem:'phys',tgt:'enemies',anim:'summon'});t.gold=(t.gold||0)*2;}});
+  clearInterval(wind);S0.run=false;S0.rot=0;S0.s=s0;
+  for(const e of S.enemies)if(!e.alive)e.gold=(e.gold||0)*2;showBanner('Dupla arany!',false);S0.x=-80;await tween(380,k=>{S0.x=-80+(x0+80)*k;});await wait(200);};}
+
+// ---- Villámdenevér (idézés): egész raj villámdenevér rajzik ki, sárga villámívek ugrálnak köztük; körbefonják az ellenségeket, aztán egyszerre lecsapnak, és az égből villámok sújtanak
+{const tb=SUMMONS.find(x=>x.id==='tbat');if(tb)tb.run=async(P,S0)=>{const fs=foesAlive();if(!fs.length)return;const sp=ENEMY_SPR.tbat||ENEMY_SPR['tbat-attack'];const src={x:S0.x+40,y:S0.y-(tb.h||220)*.55};
+  await dimTo(.5,'10,10,30',250);sfx('screech');const B=[...Array(22)].map((_,i)=>({x:src.x+rnd(-30,30),y:src.y+rnd(-30,30),t:fs[i%fs.length],ph:rnd(0,6.28),r:rnd(60,140),s:rnd(.28,.42),dive:0})),st={t:0,on:true,ph:0};
+  R18E({update(dt){st.t+=dt;for(const b of B){const t=b.t,tx=st.ph===1?cx(t)+rnd(-10,10):cx(t)+Math.cos(st.t*3+b.ph)*b.r,ty=st.ph===1?midY(t):midY(t)-40+Math.sin(st.t*4+b.ph)*b.r*.5,g=Math.min(1,dt*(st.ph===1?12:3));b.vx=(tx-b.x);b.x+=(tx-b.x)*g;b.y+=(ty-b.y)*g;}return st.on;},
+    draw(){if(Math.random()<.6){const a=pick(B),b=pick(B);if(Math.hypot(a.x-b.x,a.y-b.y)<260)r16Bolt(a.x,a.y,b.x,b.y,'255,230,90',4);}
+      for(const b of B){const h=(sp?sp.height:100)*b.s,w=sp?h*sp.width/sp.height:60;ctx.save();ctx.globalCompositeOperation='lighter';glow(b.x,b.y,40,'255,230,100',.35);ctx.restore();
+        if(sp){ctx.save();ctx.translate(b.x,b.y);ctx.scale(b.vx<0?-1:1,1+.15*Math.sin(st.t*30+b.ph));ctx.drawImage(sp,-w/2,-h/2,w,h);ctx.restore();}}}});
+  const bz=setInterval(()=>{sfx('zap');},220);await wait(1300);
+  // egyszerre lecsapnak
+  st.ph=1;sfx('screech');await wait(220);clearInterval(bz);
+  for(const t of fs){if(!t.alive)continue;const x=cx(t),y1=t.y+t.oy+10;for(let k=0;k<3;k++)fxBeam('thunder',x+rnd(-60,60),0,x+rnd(-15,15),y1,{w:150,life:.35});
+    sfx('thunder');flash('255,252,200',.45,.1);shake(14);hitStop(60);sparks(x,midY(t),['255,245,150','255,255,255'],30,520);t.hurt=.5;toss(t,50,360);
+    hit(P,t,{name:'Villámraj',kind:'mag',pow:1.9,elem:'thunder',tgt:'enemies',anim:'chainbolt',status:['stun',.4,1]});await wait(160);}
+  await wait(350);st.on=false;await dimTo(0,null,300);};}
