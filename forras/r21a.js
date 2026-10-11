@@ -62,7 +62,7 @@ Object.assign(EN_DEF,{
     elem:{ice:1.5,nature:1.4,fire:.5,dark:.5,poison:.3},skills:[['gravelrain',3],['zenroar',2],['meditate',1]],
     info:'Kavicsokból épül. Meditáció közben alig sebződik – a villám átüti. Jég és természet ellen gyenge.'},
   matchagolem:{name:'Matcha-gólem',hp:250,atk:20,def:18,mag:12,res:14,xp:300,h:150,w:120,lift:0,elem:{thunder:1.6,phys:1.2,fire:.5,water:.5,poison:0},statusImmune:['poison','sleep'],skills:[['cupslam',3],['hotfoam',2]],info:'Kerámiatest: a villám szétreped. Forró habot fröcsköl a hősökre.'},
-  steamwraith:{name:'Gőzkád-szellem',hp:180,atk:8,def:8,mag:20,res:17,xp:285,h:120,w:100,lift:26,elem:{ice:1.7,fire:.3,water:.4,phys:.6},evade:.3,evadeUnless:'ice',skills:[['scaldmist',2],['steamjet',3]],info:'Gőzből van: a fegyver elől kitér, a jég mindig eltalálja.'},
+  steamwraith:{name:'Gőzkád-szellem',hp:180,atk:8,def:8,mag:20,res:17,xp:285,h:170,w:140,lift:26,elem:{ice:1.7,fire:.3,water:.4,phys:.6},evade:.3,evadeUnless:'ice',skills:[['scaldmist',2],['steamjet',3]],info:'Gőzből van: a fegyver elől kitér, a jég mindig eltalálja.'},
   cupwarrior:{name:'Csészeharcos',hp:200,atk:19,def:15,mag:8,res:10,xp:290,h:110,w:90,lift:0,elem:{phys:1.4,thunder:1.3,water:.5,poison:0},statusImmune:['poison'],skills:[['cupthrow3',3],['shardfan',2]],info:'Kerámiacsészéket hajít. A fegyver és a villám töri.'},
   frogking:{name:'Bambusz-békakirály',hp:2200,atk:24,def:18,mag:19,res:17,xp:8200,h:230,w:230,lift:0,scale:1.05,boss:true,speaker:'Bambusz-békakirály',statusImmune:MACHINE_IMMUNE,
     elem:{fire:1.5,thunder:1.4,water:.4,poison:.2},skills:[['tonguelash',3],['bamboojump',2],['gongstrike',2]],
