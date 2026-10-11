@@ -59,7 +59,7 @@ A felhasználó 246 tesztlap-megjegyzéséből kiszűrt, ismétlődő minták. M
    - Mindegyiket külön ellenőrizd lassított képsoron (`vs.sh`, `ws.sh`, `hsk.js`, `sumv.sh`), mielőtt késznek jelölöd.
 3. **Rossz helyre mért pont.** A forráspontot a rácsos figurán kell meghatározni, és képen ellenőrizni, hogy tényleg onnan indul-e.
 4. **Kicsi első változat.** Ezt lásd az A1-ben: nagyobbat és többet.
-5. **Minden kör végén** fusson le a `foe.js`, `sumall.js`, `all.js` és `shield.js`. Csak hibátlan eredménnyel lehet feltölteni (`claude/kind-knuth-hiqqiv` + `main`).
+5. **Ellenőrzés javítás után:** csak azt kell kipróbálni, amit a javítás érint (pl. az adott animáció képsora, az adott pálya vagy menü), és hogy nincs JS-hiba. A teljes játék ellenőrzése (`foe.js`, `sumall.js`, `all.js`, `shield.js`, `playall.js`) nem kell minden javításnál – csak nagy, sok mindent érintő változás után (pl. új térkép, közös függvény átírása), vagy ha a felhasználó kéri. Feltöltés: `claude/kind-knuth-hiqqiv` + `main`.
 
 ## C. Munkarend
 
