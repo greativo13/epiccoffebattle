@@ -50,7 +50,7 @@ Object.assign(ESK,{
 Object.assign(EN_DEF,{
   whiskimp:{name:'Habverő-manó',hp:120,atk:13,def:9,mag:14,res:11,xp:230,h:125,w:100,lift:6,elem:{fire:1.6,phys:1.3,nature:.4,water:.6},skills:[['whiskfoam',3],['bambooswipe',2]],acts:()=>2,info:'Kétszer lép, és habot ver a hősökre (Habos: fizikai sebzés −30%, de a tűz és a villám másfélszeresen fáj).'},
   mochi:{name:'Mochi-nyálka',hp:150,atk:14,def:13,mag:8,res:12,xp:240,h:80,w:96,lift:0,elem:{fire:1.6,holy:1.4,phys:.5,poison:0},statusImmune:['poison'],skills:[['mochibind',2],['mochibounce',3]],info:'Ragacsos rizsgombóc: a fegyver beleragad (fizikai sebzés fele). Tűz és fény ellen gyenge. A méreg nem árt neki.'},
-  bambsnake:{name:'Bambuszkígyó',hp:170,atk:17,def:11,mag:9,res:10,xp:255,h:150,w:165,lift:0,elem:{fire:1.6,ice:1.2,nature:.4},skills:[['vinewhip',3],['coilsnap',2]],info:'Rátekeredik és elkábít. A tűz fáj neki.'},
+  bambsnake:{name:'Bambuszkígyó',hp:170,atk:17,def:11,mag:9,res:10,xp:255,h:200,w:220,lift:0,elem:{fire:1.6,ice:1.2,nature:.4},skills:[['vinewhip',3],['coilsnap',2]],info:'Rátekeredik és elkábít. A tűz fáj neki.'},
   dryad:{name:'Teafa-dryád',hp:185,atk:10,def:10,mag:18,res:16,xp:265,h:195,w:110,lift:0,elem:{fire:1.6,ice:1.3,nature:.3},skills:[['leafmend',2],['tealeaf',3]],info:'Gyógyítja a társait – őt üsd először! Tűz és jég ellen gyenge.'},
   mochiking:{name:'Mochi-király',hp:1900,atk:22,def:17,mag:16,res:16,xp:7000,h:200,w:230,lift:0,scale:1.1,boss:true,speaker:'Mochi-király',statusImmune:MACHINE_IMMUNE,
     elem:{fire:1.5,holy:1.4,phys:.6,poison:0},skills:[['mochibounce',3],['mochibind',2]],

@@ -42,7 +42,7 @@ A.mosaicShards=async(u,ts,sk)=>{u.pose='cast';const hs=[SP(u,.08,.5),SP(u,.9,.75
 
 // Kőőr – Kőőrség: nagy kőfal emelkedik elé; ami eltalálja, annak a fele visszapattan
 STATUS.stonewall=['Kőfal','#c9bfae'];ONE_ROUND.add('stonewall');
-{const h0=hit;hit=function(u,t,sk){const r=h0.apply(this,arguments);try{if(t&&t.st&&t.st.stonewall&&u&&u.kind!==t.kind&&u.alive&&sk&&sk.kind!=='heal'&&typeof r==='number'&&r>0){recoil(u,Math.max(1,Math.round(r*.5)),'VISSZAPATTAN!','#c9bfae');t.hp=Math.min(t.maxHp,t.hp+Math.round(r*.4));}}catch(e){}return r;};}
+{const h0=hit;hit=function(u,t,sk){const r=h0.apply(this,arguments);try{if(t&&t.st&&t.st.stonewall&&u&&u.kind!==t.kind&&u.alive&&sk&&sk.kind!=='heal'&&typeof r==='number'&&r>0){recoil(u,Math.max(Math.round(r*.5),Math.round((u.maxHp||100)*.08)),'VISSZAPATTAN!','#c9bfae');fxFly('rock',cx(t)-30,midY(t),cx(u),midY(u),320,{size:110,spin:9,arc:60});sparks(cx(t)-30,midY(t),['220,210,190','255,255,255'],24,500);shake(10);t.hp=Math.min(t.maxHp,t.hp+Math.round(r*.4));}}catch(e){}return r;};}
 A.stoneWall=async(u,ts,sk)=>{u.pose='cast';sfx('quake');shake(10);const gx=cx(u)-u.w*u.scale*.75,gy=u.y+u.oy+14,H=u.h*u.scale*1.1,W={k:0,a:1,ready:false};
   effects.push({update(){if(!S.enemies.includes(u))W.a=0;if(W.ready&&!(u.alive&&u.st&&u.st.stonewall))W.a-=.03;return W.a>0;},draw(){ctx.save();ctx.globalAlpha=Math.max(0,W.a);const h=H*W.k;
     for(let r=0;r<6;r++)for(let c=0;c<3;c++){const bw=34,bh=h/6,x=gx-bw*1.5+c*bw+(r%2?bw/2:0)-bw/2,y=gy-(r+1)*bh;ctx.fillStyle=(r+c)%2?'#8f8a7e':'#a7a294';ctx.strokeStyle='#4a463e';ctx.lineWidth=3;ctx.fillRect(x,y,bw,bh);ctx.strokeRect(x,y,bw,bh);ctx.fillStyle='rgba(100,140,60,.6)';if((r*3+c)%4===0)ctx.fillRect(x+4,y+bh-8,bw*.6,5);}ctx.restore();}});

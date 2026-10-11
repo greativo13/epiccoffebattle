@@ -13,8 +13,8 @@ const R3=k=>R17I[k];
   for(let i=0;i<50;i++)part({x:gx+rnd(-Wd/2,Wd/2),y:gy,vx:rnd(-220,220),vy:rnd(-380,-120),life:rnd(.7,1.1),size:rnd(6,12),rgb:pick(['140,130,110','110,100,85']),g:700,add:false,shape:'rock'});
   puffs&&puffs(gx,gy,14,['170,160,140','140,130,110'],[20,40],{w:Wd*.6,up:110});await tween(520,k=>W.k=eOutBack(k));addStatus(u,'stonewall',2);W.ready=true;popLabel(u,'KŐFAL!','#c9bfae');await wait(400);u.pose='idle';};}
 // Kaelen bambuszfala: festett bambuszfal nő a társ elé
-{const b0=A.barkCage;A.barkCage=async(u,ts,sk)=>{const im=R3('bamboowall'),t=ts[0];if(!im||!t)return b0(u,ts,sk);u.pose='cast';await bodyWind(u,200,.1);const gx=cx(t)+t.w*t.scale*.8,gy=t.y+t.oy+18,Wd=Math.max(170,t.w*t.scale*1.3),C={k:0,a:1};
-  effects.push({update(){if(S.over||!S.heroes.includes(t))C.a=0;if(C.ready&&!(t.alive&&t.st&&t.st.bamwall))C.a-=.03;return C.a>0;},draw(){if(C.k<=0)return;ctx.save();ctx.globalAlpha=Math.max(0,C.a);r17Draw(im,gx,gy,Wd,{anchor:'bottom',sy:C.k});ctx.restore();}});
+{const b0=A.barkCage;A.barkCage=async(u,ts,sk)=>{const im=R3('bamboowall'),t=ts[0];if(!im||!t)return b0(u,ts,sk);u.pose='cast';await bodyWind(u,200,.1);const gx=cx(t)+t.w*t.scale*1.05,gy=t.y+t.oy+22,Wd=Math.max(230,t.w*t.scale*1.8),C={k:0,a:1};
+  effects.push({update(){if(S.over||!S.heroes.includes(t))C.a=0;if(C.ready&&!(t.alive&&t.st&&t.st.bamwall))C.a-=.03;return C.a>0;},draw(){if(C.k<=0)return;ctx.save();ctx.globalAlpha=Math.max(0,C.a)*.72;r17Draw(im,gx,gy,Wd,{anchor:'bottom',sy:C.k});ctx.restore();}});
   sfx('quake');shake(10);kaeLeaves(gx,gy-60,30,300,120);for(let i=0;i<30;i++)part({x:gx+rnd(-Wd/2,Wd/2),y:gy,vx:rnd(-200,200),vy:rnd(-340,-120),life:.9,size:rnd(6,10),rgb:'120,90,60',g:700,add:false,shape:'rock'});
   await tween(480,k=>C.k=eOutBack(k));flash('170,230,110',.2,.15);hit(u,t,sk);C.ready=true;popLabel(t,'BAMBUSZFAL!','#b8e07a');await wait(400);await bodySettle(u);u.pose='idle';};}
 // Mochi ragacsos ölelése: festett, csöpögő mochi-ragacs borítja be a hőst

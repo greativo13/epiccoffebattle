@@ -47,7 +47,7 @@ A.thornRoots=async(u,ts,sk)=>{u.pose='cast';await bodyWind(u,220,.1);u.pose='att
 STATUS.bamwall=['Bambuszfal','#b8e07a'];ONE_ROUND.add('bamwall');
 SK.barkskin.buff=['bamwall',2];SK.barkskin.desc='Bambuszfal nő a társ elé 1 körre: kevesebbet sérül, és a támadás fele visszapattan a támadóra.';
 {const h0=hit;hit=function(u,t,sk){const r=h0.apply(this,arguments);try{if(t&&t.st&&t.st.bamwall&&u&&u.kind!==t.kind&&u.alive&&sk&&sk.kind!=='heal'&&typeof r==='number'&&r>0){
-   recoil(u,Math.max(1,Math.round(r*.5)),'VISSZAPATTAN!','#b8e07a');t.hp=Math.min(t.maxHp,t.hp+Math.round(r*.4));kaeLeaves(cx(t)+40,midY(t),8,200);}}catch(e){}return r;};}
+   recoil(u,Math.max(Math.round(r*.5),Math.round((u.maxHp||100)*.08)),'VISSZAPATTAN!','#b8e07a');fxFly('bamboospear',cx(t)+40,midY(t),cx(u),midY(u),320,{size:300,arc:50});sparks(cx(t)+40,midY(t),['200,240,150','255,255,255'],24,500);shake(10);t.hp=Math.min(t.maxHp,t.hp+Math.round(r*.4));kaeLeaves(cx(t)+40,midY(t),8,200);}}catch(e){}return r;};}
 A.barkCage=async(u,ts,sk)=>{const t=ts[0];if(!t)return;u.pose='cast';await bodyWind(u,200,.08);const gx=cx(t)+t.w*t.scale*.75,gy=t.y+t.oy+12,H=t.h*t.scale*1.2,N=6,B=[];
   for(let i=0;i<N;i++)B.push({x:gx+(i%2)*14,y:gy-(i-(N-1)/2)*0,k:0,dx:(i-(N-1)/2)*16});
   const C={a:1};effects.push({update(){if(S.over||!S.heroes.includes(t))C.a=0;if(C.ready&&!(t.alive&&t.st&&t.st.bamwall))C.fade=true;if(C.fade)C.a-=.03;return C.a>0;},draw(){ctx.save();ctx.globalAlpha=Math.max(0,C.a);
