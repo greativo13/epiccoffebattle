@@ -3,7 +3,7 @@
 A felhasználó terve (Kaelen, Chasen, Habosítás, matcha-világ) a felhasználó döntéseivel kiegészítve (2026-10-07):
 - **Lilit „megbékítik”** – nem elrabolják: önként megy Chasenhez békét kötni, és Chasen elveszi az akaratát. A főellenség-harcban Lili Chasen oldalán áll, a győzelem után visszatér.
 - **Átkötés:** Morcus és Kamilla közös teaházában minden ital íztelenné válik. A nyom Matcha-földre vezet.
-- **Chasen indítéka:** a világ túl hangos lett (a kávé óta mindenki rohan és kiabál), ezért mindenkit „megbékít”. A végén rájön, hogy a béke nem csend, és csatlakozik a közös teaházhoz.
+- **Chasen indítéka:** a világ elfelejtette megízlelni, amit iszik (a kávé óta mindenki kapkodva iszik), ezért elvette az ízeket, és mindenkit „megbékít”, hogy újra figyeljenek. (A „túl hangos” Kamilla indítéka volt, ezért nem ismételjük.) A végén rájön, hogy az ízt nem lehet erővel visszatanítani, és csatlakozik a közös teaházhoz.
 - **9–11. fejezet főellensége:** az elitekből lesznek (Mochi-király, Zen-Kavics Sárkány, Bambusz-békakirály), a 12.-é Chasen.
 - **Vad Alakváltás:** véletlen 25–25–25–25%.
 - **Habosítás:** az ellenfelek teszik a hősökre, Kaelen le tudja szedni.
