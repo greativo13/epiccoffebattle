@@ -301,3 +301,14 @@ A.cerberus=async(u,ts,sk)=>{
   await tween(390,k=>{const e=easeIO(k);C.a=1-e;C.s=1-.5*e;u.alpha=e;});
   u.alpha=1;bodyOn=false;await bodySettle(u);await tween(520,k=>{End.a=1-easeIO(k);});finalOn=false;await dimTo(0,null,300);rel();
 };
+
+// ---- Álomcsillagok: a meglévő éjszaka/holdsarló mellé sok nagy, festett csillag hull csillagcsóvával az ellenségekre, becsapódáskor csillagpor és nagy, lebegő „Zzz”
+{const ss0=A.sleepStars;A.sleepStars=async(u,ts,sk)=>{const al=ts.filter(t=>t.alive);const run=ss0(u,ts,sk);
+  if(al.length){await wait(500);const jobs=[];for(let i=0;i<26;i++){const t=al[i%al.length];jobs.push(wait(i*70).then(()=>{const sx=cx(t)-rnd(200,420),sy=-40,tx=cx(t)+rnd(-50,50),ty=midY(t)+rnd(-60,30);if(i%3===0)sfx('whoosh');
+      return flyObj({x:sx,y:sy},{x:tx,y:ty},rnd(380,520),(x,y)=>{for(let q=0;q<2;q++)part({x:x+rnd(-10,10),y:y+rnd(-10,10),vx:rnd(-50,10),vy:rnd(-50,0),life:rnd(.4,.8),size:rnd(3,6),rgb:pick(['230,230,255','255,240,200','200,200,255']),shape:'star'});
+        ctx.save();ctx.globalCompositeOperation='lighter';glow(x,y,46,'200,200,255',.6);ctx.restore();if(R17I.star)r17Draw(R17I.star,x,y,rnd(70,90),{rot:T*5+i});},{ease:true})
+      .then(()=>{t.hurt=.2;for(let q=0;q<10;q++)part({x:tx,y:ty,vx:rnd(-220,220),vy:rnd(-220,80),drag:2,life:rnd(.5,.9),size:rnd(4,8),rgb:pick(['230,230,255','255,240,200']),shape:'star'});});}));}
+    for(const t of al){const z={t:0};effects.push({update(dt){z.t+=dt;return z.t<2.2;},draw(){const a=Math.min(1,z.t*3)*Math.min(1,(2.2-z.t)*2);ctx.save();ctx.globalAlpha=a;ctx.font='bold 34px serif';ctx.fillStyle='#e8e4ff';ctx.strokeStyle='#3a2a70';ctx.lineWidth=4;
+      for(let k=0;k<3;k++){const q=(z.t*.5+k*.33)%1;const x=cx(t)+20+q*60+Math.sin(q*8)*10,y=topY(t)-q*90;ctx.font=`bold ${22+k*10}px serif`;ctx.strokeText('Z',x,y);ctx.fillText('Z',x,y);}ctx.restore();}});}
+    await Promise.all(jobs);}
+  await run;};}
