@@ -47,3 +47,42 @@ A.inkWave=async(u,ts,sk)=>{const al=ts.filter(h=>h.alive);if(!al.length)return;c
    sfx('dark');splat(M.x,M.y-8,['12,10,18','40,36,60'],20,300,'drop');}
   G.a=0;G.on=false;await wait(250);
   sfx('dark');await tween(260,k=>{P0.a=1-k;});await dimTo(0,null,300);await bodySettle(u);}finally{D.on=false;rel();}};
+
+// ---- Kaelen – Medveforma (23. kör): nekiront, felágaskodik és háromszor lecsap; mély, véres karomnyomok
+A.wildshape=async(u,ts,sk)=>{const t=ts[0];const f=pick(['bear','turtle','snake']);const N={bear:'MEDVEFORMA!',turtle:'TEKNŐSFORMA!',snake:'KÍGYÓFORMA!'}[f];
+  popLabel(u,N,'#9be07a');sfx('roar');kaeLeaves(cx(u),midY(u),60,380);flash('150,230,90',.3,.2);
+  const key={bear:'wsbear',turtle:'wsturtle',snake:'wsviper'}[f],W={bear:330,turtle:250,snake:300}[f];
+  const F={x:cx(u),y:u.y+u.oy+6,a:0,s:.4,rot:0,fx:false,sy:1};const a0=u.alpha==null?1:u.alpha;
+  effects.push({update(){return !F.done;},draw(){if(F.a<=0)return;ctx.save();ctx.globalAlpha=F.a;if(!kaeImg(F.key||key,F.x,F.y,W*F.s,{anchor:'bottom',rot:F.rot,fx:F.fx,sy:F.sy})){ctx.font=`${Math.round(150*F.s)}px serif`;ctx.textAlign='center';ctx.fillText({bear:'🐻',turtle:'🐢',snake:'🐍'}[f],F.x,F.y);}ctx.restore();}});
+  await tween(280,k=>{u.alpha=a0*(1-k);F.a=k;F.s=.4+.6*eOutBack(k);});
+  if(f==='bear'&&t&&t.alive){const hx=F.x,tx=cx(t)-W*.42,gy=u.y+u.oy+6;sfx('roar');
+    // nekiront: 3 nagy ugrás a földön, porfelhő a talpánál
+    await tween(420,k=>{const e=k*k;F.x=hx+(tx-hx)*e;F.y=gy-Math.abs(Math.sin(k*Math.PI*2))*55;F.rot=.08*Math.sin(k*Math.PI*4);if(Math.random()<.5)part({x:F.x+rnd(-60,60),y:gy,vx:rnd(-160,-40),vy:-rnd(30,120),life:.6,size:rnd(8,16),rgb:'150,120,80',add:false});});
+    shake(10);sfx('quake');
+    for(let i=0;i<3;i++){
+      // felágaskodik (a festett ágaskodó medve, ha van), aztán lecsap a mancsával
+      const up=!!R17I.wsbear2;if(up)F.key='wsbear2';sfx('roar');await tween(200,k=>{F.sy=1+.14*k;F.rot=-.16*k;F.x=tx-20*k;});
+      sfx('slash');await tween(110,k=>{F.sy=1.14-.2*k;F.rot=-.16+.34*k;F.x=tx-20+50*k;});shake(18);hitStop(70);
+      const cxp=cx(t)+rnd(-25,25),cyp=midY(t)+rnd(-40,20),dir=i%2?-1:1,M={a:1,k:0};
+      effects.push({update(){M.k=Math.min(1,M.k+.18);M.a-=.018;return M.a>0;},draw(){ctx.save();ctx.globalAlpha=Math.min(1,M.a*1.3);ctx.translate(cxp,cyp);ctx.scale(dir,1);ctx.rotate(.35);
+        for(let j=0;j<4;j++){const ox=-66+j*44,L0=-110,L1=-110+220*M.k;
+          // mély hasíték: sötét seb, vörös szél, fehér villanás
+          ctx.lineCap='round';ctx.fillStyle='rgba(60,0,0,.9)';ctx.beginPath();ctx.moveTo(ox-4,L0);ctx.quadraticCurveTo(ox+22,(L0+L1)/2,ox+6,L1);ctx.quadraticCurveTo(ox+34,(L0+L1)/2,ox+10,L0);ctx.fill();
+          ctx.strokeStyle='rgba(230,30,30,.95)';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(ox,L0);ctx.quadraticCurveTo(ox+26,(L0+L1)/2,ox+8,L1);ctx.stroke();
+          ctx.strokeStyle=`rgba(255,255,255,${M.a})`;ctx.lineWidth=2.5;ctx.beginPath();ctx.moveTo(ox+3,L0+6);ctx.quadraticCurveTo(ox+27,(L0+L1)/2,ox+9,L1-6);ctx.stroke();}
+        ctx.restore();}});
+      for(let n=0;n<22;n++)part({x:cxp+rnd(-60,60),y:cyp+rnd(-60,60),vx:dir*rnd(80,360),vy:rnd(-260,60),g:600,life:.7,size:rnd(4,9),rgb:pick(['200,30,30','140,90,50']),add:false,shape:n%3?'drop':'rock'});
+      t.hurt=.3;toss(t,30+i*20,260);flash('255,240,220',.25,.08);
+      F.key=null;await tween(160,k=>{F.sy=.94+.06*k;F.rot=.18*(1-k);F.x=tx+30*(1-k);});}
+    hit(u,t,{...sk,name:'Medvekarmolás',pow:1.9});await wait(250);await tween(380,k=>{F.x=tx+(hx-tx)*k;F.y=gy-Math.sin(k*Math.PI)*50;F.rot=0;F.sy=1;});}
+  else if(f==='turtle'){addStatus(u,'shell',2);addStatus(u,'taunt',1);await tween(300,k=>F.sy=1-.12*Math.sin(k*Math.PI));shake(10);sfx('rock');for(let i=0;i<24;i++)part({x:F.x+rnd(-120,120),y:F.y,vx:rnd(-160,160),vy:rnd(-200,-60),life:.7,size:rnd(4,8),rgb:'120,100,70',g:500,add:false,shape:'rock'});
+    popLabel(u,'NEM SÉRÜL 1 KÖRIG!','#b8e07a');await wait(500);}
+  else if(t&&t.alive){const hx=F.x,hy=F.y;await tween(260,k=>{F.x=hx+(cx(t)-hx)*k;F.y=hy+(t.y+t.oy+6-hy)*k-Math.sin(k*Math.PI)*120;F.rot=-.3*Math.sin(k*Math.PI);});
+    // rátekeredik: a kígyó a célpont köré csavarodik és összeszorít
+    const T={k:0};const tw=effects.push({update(){return !T.done;},draw(){const s=1+.06*Math.sin(T.k*30);}});
+    for(let i=0;i<3;i++){await tween(200,k=>{F.s=1-.18*Math.sin(k*Math.PI);F.rot=.15*Math.sin(k*Math.PI*2);});shake(8);burst(cx(t),midY(t),'150,230,80',18,220);}
+    hit(u,t,{...sk,name:'Kígyómarás',pow:1.1,status:['poison',1,3]});if(Math.random()<.5)addStatus(t,'stun',1);T.done=true;
+    await tween(260,k=>{F.x=cx(t)+(hx-cx(t))*k;F.y=t.y+t.oy+6+(hy-t.y-t.oy-6)*k;F.rot=0;});}
+  await wait(200);kaeLeaves(F.x,F.y-100,50,340);
+  if(f!=='turtle'){await tween(280,k=>{u.alpha=a0*k;F.a=1-k;});F.done=true;u.alpha=a0;}
+  else{const keepT=()=>u.alive&&u.st&&u.st.shell;effects.push({update(){if(!keepT()){u.alpha=a0;F.done=true;return false;}u.alpha=0;return true;},draw(){}});}};
