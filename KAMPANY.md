@@ -1,5 +1,8 @@
 # A Nagy Kávérablás – kampányterv
 
+> **Megjegyzés (2026-10-11):** ez az I. rész **eredeti, korai terve**. A játék azóta eltér tőle (pl. Morcus „hat éve” nem aludt, nem 300; a pályanevek, a 8 fejezet és a szintek mások). Mindig a játék szövegei és a `listak/gamedata.json` a mérvadók. A 3. térkép terve: `KAMPANY3.md`.
+
+
 Tartalmi terv a *Démonok Vára* körökre osztott RPG-hez (EBF4-stílus). A négy hős és a harcrendszer már kész, ez a dokumentum a történetet, a pályákat, a szintlépést és az ellenfeleket írja le.
 
 **Elemek, amelyekkel a terv számol:** Tűz, Jég, Villám, Fény, Sötét, Méreg, Fizikai.
