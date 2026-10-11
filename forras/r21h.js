@@ -32,3 +32,5 @@ A.titanAll=async(u,ts,sk)=>{const al=ts.filter(t=>t.alive);if(!al.length)return;
   await wait(600);await tween(260,k=>{u.lean=.5*(1-easeIO(k));u.sq=.92+.08*k;});u.lean=0;u.sq=1;ghosts(u,300);await tween(340,k=>{const e=easeIO(k);u.ox=dx*(1-e);u.oy=dy*(1-e);});u.ox=0;u.oy=0;
   await tween(420,k=>{u.scale=big+(s0-big)*k;});u.scale=s0;u.pose='idle';await wait(300);await dimTo(0,null,300);};
 if(typeof ELEM_NAMES==='object'){ELEM_NAMES.earth=ELEM_NAMES.earth||'föld';ELEM_NAMES.nature=ELEM_NAMES.nature||'természet';ELEM_NAMES.water=ELEM_NAMES.water||'víz';ELEM_NAMES.pure=ELEM_NAMES.pure||'tiszta';ELEM_NAMES.none=ELEM_NAMES.none||'semleges';}
+// Térkép: a rajzolt pontsor (ösvény) nem kell – csak a pályapontok látszanak
+{const st=document.createElement('style');st.textContent='.map-trail{display:none!important}';document.head.appendChild(st);}

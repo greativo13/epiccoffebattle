@@ -24,7 +24,7 @@ SECRET3.end=[{who:'Öreg Matcha-gólem',text:'HAB… KÉSZ. KÉRLEK… KÓSTOLJ�
 SECRET3.intro='A Matcha-kádak mögötti lezárt ajtó egy régi műhelybe vezet. A legelső habverő-gólem még mindig dolgozik. Jutalom: 5000 arany, 3 Elixír és 3 Élet-elixír.';
 {const inc=ZONES[10].levels.includes;ZONES[10].levels.includes=function(L){return L===SECRET3||inc.call(this,L);};}
 const secret3Open=()=>cleared('11-2');
-{const SP=[90,40];
+{const SP=[88,89];
  const ms=mapScreen;mapScreen=function(zi){const r=ms.apply(this,arguments);try{const view=ov.querySelector('.map-view');
    if(view&&secret3Open()&&Math.floor((S.mapZone||0)/4)===2){const done=cleared(SECRET3.id);
      const b=btn('mnode boss'+(done?' done':' next'),done?'✓':'?',()=>{S.mapZone=10;startLevel(SECRET3);});b.style.left=SP[0]+'%';b.style.top=SP[1]+'%';

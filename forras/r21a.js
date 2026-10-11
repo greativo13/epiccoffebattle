@@ -190,9 +190,9 @@ const SECRET3={id:'X-2',name:'Az Ősi Habverő-műhely',tag:'titkos',theme:'teah
 if(typeof ZONE_MUSIC==='object')ZONE_MUSIC.push('tea','tea','porc','dream');
 
 // ---- 3. térkép: pályapontok a map3 képen (rácson lemérve), lapozás
-{const P3=[[[13,85],[9,62],[29,74],[18,66]],[[22,43],[33,38],[46,41],[37,26]],[[58,58],[69,55],[82,63],[79,46]],[[72,31],[80,28],[89,22],[83,12]]];
+{const P3=[[[13,85],[9,62],[29,74],[18,66]],[[22,43],[33,38],[46,41],[37,26]],[[58,58],[69,55],[82,63],[79,46]],[[72,31],[80,28],[91,29],[83,12]]];
  for(let i=0;i<4;i++)MAP_POS[8+i]=P3[i];
- const Z3=[[22,93],[42,18],[70,74],[66,6]];for(let i=0;i<4;i++)MAP_ZONE_POS[8+i]=Z3[i];}
+ const Z3=[[22,93],[42,18],[70,74],[79,19]];for(let i=0;i<4;i++)MAP_ZONE_POS[8+i]=Z3[i];}
 {const ms=mapScreen;mapScreen=function(zi){const r=ms.apply(this,arguments);try{const page=Math.floor((S.mapZone||0)/4);const v=document.querySelector('.map-view');
    if(page===2&&v&&IMG_SRC.map3)v.style.backgroundImage='url('+IMG_SRC.map3+')';
    const bset=document.querySelector('.map-bar .ov-btns');if(bset){const nav=[...bset.querySelectorAll('button')].find(b=>/térkép/.test(b.textContent));
