@@ -8,12 +8,13 @@ function kaeStalk(x,y,h,w,a=1,lean=0){ctx.save();ctx.globalAlpha*=a;ctx.translat
   for(let i=0;i<seg;i++){const y0=-i*h/seg,y1=-(i+1)*h/seg+4;const g=ctx.createLinearGradient(-w/2,0,w/2,0);g.addColorStop(0,'#5f9a2c');g.addColorStop(.45,'#a6d65a');g.addColorStop(1,'#4d7f22');
     ctx.fillStyle=g;ctx.strokeStyle='#2d4a12';ctx.lineWidth=2.5;ctx.beginPath();if(ctx.roundRect)ctx.roundRect(-w/2,y1,w,y0-y1,w*.25);else ctx.rect(-w/2,y1,w,y0-y1);ctx.fill();ctx.stroke();
     ctx.fillStyle='#d8e9a0';ctx.fillRect(-w/2-2,y1-3,w+4,6);ctx.strokeRect(-w/2-2,y1-3,w+4,6);}
-  if(typeof drawLeaf==='function'){drawLeaf(w*.4,-h+8,1.6,.6,1,'#7cc040');drawLeaf(-w*.4,-h+20,1.4,-.7,-1,'#5ea832');}
+  if(true){pLeaf(w*.4,-h+8,1.6,.6,1,'#7cc040');pLeaf(-w*.4,-h+20,1.4,-.7,-1,'#5ea832');}
   ctx.restore();}
+function pLeaf(x,y,s,r,fl,c){const im=R17I.leaf;if(im){ctx.save();ctx.translate(x,y);ctx.rotate(r);ctx.scale(fl,1);const w=30*s;ctx.drawImage(im,-w/2,-w/2*im.height/im.width,w,w*im.height/im.width);ctx.restore();}else drawLeaf(x,y,s,r,fl,c);}
 function kaeImg(key,x,y,w,o){const im=R17I[key];if(im){r17Draw(im,x,y,w,o);return true;}return false;}
 function kaeVine(P,k,thick){if(P.length<2)return;ctx.save();ctx.lineCap='round';ctx.lineJoin='round';const n=Math.max(2,Math.round(P.length*k));
   for(const [lw,col] of [[thick+5,'#2d4a12'],[thick,'#6aa832'],[thick*.4,'#a6d65a']]){ctx.strokeStyle=col;ctx.lineWidth=lw;ctx.beginPath();ctx.moveTo(P[0].x,P[0].y);for(let i=1;i<n;i++)ctx.lineTo(P[i].x,P[i].y);ctx.stroke();}
-  if(typeof drawLeaf==='function')for(let i=4;i<n;i+=5)drawLeaf(P[i].x,P[i].y,1.3,i*.9,i%2?1:-1,i%3?'#7cc040':'#5ea832');ctx.restore();}
+  if(true)for(let i=4;i<n;i+=5)pLeaf(P[i].x,P[i].y,1.3,i*.9,i%2?1:-1,i%3?'#7cc040':'#5ea832');ctx.restore();}
 
 // Bambuszcsapás: a bot hegyéből leveles inda csap ki az ellenfélig, ott levélrobbanás
 ATTACKS.druid.anim='druidLash';
@@ -31,7 +32,7 @@ A.mossPillow=async(u,ts,sk)=>{const t=ts[0];if(!t)return;u.pose='cast';sfx('heal
   await wait(420);const M={k:0,a:1},W=Math.max(200,t.w*t.scale*2.2);
   effects.push({update(){return M.a>0;},draw(){const s=easeIO?easeIO(M.k):M.k;ctx.save();ctx.globalAlpha=M.a;
     if(!kaeImg('moss',gx,gy+W*.12,W*(.3+.7*s),{anchor:'bottom',sy:s})){ctx.fillStyle='#5f9a2c';ctx.strokeStyle='#2d4a12';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(gx,gy,W*.5*s,W*.16*s,0,Math.PI,0);ctx.fill();ctx.stroke();
-      for(let i=0;i<14;i++)drawLeaf(gx-W*.45*s+i*W*.065*s,gy-W*.1*s*Math.sin(i/13*Math.PI),1.5*s,i,i%2?1:-1,i%2?'#7cc040':'#4d8a26');}
+      for(let i=0;i<14;i++)pLeaf(gx-W*.45*s+i*W*.065*s,gy-W*.1*s*Math.sin(i/13*Math.PI),1.5*s,i,i%2?1:-1,i%2?'#7cc040':'#4d8a26');}
     ctx.restore();}});
   await tween(420,k=>M.k=k);for(let i=0;i<10;i++)part({x:gx+rnd(-W*.4,W*.4),y:gy-rnd(0,20),vx:0,vy:rnd(-70,-30),life:rnd(.8,1.3),size:rnd(5,9),rgb:pick(['255,200,230','255,250,200','230,180,255']),shape:'star',add:false});
   hit(u,t,sk);if(t.st&&t.st.foam){delete t.st.foam;popLabel(t,'HAB LEMOSVA','#cfe9a0');}

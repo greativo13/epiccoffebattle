@@ -26,7 +26,7 @@ A.mochiHug=async(u,ts,sk)=>{const t=ts[0];if(!t)return;await tween(220,k=>u.sq=1
 
 // Teafa-dryád – Levélzápor: valódi tealevelek hullanak a hősökre (nem csillagok)
 A.leafRain=async(u,ts,sk)=>{u.pose='cast';const h=SP(u,.18,.2);kaeLeaves(h.x,h.y,20,200);await wait(300);const L=[];for(const t of ts)for(let i=0;i<26;i++)L.push({x:cx(t)+rnd(-70,70),y:-rnd(20,300),vy:rnd(260,380),r:rnd(0,6),vr:rnd(-5,5),s:rnd(1.4,2.4),c:pick(['#6cbf3a','#4d9a2a','#9bd85a','#3f8a2a']),land:t.y+t.oy-rnd(10,t.h*t.scale*.7),t});
-  const E={a:1};effects.push({t:0,update(dt){for(const l of L){if(l.y<l.land){l.y+=l.vy*dt;l.x+=Math.sin(l.y*.03)*1.5;l.r+=l.vr*dt;}}return E.a>0;},draw(){ctx.save();ctx.globalAlpha=E.a;for(const l of L)drawLeaf(l.x,l.y,l.s,l.r,1,l.c);ctx.restore();}});
+  const E={a:1};effects.push({t:0,update(dt){for(const l of L){if(l.y<l.land){l.y+=l.vy*dt;l.x+=Math.sin(l.y*.03)*1.5;l.r+=l.vr*dt;}}return E.a>0;},draw(){ctx.save();ctx.globalAlpha=E.a;for(const l of L)pLeaf(l.x,l.y,l.s,l.r,1,l.c);ctx.restore();}});
   await wait(900);for(const t of ts){hit(u,t,sk);await wait(70);}await wait(300);await tween(400,k=>E.a=1-k);u.pose='idle';};
 
 // Mozaik-szellem – Mozaiklövés: a kezében csempékből nagy gömb áll össze, és szétrobban a hősön
