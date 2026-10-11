@@ -11,8 +11,13 @@ let PACT_T=0,PACT_X=0;{const df=darkFlame;darkFlame=function(o){if(performance.n
 {const p0=A.pactFx;A.pactFx=async function(u){PACT_X=cx(u);PACT_T=performance.now()+9000;try{return await p0.apply(this,arguments);}finally{PACT_T=performance.now()+4000;}};}
 // Napkitörés: a sárga vékony csíkok helyett lánggomolyok
 {const s0=A.solarNova;A.solarNova=async function(){const pp=part;part=function(o){if(o&&o.shape==='streak'){o.shape='fire';o.size=(o.size||4)*2.2;}return pp.call(this,o);};try{return await s0.apply(this,arguments);}finally{part=pp;}};}
-// Csillaghullás: sokkal több csillag zuhan
-{const c0=A.starfall;A.starfall=async function(u,ts,sk){const al=ts.filter(t=>t.alive);for(let i=0;i<40;i++)setTimeout(()=>{const t=pick(al)||ts[0];if(!t)return;const x=cx(t)+rnd(-120,120);fxFly('star',x+rnd(-160,-60),-60,x,midY(t)+rnd(-60,60),rnd(420,620),{size:rnd(60,110),trail:['255,240,170','255,255,255'],spin:6,add:true});},i*45);return c0.apply(this,arguments);};}
+// Csillaghullás: egyféle, festett aranycsillag zápora (ugyanaz a csillag mindenhol), becsapódáskor csillagszikra
+A.starfall=async(u,ts,sk)=>{const al=ts.filter(t=>t.alive);if(!al.length)return;await dimTo(.6,'5,5,30',300);await castPose(u,'255,240,170',420);sfx('holy');
+  const im=()=>R17I.star||FX_IMG.star,S0=[];for(let i=0;i<46;i++){const t=al[i%al.length];S0.push({t,x:cx(t)+rnd(-110,110)-rnd(80,220),y:-80-rnd(0,260),tx:cx(t)+rnd(-90,90),ty:midY(t)+rnd(-70,60),d:i*55,s:rnd(70,130),r:rnd(0,6),hit:false});}
+  const E={t:0,a:1};effects.push({update(dt){E.t+=dt*1000;for(const p of S0){const k=(E.t-p.d)/520;if(k>=1&&!p.hit){p.hit=true;sparks(p.tx,p.ty,['255,240,170','255,255,255'],10,380);shake(4);}}return E.a>0;},
+    draw(){const I=im();if(!I)return;ctx.save();ctx.globalAlpha=E.a;for(const p of S0){const k=(E.t-p.d)/520;if(k<0||k>1.15)continue;const q=Math.min(1,k),x=p.x+(p.tx-p.x)*q,y=p.y+(p.ty-p.y)*q*q;
+      ctx.save();ctx.globalCompositeOperation='lighter';glow(x,y,p.s*.8,'255,230,140',.5*(k>1?1-(k-1)/.15:1));ctx.restore();ctx.save();ctx.translate(x,y);ctx.rotate(p.r+E.t/260);const s=p.s*(k>1?1-(k-1)/.15:1);ctx.drawImage(I,-s/2,-s/2,s,s);ctx.restore();}ctx.restore();}});
+  await wait(46*55+300);for(const t of al){hit(u,t,sk);await wait(80);}await wait(400);E.a=0;u.pose='idle';await dimTo(0,null,300);};
 
 // Titáncsapás: megnő, felugrik, és a Zúzáshoz hasonlóan hátrahajolva, nagy fejszeívvel előre csap le
 A.titanAll=async(u,ts,sk)=>{const al=ts.filter(t=>t.alive);if(!al.length)return;const {mx,gy}=grp(al),s0=u.scale0||u.scale,big=s0*2.1;await dimTo(.66,'24,14,6',240);u.pose='cast';rumble(1.2,6);
