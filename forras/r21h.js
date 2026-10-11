@@ -34,3 +34,4 @@ A.titanAll=async(u,ts,sk)=>{const al=ts.filter(t=>t.alive);if(!al.length)return;
 if(typeof ELEM_NAMES==='object'){ELEM_NAMES.earth=ELEM_NAMES.earth||'föld';ELEM_NAMES.nature=ELEM_NAMES.nature||'természet';ELEM_NAMES.water=ELEM_NAMES.water||'víz';ELEM_NAMES.pure=ELEM_NAMES.pure||'tiszta';ELEM_NAMES.none=ELEM_NAMES.none||'semleges';}
 // Térkép: a rajzolt pontsor (ösvény) nem kell – csak a pályapontok látszanak
 {const st=document.createElement('style');st.textContent='.map-trail{display:none!important}';document.head.appendChild(st);}
+if(typeof GUARD_RGB==='object')GUARD_RGB.druid='120,230,110';

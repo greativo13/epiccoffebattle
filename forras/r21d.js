@@ -10,9 +10,9 @@
 
 // --- Bambuszcsapás: Kaelen hátralendül, és egyszerre három bambuszlándzsát vág az ellenfélbe
 A.druidSpears=async(u,ts,sk)=>{const t=ts[0];if(!t)return;u.pose='attack';await bodyWind(u,240,.16);sfx('whoosh');const h=handPos(u),tx=cx(t),ty=midY(t);
-  bodyStrike(u,150,-.24);const fl=[];for(let i=0;i<3;i++){const oy=(i-1)*34;fl.push(fxFly('bamboospear',h.x,h.y+oy*.3,tx-10+i*8,ty+oy,300+i*40,{size:230,arc:40+i*14,trail:['150,220,90','200,240,140']}).then(()=>{shake(9);kaeLeaves(tx,ty+oy,12,260);burst(tx,ty+oy,'200,240,140',14,260);sfx('hit');}));}
+  bodyStrike(u,150,-.24);const fl=[];for(let i=0;i<3;i++){const oy=(i-1)*34;fl.push(fxFly('bamboospear',h.x,h.y+oy*.3,tx-10+i*8,ty+oy,300+i*40,{size:340,arc:40+i*14,trail:['150,220,90','200,240,140']}).then(()=>{shake(9);kaeLeaves(tx,ty+oy,12,260);burst(tx,ty+oy,'200,240,140',14,260);sfx('hit');}));}
   await Promise.all(fl);hitStop&&hitStop(70);hit(u,t,sk);
-  const st={a:1};effects.push({update(){return st.a>0;},draw(){ctx.save();ctx.globalAlpha=st.a;for(let i=0;i<3;i++){const oy=(i-1)*34;ctx.save();ctx.translate(tx-40+i*8,ty+oy);ctx.rotate(.12*(i-1));ctx.drawImage(FX_IMG.bamboospear,-128,-128,256,256);ctx.restore();}ctx.restore();}});
+  const st={a:1};effects.push({update(){return st.a>0;},draw(){ctx.save();ctx.globalAlpha=st.a;for(let i=0;i<3;i++){const oy=(i-1)*34;ctx.save();ctx.translate(tx-40+i*8,ty+oy);ctx.rotate(.12*(i-1));ctx.drawImage(FX_IMG.bamboospear,-170,-170,340,340);ctx.restore();}ctx.restore();}});
   await wait(420);await tween(300,k=>st.a=1-k);await bodySettle(u);u.pose='idle';};
 ATTACKS.druid.anim='druidSpears';ATTACKS.druid.desc='Kaelen egyszerre három bambuszlándzsát dob az ellenfélbe.';
 
