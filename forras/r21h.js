@@ -35,3 +35,5 @@ if(typeof ELEM_NAMES==='object'){ELEM_NAMES.earth=ELEM_NAMES.earth||'föld';ELEM
 // Térkép: a rajzolt pontsor (ösvény) nem kell – csak a pályapontok látszanak
 {const st=document.createElement('style');st.textContent='.map-trail{display:none!important}';document.head.appendChild(st);}
 if(typeof GUARD_RGB==='object')GUARD_RGB.druid='120,230,110';
+// Napkitörés: a nap körüli vékony sárga ívek (protuberanciák) nem kellenek
+{const ds=drawSun;drawSun=function(s){if(s&&s.proms)s.proms.length=0;return ds.apply(this,arguments);};}
