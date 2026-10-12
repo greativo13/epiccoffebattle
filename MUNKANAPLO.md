@@ -140,6 +140,17 @@ Minden jelölés egy oldalon: https://claude.ai/artifact/6D1sUCKfqLohVoGNQdc8ek 
 
 Teljes tesztlista (könnyű szint, 307 pont, minden menü/pálya/képesség/idézés/ellenfél-támadás): https://claude.ai/artifact/YETTFbipDrw3jJbPXy881Z – a pontok a lapba vannak ágyazva (scratchpad `fulldump.js` → `full.json` → `mkfull.py`), a jelölések ugyanúgy a `review` gyűjteményben (`t-<id>`, `title` mezővel); a „Jó” azonnal beküldődik.
 
+## Tervezett játékfejlesztések (a felhasználó tesztje után, egy csomagban)
+
+A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, egyben készüljön el – látványosan, élethűen (CLAUDE.md A1).
+- **Napi kihívás** (`r14a.js`, `r16a.js`, térkép ⭐ gomb) már van – a tesztlapon (x31) ellenőrzi, működik-e; ha nem, javítani.
+- **Bestiárium** (📖 gomb) már van – x32; festett képek, leírás, gyengeség legyen benne, ha még hiányzik.
+- **Gyenge pont / kombó-jelzés:** ha a képesség eleme jól hat, nagy „GYENGE PONT!” felirat, rázkódás, hang.
+- **Főellenség-bevezető:** filmszerű belépő a fejezet végi főellenségnél (közelítés, név nagy betűkkel, hang).
+- **Felszerelés látszódjon a hősön** (új fegyver/kalap a figurán).
+- **Időjárás a pályákon:** eső, köd, hulló levelek a háttér témája szerint.
+- **Tesztlap „🎮 Megnézem a játékban” gomb:** ha a kezdőképernyős appból nem működik (x33), ki kell venni.
+
 ## Nyitott ügyek
 
 - Állított telefon: a felhasználó kétszer „Nem jó”-t jelölt megjegyzés nélkül – képernyőképet kértem. (Javítva közben: ragadós csatatér csak nyitott ablak nélkül; a gombhely-megtartás csak csata közben, a térképen nem marad üres rész.)
