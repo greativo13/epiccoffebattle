@@ -190,3 +190,31 @@ R16P['Lótuszharmat']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B1,fa
   for(const t of al){for(let i=0;i<6;i++){const s={x:mx+rnd(-140,140),y:top+rnd(0,40)};flyObj(s,{x:cx(t)+rnd(-30,30),y:midY(t)+rnd(-40,30)},280+i*40,(x,y)=>{ctx.save();ctx.globalCompositeOperation='lighter';glow(x,y,30,'170,230,255',.9);glow(x,y,10,'255,255,255',1);ctx.restore();},{arc:60,trail:['170,230,255','255,255,255']});}}
   await wait(560);for(const t of al){sfx('ice');sparks(cx(t),midY(t),['180,240,255','255,255,255'],26,460);t.hurt=.4;toss(t,30,260);hit(dr,t,sk);await wait(70);}
   r16Lower(dr);await tween(500,k=>L.a=1-k);await dimTo(0,null,300);};
+
+// ===== Levéltánc (újra): festett tealevelek spirálban KERINGENEK a társ körül (elöl-hátul, felfelé szállva), zöld fénypászma húzódik utánuk, végül egyszerre a társba simulnak, gyógyító villanás
+A.leafDance=async(u,ts,sk)=>{const t=ts[0];if(!t)return;const rel=keepPose(u);try{u.pose='cast';await bodyWind(u,200,.1);sfx('wind');const h=handPos(u),gx=cx(t),bot=t.y+t.oy,top=topY(t),RX=t.w*t.scale*.55+40;
+  const L=[];for(let i=0;i<26;i++)L.push({ph:i/26*6.283*3,off:i/26,s:rnd(.75,1.1),k:0});const st={t:0,col:0,a:1,on:true};
+  const pos=l=>{const q=(l.off+st.t*.45)%1,an=l.ph+st.t*5,r=RX*(1-st.col*.85);return{x:gx+Math.cos(an)*r,y:bot-12-(bot-top)*q*(1-st.col*.5)-st.col*(bot-top)*.25,f:Math.sin(an)>0,an};};
+  const draw=front=>()=>{if(st.a<=0)return;ctx.save();ctx.globalAlpha=st.a;for(const l of L){if(l.k<=0)continue;const p=pos(l);if(p.f!==front)continue;
+      if(front){ctx.save();ctx.globalCompositeOperation='lighter';glow(p.x,p.y,14,'170,255,140',.35);ctx.restore();}
+      const lx=l.k<1?h.x+(p.x-h.x)*l.k:p.x,ly=l.k<1?h.y+(p.y-h.y)*l.k:p.y;pLeaf(lx,ly,l.s*(front?1:.85),p.an+1.2,1,'#6cbf3a');}ctx.restore();};
+  effects.unshift({update(dt){st.t+=dt;if(st.on&&Math.random()<.5)part({x:gx+rnd(-RX,RX),y:bot-rnd(0,bot-top),vx:0,vy:-rnd(20,60),life:.8,size:rnd(2,4),rgb:'190,255,150',shape:'star'});return st.a>0;},draw:draw(false)});
+  effects.push({update(){return st.a>0;},draw:draw(true)});
+  // a levelek a bothegyből röppennek ki, egymás után
+  for(const l of L)tween(500,k=>l.k=easeIO(k));await wait(1400);
+  // összesimulnak a társba
+  sfx('heal');await tween(450,k=>st.col=easeIO(k));st.on=false;flash('190,255,160',.25,.15);
+  R18E({t:0,update(dt){this.t+=dt;return this.t<.9;},draw(){const k=this.t/.9;ctx.save();ctx.globalCompositeOperation='lighter';glow(gx,midY(t),t.h*t.scale*(.4+.6*k),'150,240,120',.7*(1-k));ctx.restore();}});
+  for(let n=0;n<16;n++)part({x:gx+rnd(-40,40),y:bot-rnd(0,bot-top),vx:rnd(-20,20),vy:-rnd(40,110),life:1,size:rnd(3,6),rgb:pick(['170,255,140','230,255,210']),shape:'star'});
+  hit(u,t,sk);if(t.st&&t.st.foam){delete t.st.foam;popLabel(t,'HAB LEMOSVA','#cfe9a0');}st.a=0;await bodySettle(u);}finally{rel();}};
+
+// ===== Kőőr – Buzogánycsapás (még nagyobb): magasra ugrik, a földbe csap, a becsapódás körül festett kőhullám-gyűrű tör fel mindkét oldalon, kőoszlopok lövellnek fel, a hős a levegőbe repül
+{const sm0=A.stoneMace;A.stoneMace=async(u,ts,sk)=>{const t=ts[0];if(!t)return;const rel=keepPose(u);try{const d=await dashTo(u,t,300,10);await bodyWind(u,320,-.26);sfx('whoosh');
+  await tween(380,k=>{u.jump=Math.sin(k*Math.PI*.5)*260;u.lean=-.15*k;});await tween(160,k=>{u.jump=260*(1-k*k);u.lean=-.15+.45*k;});u.jump=0;
+  const gx=cx(t)+10,gy=t.y+t.oy+6,wim=R17I.stonewave;shake(36);sfx('quake');sfx('boom');sfx('rock');flash('255,235,200',.55,.2);hitStop(160);rumble&&rumble(1.5,12);
+  groundCrack&&groundCrack(gx,gy,'190,170,130',320);dustWave&&dustWave(gx,gy);
+  const Wv={k:0,a:1};effects.unshift({update(){return Wv.a>0;},draw(){if(!wim)return;ctx.save();ctx.globalAlpha=Wv.a;for(const [dx,s,fx] of [[-1,1,true],[1,1,false],[-.5,.75,true],[.5,.75,false]]){const k2=Wv.k;r17Draw(wim,gx+dx*(40+260*k2),gy+16,380*s*(.4+.6*k2),{anchor:'bottom',fx,sy:Math.sin(Math.min(1,k2*1.4)*Math.PI*.9)+.1});}ctx.restore();}});
+  tween(800,k=>{Wv.k=easeIO(k);Wv.a=k<.65?1:1-(k-.65)/.35;});
+  for(let i=0;i<70;i++)part({x:gx+rnd(-90,90),y:gy,vx:rnd(-460,460),vy:rnd(-760,-220),life:rnd(.8,1.4),size:rnd(8,20),rgb:pick(['150,140,120','115,105,90','175,165,140']),g:1000,add:false,shape:'rock'});
+  for(let i=0;i<24;i++)part({x:gx+rnd(-200,200),y:gy-rnd(0,30),vx:rnd(-120,120),vy:-rnd(30,110),life:rnd(1,1.6),size:rnd(34,60),grow:40,rgb:'190,175,150',add:false,shape:'smoke'});
+  t.hurt=.7;toss(t,140,560);hit(u,t,sk);await wait(650);u.lean=0;await bodySettle(u);await dashBack(u,d);}finally{rel();u.lean=0;}};}
