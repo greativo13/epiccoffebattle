@@ -143,6 +143,12 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
   - Ősi Tölgy ökle: csak feltör az ellenség alól. Levéltánc: 3 gyors hullám. Tövisvihar: festett rózsatövis-forgószél (`fx7-rosestorm`), forgás tükörkép-átúsztatással.
   - Matcha-gólem Forró hab: habgejzírek (`fx7-foamgeyser`). Átokindák: festett lila lángfal (`fx7-firewall`). Villámbambusz: több villám. Lótuszharmat: ÚJ funkció, Harmatpajzs (`dew` állapot, 1 kör: az első találat sebzése gyógyulás).
   - **Felszerelés a hősön**: `GEAR_LOOK` – ha fegyver+ruha ≥ 4 szint, a hős díszesebb képre vált (`wizardG*` kész Zordonnak; referencia: a régi 4 póz 2×2 lapon feltöltve Canvába, generate-image szerkesztéssel). A többi hős még hátravan.
+- **28. kör** (`r21q.js`, a tesztlap ba-pontjai alapján):
+  - Vad Alakváltás: vágtázó medve (`r21Gallop`: nyúlás-összehúzódás, gerinchullám), festett kígyótest (`fx7-snakebody`) útvonal mentén rátekeredik (`r21CoilPath`, `r17Snake`). Tekeredés ugyanezzel.
+  - Bambuszcsapás: égből zuhanó dárdák. Tölgyököl egyenesen. Levéltánc gyorsabb. Bambusz-gólem átsétál, lecsap. Medvelovaglás vágtával. Bambuszliget: Jázmin a földbe lő, dárdák nőnek ki. Villámbambusz: 4 rúdból villám.
+  - Átokindák → **Lángoló Átokketrec** (a láng a ketrec képével maszkolva). Lótuszharmat: új funkció, LIMIT +60%, MP +40% (a páros költsége utáni pótlással).
+  - Habgejzír szeletenként hullámzik + habcsomók; Teafröccs a festett tea-hullám végighajlítva. Tusátok: festett kalligráfia (`fx7-inkglyph`, ecsetkép még nincs, a régi ecset marad), festett tusfoltok. Kőhabverő: festett kőörvény (`fx7-stonevortex`).
+  - Az ellenségek fölötti „gyenge:” jelvény kivéve (r14a.js). A felszerelés-kép mind a 6 hősnél kész (`GEAR_LOOK`, `<hős>G*`).
 
 ## Tesztlista és áttekintő (egy helyen)
 
