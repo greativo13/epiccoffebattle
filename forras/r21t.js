@@ -146,3 +146,69 @@ async function r21Phase2(e){showBanner(`${e.name} feldühödött!`,true);say(e,`
   await wait(500);tween(500,k=>Cr.a=1-k).then(()=>Cr.on=false);Au.on=false;
   const cX=orc.ox,cY=orc.oy;await tween(380,k=>{const e=easeIO(k);orc.ox=cX+(ox0-cX)*e;orc.oy=cY+(oy0-cY)*e;orc.jump=Math.sin(k*Math.PI)*50;orc.lean=0;});orc.ox=ox0;orc.oy=oy0;orc.jump=0;orc.pose='idle';
   await tween(300,k=>{orc._r16tint.a=.3*(1-k);orc.scale=s0*(1.28-.28*k);});orc.scale=s0;orc._r16tint=null;await dimTo(0,null,300);};}
+
+// ---- Lebegés (ea11: „továbbra is a levegőben vannak”): néhány póz- és felszerelt hőskép alján üres sáv van (pl. Zordon
+// kalapos-pálcás képe: 25 képpont), ezért a figura a talppontja fölött lebegett. Betöltés után minden képet egyszer
+// megvizsgálunk, és a tartalmat leigazítjuk a kép aljára (a méret nem változik, csak a talp kerül a földre).
+{let n0=-1;const done=new WeakSet();
+  const fix=()=>{if(typeof ENEMY_SPR!=='object')return;const ks=Object.keys(ENEMY_SPR);if(ks.length===n0)return;n0=ks.length;
+    for(const k of ks){const c=ENEMY_SPR[k];if(!c||done.has(c)||!(c instanceof HTMLCanvasElement)||!c.width)continue;done.add(c);try{const g=c.getContext('2d',{willReadFrequently:true}),H=Math.min(80,c.height),d=g.getImageData(0,c.height-H,c.width,H).data;let m=0;
+      for(let y=H-1;y>=0;y--){let hit=false;for(let x=0;x<c.width;x++)if(d[(y*c.width+x)*4+3]>60){hit=true;break;}if(hit)break;m++;}
+      if(m>=4&&m<H){const im=g.getImageData(0,0,c.width,c.height-m);g.clearRect(0,0,c.width,c.height);g.putImageData(im,0,m);}}catch(e){}}};
+  const dp=drawHeroPoses;drawHeroPoses=function(){fix();return dp.apply(this,arguments);};}
+
+// ---- Kígyó (ea01/ea10: „darabos, akadozik”): a test mostantól egyetlen nyomvonalat követ, mint egy igazi kígyó – a fej
+// kígyózó vonalon siklik a földön, a test pontosan a fej nyomában jön (állandó hossz, nem nyúlik át a képernyőn), aztán
+// ugyanazon a nyomon spirálban felkúszik a célpontra, a feje a tetején felágaskodik; letekeredéskor visszafelé siklik
+r21CoilPath=function(gx,top,bot,R,turns,k,from,sq=0,headLift=0){const dir=gx>=from.x?1:-1,Rr=R*(1-sq*.18),th0=dir>0?Math.PI:0,TW=turns*6.283,N0=70,NS=110;
+  const sp=u=>{const th=th0-dir*u*TW;return {x:gx+Math.cos(th)*Rr,y:bot-(bot-top)*u+Math.sin(th)*Rr*.26,b:Math.sin(th)<0};};
+  const s0=sp(0),coilL=TW*Rr*1.05,Ls=coilL+170;
+  // a földi szakasz: Ls-sel a kiindulás mögül indul, enyhén kígyózik, és a spirál aljába fut
+  const G=[],gx0=from.x-dir*(Ls+40),gy0=from.y;for(let i=0;i<=N0;i++){const q=i/N0,x=gx0+(s0.x-gx0)*q,amp=Math.min(1,q*4,(1-q)*6)*12;G.push({x,y:gy0+(s0.y-gy0)*q+Math.sin(x*.045)*amp,b:false});}
+  for(let i=1;i<=NS;i++)G.push(sp(i/NS));
+  const tp=sp(1);G.push({x:tp.x+dir*8,y:tp.y-30-headLift,b:false});
+  const L=[0];for(let i=1;i<G.length;i++)L.push(L[i-1]+Math.hypot(G[i].x-G[i-1].x,G[i].y-G[i-1].y));const tot=L[L.length-1];
+  const at=d=>{d=Math.max(0,Math.min(tot,d));let j=1;while(j<L.length-1&&L[j]<d)j++;const q=(d-L[j-1])/Math.max(1e-6,L[j]-L[j-1]),A=G[j-1],B=G[j];return {x:A.x+(B.x-A.x)*q,y:A.y+(B.y-A.y)*q,b:q<.5?A.b:B.b};};
+  const e=k*k*(3-2*k),head=Ls+40+(tot-(Ls+40))*e,P=[],M=90;for(let i=0;i<=M;i++)P.push(at(head-Ls*i/M));return P;};
+r21DrawCoil=function(im,P,thick,a=1){if(!im||P.length<2)return;r21Snake2(im,P,thick*1.25,a,.5);};
+
+// ---- hegyes bambuszkaró festett képpel (fx7-bamboostake, ea06/ea08: „festett kép kell”): a földből szúr ki, a talaj alatt
+// nem látszik; a karó alja (földrög) a talajba kerül
+{const st0=r21Stake;r21Stake=function(x,gy,H,k,lean=0,a=1){const im=R17I.bamboostake;if(!im)return st0.apply(this,arguments);if(k<=0)return;
+  const w=H*im.width/im.height;ctx.save();ctx.beginPath();ctx.rect(-500,-500,3000,gy+502);ctx.clip();ctx.globalAlpha*=a;ctx.translate(x,gy+H*.07+H*(1-Math.min(1,k)));ctx.rotate(lean);
+  ctx.drawImage(im,-w/2,-H,w,H);ctx.restore();};}
+
+// ---- Matcha-gólem – Forró hab (ea02: „festett kép kell, nem feltörik, csak megjelenik – vegyél példát a Magmakitörésből”):
+// mint a Magmakitörésnél: a hős alatt előbb megnyílik és fortyog egy forró matcha-tócsa (sötét föld, izzó zöld repedések,
+// buborékos közép), aztán festett habcsomókból álló szökőkút lövell fel belőle, a habcsomók visszahullanak és szétfolynak
+{const ff=A.foamFlood;A.foamFlood=async(u,ts,sk)=>{const al=ts.filter(t=>t.alive);if(u.type!=='matchagolem'||!al.length||!R17I.froth)return ff(u,ts,sk);const rel=keepPose(u);try{
+  u.pose='attack';await bodyWind(u,300,-.12);bodyStrike(u,200,.22);sfx('boom');sfx('quake');shake(14);rumble&&rumble(1,8);await dimTo(.5,'10,25,8',250);
+  const V=al.map(t=>({t,x:cx(t),y:t.y+t.oy+8,pool:0,a:0,cr:null})),B=[],SP=[],L={on:true};
+  R18E({update(dt){for(const v of V){v.a+=dt*3;if(v.pool>.3&&Math.random()<.35){const r=60*v.pool;part({x:v.x+rnd(-r,r),y:v.y-2,vx:rnd(-10,10),vy:-rnd(20,60),life:rnd(.3,.6),size:rnd(4,9),rgb:pick(['200,240,170','240,255,230']),add:false,shape:'dot'});}
+        if(v.pool>.3&&Math.random()<.25)r21Steam(v.x+rnd(-40,40),v.y-4,rnd(-15,15),-rnd(40,90),false);}
+      for(let i=B.length-1;i>=0;i--){const b=B[i];b.age+=dt;b.vy+=1300*dt;b.x+=b.vx*dt;b.y+=b.vy*dt;b.rot+=b.vr*dt;if(b.vy>0&&b.y>=b.gy){SP.push({x:b.x,y:b.gy,r:b.r*1.5,age:0});B.splice(i,1);}}
+      for(let i=SP.length-1;i>=0;i--){SP[i].age+=dt*.6;if(SP[i].age>1.4)SP.splice(i,1);}return L.on||B.length||SP.length;},
+    draw(){for(const v of V){if(v.pool<=0)continue;const R=105*v.pool;ctx.save();ctx.translate(v.x,v.y);ctx.scale(1,.28);ctx.globalCompositeOperation='lighter';glow(0,0,R*1.6,'150,230,90',.35*v.pool);ctx.globalCompositeOperation='source-over';
+        if(!v.cr){v.cr=[];for(let i=0;i<14;i++){const a=i/14*6.283+rnd(-.2,.2),pts=[[0,0]];let r=0,an=a;while(r<1){r+=rnd(.12,.22);an+=rnd(-.35,.35);pts.push([Math.cos(an)*r,Math.sin(an)*r]);}v.cr.push(pts);}}
+        const cg=ctx.createRadialGradient(0,0,R*.2,0,0,R);cg.addColorStop(0,'rgba(40,52,22,1)');cg.addColorStop(.75,'rgba(30,26,14,1)');cg.addColorStop(1,'rgba(30,26,14,0)');ctx.fillStyle=cg;ctx.beginPath();ctx.arc(0,0,R,0,6.29);ctx.fill();
+        const fl=.75+.25*Math.sin(v.a*3);ctx.lineCap='round';ctx.lineJoin='round';
+        for(const [lw,col] of [[R*.09,`rgba(120,200,60,${.5*fl})`],[R*.045,`rgba(180,240,110,${.85*fl})`],[R*.016,`rgba(240,255,210,${fl})`]]){ctx.strokeStyle=col;ctx.lineWidth=lw;for(const pts of v.cr){ctx.beginPath();pts.forEach((p,i)=>{const x=p[0]*R*.95,y=p[1]*R*.95;i?ctx.lineTo(x,y):ctx.moveTo(x,y);});ctx.stroke();}}
+        const og=ctx.createRadialGradient(0,0,0,0,0,R*.42);og.addColorStop(0,'rgba(245,255,225,1)');og.addColorStop(.5,'rgba(150,215,80,1)');og.addColorStop(1,'rgba(90,150,40,0)');ctx.fillStyle=og;ctx.beginPath();ctx.arc(0,0,R*.42,0,6.29);ctx.fill();ctx.restore();
+        for(let i=0;i<5;i++){const an=v.a*1.7+i*1.3,r=R*.25*(.5+.5*Math.sin(v.a*2+i));r21Froth(v.x+Math.cos(an)*r,v.y-3+Math.sin(an)*r*.25,7+3*Math.sin(v.a*4+i),.9*v.pool,an);}}
+      for(const s of SP){const a=Math.max(0,Math.min(1,1.4-s.age));ctx.save();ctx.globalAlpha=a*.9;ctx.translate(s.x,s.y);ctx.scale(1,.35);r21Froth(0,0,s.r*(1+s.age*.4),1,0);ctx.restore();}
+      for(const b of B){const sp=Math.min(1.7,1+Math.abs(b.vy)/1000);ctx.save();ctx.translate(b.x,b.y);ctx.rotate(Math.atan2(b.vy,b.vx)+Math.PI/2);ctx.scale(1/Math.sqrt(sp),sp);r21Froth(0,0,b.r,1,b.rot);ctx.restore();}}});
+  // a tócsák megnyílnak és fortyognak
+  sfx('steam');await tween(650,k=>{for(const v of V)v.pool=r21ease.io(k)*.75;});
+  for(const v of V){const t=v.t;sfx('splash');sfx('boom');flash('200,255,170',.22,.12);shake(15);hitStop&&hitStop(50);
+    for(let j=0;j<80;j++)setTimeout(()=>{const a=-Math.PI/2+rnd(-.3,.3)*(j<55?.55:1.3),spd=rnd(520,980);B.push({x:v.x+rnd(-14,14),y:v.y-8,vx:Math.cos(a)*spd*.5,vy:Math.sin(a)*spd,r:rnd(9,20),age:0,gy:v.y+rnd(-8,16),rot:rnd(0,6),vr:rnd(-4,4)});},j*10);
+    for(let i=0;i<10;i++)r21Steam(v.x+rnd(-30,30),v.y-rnd(0,40),rnd(-50,50),-rnd(160,360),true);
+    t.hurt=.6;toss(t,170,720);hit(u,t,sk);await wait(200);}
+  await wait(900);await tween(600,k=>{for(const v of V)v.pool=.75*(1-k);});L.on=false;await dimTo(0,null,300);await bodySettle(u);}finally{rel();}};}
+
+// ---- medvekarom-csapás (ea10: „látványosabb, élethűbb”): festett, zöldes izzású hármas karomnyom (fx7-bearclaw) hasít át
+// az ellenségen, kéreg- és levélszilánkok repülnek
+function r21Claw(t,i=0){const im=R17I.bearclaw,x=cx(t),y=midY(t),S2=Math.max(220,t.h*t.scale*1.5),st={t:0,rot:(i%2?-1:1)*.25};
+  for(let n=0;n<24;n++)part({x:x+rnd(-40,40),y:y+rnd(-50,50),vx:rnd(60,420),vy:rnd(-300,80),g:700,life:rnd(.5,.9),size:rnd(5,10),rgb:pick(['110,80,50','140,100,60','120,190,70']),add:false,shape:n%2?'leaf':'rock'});
+  R18E({update(dt){st.t+=dt;return st.t<.7;},draw(){const k=Math.min(1,st.t/.12),a=st.t<.35?1:1-(st.t-.35)/.35;
+    if(im){ctx.save();ctx.beginPath();ctx.rect(x-S2,y-S2,S2*2*Math.max(.05,k),S2*2);ctx.clip();r17Draw(im,x,y,S2*(.9+.15*k),{a,rot:st.rot});ctx.restore();}
+    else{ctx.save();ctx.globalAlpha=a;ctx.strokeStyle='rgba(230,255,200,.95)';ctx.lineCap='round';ctx.lineWidth=7;for(let j=-1;j<=1;j++){ctx.beginPath();ctx.moveTo(x-S2*.35+j*26,y-S2*.35);ctx.lineTo(x-S2*.35+j*26+S2*.7*k,y-S2*.35+S2*.7*k);ctx.stroke();}ctx.restore();}}});}

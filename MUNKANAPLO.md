@@ -194,3 +194,7 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Tündérököl újra: Lili körberepüli Grogot, forgó fénysugarak, arany utóképek, izzó arany repedések, fényoszlopok. Árnyroham gyorsabb (~felére).
 - Élő Tölgybárd: Grog fejsze nélküli képe (orcnoaxe-cast / orcGnoaxe-cast), a bárd az öklében. Tusátok: festett ecset (fx7-inkbrush).
 - Próbaterem: a páros indításakor a második hős nem szorítja ki az elsőt (Lili eddig kimaradt a Tündérökölből).
+- 31. kör folytatás (ea-jelölések): lebegés valódi oka – 8 kép (wizardG*, druid-attack/hurt, druidG-attack/hurt) alján 15–26 px üres sáv; betöltés után leigazítva (r21t.js).
+  Kígyó: egyetlen nyomvonal (a test a fej nyomában). Forró hab: Magmakitörés-mintájú matcha-tócsa + festett habszökőkút. Levéltánc: a levelek átmennek az ellenségen.
+  Gólem nagyobb, festett bambuszkaró (fx7-bamboostake) mező. Élő Tölgybárd sötétebb: fekete-zöld indák, festett tüskés gyökerek (fx7-darkroots).
+  Bambuszliget: 5 nyíl/ellenség, nyilanként 3 karó. Lótuszharmat gyorsabb, több szirom, harmatlevél a bal szélen. Medve nagyobb, simább, festett karomcsapás (fx7-bearclaw).
