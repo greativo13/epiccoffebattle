@@ -4,7 +4,10 @@ A.inkWave=async(u,ts,sk)=>{const al=ts.filter(h=>h.alive);if(!al.length)return;c
   await tween(300,k=>{P0.a=k;});await dimTo(.42,'30,25,20',260);
   // 1) ír: az ecset (a keze) vonásról vonásra húzza fel a jelet
   const h0=hand(),gx=h0.x-170,gy=Math.max(175,h0.y-150),strokes=[],GS=1.8;const Br={x:h0.x,y:h0.y,on:true};
-  R17E({update(){return D.on;},draw(){ctx.save();ctx.lineCap='round';ctx.lineJoin='round';for(const s of strokes){const n=s.pts.length;for(let i=1;i<n;i++){const q=i/n,w=s.w*(.55+.9*Math.sin(Math.min(1,q*1.1)*Math.PI*.9));ctx.strokeStyle=`rgba(10,8,14,${.95*s.a})`;ctx.lineWidth=w;ctx.beginPath();ctx.moveTo(s.pts[i-1].x,s.pts[i-1].y);ctx.lineTo(s.pts[i].x,s.pts[i].y);ctx.stroke();}
+  R17E({update(){return D.on;},draw(){const gl=R17I.inkglyph;if(gl){// festett kalligráfia: a kép csak ott látszik, ahol az ecset már járt
+      ctx.save();ctx.beginPath();for(const s of strokes)for(const p of s.pts){ctx.moveTo(p.x+s.w*1.6,p.y);ctx.arc(p.x,p.y,s.w*1.6,0,6.283);}ctx.clip();const a=strokes.length?strokes[0].a:1;ctx.globalAlpha=a;const W2=104*GS,H2=W2*gl.height/gl.width;ctx.drawImage(gl,gx-W2/2,gy-18*GS-H2/2,W2,H2);ctx.restore();
+      if(Br.on){const bi=R17I.inkbrush;ctx.save();ctx.translate(Br.x,Br.y);ctx.rotate(-.6);if(bi){const w=46,h=w*bi.height/bi.width;ctx.drawImage(bi,-w/2,-h*.06,w,h);}ctx.restore();}return;}
+    ctx.save();ctx.lineCap='round';ctx.lineJoin='round';for(const s of strokes){const n=s.pts.length;for(let i=1;i<n;i++){const q=i/n,w=s.w*(.55+.9*Math.sin(Math.min(1,q*1.1)*Math.PI*.9));ctx.strokeStyle=`rgba(10,8,14,${.95*s.a})`;ctx.lineWidth=w;ctx.beginPath();ctx.moveTo(s.pts[i-1].x,s.pts[i-1].y);ctx.lineTo(s.pts[i].x,s.pts[i].y);ctx.stroke();}
       // száraz ecsetszálak
       ctx.strokeStyle=`rgba(40,36,50,${.5*s.a})`;ctx.lineWidth=1;for(let b=-2;b<=2;b++){ctx.beginPath();s.pts.forEach((p,i)=>{const yy=p.y+b*s.w*.18;i?ctx.lineTo(p.x,yy):ctx.moveTo(p.x,yy);});ctx.stroke();}}
     if(Br.on){ctx.save();ctx.translate(Br.x,Br.y);ctx.rotate(-.6);ctx.fillStyle='#7a4a1a';ctx.fillRect(-3,0,6,60);ctx.fillStyle='#e8dcc0';ctx.fillRect(-4,-4,8,8);ctx.fillStyle='#120e14';ctx.beginPath();ctx.moveTo(-5,-2);ctx.quadraticCurveTo(0,-26,0,-30);ctx.quadraticCurveTo(0,-26,5,-2);ctx.fill();ctx.restore();}ctx.restore();}});

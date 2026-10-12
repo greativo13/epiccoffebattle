@@ -263,3 +263,7 @@ R16P['Medvelovaglás']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B1,o
   for(let i=0;i<50;i++)part({x:cx(t)+rnd(-24,24),y:midY(t)+rnd(-30,20),vx:rnd(-380,380),vy:rnd(-480,-80),g:1000,life:rnd(.6,1.1),size:rnd(6,13),rgb:pick(['205,125,30','230,155,50','170,95,20']),add:false,shape:'drop'});
   for(let i=0;i<6;i++)r21Steam(cx(t)+rnd(-40,40),midY(t)-20,rnd(-30,30),-rnd(70,140),false);
   hit(u,t,sk);await wait(500);await bodySettle(u);}finally{rel();}};}
+
+// ---- Tusátok: a tusfoltok festett tusfröccsök (a felhasználó: „festett kép kell”) – a jelenet többi része az eredeti
+{const ib0=r18InkBlot;r18InkBlot=function(x,y,R){const im=R17I.inksplash;if(!im)return ib0(x,y,R);const st={t:0,rot:rnd(-.6,.6)};
+  R18E({update(dt){st.t+=dt;return st.t<1.4;},draw(){const k=Math.min(1,st.t/.12),a=st.t<1?1:1-(st.t-1)/.4;r17Draw(im,x,y,R*2.4*(.5+.5*r21ease.back(k)),{a:a*.95,rot:st.rot});}});};}
