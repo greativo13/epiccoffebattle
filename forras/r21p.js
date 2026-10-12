@@ -76,6 +76,6 @@ R16P['Lótuszharmat']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B1,fa
 
 // ===== Felszerelés a hősön: ha a bolti fegyver+ruha fejlesztése együtt legalább 4 szint, a hős festett, díszesebb képre vált
 // (Zordon: aranyfiligrános bot nagy kék kristállyal, csillagmintás, aranyszegélyes talár). A többi hős képei még készülnek.
-const GEAR_LOOK={wizard:'wizardG',witch:'witchG',fairy:'fairyG',orc:'orcG'},GEAR_LOOK_MIN=4;
+const GEAR_LOOK={wizard:'wizardG',witch:'witchG',fairy:'fairyG',orc:'orcG',monk:'monkG',druid:'druidG'},GEAR_LOOK_MIN=4;
 const gearLook=h=>h&&h.gear&&GEAR_LOOK[h.type]&&(h.gear.w||0)+(h.gear.a||0)>=GEAR_LOOK_MIN&&typeof ENEMY_SPR==='object'&&ENEMY_SPR[GEAR_LOOK[h.type]]?GEAR_LOOK[h.type]:null;
 {const dp=drawHeroPoses;drawHeroPoses=function(e,type){const g=e&&e.kind==='hero'&&gearLook(e);if(g){if(DRINK_K[type]&&!DRINK_K[g])DRINK_K[g]=DRINK_K[type];if(ENEMY_SPR[type+'-drink']&&!ENEMY_SPR[g+'-drink'])ENEMY_SPR[g+'-drink']=ENEMY_SPR[type+'-drink'];return dp.call(this,e,g);}return dp.apply(this,arguments);};}
