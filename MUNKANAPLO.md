@@ -105,6 +105,17 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
   - Térkép: vissza az eredeti pöttyhelyek (fa, torony stb.), íves pontozott ösvény (`.map-trail`).
   - Canva-terv 8. oldala: négyzetes (1008×1008) exportoldal.
 - **Összefoglaló PDF**: `Jatek_osszefoglalo.pdf` (22 oldal: történet, hősök és képességek, páros támadások, idézések, pályák, bestiárium, tárgyak). Újragenerálás: scratchpad `dump.js` → `gamedata.json` → `mkpdf.py` → `topdf.js`.
+- **22–23. kör** (`r21a–j.js`, a 3. térkép és Kaelen):
+  - 3. térkép (Matcha-föld, 9–12. fejezet), 17 új ellenfél festett képpel, Kaelen (druida, 6. hős), 6 hős / 2 pihenő, titkos X-2, új idézések (Mochi-király, Zen-sárkány, Békakirály, Chasen).
+  - Kaelen új, mesehősös képei (`druid`, `-attack`, `-cast`, `-hurt`; forrás `forras/kepforras/p3/kaelen2/`), `HERO_DEF.druid` h:270, kéz a bot drágakövénél.
+  - Medveforma: festett ágaskodó medve (`fx7-wsbear2`), háromszori lecsapás véres karomnyomokkal.
+  - Tusátok: a sárkány a tintatartó száján nő ki és oda bukik vissza (vágás a száj vonalán).
+  - Lidércnyomás: két festett lidérckar (`fx7-wraitharm`) préseli össze az ellenfelet.
+  - Páros támadások: Villámátok (lila villámok fel az égbe, kétszer annyi lecsapás), Csillagözön (a sárkány csak megjelenik, festett csillag-meteorok), Sárkánynyíl (gyorsabb), Árnyroham (füstös bevonás, tükrözött vágás), Tündérököl (festett aranyököl `fx7-goldfist`).
+  - Idézések: Espresszó lángja a szájból (közös `fireBreath` javítás: a részecskék kicsiként indulnak), folyamatos méhraj (`beeStream`, ellenséges Méhraj is), Árny-csapat vissza az eredetire, lendületes mókus, villámdenevér-raj.
+  - Cerberus: fényes fekete-lila lángoszlop, a három fej egyszerre harap. Álomcsillagok: festett csillagok tömege. Gleccser: festett jégtüske-csoport (`fx7-glacier`). Átok: lángnyelves örvény, festett lánc/koponya (`fx7-hexchain`, `fx7-hexskull`).
+  - Térképek: az 1–2. térkép festett pöttyös ösvénye képfeldolgozással eltávolítva (scratchpad `mapclean.js`; tiszta források `forras/kepforras/map*-tiszta.webp`).
+  - Jázmin LIMIT-plakátja: a maradék fehér folt átlátszó.
 
 ## Tesztlista és áttekintő (egy helyen)
 

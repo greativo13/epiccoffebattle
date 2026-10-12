@@ -323,3 +323,39 @@ Object.assign(HERO_DEF.druid,{h:270,w:105,hand:[76,-227]});
    g.putImageData(d,0,0);};
  const done=new Set(),iv=setInterval(()=>{if(typeof ENEMY_SPR!=='object')return;for(const k of ['monk-attack']){const c=ENEMY_SPR[k];if(c&&c.getContext&&!done.has(k)){try{fixWhite(c);}catch(e){}done.add(k);}}if(done.size>=1)clearInterval(iv);},500);
  setTimeout(()=>clearInterval(iv),60000);}
+
+// ---- Gleccser: a rajzolt áttetsző háromszögek helyett FESTETT jégtüske-csoport tör fel minden ellenség alatt (a régi tüskék helyét és növekedését veszi át), dér, pára és szilánkok maradnak
+{const gf0=A.glacierFall;A.glacierFall=async(u,ts,sk)=>{const im=R17I.glacier;if(!im)return gf0(u,ts,sk);const ds0=drawSpike,G=new Map(),st={on:true};
+  drawSpike=function(x,y,ang,L,w,a){const k=Math.round(y);const q=G.get(k)||{x0:1e9,x1:-1e9,L:0,a:0,y};q.x0=Math.min(q.x0,x-w*.6);q.x1=Math.max(q.x1,x+w*.6);q.L=Math.max(q.L,L);q.a=Math.max(q.a,a);G.set(k,q);};
+  effects.push({update(){return st.on;},draw(){for(const q of G.values()){if(q.L<4||q.a<=0)continue;const w=Math.max(220,(q.x1-q.x0)*1.15),h0=w*im.height/im.width,sy=Math.min(1.6,q.L*1.05/h0);
+      ctx.save();ctx.globalCompositeOperation='lighter';glow((q.x0+q.x1)/2,q.y-q.L*.4,w*.45,'170,225,255',.35*q.a);ctx.restore();
+      r17Draw(im,(q.x0+q.x1)/2,q.y+8,w,{anchor:'bottom',sy,a:q.a});
+      ctx.save();ctx.globalCompositeOperation='lighter';ctx.globalAlpha=.25*q.a*(.6+.4*Math.sin(T*6));r17Draw(im,(q.x0+q.x1)/2,q.y+8,w,{anchor:'bottom',sy});ctx.restore();}G.clear();}});
+  try{await gf0(u,ts,sk);}finally{drawSpike=ds0;st.on=false;}};}
+
+// ---- Átok (Hádész): a rajzolt csontok és a vektoros lyuk helyett füstös, lángnyelves sötét örvény és lila lélekláng-nyelvek; a lánc és a koponya festett, Hádész stílusában
+A.hex=async(u,ts,sk)=>{const t=ts[0];if(!t||!t.alive)return;spellsReady();await dimTo(.65,'20,0,30',250);u.pose='cast';await bodyWind(u,220,.08);sfx('dark');
+  const px=cx(t)+60,py=t.y+t.oy+10,P={a:0,t:0};
+  effects.unshift({update(dt){P.t+=dt;if(P.a>.3&&!P.done&&Math.random()<.7)darkFlame({x:px+rnd(-110,110),y:py+rnd(-8,8),vx:rnd(-20,20),vy:-rnd(90,200),life:rnd(.5,.8),size:rnd(22,38)});return P.a>0||!P.done;},
+    draw(){if(P.a<=0)return;ctx.save();ctx.translate(px,py);ctx.scale(1,.28);const g=ctx.createRadialGradient(0,0,10,0,0,200*P.a);g.addColorStop(0,`rgba(0,0,0,${.95*P.a})`);g.addColorStop(.45,`rgba(25,4,45,${.85*P.a})`);g.addColorStop(.8,`rgba(90,30,150,${.35*P.a})`);g.addColorStop(1,'rgba(90,30,150,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,200*P.a,0,6.29);ctx.fill();ctx.restore();}});
+  for(let i=0;i<24;i++)part({x:px+rnd(-120,120),y:py-rnd(0,20),vx:rnd(-30,30),vy:-rnd(20,70),life:rnd(.8,1.3),size:rnd(24,40),grow:24,rgb:pick(['20,5,35','45,15,70']),add:false,shape:'dsmoke'});
+  await tween(300,k=>{P.a=k;});rumble(.8,4);
+  const h=handPos(u);u.pose='attack';bodyStrike(u,160,.14);for(let i=0;i<8;i++){setTimeout(()=>{const s=handPos(u);flyObj(s,{x:px+rnd(-40,40),y:py-10},420,(x,y)=>{darkFlame({x,y,vx:rnd(-20,20),vy:-rnd(20,60),life:.35,size:rnd(16,24)});},{arc:rnd(60,120)});},i*70);}await wait(900);
+  sfx('dark');flash('120,40,200',.3,.15);rumble(1.2,7);
+  const Hd=Math.max(300,bigOf(t)*1.9),g=godShow('hades',px,py,Hd,99,'170,90,255'),yEnd=midY(t)-50;g.y=py+Hd*.2;
+  for(let i=0;i<30;i++)part({x:px+rnd(-90,90),y:py-rnd(0,30),vx:rnd(-20,20),vy:-rnd(60,180),life:rnd(.6,1.1),size:rnd(14,26),grow:30,rgb:pick(['40,15,60','70,30,100']),add:false,shape:'dsmoke'});
+  await tween(1150,k=>{g.y=py+Hd*.2-(py+Hd*.2-yEnd)*easeIO(k);});await wait(300);
+  // Hádész keze felizzik: innen jön a varázslat
+  const hx=px-Hd*.18,hy=yEnd-Hd*.25;sfx('dark');R17E({t:0,update(dt){this.t+=dt;return this.t<.6;},draw(){ctx.save();ctx.globalCompositeOperation='lighter';glow(hx,hy,90*(1-this.t/.6),'190,110,255',.85);ctx.restore();}});
+  // az eredeti: lánc-kör zárul az áldozat köré…
+  const x=cx(t),y=midY(t),big=Math.max(210,t.h*t.scale*1.7);
+  if(R17I.hexchain){const C={t:0};R17E({update(dt){C.t+=dt;return C.t<1.7;},draw(){const k=Math.min(1,C.t/.25),a=Math.min(1,(1.7-C.t)/.3),s=(1.5-.5*eOutBack(k))*(1+.03*Math.sin(C.t*18));r17Draw(R17I.hexchain,x,y+10,big*1.3*s,{a,rot:C.t*.6});}});}else if(!fxHold('chains',x,y+10,{h:big*1.15,life:1.6,pop:true,pulse:.03}))rune(t,'190,90,255');sfx('click');shake(8);
+  for(let i=0;i<34;i++){const a=rnd(0,Math.PI*2),r=rnd(110,190),life=rnd(.35,.55);part({x:x+Math.cos(a)*r,y:y+Math.sin(a)*r,vx:-Math.cos(a)*r/life,vy:-Math.sin(a)*r/life,life,size:rnd(2,5),rgb:pick(['190,90,255','120,40,200','255,180,255']),shape:'streak'});}
+  await wait(380);
+  // …fölé óriási kísértetkoponya ereszkedik és ráharap
+  if(FX_IMG.curse||R17I.hexskull){R17E({t:0,update(dt){this.t+=dt;return this.t<1.05;},draw(){const tt=this.t,r=Math.min(1,tt/.3),e=r*r,a=Math.min(1,tt/.1)*Math.min(1,(1.05-tt)/.3),im=R17I.hexskull||FX_IMG.curse,s=(1.5-.5*e)*(1+.04*Math.sin(tt*20));
+    ctx.save();ctx.globalAlpha=Math.max(0,a);ctx.translate(x,y-150*(1-e)-10);ctx.scale(s,s);ctx.drawImage(im,-big/2,-big/2,big,big);ctx.restore();}});}
+  else fxImage('dark',x,y,{size:big*1.3,life:.8,grow:.4});
+  await wait(300);sfx('bite');flash('200,120,255',.35,.2);hitStop(70);shake(10);punch(x,y,.04);hit(u,t,sk);
+  for(let i=0;i<26;i++){const a=rnd(0,Math.PI*2),v=rnd(150,420);part({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,life:rnd(.35,.7),size:rnd(2,5),rgb:pick(['190,90,255','90,30,150']),drag:3,shape:pick(['star','dot'])});}
+  await wait(500);await tween(700,k=>{g.y=yEnd+(py+Hd*.3-yEnd)*easeIO(k);});g.dead=true;P.done=true;await tween(300,k=>{P.a=1-k;});P.a=0;await bodySettle(u);u.pose='idle';await dimTo(0,null,300);};
