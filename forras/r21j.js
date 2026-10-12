@@ -85,13 +85,13 @@ A.nightmareGrip=async(u,ts,sk)=>{const t=ts[0];if(!t||!t.alive)return;await dimT
   D.on=false;await wait(500);await tween(500,k=>{Bn.a=1-k;});Bn.on=false;for(const t of xs)if(!done.has(t)&&t.alive)hit(monk,t,sk);monk.pose='idle';await dimTo(0,null,300);};}
 // Árnyroham: Morgána lilás-fekete füstje bevonja Grogot; az árnyvágás vízszintesen tükrözve
 {const P0=R16P['Árnyroham'];R16P['Árnyroham']=async(A1,B1,al,sk,p)=>{const witch=A1.type==='witch'?A1:B1,orc=witch===A1?B1:A1,pim=R17I.firepillar,sl=R17I.darkslash;
-  await dimTo(.6,'15,5,30',300);await r16Raise(witch,'150,60,240');sfx('dark');
+  await dimTo(.6,'15,5,30',200);await r16Raise(witch,'150,60,240');sfx('dark');
   // lilás-fekete füstfolyam Morgána kezéből Grogra: körülöleli és bevonja
   const Rb={k:0,on:true};R18E({update(){if(Rb.on&&Rb.k<1)for(let n=0;n<2;n++){const h=handPos(witch),q=Math.random()*Rb.k,gx=cx(orc),gyy=midY(orc),x=h.x+(gx-h.x)*q,y=h.y+(gyy-h.y)*q-Math.sin(q*Math.PI)*70;
       part({x:x+rnd(-12,12),y:y+rnd(-12,12),vx:(gx-h.x)*.9+rnd(-30,30),vy:(gyy-h.y)*.9+rnd(-30,30),drag:1.6,life:rnd(.5,.8),size:rnd(18,30),grow:26,rgb:pick(['30,5,50','70,20,120','110,40,170']),add:false,shape:'dsmoke'});}
     if(false)for(let n=0;n<4;n++){const an=rnd(0,6.28),r=orc.w*orc.scale*rnd(.3,.6);part({x:cx(orc)+Math.cos(an)*r,y:midY(orc)+rnd(-orc.h*orc.scale*.45,orc.h*orc.scale*.4),vx:-Math.cos(an)*30,vy:-rnd(20,60),life:rnd(.5,.9),size:rnd(20,34),grow:20,rgb:pick(['25,0,45','80,25,140']),add:false,shape:'dsmoke'});}
     return Rb.on;},draw(){}});
-  await tween(1000,k=>{Rb.k=easeIO(k);});
+  await tween(480,k=>{Rb.k=easeIO(k);});
   // Grog sötétségbe öltözik: fekete-lila tónus, festett lila lángköpeny
   const Aura={a:0,on:true};orc._r16tint={rgb:'60,10,110',a:0};
   R18E({update(){if(Aura.on&&Aura.a>0&&Math.random()<.08)part({x:cx(orc)+rnd(-50,50),y:orc.y+orc.oy-rnd(0,orc.h*orc.scale*.9),vx:rnd(-20,20),vy:-rnd(40,100),life:rnd(.5,.8),size:rnd(18,30),grow:22,rgb:pick(['25,0,45','80,25,140']),add:false,shape:'dsmoke'});if(Aura.on&&Aura.a>0&&Math.random()<.12)darkFlame({x:cx(orc)+rnd(-50,50),y:orc.y+orc.oy-rnd(0,orc.h*orc.scale*.5),vx:rnd(-30,30),vy:-rnd(80,160),life:.4,size:rnd(10,18)});return Aura.on;},
@@ -101,21 +101,21 @@ A.nightmareGrip=async(u,ts,sk)=>{const t=ts[0];if(!t||!t.alive)return;await dimT
       ctx.save();ctx.translate(cx(orc),0);ctx.rotate(0);ctx.translate(-cx(orc),0);if(full){ctx.globalAlpha=1;ctx.drawImage(sp0,x,y,ww,hh);}ctx.globalAlpha=Arm.a*.42;ctx.drawImage(tintSpr(sp0,'rgb(90,30,170)',.7),x,y,ww,hh);
       ctx.globalCompositeOperation='lighter';ctx.globalAlpha=Arm.a*(.07+.03*Math.sin(T*10));for(const [ox,oy] of [[-4,0],[4,0],[0,-4],[0,4]])ctx.drawImage(tintSpr(sp0,'rgb(170,90,255)',1),x+ox,y+oy,ww,hh);ctx.restore();};
   R18E({update(){return Aura.on;},draw(){drawArm(false);}});
-  sfx('fire');flash('120,40,220',.35,.15);await tween(500,k=>{Aura.a=k;Arm.a=k;orc._r16tint.a=.35*k;Rb.k=1-k*.0;});Rb.on=false;r16Lower(witch);orc._r16tint={rgb:'150,70,240',a:.35};
+  sfx('fire');flash('120,40,220',.35,.15);await tween(280,k=>{Aura.a=k;Arm.a=k;orc._r16tint.a=.35*k;Rb.k=1-k*.0;});Rb.on=false;r16Lower(witch);orc._r16tint={rgb:'150,70,240',a:.35};
   // felhúzás, aztán egy hatalmas söprés végig az ellenségeken
   const xs=al.slice().sort((a,b)=>cx(a)-cx(b)),gy=al.reduce((s,t)=>s+t.y+t.oy,0)/al.length,done=new Set();orc.pose='attack';
-  await tween(320,k=>{orc.sq=1-.14*easeIO(k);orc.lean=-.18*k;});sfx('whoosh');sfx('slash');
+  await tween(200,k=>{orc.sq=1-.14*easeIO(k);orc.lean=-.18*k;});sfx('whoosh');sfx('slash');
   const startX=cx(orc),endX=Math.min(W-90,Math.max(...xs.map(cx))+70);const Sw={on:true,x:startX,a:0};const echoes=[],sp=ENEMY_SPR['orc-attack']||ENEMY_SPR.orc;
   R18E({update(){for(const e of echoes)e.a-=.05;while(echoes.length&&echoes[0].a<=0)echoes.shift();return Sw.on||echoes.length>0;},draw(){if(sp){const hh=orc.h*orc.scale,ww=hh*sp.width/sp.height;for(const e of echoes){ctx.save();ctx.globalAlpha=e.a*.22;ctx.drawImage(tintSpr(sp,'rgb(120,50,210)',.9),e.x-ww/2,e.y-hh,ww,hh);ctx.restore();}}
     if(Sw.a>0){const L=Sw.x-startX+200;if(sl){r18Img(sl,(startX+Sw.x)/2+40,gy-orc.h*orc.scale*.45,Math.max(300,L),{add:true,a:Sw.a*.6,sy:.9,fx:true});}
       else{ctx.save();ctx.globalCompositeOperation='lighter';const g=ctx.createLinearGradient(startX,0,Sw.x+80,0);g.addColorStop(0,'rgba(120,40,220,0)');g.addColorStop(1,`rgba(210,140,255,${Sw.a})`);ctx.fillStyle=g;ctx.beginPath();ctx.ellipse((startX+Sw.x)/2+40,gy-orc.h*orc.scale*.45,L/2,60,0,0,6.29);ctx.fill();ctx.restore();}}}});
   R18E({update(){return Sw.on;},draw(){drawArm(true);}});
-  await tween(950,k=>{const e=k*k*(3-2*k);orc.ox=(endX-startX)*e;orc.oy=(gy-orc.y)*Math.min(1,k*3);orc.lean=-.18+.5*k;Sw.x=cx(orc);Sw.a=Math.min(1,k*3);if(Math.random()<.8)echoes.push({x:cx(orc),y:orc.y+orc.oy,a:1});
+  await tween(620,k=>{const e=k*k*(3-2*k);orc.ox=(endX-startX)*e;orc.oy=(gy-orc.y)*Math.min(1,k*3);orc.lean=-.18+.5*k;Sw.x=cx(orc);Sw.a=Math.min(1,k*3);if(Math.random()<.8)echoes.push({x:cx(orc),y:orc.y+orc.oy,a:1});
     for(const t of xs)if(!done.has(t)&&cx(orc)>cx(t)-40){done.add(t);sfx('slash');shake(18);hitStop(70);for(let i=0;i<4;i++)darkFlame({x:cx(t)+rnd(-40,40),y:midY(t)+rnd(-40,40),vx:rnd(-80,80),vy:-rnd(60,180),life:.6,size:rnd(18,30)});
       sparks(cx(t),midY(t),['200,120,255','255,240,255'],30,560);toss(t,70,440);t.hurt=.55;hit(orc,t,sk);}});
-  sfx('boom');flash('140,60,240',.4,.15);shake(14);await tween(400,k=>{Sw.a=1-k;Aura.a=1-k;orc._r16tint.a=.35*(1-k);Arm.a=1-k;});Sw.on=false;Aura.on=false;orc._r16tint=null;
+  sfx('boom');flash('140,60,240',.4,.15);shake(14);await tween(300,k=>{Sw.a=1-k;Aura.a=1-k;orc._r16tint.a=.35*(1-k);Arm.a=1-k;});Sw.on=false;Aura.on=false;orc._r16tint=null;
   // vissza a helyére
-  await tween(420,k=>{const e=easeIO(k);orc.ox=(endX-startX)*(1-e);orc.oy=(gy-orc.y)*(1-e);orc.jump=Math.sin(k*Math.PI)*70;orc.lean=.32*(1-e);});orc.ox=0;orc.oy=0;orc.jump=0;orc.lean=0;orc.sq=1;orc.pose='idle';
+  await tween(320,k=>{const e=easeIO(k);orc.ox=(endX-startX)*(1-e);orc.oy=(gy-orc.y)*(1-e);orc.jump=Math.sin(k*Math.PI)*70;orc.lean=.32*(1-e);});orc.ox=0;orc.oy=0;orc.jump=0;orc.lean=0;orc.sq=1;orc.pose='idle';
   for(const t of xs)if(!done.has(t)&&t.alive)hit(orc,t,sk);await dimTo(0,null,300);};}
 // Tündérököl: Grog öklén ragyogó aranyököl nő, azzal csap le
 {R16P['Tündérököl']=async(A1,B1,al,sk,p)=>{const im=R17I.goldburst,fairy=A1.type==='fairy'?A1:B1,orc=fairy===A1?B1:A1;await dimTo(.45,'40,30,0',300);

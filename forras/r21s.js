@@ -142,13 +142,15 @@ async function r21LotusRun(lw,al){const foes=S.enemies.filter(t=>t.alive),H=320,
 {const p=PAIRS.find(x=>x.name==='Medvelovaglás');if(p){p.name='Élő Tölgybárd';p.pow=2;p.desc='Kaelen indái Grog fejszéje köré nőnek, óriási élő tölgybárddá változtatják; Grog felugrik, és a földbe vágja – minden ellenség alatt gyökerek törnek fel.';}}
 R16P['Élő Tölgybárd']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B1,orc=dr===A1?B1:A1,ax=R17I.oakaxe;
   if(!ax&&R16P['Medvelovaglás'])return R16P['Medvelovaglás'](A1,B1,al,sk,p);
-  await dimTo(.4,'20,25,10',280);const rel=keepPose(orc);try{await r16Raise(dr,'150,230,90');
+  await dimTo(.4,'20,25,10',280);const rel=keepPose(orc,'cast'),SW0={a:ENEMY_SPR['orc-cast'],b:ENEMY_SPR['orcG-cast']};
+  // Grog saját fejszéje eltűnik (fejsze nélküli kép), az élő tölgybárd az ő üres, felemelt öklében van
+  if(ENEMY_SPR['orcnoaxe-cast'])ENEMY_SPR['orc-cast']=ENEMY_SPR['orcnoaxe-cast'];if(ENEMY_SPR['orcGnoaxe-cast'])ENEMY_SPR['orcG-cast']=ENEMY_SPR['orcGnoaxe-cast'];const FIST=()=>KP(orc,.245,.245);try{await r16Raise(dr,'150,230,90');
     const X={k:0,rot:-.2,a:1,on:true},AXH=()=>orc.h*orc.scale*(.5+.55*X.k);
     // a bárd Grog kezében: a nyél alja a markában, a forgatás pontja a kéz
-    R18E({update(){return X.on;},draw(){if(X.a<=0)return;const hp=handPos(orc),h=AXH(),w=h*ax.width/ax.height;ctx.save();ctx.globalAlpha=X.a;ctx.translate(hp.x,hp.y);ctx.rotate(X.rot);ctx.drawImage(ax,-w*.4,-h*.9,w,h);ctx.restore();}});
+    R18E({update(){return X.on;},draw(){if(X.a<=0)return;const hp=FIST(),h=AXH(),w=h*ax.width/ax.height;ctx.save();ctx.globalAlpha=X.a;ctx.translate(hp.x,hp.y);ctx.rotate(X.rot);ctx.drawImage(ax,-w*.4,-h*.9,w,h);ctx.restore();}});
     // indák kúsznak Kaelentől Grog kezéig, a bárd megnő
-    const hp0=handPos(dr),ho=handPos(orc);sfx('rock');for(let i=0;i<40;i++)setTimeout(()=>part({x:hp0.x,y:hp0.y,vx:(ho.x-hp0.x)*rnd(1.6,2.2),vy:(ho.y-hp0.y)*rnd(1.6,2.2)-rnd(0,80),life:.5,size:rnd(7,11),rgb:pick(KAE.leaf),add:false,shape:'leaf'}),i*18);
-    orc.pose='attack';await tween(900,k=>{X.k=r21ease.back(k);if(Math.random()<.4)part({x:ho.x+rnd(-30,30),y:ho.y-rnd(0,AXH()),vx:rnd(-60,60),vy:-rnd(20,80),life:.6,size:rnd(6,10),rgb:pick(KAE.leaf),add:false,shape:'leaf'});});
+    const hp0=handPos(dr),ho=FIST();sfx('rock');for(let i=0;i<40;i++)setTimeout(()=>part({x:hp0.x,y:hp0.y,vx:(ho.x-hp0.x)*rnd(1.6,2.2),vy:(ho.y-hp0.y)*rnd(1.6,2.2)-rnd(0,80),life:.5,size:rnd(7,11),rgb:pick(KAE.leaf),add:false,shape:'leaf'}),i*18);
+    await tween(900,k=>{X.k=r21ease.back(k);if(Math.random()<.4)part({x:ho.x+rnd(-30,30),y:ho.y-rnd(0,AXH()),vx:rnd(-60,60),vy:-rnd(20,80),life:.6,size:rnd(6,10),rgb:pick(KAE.leaf),add:false,shape:'leaf'});});
     sfx('growl');r16Lower(dr);
     // felugrik, hátralendíti, és teljes erővel lecsap
     const foes=al.filter(t=>t.alive),mx=foes.reduce((s,t)=>s+cx(t),0)/Math.max(1,foes.length),x0=orc.x,dx=Math.max(0,mx-cx(orc)-220);
@@ -159,7 +161,7 @@ R16P['Élő Tölgybárd']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B
     for(const t of foes){const gx=cx(t),g2=t.y+t.oy+4;t.hurt=.7;toss(t,160,720);hit(orc,t,sk);kaeLeaves(gx,g2-30,26,380,120);
       for(let n=0;n<24;n++)part({x:gx+rnd(-50,50),y:g2,vx:rnd(-260,260),vy:-rnd(220,520),g:900,life:.8,size:rnd(6,13),rgb:pick(['110,85,55','90,70,45']),add:false,shape:'rock'});await wait(90);}
     await wait(700);await tween(400,k=>{X.a=1-k;});X.on=false;
-    await tween(420,k=>{orc.x=x0+dx*(1-r21ease.io(k));});orc.x=x0;orc.jump=0;await dimTo(0,null,300);}finally{orc.jump=0;rel();}};
+    await tween(420,k=>{orc.x=x0+dx*(1-r21ease.io(k));});orc.x=x0;orc.jump=0;await dimTo(0,null,300);}finally{orc.jump=0;ENEMY_SPR['orc-cast']=SW0.a;ENEMY_SPR['orcG-cast']=SW0.b;rel();}};
 
 // ---- Kaelen LIMIT – Bambusz-gólem (ca15 + a felhasználó: „a gólem megjelenik, egyszerre belecsap a földbe, és bambusztüskék
 // álljanak ki a földből, rengeteg, mint egy mező”): festett gólem (fx7-golemstand / fx7-golemup) kinő a földből, rögtön

@@ -187,3 +187,10 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
   (fx7-lotuswoman) végigszalad az ellenségeken; Bambusz-gólem: festett két póz (fx7-golemstand/golemup), kinő, a földbe csap, bambusztüske-mező;
   Medvelovaglás helyett „Élő Tölgybárd” (Kaelen+Grog, fx7-oakaxe Grog kezében, felugrik, lecsap).
 - Teszthez: `window.R21WS='bear'|'snake'|'turtle'` kényszeríti a Vad Alakváltás formáját.
+
+## 31. kör – 5 új játékelem + javítások
+- r21t.js: (1) talajba nyomódás nagy ütésnél (kráter, repedés, a figura lesüllyed), (2) visszavágás 15% eséllyel, (3) KOMBÓ ×n (+15%/láncszem, max +45%),
+  (4) pálya-események minden 2. kör végén (gőzkitörés, kidőlő bambusz, kőomlás – sosem öl), (5) főellenség dühfázis fél életnél (izzó repedések, Dühkitörés).
+- Tündérököl újra: Lili körberepüli Grogot, forgó fénysugarak, arany utóképek, izzó arany repedések, fényoszlopok. Árnyroham gyorsabb (~felére).
+- Élő Tölgybárd: Grog fejsze nélküli képe (orcnoaxe-cast / orcGnoaxe-cast), a bárd az öklében. Tusátok: festett ecset (fx7-inkbrush).
+- Próbaterem: a páros indításakor a második hős nem szorítja ki az elsőt (Lili eddig kimaradt a Tündérökölből).
