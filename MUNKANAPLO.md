@@ -124,11 +124,16 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
   - A 3. térkép saját festett csatahátterei: `bg-matchastream`, `bg-zengarden`, `bg-matchacave`, `bg-cloudpalace`.
   - Javítás: a Koffeines mókus csak az 1. fejezetben bukkan fel (eddig a 10–12. fejezetben is).
   - Ellenőrzés: `playall.js` 50 pálya hiba nélkül, `foe.js` 177 támadás, `sumall.js` 23 idézés, `all.js` 85 képesség – hiba nincs.
+- **25. kör** (`r21i.js`, `r21j.js`, `r21m.js`, `r21n.js`):
+  - Kaelen képességei és páros támadásai festett képekkel (tüskevihar, gombák, harmatlevelek, virággyűrű, tölgyököl, bambuszliget, medve), Levéltánc, Kőőr Buzogánycsapás nagy ugrással.
+  - Árny-csapat: árnysereg a földből; Villámdenevér óriás denevér; Zen-sárkány helyben, apró kavicsokkal; Átok: csak a csontok festettek (B6!).
+  - `r21n.js`: `index.html?proba=hero:<típus>:<képesség>|pair:<név>|foe:<ellenfél>:<támadás>|summon:<id>` egyenesen a Próbaterembe visz és lejátssza (mentés nélkül).
+- **Tesztlap új funkciói:** „⏸ Később” gomb (`later` mező), gyorscímkék a „Nem jó” megjegyzéshez (a korábbi visszajelzések mintájára), fotó csatolása (`assets`, `photos` mező, `/_blob/<id>`), „🎮 Megnézem a játékban” gomb (`tests.link` mező, GitHub Pages `main`).
 
 ## Tesztlista és áttekintő (egy helyen)
 
 Minden jelölés egy oldalon: https://claude.ai/artifact/6D1sUCKfqLohVoGNQdc8ek (a régi tesztlista, YTZqxtyqwPfqbLjSTzRX6i, már csak egy átirányító pontot tartalmaz).
-- Fent „Kipróbálandó javítások”: a `tests` gyűjteményből (title/how/expect/area/order) – új tesztpontot ide kell írni (`ArtifactData`).
+- Fent „Kipróbálandó javítások”: a `tests` gyűjteményből (title/how/expect/area/order/link – a `link` a `?proba=` formátum) – új tesztpontot ide kell írni (`ArtifactData`).
 - Alatta a teljes történet, 32 pálya, 65 ellenfél (a játék adataiból generálva: scratchpad `dump.js` → `story.json` → `mkrev.py`).
 - Jelölések a `review` gyűjteményben: `status` ok/bad, `note`, `sent` (beküldve → nála eltűnik), `handled` (Claude feldolgozta), `reply` (Claude válasza a lapon). Tesztpont kulcsa `t-<id>`, pályáé `L<id>`, fejezeté `z<n>`, ellenfélé `e-<típus>`, bevezető `intro`.
 - A „Kész” gomb `meta/done`-t ír, és kommentként szól Claude-nak (`comments.sendToClaude`). Javítás után: `handled:true` + `reply`; ha újra ki kell próbálni, új `tests` pont.
