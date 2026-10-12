@@ -177,3 +177,13 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Állított telefon: a felhasználó kétszer „Nem jó”-t jelölt megjegyzés nélkül – képernyőképet kértem. (Javítva közben: ragadós csatatér csak nyitott ablak nélkül; a gombhely-megtartás csak csata közben, a térképen nem marad üres rész.)
 - Hiányzik a repóból a `src/` mappa és a `MASODIK-RESZ.md` terv – ha a felhasználónál megvan, érdemes feltölteni.
 - Ellenőrzés: a próbateremben mind az öt hős mind a 74 képessége hiba nélkül lefut (`perform` minden képességre).
+
+## 30. kör – ca-jelölések javítása, lebegés, Kaelen helye
+- Lebegés ellen: erős vetett árnyék + érintkezési folt minden figura alatt (r21r.js drawEntity-burkoló); időjárás: matchacave csöpögés, teaház porszemek.
+- Kaelen pont Grog helyére áll, ha Grog pihen (r21r.js placeParty-burkoló).
+- r21s.js: medve festett 4 fázisú vágta (fx7-bearrun0..3, visszafelé tükrözve); kígyótest háttal felfelé + folyamatos hullám (Tekeredés, kígyóforma);
+  Forró hab a földből tör fel (repedés, gőz, kődarabok); Levéltánc folyamatos levélfolyam; Tövisvihar kétrétegű, porgyűrű, felkapja az ellenséget;
+  Bambuszcsapás liget nélkül; Bambuszliget lassabb, a nyilakból hegyes bambuszkarók (r21Stake); Lótuszharmat: szirmokból összeálló lótusznő
+  (fx7-lotuswoman) végigszalad az ellenségeken; Bambusz-gólem: festett két póz (fx7-golemstand/golemup), kinő, a földbe csap, bambusztüske-mező;
+  Medvelovaglás helyett „Élő Tölgybárd” (Kaelen+Grog, fx7-oakaxe Grog kezében, felugrik, lecsap).
+- Teszthez: `window.R21WS='bear'|'snake'|'turtle'` kényszeríti a Vad Alakváltás formáját.

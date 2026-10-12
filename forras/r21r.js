@@ -40,16 +40,30 @@ function r21BossIntro(b,sub){const st={t:0,L:2.6};sfx('growl');setTimeout(()=>{s
 
 // ---- 3) IDŐJÁRÁS a pályák témája szerint (finom, nem takarja a harcot): eső, köd, hulló levelek/szirmok, hópihék, hamu, gőz
 const R21WX={bamboo:'rain',matchastream:'rain',moss:'leaves',oakheart:'leaves',trunk:'leaves',mistpeak:'fog',zengarden:'petals',cloudpalace:'petals',cloudstairs:'fog',
-  matchacave:'steam',teahouse:'steam',teahall:'steam',crystal:'snow',cave:'drip',lava:'ash',volcano:'ash',kiln:'ash',dunes:'sand',caramel:'sand',moongarden:'petals',dreamthrone:'stars',pillowhall:'stars',echo:'drip',summit:'snow',terrace:'leaves'};
+  matchacave:'drip',teahouse:'motes',teahall:'motes',crystal:'snow',cave:'drip',lava:'ash',volcano:'ash',kiln:'ash',dunes:'sand',caramel:'sand',moongarden:'petals',dreamthrone:'stars',pillowhall:'stars',echo:'drip',summit:'snow',terrace:'leaves'};
 {const am=ambient;ambient=function(){am.apply(this,arguments);try{if(!S||S.paused)return;const w=R21WX[S.theme];if(!w)return;
   if(w==='rain'){for(let i=0;i<2;i++)part({x:rnd(-40,W),y:-10,vx:-70,vy:rnd(780,900),life:.8,size:rnd(1.2,1.8),rgb:'190,215,235',add:false,shape:'streak'});if(Math.random()<.15)part({x:rnd(0,W),y:rnd(430,520),vx:rnd(-30,30),vy:-rnd(40,90),g:500,life:.3,size:rnd(1.5,2.5),rgb:'210,230,245',add:false,shape:'drop'});}
   else if(w==='leaves'){if(Math.random()<.05&&R17I.leaf){const lf={x:rnd(-20,W),y:-20,vx:rnd(15,40),vy:rnd(30,55),r:rnd(0,6),s:rnd(.5,.8),t:0};R18E({update(dt){lf.t+=dt;lf.x+=lf.vx*dt+Math.sin(lf.t*2)*.8;lf.y+=lf.vy*dt;lf.r+=dt*1.5;return lf.y<H+20;},draw(){r17Draw(R17I.leaf,lf.x,lf.y,30*lf.s,{rot:lf.r,a:.9});}});}}
   else if(w==='petals'){if(Math.random()<.06){const im=R17I.petal;const p={x:rnd(-20,W),y:-20,vx:rnd(10,35),vy:rnd(25,45),r:rnd(0,6),s:rnd(.4,.7),t:0};if(im)R18E({update(dt){p.t+=dt;p.x+=p.vx*dt+Math.sin(p.t*2.5)*.9;p.y+=p.vy*dt;p.r+=dt*2;return p.y<H+20;},draw(){r17Draw(im,p.x,p.y,22*p.s,{rot:p.r,a:.85});}});}}
-  else if(w==='fog'){if(Math.random()<.04)part({x:rnd(-60,W),y:rnd(300,500),vx:rnd(8,20),vy:rnd(-3,3),life:rnd(5,8),size:rnd(60,110),grow:20,rgb:'235,240,245',add:false,shape:'fog'});}
-  else if(w==='steam'){if(Math.random()<.05)part({x:rnd(0,W),y:rnd(460,530),vx:rnd(-8,8),vy:-rnd(20,40),life:rnd(2.5,4),size:rnd(30,55),grow:30,rgb:'240,245,240',add:false,shape:'fog'});}
+  else if(w==='fog'){if(Math.random()<.02)part({x:rnd(-60,W),y:rnd(380,520),vx:rnd(8,20),vy:rnd(-2,2),life:rnd(6,9),size:rnd(90,140),grow:30,rgb:'235,240,245',add:false,shape:'fog'});}
+  else if(w==='motes'){if(Math.random()<.06)part({x:rnd(0,W),y:rnd(120,480),vx:rnd(-6,6),vy:-rnd(4,12),life:rnd(3,5),size:rnd(1.2,2.2),rgb:'255,235,190'});}
   else if(w==='snow'){if(Math.random()<.35)part({x:rnd(-20,W),y:-6,vx:rnd(-15,15),vy:rnd(40,70),life:rnd(8,11),size:rnd(1.5,3),rgb:'245,250,255',add:false});}
   else if(w==='drip'){if(Math.random()<.06)part({x:rnd(0,W),y:rnd(0,40),vx:0,vy:rnd(200,300),g:600,life:1.6,size:rnd(1.5,2.5),rgb:'170,200,230',add:false,shape:'drop'});}
   else if(w==='ash'){if(Math.random()<.25)part({x:rnd(-20,W),y:H+6,vx:rnd(-10,10),vy:-rnd(30,60),life:rnd(6,9),size:rnd(1.2,2.4),rgb:pick(['255,140,60','255,190,90','120,110,110']),add:Math.random()<.5});}
   else if(w==='sand'){if(Math.random()<.4)part({x:-10,y:rnd(200,520),vx:rnd(140,220),vy:rnd(-10,10),life:rnd(4,6),size:rnd(1,2),rgb:'230,200,140',add:false});}
   else if(w==='stars'){if(Math.random()<.06)part({x:rnd(0,W),y:rnd(0,300),vx:0,vy:rnd(-6,6),life:rnd(2,3),size:rnd(2,4),rgb:pick(['255,240,200','220,210,255']),shape:'star'});}
 }catch(e){}};}
+
+// ---- a figurák ne „lebegjenek”: erős, a talajhoz tapadó árnyék – széles, puha vetett árnyék + sötét érintkezési folt a talp alatt
+// (a repülő/lebegő lényeknél csak a halvány, távoli árnyék marad)
+{const de=drawEntity;drawEntity=function(e){try{if(e&&e.alpha>.01&&!FRONT_DRAW&&(e.alive||e.kind==='enemy')){const x=cx(e),gy=e.y+e.oy,up=(e.jump||0)+(e.alive&&e.lift?e.lift*e.scale:0),fly=up>14,k=Math.max(.4,1-up/240),W2=Math.max(46,e.w*e.scale*.62)*k;
+  ctx.save();ctx.globalAlpha=e.alpha*k;
+  // vetett árnyék (kicsit hátra-jobbra nyúlik, mintha balról-felülről jönne a fény)
+  ctx.save();ctx.translate(x+W2*.12,gy+2);ctx.scale(1,.24);let g=ctx.createRadialGradient(0,0,0,0,0,W2*1.15);g.addColorStop(0,'rgba(20,14,8,.55)');g.addColorStop(.6,'rgba(20,14,8,.28)');g.addColorStop(1,'rgba(20,14,8,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,W2*1.15,0,7);ctx.fill();ctx.restore();
+  // érintkezési folt a talp alatt
+  if(!fly){ctx.save();ctx.translate(x,gy+1);ctx.scale(1,.18);g=ctx.createRadialGradient(0,0,0,0,0,W2*.55);g.addColorStop(0,'rgba(8,5,2,.75)');g.addColorStop(.7,'rgba(8,5,2,.35)');g.addColorStop(1,'rgba(8,5,2,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,W2*.55,0,7);ctx.fill();ctx.restore();}
+  ctx.restore();}}catch(err){}return de.apply(this,arguments);};}
+// Kaelen pont Grog helyére áll (ha Grog pihen) – a monkSlot orc-eltolását csak Jázmin kapja
+{const pp=placeParty;placeParty=function(){const r=pp.apply(this,arguments);try{const act=S.heroes,dr=act.find(h=>h.type==='druid');
+  if(dr&&!act.some(h=>h.type==='orc')){const o=HERO_DEF.orc.pos,mk=act.find(h=>h.type==='monk');
+    if(Math.abs(dr.x-(o[0]-78))<2&&Math.abs(dr.y-(o[1]-6))<2){dr.x=o[0];dr.y=o[1];}}}catch(e){}return r;};arenaPlace=placeParty;}

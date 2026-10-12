@@ -23,13 +23,13 @@ function r21DrawCoil(im,P,thick,a=1){if(!im||P.length<2)return;let L=0;for(let i
 
 // ---- Vad Alakváltás: medve (élő vágta, felágaskodás átúsztatva, mancscsapás), teknős (változatlan), kígyó (festett kígyótest
 // kígyózva odasiklik, rátekeredik, összeszorít, megmarja)
-{const ws0=A.wildshape;A.wildshape=async(u,ts,sk)=>{const t=ts[0];const f=pick(['bear','turtle','snake']);
+{const ws0=A.wildshape;A.wildshape=async(u,ts,sk)=>{const t=ts[0];const f=window.R21WS||pick(['bear','turtle','snake']);
   if(f==='turtle'||!t||!t.alive){const mr=Math.random;let once=true;Math.random=()=>{if(once){once=false;return .5;}return mr();};try{return await ws0(u,ts,sk);}finally{Math.random=mr;}}
   const rel=keepPose(u);const a0=u.alpha==null?1:u.alpha;try{
   popLabel(u,f==='bear'?'MEDVEFORMA!':'KÍGYÓFORMA!','#9be07a');sfx('roar');kaeLeaves(cx(u),midY(u),70,420);flash('150,230,90',.3,.2);
   if(f==='bear'){const run=R17I.wsbear,rear=R17I.wsbear2||run,W=360,gy=u.y+u.oy+6,B={x:cx(u),ph:0,run:0,R:0,a:0,s:.5,rot:0,on:true};
     R18E({update(dt){B.ph+=dt*2.6*B.run;if(B.run>.3&&Math.random()<.35)part({x:B.x+W*.25,y:gy,vx:rnd(40,160),vy:-rnd(20,90),life:.6,size:rnd(14,24),grow:20,rgb:'160,130,90',add:false,shape:'smoke'});return B.on;},
-      draw(){if(B.a<=0)return;ctx.save();ctx.globalAlpha=B.a;if(B.R<1)r21Gallop(run,B.x,gy,W*B.s,B.ph,B.run,1-B.R,false);if(B.R>0&&rear){ctx.save();ctx.globalAlpha*=B.R;ctx.translate(B.x,gy);ctx.rotate(-B.rot);const w=W*B.s*.8,h=w*rear.height/rear.width;ctx.drawImage(rear,-w/2,-h,w,h);ctx.restore();}ctx.restore();}});
+      draw(){if(B.a<=0)return;ctx.save();ctx.globalAlpha=B.a;if(B.R<1)r21Gallop(run,B.x,gy,W*B.s,B.ph,B.run,1-B.R,!!B.fx);if(B.R>0&&rear){ctx.save();ctx.globalAlpha*=B.R;ctx.translate(B.x,gy);ctx.rotate(-B.rot);const w=W*B.s*.8,h=w*rear.height/rear.width;ctx.drawImage(rear,-w/2,-h,w,h);ctx.restore();}ctx.restore();}});
     await tween(320,k=>{u.alpha=a0*(1-k);B.a=k;B.s=.5+.5*r21ease.back(k);});sfx('roar');
     const x0=B.x,x1=cx(t)-t.w*t.scale*.5-W*.32;B.run=1;
     await tween(900,k=>{B.x=x0+(x1-x0)*r21ease.io(k);if(Math.random()<.08)shake(3);});
@@ -40,7 +40,7 @@ function r21DrawCoil(im,P,thick,a=1){if(!im||P.length<2)return;let L=0;for(let i
       await tween(220,k=>{B.rot=-.18*(1-k);B.R=1-r21ease.io(k);B.run=r21ease.io(k)*.4;});}
     hit(u,t,{...sk,name:'Medvecsapás',pow:1.9});
     // visszavágtat
-    B.run=1;const x2=B.x;await tween(700,k=>{B.x=x2+(x0-x2)*r21ease.io(k);});B.run=0;
+    B.run=1;B.fx=true;const x2=B.x;await tween(700,k=>{B.x=x2+(x0-x2)*r21ease.io(k);});B.run=0;
     kaeLeaves(B.x,gy-150,50,360);await tween(300,k=>{B.a=1-k;u.alpha=a0*k;});B.on=false;}
   else{const im=R17I.snakebody||R17I.wsviper;const from={x:cx(u),y:u.y+u.oy+2},gx=cx(t),top=topY(t)+t.h*t.scale*.18,bot=t.y+t.oy-4,R=t.w*t.scale*.55+22,thick=Math.max(36,t.h*t.scale*.2);
     const C={k:0,sq:0,head:0,a:1,on:true};
@@ -77,7 +77,7 @@ A.druidSpears=async(u,ts,sk)=>{const t=ts[0];if(!t)return;const im=R17I.bamboosp
   const xs=[0,-70,70,-30,40,-110,110,-10,20];await Promise.all(xs.map((dx,i)=>wait(i*90).then(()=>{const d={x:tx+dx,y:-SW,r:rnd(-.12,.12),fall:true};D.push(d);const yEnd=Math.abs(dx)<50?midY(t)+rnd(-20,30):gy-rnd(0,14);sfx('whoosh');
     return tween(320,k=>{d.y=-SW+(yEnd+SW)*r21ease.in(k);}).then(()=>{d.fall=false;shake(Math.abs(dx)<50?10:5);sfx(Math.abs(dx)<50?'hit':'rock');t.hurt=.4;
       for(let n=0;n<8;n++)part({x:d.x,y:yEnd,vx:rnd(-160,160),vy:-rnd(80,260),g:800,life:.6,size:rnd(5,9),rgb:pick(['120,95,60','150,220,90']),add:false,shape:n%2?'rock':'leaf'});});})));
-  st.grove=0;tween(380,k=>st.grove=r21ease.back(k));sfx('quake');shake(16);kaeLeaves(tx,midY(t),60,480);toss(t,100,600);hit(u,t,sk);
+  sfx('quake');shake(16);kaeLeaves(tx,midY(t),40,420);toss(t,100,600);hit(u,t,sk);   // ca09: liget nélkül – elég a hullás
   await wait(700);await tween(450,k=>{st.a=1-k;});await bodySettle(u);}finally{rel();}};
 
 // ---- Kaelen – Ősi Tölgy ökle: EGYENESEN tör fel (a festett ököl ferde volt – kiegyenesítve, függőlegesen emelkedik)
