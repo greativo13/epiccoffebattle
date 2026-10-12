@@ -60,6 +60,12 @@ A felhasználó 246 tesztlap-megjegyzéséből kiszűrt, ismétlődő minták. M
 3. **Rossz helyre mért pont.** A forráspontot a rácsos figurán kell meghatározni, és képen ellenőrizni, hogy tényleg onnan indul-e.
 4. **Kicsi első változat.** Ezt lásd az A1-ben: nagyobbat és többet.
 5. **Ellenőrzés javítás után:** csak azt kell kipróbálni, amit a javítás érint (pl. az adott animáció képsora, az adott pálya vagy menü), és hogy nincs JS-hiba. A teljes játék ellenőrzése (`foe.js`, `sumall.js`, `all.js`, `shield.js`, `playall.js`) nem kell minden javításnál – csak nagy, sok mindent érintő változás után (pl. új térkép, közös függvény átírása), vagy ha a felhasználó kéri. Feltöltés: `claude/kind-knuth-hiqqiv` + `main`.
+6. **Többet változtattam, mint amit kért** („csináld vissza, csak a csontokat kértem”).
+   - Csak azt írd át, amit a megjegyzés megnevez. A jelenet többi része maradjon pontosan olyan, amilyen volt.
+7. **Elfelejtettem egy korábbi tiltást** (Cerberusnál visszatettem a lángokat, pedig már kérte, hogy ne legyenek).
+   - Mielőtt egy animációhoz nyúlsz, olvasd el az elem ÖSSZES korábbi megjegyzését a tesztlapon (`review` gyűjtemény, régi `t-*` kulcsok is) és a `MUNKANAPLO.md`-ben. A korábbi tiltások (nem kell X) örökre érvényesek.
+8. **Különálló tárgy a test helyett** (lebegő aranyököl Grog keze helyett).
+   - Ha a kérés „a kezére”, „a hátán”, „a szájából”: a tárgy a figura testrészéhez kötve mozog, akkora, mint egy kar/ököl, nem óriás kép a levegőben.
 
 ## C. Munkarend
 
