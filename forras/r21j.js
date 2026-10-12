@@ -1,7 +1,7 @@
 // ===== 23. kör: régi hősök, páros támadások és idézések – a tesztlap kérései szerint =====
 
 // ---- Lidércnyomás: karmolás nincs; két óriási lidérckar nő ki a földből az ellenfél két oldalán, és összepréseli
-function r21Arm(x,y,L,rot,fx,a,grip){if(R17I.wraitharm){ctx.save();ctx.globalAlpha*=a;r17Draw(R17I.wraitharm,x,y,L*.55,{anchor:'bottom',rot,fx});ctx.restore();return;}
+function r21Arm(x,y,L,rot,fx,a,grip){if(R17I.wraitharm){ctx.save();ctx.globalAlpha*=a;{const im=R17I.wraitharm;ctx.save();ctx.globalCompositeOperation='lighter';glow(x+Math.sin(rot)*L*.8,y-L*.8,L*.25,'170,80,255',.35);ctx.restore();r17Draw(im,x,y+L*.06,L*1.05*im.width/im.height,{anchor:'bottom',rot,fx});}ctx.restore();return;}
   ctx.save();ctx.globalAlpha*=a;ctx.translate(x,y);ctx.rotate(rot);ctx.scale(fx?-1:1,1);
   const g=ctx.createLinearGradient(0,0,0,-L);g.addColorStop(0,'rgba(20,0,35,0)');g.addColorStop(.25,'rgba(40,8,70,.95)');g.addColorStop(1,'rgba(90,30,150,.98)');
   ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(-L*.13,0);ctx.bezierCurveTo(-L*.16,-L*.4,-L*.05,-L*.6,-L*.09,-L*.82);ctx.lineTo(L*.09,-L*.86);ctx.bezierCurveTo(L*.06,-L*.6,L*.18,-L*.4,L*.13,0);ctx.closePath();ctx.fill();
@@ -11,12 +11,12 @@ function r21Arm(x,y,L,rot,fx,a,grip){if(R17I.wraitharm){ctx.save();ctx.globalAlp
     ctx.strokeStyle='rgba(230,200,255,.9)';ctx.lineWidth=L*.012;ctx.beginPath();ctx.moveTo(ox+c*.7,-c*.75);ctx.quadraticCurveTo(ox+c*.9,-c*.6,ox+c,-c*.4);ctx.stroke();}
   ctx.globalCompositeOperation='lighter';glow(0,0,L*.25,'170,80,255',.35);ctx.restore();}
 A.nightmareGrip=async(u,ts,sk)=>{const t=ts[0];if(!t||!t.alive)return;await dimTo(.8,'10,0,20',300);await castPose(u,'120,40,180',380);sfx('dark');
-  const x=cx(t),gy=t.y+t.oy+8,H=t.h*t.scale,L=Math.max(330,H*1.5),hw=t.w*t.scale*.5+L*.18,M={a:0,k:0,grip:0,sq:0},a0=t.spin||0;
+  const x=cx(t),gy=t.y+t.oy+8,H=t.h*t.scale,L=Math.max(400,H*1.9),hw=t.w*t.scale*.5+L*.12,M={a:0,k:0,grip:0,sq:0},a0=t.spin||0;
   // sötét hasadék a lábánál, füst
   effects.unshift({update(){return M.a>0||!M.done;},draw(){if(M.a<=0)return;ctx.save();ctx.translate(x,gy);ctx.scale(1,.22);const g=ctx.createRadialGradient(0,0,10,0,0,hw*1.6);g.addColorStop(0,`rgba(5,0,12,${.95*M.a})`);g.addColorStop(.6,`rgba(60,15,100,${.6*M.a})`);g.addColorStop(1,'rgba(60,15,100,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,hw*1.6,0,6.29);ctx.fill();ctx.restore();}});
   effects.push({update(){if(!M.done&&Math.random()<.5)part({x:x+rnd(-hw*1.3,hw*1.3),y:gy,vx:rnd(-20,20),vy:-rnd(40,120),life:rnd(.7,1.2),size:rnd(16,30),grow:20,rgb:pick(['40,12,70','70,25,110']),add:false,shape:'dsmoke'});return !M.done||M.a>0;},
     draw(){if(M.a<=0)return;const rise=M.k,LL=L*rise,open=(1-M.grip)*.55,sq=M.sq*hw*.35;
-      r21Arm(x-hw+sq,gy,LL,open,false,M.a,M.grip);r21Arm(x+hw-sq,gy,LL,-open,true,M.a,M.grip);}});
+      r21Arm(x-hw+sq,gy,LL,-open+M.grip*.3,false,M.a,M.grip);r21Arm(x+hw-sq,gy,LL,open-M.grip*.3,true,M.a,M.grip);}});
   sfx('quake');rumble&&rumble(.8,5);await tween(300,k=>{M.a=k;});popLabel(t,'LIDÉRCNYOMÁS!','#c890ff');
   // a karok kinőnek a földből
   sfx('growl');await tween(520,k=>{M.k=eOutBack(k);});await wait(120);
