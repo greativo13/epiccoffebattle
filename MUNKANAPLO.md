@@ -137,6 +137,12 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
   - Kőőr Kőhabverő-csapás teljesen új: kőörvény, sziklagejzír.
   - Közös segédek: `r21ease`, `r21Zap`/`r21ZapTree` (villám), `r21Pole` (bambuszrúd), `r21Flame` (lila láng), `r21TeaBlob`.
   - Tesztlap: Beküldés a Később előtt; a játék-link egy nevesített lapot (`epicgame`) használ.
+- **27. kör** (`r21p.js` + `r21o.js` módosítások, a tesztlap aa-pontjai alapján):
+  - Villámdenevér: a régi denevér + Zordon Villámcsapása minden ellenségre (felhasználó kérése). Tusátok visszaállítva az eredetire (r21i.js a 26. kör előtti állapot, tusfolt-felülírás törölve).
+  - Békakirály Nyelvcsapás: a Lekvárdzsinn karjának mintájára `LIMBS.frogking` – a kép saját nyelve (arm+hand) nyúlik meg a szájból (`limbOn/limbAim`).
+  - Ősi Tölgy ökle: csak feltör az ellenség alól. Levéltánc: 3 gyors hullám. Tövisvihar: festett rózsatövis-forgószél (`fx7-rosestorm`), forgás tükörkép-átúsztatással.
+  - Matcha-gólem Forró hab: habgejzírek (`fx7-foamgeyser`). Átokindák: festett lila lángfal (`fx7-firewall`). Villámbambusz: több villám. Lótuszharmat: ÚJ funkció, Harmatpajzs (`dew` állapot, 1 kör: az első találat sebzése gyógyulás).
+  - **Felszerelés a hősön**: `GEAR_LOOK` – ha fegyver+ruha ≥ 4 szint, a hős díszesebb képre vált (`wizardG*` kész Zordonnak; referencia: a régi 4 póz 2×2 lapon feltöltve Canvába, generate-image szerkesztéssel). A többi hős még hátravan.
 
 ## Tesztlista és áttekintő (egy helyen)
 
