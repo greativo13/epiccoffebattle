@@ -129,6 +129,14 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
   - Árny-csapat: árnysereg a földből; Villámdenevér óriás denevér; Zen-sárkány helyben, apró kavicsokkal; Átok: csak a csontok festettek (B6!).
   - `r21n.js`: `index.html?proba=hero:<típus>:<képesség>|pair:<név>|foe:<ellenfél>:<támadás>|summon:<id>` egyenesen a Próbaterembe visz és lejátssza (mentés nélkül).
 - **Tesztlap új funkciói:** „⏸ Később” gomb (`later` mező), gyorscímkék a „Nem jó” megjegyzéshez (a korábbi visszajelzések mintájára), fotó csatolása (`assets`, `photos` mező, `/_blob/<id>`), „🎮 Megnézem a játékban” gomb (`tests.link` mező, GitHub Pages `main`).
+- **26. kör** (`r21o.js`, a tesztlap x-pontjai alapján):
+  - Új festett képek: `fx7-mushroom`, `fx7-thunderbat`, `fx7-bamboopole`, `fx7-inksplash`, `fx7-foamwave`, `fx7-teasplash`, `fx7-darkflame`, `fx7-dewdrop`, `frogking-cast` (a Békakirály nyelv nélküli képe a Nyelvcsapáshoz).
+  - Villámdenevér festett óriás denevér, fehér villámok a szárnyak közt; Nyelvcsapás vastag nedves nyelv a szájból; Tekeredés: a kígyó saját feje mar; Habzápor után nem marad habkör; Forró hab festett habhullám; Teafröccs folytonos teasugár + festett fröccs; Tusátok gyorsabb, festett tusfoltok.
+  - Kaelen: Bambuszcsapás lassabb, festett rudak; Tövisvihar csavarodó tölcsér; Ősi Tölgy ökle sima csapás; Virágzó élet virággubó; **Levéltánc TÁMADÁS lett** (5 találat); LIMIT Bambusz-gólem kisebb, földbe csap, rudak törnek fel, bambuszfal.
+  - Páros: Medvelovaglás (Grog végig a hátán, átúszó képek), Bambuszliget (bambuszerdő), Villámbambusz (rudak egyesével, fehér villám köti össze), Átokindák (festett lila láng), Lótuszharmat (festett cseppek).
+  - Kőőr Kőhabverő-csapás teljesen új: kőörvény, sziklagejzír.
+  - Közös segédek: `r21ease`, `r21Zap`/`r21ZapTree` (villám), `r21Pole` (bambuszrúd), `r21Flame` (lila láng), `r21TeaBlob`.
+  - Tesztlap: Beküldés a Később előtt; a játék-link egy nevesített lapot (`epicgame`) használ.
 
 ## Tesztlista és áttekintő (egy helyen)
 
