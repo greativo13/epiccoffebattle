@@ -183,13 +183,15 @@ A.beeSwarm=async(e,ts,sk)=>{const al=ts.filter(h=>h.alive);if(!al.length)return;
   // szélcsíkok: hosszú, íves fehér széllökések a mókus nyomában
   R18E({update(){for(const w of WL)w.a-=.03;while(WL.length&&WL[0].a<=0)WL.shift();return S0.run||WL.length>0;},draw(){ctx.save();ctx.lineCap='round';for(const w of WL){ctx.strokeStyle=`rgba(255,255,255,${.55*w.a})`;ctx.lineWidth=w.w;ctx.beginPath();ctx.moveTo(w.x,w.y);ctx.quadraticCurveTo(w.x-w.L*.5,w.y-w.c,w.x-w.L,w.y);ctx.stroke();}ctx.restore();}});
   S0.run=true;
-  await tween(700,k=>{const e=k*k*(3-2*k);S0.x=x0+(W+200-x0)*e;S0.rot=.08*Math.sin(k*40);S0.s=s0*1.08;
+  // háromszor fut végig, egyre gyorsabban (a 2. és 3. körben a bal szélről indul újra)
+  for(const [pass,ms] of [[0,900],[1,620],[2,380]]){const done=new Set(),xs0=pass?-120:x0;if(pass){sfx('whoosh');sfx('wind');}
+  await tween(ms,k=>{const e=pass?k:k*k*(3-2*k);S0.x=xs0+(W+200-xs0)*e;S0.rot=.08*Math.sin(k*40);S0.s=s0*1.08;
     for(let i=0;i<3;i++)WL.push({x:S0.x-rnd(20,80),y:gy-rnd(10,170),L:rnd(160,340),c:rnd(-30,30),w:rnd(3,7),a:1});
     for(let i=0;i<4;i++)part({x:S0.x-rnd(20,120),y:gy-rnd(0,30),vx:-rnd(120,320),vy:-rnd(30,140),life:rnd(.6,1),size:rnd(18,34),grow:30,rgb:pick(['200,180,150','180,160,130']),add:false,shape:'smoke'});
     for(const t of foes)if(!done.has(t)&&S0.x>cx(t)-30){done.add(t);sfx('boom');sfx('hit');shake(16);hitStop(60);flash('255,245,220',.25,.08);
       for(let i=0;i<26;i++){const a=rnd(0,6.28),v=rnd(200,520);part({x:cx(t),y:t.y+t.oy-10,vx:Math.cos(a)*v,vy:Math.sin(a)*v*.45-80,drag:2,life:rnd(.5,.9),size:rnd(16,30),grow:30,rgb:pick(['210,190,160','180,160,130']),add:false,shape:'smoke'});}
       for(let i=0;i<10;i++)part({x:cx(t),y:t.y+t.oy-6,vx:rnd(-320,320),vy:-rnd(200,500),g:1000,life:rnd(.5,.9),size:rnd(4,8),rgb:'130,110,90',add:false,shape:'rock'});
-      toss(t,120,520);t.hurt=.5;fxImage('slash',cx(t),midY(t),{size:bigOf(t)*.9,life:.25,rot:rnd(-1,1)});hit(P,t,{name:'Mókus',kind:'phys',pow:.9,elem:'phys',tgt:'enemies',anim:'summon'});t.gold=(t.gold||0)*2;}});
+      toss(t,120,520);t.hurt=.5;fxImage('slash',cx(t),midY(t),{size:bigOf(t)*.9,life:.25,rot:rnd(-1,1)});hit(P,t,{name:'Mókus',kind:'phys',pow:pass===2?.5:.35,elem:'phys',tgt:'enemies',anim:'summon'});if(pass===2)t.gold=(t.gold||0)*2;}});}
   clearInterval(wind);S0.run=false;S0.rot=0;S0.s=s0;
   for(const e of S.enemies)if(!e.alive)e.gold=(e.gold||0)*2;showBanner('Dupla arany!',false);S0.x=-80;await tween(380,k=>{S0.x=-80+(x0+80)*k;});await wait(200);};}
 
@@ -343,3 +345,14 @@ Object.assign(HERO_DEF.druid,{h:270,w:105,hand:[76,-227]});
 
 // ---- Átok: a régi (r17a) jelenet marad; csak a repülő csontok festettek, Hádész stílusában (lásd lent: qBone)
 {const qb0=qBone;qBone=function(x,y,r,s=1){const im=R17I.hexbone;if(!im)return qb0.apply(this,arguments);const w=64*s;ctx.save();ctx.translate(x,y);ctx.rotate(r);ctx.globalCompositeOperation='lighter';glow(0,0,w*.45,'160,80,240',.35);ctx.globalCompositeOperation='source-over';ctx.drawImage(im,-w/2,-w/2*im.height/im.width,w,w*im.height/im.width);ctx.restore();};}
+
+// ---- Zen-Kavics Sárkány idézés (a kérés szerint): a sárkány a helyén marad, felordít; a kőfelhőből SOK APRÓ kavics zuhog; a végigsöprő kőhullám nincs
+{const zd=SUMMONS.find(s=>s.id==='zendragon');if(zd){zd.run=async(P,S0)=>{const fs=foesAlive();if(!fs.length)return;const y0=S0.y,s0=S0.s||1;sfx('roar');
+  await tween(450,k=>{S0.s=s0*(1+.06*Math.sin(k*Math.PI));S0.y=y0-14*Math.sin(k*Math.PI);});shake(10);rumble&&rumble(1,6);
+  const xs=fs.map(cx),xa=Math.min(...xs)-150,xb=Math.max(...xs)+150,pb=()=>R17I.pebble,P0=[];
+  for(let i=0;i<420;i++){const t=pick(fs);P0.push({x:rnd(xa,xb),y:70+rnd(-25,25),vy:rnd(620,900),d:250+i*5,r:rnd(0,6),s:rnd(9,17),land:t.y+t.oy+rnd(-120,10)});}
+  const E={t:0,a:1,cl:0};effects.push({update(dt){E.t+=dt*1000;for(const p of P0)if(E.t>p.d&&!p.done){p.y+=p.vy*dt;p.r+=dt*8;if(p.y>=p.land){p.done=true;if(Math.random()<.3)part({x:p.x,y:p.land,vx:rnd(-120,120),vy:rnd(-160,-50),g:700,life:.45,size:rnd(2,5),rgb:'150,140,120',add:false,shape:'rock'});}}return E.a>0;},
+    draw(){ctx.save();ctx.globalAlpha=E.a;const cl=R17I.rockcloud;if(cl)r17Draw(cl,(xa+xb)/2,60,(xb-xa)+160,{a:E.cl});for(const p of P0){if(E.t<p.d||p.done)continue;const I=pb();if(I){ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.drawImage(I,-p.s/2,-p.s/2,p.s,p.s*I.height/I.width);ctx.restore();}}ctx.restore();}});
+  await tween(350,k=>E.cl=k);sfx('quake');const iv=setInterval(()=>{sfx('rock');shake(3);for(const t of foesAlive())t.hurt=.2;},160);
+  await wait(2300);clearInterval(iv);for(const t of foesAlive()){shake(10);hit(P,t,{name:'Kavicsözön',kind:'phys',pow:2.6,elem:'earth',tgt:'enemies',status:['defDown',1,1]});await wait(70);}
+  await tween(500,k=>E.a=1-k);S0.s=s0;S0.y=y0;};}}

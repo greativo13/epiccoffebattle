@@ -82,3 +82,8 @@ R16P['Harmatkör']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B1,fa=dr
 
 // ---- A 3. térkép saját csatahátterei (festett): 9. fejezet matcha-patakos bambuszerdő, 10. zen-kert, 11. matchakádas barlang, 12. felhőpalota
 {const TH={9:'matchastream',10:'zengarden',11:'matchacave',12:'cloudpalace'};for(const z of ZONES)for(const l of z.levels){const ch=parseInt(l.id,10);if(TH[ch])l.theme=TH[ch];}}
+
+// ---- Az új főellenségek idézése is kap elemet a listában (mint a többi idézés)
+Object.assign(SUMMON_EL,{mochiking:'phys',zendragon:'earth',frogking:'nature',chasen:'water'});
+// ---- Kaelen páros támadásának neve nem egyezhet az ő saját Harmatkör képességével
+{const p=PAIRS.find(x=>x.name==='Harmatkör'&&x.a==='druid');if(p){p.name='Lótuszharmat';R16P['Lótuszharmat']=R16P['Harmatkör'];}}

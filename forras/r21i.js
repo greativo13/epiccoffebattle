@@ -23,14 +23,14 @@ A.inkWave=async(u,ts,sk)=>{const al=ts.filter(h=>h.alive);if(!al.length)return;c
     draw(){ctx.save();ctx.lineCap='round';for(const pass of [1,0])for(let i=1;i<rib.length;i++){const r=rib[i],q=rib[i-1];if((r.b?1:0)!==pass||r.a<=0)continue;const f=1-i/rib.length;ctx.strokeStyle=`rgba(12,10,18,${(r.b?.35:.7)*r.a*f})`;ctx.lineWidth=70*f+6;ctx.beginPath();ctx.moveTo(q.x,q.y);ctx.lineTo(r.x,r.y);ctx.stroke();}ctx.restore();
       if(!im||G.a<=0)return;const w=DW*G.s,h=w*im.height/im.width;ctx.save();if(G.cl!=null){ctx.beginPath();ctx.rect(G.x-3000,G.cl-3000,6000,3000);ctx.clip();}ctx.globalAlpha=G.a*(G.b?.6:1);ctx.translate(G.x,G.y);ctx.rotate(G.ang);ctx.scale(G.flip?-1:1,1);
       // a fej (a kép bal széle) legyen elöl: a kép kb. 15%-ánál van a fej
-      const N=24;for(let i=0;i<N;i++){const sx=i*im.width/N,dx=-w*.15+i*w/N,wy=Math.sin(T*9-i*.5)*h*.06*G.wob;ctx.drawImage(im,sx,0,im.width/N+1,im.height,dx,-h/2+wy,w/N+1,h);}ctx.restore();}});
+      const N=48;for(let i=0;i<N;i++){const sx=i*im.width/N,dx=-w*.15+i*w/N,wy=Math.sin(T*6-i*.22)*h*.035*G.wob;ctx.drawImage(im,sx,0,im.width/N+1,im.height,dx,-h/2+wy,w/N+1,h);}ctx.restore();}});
   sfx('growl');
   {const M=mouth();G.cl=M.y;G.nr=true;G.flip=false;G.ang=Math.PI/2;G.x=M.x;G.wob=1;const iv=setInterval(()=>{sfx('whoosh');},260);
    await tween(900,k=>{const e=easeIO(k);G.s=.3+.55*e;const len=DW*G.s*.85;G.y=M.y+30-(len+70)*e;G.x=M.x+Math.sin(k*9)*10*(1-k);G.ang=Math.PI/2+Math.sin(k*8)*.12;
      for(let n=0;n<3;n++)part({x:M.x+rnd(-26,26),y:M.y-4,vx:rnd(-120,120),vy:-rnd(120,420),g:700,life:.8,size:rnd(4,10),rgb:'12,10,18',add:false,shape:'drop'});if(Math.random()<.3)shake(3);});
    clearInterval(iv);G.cl=null;G.nr=false;sfx('boom');shake(8);splat(M.x,M.y-10,['12,10,18','40,36,60'],30,420,'drop');}
   // ív a hősök elé (a fej megy elöl: a kép balra néz, a mozgás balra tart, így nem kell tükrözni)
-  const st0={x:G.x,y:G.y},ent={x:cxs+RX,y:gy2-10};let lx=G.x,ly=G.y;const aim=()=>{const dx=G.x-lx,dy=G.y-ly;if(Math.hypot(dx,dy)>.5){G.flip=dx>0;G.ang=G.flip?Math.atan2(dy,dx)*-1*-1:Math.atan2(-dy,-dx);if(G.flip)G.ang=Math.atan2(dy,dx);}lx=G.x;ly=G.y;};
+  const st0={x:G.x,y:G.y},ent={x:cxs+RX,y:gy2-10};let lx=G.x,ly=G.y;let vx=0,vy=0;const aim=()=>{const dx=G.x-lx,dy=G.y-ly;vx=vx*.85+dx*.15;vy=vy*.85+dy*.15;if(Math.hypot(vx,vy)>.4){const fl=Math.abs(vx)>1.2?vx>0:G.flip;if(fl!==G.flip){G.flip=fl;G.ang=-G.ang;}const ta=G.flip?Math.atan2(vy,vx):Math.atan2(-vy,-vx);let d=ta-G.ang;while(d>Math.PI)d-=6.283;while(d<-Math.PI)d+=6.283;G.ang+=d*.18;}lx=G.x;ly=G.y;};
   G.wob=1;await tween(650,k=>{const e=easeIO(k);G.x=st0.x+(ent.x-st0.x)*e;G.y=st0.y+(ent.y-st0.y)*e-Math.sin(k*Math.PI)*180;aim();});
   // spirál alulról felfelé, 2,5 kör: hátul halványabb (a hősök mögött), elöl teljes
   const turns=2.5;const bz=setInterval(()=>sfx('whoosh'),320);

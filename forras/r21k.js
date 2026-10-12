@@ -26,10 +26,10 @@ A.whiskSpray=async(u,ts,sk)=>{const t=ts[0];if(!t)return;const rel=keepPose(u);t
   sfx('whoosh');await tween(520,k=>{u.lean=.08*Math.sin(k*40);const p=sc();if(Math.random()<.7)r21FrothBurst(p.x,p.y-10,2,140);});u.lean=0;
   await bodyWind(u,160,-.12);bodyStrike(u,160,.2);sfx('splash');
   const F=[],S0={on:true};const p0=sc();
-  effects.push({update(dt){if(S0.on)for(let i=0;i<4;i++){const p=sc();F.push({x:p.x,y:p.y,vx:(cx(t)-p.x)*rnd(1.5,2)+rnd(-40,40),vy:(midY(t)-p.y)*rnd(1.5,2)+rnd(-90,30),r:rnd(12,26),life:0,rot:rnd(0,6)});}
+  effects.push({update(dt){if(S0.on)for(let i=0;i<7;i++){const p=sc();F.push({x:p.x,y:p.y,vx:(cx(t)-p.x)*rnd(1.6,2.1)+rnd(-50,50),vy:(midY(t)-p.y)*rnd(1.6,2.1)+rnd(-110,40),r:rnd(18,36),life:0,rot:rnd(0,6)});if(Math.random()<.5)r21FrothBurst(p.x,p.y,1,160);}
       for(const f of F){f.life+=dt;f.x+=f.vx*dt;f.y+=f.vy*dt;f.vy+=260*dt;}for(let i=F.length-1;i>=0;i--)if(F[i].life>.75)F.splice(i,1);return S0.on||F.length;},
     draw(){for(const f of F)r21Froth(f.x,f.y,f.r*(.6+f.life),Math.min(1,(.75-f.life)*4),f.rot);}});
-  await wait(320);const E=foamPour(cx(t)+20,midY(t)-40,[t],26,360);await wait(380);S0.on=false;shake(10);sfx('splash');r21FrothBurst(cx(t),midY(t),30,380);hit(u,t,sk);await wait(450);await bodySettle(u);}finally{rel();u.lean=0;}};
+  await wait(420);const E=foamPour(cx(t)+20,midY(t)-40,[t],46,420);await wait(480);S0.on=false;t.hurt=.5;toss(t,40,320);shake(10);sfx('splash');r21FrothBurst(cx(t),midY(t),30,380);hit(u,t,sk);await wait(450);await bodySettle(u);}finally{rel();u.lean=0;}};
 
 // ---- Habverő-manó – Habverő-pörgés: búgócsigaként pörög a hősig (a feje, a habverő hab-örvényt kavar), négyszer belecsap, és visszapörög
 A.whiskSpin=async(u,ts,sk)=>{const t=ts[0];if(!t)return;const rel=keepPose(u);try{const x0=u.ox||0,dx=(cx(t)+t.w*t.scale*.55+u.w*u.scale*.35)-cx(u);
@@ -60,8 +60,8 @@ function r21SnakeBody(P,thick,front){ctx.save();ctx.lineCap='round';ctx.lineJoin
 A.snakeCoil=async(u,ts,sk)=>{const t=ts[0];if(!t)return;const rel=keepPose(u);try{const d=await dashTo(u,t,260,-30);const gx=cx(t),top=topY(t)+t.h*t.scale*.12,bot=t.y+t.oy-8,RX=t.w*t.scale*.6+24,thick=Math.max(30,t.h*t.scale*.13);
   const C={k:0,sq:0,a:1,bite:0};const N=90;
   const pts=()=>{const P=[];const n=Math.max(2,Math.round(N*C.k));for(let i=0;i<n;i++){const q=i/(N-1),an=q*Math.PI*2*3+Math.PI*.5,y=bot-(bot-top)*q,rx=RX*(1-C.sq*.2);P.push({x:gx+Math.cos(an)*rx,y:y+Math.sin(an)*rx*.22,f:Math.sin(an)>0});}return P;};
-  effects.unshift({update(){return C.a>0;},draw(){if(C.a<=0)return;ctx.save();ctx.globalAlpha=C.a;r21SnakeBody(pts(),thick,false);ctx.restore();}});
-  effects.push({update(){return C.a>0;},draw(){if(C.a<=0)return;ctx.save();ctx.globalAlpha=C.a;const P=pts();r21SnakeBody(P,thick,true);
+  const cim=R17I.coils;effects.unshift({update(){return C.a>0;},draw(){if(C.a<=0||cim)return;ctx.save();ctx.globalAlpha=C.a;r21SnakeBody(pts(),thick,false);ctx.restore();}});
+  effects.push({update(){return C.a>0;},draw(){if(C.a<=0)return;ctx.save();ctx.globalAlpha=C.a;const P=pts();if(cim){const Hc=(bot-top)*.62,w=Math.min(RX*2.3,Hc*cim.width/cim.height*1.15)*(1-C.sq*.12);ctx.save();ctx.beginPath();ctx.rect(gx-w,bot+20-Hc*C.k,w*2,Hc*C.k+10);ctx.clip();ctx.drawImage(cim,gx-w/2,bot+20-Hc,w,Hc);ctx.restore();}else r21SnakeBody(P,thick,true);
       const h=P[P.length-1];if(h&&C.k>.98){// fej: a tetején, nyitott szájjal
         const hx=h.x,hy=h.y-thick*.4-C.bite*10;ctx.fillStyle='#5f9a2c';ctx.strokeStyle='#22400e';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(hx,hy,thick*.9,thick*.6,-.3,0,7);ctx.fill();ctx.stroke();
         ctx.fillStyle='#ffe066';ctx.beginPath();ctx.arc(hx-thick*.3,hy-thick*.15,thick*.15,0,7);ctx.fill();ctx.fillStyle='#111';ctx.beginPath();ctx.ellipse(hx-thick*.3,hy-thick*.15,thick*.05,thick*.13,0,0,7);ctx.fill();
@@ -94,8 +94,11 @@ A.mosaicBolt=async(u,ts,sk)=>{const t=ts[0];if(!t)return;const rel=keepPose(u);t
   shake(18);flash('120,240,210',.4,.15);sfx('glass');sfx('boom');hitStop(80);t.hurt=.5;toss(t,50,360);hit(u,t,sk);await tween(520,k=>{B.ex=k;B.a=1-k*k;});}finally{rel();}};
 A.mosaicShards=async(u,ts,sk)=>{const rel=keepPose(u);try{u.pose='cast';const hs=[KP(u,.08,.55),KP(u,.9,.75),KP(u,.27,.21)];await bodyWind(u,260,-.1);sfx('glass');const F=[];
   for(const t of ts)for(let i=0;i<30;i++){const h=pick(hs);F.push({x0:h.x,y0:h.y,x1:cx(t)+rnd(-50,50),y1:midY(t)+rnd(-70,60),d:rnd(0,650),s:rnd(18,36),c:pick(TILE_C),r:rnd(0,6),t})}
-  const E={t:0,a:1};const hitT=new Set();effects.push({update(dt){E.t+=dt*1000;for(const f of F){if(!f.done&&E.t-f.d>380){f.done=true;f.t.hurt=.2;if(Math.random()<.3)sfx('glass');}}return E.a>0;},
-    draw(){ctx.save();ctx.globalAlpha=E.a;for(const f of F){const k=Math.max(0,Math.min(1,(E.t-f.d)/380));if(!k)continue;const x=f.x0+(f.x1-f.x0)*k,y=f.y0+(f.y1-f.y0)*k-Math.sin(k*Math.PI)*90;
+  const E={t:0,a:1};const hitT=new Set();effects.push({update(dt){E.t+=dt*1000;for(const f of F){if(!f.done&&E.t-f.d>380){f.done=true;f.t.hurt=.25;if(Math.random()<.35)sfx('glass');if(Math.random()<.2)shake(4);
+      // a csempe becsapódáskor szétrobban: villanás, apró csempeszilánkok
+      R18E({t:0,update(dt){this.t+=dt;return this.t<.35;},draw(){const k=this.t/.35;ctx.save();ctx.globalCompositeOperation='lighter';glow(f.x1,f.y1,f.s*(1.2+2*k),'120,255,220',.8*(1-k));ctx.restore();}});
+      for(let q=0;q<7;q++)part({x:f.x1,y:f.y1,vx:rnd(-320,320),vy:rnd(-340,120),g:700,life:rnd(.4,.7),size:rnd(3,7),rgb:pick(['47,191,159','224,184,74','88,214,192','255,255,255']),add:false,shape:'rock'});}}return E.a>0;},
+    draw(){ctx.save();ctx.globalAlpha=E.a;for(const f of F){const k=Math.max(0,Math.min(1,(E.t-f.d)/380));if(!k||f.done)continue;const x=f.x0+(f.x1-f.x0)*k,y=f.y0+(f.y1-f.y0)*k-Math.sin(k*Math.PI)*90;
       if(k<1){ctx.save();ctx.globalCompositeOperation='lighter';glow(x,y,f.s,'90,230,200',.35);ctx.restore();}tileShard(x,y,f.s*(k<1?1:.8),f.r+E.t/70,f.c);}ctx.restore();}});
   bodyStrike(u,200,.14);await wait(1100);for(const t of ts){shake(9);sparks(cx(t),midY(t),['120,240,210','255,240,160'],20,420);hit(u,t,sk);await wait(70);}await wait(300);await tween(350,k=>E.a=1-k);}finally{rel();}};
 
@@ -170,3 +173,37 @@ if(typeof NOFX!=='undefined')for(const k of ['whiskSpray','whiskSpin','mochiBoun
 
 // ---- Hiányzó hangnevek (eddig némák voltak): a meglévő hangokra irányítva (csengő hang nincs)
 {const AL={quake:'rock',gong:'sonic',steam:'dust',wind:'whoosh',crunch:'squish',zap:'thunder',screech:'sonic',roar:'growl',twinkle:'holy',gulp:'gulp'};for(const k in AL)if(!SFX[k]&&SFX[AL[k]])SFX[k]=SFX[AL[k]];}
+
+// ---- Nyelvcsapás: a nyelv a SZÁJBÓL indul (a Békakirálynál rácson mérve .30,.27; eddig a kis béka fix pontja miatt hátulról jött)
+{const t0=A.tongue;A.tongue=async(u,ts,sk)=>{if(u.type!=='frogking')return t0(u,ts,sk);u.pose='cast';await wait(160);await reach(u,ts[0],sk,'#ff7aa8',()=>KP(u,.30,.27));};}
+
+// ---- Csészeharcos – Teafröccs (újra): VALÓDI, borostyánszínű teasugár ível a merőkanálból a hősre (folyadék, fénycsíkkal), csobbanás, cseppek; gőz csak egy leheletnyi
+function r21LiquidArc(a,b,k,h,w,col){const pts=[];const n=26;for(let i=0;i<=n;i++){const q=i/n*k;pts.push({x:a.x+(b.x-a.x)*q,y:a.y+(b.y-a.y)*q-Math.sin(q*Math.PI)*h+Math.sin(q*18+T*30)*2});}
+  ctx.save();ctx.lineCap='round';ctx.lineJoin='round';for(const [lw,c] of [[w+6,'rgba(90,50,10,.55)'],[w,col],[w*.35,'rgba(255,230,170,.85)']]){ctx.strokeStyle=c;ctx.lineWidth=lw;ctx.beginPath();pts.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.stroke();}ctx.restore();}
+A.teaSplash=async(u,ts,sk)=>{const t=ts[0];if(!t)return;const rel=keepPose(u);try{u.pose='attack';await bodyWind(u,280,-.2);const l=()=>KP(u,.08,.17);sfx('splash');
+  // a kanálban felcsillan a forró tea
+  const L={k:0,a:1};effects.push({update(){return L.a>0;},draw(){if(L.k<=0)return;ctx.save();ctx.globalAlpha=L.a;const a=l(),b={x:cx(t),y:midY(t)-10};r21LiquidArc(a,b,L.k,130,22,'rgba(200,120,30,.95)');ctx.restore();}});
+  bodyStrike(u,220,.24);sfx('whoosh');await tween(330,k=>{L.k=easeIO(k);const a=l();if(Math.random()<.7)part({x:a.x,y:a.y,vx:(cx(t)-a.x)*rnd(1,1.6),vy:-rnd(200,380),g:1000,life:rnd(.5,.8),size:rnd(5,9),rgb:pick(['205,125,30','230,155,50']),add:false,shape:'drop'});});
+  shake(14);sfx('splash');hitStop(60);t.hurt=.5;toss(t,40,320);
+  for(let i=0;i<46;i++)part({x:cx(t)+rnd(-20,20),y:midY(t)+rnd(-30,20),vx:rnd(-340,340),vy:rnd(-420,-60),g:1000,life:rnd(.6,1),size:rnd(6,13),rgb:pick(['205,125,30','230,155,50','170,95,20']),add:false,shape:'drop'});
+  for(let i=0;i<4;i++)r21Steam(cx(t)+rnd(-30,30),midY(t)-20,rnd(-30,30),-rnd(60,120),false);
+  hit(u,t,sk);await tween(350,k=>L.a=1-k);await bodySettle(u);}finally{rel();}};
+
+// ---- Matcha-gólem / Teaszertartás-mester – Forró hab, Szertartás-hab (újra): a tálból kibuggyanó, sűrű habfal gördül végig a földön a hősökig, rájuk borul, buborékok pattannak, aztán lefolyik és eltűnik
+A.foamFlood=async(u,ts,sk)=>{const al=ts.filter(t=>t.alive);if(!al.length)return;const rel=keepPose(u);try{u.pose='cast';await bodyWind(u,220,-.1);
+  const o=u.type==='teamaster'?KP(u,.15,.28):u.type==='chasen'?KP(u,.15,.1):KP(u,.48,.17);sfx('splash');
+  // kibuggyan a tálból
+  const Bub=[];for(let i=0;i<26;i++)Bub.push({x:o.x+rnd(-30,30),y:o.y,vy:-rnd(60,180),vx:rnd(-90,20),r:rnd(16,30),k:0});
+  const gy=al.reduce((s,t)=>s+t.y+t.oy,0)/al.length,xmin=Math.min(...al.map(cx))-110,W2={x:o.x,h:0,a:1,cov:0};
+  effects.push({update(dt){for(const b of Bub){b.k=Math.min(1,b.k+dt*2);b.x+=b.vx*dt;b.y+=b.vy*dt;b.vy+=420*dt;if(b.y>gy){b.y=gy;b.vy=0;b.vx*=.9;}}
+      if(W2.h>0&&Math.random()<.8)for(let i=0;i<3;i++)part({x:W2.x+rnd(-20,40),y:gy-rnd(0,W2.h),vx:rnd(-160,-40),vy:-rnd(40,160),g:500,life:.6,size:rnd(4,9),rgb:pick(['255,255,255','236,248,222']),add:false,shape:'dot'});return W2.a>0;},
+    draw(){ctx.save();ctx.globalAlpha=W2.a;for(const b of Bub)r21Froth(b.x,b.y,b.r*b.k,1,b.x*.01);
+      // a habfal: egymásra torlódó habgombócok a hullámfronttól a gólemig
+      if(W2.h>0){const x1=Math.max(W2.x,0);for(let x=o.x;x>=x1;x-=34){const q=(o.x-x)/Math.max(1,o.x-x1),hh=W2.h*(.45+.55*q);for(let yy=0;yy<hh;yy+=30)r21Froth(x+Math.sin(x*.05+yy)*8,gy-yy-14,26+q*12,1,x*.02+yy);}}
+      // a hősökön ülő hab
+      if(W2.cov>0)for(const t of al)for(let i=0;i<9;i++){const a=i/9*6.28;r21Froth(cx(t)+Math.cos(a)*t.w*t.scale*.32,midY(t)+Math.sin(a)*t.h*t.scale*.3+W2.cov*0,24,W2.cov,a);}
+      ctx.restore();}});
+  await wait(350);sfx('splash');sfx('whoosh');bodyStrike(u,200,.16);const hitT=new Set();
+  await tween(900,k=>{W2.x=o.x+(xmin-o.x)*easeIO(k);W2.h=130*Math.min(1,k*2.2);for(const t of al)if(!hitT.has(t)&&W2.x<cx(t)+30){hitT.add(t);t.hurt=.4;shake(8);sfx('splash');}});
+  W2.cov=1;for(const t of al){hit(u,t,sk);await wait(60);}
+  await tween(500,k=>{W2.h=130*(1-k);});await wait(400);await tween(500,k=>{W2.cov=1-k;W2.a=1-k*.3;});W2.a=0;await bodySettle(u);}finally{rel();}};
