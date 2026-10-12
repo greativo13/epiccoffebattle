@@ -149,6 +149,7 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
   - Átokindák → **Lángoló Átokketrec** (a láng a ketrec képével maszkolva). Lótuszharmat: új funkció, LIMIT +60%, MP +40% (a páros költsége utáni pótlással).
   - Habgejzír szeletenként hullámzik + habcsomók; Teafröccs a festett tea-hullám végighajlítva. Tusátok: festett kalligráfia (`fx7-inkglyph`, ecsetkép még nincs, a régi ecset marad), festett tusfoltok. Kőhabverő: festett kőörvény (`fx7-stonevortex`).
   - Az ellenségek fölötti „gyenge:” jelvény kivéve (r14a.js). A felszerelés-kép mind a 6 hősnél kész (`GEAR_LOOK`, `<hős>G*`).
+- **29. kör** (`r21r.js`): nagy „GYENGE PONT!” felirat (arany, felrobbanó, rázkódás; a kis címkék helyett), filmszerű főellenség-/minibossz-belépő (szélesvásznú sávok, beúszó név, morgás), időjárás témánként (`R21WX`: eső, levelek, szirmok, köd, gőz, hó, csepegés, hamu, homok, csillagok).
 
 ## Tesztlista és áttekintő (egy helyen)
 
@@ -165,10 +166,10 @@ Teljes tesztlista (könnyű szint, 381 pont, 2026-10-12-én a 26. kör után új
 A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, egyben készüljön el – látványosan, élethűen (CLAUDE.md A1).
 - **Napi kihívás** (`r14a.js`, `r16a.js`, térkép ⭐ gomb) már van – a tesztlapon (x31) ellenőrzi, működik-e; ha nem, javítani.
 - **Bestiárium** (📖 gomb) már van – x32; festett képek, leírás, gyengeség legyen benne, ha még hiányzik.
-- **Gyenge pont / kombó-jelzés:** ha a képesség eleme jól hat, nagy „GYENGE PONT!” felirat, rázkódás, hang.
-- **Főellenség-bevezető:** filmszerű belépő a fejezet végi főellenségnél (közelítés, név nagy betűkkel, hang).
-- **Felszerelés látszódjon a hősön** (új fegyver/kalap a figurán).
-- **Időjárás a pályákon:** eső, köd, hulló levelek a háttér témája szerint.
+- (kész, 29. kör) **Gyenge pont / kombó-jelzés:** ha a képesség eleme jól hat, nagy „GYENGE PONT!” felirat, rázkódás, hang.
+- (kész, 29. kör) **Főellenség-bevezető:** filmszerű belépő a fejezet végi főellenségnél (közelítés, név nagy betűkkel, hang).
+- (kész, 27–28. kör) **Felszerelés látszódjon a hősön** (új fegyver/kalap a figurán).
+- (kész, 29. kör) **Időjárás a pályákon:** eső, köd, hulló levelek a háttér témája szerint.
 - **Tesztlap „🎮 Megnézem a játékban” gomb:** ha a kezdőképernyős appból nem működik (x33), ki kell venni.
 
 ## Nyitott ügyek
