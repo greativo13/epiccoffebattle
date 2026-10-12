@@ -116,6 +116,14 @@ Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az el
   - Cerberus: fényes fekete-lila lángoszlop, a három fej egyszerre harap. Álomcsillagok: festett csillagok tömege. Gleccser: festett jégtüske-csoport (`fx7-glacier`). Átok: lángnyelves örvény, festett lánc/koponya (`fx7-hexchain`, `fx7-hexskull`).
   - Térképek: az 1–2. térkép festett pöttyös ösvénye képfeldolgozással eltávolítva (scratchpad `mapclean.js`; tiszta források `forras/kepforras/map*-tiszta.webp`).
   - Jázmin LIMIT-plakátja: a maradék fehér folt átlátszó.
+- **24. kör** (`r21k.js`, `r21l.js`):
+  - A 3. térkép ellenfeleinek új támadásai (a teljes tesztlista „gagyi” jelölései szerint): Habzápor, Habverő-pörgés, Mochi-ugrás, Tekeredés, Buzogánycsapás, Mozaiklövedék/-szilánkok (nagyobb Mozaik-szellem), Csőrcsapás, Csészecsapás, Forró gőz, Gőzsugár, Teafröccs, Gongütés, Habvihar, Megbékítő szó.
+  - Hab: fehér, buborékos matchahab (`fx7-froth`, a régi zöld `fx7-foam` helyén is); a `foamPour` habja lefolyik és eltűnik.
+  - Hiányzó hangnevek (quake, gong, steam, wind, crunch, zap, screech, roar, twinkle) meglévő hangokra irányítva.
+  - Kaelen 5 páros támadása: Medvelovaglás, Bambuszliget, Villámbambusz, Átokindák, Harmatkör.
+  - A 3. térkép saját festett csatahátterei: `bg-matchastream`, `bg-zengarden`, `bg-matchacave`, `bg-cloudpalace`.
+  - Javítás: a Koffeines mókus csak az 1. fejezetben bukkan fel (eddig a 10–12. fejezetben is).
+  - Ellenőrzés: `playall.js` 50 pálya hiba nélkül, `foe.js` 177 támadás, `sumall.js` 23 idézés, `all.js` 85 képesség – hiba nincs.
 
 ## Tesztlista és áttekintő (egy helyen)
 
