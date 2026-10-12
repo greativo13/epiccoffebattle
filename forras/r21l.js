@@ -79,3 +79,6 @@ R16P['Harmatkör']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B1,fa=dr
   r16Lower(fa);for(const t of al){for(let i=0;i<5;i++){const s={x:mx+rnd(-80,80),y:gy-rnd(150,250)};flyObj(s,{x:cx(t)+rnd(-30,30),y:midY(t)+rnd(-40,30)},300+i*40,(x,y)=>{ctx.save();ctx.globalCompositeOperation='lighter';glow(x,y,24,'170,230,255',.9);glow(x,y,8,'255,255,255',1);ctx.restore();},{arc:90});}}
   await wait(500);for(const t of al){sfx('ice');sparks(cx(t),midY(t),['180,240,255','255,255,255'],20,400);t.hurt=.4;hit(dr,t,sk);await wait(70);}
   r16Lower(dr);await tween(500,k=>L.a=1-k);};
+
+// ---- A 3. térkép saját csatahátterei (festett): 9. fejezet matcha-patakos bambuszerdő, 10. zen-kert, 11. matchakádas barlang, 12. felhőpalota
+{const TH={9:'matchastream',10:'zengarden',11:'matchacave',12:'cloudpalace'};for(const z of ZONES)for(const l of z.levels){const ch=parseInt(l.id,10);if(TH[ch])l.theme=TH[ch];}}
