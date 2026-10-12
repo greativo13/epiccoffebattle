@@ -312,3 +312,6 @@ A.cerberus=async(u,ts,sk)=>{
       for(let k=0;k<3;k++){const q=(z.t*.5+k*.33)%1;const x=cx(t)+20+q*60+Math.sin(q*8)*10,y=topY(t)-q*90;ctx.font=`bold ${22+k*10}px serif`;ctx.strokeText('Z',x,y);ctx.fillText('Z',x,y);}ctx.restore();}});}
     await Promise.all(jobs);}
   await run;};}
+
+// ---- Kaelen új, mesehősösebb képei (álló, támadó, varázsló, sérült): a figura a kép ~91%-át tölti ki, ezért kicsit magasabb; a „kéz” a bot drágakövénél (rácson mérve: 455,90 a 520×689-es képen)
+Object.assign(HERO_DEF.druid,{h:270,w:105,hand:[76,-227]});
