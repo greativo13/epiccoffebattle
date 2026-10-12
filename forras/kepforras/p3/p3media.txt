@@ -24,3 +24,4 @@ rosestorm MAHXy6fvnZ0 foamgeyser MAHXy6R3ACQ
 firewall MAHXy-ygk4Y wizgear MAHXy9x7aaM (ref feltöltés MAHXy2ZtQxo)
 witchG MAHXy0xMR2I fairyG MAHXywiSjvw orcG MAHXywqS_Po snakebody MAHXy9POjPE; ref lapok: witch MAHXy5tFypM fairy MAHXy_h0MRE orc MAHXy6L9-M4 monk MAHXy4waUcU druid MAHXy_5KnuA
 monkG MAHXzEwsALQ druidG MAHXzCU2zYU
+inkglyph MAHXzJaHxvs stonevortex MAHXzGtxmBU
