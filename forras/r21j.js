@@ -315,3 +315,11 @@ A.cerberus=async(u,ts,sk)=>{
 
 // ---- Kaelen új, mesehősösebb képei (álló, támadó, varázsló, sérült): a figura a kép ~91%-át tölti ki, ezért kicsit magasabb; a „kéz” a bot drágakövénél (rácson mérve: 455,90 a 520×689-es képen)
 Object.assign(HERO_DEF.druid,{h:270,w:105,hand:[76,-227]});
+
+// ---- Jázmin LIMIT-plakátja (monk-attack) és varázspóza: a haja és a tegeze közti kisebb, zárt fehér foltok is átlátszók (a HOLES csak a 300 px feletti, tiszta fehér foltokat vitte el)
+{const fixWhite=c=>{const g=c.getContext('2d'),W2=c.width,H2=c.height,d=g.getImageData(0,0,W2,H2),px=d.data,N=W2*H2,wh=i=>px[i*4+3]>200&&Math.min(px[i*4],px[i*4+1],px[i*4+2])>=226,seen=new Uint8Array(N);
+   for(let i=0;i<N;i++){if(seen[i]||!wh(i))continue;const comp=[i];seen[i]=1;for(let q=0;q<comp.length;q++){const j=comp[q],x=j%W2,y=(j/W2)|0;for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){const xx=x+dx,yy=y+dy;if(xx<0||yy<0||xx>=W2||yy>=H2)continue;const k=yy*W2+xx;if(!seen[k]&&wh(k)){seen[k]=1;comp.push(k);}}}
+     if(comp.length>=45&&comp.length<6000)for(const j of comp)px[j*4+3]=0;}
+   g.putImageData(d,0,0);};
+ const done=new Set(),iv=setInterval(()=>{if(typeof ENEMY_SPR!=='object')return;for(const k of ['monk-attack']){const c=ENEMY_SPR[k];if(c&&c.getContext&&!done.has(k)){try{fixWhite(c);}catch(e){}done.add(k);}}if(done.size>=1)clearInterval(iv);},500);
+ setTimeout(()=>clearInterval(iv),60000);}
