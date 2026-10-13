@@ -168,7 +168,8 @@ r21CoilPath=function(gx,top,bot,R,turns,k,from,sq=0,headLift=0){const dir=gx>=fr
   // a földi szakasz: Ls-sel a kiindulás mögül indul, enyhén kígyózik, és a spirál aljába fut
   const G=[],gx0=from.x-dir*(Ls+40),gy0=from.y;for(let i=0;i<=N0;i++){const q=i/N0,x=gx0+(s0.x-gx0)*q,amp=Math.min(1,q*4,(1-q)*6)*12;G.push({x,y:gy0+(s0.y-gy0)*q+Math.sin(x*.045)*amp,b:false});}
   for(let i=1;i<=NS;i++)G.push(sp(i/NS));
-  const tp=sp(1);G.push({x:tp.x+dir*8,y:tp.y-30-headLift,b:false});
+  // (ha12) a fej a spirál végén, a nyomvonal irányában marad (nem ugrik fel külön pontra – úgy levált a testről)
+  if(headLift){const tp=sp(1);G.push({x:tp.x+dir*6,y:tp.y-headLift*.6,b:false});}
   const L=[0];for(let i=1;i<G.length;i++)L.push(L[i-1]+Math.hypot(G[i].x-G[i-1].x,G[i].y-G[i-1].y));const tot=L[L.length-1];
   const at=d=>{d=Math.max(0,Math.min(tot,d));let j=1;while(j<L.length-1&&L[j]<d)j++;const q=(d-L[j-1])/Math.max(1e-6,L[j]-L[j-1]),A=G[j-1],B=G[j];return {x:A.x+(B.x-A.x)*q,y:A.y+(B.y-A.y)*q,b:q<.5?A.b:B.b};};
   const e=k*k*(3-2*k),head=Ls+40+(tot-(Ls+40))*e,P=[],M=90;for(let i=0;i<=M;i++)P.push(at(head-Ls*i/M));return P;};

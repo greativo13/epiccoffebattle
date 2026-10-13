@@ -27,7 +27,7 @@ A.inkWave=async(u,ts,sk)=>{const al=ts.filter(h=>h.alive);if(!al.length)return;c
       if(G.a<=0)return;const D2=R17I.inkdragon2;
       // (fa08: „a sárkány csak egy kép, ezért darabos a mozgása”) a festett, egyenes testű tussárkány a saját nyomvonalán
       // hajlik végig, mint egy kígyó – a teste folyamatosan követi a fejét
-      if(D2){const L=DW*G.s*1.05,th=L*D2.height/D2.width;const P=[{x:G.x,y:G.y,b:G.b}];let acc=0;for(const q of G.tr){const l=P[P.length-1];const dd=Math.hypot(q.x-l.x,q.y-l.y);if(dd<1)continue;acc+=dd;P.push(q);if(acc>=L)break;}
+      if(D2){const L=DW*G.s*1.45,th=L*D2.height/D2.width*1.1;const P=[{x:G.x,y:G.y,b:G.b}];let acc=0;for(const q of G.tr){const l=P[P.length-1];const dd=Math.hypot(q.x-l.x,q.y-l.y);if(dd<1)continue;acc+=dd;P.push(q);if(acc>=L)break;}
         if(acc<L){const l=P[P.length-1],pv=P.length>1?P[P.length-2]:{x:l.x+Math.cos(G.ang)*-1,y:l.y+Math.sin(G.ang)*-1};let dx=l.x-pv.x,dy=l.y-pv.y,dl=Math.hypot(dx,dy)||1;if(P.length<2){dx=-Math.cos(G.ang)*(G.flip?-1:1);dy=-Math.sin(G.ang)*(G.flip?-1:1);dl=1;}
           const rem=L-acc;for(let k2=1;k2<=6;k2++)P.push({x:l.x+dx/dl*rem*k2/6,y:l.y+dy/dl*rem*k2/6,b:l.b});}
         ctx.save();if(G.cl!=null){ctx.beginPath();ctx.rect(G.x-3000,G.cl-3000,6000,3000);ctx.clip();}r21Snake2(D2,P,th,G.a,.6);ctx.restore();return;}

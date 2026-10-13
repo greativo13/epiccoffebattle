@@ -213,3 +213,9 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Gólem: kevesebb, vegyes méretű karó; valódi lecsapás (előredől, karok lezúdulnak, utóképek). Bambuszliget: nyilak felülről, gyorsabban.
 - Lótuszharmat: nincs sárga oszlop a hősökön, 320 szirom, nagyobb szél, gyorsabb nő. Medve: nincs felágaskodás, kétszer nekiugrik, végig azonos méret.
 - Kígyó: a fej merev darab (nem vágódik szét). Hiba: r21q.js-ben elírt zárójel (node --check fogta meg) – minden build előtt node --check.
+
+## 33. kör – ha-jelölések
+- Tündérököl: festett, jobbra ütő aranyököl (fx7-goldpunch) Grog öklén gyúl ki, kilő, repülés közben az ellenfél méretéig nő, egyszerre suhan át mindenkin, aranyrobbanás + csillámpor-eső.
+- Árnyroham: Grog füstté oszlik, a helyén festett árnypenge (fx7-shadowblade) suhan végig, sötétebb kép, aztán újra Groggá áll össze.
+- Tussárkány: fehér folt a fej mellett kivágva, 1,4× nagyobb. Kígyó/sárkány fej: a fej hossza a fejkép arányából, a test textúrája a fej mögött kezdődik (nincs dupla fej, nincs nyújtás).
+- Bambusz-gólem: 470 px, a hősök eltűnnek, a gólem a helyükön jelenik meg. Bambuszliget: becsapódási fényrobbanás, nagyobb izzó nyilak, finálé: a karók felizzanak és szétrobbannak.

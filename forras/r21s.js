@@ -17,11 +17,12 @@ function r21Snake2(im,P,thick,a=1,dim=.5){if(!im||P.length<2)return;const N=64,W
   let j=1;const S=[];for(let i=0;i<N;i++){const d=(i+.5)*tot/N;while(j<L.length-1&&L[j]<d)j++;const q=(d-L[j-1])/Math.max(1e-6,L[j]-L[j-1]),A=P[j-1],B=P[j];
     S.push({x:A.x+(B.x-A.x)*q,y:A.y+(B.y-A.y)*q,b:A.b,ang:Math.atan2(B.y-A.y,B.x-A.x)});}
   // a fej (a kép bal 13%-a) MEREV darab: nem hajlik szét szeletekre (ga08: „a feje fura, mintha el lenne vágva”)
-  const HF=im===R17I.snakebody?.13:im===R17I.inkdragon2?.13:0,NH=Math.round(N*HF);
-  const sl=tot/N;for(const pass of [1,0]){for(let i=N-1;i>=NH;i--){const p=S[i];if((p.b?1:0)!==pass)continue;ctx.save();ctx.globalAlpha=a*(p.b?dim:1);ctx.translate(p.x,p.y);ctx.rotate(p.ang);
-    if(Math.cos(p.ang)<0)ctx.scale(1,-1);ctx.drawImage(im,i*sw,0,sw+1,H,-sl/2-.6,-thick/2,sl+1.2,thick);ctx.restore();}
-    if(NH>0&&((S[0].b?1:0)===pass)){const A=P[0],B=S[NH],L2=sl*NH,an=Math.atan2(A.y-B.y,A.x-B.x)+Math.PI,hx=(A.x+B.x)/2,hy=(A.y+B.y)/2,HH=thick*1.15;
-      ctx.save();ctx.globalAlpha=a*(S[0].b?dim:1);ctx.translate(hx,hy);ctx.rotate(an);if(Math.cos(an)<0)ctx.scale(1,-1);ctx.drawImage(im,0,0,NH*sw+1,H,-L2/2-2,-HH/2,L2+3,HH);ctx.restore();}}}
+  // (ha12: „a kígyó feje hibás” – a fej megnyúlt téglalap volt) a fej hossza a fejkép saját arányából jön (nem a pálya
+  // hosszából), így sosem torzul; a test a fej mögött kezdődik
+  const HF=im===R17I.snakebody?.13:im===R17I.inkdragon2?.13:0,sl=tot/N,HHd=thick*1.15,Lh=HHd*HF*W/H,NH=HF?Math.min(N-2,Math.max(1,Math.round(Lh/sl))):0;for(const pass of [1,0]){for(let i=N-1;i>=NH;i--){const p=S[i];if((p.b?1:0)!==pass)continue;ctx.save();ctx.globalAlpha=a*(p.b?dim:1);ctx.translate(p.x,p.y);ctx.rotate(p.ang);
+    if(Math.cos(p.ang)<0)ctx.scale(1,-1);const s2=NH?(W*(1-HF))/(N-NH):sw,sx=NH?W*HF+(i-NH)*s2:i*sw;ctx.drawImage(im,sx,0,s2+1,H,-sl/2-.6,-thick/2,sl+1.2,thick);ctx.restore();}
+    if(NH>0&&((S[0].b?1:0)===pass)){const A=P[0],B=S[NH],an=Math.atan2(A.y-B.y,A.x-B.x)+Math.PI,hx=A.x+Math.cos(an)*Lh/2,hy=A.y+Math.sin(an)*Lh/2;
+      ctx.save();ctx.globalAlpha=a*(S[0].b?dim:1);ctx.translate(hx,hy);ctx.rotate(an);if(Math.cos(an)<0)ctx.scale(1,-1);ctx.drawImage(im,0,0,HF*W,H,-Lh/2-1,-HHd/2,Lh+3,HHd);ctx.restore();}}}
 r21DrawCoil=function(im,P,thick,a=1){if(!im||P.length<2)return;const n=P.length;
   const Q=P.map((p,i)=>{if(i===0||i===n-1)return p;const dx=P[i+1].x-P[i-1].x,dy=P[i+1].y-P[i-1].y,l=Math.hypot(dx,dy)||1,w=Math.sin(i*.42-T*11)*thick*.16*Math.min(1,i/6);return {x:p.x-dy/l*w,y:p.y+dx/l*w,b:p.b};});
   r21Snake2(im,Q,thick,a,.5);};
@@ -109,16 +110,18 @@ function r21Stake(x,gy,H,k,lean=0,a=1){const im=R17I.bamboopole;if(!im||k<=0)ret
 // ---- PÁROS: Bambuszliget (ca17: „túl gyors, a nyilakból legyenek a bambuszkarók, hegyes legyen a vége”): Jázmin lassabban,
 // egyenként lő; minden nyílvessző a földbe fúródik, és ABBÓL a pontból hegyes bambuszkaró szúr ki (a nyílvessző eltűnik
 // a karóban), a karók megemelik az ellenséget; a végén lassan visszahúzódnak
-R16P['Bambuszliget']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B1,monk=dr===A1?B1:A1,arw=FX_IMG.jzarrow;await dimTo(.3,'10,30,5',300);
+R16P['Bambuszliget']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B1,monk=dr===A1?B1:A1,arw=FX_IMG.jzarrow;await dimTo(.5,'8,24,6',300);
   await r16Raise(dr,'150,230,90');r16Lower(dr);const xs=al.slice().sort((a,b)=>cx(a)-cx(b)),P=[],AR=[],E={a:1};
-  R18E({update(){return E.a>0;},draw(){for(const r of AR)if(r.a>0&&arw)r17Draw(arw,r.x,r.y,140,{rot:r.an,a:r.a*E.a});for(const q of P)r21Stake(q.x,q.gy,q.H,q.k,q.l,E.a);}});
+  const BU=[];// becsapódási fényrobbanások (ha10: látványosabb)
+  R18E({update(dt){for(const b of BU)b.t+=dt;return E.a>0;},draw(){for(const b of BU){if(b.t>.6)continue;const k=b.t/.6;ctx.save();ctx.globalCompositeOperation='lighter';glow(b.x,b.y-10,90*(.4+k),'170,255,120',.75*(1-k));ctx.translate(b.x,b.y);ctx.scale(1,.25);glow(0,0,140*(.3+k),'200,255,150',.6*(1-k));ctx.restore();}
+    for(const r of AR)if(r.a>0&&arw){ctx.save();ctx.globalCompositeOperation='lighter';glow(r.x,r.y,40,'180,255,140',.6*r.a*(r.glow||0));ctx.restore();r17Draw(arw,r.x,r.y,170,{rot:r.an,a:r.a*E.a});}for(const q of P)r21Stake(q.x,q.gy,q.H,q.k,q.l,E.a);}});
   monk.pose='attack';const shots=[];for(const t of xs)for(const dx of [-80,-40,0,40,80])shots.push({t,dx});
   // (ga06: „Jázmin nyilai fentről érkezzenek, és gyorsabban”) Jázmin előbb az ég felé lő egy izzó sortüzet, aztán a nyilak
   // felülről, meredeken zúdulnak le
   {const h=handPos(monk);sfx('whoosh');for(let n=0;n<14;n++)setTimeout(()=>part({x:h.x+rnd(-8,8),y:h.y,vx:rnd(40,160),vy:-rnd(900,1300),life:.45,size:rnd(3,5),rgb:pick(['180,255,140','255,255,255']),shape:'streak'}),n*25);await wait(380);}
   await Promise.all(shots.map((s,i)=>wait(i*95).then(()=>{const t=s.t,gx=cx(t)+s.dx,gy=t.y+t.oy+6,h={x:gx-150+rnd(-30,30),y:-60};sfx('whoosh');
-    return flyObj(h,{x:gx,y:gy},230,(x,y)=>{const an=Math.atan2(gy-h.y,gx-h.x);ctx.save();ctx.globalCompositeOperation='lighter';glow(x,y,34,'180,255,140',.7);ctx.restore();if(arw)r17Draw(arw,x,y,140,{rot:an});},{arc:0,trail:['180,255,140','255,255,255']})
-      .then(async()=>{const an=Math.atan2(gy-h.y,gx-h.x),ar={x:gx-Math.cos(an)*30,y:gy-Math.sin(an)*30,an,a:1};AR.push(ar);sfx('rock');shake(5);
+    return flyObj(h,{x:gx,y:gy},230,(x,y)=>{const an=Math.atan2(gy-h.y,gx-h.x);ctx.save();ctx.globalCompositeOperation='lighter';glow(x,y,48,'180,255,140',.85);ctx.restore();if(arw)r17Draw(arw,x,y,170,{rot:an});if(Math.random()<.6)part({x,y,vx:rnd(-40,40),vy:rnd(-40,40),life:.35,size:rnd(2,4),rgb:'200,255,160',shape:'star'});},{arc:0,trail:['180,255,140','255,255,255']})
+      .then(async()=>{const an=Math.atan2(gy-h.y,gx-h.x),ar={x:gx-Math.cos(an)*30,y:gy-Math.sin(an)*30,an,a:1};AR.push(ar);BU.push({x:gx,y:gy,t:0});sfx('rock');sfx('hit');shake(8);flash('190,255,150',.12,.08);
         for(let n=0;n<8;n++)part({x:gx,y:gy,vx:rnd(-160,160),vy:-rnd(80,260),g:800,life:.6,size:rnd(4,8),rgb:pick(['120,95,60','150,220,90']),add:false,shape:'rock'});
         // a nyíl izzik, a föld megremeg, majd a nyíl helyéből kiszúr a hegyes karó
         await tween(260,k=>{ar.glow=k;if(Math.random()<.3)part({x:gx,y:gy,vx:rnd(-30,30),vy:-rnd(40,90),life:.4,size:rnd(3,5),rgb:'180,255,140',shape:'star'});});
@@ -127,7 +130,12 @@ R16P['Bambuszliget']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B1,mon
         await Promise.all(QS.map((q,j)=>wait(j*60).then(()=>tween(360,k=>q.k=r21ease.back(k)))));t.hurt=.5;tween(420,k=>t.jump=Math.max(t.jump||0,150*Math.sin(k*Math.PI*.5)));});})));
   monk.pose='idle';sfx('quake');shake(20);kaeLeaves((cx(xs[0])+cx(xs[xs.length-1]))/2,220,80,520);await wait(600);
   await tween(380,k=>{for(const t of xs)t.jump=150*(1-k*k);});for(const t of xs){t.jump=0;toss(t,40,300);hit(dr,t,sk);}shake(24);
-  await wait(700);await tween(800,k=>{for(const q of P)q.k=Math.min(q.k,1-r21ease.in(k));});E.a=0;await dimTo(0,null,300);};
+  // finálé: a karók zöld fénnyel felizzanak és szétrobbannak, bambuszszilánkok záporoznak az ellenségekre
+  await wait(450);sfx('holy');for(const q of P)BU.push({x:q.x,y:q.gy-q.H*.4,t:-.1});await wait(250);
+  sfx('boom');sfx('rock');shake(26);flash('200,255,160',.4,.15);rumble&&rumble(1.2,10);
+  for(const q of P){for(let n=0;n<7;n++)part({x:q.x+rnd(-6,6),y:q.gy-rnd(0,q.H),vx:rnd(-420,420),vy:-rnd(120,520),g:900,life:rnd(.6,1),size:rnd(4,9),rgb:pick(['150,190,70','200,220,120','110,150,50']),add:false,shape:'rock'});q.k=0;}
+  kaeLeaves((cx(xs[0])+cx(xs[xs.length-1]))/2,300,70,620);for(const t of xs){t.hurt=.6;toss(t,70,420);}
+  await wait(500);await tween(300,k=>{for(const q of P)q.k=0;});E.a=0;await dimTo(0,null,300);};
 
 // ---- PÁROS: Lótuszharmat (ca20): a lehulló harmatcseppek után a lótuszszirmok összeállnak egy szirmokból álló női alakká
 // (festett fx7-lotuswoman), aki nagy széllel végigszalad az ellenségeken (meglöki, meghajlítja őket) és szirmokat hullajt;
@@ -187,7 +195,9 @@ R16P['Élő Tölgybárd']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B
 // a funkció változatlan (sebzés + bambuszfal: a csapat védelme 2 körig nő)
 {const bg0=A.bambooGolem;A.bambooGolem=async(u,ts,sk)=>{const s0=R17I.golemstand,s1=R17I.golemup;if(!s0||!s1)return bg0(u,ts,sk);const rel=keepPose(u);try{
   u.pose='cast';await bodyWind(u,240,.14);sfx('quake');await dimTo(.45,'10,30,5',300);const al=ts.filter(e=>e.alive);
-  const GH=390,G={x:Math.max(cx(u)+150,330),y:Math.max(...S.heroes.filter(h=>h.alive).map(h=>h.y+h.oy))+6,k:0,a:1,up:0,rot:0,sq:1,sink:0,dx:0,gh:[]};
+  // (ha09: „nagyobb gólem, jöjjön hátrébb – a hősök addig tűnjenek el, és a helyükre”)
+  const HS=S.heroes.filter(h=>h.alive),HA=HS.map(h=>h.alpha==null?1:h.alpha);for(const h of HS)kaeLeaves(cx(h),midY(h),14,240);await tween(300,k=>HS.forEach((h,j)=>h.alpha=HA[j]*(1-k)));
+  const GH=470,G={x:Math.round(HS.reduce((a,h)=>a+cx(h),0)/HS.length)+10,y:Math.max(...HS.map(h=>h.y+h.oy))+6,k:0,a:1,up:0,rot:0,sq:1,sink:0,dx:0,gh:[]};
   const F=[],E={a:1};
   R18E({update(){return G.a>0||E.a>0;},draw(){
     // tüskemező (a hátsó sorok előbb, hogy a közelebbiek takarják őket)
@@ -210,7 +220,7 @@ R16P['Élő Tölgybárd']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B
   for(let i=0;i<30;i++)part({x:G.x+rnd(40,200),y:G.y,vx:rnd(-300,300),vy:rnd(-520,-180),life:rnd(.6,1),size:rnd(8,15),rgb:pick(['120,90,60','90,70,40']),g:900,add:false,shape:'rock'});
   // bambusztüske-mező: a becsapódástól hullámban terjed jobbra, több sorban (mélység szerint)
   // (ga04: „kisebb-nagyobb tüskék össze-vissza, és nem kell ilyen sűrűn”)
-  const x0=G.x+110,rows=[-34,-6,20],hitT=new Set();
+  const x0=G.x+170,rows=[-34,-6,20],hitT=new Set();
   for(const dy of rows)for(let x=x0+rnd(0,40);x<990;x+=rnd(40,75)){const d=x-x0,big=Math.random()<.45;F.push({x:x+rnd(-12,12),gy:G.y+dy-30+(dy+34)*.4,H:(big?rnd(220,330):rnd(70,140))*(1+dy/160),k:0,l:rnd(-.22,.22),d});}
   for(const t of al){const gy=t.y+t.oy+6;for(let j=0;j<3;j++){const x=cx(t)+(j-1)*30;F.push({x,gy,H:Math.max(240,t.h*t.scale*1.5)*rnd(.85,1.1),k:0,l:(j-1)*.12,d:x-x0});}}
   F.sort((a,b)=>a.gy-b.gy);const v=1200;// px/s
@@ -222,4 +232,4 @@ R16P['Élő Tölgybárd']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B
   sfx('quake');tween(420,k=>{const e=r21ease.io(k);G.rot=.34*(1-e);G.sq=.9+.1*k;G.dx=70*(1-e);});await wait(450);
   await tween(320,k=>{for(const t of al)t.jump=170*(1-k*k);});for(const t of al){t.jump=0;toss(t,60,420);hit(u,t,sk);}shake(20);
   const hs=S.heroes.filter(h=>h.alive);hs.forEach(h=>addStatus(h,'defUp',2));popLabel(u,'BAMBUSZFAL!','#b8e07a');await wait(650);
-  await tween(700,k=>{const e=r21ease.in(k);for(const q of F)q.k=Math.min(q.k,1-e);G.sink=GH*e;});G.a=0;E.a=0;F.length=0;await dimTo(0,null,300);await bodySettle(u);}finally{for(const t of ts)t.jump=0;rel();}};}
+  await tween(700,k=>{const e=r21ease.in(k);for(const q of F)q.k=Math.min(q.k,1-e);G.sink=GH*e;});G.a=0;E.a=0;F.length=0;await tween(320,k=>HS.forEach((h,j)=>h.alpha=HA[j]*k));for(const h of HS)kaeLeaves(cx(h),midY(h),10,200);await dimTo(0,null,300);await bodySettle(u);}finally{for(const t of ts)t.jump=0;for(const h of S.heroes)if(h.alpha<.05)h.alpha=1;rel();}};}
