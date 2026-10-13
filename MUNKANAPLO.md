@@ -198,3 +198,7 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
   Kígyó: egyetlen nyomvonal (a test a fej nyomában). Forró hab: Magmakitörés-mintájú matcha-tócsa + festett habszökőkút. Levéltánc: a levelek átmennek az ellenségen.
   Gólem nagyobb, festett bambuszkaró (fx7-bamboostake) mező. Élő Tölgybárd sötétebb: fekete-zöld indák, festett tüskés gyökerek (fx7-darkroots).
   Bambuszliget: 5 nyíl/ellenség, nyilanként 3 karó. Lótuszharmat gyorsabb, több szirom, harmatlevél a bal szélen. Medve nagyobb, simább, festett karomcsapás (fx7-bearclaw).
+
+## Várakozó kérések (a felhasználó: „majd egybe” – a következő javítócsomagban)
+- Morgána – Sötétalku: megint lángok veszik körbe → a lángok teljesen ki (B7: korábbi tiltás!). Előtte: grep az összes Sötétalku-réteg/burkoló után.
+- Tealopó majom: 8 csészét dob → elég 3.
