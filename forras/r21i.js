@@ -22,9 +22,16 @@ A.inkWave=async(u,ts,sk)=>{const al=ts.filter(h=>h.alive);if(!al.length)return;c
   const im=R17I.inkdragon,DW=720,{mx}=grp(al),minX=Math.min(...al.map(t=>cx(t)-t.w*t.scale*.5)),maxX=Math.max(...al.map(t=>cx(t)+t.w*t.scale*.5)),gy2=Math.max(...al.map(t=>t.y+t.oy)),top2=Math.min(...al.map(topY));
   const RX=Math.min(210,(maxX-minX)/2+80),RY=56,cxs=Math.max(RX+40,(minX+maxX)/2),G={x:p0.x,y:p0.y-50,s:.05,ang:-1.2,flip:false,a:1,b:false,on:true,wob:0},rib=[];
   // tus-szalag: a sárkány után húzódó, elmosódó tuscsík (ez rajzolja a spirált a hősök körül)
-  R17E({update(){if(G.on&&!G.nr){rib.unshift({x:G.x,y:G.y,b:G.b,a:1});if(rib.length>70)rib.pop();}for(const r of rib)r.a-=.012;return G.on||rib.some(r=>r.a>0);},
+  G.tr=[];R17E({update(){if(G.on){const l=G.tr[0];if(!l||Math.hypot(l.x-G.x,l.y-G.y)>2){G.tr.unshift({x:G.x,y:G.y,b:G.b});if(G.tr.length>400)G.tr.pop();}}if(G.on&&!G.nr){rib.unshift({x:G.x,y:G.y,b:G.b,a:1});if(rib.length>70)rib.pop();}for(const r of rib)r.a-=.012;return G.on||rib.some(r=>r.a>0);},
     draw(){ctx.save();ctx.lineCap='round';for(const pass of [1,0])for(let i=1;i<rib.length;i++){const r=rib[i],q=rib[i-1];if((r.b?1:0)!==pass||r.a<=0)continue;const f=1-i/rib.length;ctx.strokeStyle=`rgba(12,10,18,${(r.b?.35:.7)*r.a*f})`;ctx.lineWidth=70*f+6;ctx.beginPath();ctx.moveTo(q.x,q.y);ctx.lineTo(r.x,r.y);ctx.stroke();}ctx.restore();
-      if(!im||G.a<=0)return;const w=DW*G.s,h=w*im.height/im.width;ctx.save();if(G.cl!=null){ctx.beginPath();ctx.rect(G.x-3000,G.cl-3000,6000,3000);ctx.clip();}ctx.globalAlpha=G.a*(G.b?.6:1);ctx.translate(G.x,G.y);ctx.rotate(G.ang);ctx.scale(G.flip?-1:1,1);
+      if(G.a<=0)return;const D2=R17I.inkdragon2;
+      // (fa08: „a sárkány csak egy kép, ezért darabos a mozgása”) a festett, egyenes testű tussárkány a saját nyomvonalán
+      // hajlik végig, mint egy kígyó – a teste folyamatosan követi a fejét
+      if(D2){const L=DW*G.s*1.05,th=L*D2.height/D2.width;const P=[{x:G.x,y:G.y,b:G.b}];let acc=0;for(const q of G.tr){const l=P[P.length-1];const dd=Math.hypot(q.x-l.x,q.y-l.y);if(dd<1)continue;acc+=dd;P.push(q);if(acc>=L)break;}
+        if(acc<L){const l=P[P.length-1],pv=P.length>1?P[P.length-2]:{x:l.x+Math.cos(G.ang)*-1,y:l.y+Math.sin(G.ang)*-1};let dx=l.x-pv.x,dy=l.y-pv.y,dl=Math.hypot(dx,dy)||1;if(P.length<2){dx=-Math.cos(G.ang)*(G.flip?-1:1);dy=-Math.sin(G.ang)*(G.flip?-1:1);dl=1;}
+          const rem=L-acc;for(let k2=1;k2<=6;k2++)P.push({x:l.x+dx/dl*rem*k2/6,y:l.y+dy/dl*rem*k2/6,b:l.b});}
+        ctx.save();if(G.cl!=null){ctx.beginPath();ctx.rect(G.x-3000,G.cl-3000,6000,3000);ctx.clip();}r21Snake2(D2,P,th,G.a,.6);ctx.restore();return;}
+      if(!im)return;const w=DW*G.s,h=w*im.height/im.width;ctx.save();if(G.cl!=null){ctx.beginPath();ctx.rect(G.x-3000,G.cl-3000,6000,3000);ctx.clip();}ctx.globalAlpha=G.a*(G.b?.6:1);ctx.translate(G.x,G.y);ctx.rotate(G.ang);ctx.scale(G.flip?-1:1,1);
       // a fej (a kép bal széle) legyen elöl: a kép kb. 15%-ánál van a fej
       const N=48;for(let i=0;i<N;i++){const sx=i*im.width/N,dx=-w*.15+i*w/N,wy=Math.sin(T*6-i*.22)*h*.035*G.wob;ctx.drawImage(im,sx,0,im.width/N+1,im.height,dx,-h/2+wy,w/N+1,h);}ctx.restore();}});
   sfx('growl');

@@ -24,7 +24,7 @@ LIMBS.monkey={order:['arm','cup'],parts:{
   cup:{poly:[[0,.465],[.15,.465],[.165,.505],[.165,.61],[.13,.635],[0,.635]],pivot:[.32,.67]}}};
 A.cupThrow=async(u,ts,sk)=>{const t=ts[0];if(!t)return;const rel=keepPose(u);try{const T0=limbOn(u,'monkey');if(!T0){hit(u,t,sk);return;}
   const arm=T0.arm,cup=T0.cup,P=[arm,cup];arm.blur=true;cup.blur=true;
-  for(let n=0;n<4;n++){
+  for(let n=0;n<3;n++){   // a felhasználó: elég 3 csésze
     if(n>0){cup.hide=false;cup.a=0;sfx('click');await tween(140,k=>{cup.a=k;});cup.a=1;}
     sfx('whoosh');await tween(n?200:300,k=>{const e=easeIO(k);for(const p of P)p.rot=1.9*e;u.lean=.12*e;u.sq=1+.04*e;});
     await tween(110,k=>{const e=k*k;for(const p of P)p.rot=1.9-2.3*e;u.lean=.12-.3*e;u.sq=1.04-.08*k;});

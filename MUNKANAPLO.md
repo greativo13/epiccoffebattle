@@ -199,6 +199,17 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
   Gólem nagyobb, festett bambuszkaró (fx7-bamboostake) mező. Élő Tölgybárd sötétebb: fekete-zöld indák, festett tüskés gyökerek (fx7-darkroots).
   Bambuszliget: 5 nyíl/ellenség, nyilanként 3 karó. Lótuszharmat gyorsabb, több szirom, harmatlevél a bal szélen. Medve nagyobb, simább, festett karomcsapás (fx7-bearclaw).
 
-## Várakozó kérések (a felhasználó: „majd egybe” – a következő javítócsomagban)
+## Várakozó kérések – KÉSZ a 32. körben
 - Morgána – Sötétalku: megint lángok veszik körbe → a lángok teljesen ki (B7: korábbi tiltás!). Előtte: grep az összes Sötétalku-réteg/burkoló után.
 - Tealopó majom: 8 csészét dob → elég 3.
+
+## 32. kör – egyensúly + tesztlap-jelölések + hibakeresés
+- r21u.js EGYENSÚLY (bal.js mérés, Normál): késői pályákon alaptámadás az ellenfél életének 2–5%-a, LIMIT 7–15%, idézés 10–20% volt.
+  Javítás: ellenfél ÉP osztó 1+(szint−4)·0,06 (főellenség ·0,82), támadás −12% a 8. szinttől; LIMIT ×1,6, idézés ×1,6, páros ×1,3.
+  Utána: alaptámadás 9–25%, LIMIT 60–100% minden ellenfélre, idézés ~1 ellenfél-élet; ellenfél ütése a hős ÉP-jének 10–30%-a.
+- Sötétalku: a megszállt Morgána körül nincs darkFlame (r19-es burkoló szórta). Tealopó majom: 3 csésze, körönként egyszer dob.
+- Tündérököl: Grog fejsze nélküli képe, az aranyököl az öklén (KP .245/.245), halványabb sugarak. Árnyroham még gyorsabb.
+- Tusátok: egyenes testű festett tussárkány (fx7-inkdragon2) a nyomvonalán hajlik (r21Snake2, merev fej).
+- Gólem: kevesebb, vegyes méretű karó; valódi lecsapás (előredől, karok lezúdulnak, utóképek). Bambuszliget: nyilak felülről, gyorsabban.
+- Lótuszharmat: nincs sárga oszlop a hősökön, 320 szirom, nagyobb szél, gyorsabb nő. Medve: nincs felágaskodás, kétszer nekiugrik, végig azonos méret.
+- Kígyó: a fej merev darab (nem vágódik szét). Hiba: r21q.js-ben elírt zárójel (node --check fogta meg) – minden build előtt node --check.

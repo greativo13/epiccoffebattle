@@ -29,15 +29,20 @@ function r21DrawCoil(im,P,thick,a=1){if(!im||P.length<2)return;let L=0;for(let i
   popLabel(u,f==='bear'?'MEDVEFORMA!':'KÍGYÓFORMA!','#9be07a');sfx('roar');kaeLeaves(cx(u),midY(u),70,420);flash('150,230,90',.3,.2);
   if(f==='bear'){const run=R17I.wsbear,rear=R17I.wsbear2||run,W=360,gy=u.y+u.oy+6,B={x:cx(u),ph:0,run:0,R:0,a:0,s:.5,rot:0,on:true};
     R18E({update(dt){B.ph+=dt*1.9*B.run;if(B.run>.3&&Math.random()<.8)part({x:B.x+W*.25,y:gy,vx:rnd(40,160),vy:-rnd(20,90),life:.6,size:rnd(14,24),grow:20,rgb:'160,130,90',add:false,shape:'smoke'});return B.on;},
-      draw(){if(B.a<=0)return;ctx.save();ctx.globalAlpha=B.a;if(B.R<1)r21Gallop(run,B.x,gy,W*B.s,B.ph,B.run,1-B.R,!!B.fx);if(B.R>0&&rear){ctx.save();ctx.globalAlpha*=B.R;ctx.translate(B.x,gy);ctx.rotate(-B.rot);const w=W*B.s*.8,h=w*rear.height/rear.width;ctx.drawImage(rear,-w/2,-h,w,h);ctx.restore();}ctx.restore();}});
+      draw(){if(B.a<=0)return;ctx.save();ctx.globalAlpha=B.a;if(B.R<1)r21Gallop(run,B.x,gy-(B.ly||0),W*B.s,B.ph,B.run,1-B.R,!!B.fx);if(B.R>0&&rear&&!R21BR()){ctx.save();ctx.globalAlpha*=B.R;ctx.translate(B.x,gy);ctx.rotate(-B.rot);const w=W*B.s*.8,h=w*rear.height/rear.width;ctx.drawImage(rear,-w/2,-h,w,h);ctx.restore();}ctx.restore();}});
     await tween(320,k=>{u.alpha=a0*(1-k);B.a=k;B.s=.5+.5*r21ease.back(k);});sfx('roar');
     const x0=B.x,x1=cx(t)-t.w*t.scale*.5-W*.32;B.run=1;
     await tween(900,k=>{B.x=x0+(x1-x0)*r21ease.io(k);if(Math.random()<.08)shake(3);});
-    // felágaskodik (átúszik), hátralendül, lecsap két mancscsapással
-    for(let i=0;i<2;i++){sfx('roar');await tween(300,k=>{const e=r21ease.io(k);B.run=1-e;B.R=e;B.rot=.12*e;});
+    // (ga08: „az álló medve gagyi, és össze is megy”) – nincs felágaskodás: a futó medve kétszer nekiugrik az ellenségnek
+    // (összehúzódik, elrugaszkodik, ívben ráveti magát, karommal hasít), a mérete végig ugyanaz
+    if(!R21BR())for(let i=0;i<2;i++){sfx('roar');await tween(300,k=>{const e=r21ease.io(k);B.run=1-e;B.R=e;B.rot=.12*e;});
       sfx('whoosh');await tween(160,k=>{B.rot=.12-.3*r21ease.in(k);B.x+=3;});
-      shake(22);sfx('hit');r21Claw&&r21Claw(t,i);t.hurt=.6;toss(t,40+i*30,300);for(let n=0;n<22;n++)part({x:cx(t)+rnd(-40,40),y:midY(t)+rnd(-40,30),vx:rnd(40,380),vy:rnd(-260,60),g:600,life:.7,size:rnd(4,9),rgb:pick(['200,30,30','140,90,50']),add:false,shape:n%3?'drop':'rock'});
+      shake(22);sfx('hit');r21Claw&&r21Claw(t,i);t.hurt=.6;toss(t,40+i*30,300);
       await tween(220,k=>{B.rot=-.18*(1-k);B.R=1-r21ease.io(k);B.run=r21ease.io(k)*.4;});}
+    else for(let i=0;i<2;i++){const xa=B.x;sfx('growl');await tween(200,k=>{B.run=1;B.ph+=.012;B.x=xa-14*r21ease.out(k);});
+      sfx('roar');sfx('whoosh');await tween(300,k=>{B.x=xa-14+(i?26:48)*r21ease.io(k);B.ly=Math.sin(k*Math.PI)*70;});B.ly=0;
+      shake(22);sfx('hit');r21Claw&&r21Claw(t,i);t.hurt=.6;toss(t,40+i*30,300);for(let n=0;n<16;n++)part({x:B.x+W*.3,y:gy,vx:rnd(-200,200),vy:-rnd(60,200),life:.6,size:rnd(14,24),grow:20,rgb:'160,130,90',add:false,shape:'smoke'});
+      await tween(240,k=>{B.x=xa+(i?26:48)-14-(i?26:48)*.5*r21ease.io(k);});}
     hit(u,t,{...sk,name:'Medvecsapás',pow:1.9});
     // visszavágtat
     B.run=1;B.fx=true;const x2=B.x;await tween(700,k=>{B.x=x2+(x0-x2)*r21ease.io(k);});B.run=0;
@@ -170,11 +175,12 @@ R16P['Bambuszliget']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B1,mon
 R16P['Lótuszharmat']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B1,fa=dr===A1?B1:A1,dd=R17I.dewdrop;await dimTo(.3,'10,30,40',250);await Promise.all([r16Raise(dr,'150,230,90'),r16Raise(fa,'150,230,255')]);sfx('holy');
   const hs=S.heroes.filter(h=>h.alive),mx=hs.reduce((s,h)=>s+cx(h),0)/hs.length,gy=Math.max(...hs.map(h=>h.y+h.oy))+14,top=Math.max(90,Math.min(...hs.map(topY))-120),L={s:0,a:1,lv:0,t:0,en:0},D=[];
   R18E({update(dt){L.t+=dt;for(const d of D){if(d.st!=='fall')continue;d.vy+=900*dt;d.y+=d.vy*dt;if(d.y>=d.ty){d.st='gone';for(let i=0;i<5;i++)part({x:d.x+rnd(-10,10),y:d.ty,vx:rnd(-120,120),vy:-rnd(80,200),g:700,life:.4,size:rnd(3,5),rgb:'220,250,200',add:false,shape:'drop'});}}
-      if(L.en>0)for(const h of hs)if(Math.random()<.5)part({x:cx(h)+rnd(-30,30),y:h.y+h.oy-rnd(0,20),vx:rnd(-20,20),vy:-rnd(120,260),life:rnd(.6,1),size:rnd(3,6),rgb:pick(['255,230,120','180,255,150','255,255,255']),shape:'star'});return L.a>0;},
+      return L.a>0;},
     draw(){if(L.s>0){ctx.save();ctx.globalCompositeOperation='lighter';glow(mx,gy-30,380*L.s,'200,240,150',.3*L.a);ctx.restore();if(R17I.lotus){ctx.save();ctx.translate(mx,gy+50);ctx.rotate(.025*Math.sin(L.t*1.5));r17Draw(R17I.lotus,0,0,540*L.s,{anchor:'bottom',sy:.42*(.6+.4*L.s),a:L.a*.85});ctx.restore();}}
       if(L.lv>0&&R17I.dewleaves)r17Draw(R17I.dewleaves,520*L.lv/2-70,top-30+Math.sin(L.t*2)*6,520*L.lv,{a:L.a});
       for(const d of D)if(d.st!=='gone'&&dd)r17Draw(dd,d.x,d.y,30*d.s,{a:L.a});
-      if(L.en>0)for(const h of hs){ctx.save();ctx.globalCompositeOperation='lighter';const r=h.h*h.scale*.6;const g=ctx.createLinearGradient(0,h.y+h.oy,0,h.y+h.oy-r*2);g.addColorStop(0,`rgba(255,220,110,${.45*L.en})`);g.addColorStop(1,'rgba(160,255,140,0)');ctx.fillStyle=g;ctx.fillRect(cx(h)-r*.6,h.y+h.oy-r*2,r*1.2,r*2);ctx.restore();}}});
+      // (ga07: „a négy hősnél sárga villanás – nem kell”) nincs energiaoszlop a hősökön
+      }});
   await tween(550,k=>L.s=r21ease.back(k));
   const fh=handPos(fa);for(let i=0;i<40;i++)setTimeout(()=>part({x:fh.x,y:fh.y,vx:(mx-fh.x)*rnd(1.2,1.8)+rnd(-60,60),vy:(top-fh.y)*rnd(1,1.6),life:.7,size:rnd(3,6),rgb:pick(['180,240,255','255,255,255','255,230,140']),shape:'star'}),i*15);
   await tween(380,k=>L.lv=r21ease.back(k));sfx('heal');

@@ -16,8 +16,12 @@ function r21Snake2(im,P,thick,a=1,dim=.5){if(!im||P.length<2)return;const N=64,W
   const L=[0];for(let i=1;i<P.length;i++)L.push(L[i-1]+Math.hypot(P[i].x-P[i-1].x,P[i].y-P[i-1].y));const tot=L[L.length-1];if(tot<2)return;
   let j=1;const S=[];for(let i=0;i<N;i++){const d=(i+.5)*tot/N;while(j<L.length-1&&L[j]<d)j++;const q=(d-L[j-1])/Math.max(1e-6,L[j]-L[j-1]),A=P[j-1],B=P[j];
     S.push({x:A.x+(B.x-A.x)*q,y:A.y+(B.y-A.y)*q,b:A.b,ang:Math.atan2(B.y-A.y,B.x-A.x)});}
-  const sl=tot/N;for(const pass of [1,0])for(let i=N-1;i>=0;i--){const p=S[i];if((p.b?1:0)!==pass)continue;ctx.save();ctx.globalAlpha=a*(p.b?dim:1);ctx.translate(p.x,p.y);ctx.rotate(p.ang);
-    if(Math.cos(p.ang)<0)ctx.scale(1,-1);ctx.drawImage(im,i*sw,0,sw+1,H,-sl/2-.6,-thick/2,sl+1.2,thick);ctx.restore();}}
+  // a fej (a kép bal 13%-a) MEREV darab: nem hajlik szét szeletekre (ga08: „a feje fura, mintha el lenne vágva”)
+  const HF=im===R17I.snakebody?.13:im===R17I.inkdragon2?.13:0,NH=Math.round(N*HF);
+  const sl=tot/N;for(const pass of [1,0]){for(let i=N-1;i>=NH;i--){const p=S[i];if((p.b?1:0)!==pass)continue;ctx.save();ctx.globalAlpha=a*(p.b?dim:1);ctx.translate(p.x,p.y);ctx.rotate(p.ang);
+    if(Math.cos(p.ang)<0)ctx.scale(1,-1);ctx.drawImage(im,i*sw,0,sw+1,H,-sl/2-.6,-thick/2,sl+1.2,thick);ctx.restore();}
+    if(NH>0&&((S[0].b?1:0)===pass)){const A=P[0],B=S[NH],L2=sl*NH,an=Math.atan2(A.y-B.y,A.x-B.x)+Math.PI,hx=(A.x+B.x)/2,hy=(A.y+B.y)/2,HH=thick*1.15;
+      ctx.save();ctx.globalAlpha=a*(S[0].b?dim:1);ctx.translate(hx,hy);ctx.rotate(an);if(Math.cos(an)<0)ctx.scale(1,-1);ctx.drawImage(im,0,0,NH*sw+1,H,-L2/2-2,-HH/2,L2+3,HH);ctx.restore();}}}
 r21DrawCoil=function(im,P,thick,a=1){if(!im||P.length<2)return;const n=P.length;
   const Q=P.map((p,i)=>{if(i===0||i===n-1)return p;const dx=P[i+1].x-P[i-1].x,dy=P[i+1].y-P[i-1].y,l=Math.hypot(dx,dy)||1,w=Math.sin(i*.42-T*11)*thick*.16*Math.min(1,i/6);return {x:p.x-dy/l*w,y:p.y+dx/l*w,b:p.b};});
   r21Snake2(im,Q,thick,a,.5);};
@@ -109,8 +113,11 @@ R16P['Bambuszliget']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B1,mon
   await r16Raise(dr,'150,230,90');r16Lower(dr);const xs=al.slice().sort((a,b)=>cx(a)-cx(b)),P=[],AR=[],E={a:1};
   R18E({update(){return E.a>0;},draw(){for(const r of AR)if(r.a>0&&arw)r17Draw(arw,r.x,r.y,140,{rot:r.an,a:r.a*E.a});for(const q of P)r21Stake(q.x,q.gy,q.H,q.k,q.l,E.a);}});
   monk.pose='attack';const shots=[];for(const t of xs)for(const dx of [-80,-40,0,40,80])shots.push({t,dx});
-  await Promise.all(shots.map((s,i)=>wait(i*190).then(()=>{const h=handPos(monk),t=s.t,gx=cx(t)+s.dx,gy=t.y+t.oy+6;sfx('whoosh');
-    return flyObj(h,{x:gx,y:gy},460,(x,y)=>{const an=Math.atan2(gy-h.y,gx-h.x);ctx.save();ctx.globalCompositeOperation='lighter';glow(x,y,34,'180,255,140',.7);ctx.restore();if(arw)r17Draw(arw,x,y,140,{rot:an});},{arc:90,trail:['180,255,140','255,255,255']})
+  // (ga06: „Jázmin nyilai fentről érkezzenek, és gyorsabban”) Jázmin előbb az ég felé lő egy izzó sortüzet, aztán a nyilak
+  // felülről, meredeken zúdulnak le
+  {const h=handPos(monk);sfx('whoosh');for(let n=0;n<14;n++)setTimeout(()=>part({x:h.x+rnd(-8,8),y:h.y,vx:rnd(40,160),vy:-rnd(900,1300),life:.45,size:rnd(3,5),rgb:pick(['180,255,140','255,255,255']),shape:'streak'}),n*25);await wait(380);}
+  await Promise.all(shots.map((s,i)=>wait(i*95).then(()=>{const t=s.t,gx=cx(t)+s.dx,gy=t.y+t.oy+6,h={x:gx-150+rnd(-30,30),y:-60};sfx('whoosh');
+    return flyObj(h,{x:gx,y:gy},230,(x,y)=>{const an=Math.atan2(gy-h.y,gx-h.x);ctx.save();ctx.globalCompositeOperation='lighter';glow(x,y,34,'180,255,140',.7);ctx.restore();if(arw)r17Draw(arw,x,y,140,{rot:an});},{arc:0,trail:['180,255,140','255,255,255']})
       .then(async()=>{const an=Math.atan2(gy-h.y,gx-h.x),ar={x:gx-Math.cos(an)*30,y:gy-Math.sin(an)*30,an,a:1};AR.push(ar);sfx('rock');shake(5);
         for(let n=0;n<8;n++)part({x:gx,y:gy,vx:rnd(-160,160),vy:-rnd(80,260),g:800,life:.6,size:rnd(4,8),rgb:pick(['120,95,60','150,220,90']),add:false,shape:'rock'});
         // a nyíl izzik, a föld megremeg, majd a nyíl helyéből kiszúr a hegyes karó
@@ -130,14 +137,14 @@ R16P['Bambuszliget']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B1,mon
   const pl=popLabel;let run=null;popLabel=function(e,txt){if(txt==='LÓTUSZÉBREDÉS!'&&!run){run=r21LotusRun(lw,al);popLabel=pl;}return pl.apply(this,arguments);};
   try{await L0(A1,B1,al,sk,p);}finally{popLabel=pl;}if(run)await run;};}
 async function r21LotusRun(lw,al){const foes=S.enemies.filter(t=>t.alive),H=320,W=H*lw.width/lw.height,gy=foes.length?Math.max(...foes.map(t=>t.y+t.oy))+6:460;
-  const F={x:300,a:0,g:0,t:0,on:true},PET=[...Array(170)].map(()=>({x:rnd(0,960),y:rnd(40,520),tx:300+rnd(-W*.3,W*.3),ty:gy-rnd(20,H-20)}));
-  R18E({update(dt){F.t+=dt;if(F.a>.5&&F.run){for(let i=0;i<8;i++)part({x:F.x-W*.3+rnd(-30,30),y:gy-rnd(40,H*.8),vx:rnd(-260,-60),vy:rnd(-40,80),g:60,life:rnd(.8,1.4),size:rnd(6,10),rgb:pick(['255,170,200','255,210,225','250,140,180']),add:false,shape:'leaf',drag:1});
-        if(Math.random()<.6)part({x:F.x+rnd(-80,200),y:gy-rnd(20,H),vx:rnd(500,800),vy:rnd(-20,20),life:.4,size:rnd(2,3),rgb:'255,255,255',shape:'streak'});}return F.on;},
+  const F={x:300,a:0,g:0,t:0,on:true},PET=[...Array(320)].map(()=>({x:rnd(0,960),y:rnd(40,520),tx:300+rnd(-W*.3,W*.3),ty:gy-rnd(20,H-20)}));
+  R18E({update(dt){F.t+=dt;if(F.a>.5&&F.run){for(let i=0;i<14;i++)part({x:F.x-W*.3+rnd(-30,30),y:gy-rnd(40,H*.8),vx:rnd(-260,-60),vy:rnd(-40,80),g:60,life:rnd(.8,1.4),size:rnd(6,10),rgb:pick(['255,170,200','255,210,225','250,140,180']),add:false,shape:'leaf',drag:1});
+        for(let i=0;i<4;i++)part({x:F.x+rnd(-260,260),y:gy-rnd(0,H*1.3),vx:rnd(700,1100),vy:rnd(-30,30),life:.45,size:rnd(2,4),rgb:pick(['255,255,255','255,220,235']),shape:'streak'});}return F.on;},
     draw(){// szirmok gyűlnek össze
       if(F.g<1)for(const p of PET){const e=F.g*F.g*(3-2*F.g),x=p.x+(p.tx-p.x)*e,y=p.y+(p.ty-p.y)*e;ctx.save();ctx.globalAlpha=(1-F.a)*.95;ctx.fillStyle='#ffb3cf';ctx.translate(x,y);ctx.rotate(F.t*4+p.x);ctx.beginPath();ctx.ellipse(0,0,11,5,0,0,6.283);ctx.fill();ctx.restore();}
       if(F.a>0){const bob=Math.abs(Math.sin(F.t*9))*10*(F.run?1:0);ctx.save();ctx.globalAlpha=F.a;ctx.translate(F.x,gy-bob);ctx.rotate(F.run?.06:0);ctx.drawImage(lw,-W/2,-H,W,H);ctx.restore();}}});
   sfx('holy');await tween(520,k=>{F.g=k;});await tween(220,k=>{F.a=k;});sfx('wind');F.run=true;const wnd=setInterval(()=>sfx('wind'),300),hit0=new Set();
-  const x0=F.x,x1=1080;await tween(1000,k=>{F.x=x0+(x1-x0)*r21ease.io(k);for(const t of foes)if(!hit0.has(t)&&Math.abs(F.x-cx(t))<70){hit0.add(t);t.hurt=.3;toss(t,30,320);t.spin=.25;setTimeout(()=>t.spin=0,400);shake(6);
+  const x0=F.x,x1=1080;await tween(620,k=>{F.x=x0+(x1-x0)*r21ease.io(k);for(const t of foes)if(!hit0.has(t)&&Math.abs(F.x-cx(t))<70){hit0.add(t);t.hurt=.4;toss(t,80,420);t.spin=.6;sfx("wind");setTimeout(()=>t.spin=0,400);shake(6);
       for(let n=0;n<16;n++)part({x:cx(t),y:midY(t),vx:rnd(100,420),vy:rnd(-200,60),g:200,life:rnd(.7,1.1),size:rnd(6,10),rgb:pick(['255,170,200','255,210,225']),add:false,shape:'leaf'});}});
   clearInterval(wnd);F.on=false;}
 
@@ -180,35 +187,39 @@ R16P['Élő Tölgybárd']=async(A1,B1,al,sk,p)=>{const dr=A1.type==='druid'?A1:B
 // a funkció változatlan (sebzés + bambuszfal: a csapat védelme 2 körig nő)
 {const bg0=A.bambooGolem;A.bambooGolem=async(u,ts,sk)=>{const s0=R17I.golemstand,s1=R17I.golemup;if(!s0||!s1)return bg0(u,ts,sk);const rel=keepPose(u);try{
   u.pose='cast';await bodyWind(u,240,.14);sfx('quake');await dimTo(.45,'10,30,5',300);const al=ts.filter(e=>e.alive);
-  const GH=390,G={x:Math.max(cx(u)+150,330),y:Math.max(...S.heroes.filter(h=>h.alive).map(h=>h.y+h.oy))+6,k:0,a:1,up:0,rot:0,sq:1,sink:0};
+  const GH=390,G={x:Math.max(cx(u)+150,330),y:Math.max(...S.heroes.filter(h=>h.alive).map(h=>h.y+h.oy))+6,k:0,a:1,up:0,rot:0,sq:1,sink:0,dx:0,gh:[]};
   const F=[],E={a:1};
   R18E({update(){return G.a>0||E.a>0;},draw(){
     // tüskemező (a hátsó sorok előbb, hogy a közelebbiek takarják őket)
     for(const q of F)if(q.k>0)r21Stake(q.x,q.gy,q.H,q.k,q.l,E.a);
     if(G.k<=0||G.a<=0)return;const dr=(im,al2)=>{if(al2<=0)return;const h=GH*im.height/s0.height,w=h*im.width/im.height;ctx.save();ctx.globalAlpha=G.a*al2;ctx.drawImage(im,-w/2,-h,w,h);ctx.restore();};
-    ctx.save();ctx.beginPath();ctx.rect(0,0,960,G.y+4);ctx.clip();ctx.translate(G.x,G.y+GH*(1-Math.min(1,G.k))+G.sink);ctx.rotate(G.rot);ctx.scale(1/G.sq,G.sq);
+    // lecsapáskor elmosódó utóképek (a mozgás íve látszik, nem ugrik)
+    for(const q of G.gh){ctx.save();ctx.beginPath();ctx.rect(0,0,960,G.y+4);ctx.clip();ctx.translate(G.x+q.dx,G.y+G.sink);ctx.rotate(q.rot);ctx.globalAlpha=q.a*.35;dr(q.up>.5?s1:s0,1);ctx.restore();q.a-=.09;}G.gh=G.gh.filter(q=>q.a>0);
+    ctx.save();ctx.beginPath();ctx.rect(0,0,960,G.y+4);ctx.clip();ctx.translate(G.x+G.dx,G.y+GH*(1-Math.min(1,G.k))+G.sink);ctx.rotate(G.rot);ctx.scale(1/G.sq,G.sq);
     if(G.up<1)dr(s0,1);dr(s1,G.up);ctx.restore();}});
   // kinő a földből
   rumble&&rumble(1,10);shake(14);
   for(let i=0;i<46;i++)part({x:G.x+rnd(-140,140),y:G.y,vx:rnd(-220,220),vy:rnd(-460,-160),life:rnd(.7,1.1),size:rnd(7,13),rgb:pick(['120,90,60','90,70,40']),g:800,add:false,shape:'rock'});
   await tween(650,k=>G.k=r21ease.out(k));sfx('growl');u.pose='idle';kaeLeaves(G.x,G.y-GH*.8,40,360);
   // azonnal felemeli a karját (a festett pózok átúsznak), hátradől
-  sfx('roar');await tween(380,k=>{const e=r21ease.io(k);G.up=e;G.rot=-.07*e;G.sq=1+.05*e;});
+  sfx('roar');await tween(220,k=>{G.up=r21ease.io(k);});await tween(380,k=>{const e=r21ease.out(k);G.rot=-.16*e;G.sq=1+.06*e;G.dx=-20*e;});
   // teljes testtel a földbe csap
-  sfx('whoosh');await tween(170,k=>{const e=r21ease.in(k);G.rot=-.07+.2*e;G.sq=1.05-.13*e;});
+  // (ga04: „a gólem nem csap le”) teljes testtel előredől, a karjai lezúdulnak (a felemelt pózból a leengedettbe vált félúton)
+  sfx('whoosh');await tween(190,k=>{const e=r21ease.in(k);G.rot=-.16+.5*e;G.sq=1.06-.16*e;G.dx=-20+90*e;G.up=k<.45?1:Math.max(0,1-(k-.45)/.25);G.gh.push({dx:G.dx,rot:G.rot,up:G.up,a:1});});
   shake(36);sfx('boom');sfx('quake');flash('210,250,160',.35,.15);rumble&&rumble(1.4,14);
   for(let i=0;i<30;i++)part({x:G.x+rnd(40,200),y:G.y,vx:rnd(-300,300),vy:rnd(-520,-180),life:rnd(.6,1),size:rnd(8,15),rgb:pick(['120,90,60','90,70,40']),g:900,add:false,shape:'rock'});
   // bambusztüske-mező: a becsapódástól hullámban terjed jobbra, több sorban (mélység szerint)
-  const x0=G.x+90,rows=[-40,-24,-8,8,22],hitT=new Set();
-  for(const dy of rows)for(let x=x0+rnd(0,30);x<990;x+=rnd(15,24)){const d=x-x0;F.push({x,gy:G.y+dy-30+(dy+34)*.4,H:rnd(120,240)*(1+dy/150),k:0,l:rnd(-.18,.18),d});}
-  for(const t of al){const gy=t.y+t.oy+6;for(let j=0;j<5;j++){const x=cx(t)+(j-2)*22;F.push({x,gy,H:Math.max(240,t.h*t.scale*1.5)*rnd(.85,1.1),k:0,l:(j-2)*.09,d:x-x0});}}
+  // (ga04: „kisebb-nagyobb tüskék össze-vissza, és nem kell ilyen sűrűn”)
+  const x0=G.x+110,rows=[-34,-6,20],hitT=new Set();
+  for(const dy of rows)for(let x=x0+rnd(0,40);x<990;x+=rnd(40,75)){const d=x-x0,big=Math.random()<.45;F.push({x:x+rnd(-12,12),gy:G.y+dy-30+(dy+34)*.4,H:(big?rnd(220,330):rnd(70,140))*(1+dy/160),k:0,l:rnd(-.22,.22),d});}
+  for(const t of al){const gy=t.y+t.oy+6;for(let j=0;j<3;j++){const x=cx(t)+(j-1)*30;F.push({x,gy,H:Math.max(240,t.h*t.scale*1.5)*rnd(.85,1.1),k:0,l:(j-1)*.12,d:x-x0});}}
   F.sort((a,b)=>a.gy-b.gy);const v=1200;// px/s
   const T0=performance.now();await new Promise(res=>{const tick=()=>{const tm=(performance.now()-T0)/1000;let left=0;
     for(const q of F){const st=q.d/v;if(tm>=st){const k=Math.min(1,(tm-st)/.22);q.k=k<1?r21ease.back(k):1;}else left++;}
     for(const t of al)if(!hitT.has(t)&&tm>=(cx(t)-x0)/v){hitT.add(t);sfx('rock');shake(12);t.hurt=.7;tween(380,k=>t.jump=Math.max(t.jump||0,170*Math.sin(k*Math.PI*.5)));
       for(let n=0;n<16;n++)part({x:cx(t),y:t.y+t.oy,vx:rnd(-240,240),vy:-rnd(160,420),g:900,life:.7,size:rnd(5,10),rgb:pick(['120,95,60','150,220,90']),add:false,shape:n%2?'rock':'leaf'});}
     if(left>0||tm<(990-x0)/v+.3)requestAnimationFrame(tick);else res();};tick();});
-  sfx('quake');tween(380,k=>{G.rot=.13*(1-r21ease.io(k));G.sq=.92+.08*k;});await wait(450);
+  sfx('quake');tween(420,k=>{const e=r21ease.io(k);G.rot=.34*(1-e);G.sq=.9+.1*k;G.dx=70*(1-e);});await wait(450);
   await tween(320,k=>{for(const t of al)t.jump=170*(1-k*k);});for(const t of al){t.jump=0;toss(t,60,420);hit(u,t,sk);}shake(20);
   const hs=S.heroes.filter(h=>h.alive);hs.forEach(h=>addStatus(h,'defUp',2));popLabel(u,'BAMBUSZFAL!','#b8e07a');await wait(650);
   await tween(700,k=>{const e=r21ease.in(k);for(const q of F)q.k=Math.min(q.k,1-e);G.sink=GH*e;});G.a=0;E.a=0;F.length=0;await dimTo(0,null,300);await bodySettle(u);}finally{for(const t of ts)t.jump=0;rel();}};}

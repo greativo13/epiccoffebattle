@@ -109,8 +109,8 @@ async function r21Phase2(e){showBanner(`${e.name} feldühödött!`,true);say(e,`
   // aranyfény Grogon: izzás, forgó fénysugarak mögötte, növekedés
   const Au={a:0,on:true,rot:0};R18E({update(dt){Au.rot+=dt*.8;if(Au.on&&Au.a>0&&Math.random()<.6)part({x:cx(orc)+rnd(-60,60),y:orc.y+orc.oy-rnd(0,orc.h*orc.scale),vx:rnd(-20,20),vy:-rnd(60,160),life:rnd(.5,.9),size:rnd(2,5),rgb:pick(['255,230,120','255,255,255']),shape:'star'});return Au.on;},
     draw(){if(Au.a<=0)return;const x=cx(orc),y=midY(orc),R=orc.h*orc.scale*.95;ctx.save();ctx.globalCompositeOperation='lighter';
-      for(let i=0;i<12;i++){const an=Au.rot+i/12*6.283,g=ctx.createLinearGradient(x,y,x+Math.cos(an)*R,y+Math.sin(an)*R);g.addColorStop(0,`rgba(255,225,120,${.32*Au.a})`);g.addColorStop(1,'rgba(255,225,120,0)');ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+Math.cos(an-.09)*R,y+Math.sin(an-.09)*R);ctx.lineTo(x+Math.cos(an+.09)*R,y+Math.sin(an+.09)*R);ctx.closePath();ctx.fill();}
-      glow(x,y,orc.h*orc.scale*.75,'255,210,90',.28*Au.a);ctx.restore();}});
+      for(let i=0;i<12;i++){const an=Au.rot+i/12*6.283,g=ctx.createLinearGradient(x,y,x+Math.cos(an)*R,y+Math.sin(an)*R);g.addColorStop(0,`rgba(255,225,120,${.13*Au.a})`);g.addColorStop(1,'rgba(255,225,120,0)');ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+Math.cos(an-.09)*R,y+Math.sin(an-.09)*R);ctx.lineTo(x+Math.cos(an+.09)*R,y+Math.sin(an+.09)*R);ctx.closePath();ctx.fill();}
+      glow(x,y,orc.h*orc.scale*.75,'255,210,90',.12*Au.a);ctx.restore();}});
   orc._r16tint={rgb:'255,210,90',a:0};const s0=orc.scale;
   // Lili körberepüli Grogot, sűrű aranypor-spirál hullik rá
   await tween(1100,k=>{const an=k*Math.PI*3;fairy.ox=fx0+dxF+Math.cos(an)*orc.w*orc.scale*.6;fairy.oy=fy0+dyF+Math.sin(an)*26;
@@ -118,14 +118,16 @@ async function r21Phase2(e){showBanner(`${e.name} feldühödött!`,true);say(e,`
     orc._r16tint.a=.3*k;orc.scale=s0*(1+.28*easeIO(k));Au.a=k;});
   await tween(320,k=>{const e=easeIO(k);fairy.ox=fx0+dxF*(1-e);fairy.oy=fy0+dyF*(1-e);});fairy.ox=fx0;fairy.oy=fy0;fairy.pose='idle';
   // aranyököl a saját kezén
-  const Fi={a:0,s:.4,on:true};const fist=()=>{const h=handPos(orc);return {x:h.x+6,y:h.y};};orc.pose='attack';
+  // (fa06: „az ököl nem a kezén van”) Grog fejsze nélküli, ököllel felemelt képe (orcnoaxe-cast), a gömb az ÖKLÉN (rácson mérve: .245/.245)
+  const SW0={a:ENEMY_SPR['orc-cast'],b:ENEMY_SPR['orcG-cast']};if(ENEMY_SPR['orcnoaxe-cast'])ENEMY_SPR['orc-cast']=ENEMY_SPR['orcnoaxe-cast'];if(ENEMY_SPR['orcGnoaxe-cast'])ENEMY_SPR['orcG-cast']=ENEMY_SPR['orcGnoaxe-cast'];
+  const relP=keepPose(orc,'cast');const Fi={a:0,s:.4,on:true};const fist=()=>KP(orc,.245,.245);
   R18E({update(){if(Fi.on&&Fi.a>0)for(let n=0;n<3;n++){const f=fist();part({x:f.x+rnd(-36,36),y:f.y+rnd(-36,36),vx:rnd(-50,50),vy:rnd(-70,20),life:rnd(.4,.7),size:rnd(3,6),rgb:pick(['255,230,120','255,255,255']),shape:'star'});}return Fi.on;},
     draw(){if(Fi.a<=0)return;const f=fist(),S2=Math.max(60,orc.h*orc.scale*.3)*Fi.s;ctx.save();ctx.globalCompositeOperation='lighter';glow(f.x,f.y,S2*1.4*(1+.1*Math.sin(T*12)),'255,210,90',.6*Fi.a);glow(f.x,f.y,S2*.45,'255,250,220',.7*Fi.a);ctx.restore();
-      if(R17I.goldfist)r17Draw(R17I.goldfist,f.x,f.y,S2*1.5,{a:Fi.a,rot:-.35+(orc.lean||0)*1.5});}});
+      if(R17I.goldfist)r17Draw(R17I.goldfist,f.x,f.y,S2*1.5,{a:Fi.a,rot:-.15+(orc.lean||0)*1.2});}});
   sfx('holy');await tween(380,k=>{Fi.a=k;Fi.s=.4+.6*eOutBack(k);});
   // magas ugrás arany utóképekkel a csapat közepe fölé, aztán öklével előre zuhan
   const xs=al.slice().sort((a,b)=>cx(a)-cx(b)),mid=xs.reduce((s,t)=>s+cx(t),0)/xs.length,t0=xs[0],ox0=orc.ox||0,oy0=orc.oy||0,dX=Math.min(mid-260,cx(t0)-t0.w*t0.scale*.5-orc.w*orc.scale*.5-20)-cx(orc),dY=(t0.y+t0.oy)-(orc.y+orc.oy);
-  const sp=ENEMY_SPR['orc-attack']||ENEMY_SPR.orc,Ec=[];R18E({update(){for(const e of Ec)e.a-=.045;while(Ec.length&&Ec[0].a<=0)Ec.shift();return Ec.length>0||Fi.on;},draw(){if(!sp)return;const hh=orc.h*orc.scale,ww=hh*sp.width/sp.height;for(const e of Ec){ctx.save();ctx.globalAlpha=e.a*.3;ctx.drawImage(tintSpr(sp,'rgb(255,210,90)',.9),e.x-ww/2,e.y-hh,ww,hh);ctx.restore();}}});
+  const sp=ENEMY_SPR['orc-cast']||ENEMY_SPR.orc,Ec=[];R18E({update(){for(const e of Ec)e.a-=.045;while(Ec.length&&Ec[0].a<=0)Ec.shift();return Ec.length>0||Fi.on;},draw(){if(!sp)return;const hh=orc.h*orc.scale,ww=hh*sp.width/sp.height;for(const e of Ec){ctx.save();ctx.globalAlpha=e.a*.3;ctx.drawImage(tintSpr(sp,'rgb(255,210,90)',.9),e.x-ww/2,e.y-hh,ww,hh);ctx.restore();}}});
   sfx('whoosh');await tween(520,k=>{const e=easeIO(k);orc.ox=ox0+dX*e;orc.oy=oy0+dY*e;orc.jump=240*Math.sin(k*Math.PI*.5);orc.lean=.22*k;Fi.s=1+.2*k;Ec.push({x:cx(orc),y:orc.y+orc.oy-orc.jump,a:1});});
   await wait(90);sfx('whoosh');await tween(170,k=>{orc.jump=240*(1-k*k);orc.lean=.22-.6*k;Ec.push({x:cx(orc),y:orc.y+orc.oy-orc.jump,a:1});});orc.jump=0;
   const ix=fist().x,gy=xs.reduce((s,t)=>s+t.y+t.oy,0)/xs.length;tween(600,k=>{Fi.a=1-k;}).then(()=>{Fi.on=false;});
@@ -144,7 +146,7 @@ async function r21Phase2(e){showBanner(`${e.name} feldühödött!`,true);say(e,`
     R18E({t:0,update(dt){this.t+=dt;return this.t<1;},draw(){const a=1-this.t;ctx.save();ctx.globalCompositeOperation='lighter';glow(x,g0-60,220*a,'255,230,140',.75*a);ctx.restore();}});
     sparks(x,midY(t),['255,240,180','255,210,90','255,255,255'],44,680);toss(t,150,640);t.hurt=.6;hit(orc,t,sk);}
   await wait(500);tween(500,k=>Cr.a=1-k).then(()=>Cr.on=false);Au.on=false;
-  const cX=orc.ox,cY=orc.oy;await tween(380,k=>{const e=easeIO(k);orc.ox=cX+(ox0-cX)*e;orc.oy=cY+(oy0-cY)*e;orc.jump=Math.sin(k*Math.PI)*50;orc.lean=0;});orc.ox=ox0;orc.oy=oy0;orc.jump=0;orc.pose='idle';
+  const cX=orc.ox,cY=orc.oy;await tween(380,k=>{const e=easeIO(k);orc.ox=cX+(ox0-cX)*e;orc.oy=cY+(oy0-cY)*e;orc.jump=Math.sin(k*Math.PI)*50;orc.lean=0;});orc.ox=ox0;orc.oy=oy0;orc.jump=0;relP();ENEMY_SPR['orc-cast']=SW0.a;ENEMY_SPR['orcG-cast']=SW0.b;
   await tween(300,k=>{orc._r16tint.a=.3*(1-k);orc.scale=s0*(1.28-.28*k);});orc.scale=s0;orc._r16tint=null;await dimTo(0,null,300);};}
 
 // ---- Lebegés (ea11: „továbbra is a levegőben vannak”): néhány póz- és felszerelt hőskép alján üres sáv van (pl. Zordon
