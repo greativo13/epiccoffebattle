@@ -227,14 +227,16 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Árnyroham: lassabb; a sweep után a penge a földbe vágódik, repedés minden ellenségig, lávatócsák + lávakitörés (Magmakitörés-stílus), aztán vissza Groggá.
 - Tussárkány/kígyó: r21Snake2 tükrözése hiszterézissel (függőlegesen nem törik szét).
 
-## Várakozó: a teljes tesztlista jelölései (2026-10-13, a lista kipucolása előtt elmentve)
-- Kaelen – Bambusz-gólem: fehér folt a képen.
-- Kaelen – Bambuszcsapás: idézéskor a zöld villanás nem a botnál van.
-- Kaelen – Levéltánc: gagyi, látványosabb, élethűbb, több legyen, darabos.
-- Kaelen – Tövisvihar: gagyi, látványosabb, darabos.
-- Kaelen – Élő Bambuszkéreg: kitakarja a hősöket, és nem verte vissza a támadást.
-- Grog – Hegyomlás: több legyen belőle, gagyi, látványosabb, élethűbb.
-- Morgána – Lidércnyomás: a karok stílusa jó, csak túl nagyok – így nem a kézfej nyomja össze, hanem az alkar.
-- Morgána – Átok: a csontok stílusa legyen olyan, mint a többi rész.
-- Tárgyak – Dobótőr: gagyi, látványosabb, élethűbb.
-- Tárgyak – Tűzbomba: gagyi, látványosabb, élethűbb.
+## 35. kör – a teljes tesztlista várakozó jelölései (r21v.js, kész)
+- Közös: `handPos` most követi a test dőlését (`lean`, a talppont körüli forgatás) – eddig felhúzáskor a varázsfény a bot/kéz mellett villant (game.html, `handPos0` + `handPos`). all.js 85 képesség, foe.js 177 támadás: hiba nincs.
+- Bambusz-gólem: a `fx7-golemstand` kép alján lévő szürkésfehér talajfolt kivágva.
+- Bambuszcsapás: a zöld fénysugár a bothegyből indul (és követi).
+- Levéltánc: 160 festett levél folyamatos, kígyózó folyamban a bothegyből, forgó levélgubó az ellenfél körül (3D pörgés, utókép, szélcsíkok), 4 vágás, szétrobban.
+- Tövisvihar: új `r21Twister` – a festett rózsatövis-tölcsér soronként gördülő, tükrözve ismétlődő mintával forog a saját körvonalán belül, henger-árnyékolással (nincs villódzó szeletcsere); 150 keringő levél/szirom lassabb szögsebességgel, utóképpel.
+- Élő Bambuszkéreg: a fal a társ rajzolási rétegében (drawEntity-burkoló), kisebb, nem takarja az előtte állókat; a társ a sebzés 30%-át kapja, a támadó a teljes sebzés 80%-át (min. 10% ÉP) kapja vissza, a fal megremeg, lándzsák repülnek vissza (r21d.js gyógyító visszatöltés kivéve).
+- Hegyomlás: teljesen új – Grog földbe csap, porfelhők futnak az ellenségekig, kőpor-felhő, 3 hullám festett rög (fx7-clods), festett kőlavina (fx7-stonewave), óriás szikla mindenkire, kráter, talajba nyomódás. Nincs vékony repedésvonal, nincs láva.
+- Lidércnyomás: a kar az ellenfélhez méretezve (min. 240 px), a földből ferdén nő ki (talajvonalnál levágva), a tenyér az ellenfél derekánál szorít.
+- Átok: a repülő csontok sötétre színezve, lila izzás, lila lángnyelv (fx7-darkflame), lila szikrák és sötét füst.
+- Dobótőr: festett tőr (`fx7-dagger`, Canva), 5 tőr legyezőben, utókép, beleáll és remeg, a végén megcsillan.
+- Tűzbomba: festett vasbomba (`fx7-firebomb`, Canva), sercegő kanóc, pattanás, nagy robbanás textúrákkal, égő törmelék, porhullám, lángok az ellenségeken, égésfolt.
+- Canva: a segédterv 6. oldala (`DAHW1ZtSXrE`) szolgált exportoldalként; a fényes penge-élt a kivágás kilyukasztja → maszk-zárás (scratchpad python).
