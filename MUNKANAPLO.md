@@ -226,3 +226,15 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Tündérököl: Lili Grog fölé repül és csillámport szór, Grog megnő (1,22×), az ököl a kezén láthatóan megnő, aztán kilő és tovább nő.
 - Árnyroham: lassabb; a sweep után a penge a földbe vágódik, repedés minden ellenségig, lávatócsák + lávakitörés (Magmakitörés-stílus), aztán vissza Groggá.
 - Tussárkány/kígyó: r21Snake2 tükrözése hiszterézissel (függőlegesen nem törik szét).
+
+## Várakozó: a teljes tesztlista jelölései (2026-10-13, a lista kipucolása előtt elmentve)
+- Kaelen – Bambusz-gólem: fehér folt a képen.
+- Kaelen – Bambuszcsapás: idézéskor a zöld villanás nem a botnál van.
+- Kaelen – Levéltánc: gagyi, látványosabb, élethűbb, több legyen, darabos.
+- Kaelen – Tövisvihar: gagyi, látványosabb, darabos.
+- Kaelen – Élő Bambuszkéreg: kitakarja a hősöket, és nem verte vissza a támadást.
+- Grog – Hegyomlás: több legyen belőle, gagyi, látványosabb, élethűbb.
+- Morgána – Lidércnyomás: a karok stílusa jó, csak túl nagyok – így nem a kézfej nyomja össze, hanem az alkar.
+- Morgána – Átok: a csontok stílusa legyen olyan, mint a többi rész.
+- Tárgyak – Dobótőr: gagyi, látványosabb, élethűbb.
+- Tárgyak – Tűzbomba: gagyi, látványosabb, élethűbb.
