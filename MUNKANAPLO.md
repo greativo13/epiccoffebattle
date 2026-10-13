@@ -219,3 +219,10 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Árnyroham: Grog füstté oszlik, a helyén festett árnypenge (fx7-shadowblade) suhan végig, sötétebb kép, aztán újra Groggá áll össze.
 - Tussárkány: fehér folt a fej mellett kivágva, 1,4× nagyobb. Kígyó/sárkány fej: a fej hossza a fejkép arányából, a test textúrája a fej mögött kezdődik (nincs dupla fej, nincs nyújtás).
 - Bambusz-gólem: 470 px, a hősök eltűnnek, a gólem a helyükön jelenik meg. Bambuszliget: becsapódási fényrobbanás, nagyobb izzó nyilak, finálé: a karók felizzanak és szétrobbannak.
+
+## 34. kör – ia-jelölések + Kaelen ivás + földbeszakadás
+- Kaelen tárgyhasználat: saját festett ivó póz (druid-drink, Canva a druid ref-lappal), DRINK_K.druid=1 → a többi hőshöz hasonlóan a kezéből iszik.
+- Földbeszakadás (r21Sink): festett kráter (fx7-crater) a láb alatt, rögök + por. Festett törmelék-réteg: shape:'rock' → fx7-clods (ha betöltött), zöld 'leaf' → fx7-leaf (r21u.js part-burkoló).
+- Tündérököl: Lili Grog fölé repül és csillámport szór, Grog megnő (1,22×), az ököl a kezén láthatóan megnő, aztán kilő és tovább nő.
+- Árnyroham: lassabb; a sweep után a penge a földbe vágódik, repedés minden ellenségig, lávatócsák + lávakitörés (Magmakitörés-stílus), aztán vissza Groggá.
+- Tussárkány/kígyó: r21Snake2 tükrözése hiszterézissel (függőlegesen nem törik szét).

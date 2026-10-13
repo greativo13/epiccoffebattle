@@ -16,13 +16,16 @@ function r21Snake2(im,P,thick,a=1,dim=.5){if(!im||P.length<2)return;const N=64,W
   const L=[0];for(let i=1;i<P.length;i++)L.push(L[i-1]+Math.hypot(P[i].x-P[i-1].x,P[i].y-P[i-1].y));const tot=L[L.length-1];if(tot<2)return;
   let j=1;const S=[];for(let i=0;i<N;i++){const d=(i+.5)*tot/N;while(j<L.length-1&&L[j]<d)j++;const q=(d-L[j-1])/Math.max(1e-6,L[j]-L[j-1]),A=P[j-1],B=P[j];
     S.push({x:A.x+(B.x-A.x)*q,y:A.y+(B.y-A.y)*q,b:A.b,ang:Math.atan2(B.y-A.y,B.x-A.x)});}
+  // (ia03: „el van törve a sárkány”) függőleges szakaszon a cos előjele ingadozott, és a szeletek felváltva tükröződtek –
+  // most hiszterézissel, a szomszéd szelet állapotát követve dől el (az egész test egyben fordul)
+  {const c0=S.reduce((s2,p)=>s2+Math.cos(p.ang),0);let f=c0<0;for(const p of S){const c=Math.cos(p.ang);if(c<-.35)f=true;else if(c>.35)f=false;p.fl=f;}}
   // a fej (a kép bal 13%-a) MEREV darab: nem hajlik szét szeletekre (ga08: „a feje fura, mintha el lenne vágva”)
   // (ha12: „a kígyó feje hibás” – a fej megnyúlt téglalap volt) a fej hossza a fejkép saját arányából jön (nem a pálya
   // hosszából), így sosem torzul; a test a fej mögött kezdődik
   const HF=im===R17I.snakebody?.13:im===R17I.inkdragon2?.13:0,sl=tot/N,HHd=thick*1.15,Lh=HHd*HF*W/H,NH=HF?Math.min(N-2,Math.max(1,Math.round(Lh/sl))):0;for(const pass of [1,0]){for(let i=N-1;i>=NH;i--){const p=S[i];if((p.b?1:0)!==pass)continue;ctx.save();ctx.globalAlpha=a*(p.b?dim:1);ctx.translate(p.x,p.y);ctx.rotate(p.ang);
-    if(Math.cos(p.ang)<0)ctx.scale(1,-1);const s2=NH?(W*(1-HF))/(N-NH):sw,sx=NH?W*HF+(i-NH)*s2:i*sw;ctx.drawImage(im,sx,0,s2+1,H,-sl/2-.6,-thick/2,sl+1.2,thick);ctx.restore();}
+    if(p.fl)ctx.scale(1,-1);const s2=NH?(W*(1-HF))/(N-NH):sw,sx=NH?W*HF+(i-NH)*s2:i*sw;ctx.drawImage(im,sx,0,s2+1,H,-sl/2-.6,-thick/2,sl+1.2,thick);ctx.restore();}
     if(NH>0&&((S[0].b?1:0)===pass)){const A=P[0],B=S[NH],an=Math.atan2(A.y-B.y,A.x-B.x)+Math.PI,hx=A.x+Math.cos(an)*Lh/2,hy=A.y+Math.sin(an)*Lh/2;
-      ctx.save();ctx.globalAlpha=a*(S[0].b?dim:1);ctx.translate(hx,hy);ctx.rotate(an);if(Math.cos(an)<0)ctx.scale(1,-1);ctx.drawImage(im,0,0,HF*W,H,-Lh/2-1,-HHd/2,Lh+3,HHd);ctx.restore();}}}
+      ctx.save();ctx.globalAlpha=a*(S[0].b?dim:1);ctx.translate(hx,hy);ctx.rotate(an);if(S[0].fl)ctx.scale(1,-1);ctx.drawImage(im,0,0,HF*W,H,-Lh/2-1,-HHd/2,Lh+3,HHd);ctx.restore();}}}
 r21DrawCoil=function(im,P,thick,a=1){if(!im||P.length<2)return;const n=P.length;
   const Q=P.map((p,i)=>{if(i===0||i===n-1)return p;const dx=P[i+1].x-P[i-1].x,dy=P[i+1].y-P[i-1].y,l=Math.hypot(dx,dy)||1,w=Math.sin(i*.42-T*11)*thick*.16*Math.min(1,i/6);return {x:p.x-dy/l*w,y:p.y+dx/l*w,b:p.b};});
   r21Snake2(im,Q,thick,a,.5);};
