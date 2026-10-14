@@ -286,3 +286,6 @@ A.throwBomb=async(u,ts,sk)=>{const al=ts.filter(t=>t.alive);if(!al.length)return
   // minden ellenség lángra kap
   for(const t of al){const x=cx(t),y=t.y+t.oy,w=t.w*t.scale;t.hurt=.7;hit(u,t,sk);toss(t,40,340);const F={t:0};R18E({update(dt){F.t+=dt;if(F.t<1.1&&t.alive)for(let n=0;n<2;n++)part({x:x+rnd(-w*.45,w*.45),y:y-rnd(0,t.h*t.scale*.6),vx:rnd(-20,20),vy:-rnd(60,160),life:rnd(.35,.6),size:rnd(18,34),grow:-10,rgb:pick(['255,150,50','255,110,30','255,200,90']),shape:'fire'});return F.t<1.1;}});}
   await wait(1100);await bodySettle(u);}finally{rel();}};
+
+// a Levéltánc leírása az új (35. kör) változathoz
+if(SK.mosspillow)SK.mosspillow.desc='Borotvaéles levelek folyama a bothegyből: körbetekeri az ellenséget, négyszer megvágja, aztán szétrobban.';
