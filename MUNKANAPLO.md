@@ -241,3 +241,10 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Dobótőr: festett tőr (`fx7-dagger`, Canva), 5 tőr legyezőben, utókép, beleáll és remeg, a végén megcsillan.
 - Tűzbomba: festett vasbomba (`fx7-firebomb`, Canva), sercegő kanóc, pattanás, nagy robbanás textúrákkal, égő törmelék, porhullám, lángok az ellenségeken, égésfolt.
 - Canva: a segédterv 6. oldala (`DAHW1ZtSXrE`) szolgált exportoldalként; a fényes penge-élt a kivágás kilyukasztja → maszk-zárás (scratchpad python).
+
+## 36. kör – a felhasználó által kért fejlesztések (r21w.js)
+- Fekvő telefon: a `.tools` gombsor (sebesség/zene/hang) a csatatér alá kerül (fixed, a csatatér szélességében), így nincs üres sáv.
+- Ellenfél-szándék: a `weighted` burkolva – az ellenfél következő támadását előre kisorsoljuk (`e._intent`), buborék a feje fölött (⚔ ÜT, 💥 MINDENKIRE, elem-ikon, ✚ GYÓGYÍT, 🛡 ERŐSÍT); az `enemyAct` ezt használja. Ha egy saját AI nem a `weighted`-et hívja, a típus bekerül az `R21_NOINT`-ba (nincs buborék).
+- Mesterfok: hősképesség 3. használata után ★ (+30% erő, arany aura, nagyobb/több részecske, erősebb rázkódás, arany becsapódás). Számláló a gombon (★n/3). Mentés: a mentés JSON `mast` mezője (`r21MastPatch`, mentőhelyenként; Próbateremben nem ment).
+- Időjárás hat a harcra (`R21WXM`): eső/csöpögés víz+villám erősebb, tűz gyengébb; hó jég+; hamu tűz+; homok föld+; levél/szirom természet+; csillagos éj sötét+; köd: 12% mellé. Bal fent kiírás a csata elején.
+- Védelmek: startBattle csata-sorszám túlfutás (r21v), A.melee célpont nélkül (r21w). camp.js: mind a 48 pálya, hiba nincs.
