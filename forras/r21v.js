@@ -289,3 +289,6 @@ A.throwBomb=async(u,ts,sk)=>{const al=ts.filter(t=>t.alive);if(!al.length)return
 
 // a Levéltánc leírása az új (35. kör) változathoz
 if(SK.mosspillow)SK.mosspillow.desc='Borotvaéles levelek folyama a bothegyből: körbetekeri az ellenséget, négyszer megvágja, aztán szétrobban.';
+
+// védelem: ha a csata-sorszám túlfutott (pl. dupla „Tovább”), ne induljon nem létező csata (eddig JS-hiba, elakadás)
+{const sb0=startBattle;startBattle=function(){try{const L=S.level||null;if(L&&L.battles&&!L.battles[S.battleIdx]){console.warn('startBattle: nincs több csata',S.battleIdx);return;}}catch(e){}return sb0.apply(this,arguments);};}
