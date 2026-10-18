@@ -258,3 +258,10 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Fénypajzs + Kristálytükör: a kristály már nincs 46 px-lel eltolva, egymásba illeszkednek (r13a.js).
 - Földrepesztés: festett kőtüskék (`fx7-rockspike`, Canva, 7. oldal), kráteres repedés, porfelhők.
 - Dührepedés (főellenség fél életnél): elágazó, elvékonyodó, izzó magmás hasadékok parázzsal (r21t.js `r21RageDraw`, a régi vonalak törölve).
+
+## 38. kör – izgalmasabb harc (r21y.js)
+- Mérés (bal2.js): az ellenfelek 1–3 ütéstől estek, egy ütésük a hős ÉP-jének 5–10%-a volt → nem volt tét.
+- Ellenséges sebzés ×1,5 minden szinten (`R21_EATK`, Próbateremben nem).
+- Töltött támadás: 2. körtől 16% (főellenség 30%) eséllyel ERŐT GYŰJT (vörös izzás, remegés, ⚠ NAGY ÜTÉS buborék), következő körben a legerősebb támadása pow×2. Megszakad: gyengeség-elem, LIMIT/páros, vagy ≥20% ÉP sebzés.
+- Elit ellenfél: csatánként max. 1, 18% esély, nem főellenség-pályán; ÉP ×1,5, dupla arany/XP; tulajdonság: Páncélos (−35% sebzés), Tüskés (fegyveres ütés 20%-a vissza), Gyógyuló (8%/kör), Robbanó (halálakor 10% minden hősre).
+- Csatakihívás bal fent (🎯): 3 kör alatt / ne essen el senki / 2 gyenge pont / tárgy nélkül; siker: +40+szint·6 arany.
