@@ -248,3 +248,13 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Mesterfok: hősképesség 3. használata után ★ (+30% erő, arany aura, nagyobb/több részecske, erősebb rázkódás, arany becsapódás). Számláló a gombon (★n/3). Mentés: a mentés JSON `mast` mezője (`r21MastPatch`, mentőhelyenként; Próbateremben nem ment).
 - Időjárás hat a harcra (`R21WXM`): eső/csöpögés víz+villám erősebb, tűz gyengébb; hó jég+; hamu tűz+; homok föld+; levél/szirom természet+; csillagos éj sötét+; köd: 12% mellé. Bal fent kiírás a csata elején.
 - Védelmek: startBattle csata-sorszám túlfutás (r21v), A.melee célpont nélkül (r21w). camp.js: mind a 48 pálya, hiba nincs.
+
+## 37. kör – a felhasználó barlangig gyűjtött megjegyzései (r21x.js + javítások)
+- Bolt fekvő telefonon: teljes képernyős, két oszlop, a kártyák/parancsok rejtve (`html.r21shopL`), a ✕ kilépés és a gombsor látszik.
+- Felszerelés-kép (`GEAR_LOOK_MIN`): 4 → 12 (fegyver+ruha szint összege), így csak sok fejlesztés után vált díszes képre.
+- Közös támadások: bolt „Közös támadások” fül; páros 1200, közös erő 2500 arany (mentés JSON `owned` mező). Páros: mindkét hős limitje 100%, teljes limitet visz, csatánként egyszer. Próbateremben minden elérhető.
+- Mesterfok fejezetenként (`R21_MAST[zóna][hős][képesség]`, régi formátum eldobva).
+- Elemek: Kristálygólem tűz 1.3 (▲); Espresszó hamu formában jég 1 (nem ✖); saját elem GYÓGYÍT (`R21_ABS`: sárkányfióka/Espresszó lávaformában tűz, szalamandra tűz+láva, jégelementál jég, villámdenevér villám, lampion tűz) – a gombon ✚ jel.
+- Fénypajzs + Kristálytükör: a kristály már nincs 46 px-lel eltolva, egymásba illeszkednek (r13a.js).
+- Földrepesztés: festett kőtüskék (`fx7-rockspike`, Canva, 7. oldal), kráteres repedés, porfelhők.
+- Dührepedés (főellenség fél életnél): elágazó, elvékonyodó, izzó magmás hasadékok parázzsal (r21t.js `r21RageDraw`, a régi vonalak törölve).

@@ -56,9 +56,9 @@ partyShield=function(){if(S.partyShield||!FX_IMG.sunshield)return;const im=FX_IM
   S.partyShield=fx;effects.push(fx);};
 partyCrystal=function(){if(S.partyCrystal||!FX_IMG.crystalmirror)return;const im=FX_IMG.crystalmirror,p=r13ShieldSpot();
   const fx={t:0,off:0,update(dt){this.t+=dt;if(!S.over&&S.heroes.some(h=>h.alive&&h.st.crystal))this.off=0;else this.off+=dt;
-      if(Math.random()<.25)part({x:p.x+(S.partyShield?46:0)+rnd(-40,40),y:p.y+rnd(-130,130),vx:rnd(-10,10),vy:rnd(-30,-10),life:1,size:rnd(2,4),rgb:pick([CRY,CRY2]),shape:'star'});
+      if(Math.random()<.25)part({x:p.x+0+rnd(-40,40),y:p.y+rnd(-130,130),vx:rnd(-10,10),vy:rnd(-30,-10),life:1,size:rnd(2,4),rgb:pick([CRY,CRY2]),shape:'star'});
       if(this.off>=.4){S.partyCrystal=null;return false;}return true;},
-    draw(){const t=this.t,x=p.x+(S.partyShield?46:0),y=p.y,hk=this.hitAt!=null?Math.max(0,1-(t-this.hitAt)/.4):0,size=380*(1+.02*Math.sin(t*3))*(1+.18*hk),a=Math.min(1,t/.35)*(1-this.off/.4)*Math.min(1,.6+.1*Math.sin(t*4)+.4*hk);
+    draw(){const t=this.t,x=p.x+0,y=p.y,hk=this.hitAt!=null?Math.max(0,1-(t-this.hitAt)/.4):0,size=380*(1+.02*Math.sin(t*3))*(1+.18*hk),a=Math.min(1,t/.35)*(1-this.off/.4)*Math.min(1,.6+.1*Math.sin(t*4)+.4*hk);
       ctx.save();ctx.globalAlpha=Math.max(0,a);ctx.globalCompositeOperation='lighter';ctx.translate(x,y);ctx.scale(.72,1);ctx.globalAlpha*=.8;ctx.drawImage(im,-size/2,-size/2,size,size);ctx.globalAlpha*=.3+.25*hk;ctx.drawImage(im,-size*.56,-size*.56,size*1.12,size*1.12);ctx.restore();}};
   S.partyCrystal=fx;effects.push(fx);};
 // a Titáncsapásnál Grog megnő: az eredeti méretét megjegyezzük

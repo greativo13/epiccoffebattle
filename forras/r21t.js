@@ -74,12 +74,25 @@ async function r21RockFall(t){const x=cx(t),gy=t.y+t.oy,R=[];showBanner('Pálya-
 const R21RAGE_SKIP=['king','oak','chasen'];
 const r21CanRage=e=>e&&e.kind==='enemy'&&e.d&&e.d.boss&&!R21RAGE_SKIP.includes(e.type);
 const R21RAGE_SK={name:'Dühkitörés',tgt:'enemies',kind:'phys',pow:1.15,elem:'phys',anim:'r21rage'};
-function r21RageCracks(e){if(!e._rc){let sd=(e.type||'x').length*97+13;const R=()=>{sd=(sd*9301+49297)%233280;return sd/233280;};e._rc=[...Array(6)].map(()=>{const p=[[.35+R()*.3,.3+R()*.3]];for(let j=0;j<3;j++){const l=p[p.length-1];p.push([l[0]+(R()-.5)*.14,l[1]+R()*.1]);}return p;});}return e._rc;}
+// élethű repedések: véletlenszerű, cikcakkos, elágazó, elvékonyodó repedéshálózat a test belsejében (uv koordinátákban)
+function r21RageCracks(e){if(!e._rc){let sd=(e.type||'x').length*97+13;const R=()=>{sd=(sd*9301+49297)%233280;return sd/233280;};const out=[];
+  const grow=(u,v,ang,len,w,depth)=>{const pts=[[u,v,w]];let a=ang;const n=6+Math.floor(R()*6);for(let k=0;k<n;k++){a+=(R()-.5)*1.1;const st=len*(.6+R()*.8);u+=Math.cos(a)*st;v+=Math.sin(a)*st*1.3;
+      if(u<.2||u>.8||v<.12||v>.92)break;const ww=w*(1-k/n)*.9+.25;pts.push([u,v,ww]);if(depth<2&&R()<.33)grow(u,v,a+(R()<.5?-1:1)*(.6+R()*.6),len*.75,ww*.7,depth+1);}out.push(pts);};
+  for(let c=0;c<5;c++){const u=.38+R()*.24,v=.28+R()*.4;grow(u,v,R()*6.283,.035,3.6,0);if(R()<.7)grow(u,v,R()*6.283,.03,3,0);}e._rc=out;}return e._rc;}
+function r21RageDraw(e,pul){const P=r21RageCracks(e),sc=e.scale||1;ctx.save();ctx.lineCap='round';ctx.lineJoin='round';
+  // 1) sötét, mély hasadék (szegmensenként elvékonyodva)
+  for(const p of P)for(let i=1;i<p.length;i++){const a=sprPt(e,p[i-1][0],p[i-1][1]),b=sprPt(e,p[i][0],p[i][1]);ctx.strokeStyle='rgba(28,6,2,.9)';ctx.lineWidth=(p[i-1][2]+1.6)*sc;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}
+  // 2) izzó magma a hasadék mélyén – lüktet, ragyog
+  ctx.globalCompositeOperation='lighter';ctx.shadowColor='rgba(255,90,20,.95)';ctx.shadowBlur=10+8*pul;
+  for(const p of P)for(let i=1;i<p.length;i++){const a=sprPt(e,p[i-1][0],p[i-1][1]),b=sprPt(e,p[i][0],p[i][1]),w=p[i-1][2];ctx.strokeStyle=`rgba(255,${120+Math.round(70*pul)},40,${.75+.25*pul})`;ctx.lineWidth=Math.max(.6,w*.55)*sc;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+    if(w>2.2){ctx.strokeStyle=`rgba(255,240,190,${.5+.4*pul})`;ctx.lineWidth=w*.22*sc;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();}}
+  ctx.restore();
+  // parázsszikrák szállnak ki a repedésekből
+  if(Math.random()<.5){const p=P[Math.floor(Math.random()*P.length)],q=p[Math.floor(Math.random()*p.length)],pt=sprPt(e,q[0],q[1]);part({x:pt.x,y:pt.y,vx:rnd(-30,30),vy:-rnd(60,150),life:rnd(.5,.9),size:rnd(1.5,3),rgb:pick(['255,190,90','255,140,40','255,230,160'])});}}
 {const de=drawEntity;drawEntity=function(e){if(!e||!e._p2||!e.alive||FRONT_DRAW)return de.apply(this,arguments);const x=cx(e),pul=.5+.5*Math.sin(T*6);
   ctx.save();ctx.globalCompositeOperation='lighter';glow(x,midY(e),e.h*e.scale*.62,'255,60,30',.18+.14*pul);ctx.restore();
   const r=de.apply(this,arguments);
-  try{const P=r21RageCracks(e);ctx.save();ctx.lineCap='round';ctx.lineJoin='round';for(const [c,w] of [['rgba(40,8,4,.85)',5],[`rgba(255,${140+Math.round(80*pul)},60,.95)`,2.2]]){ctx.strokeStyle=c;ctx.lineWidth=w;
-      for(const p of P){ctx.beginPath();p.forEach(([fu,fv],i)=>{const q=sprPt(e,fu,fv);i?ctx.lineTo(q.x,q.y):ctx.moveTo(q.x,q.y);});ctx.stroke();}}ctx.restore();
+  try{r21RageDraw(e,pul);
     if(Math.random()<.25)part({x:x+rnd(-e.w*e.scale*.3,e.w*e.scale*.3),y:midY(e)+rnd(-30,30),vx:rnd(-20,20),vy:-rnd(40,90),life:rnd(.6,1),size:rnd(10,18),grow:16,rgb:'90,40,30',add:false,shape:'smoke'});}catch(err){}
   return r;};}
 A.r21rage=async(u,ts,sk)=>{u.pose='attack';sfx('roar');popLabel(u,'DÜHKITÖRÉS!','#ff6a3a');

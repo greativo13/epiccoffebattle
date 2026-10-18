@@ -38,9 +38,11 @@ function r21IntentOf(e){if(!e.d||!Array.isArray(e.d.skills)||!e.d.skills.length|
 //    látványosabb – arany aura a hősön, nagyobb és több részecske, erősebb rázkódás, arany becsapódás minden találatnál.
 //    A használatszám a mentésben megmarad (mentőhelyenként).
 const R21_MN=3;let R21_MAST={};
-const r21MastN=(h,id)=>((R21_MAST[h.type]||{})[id]||0);
+// fejezetenként külön számol (a felhasználó kérése: a mesterfok csak abban a térképrészben/fejezetben érvényes, ahol megszerezte)
+const r21Zone=()=>{try{const i=S.level?ZONES.indexOf(zoneOf(S.level)):-1;return 'z'+(i<0?0:i);}catch(e){return 'z0';}};
+const r21MastN=(h,id)=>(((R21_MAST[r21Zone()]||{})[h.type]||{})[id]||0);
 function r21MastPatch(){if(S.test)return;try{const raw=localStorage.getItem(SAVE_KEY);if(!raw)return;const d=JSON.parse(raw);d.mast=R21_MAST;localStorage.setItem(SAVE_KEY,JSON.stringify(d));}catch(e){}}
-function r21MastLoad(){if(S.test)return;try{const d=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');R21_MAST=(d&&d.mast&&typeof d.mast==='object')?d.mast:{};}catch(e){R21_MAST={};}}
+function r21MastLoad(){if(S.test)return;try{const d=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');R21_MAST=(d&&d.mast&&typeof d.mast==='object'&&Object.keys(d.mast).every(k=>/^z\d+$/.test(k)))?d.mast:{};}catch(e){R21_MAST={};}}
 {const sg=saveGame;saveGame=function(){const r=sg.apply(this,arguments);r21MastPatch();return r;};}
 {const ng=newGame;newGame=function(){R21_MAST={};return ng.apply(this,arguments);};}
 {const sb=startBattle;startBattle=function(){r21MastLoad();return sb.apply(this,arguments);};}
@@ -61,14 +63,14 @@ let R21_MON=0;
     flash('255,220,140',.18,.12);R21_MON++;}
   try{return await pf.call(this,h,a2);}
   finally{if(mast)R21_MON=Math.max(0,R21_MON-1);
-    const T=(R21_MAST[h.type]=R21_MAST[h.type]||{});T[sk.id]=(T[sk.id]||0)+1;
-    if(T[sk.id]===R21_MN){popLabel(h,'★ '+(SK[sk.id].name||'')+': MESTERFOK!','#ffd84a');sfx('levelup');try{showBanner('★ '+SK[sk.id].name+' – mesterfokú lett!',false);}catch(e){}}
+    const Z=(R21_MAST[r21Zone()]=R21_MAST[r21Zone()]||{}),T=(Z[h.type]=Z[h.type]||{});T[sk.id]=(T[sk.id]||0)+1;
+    if(T[sk.id]===R21_MN){popLabel(h,'★ '+(SK[sk.id].name||'')+': MESTERFOK!','#ffd84a');sfx('levelup');try{showBanner('★ '+SK[sk.id].name+' – mesterfokú lett ebben a fejezetben!',false);}catch(e){}}
     r21MastPatch();}};}
 // a képesség-gombon: ★ ha mesterfokú, különben a használatszám (pl. 1/3)
 {const sb0=setButtons;setButtons=function(list){try{const h=S.pick&&S.pick.h;if(h&&h.kind==='hero'&&Array.isArray(list)){const ids=heroSkills(h);
     list=list.map(b=>{if(!b||!b.label)return b;const id=ids.find(i=>SK[i]&&SK[i].name===b.label);if(!id)return b;const n=r21MastN(h,id);
-      if(n>=R21_MN)return Object.assign({},b,{label:'★ '+b.label,cls:(b.cls||'')+' r21mast',desc:(b.desc||'')+' ★ Mesterfokú: +30% erő, látványosabb.'});
-      return Object.assign({},b,{sub:(b.sub?b.sub+' · ':'')+'★'+n+'/'+R21_MN,desc:(b.desc||'')+` ${R21_MN} használat után mesterfokú lesz (+30% erő).`});});}}catch(e){}return sb0.call(this,list);};}
+      if(n>=R21_MN)return Object.assign({},b,{label:'★ '+b.label,cls:(b.cls||'')+' r21mast',desc:(b.desc||'')+' ★ Mesterfokú ebben a fejezetben: +30% erő, látványosabb.'});
+      return Object.assign({},b,{sub:(b.sub?b.sub+' · ':'')+'★'+n+'/'+R21_MN,desc:(b.desc||'')+` ${R21_MN} használat után mesterfokú lesz ebben a fejezetben (+30% erő).`});});}}catch(e){}return sb0.call(this,list);};}
 {const st=document.createElement('style');st.textContent='.cbtn.r21mast{border-color:#ffd84a!important;box-shadow:0 0 10px rgba(255,210,80,.55),inset 0 0 8px rgba(255,210,80,.25)}.cbtn.r21mast .bl{color:#ffe08a}';document.head.appendChild(st);}
 
 // ---------------------------------------------------------------------------------------------
