@@ -166,4 +166,4 @@ function r21Comic(key,done){
   return ci0.apply(this,arguments);};}
 // A bal felső felirat (kihívás, időjárás) a csatatérhez igazodjon, ne a képernyő tetejéhez
 // (iPhone-on állóban különben az állapotsor alá csúszott, elmosódva).
-(function(){if(typeof document==='undefined')return;const st=document.createElement('style');st.textContent='.stage{position:relative}.stage>.r21hud{left:8px;top:8px}';document.head.appendChild(st);})();
+(function(){if(typeof document==='undefined')return;const st=document.createElement('style');st.textContent='.stage{position:relative}.stage>.r21hud{left:6px;top:6px;max-width:62%;gap:3px}.stage>.r21hud>div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;box-sizing:border-box;background:rgba(10,5,20,.88);border-width:1px;border-radius:6px;color:#fff;font-size:11px;padding:2px 7px;line-height:1.3}@media (max-width:600px){.stage>.r21hud>div{font-size:9.5px;padding:1px 6px}}';document.head.appendChild(st);})();

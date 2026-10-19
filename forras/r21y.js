@@ -59,6 +59,6 @@ r21IntentOf=function(){return null;};
 {const st=document.createElement('style');st.textContent='.r21hud{position:absolute;left:10px;top:10px;z-index:5;display:flex;flex-direction:column;gap:4px;pointer-events:none;font-family:Nunito,system-ui,sans-serif}.r21hud>div{background:rgba(20,10,34,.82);border:1.5px solid rgba(255,220,140,.6);border-radius:8px;padding:3px 9px;color:#efe8ff;font-size:12px;font-weight:800;line-height:1.25;max-width:46vw}.r21hud b{color:#ffe08a}.r21hud .ok{border-color:rgba(125,255,154,.75);color:#c8ffd6}.r21hud .bad{border-color:rgba(255,90,90,.75);color:#ffb0b0}@media (max-width:600px){.r21hud>div{font-size:10.5px;padding:2px 7px}}';document.head.appendChild(st);}
 setInterval(()=>{try{const stg=document.querySelector('.stage');if(!stg)return;let h=stg.querySelector('.r21hud');if(!h){h=document.createElement('div');h.className='r21hud';stg.appendChild(h);}
   const inB=S.enemies&&S.enemies.length&&!S.over&&!S.arena&&ov.hidden!==false;let html='';
-  if(inB&&S._r21wxTok&&S._r21wxInfo)html+=`<div><b>${S._r21wxInfo.t1}</b> · ${S._r21wxInfo.t2}</div>`;
+  if(inB&&S._r21wxTok&&S._r21wxInfo)html+=`<div>${(S._r21wxInfo.t1||'').split(' ')[0]} ${S._r21wxInfo.t2}</div>`;
   const C=S._r21ch;if(inB&&C){const ok=C.ok&&(C.k!=='gyors'||S.round<=3);html+=`<div class="${ok?'ok':'bad'}">🎯 ${C.t}${C.k==='gyenge'?` (${C.weak}/2)`:''}</div>`;}
   if(h.innerHTML!==html)h.innerHTML=html;}catch(e){}},300);
