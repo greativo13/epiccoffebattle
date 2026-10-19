@@ -14,12 +14,12 @@ SHOP_SKILLS.witch.push(['quicksand','4-2',1900]);
 let R21_SAND=null;
 function r21SandTex(){
   if(R21_SAND)return R21_SAND;const N=256,c=document.createElement('canvas');c.width=c.height=N;const g=c.getContext('2d');
-  g.fillStyle='#3d2e33';g.fillRect(0,0,N,N);
+  g.fillStyle='#5b4632';g.fillRect(0,0,N,N);
   // fodrok (dűne-hullámok)
-  for(let i=0;i<18;i++){g.strokeStyle=`rgba(${i%2?'128,100,98':'22,14,24'},.6)`;g.lineWidth=rnd(2,6);g.beginPath();const y0=rnd(0,N);
+  for(let i=0;i<18;i++){g.strokeStyle=`rgba(${i%2?'176,146,104':'40,28,20'},.55)`;g.lineWidth=rnd(2,6);g.beginPath();const y0=rnd(0,N);
     for(let x=-10;x<=N+10;x+=8)g.lineTo(x,y0+Math.sin(x/N*Math.PI*2*2+i)*8);g.stroke();}
   // szemcsék
-  const cols=['92,70,70','120,94,90','150,122,112','58,42,48','34,24,32','178,148,132','170,130,200'];
+  const cols=['110,86,60','140,112,78','170,140,100','78,58,40','46,34,24','200,172,128','150,110,190'];
   for(let i=0;i<14000;i++){const col=cols[(Math.random()*cols.length)|0],a=col==='170,130,200'?.5:rnd(.5,1);g.fillStyle=`rgba(${col},${a})`;
     const s=Math.random()<.85?1:2;g.fillRect(Math.random()*N,Math.random()*N,s,s);}
   R21_SAND={c,pat:null};return R21_SAND;
@@ -30,7 +30,7 @@ function r21SandPat(){const T0=r21SandTex();if(!T0.pat)T0.pat=ctx.createPattern(
 // a jelenet állapota (egyszerre egy futóhomok fut)
 let R21QS=null;
 // homokszemcsék (saját, gravitációval)
-function r21QsGrain(x,y,vx,vy,size){if(!R21QS)return;R21QS.grains.push({x,y,vx,vy,life:rnd(.5,1),max:1,s:size||rnd(2,4.5),c:pick(['92,70,70','130,104,98','58,42,48','178,148,132','140,100,190'])});}
+function r21QsGrain(x,y,vx,vy,size){if(!R21QS)return;R21QS.grains.push({x,y,vx,vy,life:rnd(.5,1),max:1,s:size||rnd(2,4.5),c:pick(['110,86,60','150,120,84','78,58,40','196,166,120','60,44,30'])});}
 
 // a nagy homokmező: a lavina sávja Morgánától az ellenségekig + a nagy futóhomok-ellipszis az ellenségek alatt
 function r21QsField(){
@@ -43,7 +43,7 @@ function r21QsField(){
     for(let x=Q.x0;x<=xe;x+=10){const k=(x-Q.x0)/Math.max(1,Q.fx1-Q.x0),h=(22+34*k)*Q.band;ctx.lineTo(x,gY(x)-h*.55+Math.sin(x*.05+Q.t*3)*2);}
     for(let x=xe;x>=Q.x0;x-=10){const k=(x-Q.x0)/Math.max(1,Q.fx1-Q.x0),h=(22+34*k)*Q.band;ctx.lineTo(x,gY(x)+h*.45);}
     ctx.closePath();r21PatMove(pat,Q.t*120,0);ctx.fillStyle=pat;ctx.fill();r21PatMove(pat,0,0);
-    ctx.strokeStyle='rgba(20,10,26,.7)';ctx.lineWidth=2;ctx.stroke();
+    
   }
   // 2) a nagy futóhomok-mező
   if(Q.r>0){
@@ -51,20 +51,16 @@ function r21QsField(){
     ctx.save();ctx.beginPath();ctx.ellipse(Q.cx,Q.cy,R,RY,0,0,6.29);ctx.clip();
     ctx.save();ctx.translate(Q.cx,Q.cy);ctx.rotate(Q.t*.15);ctx.fillStyle=pat;ctx.fillRect(-R*1.5,-R*1.5,R*3,R*3);ctx.restore();
     // a szélén világosabb, középen mélyebb, sötétebb (süpped)
-    const g=ctx.createRadialGradient(Q.cx,Q.cy,4,Q.cx,Q.cy,R);g.addColorStop(0,'rgba(8,2,14,.55)');g.addColorStop(.7,'rgba(8,2,14,.15)');g.addColorStop(1,'rgba(160,120,130,.18)');
+    const g=ctx.createRadialGradient(Q.cx,Q.cy,4,Q.cx,Q.cy,R);g.addColorStop(0,'rgba(20,10,6,.5)');g.addColorStop(.7,'rgba(20,10,6,.12)');g.addColorStop(1,'rgba(220,190,140,.16)');
     ctx.save();ctx.translate(Q.cx,Q.cy);ctx.scale(1,RY/R);ctx.translate(-Q.cx,-Q.cy);ctx.fillStyle=g;ctx.fillRect(Q.cx-R,Q.cy-R,R*2,R*2);ctx.restore();
     // minden ellenség alatt örvény: forgó homokspirálok és tölcsér
     for(const E of Q.list){const x=cx(E.t),y=E.gy,r=E.vr*Q.r;
       ctx.save();ctx.translate(x,y);ctx.scale(1,.3);
-      const fg=ctx.createRadialGradient(0,0,2,0,0,r);fg.addColorStop(0,'rgba(4,0,8,.92)');fg.addColorStop(.5,'rgba(25,10,32,.55)');fg.addColorStop(1,'rgba(25,10,32,0)');ctx.fillStyle=fg;ctx.beginPath();ctx.arc(0,0,r,0,6.29);ctx.fill();
-      ctx.lineCap='round';
-      for(let i=0;i<9;i++){const ph=Q.t*(2.2+i*.15)+i*.7,rr=r*(.18+.09*i);ctx.strokeStyle=`rgba(${i%3===0?'150,120,118':i%3===1?'98,74,80':'20,10,24'},.8)`;ctx.lineWidth=Math.max(2,r*.04);
-        ctx.beginPath();ctx.arc(0,0,Math.min(rr,r*.95),ph,ph+1.7);ctx.stroke();}
+      const fg=ctx.createRadialGradient(0,0,2,0,0,r);fg.addColorStop(0,'rgba(12,4,16,.92)');fg.addColorStop(.5,'rgba(40,24,22,.55)');fg.addColorStop(1,'rgba(40,24,22,0)');ctx.fillStyle=fg;ctx.beginPath();ctx.arc(0,0,r,0,6.29);ctx.fill();
+      for(let i=0;i<140;i++){const f=i/140,an=Q.t*(2.6-1.6*f)+f*14+(i%3)*2.1,rr=r*(.08+.9*f);ctx.fillStyle=`rgba(${i%4===0?'205,176,130':i%4===1?'120,94,64':i%4===2?'160,130,92':'40,28,18'},${.85-.4*f})`;
+        ctx.fillRect(Math.cos(an)*rr-2,Math.sin(an)*rr-2,i%4===0?4:3,i%4===0?4:3);}
       ctx.restore();}
     ctx.restore();
-    // perem: felgyűrt homokpárkány
-    ctx.save();ctx.strokeStyle='rgba(130,100,104,.65)';ctx.lineWidth=5;ctx.beginPath();ctx.ellipse(Q.cx,Q.cy,R,RY,0,Math.PI*.05,Math.PI*.95);ctx.stroke();
-    ctx.strokeStyle='rgba(20,10,26,.6)';ctx.lineWidth=4;ctx.beginPath();ctx.ellipse(Q.cx,Q.cy+3,R,RY,0,Math.PI*.05,Math.PI*.95);ctx.stroke();ctx.restore();
   }
   // 3) a lavina eleje: hömpölygő homokhullám
   if(Q.front>Q.x0&&Q.wave>0){
@@ -73,10 +69,8 @@ function r21QsField(){
     for(let i=0;i<9;i++){const bx=fx-i*Hh*.32,by=gy-Hh*(.55-.05*i)*(1-i/10),br=Hh*(.55-.04*i)+Math.sin(Q.t*14+i)*3;ctx.moveTo(bx+br,by);ctx.arc(bx,by,br,0,6.29);}
     ctx.rect(Q.x0,gy-4,Math.max(0,fx-Q.x0-Hh*.2),12);
     r21PatMove(pat,Q.t*260,-Q.t*40);ctx.fillStyle=pat;ctx.fill();r21PatMove(pat,0,0);
-    ctx.strokeStyle='rgba(16,8,20,.55)';ctx.lineWidth=2.5;ctx.stroke();
-    ctx.save();ctx.strokeStyle='rgba(200,170,150,.55)';ctx.lineWidth=3;ctx.lineCap='round';for(let i=0;i<6;i++){const bx=fx-i*Hh*.32,by=gy-Hh*(.55-.05*i)*(1-i/10),br=Hh*(.55-.04*i);ctx.beginPath();ctx.arc(bx,by,br*.92,-2.4,-.5);ctx.stroke();}ctx.restore();
     // a hullám teteje világosabb (fény)
-    ctx.globalCompositeOperation='lighter';ctx.fillStyle='rgba(120,80,150,.12)';ctx.fill();ctx.restore();
+    ctx.restore();
   }
   // 4) szemcsék
   for(const p of Q.grains){const a=Math.max(0,Math.min(1,p.life/p.max*1.5));ctx.fillStyle=`rgba(${p.c},${a})`;ctx.fillRect(p.x-p.s/2,p.y-p.s/2,p.s,p.s);}
@@ -109,15 +103,26 @@ let R21QS_FR=-1;
   // homokpárkány a besüllyedt test előtt
   if(E.sink>2){const pat=r21SandPat(),r=Math.max(e.w*e.scale*.6,50);ctx.save();ctx.globalAlpha=Q.a;ctx.beginPath();ctx.ellipse(cx(e),E.gy+2,r,r*.22,0,0,Math.PI);
     for(let i=0;i<7;i++){const bx=cx(e)-r+i*r/3,by=E.gy-2,br=r*.16+Math.sin(Q.t*9+i)*2;ctx.moveTo(bx+br,by);ctx.arc(bx,by,br,0,6.29);}
-    ctx.fillStyle=pat;ctx.fill();ctx.strokeStyle='rgba(16,8,20,.5)';ctx.lineWidth=2;ctx.stroke();ctx.restore();}
+    ctx.fillStyle=pat;ctx.fill();ctx.restore();}
   r21QsArms(E,Q);
+};}
+
+// ---- Morgána guggoló képe (fx7-witchcrouch / díszruhában fx7-witchGcrouch): a lábánál a talajhoz igazítva
+function r21CrouchImg(u){const g=typeof gearLook==='function'?gearLook(u):null;return (g&&R17I.witchGcrouch)||R17I.witchcrouch||null;}
+function r21CrouchBox(u){const im=r21CrouchImg(u);if(!im)return null;const Hs=u.h*u.scale,h=Hs*.8,w=h*im.width/im.height,gy=u.y+u.oy+(u._crouch?u._crouch.dy:0);
+  const g=im===R17I.witchGcrouch;return {im,x:cx(u)-w*.42,y:gy-h,w,h,fx:g?.87:.81,fy:.93};}
+function r21CrouchFist(u){const b=r21CrouchBox(u);if(!b)return {x:cx(u)+u.w*u.scale*.45,y:u.y+u.oy+4};return {x:b.x+b.w*b.fx,y:u.y+u.oy+2};}
+{const de=drawEntity;drawEntity=function(e){
+  if(!e||!e._crouch)return de.apply(this,arguments);const b=r21CrouchBox(e);if(!b)return de.apply(this,arguments);
+  const gy=e.y+e.oy;ctx.save();ctx.translate(b.x+b.w/2,gy+3);ctx.scale(1,.26);const sg=ctx.createRadialGradient(0,0,0,0,0,b.w*.55);sg.addColorStop(0,'rgba(0,0,0,.6)');sg.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=sg;ctx.beginPath();ctx.arc(0,0,b.w*.55,0,6.29);ctx.fill();ctx.restore();
+  ctx.save();ctx.globalAlpha*=e.alpha==null?1:e.alpha;ctx.drawImage(b.im,b.x,b.y,b.w,b.h);ctx.restore();
 };}
 
 A.quicksand=async(u,ts,sk)=>{
   const al=(ts||[]).filter(t=>t&&t.alive);if(!al.length)return;
   const rel=typeof keepPose==='function'?keepPose(u):()=>{};
   try{
-  await dimTo(.45,'8,0,18',300);
+  await dimTo(.35,'10,4,16',300);
   // a homokmező adatai
   const gys=al.map(t=>t.y+t.oy+6),minX=Math.min(...al.map(t=>cx(t)-t.w*t.scale*.6)),maxX=Math.max(...al.map(t=>cx(t)+t.w*t.scale*.6));
   const ux=cx(u)+u.w*u.scale*.45,uy=u.y+u.oy+4;
@@ -132,16 +137,17 @@ A.quicksand=async(u,ts,sk)=>{
       if(Q.r>.3)for(const E of Q.list)if(Math.random()<.8){const an=rnd(0,6.29),rr=E.vr*Q.r*rnd(.4,1);r21QsGrain(cx(E.t)+Math.cos(an)*rr,E.gy+Math.sin(an)*rr*.3,-Math.sin(an)*120,-rnd(40,140),rnd(2,3.5));}
       return S0.on;},draw(){}});
 
-  // 1) Morgána leguggol (előredől), a kezében sötét erő gyűlik
-  u.pose='attack';sfx('dark');
-  await tween(380,k=>{const e=easeIO(k);u.sq=1-.26*e;u.lean=.12*e;});
-  {const hp=handPos(u);for(let i=0;i<14;i++)part({x:hp.x+rnd(-30,30),y:hp.y+rnd(-30,30),vx:rnd(-40,40),vy:rnd(-40,40),life:.5,size:rnd(3,6),rgb:'150,80,230',add:true});}
-  await wait(120);
-  // 2) a földbe csap
-  u.pose='attack';await tween(120,k=>{u.sq=.74-.06*k;u.lean=.12+.1*k;});
-  sfx('punch');sfx('earthm');shake(16);hitStop(80);flash('80,40,110',.3,.1);
-  for(let i=0;i<40;i++)r21QsGrain(ux+rnd(-20,30),uy-rnd(0,6),rnd(-160,320),-rnd(180,520),rnd(2.5,5));
-  for(let i=0;i<40;i++)r21QsGrain(ux+rnd(-40,40),uy-rnd(0,4),rnd(-120,260),-rnd(60,200),rnd(2,4));
+  // 1) Morgána leguggol (festett guggoló kép), a kezében sötét erő gyűlik
+  sfx('dark');
+  await tween(150,k=>{u.sq=1-.06*Math.sin(k*Math.PI);});u.sq=1;
+  u._crouch={dy:-26};await tween(170,k=>{u._crouch.dy=-26*(1-k*k);});u._crouch.dy=0;
+  {const f=r21CrouchFist(u);for(let i=0;i<16;i++)part({x:f.x+rnd(-24,24),y:f.y-rnd(0,40),vx:rnd(-40,40),vy:-rnd(20,90),life:.5,size:rnd(3,6),rgb:'150,80,230',add:true});}
+  // 2) az öklével a földbe csap
+  await wait(140);
+  {const f=r21CrouchFist(u);Q.x0=f.x;Q.y0=f.y;Q.front=f.x;
+  sfx('punch');sfx('earthm');shake(16);hitStop(80);flash('80,40,110',.25,.1);u._crouch.dy=4;tween(160,k=>{if(u._crouch)u._crouch.dy=4*(1-k);});
+  for(let i=0;i<50;i++)r21QsGrain(f.x+rnd(-20,30),f.y-rnd(0,6),rnd(-160,320),-rnd(180,520),rnd(2.5,5));
+  for(let i=0;i<12;i++)part({x:f.x+rnd(-40,50),y:f.y-rnd(0,20),vx:rnd(-90,160),vy:-rnd(30,110),life:rnd(.7,1.2),size:rnd(20,36),grow:30,rgb:pick(['150,122,88','120,96,70']),add:false,shape:'smoke'});}
   // 3) a homoklavina végiggördül a talajon az ellenségekig
   sfx('quake');rumble&&rumble(1.2,7);
   const dist=Q.fx1-Q.x0;
@@ -149,13 +155,15 @@ A.quicksand=async(u,ts,sk)=>{
     const gy=Q.y0+(Q.y1-Q.y0)*Math.max(0,Math.min(1,(Q.front-Q.x0)/Math.max(1,Q.x1-Q.x0)));
     for(let i=0;i<9;i++)r21QsGrain(Q.front+rnd(-30,30),gy-rnd(20,110),rnd(40,340),-rnd(120,460),rnd(2,5.5));
     if(Q.front>Q.x1-40)Q.r=Math.max(Q.r,Math.min(1,(Q.front-(Q.x1-40))/Math.max(1,Q.fx1-Q.x1+40)));
+    if(Math.random()<.5)part({x:Q.front+rnd(-30,20),y:gy-rnd(10,60),vx:rnd(20,120),vy:-rnd(20,70),life:rnd(.7,1.2),size:rnd(22,40),grow:30,rgb:pick(['150,122,88','120,96,70','170,145,105']),add:false,shape:'smoke'});
     if(Math.random()<.25)shake(4);});
   // 4) a hullám szétterül: EGY nagy futóhomok-mező mindenki alatt
   sfx('earthm');shake(12);
   await tween(420,k=>{Q.r=Math.max(Q.r,eOutBack(k));Q.wave=1-k;});Q.wave=0;
   popLabel(al[0],'SÖTÉT FUTÓHOMOK!','#c890ff');
   // Morgána közben felegyenesedik
-  tween(360,k=>{const e=easeIO(k);u.sq=.68+.32*e;u.lean=.22*(1-e);});
+  // Morgána felegyenesedik
+  tween(200,k=>{if(u._crouch)u._crouch.dy=-14*Math.sin(k*Math.PI);}).then(()=>{u._crouch=null;});
   // 5) süllyednek, remegnek
   await tween(380,k=>{for(const E of Q.list){E.sink=E.H*.1*k;E.t.hurt=.15;}});
   // 6) a homokból lidérckarok nőnek ki – minden ellenségnél
@@ -183,7 +191,7 @@ A.quicksand=async(u,ts,sk)=>{
   await tween(420,k=>{Q.r=1-k*k;Q.band=1-k;Q.a=1-k;});
   S0.on=false;R21QS=null;
   await dimTo(0,null,300);
-  }finally{R21QS=null;rel();u.pose='idle';u.sq=1;u.lean=0;}
+  }finally{R21QS=null;rel();u._crouch=null;u.pose='idle';u.sq=1;u.lean=0;}
 };
 
 // a futóhomok saját maga süllyeszt: ne nyíljon utána még egy kráter is (r21Sink)
