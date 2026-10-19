@@ -73,7 +73,7 @@ function r21DrawCoil(im,P,thick,a=1){if(!im||P.length<2)return;let L=0;for(let i
 // erő száll, és festett bambuszdárdák zuhognak le gyorsulva az ellenségre és köré, beállnak a földbe, végül bambuszliget tör fel
 A.druidSpears=async(u,ts,sk)=>{const t=ts[0];if(!t)return;const im=R17I.bamboospear||FX_IMG.bamboospear;const rel=keepPose(u);try{u.pose='cast';await bodyWind(u,260,.12);
   const h=handPos(u);sfx('wind');kaeLeaves(h.x,h.y,24,240);
-  const beam={a:0};R18E({update(){return beam.a>0||!beam.d;},draw(){if(beam.a>0){const h=handPos(u);ctx.save();ctx.globalCompositeOperation='lighter';const g=ctx.createLinearGradient(h.x,h.y,h.x,0);g.addColorStop(0,`rgba(170,250,120,${.6*beam.a})`);g.addColorStop(1,'rgba(170,250,120,0)');ctx.fillStyle=g;ctx.fillRect(h.x-10,0,20,h.y);ctx.restore();}}});
+  const beam={a:0};R18E({update(){return beam.a>0||!beam.d;},draw(){if(beam.a>0){const h=handPos(u);ctx.save();ctx.globalCompositeOperation='lighter';const R=34+22*beam.a+Math.sin(T*30)*3,g=ctx.createRadialGradient(h.x,h.y,0,h.x,h.y,R);g.addColorStop(0,`rgba(235,255,210,${beam.a})`);g.addColorStop(.35,`rgba(150,250,110,${.75*beam.a})`);g.addColorStop(1,'rgba(90,220,80,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(h.x,h.y,R,0,6.29);ctx.fill();ctx.restore();}}});
   await tween(320,k=>beam.a=k);beam.d=true;tween(300,k=>beam.a=1-k);
   const tx=cx(t),gy=t.y+t.oy+8,SW=260,D=[],st={a:1,grove:0};
   R18E({update(){return st.a>0;},draw(){if(st.grove>0)r21GroveBurst(tx,gy+4,Math.max(320,t.w*t.scale*2.6),st.grove,st.a);if(!im)return;const sh=SW*im.height/im.width*1.6;

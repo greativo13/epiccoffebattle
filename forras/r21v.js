@@ -21,9 +21,9 @@ const r21Dust=(x,y,n=6,sp=160,sz=[26,48],rgb=['150,125,95','120,100,75','175,155
   const orbPos=(l,tt)=>{const a=l.a0+tt*l.w,R=(tw*.62+28)*(1-.18*Math.sin(tt*3+l.ph));return {x:tx+Math.cos(a)*R,y:ty+l.hy*th+Math.sin(a)*R*.32,front:Math.sin(a)>0,rot:a+1.57};};
   const pos=l=>{const q=E.t-l.s0;if(q<0)return null;const h0=handPos(u);
     if(q<TR){const k=q/TR,e=k*k*(3-2*k),end=orbPos(l,0),x0=h0.x,y0=h0.y,dx=end.x-x0;
-      const P1={x:x0+dx*.3,y:y0-150+l.j1},P2={x:end.x-dx*.28,y:end.y-110+l.j2},m=1-e;
+      const P1={x:x0+dx*.33,y:y0+(end.y-y0)*.33+l.j1*.35},P2={x:end.x-dx*.3,y:end.y+l.j2*.35},m=1-e;
       let x=m*m*m*x0+3*m*m*e*P1.x+3*m*e*e*P2.x+e*e*e*end.x,y=m*m*m*y0+3*m*m*e*P1.y+3*m*e*e*P2.y+e*e*e*end.y;
-      y+=Math.sin(k*9+l.ph)*26*Math.sin(k*Math.PI);return {x,y,front:true,rot:Math.atan2(end.y-y0,dx)+Math.sin(q*l.flip)*.6,a:Math.min(1,k*5),st:0};}
+      y+=Math.sin(k*9+l.ph)*14*Math.sin(k*Math.PI);return {x,y,front:true,rot:Math.atan2(end.y-y0,dx)+Math.sin(q*l.flip)*.6,a:Math.min(1,k*5),st:0};}
     const q2=q-TR;if(q2<ORB){const o=orbPos(l,q2);o.a=1;o.st=1;return o;}
     const q3=q2-ORB;if(q3<OUT){const o=orbPos(l,ORB),a=l.a0+ORB*l.w,v=520+l.sz*6;o.x+=Math.cos(a)*v*q3+Math.cos(a+1.57*Math.sign(l.w))*v*.4*q3;o.y+=Math.sin(a)*v*q3*.6-140*q3;o.a=1-q3/OUT;o.st=2;o.rot+=q3*14;return o;}
     return null;};
@@ -78,7 +78,7 @@ r21Twister=function(im,x,gy,H,t,a=1,dir=1){if(!im||a<=0)return;const E=r21TwExt(
   ctx.restore();};
 
 {const ts0=A.thornStorm;A.thornStorm=async(u,ts,sk)=>{const al=ts.filter(t=>t.alive);const im=R17I.rosestorm||R17I.thornstorm,lf=R17I.leaf;if(!al.length||!im)return ts0(u,ts,sk);
-  const rel=keepPose(u);try{u.pose='cast';await bodyWind(u,280,.14);sfx('wind');const h=handPos(u);await dimTo(.38,'20,25,10',300);
+  const rel=keepPose(u);try{u.pose='cast';await bodyWind(u,180,.14);sfx('wind');const h=handPos(u);await dimTo(.38,'20,25,10',200);
   const gy=al.reduce((s,t)=>s+t.y+t.oy,0)/al.length+10,Tw={x:h.x,y:h.y,s:.12,a:1,t:0,on:true};
   // 150 keringő test: festett levelek és rózsaszirmok, lassabb (folyamatos) szögsebességgel, elmosódó utóképpel
   const O=[...Array(150)].map(()=>({q:rnd(.02,.98),ph:rnd(0,6.28),sp:rnd(2.4,3.8),s:rnd(.55,1.25),kind:Math.random()<.72?'leaf':'petal',fl:rnd(5,10)}));
@@ -101,14 +101,14 @@ r21Twister=function(im,x,gy,H,t,a=1,dir=1){if(!im||a<=0)return;const E=r21TwExt(
       ctx.save();ctx.globalCompositeOperation='lighter';ctx.lineCap='round';for(let i=0;i<7;i++){const q=(i+.5)/7,r=(30+q*H*.38),yy=base-q*H,ph=Tw.t*3.2+i*1.7;ctx.strokeStyle=`rgba(225,255,200,${.16*Tw.a})`;ctx.lineWidth=3+5*(1-q);
         ctx.beginPath();ctx.ellipse(Tw.x,yy,r,r*.16,0,ph%6.283,ph%6.283+1.6);ctx.stroke();}ctx.restore();
       orb(true);}});
-  await tween(650,k=>{Tw.s=.12+.88*r21ease.back(k);Tw.y=h.y+(gy-h.y)*r21ease.io(k);});bodyStrike(u,180,-.2);sfx('whoosh');rumble&&rumble(1.8,4);
+  await tween(420,k=>{Tw.s=.12+.88*r21ease.back(k);Tw.y=h.y+(gy-h.y)*r21ease.io(k);});bodyStrike(u,180,-.2);sfx('whoosh');rumble&&rumble(1.8,4);
   const xs=al.slice().sort((a,b)=>cx(a)-cx(b)),x0=Tw.x,x1=cx(xs[xs.length-1])+90,caught=new Map();const wnd=setInterval(()=>sfx('wind'),300);
-  await tween(2200,k=>{Tw.x=x0+(x1-x0)*r21ease.io(k);Tw.s=1+.04*Math.sin(k*18);if(Math.random()<.12)shake(4);
+  await tween(1250,k=>{Tw.x=x0+(x1-x0)*r21ease.io(k);Tw.s=1+.04*Math.sin(k*18);if(Math.random()<.12)shake(4);
     for(const t of xs){const d=Math.abs(Tw.x-cx(t));if(!caught.has(t)&&d<70){caught.set(t,k);sfx('slash');shake(12);t.hurt=.6;
         for(let n=0;n<40;n++)part({x:cx(t),y:midY(t),vx:rnd(-440,440),vy:rnd(-400,80),g:500,life:.9,size:rnd(8,14),rgb:pick(['108,191,58','77,154,42','155,216,90','200,40,50']),add:false,shape:'leaf'});hit(u,t,sk);}
-      if(caught.has(t)){const q=(k-caught.get(t))*4.2;if(q<1){t.spin=q*Math.PI*6;t.jump=Math.sin(q*Math.PI)*180;}else{t.spin=0;t.jump=0;}}}});
+      if(caught.has(t)){const q=(k-caught.get(t))*3.2;if(q<1){t.spin=q*Math.PI*6;t.jump=Math.sin(q*Math.PI)*180;}else{t.spin=0;t.jump=0;}}}});
   clearInterval(wnd);for(const t of xs){t.spin=0;t.jump=0;if(caught.has(t))toss(t,80,500);else if(t.alive)hit(u,t,sk);}Tw.on=false;
-  await tween(600,k=>{Tw.a=1-k;Tw.s=1+.3*k;});await dimTo(0,null,300);await bodySettle(u);}finally{for(const t of al){t.spin=0;t.jump=0;}rel();}};}
+  await tween(380,k=>{Tw.a=1-k;Tw.s=1+.3*k;});await dimTo(0,null,250);await bodySettle(u);}finally{for(const t of al){t.spin=0;t.jump=0;}rel();}};}
 
 // =====================================================================================================
 // Élő Bambuszkéreg (ia: „kitakarja a hősöket, és nem verte vissza a támadást”):
@@ -120,7 +120,7 @@ r21Twister=function(im,x,gy,H,t,a=1,dir=1){if(!im||a<=0)return;const E=r21TwExt(
  const de=drawEntity;drawEntity=function(e){const r=de.apply(this,arguments);const W=R21BW.get(e);if(W)try{W.draw();}catch(err){R21BW.delete(e);}return r;};
  const cd=calcDmg;calcDmg=function(u,t,sk){const r=cd.apply(this,arguments);try{if(t&&t.kind==='hero'&&t.st&&t.st.bamwall&&u&&u.kind!==t.kind&&sk&&(sk.kind==='phys'||sk.kind==='mag')&&r&&r.dmg>0){t._bwRaw=r.dmg;r.dmg=Math.max(1,Math.round(r.dmg*.3));}}catch(e){}return r;};
  const b0=A.barkCage;A.barkCage=async(u,ts,sk)=>{const im=R3('bamboowall'),t=ts[0];if(!im||!t)return b0(u,ts,sk);u.pose='cast';await bodyWind(u,200,.1);
-  const C={k:0,a:1,hitT:-9};const geo=()=>{const tw=t.w*t.scale,th=t.h*t.scale;return {gx:cx(t)+tw*.5,gy:t.y+t.oy+8,Wd:Math.max(120,tw*1.3),Hh:th*.78};};
+  const C={k:0,a:1,hitT:-9};const geo=()=>{const tw=t.w*t.scale,th=t.h*t.scale;return {gx:cx(t)+tw*.5,gy:t.y+t.oy+8,Wd:Math.max(175,tw*1.8),Hh:th*1.02};};
   C.draw=()=>{if(C.k<=0||C.a<=0)return;const {gx,gy,Wd,Hh}=geo(),now=r21Now(),wob=Math.max(0,1-(now-C.hitT)/.5);ctx.save();ctx.globalAlpha=Math.max(0,C.a)*.93;
     ctx.translate(gx,gy);ctx.rotate(Math.sin(now*40)*.05*wob);const w=Wd,h=Hh*C.k;ctx.drawImage(im,-w/2,-h,w,h);
     if(wob>0){ctx.globalCompositeOperation='lighter';glow(0,-h*.5,w*.8,'190,255,140',.45*wob);}ctx.restore();};

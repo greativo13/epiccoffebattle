@@ -4,7 +4,7 @@
 // 1) Fekvő telefon: a 16:9-es csatatér szélességben korlátos, alatta üres sáv maradt. A sebesség/zene/hang gombsor
 //    ilyenkor a csatatér alá kerül (kitölti a sávot, és jobbra több hely marad a parancsoknak).
 {const place=()=>{try{const t=document.querySelector('.tools'),st=document.querySelector('.stage'),g=document.querySelector('.game');if(!t||!st||!g)return;
-  const m=matchMedia('(orientation:landscape) and (max-height:520px)').matches,r=st.getBoundingClientRect(),gr=g.getBoundingClientRect(),gap=gr.bottom-r.bottom;
+  const m=matchMedia('(orientation:landscape) and (max-height:520px)').matches,r=st.getBoundingClientRect(),gr=g.getBoundingClientRect(),gap=Math.max(gr.bottom,innerHeight-8)-r.bottom;
   if(m&&gap>=34&&r.width>0){Object.assign(t.style,{position:'fixed',left:r.left+'px',top:(r.bottom+3)+'px',width:r.width+'px',height:Math.min(gap-5,52)+'px',display:'flex',justifyContent:'flex-end',alignItems:'center',gap:'8px',margin:'0',zIndex:6});t.dataset.r21='1';}
   else if(t.dataset.r21){t.removeAttribute('style');delete t.dataset.r21;}}catch(e){}};
  addEventListener('resize',place);setInterval(place,800);setTimeout(place,300);}
