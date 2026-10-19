@@ -164,3 +164,6 @@ function r21Comic(key,done){
   const i=ZONES.indexOf(Z);
   if(R21_COMIC[i]){setScene(Z.levels[0].theme);hideOverlay&&hideOverlay();r21Comic(i,()=>mapScreen());return;}
   return ci0.apply(this,arguments);};}
+// A bal felső felirat (kihívás, időjárás) a csatatérhez igazodjon, ne a képernyő tetejéhez
+// (iPhone-on állóban különben az állapotsor alá csúszott, elmosódva).
+(function(){if(typeof document==='undefined')return;const st=document.createElement('style');st.textContent='.stage{position:relative}.stage>.r21hud{left:8px;top:8px}';document.head.appendChild(st);})();
