@@ -273,3 +273,8 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Új CC0 hangok (hangok/*.mp3) és zenék (csata2, foellenseg2, terkep2) – lásd hang/FORRASOK.md.
 - Bal felső felirat (kihívás, időjárás): a `.stage` `position:relative` lett, így iPhone-on állóban sem csúszik az állapotsor alá.
 - Képregény (r21za.js): prológus + 12 fejezet, fejezetenként 3 panel szövegdobozzal és buborékkal, koppintásra jelenik meg (fekvőben egymás mellett, állóban egyesével). Prológus + I–VI. fejezet: Canva festett képsor (`tx-cm<n>_<0-2>`, a segédterv 10–16. oldaláról exportálva, a fehér réseknél vágva); VII–XII.: a pálya festett háttere + ellenfél/főellenség figurája (`r21ComicCompose`). A `talk(INTRO)` és a `chapterIntro` ezt mutatja. Próba: `index.html?proba=comic:intro` vagy `comic:<zóna 0–11>`.
+
+## 40. kör – képregény folytatás + Morgána: Sötét futóhomok (r21za.js, r21zb.js)
+- Képregény: a VII–X. fejezet is festett Canva-képsort kapott (`tx-cm7..10_<0-2>`, `R21_COMIC[6..9].img`). A XI–XII. fejezetnél elfogyott a kredit: ott továbbra is a pálya háttere + figura (`r21ComicCompose`).
+- Új képesség: Morgána – Sötét futóhomok (`SK.quicksand`, bolt: 4-2-től, 1900 arany; 30 MP, 2 kör várakozás, sötét, minden ellenségre, 35% kábulat 1 körre).
+  Animáció (`A.quicksand`): minden ellenség alatt örvénylő sötét futóhomok (spirál homokcsíkok, csillogó szemek, lila perem), a homokból festett lidérckarok (fx7-wraitharm) nőnek ki (nagy ellenfélnél 3), megragadják a derekát, és mélyre (a test 60%-áig) lehúzzák – a test a homok alatt levágva (drawEntity-burkoló, `e._qs`), vergődés, sötét homokfröccs, sebzés; utána a karok visszasüllyednek, a homok kiköpi őket. A nehéz támadás utáni kráter (`r21Sink`) itt ki van kapcsolva (`S._r21noSink`).

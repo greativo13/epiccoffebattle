@@ -32,19 +32,19 @@ const R21_COMIC={
     {c:'Porcelánvárosban minden fehér és kék: a házak, a hidak, még a galambok is.',w:'Lili',t:'Olyan szép… és olyan csendes.'},
     {c:'A lakók állva alszanak – az utcán, a boltban, a hídon.',w:'Morgána',t:'Psszt! Senki ne lépjen hangosan.'},
     {c:'Csak a porcelán nem alszik: a teáskészletek maguktól terítenek.',w:'Grog',t:'Grog nem tör. Grog… csak kicsit tör.'}]},
-  6:{p:[
+  6:{img:7,p:[
     {c:'A dűnék itt nem homokból vannak, hanem kristálycukorból.',w:'Grog',t:'Grog megkóstolja a sivatagot. Édes!'},
     {c:'A Teacsászárnő karavánjai éjjel-nappal hordják a mézet.',w:'Zordon',t:'Kövessük őket – a méz az altató teához kell.'},
     {c:'A sivatag közepén egy várnyi kaptár áll. Benne a Mézkirálynő.',w:'Lili',t:'Ott zümmög valami… nagyon nagy.'}]},
-  7:{p:[
+  7:{img:8,p:[
     {c:'A felhők fölött örök éjszaka van, és akkora a csend, hogy hallani a pislogásodat.',w:'Morgána',t:'Itt minden puha. Gyanúsan puha.'},
     {c:'Az Álompalotában minden lassú – és minden el akar altatni.',w:'Grog',t:'Grog nem alszik. Grog csak… pislog… hosszan.'},
     {c:'Kamilla, a Teacsászárnő az utolsó üstöt főzi.',w:'Kamilla',t:'Ha kész, soha többé senki nem ébred fel.'}]},
-  8:{p:[
+  8:{img:9,p:[
     {c:'Fél év múlva a kávé, a tea, még Grog sütije is ízetlen.',w:'Grog',t:'Süti nem süti. Grog szomorú.'},
     {c:'A pult alatt egy bambusz habverő és egy cetli: „Lassan. Figyelmesen. Ízlelve. – Ch.”',w:'Zordon',t:'Lili előrerepült, hogy beszéljen vele. Nem tért vissza.'},
     {c:'A habos bambuszerdőben a Mochi-király uralkodik.',w:'Morgána',t:'Egy ragacsos király. Remek.'}]},
-  9:{p:[
+  9:{img:10,p:[
     {c:'A hegy fölött zen-kertek húzódnak, a kavicsok maguktól mozognak.',w:'Zordon',t:'Itt minden lépésnek súlya van.'},
     {c:'A túl sok varázslat felriasztja a mozaiksárkányokat.',w:'Morgána',t:'Akkor most kivételesen… figyelmesen.'},
     {c:'A kert őre: a Zen-Kavics Sárkány.',w:'Grog',t:'Nagy kő. Grog nagyobb.'}]},
