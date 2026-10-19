@@ -24,7 +24,7 @@
 const R21_PAIR_PRICE=1200,R21_COMBO_PRICE=2500;let R21_OWN=null;
 function r21OwnLoad(){try{const d=JSON.parse(localStorage.getItem(SAVE_KEY)||'null');R21_OWN=(d&&Array.isArray(d.owned))?d.owned:[];}catch(e){R21_OWN=[];}return R21_OWN;}
 function r21OwnSave(){if(S.test)return;try{const raw=localStorage.getItem(SAVE_KEY);if(!raw)return;const d=JSON.parse(raw);d.owned=R21_OWN||[];localStorage.setItem(SAVE_KEY,JSON.stringify(d));}catch(e){}}
-const r21Owns=k=>S.arena||S.test||((R21_OWN||r21OwnLoad()).includes(k));
+const r21Owns=k=>S.arena||((R21_OWN||r21OwnLoad()).includes(k));
 {const sg=saveGame;saveGame=function(){const r=sg.apply(this,arguments);if(R21_OWN)r21OwnSave();return r;};}
 {const ng=newGame;newGame=function(){R21_OWN=[];return ng.apply(this,arguments);};}
 {const sb=startBattle;startBattle=function(){r21OwnLoad();S._r21pairUsed=false;return sb.apply(this,arguments);};}
@@ -79,7 +79,7 @@ const r21Abs=(t,el)=>!!(t&&t.kind==='enemy'&&el&&R21_ABS[t.type]&&R21_ABS[t.type
   R18E({update(dt){st.t+=dt*1000;C.k=Math.min(1,st.t/850);for(const s of S2){if(st.t<s.d)continue;const was=s.k;s.t+=dt;s.k=s.t<.12?r21ease.back(s.t/.12):s.t<1.2?1:Math.max(0,1-(s.t-1.2)/.35);
       if(was===0&&s.k>0){if(Math.random()<.4)sfx('rock');for(let j=0;j<3;j++)part({x:s.x+rnd(-10,10),y:s.gy-rnd(0,6),vx:rnd(-110,110),vy:rnd(-360,-160),g:1000,life:rnd(.5,.8),size:rnd(5,9),rgb:'130,105,75',add:false,shape:'rock'});
         if(Math.random()<.5)r21Dust(s.x,s.gy,1,90,[16,26]);shake(4);
-        if(s.row===1)for(const t of al)if(!hitDone.has(t)&&Math.abs(cx(t)-s.x)<40){hitDone.add(t);hitStop(60);toss(t,80,440);t.hurt=.5;hit(u,t,sk);r21Dust(cx(t),t.y+t.oy,8,220,[30,52]);}}}
+        if(s.row===1)for(const t of al)if(!hitDone.has(t)&&Math.abs(cx(t)-s.x)<40){hitDone.add(t);hitStop(60);toss(t,80,440);t.hurt=.5;hit(u,t,sk);r21Dust(cx(t),t.y+t.oy,8,220,[30,52]);if(typeof r21LavaBurst==='function')r21LavaBurst(cx(t),t.y+t.oy+4,.55,1.3);}}}
       return st.on;},
     draw(){// festett repedés: egymásba érő kis kráterek a talajon
       if(cr){const N=14;for(let i=0;i<N;i++){const q=(i+.5)/N;if(q>C.k)break;const x=x0+(x1-x0)*q,w=70+90*q,hh=w*cr.height/cr.width*.85;ctx.save();ctx.globalAlpha=Math.min(1,(C.k-q)*6);ctx.drawImage(cr,x-w/2,gy+8-hh*.5,w,hh);ctx.restore();}}

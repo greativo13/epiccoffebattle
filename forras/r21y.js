@@ -45,12 +45,20 @@ const R21_ELITE={pancel:{n:'Páncélos',d:'kevesebbet sebződik'},tuske:{n:'Tüs
 // ---------------------------------------------------------------------------------------------
 // 4) Csatakihívás: minden csata elején egy véletlen mellékfeladat (bal fent kiírva); ha sikerül, bónusz arany jár.
 const R21_CH=[{k:'gyors',t:'Nyerj 3 kör alatt'},{k:'senki',t:'Ne essen el senki'},{k:'gyenge',t:'Találj el 2 gyenge pontot'},{k:'ital',t:'Nyerj tárgy nélkül'}];
-{const sb=startBattle;startBattle=function(){const r=sb.apply(this,arguments);try{if(!S.arena){const c=pick(R21_CH);S._r21ch={k:c.k,t:c.t,ok:true,weak:0,tok:{}};const C=S._r21ch,F={a:0};
-    R18E({update(dt){F.a=Math.min(1,F.a+dt*2);return S._r21ch===C&&!S.over;},draw(){const y=S._r21wxTok?56:10;let ok=C.ok&&(C.k!=='gyors'||S.round<=3),txt='🎯 '+C.t+(C.k==='gyenge'?` (${C.weak}/2)`:'');
-      ctx.save();ctx.globalAlpha=F.a;ctx.font='800 12px Nunito,sans-serif';const w=ctx.measureText(txt).width+20;ctx.fillStyle='rgba(20,10,34,.72)';ctx.strokeStyle=ok?'rgba(125,255,154,.7)':'rgba(255,90,90,.7)';ctx.lineWidth=1.5;ctx.beginPath();ctx.roundRect?ctx.roundRect(10,y,w,24,8):ctx.rect(10,y,w,24);ctx.fill();ctx.stroke();
-      ctx.fillStyle=ok?'#bfffcf':'#ff9a9a';ctx.textBaseline='middle';ctx.fillText(txt,20,y+12);ctx.restore();}});}}catch(e){}return r;};}
+{const sb=startBattle;startBattle=function(){const r=sb.apply(this,arguments);try{if(!S.arena){const c=pick(R21_CH);S._r21ch={k:c.k,t:c.t,ok:true,weak:0,tok:{}};}}catch(e){}return r;};}
+
 {const h0=hit;hit=function(u,t,sk){const r=h0.apply(this,arguments);try{const C=S._r21ch;if(C&&C.k==='gyenge'&&u&&u.kind==='hero'&&t&&t.kind==='enemy'&&sk&&sk.elem){const m=(elemOf(t)||{})[sk.elem];if(m&&m>1)C.weak++;}}catch(e){}return r;};}
 {const d0=die;die=function(t){try{const C=S._r21ch;if(C&&C.k==='senki'&&t&&t.kind==='hero'&&t.alive)C.ok=false;}catch(e){}return d0.apply(this,arguments);};}
 {const pf=perform;perform=async function(h,act){try{const C=S._r21ch;if(C&&C.k==='ital'&&act&&act.sk&&act.sk.item)C.ok=false;}catch(e){}return pf.apply(this,arguments);};}
 {const v0=victory;victory=async function(){try{const C=S._r21ch;if(C&&!S.arena){const ok=C.ok&&(C.k!=='gyors'||S.round<=3)&&(C.k!=='gyenge'||C.weak>=2);
     if(ok){const g=40+(S.elvl||1)*6;S.gold+=g;showBanner(`🎯 Kihívás teljesítve: ${C.t}! +${g} arany`,true);sfx('coin');}S._r21ch=null;}}catch(e){}return v0.apply(this,arguments);};}
+
+// szándék-buborék nem kell (a felhasználó kérése) – a töltést a vörös izzás és a felirat jelzi
+r21IntentOf=function(){return null;};
+// éles (HTML) felső tájékoztató: időjárás + csatakihívás, a csatatér bal felső sarkában
+{const st=document.createElement('style');st.textContent='.r21hud{position:absolute;left:10px;top:10px;z-index:5;display:flex;flex-direction:column;gap:4px;pointer-events:none;font-family:Nunito,system-ui,sans-serif}.r21hud>div{background:rgba(20,10,34,.82);border:1.5px solid rgba(255,220,140,.6);border-radius:8px;padding:3px 9px;color:#efe8ff;font-size:12px;font-weight:800;line-height:1.25;max-width:46vw}.r21hud b{color:#ffe08a}.r21hud .ok{border-color:rgba(125,255,154,.75);color:#c8ffd6}.r21hud .bad{border-color:rgba(255,90,90,.75);color:#ffb0b0}@media (max-width:600px){.r21hud>div{font-size:10.5px;padding:2px 7px}}';document.head.appendChild(st);}
+setInterval(()=>{try{const stg=document.querySelector('.stage');if(!stg)return;let h=stg.querySelector('.r21hud');if(!h){h=document.createElement('div');h.className='r21hud';stg.appendChild(h);}
+  const inB=S.enemies&&S.enemies.length&&!S.over&&!S.arena&&ov.hidden!==false;let html='';
+  if(inB&&S._r21wxTok&&S._r21wxInfo)html+=`<div><b>${S._r21wxInfo.t1}</b> · ${S._r21wxInfo.t2}</div>`;
+  const C=S._r21ch;if(inB&&C){const ok=C.ok&&(C.k!=='gyors'||S.round<=3);html+=`<div class="${ok?'ok':'bad'}">🎯 ${C.t}${C.k==='gyenge'?` (${C.weak}/2)`:''}</div>`;}
+  if(h.innerHTML!==html)h.innerHTML=html;}catch(e){}},300);

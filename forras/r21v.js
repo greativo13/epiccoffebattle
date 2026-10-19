@@ -168,10 +168,7 @@ A.avalanche=async(u,ts,sk)=>{const {al,mx,gy}=grp(ts);if(!al.length)return;const
   const zone=()=>{const t=pick(al);return {x:cx(t)+rnd(-t.w*t.scale*.9,t.w*t.scale*.9),y:t.y+t.oy+rnd(-6,10)};};
   for(let w=0;w<3;w++){for(let i=0;i<14+w*4;i++){const z=zone();fall(z.x,z.y,rnd(56,112)+w*12,Math.floor(rnd(0,9)),i*.045,false);}
     sfx('rock');for(const t of al){t.hurt=.3;}await wait(420);}
-  // festett kőlavina gördül végig a talajon
-  const sw=R17I.stonewave;if(sw){const L={k:0,a:1};const xa=Math.max(...al.map(cx))+300,xb=Math.min(...al.map(cx))-200,Wd=spanW*.75;
-    R18E({update(){if(L.k>0&&L.k<1&&Math.random()<.8)r21Dust(xa+(xb-xa)*L.k+Wd*.3,gy,1,200,[30,50]);return L.a>0;},draw(){if(L.k<=0)return;const x=xa+(xb-xa)*L.k,h=Wd*sw.height/sw.width;ctx.save();ctx.globalAlpha=L.a;ctx.translate(x,gy+12);ctx.scale(-1,1);ctx.drawImage(sw,-Wd/2,-h,Wd,h);ctx.restore();}});
-    sfx('quake');await tween(700,k=>{L.k=k;L.a=k>.75?1-(k-.75)/.25:1;if(Math.random()<.3)shake(8);for(const t of al)if(Math.abs(cx(t)-(xa+(xb-xa)*k))<70)t.hurt=.4;});}
+  // (a kőhullám átkerült a Földrengéshez – a felhasználó kérése)
   // óriási szikla mindenkire
   await Promise.all(al.map((t,i)=>new Promise(res=>{const s=Math.max(200,t.h*t.scale*1.25);const o=fall(cx(t),t.y+t.oy+4,s,[0,6,7][i%3],i*.12,true);o.x=cx(t)+120;o.y=-s;
     o.onHit=()=>{flash('230,210,170',.35,.12);hitStop(110);t.hurt=.7;hit(u,t,sk);if(typeof r21Sink==='function')try{r21Sink(t);}catch(e){}res();};})));

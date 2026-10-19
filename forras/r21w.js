@@ -70,8 +70,8 @@ let R21_MON=0;
 {const sb0=setButtons;setButtons=function(list){try{const h=S.pick&&S.pick.h;if(h&&h.kind==='hero'&&Array.isArray(list)){const ids=heroSkills(h);
     list=list.map(b=>{if(!b||!b.label)return b;const id=ids.find(i=>SK[i]&&SK[i].name===b.label);if(!id)return b;const n=r21MastN(h,id);
       if(n>=R21_MN)return Object.assign({},b,{label:'★ '+b.label,cls:(b.cls||'')+' r21mast',desc:(b.desc||'')+' ★ Mesterfokú ebben a fejezetben: +30% erő, látványosabb.'});
-      return Object.assign({},b,{sub:(b.sub?b.sub+' · ':'')+'★'+n+'/'+R21_MN,desc:(b.desc||'')+` ${R21_MN} használat után mesterfokú lesz ebben a fejezetben (+30% erő).`});});}}catch(e){}return sb0.call(this,list);};}
-{const st=document.createElement('style');st.textContent='.cbtn.r21mast{border-color:#ffd84a!important;box-shadow:0 0 10px rgba(255,210,80,.55),inset 0 0 8px rgba(255,210,80,.25)}.cbtn.r21mast .bl{color:#ffe08a}';document.head.appendChild(st);}
+      return Object.assign({},b,{r21n:n,desc:(b.desc||'')+` ${R21_MN} használat után mesterfokú lesz ebben a fejezetben (+30% erő).`});});}}catch(e){}const r=sb0.call(this,list);try{const bs=[...btnsEl.querySelectorAll('button.cbtn')];list.filter(Boolean).forEach((b,i)=>{const el=bs[i];if(el&&b.r21n!=null&&b.r21n>0){const sp=document.createElement('span');sp.className='r21badge';sp.textContent='★'+b.r21n+'/'+R21_MN;el.appendChild(sp);}});}catch(e){}return r;};}
+{const st=document.createElement('style');st.textContent='.cbtn.r21mast{border-color:#ffd84a!important;box-shadow:0 0 10px rgba(255,210,80,.55),inset 0 0 8px rgba(255,210,80,.25)}.cbtn.r21mast .bl{color:#ffe08a}.cbtn{position:relative}.r21badge{position:absolute;top:3px;right:6px;font-size:10px;font-weight:800;color:#ffd84a;opacity:.85;pointer-events:none}';document.head.appendChild(st);}
 
 // ---------------------------------------------------------------------------------------------
 // 4) Harcra ható időjárás: a pálya időjárása (R21WX) az elemeket erősíti/gyengíti – mindkét oldalon, logikusan.
@@ -87,10 +87,8 @@ const r21WxText=w=>{const up=[],dn=[];for(const [k,v] of Object.entries(w.m)){co
 {const h0=hit;hit=function(u,t,sk){try{const w=r21Wx();if(w&&w.miss&&u&&t&&u.kind!==t.kind&&sk&&(sk.kind==='phys'||sk.kind==='mag')&&!sk.isLimit&&Math.random()<w.miss){popLabel(t,'🌫️ MELLÉ!','#dfe7f0');sfx('miss');return 0;}}catch(e){}
   if(t)t._r21wx=0;const r=h0.apply(this,arguments);try{const w=r21Wx();if(t&&t._r21wx&&w){popLabel(t,w.ic+' '+(t._r21wx>1?'ERŐSEBB':'GYENGÉBB'),t._r21wx>1?'#ffe08a':'#a9b8d0');t._r21wx=0;}}catch(e){}return r;};}
 {const sb=startBattle;startBattle=function(){const r=sb.apply(this,arguments);try{const w=r21Wx();if(w){const tok={};S._r21wxTok=tok;const txt=r21WxText(w),F={a:0,t:0};
-    R18E({update(dt){F.t+=dt;F.a=Math.min(1,F.t*2);return S._r21wxTok===tok&&!S.over;},draw(){ctx.save();ctx.globalAlpha=F.a;ctx.font='800 13px Nunito,sans-serif';const t1=w.ic+' '+w.n,t2=txt,wd=Math.max(ctx.measureText(t1).width,(ctx.font='700 11px Nunito,sans-serif',ctx.measureText(t2).width))+18;
-      ctx.fillStyle='rgba(20,10,34,.72)';ctx.strokeStyle='rgba(255,220,140,.6)';ctx.lineWidth=1.5;ctx.beginPath();ctx.roundRect?ctx.roundRect(10,10,wd,40,9):ctx.rect(10,10,wd,40);ctx.fill();ctx.stroke();
-      ctx.textAlign='left';ctx.textBaseline='top';ctx.fillStyle='#ffe08a';ctx.font='800 13px Nunito,sans-serif';ctx.fillText(t1,19,14);ctx.fillStyle='#e8e0ff';ctx.font='700 11px Nunito,sans-serif';ctx.fillText(t2,19,32);ctx.restore();}});
-    setTimeout(()=>{try{if(S._r21wxTok===tok)setPrompt(`${w.ic} ${w.n}: ${txt}`);}catch(e){}},1400);}}catch(e){}return r;};}
+    S._r21wxInfo={t1:w.ic+' '+w.n,t2:txt};
+    setTimeout(()=>{try{if(S._r21wxTok===tok)setPrompt(`${w.ic} ${w.n}: ${txt}`);}catch(e){}},1400);}else S._r21wxTok=null;}catch(e){}return r;};}
 
 // védelem: közelharci támadás célpont nélkül (pl. közben elesett) ne dobjon hibát – új élő célpontot választ
 {const m0=A.melee;A.melee=function(u,ts,sk){if(!ts||!ts[0]||!ts[0].alive){const pool=(u&&u.kind==='hero'?S.enemies:S.heroes).filter(x=>x&&x.alive);if(!pool.length)return Promise.resolve();ts=[pool[0]];}return m0.call(this,u,ts,sk);};}

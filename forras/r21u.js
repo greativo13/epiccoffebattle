@@ -66,7 +66,7 @@ const r21IsLim=sk=>!!sk&&(sk.isLimit||(typeof LIMITS==='object'&&Object.values(L
       for(const v of LV)if(v.pool>.3&&Math.random()<.08)part({x:v.x+rnd(-60,60),y:v.y-rnd(0,10),vx:rnd(-10,10),vy:-rnd(40,90),life:rnd(1,1.6),size:rnd(14,24),rgb:pick(['50,40,40','70,60,55']),add:false,shape:'smoke'});return LL.on||BL.length||SPL.length;},
     draw(){// repedés a penge helyétől minden ellenségig
       if(LL.k>0){ctx.save();ctx.globalAlpha=Math.min(1,LL.k);ctx.lineCap='round';for(const [w,c] of [[8,'rgba(40,12,4,.9)'],[3.5,'rgba(255,150,40,.95)'],[1.4,'rgba(255,240,180,1)']]){ctx.strokeStyle=c;ctx.lineWidth=w;for(const v of LV){ctx.beginPath();ctx.moveTo(LL.px,fy);for(let q=1;q<=6;q++){const e=q/6*LL.k;ctx.lineTo(LL.px+(v.x-LL.px)*e+Math.sin(q*2.3+v.x)*10,fy+(v.y-fy)*e+Math.cos(q*1.7)*4);}ctx.stroke();}}ctx.restore();}
-      for(const v of LV){if(v.pool<=0)continue;const R=100*v.pool;ctx.save();ctx.translate(v.x,v.y);ctx.scale(1,.28);ctx.globalCompositeOperation='lighter';glow(0,0,R*1.6,'255,90,20',.5*v.pool);ctx.globalCompositeOperation='source-over';
+      for(const v of LV){if(v.pool<=0)continue;const R=175*v.pool;ctx.save();ctx.translate(v.x,v.y);ctx.scale(1,.28);ctx.globalCompositeOperation='lighter';glow(0,0,R*1.6,'255,90,20',.5*v.pool);ctx.globalCompositeOperation='source-over';
         if(!v.cr){v.cr=[];for(let q=0;q<12;q++){const a=q/12*6.283+rnd(-.2,.2),pts=[[0,0]];let r=0,an=a;while(r<1){r+=rnd(.12,.22);an+=rnd(-.35,.35);pts.push([Math.cos(an)*r,Math.sin(an)*r]);}v.cr.push(pts);}}
         const cg=ctx.createRadialGradient(0,0,R*.2,0,0,R);cg.addColorStop(0,'rgba(60,22,12,1)');cg.addColorStop(.75,'rgba(32,16,12,1)');cg.addColorStop(1,'rgba(30,20,16,0)');ctx.fillStyle=cg;ctx.beginPath();ctx.arc(0,0,R,0,6.29);ctx.fill();
         v.a+=.05;const fl=.75+.25*Math.sin(v.a*3);ctx.lineCap='round';ctx.lineJoin='round';
@@ -76,14 +76,14 @@ const r21IsLim=sk=>!!sk&&(sk.isLimit||(typeof LIMITS==='object'&&Object.values(L
       for(const b of BL){const [r,g2,bb]=lavaCol(b.age);ctx.save();ctx.globalCompositeOperation='lighter';glow(b.x,b.y,b.r*2.4,'255,110,30',.35*Math.max(0,1-b.age));ctx.restore();
         const gr=ctx.createRadialGradient(b.x-b.r*.3,b.y-b.r*.3,1,b.x,b.y,b.r);gr.addColorStop(0,`rgb(255,${Math.min(255,g2+60)|0},${Math.min(255,bb+30)|0})`);gr.addColorStop(.6,`rgb(${r|0},${g2|0},${bb|0})`);gr.addColorStop(1,`rgb(${(r*.45)|0},${(g2*.3)|0},${(bb*.3)|0})`);ctx.fillStyle=gr;
         const spd=Math.min(1.8,1+Math.abs(b.vy)/900);ctx.save();ctx.translate(b.x,b.y);ctx.rotate(Math.atan2(b.vy,b.vx)+Math.PI/2);ctx.beginPath();ctx.ellipse(0,0,b.r/Math.sqrt(spd),b.r*spd,0,0,6.29);ctx.fill();ctx.restore();}}});
-  LL.k=0;LL.px=Bd.x;await tween(300,k=>LL.k=r21ease.out(k));await tween(450,k=>{for(const v of LV)v.pool=r21ease.io(k)*.75;});
-  for(const v of LV){sfx('fire');sfx('boom');shake(16);flash('255,140,40',.22,.1);
-    for(let q=0;q<70;q++)setTimeout(()=>{const a=-Math.PI/2+rnd(-.3,.3)*(q<50?.6:1.4),spd=rnd(500,950);BL.push({x:v.x+rnd(-14,14),y:v.y-8,vx:Math.cos(a)*spd*.55,vy:Math.sin(a)*spd,r:rnd(8,18),age:rnd(.2,.42),gy:v.y+rnd(-6,18)});},q*11);
+  LL.k=0;LL.px=Bd.x;await tween(300,k=>LL.k=r21ease.out(k));await tween(450,k=>{for(const v of LV)v.pool=r21ease.io(k);});
+  for(const v of LV){sfx('fire');sfx('boom');shake(26);flash('255,140,40',.3,.12);rumble&&rumble(.6,10);for(let q=0;q<26;q++)part({x:v.x+rnd(-40,40),y:v.y-rnd(0,30),vx:rnd(-80,80),vy:-rnd(200,520),life:rnd(.5,.9),size:rnd(40,80),grow:40,rgb:pick(['255,150,50','255,100,30','255,210,110']),shape:'fire'});
+    for(let q=0;q<140;q++)setTimeout(()=>{const a=-Math.PI/2+rnd(-.3,.3)*(q<100?.7:1.6),spd=rnd(650,1300);BL.push({x:v.x+rnd(-26,26),y:v.y-8,vx:Math.cos(a)*spd*.6,vy:Math.sin(a)*spd,r:rnd(12,28),age:rnd(.2,.42),gy:v.y+rnd(-6,18)});},q*11);
     const t=xs.find(e=>cx(e)===v.x);if(t&&t.alive){t.hurt=.6;toss(t,110,560);}await wait(220);}
   await wait(900);
   // a penge kihúzódik a földből, visszarepül, és újra Groggá áll össze
   sfx('whoosh');await tween(420,k=>{const e=r21ease.io(k);Bd.x=mx+(ox-mx)*e;Bd.y=fy-60+(oy-fy+60)*e-Math.sin(k*Math.PI)*90;Bd.rot=Math.PI/2+.25-(Math.PI/2+.25)*e;});
-  tween(700,k=>{for(const v of LV)v.pool=.75*(1-k);LL.k=1-k;}).then(()=>LL.on=false);
+  tween(700,k=>{for(const v of LV)v.pool=1-k;LL.k=1-k;}).then(()=>LL.on=false);
   for(let i=0;i<24;i++){const an=rnd(0,6.283);part({x:ox+Math.cos(an)*70,y:oy+Math.sin(an)*90,vx:-Math.cos(an)*120,vy:-Math.sin(an)*120,life:.4,size:rnd(16,28),grow:10,rgb:pick(['15,0,28','70,20,120']),add:false,shape:'dsmoke'});}
   await tween(380,k=>{Bd.a=1-k;Bd.s=1-.6*k;orc.alpha=a0*k;});Bd.on=false;orc.alpha=a0;
   for(const t of xs)if(!done.has(t)&&t.alive)hit(orc,t,sk);await dimTo(0,null,200);};}
@@ -93,9 +93,9 @@ const r21IsLim=sk=>!!sk&&(sk.isLimit||(typeof LIMITS==='object'&&Object.values(L
 // izzik, felemelt öklén (rácson mérve .245/.245) kicsi festett aranyököl gyúl ki; Grog előrelendül, az ököl kilő, és
 // repülés közben folyamatosan nő (a végén akkora, mint az ellenfelek), egyszerre suhan át rajtuk – fénycsóva, csillámpor,
 // a végén hatalmas aranyrobbanás a képernyő szélén
-{R16P['Tündérököl']=async(A1,B1,al,sk,p)=>{const FI=R17I.goldpunch||R17I.goldfist,gb=R17I.goldburst,fairy=A1.type==='fairy'?A1:B1,orc=fairy===A1?B1:A1;await dimTo(.5,'40,30,0',260);
+{R16P['Tündérököl']=async(A1,B1,al,sk,p)=>{for(let i=0;i<60&&!(R17I.goldpunch||R17I.goldfist);i++)await wait(50);const FI=R17I.goldpunch||R17I.goldfist||R17I.goldburst,gb=R17I.goldburst,fairy=A1.type==='fairy'?A1:B1,orc=fairy===A1?B1:A1;await dimTo(.5,'40,30,0',260);
   const SW0={a:ENEMY_SPR['orc-cast'],b:ENEMY_SPR['orcG-cast']};if(ENEMY_SPR['orcnoaxe-cast'])ENEMY_SPR['orc-cast']=ENEMY_SPR['orcnoaxe-cast'];if(ENEMY_SPR['orcGnoaxe-cast'])ENEMY_SPR['orcG-cast']=ENEMY_SPR['orcGnoaxe-cast'];
-  const rel=keepPose(orc,'cast');try{const fist=()=>KP(orc,.245,.245);
+  const rel=keepPose(orc,'cast'),oa0=orc.alpha==null?1:orc.alpha;try{const fist=()=>({x:cx(orc)+orc.w*orc.scale*.1,y:midY(orc)});
   // Lili csillámpora (rövid), Grog arannyal izzik
   // (ia01) Lili Grog fölé repül, és csillámport szór rá (ez maradt ki); Grog arannyal izzik és MEGNŐ (nem zsugorodik)
   const fx0=fairy.ox||0,fy0=fairy.oy||0,dxF=cx(orc)-cx(fairy),dyF=topY(orc)-40-midY(fairy),s0=orc._ts0=orc.scale;
@@ -115,8 +115,11 @@ const r21IsLim=sk=>!!sk&&(sk.isLimit||(typeof LIMITS==='object'&&Object.values(L
       ctx.save();ctx.globalAlpha=F.a;ctx.translate(F.x,F.y);ctx.rotate(R17I.goldpunch?0:F.rot);ctx.drawImage(FI,R17I.goldpunch?-w*.75:-w/2,-h/2,w,h);ctx.restore();}});
   // az ököl kigyúl a kezén, és nőni kezd
   // az ököl a kezén gyúl ki, és ott, láthatóan, fokozatosan megnő
-  sfx('holy');await tween(300,k=>{F.a=k;F.s=.25+.15*k;});sfx('limit');
-  await tween(900,k=>{F.s=.4+1.1*r21ease.io(k);if(Math.random()<.4)shake(2);});
+  // (a felhasználó kérése) az áldás után Grog MAGA változik át az óriási aranyököllé: aranyfény-örvény, a teste elhalványul, a helyén az ököl
+  sfx('holy');sfx('limit');flash('255,230,150',.35,.15);
+  await tween(800,k=>{orc.alpha=oa0*(1-r21ease.io(k));F.a=r21ease.io(k);F.s=.7+.8*r21ease.out(k);if(Math.random()<.5)shake(3);
+    for(let n=0;n<4;n++){const an=k*14+n*1.57,R=(1-k)*orc.h*orc.scale*.6+20;part({x:cx(orc)+Math.cos(an)*R,y:midY(orc)+Math.sin(an)*R*.8,vx:-Math.cos(an)*60,vy:-Math.sin(an)*60,life:.5,size:rnd(2,5),rgb:pick(['255,240,170','255,210,90','255,255,255']),shape:'star'});}});
+  orc.alpha=0;await wait(150);
   // Grog előrelendül, az ököl kilő és repülés közben folyamatosan nő – egyszerre suhan át az összes ellenfélen
   const xs=al.slice().sort((a,b)=>cx(a)-cx(b)),gy=xs.reduce((s,t)=>s+midY(t),0)/xs.length,maxH=Math.max(...xs.map(t=>t.h*t.scale)),sEnd=Math.max(1.8,maxH*1.25/(Math.max(70,orc.h*orc.scale*.32)*1.6*FI.height/FI.width)),done=new Set();
   const o0=orc.ox||0;await tween(140,k=>{orc.ox=o0-14*k;orc.lean=-.08*k;});sfx('whoosh');sfx('boom');shake(10);
@@ -128,8 +131,8 @@ const r21IsLim=sk=>!!sk&&(sk.isLimit||(typeof LIMITS==='object'&&Object.values(L
   sfx('boom');flash('255,240,180',.7,.25);shake(26);rumble&&rumble(1.2,10);
   if(gb){const B={k:0};R18E({update(dt){B.k+=dt/1.1;return B.k<1;},draw(){r17Draw(gb,W-120,gy,1100*(.3+.7*eOutBack(Math.min(1,B.k*1.6))),{add:true,a:1-B.k*B.k});}});}
   for(let i=0;i<120;i++)part({x:rnd(0,W),y:rnd(-20,120),vx:rnd(-30,30),vy:rnd(60,200),g:60,life:rnd(1,1.8),size:rnd(2,5),rgb:pick(['255,240,170','255,210,90','255,255,255']),shape:'star'});
-  F.on=false;await tween(420,k=>{orc.ox=o0+30*(1-k);orc.lean=.12*(1-k);orc._r16tint.a=.3*(1-k);orc.scale=s0*(1.22-.22*k);});orc.scale=s0;orc.ox=o0;orc.lean=0;orc._r16tint=null;
-  for(const t of xs)if(!done.has(t)&&t.alive)hit(orc,t,sk);await wait(400);await dimTo(0,null,260);}finally{rel();if(orc._ts0){orc.scale=orc._ts0;orc._ts0=0;}ENEMY_SPR['orc-cast']=SW0.a;ENEMY_SPR['orcG-cast']=SW0.b;orc._r16tint=null;}};}
+  F.on=false;await tween(420,k=>{orc.alpha=oa0*k;orc.ox=o0+30*(1-k);orc.lean=.12*(1-k);orc._r16tint.a=.3*(1-k);orc.scale=s0*(1.22-.22*k);});orc.scale=s0;orc.ox=o0;orc.lean=0;orc._r16tint=null;
+  for(const t of xs)if(!done.has(t)&&t.alive)hit(orc,t,sk);await wait(400);await dimTo(0,null,260);}finally{rel();orc.alpha=oa0;if(orc._ts0){orc.scale=orc._ts0;orc._ts0=0;}ENEMY_SPR['orc-cast']=SW0.a;ENEMY_SPR['orcG-cast']=SW0.b;orc._r16tint=null;}};}
 
 // ---- Kaelen tárgyhasználat (a felhasználó: „még a régi fajta – másold a többi hős megoldását”): saját festett ivó póz
 // (druid-drink), így ugyanúgy a kezéből iszik, mint a többi hős (drinkFx)

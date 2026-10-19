@@ -72,16 +72,15 @@ A.bloomRevive=async(u,ts,sk)=>{const t=ts[0];if(!t)return;const rel=keepPose(u);
        ctx.globalCompositeOperation='source-over';for(const s of [-1,1]){ctx.fillStyle='rgba(255,60,200,.9)';ctx.beginPath();ctx.arc(w.x+s*ww*.08,w.y-vis+hh*.17,3,0,7);ctx.fill();}ctx.restore();}}});
    sfx('wail');await tween(500,k=>{for(const w of war)w.rise=easeIO(k);});
    // árnykezek törnek fel az ellenségek alól és megragadják őket
-   sfx('dark');for(const q of H)tween(380,k=>q.k=eOutBack(k));await wait(420);for(const q of H)tween(220,k=>q.grip=k);shake(16);for(const t of fs){t.hurt=.5;}
-   // lerántják: az ellenség lesüllyed
-   await tween(320,k=>{for(const t of fs)t.oy=(t.oy0??=t.oy)+22*Math.sin(k*Math.PI);});
+   // (a felhasználó kérésére nincsenek felnyúló árnykarok)
    // az árnyharcosok rohannak és lecsapnak
    for(const w of war){const x0=w.x,tx=cx(w.t)-w.t.w*w.t.scale*.6;sfx('whoosh');await tween(200,k=>{w.x=x0+(tx-x0)*easeIO(k);});sfx('slash');shake(12);hitStop(60);
-     clawMarks(cx(w.t),midY(w.t),Math.max(160,bigOf(w.t)),rnd(-.6,.6),'170,90,255');for(let n=0;n<10;n++)darkFlame({x:cx(w.t)+rnd(-30,30),y:midY(w.t)+rnd(-30,30),vx:rnd(-60,60),vy:-rnd(40,120),life:.5,size:rnd(14,22)});
+     // nincs karomnyom: az árnyhős felugrik és teljes testtel lehúz (lecsap) – sötét becsapódás
+     {const y0=w.y;await tween(170,k=>{w.y=y0-Math.sin(k*Math.PI)*70;});w.y=y0;}shake(14);soundBlast&&soundBlast(cx(w.t),midY(w.t),'150,70,240',160,380);for(let n=0;n<10;n++)darkFlame({x:cx(w.t)+rnd(-30,30),y:midY(w.t)+rnd(-30,30),vx:rnd(-60,60),vy:-rnd(40,120),life:.5,size:rnd(14,22)});
      hit(w.h,w.t,{...ATTACKS[w.h.type],name:'Árnycsapás',kind:'mag',pow:2.4,elem:'dark',anim:'summon'});w.t.hurt=.4;}
    await wait(300);flash('120,40,200',.45,.2);shake(22);sfx('boom');for(const t of fs){soundBlast&&soundBlast(cx(t),midY(t),'150,70,240',220,480);toss(t,40,320);}
    // visszahúzódnak a hősök lába alá
-   await tween(420,k=>{for(const q of H)q.k=1-k;});await tween(400,k=>{for(const w of war){w.rise=1-k;w.a=1-k*.5;}pool.k=1-k;});for(const t of fs)if(t.oy0!=null){t.oy=t.oy0;delete t.oy0;}
+   await tween(400,k=>{for(const w of war){w.rise=1-k;w.a=1-k*.5;}pool.k=1-k;});for(const t of fs)if(t.oy0!=null){t.oy=t.oy0;delete t.oy0;}
    E.on=false;pool.a=0;await dimTo(0,null,300);};}}
 
 // ===== Villámdenevér (idézés, újra): egy óriás villámdenevér csap le kitárt szárnyakkal, a szárnyai között villámívek; minden ellenségen elektromos harapás, majd a raj és az égi villámok

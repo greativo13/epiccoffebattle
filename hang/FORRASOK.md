@@ -21,3 +21,19 @@ Az eredeti, tömörítetlen fájlok a hang-forras/ mappában vannak.
 | porcelan.mp3 | Oriental | Shadowfire452 |
 | cukorsivatag.mp3 | Desert Loop | iamoneabe |
 | alompalota.mp3 | Heavenly Loop | isaiah658 |
+
+## 39. kör (zenék és hangok cseréje)
+| Fájl | Eredeti | Szerző |
+|---|---|---|
+| csata2.mp3 | Battle Theme A | cynicmusic |
+| foellenseg2.mp3 | Determined Pursuit (Epic Orchestra Loop) | Emma_MA |
+| terkep2.mp3 | Fantasy Orchestral Theme | Joth |
+| hangok/whoosh*, wind2 | Swishes Sound Pack | artisticdude |
+| hangok/wind1 | Air Whoosh | (OpenGameArt, CC0) |
+| hangok/thunder1 | Rain & Long Thunder | (OpenGameArt, CC0) |
+| hangok/quake1 | Earthquake and Open Sesame | (OpenGameArt, CC0) |
+| hangok/earthm1 | Earth Element Magic Spell | (OpenGameArt, CC0) |
+| hangok/roar*, bite*, wail*, buzz* | 80 CC0 Creature SFX, CC0 Deep Monster Roar | rubberduck és mások |
+| hangok/heal* | Cure Magic | (OpenGameArt, CC0) |
+| hangok/punch*, metal*, mine*, glassb* | Impact Sounds | Kenney (CC0) |
+| hangok/knife* | RPG Audio | Kenney (CC0) |

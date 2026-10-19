@@ -370,7 +370,7 @@ qCauldron=function(x,y){ctx.save();ctx.translate(x,y);
     ctx.beginPath();ctx.moveTo(px+sl,y0);ctx.lineTo(px+pw+sl-6,y0);ctx.lineTo(px+pw-sl-6,y0+bh);ctx.lineTo(px-sl,y0+bh);ctx.closePath();
     const g=ctx.createLinearGradient(0,y0,0,y0+bh);g.addColorStop(0,h.d.color);g.addColorStop(.6,'#3a2350');g.addColorStop(1,'#140b22');ctx.fillStyle=g;ctx.fill();
     ctx.save();ctx.clip();ctx.globalCompositeOperation='lighter';glow(px+pw/2,y0+bh*.45,pw*.7,'255,240,200',.25);ctx.globalCompositeOperation='source-over';
-    const sp=ENEMY_SPR[h.type]||ENEMY_SPR[h.type+'-attack'];if(sp){const hh=bh*(h.type==='fairy'?.72:.92),ww=hh*sp.width/sp.height,dx=px+pw/2-ww/2+Math.sin(c.age*3+i)*3;ctx.drawImage(sp,dx,y0+bh-hh-6+(1-e)*30,ww,hh);}
+    const sp=ENEMY_SPR[(typeof gearLook==='function'&&gearLook(h)||h.type)]||ENEMY_SPR[h.type]||ENEMY_SPR[h.type+'-attack'];if(sp){const hh=bh*(h.type==='fairy'?.72:.92),ww=hh*sp.width/sp.height,dx=px+pw/2-ww/2+Math.sin(c.age*3+i)*3;ctx.drawImage(sp,dx,y0+bh-hh-6+(1-e)*30,ww,hh);}
     const sh=(c.age*1.6+i*.15)%2-.4;if(sh>-.2&&sh<1.2){const sx=px+pw*sh;const sg=ctx.createLinearGradient(sx-30,0,sx+30,0);sg.addColorStop(0,'rgba(255,255,255,0)');sg.addColorStop(.5,'rgba(255,255,255,.28)');sg.addColorStop(1,'rgba(255,255,255,0)');ctx.fillStyle=sg;ctx.fillRect(sx-30,y0,60,bh);}
     ctx.restore();ctx.beginPath();ctx.moveTo(px+sl,y0);ctx.lineTo(px+pw+sl-6,y0);ctx.lineTo(px+pw-sl-6,y0+bh);ctx.lineTo(px-sl,y0+bh);ctx.closePath();ctx.lineWidth=5;ctx.strokeStyle='#fff3c8';ctx.stroke();ctx.lineWidth=2;ctx.strokeStyle=h.d.color;ctx.stroke();
     txt(h.name,px+pw/2,y0+bh+20,17,'#ffffff','#1a0f24');ctx.restore();});
