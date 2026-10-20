@@ -77,4 +77,5 @@ A felhasználó 246 tesztlap-megjegyzéséből kiszűrt, ismétlődő minták. M
 - A felhasználó magyarul ír, a válasz is magyar legyen.
 - Nagy csomagokban dolgozz: kevés a kredit.
 - A tesztlapon csak a kipróbálandó pontok maradjanak, egyesével, a játék pontos neveivel.
+- Javítás után a pont `review/t-<id>` jelölését vissza kell állítani (`status:''`, `sent:false`, `handled:false`, `note:''`, a `reply` maradhat), különben a tesztlap a „beküldve” miatt elrejti, és a felhasználó nem látja az újrapróbálandót.
 - Részletek a kódról és a körökről: `MUNKANAPLO.md`.
