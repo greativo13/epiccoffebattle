@@ -1,3 +1,17 @@
+// (ja05: „amit húz fekete festék maga után, nagyon darabos”) a tusszalag egyetlen folytonos, elvékonyodó festéknyom:
+// egymáshoz illeszkedő négyszögekből, pontonként halványuló és elvékonyodó szalagként (nincsenek gyöngyszerű szakaszvégek).
+function r21InkRibbon(rib){if(!rib||rib.length<3)return;
+  // összefüggő, elvékonyodó szalag: egymáshoz illeszkedő négyszögek (nincs kerek szakaszvég, ami gyöngyszerűen egymásra rakódna)
+  for(const pass of [1,0]){let seg=[];const flush=()=>{if(seg.length<2){seg=[];return;}const n=seg.length,L=[],R=[];
+      for(let j=0;j<n;j++){const p=seg[j],a=seg[Math.max(0,j-1)],b=seg[Math.min(n-1,j+1)];let dx=b.x-a.x,dy=b.y-a.y;const dl=Math.hypot(dx,dy)||1;dx/=dl;dy/=dl;
+        const w=p.w/2;L.push({x:p.x-dy*w,y:p.y+dx*w});R.push({x:p.x+dy*w,y:p.y-dx*w});}
+      ctx.save();try{if('filter' in ctx)ctx.filter='blur(2.5px)';}catch(e){}for(let j=1;j<n;j++){const al=(seg[j].al+seg[j-1].al)/2;if(al<=.003)continue;ctx.fillStyle=`rgba(12,10,18,${al})`;ctx.beginPath();
+        ctx.moveTo(L[j-1].x,L[j-1].y);ctx.lineTo(L[j].x,L[j].y);ctx.lineTo(R[j].x,R[j].y);ctx.lineTo(R[j-1].x,R[j-1].y);ctx.closePath();ctx.fill();}
+      ctx.restore();seg=[];};
+    for(let i=0;i<rib.length;i++){const r=rib[i];if((r.b?1:0)!==pass||r.a<=0){flush();continue;}const f=1-i/rib.length;
+      const l=seg[seg.length-1];if(l&&Math.hypot(l.x-r.x,l.y-r.y)<1.5)continue;
+      seg.push({x:r.x,y:r.y,w:(70*f+6)*Math.min(1,r.a*1.4),al:(pass?.3:.62)*Math.max(0,r.a)*Math.pow(f,.7)});}
+    flush();}}
 A.inkWave=async(u,ts,sk)=>{const al=ts.filter(h=>h.alive);if(!al.length)return;const rel=keepPose(u);const D={on:true};try{sfx('dark');
   const hand=()=>fp(u,.14,.5),potP=()=>({x:cx(u)-u.w*u.scale*.5-48*PS,y:u.y+u.oy}),P0={a:0},PS=2.5,mouth=()=>{const p=potP();return{x:p.x,y:p.y-58*PS};};
   R17E({update(){return D.on;},draw(){if(P0.a>0){const p=potP();r17Inkpot(p.x,p.y,PS,P0.a);ctx.save();ctx.globalCompositeOperation='lighter';glow(p.x,p.y-58*PS,70,'120,140,200',.25*P0.a);ctx.restore();}}});
@@ -23,7 +37,7 @@ A.inkWave=async(u,ts,sk)=>{const al=ts.filter(h=>h.alive);if(!al.length)return;c
   const RX=Math.min(210,(maxX-minX)/2+80),RY=56,cxs=Math.max(RX+40,(minX+maxX)/2),G={x:p0.x,y:p0.y-50,s:.05,ang:-1.2,flip:false,a:1,b:false,on:true,wob:0},rib=[];
   // tus-szalag: a sárkány után húzódó, elmosódó tuscsík (ez rajzolja a spirált a hősök körül)
   G.tr=[];R17E({update(){if(G.on){const l=G.tr[0];if(!l||Math.hypot(l.x-G.x,l.y-G.y)>2){G.tr.unshift({x:G.x,y:G.y,b:G.b});if(G.tr.length>400)G.tr.pop();}}if(G.on&&!G.nr){rib.unshift({x:G.x,y:G.y,b:G.b,a:1});if(rib.length>70)rib.pop();}for(const r of rib)r.a-=.012;return G.on||rib.some(r=>r.a>0);},
-    draw(){ctx.save();ctx.lineCap='round';for(const pass of [1,0])for(let i=1;i<rib.length;i++){const r=rib[i],q=rib[i-1];if((r.b?1:0)!==pass||r.a<=0)continue;const f=1-i/rib.length;ctx.strokeStyle=`rgba(12,10,18,${(r.b?.35:.7)*r.a*f})`;ctx.lineWidth=70*f+6;ctx.beginPath();ctx.moveTo(q.x,q.y);ctx.lineTo(r.x,r.y);ctx.stroke();}ctx.restore();
+    draw(){r21InkRibbon(rib);
       if(G.a<=0)return;const D2=R17I.inkdragon2;
       // (fa08: „a sárkány csak egy kép, ezért darabos a mozgása”) a festett, egyenes testű tussárkány a saját nyomvonalán
       // hajlik végig, mint egy kígyó – a teste folyamatosan követi a fejét

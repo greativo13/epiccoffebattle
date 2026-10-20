@@ -72,7 +72,7 @@ const r21Abs=(t,el)=>!!(t&&t.kind==='enemy'&&el&&R21_ABS[t.type]&&R21_ABS[t.type
 {const es0=A.earthsplit;A.earthsplit=async(u,ts,sk)=>{const al=ts.filter(t=>t.alive);const sp=R17I.rockspike;if(!al.length||!sp)return es0(u,ts,sk);const rel=keepPose(u,'attack');try{const {gy}=grp(al);
   await tween(260,k=>{u.sq=1-.12*easeIO(k);u.lean=-.12*k;});sfx('whoosh');await tween(300,k=>{u.jump=Math.sin(k*Math.PI*.5)*110;u.sq=.88+.2*k;u.lean=-.12+.1*k;});
   await tween(130,k=>{u.jump=110*(1-k*k);u.lean=-.02+.34*k;});u.jump=0;sfx('rock');sfx('boom');shake(18);hitStop(90);rumble(1.6,7);flash('255,235,200',.25,.12);
-  const x0=cx(u)+50,x1=Math.max(...al.map(t=>cx(t)+t.w*t.scale*.5))+120,y0=u.y+u.oy;r21Dust(x0,y0,12,240,[28,50]);
+  const x0=cx(u)+u.w*u.scale*.55+40/* (ma05: a tüskék ne Grogot nyársalják fel – Grog elől indulnak) */,x1=Math.max(...al.map(t=>cx(t)+t.w*t.scale*.5))+120,y0=u.y+u.oy;r21Dust(x0,y0,12,240,[28,50]);
   for(let i=0;i<18;i++)part({x:x0+rnd(-20,40),y:y0-rnd(0,10),vx:rnd(-160,260),vy:rnd(-460,-200),g:1000,life:rnd(.6,1),size:rnd(5,10),rgb:'130,105,75',add:false,shape:'rock'});
   const n=18,S2=[];for(let row=0;row<2;row++)for(let i=0;i<n;i++){const q=(i+.5)/n,sc=row?1:.72;S2.push({x:x0+(x1-x0)*q+rnd(-12,12),gy:gy+(row?8:-10),H:(95+90*Math.sin(q*Math.PI*.9+.2))*sc*rnd(.85,1.15),rot:rnd(-.22,.22),fl:Math.random()<.5,k:0,t:0,d:q*850+row*70+rnd(0,40),row,dark:!row});}
   S2.sort((a,b)=>a.row-b.row);const C={k:0},st={t:0,on:true},hitDone=new Set(),cr=R17I.crater;

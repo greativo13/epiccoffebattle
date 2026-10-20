@@ -312,3 +312,13 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Minden új támadás sebzése kráter nélkül (`r21HitNS` → `S._r21noSink`). Próbafelvétel: `forras/eszkozok/hsk2.js` (teljes kép, 3 ellenfél).
 - Tesztlap: oa01–oa08.
 - Képregény XI–XII. fejezet: festett képsor Higgsfielddel (`nano_banana_2_1`, 2:3, a hősök és főellenségek figurája referenciaként), `tx-cm11_<0-2>`, `tx-cm12_<0-2>`, `R21_COMIC[10/11].img`. Így mind a 12 fejezet + prológus festett. (A `gpt_image_2_5` az ingyenes csomagban nem megy; a nano_banana képenként 1,5 kredit, egyszerre csak egy kérés fut.) Tesztlap: oa09–oa10.
+
+## 44. kör – tesztlap (ja05, ma05, ma06, na01, x02) (r21zd.js + kisebb módosítások)
+- Tusátok (ja05 „a fekete festéknyom darabos”): a tusszalag egybefüggő, illeszkedő négyszögekből álló, elvékonyodó és halványuló, enyhén elmosott ecsetnyom (`r21InkRibbon`, r21i).
+- Földrepesztés (ma05 „Grogot nyársalja fel”): a tüskesor Grog teste előtt indul (r21x).
+- Földrengés → **Kőhullám** (név), magasabb (×1,55) és szélesebb hullám (r21z, r21zd).
+- Magmakitörés (ma05 „nagyobb sugár”): kb. kétszer akkora tócsa és repedés, szélesebb és magasabb lávaoszlop; a lávafoltok csak a kitörések körül maradnak, a hősökre nem (r21zd, a game.html-beli eredeti átvéve és felülírva).
+- Árny-csapat (ma06 „nagyobb”): 1,7× nagyobb árnyharcosok, nagyobb ugrás, 1,5× nagyobb vágásív; kráter nélkül (r21m).
+- Sötét futóhomok (na01 „gagyi, látványosabb, maradjon homoknyom”): nagyobb, lassabban gördülő festett hullám, több homok és por, a nyomában festett homokhát marad (fx7-sandwave lapított lenyomatai) (r21zb).
+- Cerberus (x02 „túl lassú”): további ×0,74 tempó.
+- Új próbaeszköz: `forras/eszkozok/pcap.js` (a `?proba=` link képsora).

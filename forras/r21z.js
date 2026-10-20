@@ -50,13 +50,13 @@ function r21LavaBurst(x,y,sc=1,dur=2.2){const V={pool:0,cr:null,a:0,on:true,t:0}
 A.quake=async(u,ts,sk)=>{const al=ts.filter(t=>t.alive);if(!al.length)return;const rel=keepPose(u,'attack');try{await dimTo(.5,'30,18,6',260);
   await bodyWind(u,260,.16);await tween(320,k=>{u.jump=Math.sin(k*Math.PI*.5)*120;});await tween(140,k=>{u.jump=120*(1-k*k);});u.jump=0;await bodyStrike(u,120,-.26);
   flash('255,230,180',.4,.2);hitStop(110);sfx('rock');sfx('boom');sfx('quake');rumble(2.6,14);
-  const gy=Math.max(...al.map(t=>t.y+t.oy))+6,sw=R17I.stonewave,xb=Math.max(...al.map(cx))+300,Wd=Math.max(520,(xb-cx(u))*.62),xa=cx(u)+u.w*u.scale*.6+Wd*.5,L={k:0,a:1},CR={k:0,a:1};r21Dust(xa,u.y+u.oy,8,200,[28,46]);
+  const gy=Math.max(...al.map(t=>t.y+t.oy))+6,sw=R17I.stonewave,xb=Math.max(...al.map(cx))+300,Wd=Math.max(600,(xb-cx(u))*.7),xa=cx(u)+u.w*u.scale*.6+Wd*.5,L={k:0,a:1},CR={k:0,a:1};r21Dust(xa,u.y+u.oy,8,200,[28,46]);
   // földrepedés a hullám nyomában (láva nélkül – ia ma05: „földrengésnél nem kell láva”)
   const pts=[];for(let i=0;i<=30;i++)pts.push([i/30,Math.sin(i*1.7)*6+rnd(-4,4)]);
   // (rajzolt repedésvonal nincs – csak a festett kőhullám és por; ia ma05 + „mindig festett kép”)
-  if(sw)R18E({update(){if(L.k>0&&L.k<1&&Math.random()<.8)r21Dust(xa+(xb-xa)*L.k,gy,1,200,[30,50]);return L.a>0;},draw(){if(L.k<=0)return;const x=xa+(xb-xa)*L.k,h=Wd*sw.height/sw.width;ctx.save();ctx.globalAlpha=L.a;ctx.translate(x,gy+12);ctx.drawImage(sw,-Wd/2,-h,Wd,h);ctx.restore();}});
+  if(sw)R18E({update(){if(L.k>0&&L.k<1&&Math.random()<.8)r21Dust(xa+(xb-xa)*L.k,gy,1,200,[30,50]);return L.a>0;},draw(){if(L.k<=0)return;const x=xa+(xb-xa)*L.k,h=Wd*sw.height/sw.width*1.55/* (ma05: nagyobb, magasabb kőhullám) */;ctx.save();ctx.globalAlpha=L.a;ctx.translate(x,gy+12);ctx.drawImage(sw,-Wd/2,-h,Wd,h);ctx.restore();}});
   const done=new Set();
-  await tween(1100,k=>{L.k=k;CR.k=k;L.a=k>.8?1-(k-.8)/.2:1;if(Math.random()<.35)shake(9);const x=xa+(xb-xa)*k;
+  await tween(1250,k=>{L.k=k;CR.k=k;L.a=k>.8?1-(k-.8)/.2:1;if(Math.random()<.35)shake(9);const x=xa+(xb-xa)*k;
     for(const t of al)if(!done.has(t)&&x>=cx(t)-20){done.add(t);t.hurt=.6;toss(t,120,620);hitStop(50);hit(u,t,sk);}});
   for(const t of al)if(!done.has(t)&&t.alive)hit(u,t,sk);
   for(const t of al){r21Dust(cx(t),t.y+t.oy+6,10,260,[30,56]);for(let n=0;n<16;n++)part({x:cx(t)+rnd(-40,40),y:t.y+t.oy+4,vx:rnd(-280,280),vy:-rnd(200,480),g:950,life:rnd(.6,1),size:rnd(6,12),rgb:'120,95,65',add:false,shape:'rock'});}await wait(1100);
