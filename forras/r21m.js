@@ -76,7 +76,12 @@ A.bloomRevive=async(u,ts,sk)=>{const t=ts[0];if(!t)return;const rel=keepPose(u);
    // az árnyharcosok rohannak és lecsapnak
    for(const w of war){const x0=w.x,tx=cx(w.t)-w.t.w*w.t.scale*.6;sfx('whoosh');await tween(200,k=>{w.x=x0+(tx-x0)*easeIO(k);});sfx('slash');shake(12);hitStop(60);
      // nincs karomnyom: az árnyhős felugrik és teljes testtel lehúz (lecsap) – sötét becsapódás
-     {const y0=w.y;await tween(170,k=>{w.y=y0-Math.sin(k*Math.PI)*70;});w.y=y0;}shake(14);soundBlast&&soundBlast(cx(w.t),midY(w.t),'150,70,240',160,380);for(let n=0;n<10;n++)darkFlame({x:cx(w.t)+rnd(-30,30),y:midY(w.t)+rnd(-30,30),vx:rnd(-60,60),vy:-rnd(40,120),life:.5,size:rnd(14,22)});
+     {const y0=w.y;await tween(170,k=>{w.y=y0-Math.sin(k*Math.PI)*70;});w.y=y0;}shake(14);
+     // vágás-csapás (ia ma06): a lecsapás nyomán festett, sötétlila vágásív húz végig az ellenfélen, fentről lefelé
+     {const sl=R17I.darkslash,t2=w.t,sx=cx(t2),sy=midY(t2),sz=Math.max(220,t2.h*t2.scale*1.5),rot=-.9+rnd(-.25,.25),C={k:0,a:1};
+      if(sl)R18E({update(){return C.a>0;},draw(){if(C.k<=0)return;ctx.save();ctx.translate(sx,sy);ctx.rotate(rot);const w2=sz,h2=w2*sl.height/sl.width;
+        ctx.beginPath();ctx.rect(-w2/2,-h2,w2*C.k,h2*2);ctx.clip();ctx.globalAlpha=C.a;ctx.drawImage(sl,-w2/2,-h2/2,w2,h2);ctx.globalCompositeOperation='lighter';ctx.globalAlpha=C.a*.45;ctx.drawImage(sl,-w2/2,-h2/2,w2,h2);ctx.restore();}});
+      sfx('slash');tween(120,k=>{C.k=k;}).then(()=>tween(320,k=>{C.a=1-k;}));sparks(sx,sy,['200,120,255','255,255,255'],16,420);}soundBlast&&soundBlast(cx(w.t),midY(w.t),'150,70,240',160,380);for(let n=0;n<10;n++)darkFlame({x:cx(w.t)+rnd(-30,30),y:midY(w.t)+rnd(-30,30),vx:rnd(-60,60),vy:-rnd(40,120),life:.5,size:rnd(14,22)});
      hit(w.h,w.t,{...ATTACKS[w.h.type],name:'Árnycsapás',kind:'mag',pow:2.4,elem:'dark',anim:'summon'});w.t.hurt=.4;}
    await wait(300);flash('120,40,200',.45,.2);shake(22);sfx('boom');for(const t of fs){soundBlast&&soundBlast(cx(t),midY(t),'150,70,240',220,480);toss(t,40,320);}
    // visszahúzódnak a hősök lába alá

@@ -116,7 +116,20 @@ const r21IsLim=sk=>!!sk&&(sk.isLimit||(typeof LIMITS==='object'&&Object.values(L
   // az ököl kigyúl a kezén, és nőni kezd
   // az ököl a kezén gyúl ki, és ott, láthatóan, fokozatosan megnő
   // (a felhasználó kérése) az áldás után Grog MAGA változik át az óriási aranyököllé: aranyfény-örvény, a teste elhalványul, a helyén az ököl
-  sfx('holy');sfx('limit');flash('255,230,150',.35,.15);
+  // (ia ma07) fentről fénysugár csap le Grogra, utána fényrobbanás – és abból lesz az aranyököl
+  {const bx=cx(orc),by=orc.y+orc.oy,top=-40,Bm={k:0,a:1,w:Math.max(90,orc.w*orc.scale*.9)};
+   R18E({update(){return Bm.a>0;},draw(){if(Bm.k<=0)return;const yb=top+(by-top)*Bm.k;ctx.save();ctx.globalCompositeOperation='lighter';ctx.globalAlpha=Bm.a;
+     for(const [ww,al,c] of [[Bm.w*1.6,.25,'255,210,90'],[Bm.w,.55,'255,230,150'],[Bm.w*.35,.95,'255,252,230']]){const g=ctx.createLinearGradient(bx-ww/2,0,bx+ww/2,0);g.addColorStop(0,`rgba(${c},0)`);g.addColorStop(.5,`rgba(${c},${al})`);g.addColorStop(1,`rgba(${c},0)`);ctx.fillStyle=g;ctx.fillRect(bx-ww/2,top,ww,yb-top);}
+     glow(bx,yb,Bm.w*.9,'255,240,180',.8*Bm.a);ctx.restore();}});
+   sfx('holy');await tween(260,k=>{Bm.k=r21ease.in(k);});
+   for(let n=0;n<40;n++)part({x:bx+rnd(-20,20),y:by-rnd(0,orc.h*orc.scale),vx:rnd(-30,30),vy:rnd(-160,-40),life:rnd(.5,1),size:rnd(2,5),rgb:pick(['255,240,170','255,255,255']),shape:'star'});
+   await wait(260);
+   // fényrobbanás Grogon
+   sfx('boom');flash('255,245,200',.75,.22);shake(16);hitStop(80);
+   if(gb){const B={k:0};R18E({update(dt){B.k+=dt/.8;return B.k<1;},draw(){r17Draw(gb,bx,midY(orc),Math.max(420,orc.h*orc.scale*2.6)*(.3+.7*eOutBack(Math.min(1,B.k*1.8))),{add:true,a:1-B.k*B.k});}});}
+   sparks(bx,midY(orc),['255,240,180','255,210,90','255,255,255'],60,720);
+   tween(380,k=>{Bm.a=1-k;});}
+  sfx('limit');
   await tween(800,k=>{orc.alpha=oa0*(1-r21ease.io(k));F.a=r21ease.io(k);F.s=.7+.8*r21ease.out(k);if(Math.random()<.5)shake(3);
     for(let n=0;n<4;n++){const an=k*14+n*1.57,R=(1-k)*orc.h*orc.scale*.6+20;part({x:cx(orc)+Math.cos(an)*R,y:midY(orc)+Math.sin(an)*R*.8,vx:-Math.cos(an)*60,vy:-Math.sin(an)*60,life:.5,size:rnd(2,5),rgb:pick(['255,240,170','255,210,90','255,255,255']),shape:'star'});}});
   orc.alpha=0;await wait(150);

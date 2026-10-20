@@ -17,6 +17,10 @@ A felhasználó 246 tesztlap-megjegyzéséből kiszűrt, ismétlődő minták. M
 4. **Valódi tárgyak, a világ stílusában.**
    - Gomba, szilánk, kanál, tüske, kocka, bárány, kanna: ne csillag vagy általános részecske legyen.
    - Ha a tárgy egy karakterhez tartozik, hasonlítson rá (a kanna a Szerviz mintájával, szem nélkül).
+   - **MINDIG festett képekkel dolgozz** (a felhasználó kifejezett kérése): minden tárgy, felület, hullám, tölcsér, póz
+     festett kép legyen (Canva `generate-image` → export → `forras/conv.js` flood → `fx7-*`). Kóddal rajzolt ellipszis,
+     csík, rúd, kör, sokszög NEM elég („egy kör meg egy rúd, nem élethű”). Kód csak mozgatja, méretezi, vágja a festett képet,
+     és szemcséket/port ad hozzá. Új póz is festett kép legyen (pl. guggoló Morgána), ne összenyomott figura.
 5. **Ami nem kell, az teljesen tűnjön el** („nem kell" ~27 megjegyzés). Ezek visszatérő zavaró elemek:
    - vékony kör vagy gyűrű, pajzs-körvonal;
    - kard- vagy vágáscsík, ha nincs penge;

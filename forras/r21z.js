@@ -51,27 +51,25 @@ A.quake=async(u,ts,sk)=>{const al=ts.filter(t=>t.alive);if(!al.length)return;con
   await bodyWind(u,260,.16);await tween(320,k=>{u.jump=Math.sin(k*Math.PI*.5)*120;});await tween(140,k=>{u.jump=120*(1-k*k);});u.jump=0;await bodyStrike(u,120,-.26);
   flash('255,230,180',.4,.2);hitStop(110);sfx('rock');sfx('boom');sfx('quake');rumble(2.6,14);
   const gy=Math.max(...al.map(t=>t.y+t.oy))+6,xa=cx(u)+u.w*u.scale*.9,xb=Math.max(...al.map(cx))+260,sw=R17I.stonewave,Wd=Math.max(320,(xb-xa)*.45),L={k:0,a:1},CR={k:0,a:1};r21Dust(xa,u.y+u.oy,8,200,[28,46]);
-  // lávarepedés a hullám nyomában
+  // földrepedés a hullám nyomában (láva nélkül – ia ma05: „földrengésnél nem kell láva”)
   const pts=[];for(let i=0;i<=30;i++)pts.push([i/30,Math.sin(i*1.7)*6+rnd(-4,4)]);
-  R18E({update(){return CR.a>0;},draw(){if(CR.k<=0)return;const x1=xa+(xb-xa)*CR.k;ctx.save();ctx.globalAlpha=CR.a;ctx.lineCap='round';ctx.lineJoin='round';
-    for(const [w,c] of [[9,'rgba(40,12,4,.9)'],[4,'rgba(255,140,40,.95)'],[1.6,'rgba(255,240,180,1)']]){ctx.strokeStyle=c;ctx.lineWidth=w;ctx.beginPath();for(const [q,o] of pts){const x=xa+(xb-xa)*q;if(x>x1)break;ctx[q?'lineTo':'moveTo'](x,gy+o);}ctx.stroke();}
-    ctx.globalCompositeOperation='lighter';glow((xa+x1)/2,gy,(x1-xa)*.5,'255,90,20',.12*CR.a);ctx.restore();}});
+  // (rajzolt repedésvonal nincs – csak a festett kőhullám és por; ia ma05 + „mindig festett kép”)
   if(sw)R18E({update(){if(L.k>0&&L.k<1&&Math.random()<.8)r21Dust(xa+(xb-xa)*L.k,gy,1,200,[30,50]);return L.a>0;},draw(){if(L.k<=0)return;const x=xa+(xb-xa)*L.k,h=Wd*sw.height/sw.width;ctx.save();ctx.globalAlpha=L.a;ctx.translate(x,gy+12);ctx.drawImage(sw,-Wd/2,-h,Wd,h);ctx.restore();}});
   const done=new Set();
   await tween(1100,k=>{L.k=k;CR.k=k;L.a=k>.8?1-(k-.8)/.2:1;if(Math.random()<.35)shake(9);const x=xa+(xb-xa)*k;
     for(const t of al)if(!done.has(t)&&x>=cx(t)-20){done.add(t);t.hurt=.6;toss(t,120,620);hitStop(50);hit(u,t,sk);}});
   for(const t of al)if(!done.has(t)&&t.alive)hit(u,t,sk);
-  for(const t of al)r21LavaBurst(cx(t),t.y+t.oy+6,.75,1.6);await wait(1500);
+  for(const t of al){r21Dust(cx(t),t.y+t.oy+6,10,260,[30,56]);for(let n=0;n<16;n++)part({x:cx(t)+rnd(-40,40),y:t.y+t.oy+4,vx:rnd(-280,280),vy:-rnd(200,480),g:950,life:rnd(.6,1),size:rnd(6,12),rgb:'120,95,65',add:false,shape:'rock'});}await wait(1100);
   tween(600,k=>{CR.a=1-k;});await dimTo(0,null,350);await bodySettle(u);}finally{rel();u.jump=0;}};
 
-// Titáncsapás: a becsapódáskor nem hosszú sorban, hanem minden ellenség körül KÖRBEN törnek fel a festett kőtüskék, középen láva tör fel
+// Titáncsapás: a becsapódáskor nem hosszú sorban, hanem minden ellenség körül KÖRBEN törnek fel a festett kőtüskék (láva nélkül – ia ma05)
 r13Quake=function(u,al,big){const sp=R17I.rockspike;rumble(big?2.6:1.6,big?18:11);
   for(const t of al){const x=cx(t),gy=t.y+t.oy+4,R=Math.max(70,t.w*t.scale*.75),N=big?10:7,S2=[];
     for(let i=0;i<N;i++){const a=i/N*6.283+rnd(-.15,.15);S2.push({x:x+Math.cos(a)*R,y:gy+Math.sin(a)*R*.3,H:rnd(110,170)*(big?1:.7)*(Math.sin(a)>0?.75:1),rot:Math.cos(a)*.35,fl:Math.random()<.5,k:0,front:Math.sin(a)>0,d:i*40});}
     S2.sort((a,b)=>a.y-b.y);const st={t:0};
     if(sp)R18E({update(dt){st.t+=dt*1000;for(const s of S2){const tt=(st.t-s.d)/1000;s.k=tt<0?0:tt<.14?r21ease.back(tt/.14):tt<1.5?1:Math.max(0,1-(tt-1.5)/.4);}return st.t<2200;},
       draw(){for(const s of S2){if(s.k<=0)continue;const w=s.H*sp.width/sp.height;ctx.save();ctx.beginPath();ctx.rect(0,0,W,s.y+4);ctx.clip();ctx.translate(s.x,s.y+4+s.H*(1-s.k)*.9);ctx.rotate(s.rot);if(s.fl)ctx.scale(-1,1);if(!s.front)ctx.filter='brightness(.8)';ctx.drawImage(sp,-w/2,-s.H,w,s.H);ctx.restore();}}});
-    r21Dust(x,gy,8,240,[30,52]);r21LavaBurst(x,gy+2,big?.9:.6,1.6);}};
+    r21Dust(x,gy,8,240,[30,52]);for(let n=0;n<14;n++)part({x:x+rnd(-R*.6,R*.6),y:gy,vx:rnd(-260,260),vy:-rnd(200,460),g:950,life:rnd(.6,1),size:rnd(6,12),rgb:'120,95,65',add:false,shape:'rock'});}};
 
 // Magmakitörés (Grog lávás képessége) már a 3-3 Olvadt Folyó után megvehető (eddig csak a 7-1 után – ezért „tűnt el”)
 {const L=SHOP_SKILLS.orc,e=L&&L.find(x=>x[0]==='magma');if(e){e[1]='3-3';e[2]=2200;}}

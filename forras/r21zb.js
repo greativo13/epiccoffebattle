@@ -35,44 +35,15 @@ function r21QsGrain(x,y,vx,vy,size){if(!R21QS)return;R21QS.grains.push({x,y,vx,v
 // a nagy homokmező: a lavina sávja Morgánától az ellenségekig + a nagy futóhomok-ellipszis az ellenségek alatt
 function r21QsField(){
   const Q=R21QS;if(!Q||Q.a<=0)return;
-  const pat=r21SandPat(),gY=x=>Q.y0+(Q.y1-Q.y0)*Math.max(0,Math.min(1,(x-Q.x0)/Math.max(1,Q.x1-Q.x0)));
+  const PIT=R17I.sandpit,WV=R17I.sandwave,gY=x=>Q.y0+(Q.y1-Q.y0)*Math.max(0,Math.min(1,(x-Q.x0)/Math.max(1,Q.x1-Q.x0)));
   ctx.save();ctx.globalAlpha=Q.a;
-  // 1) a lavina sávja (a már végiggördült rész vékony homokréteg marad a talajon)
-  if(Q.front>Q.x0+4){
-    const xe=Math.min(Q.front,Q.fx1);ctx.beginPath();
-    for(let x=Q.x0;x<=xe;x+=10){const k=(x-Q.x0)/Math.max(1,Q.fx1-Q.x0),h=(22+34*k)*Q.band;ctx.lineTo(x,gY(x)-h*.55+Math.sin(x*.05+Q.t*3)*2);}
-    for(let x=xe;x>=Q.x0;x-=10){const k=(x-Q.x0)/Math.max(1,Q.fx1-Q.x0),h=(22+34*k)*Q.band;ctx.lineTo(x,gY(x)+h*.45);}
-    ctx.closePath();r21PatMove(pat,Q.t*120,0);ctx.fillStyle=pat;ctx.fill();r21PatMove(pat,0,0);
-    
-  }
-  // 2) a nagy futóhomok-mező
-  if(Q.r>0){
-    const R=Q.RX*Q.r,RY=Q.RY*Q.r;
-    ctx.save();ctx.beginPath();ctx.ellipse(Q.cx,Q.cy,R,RY,0,0,6.29);ctx.clip();
-    ctx.save();ctx.translate(Q.cx,Q.cy);ctx.rotate(Q.t*.15);ctx.fillStyle=pat;ctx.fillRect(-R*1.5,-R*1.5,R*3,R*3);ctx.restore();
-    // a szélén világosabb, középen mélyebb, sötétebb (süpped)
-    const g=ctx.createRadialGradient(Q.cx,Q.cy,4,Q.cx,Q.cy,R);g.addColorStop(0,'rgba(20,10,6,.5)');g.addColorStop(.7,'rgba(20,10,6,.12)');g.addColorStop(1,'rgba(220,190,140,.16)');
-    ctx.save();ctx.translate(Q.cx,Q.cy);ctx.scale(1,RY/R);ctx.translate(-Q.cx,-Q.cy);ctx.fillStyle=g;ctx.fillRect(Q.cx-R,Q.cy-R,R*2,R*2);ctx.restore();
-    // minden ellenség alatt örvény: forgó homokspirálok és tölcsér
-    for(const E of Q.list){const x=cx(E.t),y=E.gy,r=E.vr*Q.r;
-      ctx.save();ctx.translate(x,y);ctx.scale(1,.3);
-      const fg=ctx.createRadialGradient(0,0,2,0,0,r);fg.addColorStop(0,'rgba(12,4,16,.92)');fg.addColorStop(.5,'rgba(40,24,22,.55)');fg.addColorStop(1,'rgba(40,24,22,0)');ctx.fillStyle=fg;ctx.beginPath();ctx.arc(0,0,r,0,6.29);ctx.fill();
-      for(let i=0;i<140;i++){const f=i/140,an=Q.t*(2.6-1.6*f)+f*14+(i%3)*2.1,rr=r*(.08+.9*f);ctx.fillStyle=`rgba(${i%4===0?'205,176,130':i%4===1?'120,94,64':i%4===2?'160,130,92':'40,28,18'},${.85-.4*f})`;
-        ctx.fillRect(Math.cos(an)*rr-2,Math.sin(an)*rr-2,i%4===0?4:3,i%4===0?4:3);}
-      ctx.restore();}
-    ctx.restore();
-  }
-  // 3) a lavina eleje: hömpölygő homokhullám
-  if(Q.front>Q.x0&&Q.wave>0){
-    const fx=Q.front,gy=gY(fx),Hh=(60+70*Math.min(1,(fx-Q.x0)/Math.max(1,Q.fx1-Q.x0)))*Q.wave;
-    ctx.save();ctx.beginPath();
-    for(let i=0;i<9;i++){const bx=fx-i*Hh*.32,by=gy-Hh*(.55-.05*i)*(1-i/10),br=Hh*(.55-.04*i)+Math.sin(Q.t*14+i)*3;ctx.moveTo(bx+br,by);ctx.arc(bx,by,br,0,6.29);}
-    ctx.rect(Q.x0,gy-4,Math.max(0,fx-Q.x0-Hh*.2),12);
-    r21PatMove(pat,Q.t*260,-Q.t*40);ctx.fillStyle=pat;ctx.fill();r21PatMove(pat,0,0);
-    // a hullám teteje világosabb (fény)
-    ctx.restore();
-  }
-  // 4) szemcsék
+  // 1) a nagy futóhomok: FESTETT homoktölcsér (fx7-sandpit) az összes ellenfél alatt, lassan „lélegzik”
+  if(Q.r>0&&PIT){const w=Q.RX*2.35*Q.r*(1+.015*Math.sin(Q.t*3)),h=w*PIT.height/PIT.width;
+    ctx.drawImage(PIT,Q.cx-w/2,Q.cy-h*.5,w,h);}
+  // 2) a lavina: FESTETT homokhullám (fx7-sandwave) gördül a talajon Morgána öklétől az ellenfelekig, egyre nagyobb
+  if(Q.wave>0&&WV){const fx=Q.front,gy=gY(fx),k=Math.min(1,(fx-Q.x0)/Math.max(1,Q.fx1-Q.x0)),h=(90+150*k)*Q.wave,w=h*WV.width/WV.height;
+    ctx.save();ctx.globalAlpha=Q.a*Math.min(1,Q.wave*1.4);ctx.translate(fx,gy+h*.08);ctx.scale(1,1+.04*Math.sin(Q.t*16));ctx.drawImage(WV,-w*.78,-h,w,h);ctx.restore();}
+  // 3) szemcsék
   for(const p of Q.grains){const a=Math.max(0,Math.min(1,p.life/p.max*1.5));ctx.fillStyle=`rgba(${p.c},${a})`;ctx.fillRect(p.x-p.s/2,p.y-p.s/2,p.s,p.s);}
   ctx.restore();
 }
@@ -101,9 +72,9 @@ let R21QS_FR=-1;
   ctx.save();ctx.beginPath();ctx.rect(-50,-200,W+100,E.gy+2+200);ctx.clip();
   try{de.apply(this,arguments);}finally{ctx.restore();e.oy=oy0;e.lift=lift0;}
   // homokpárkány a besüllyedt test előtt
-  if(E.sink>2){const pat=r21SandPat(),r=Math.max(e.w*e.scale*.6,50);ctx.save();ctx.globalAlpha=Q.a;ctx.beginPath();ctx.ellipse(cx(e),E.gy+2,r,r*.22,0,0,Math.PI);
-    for(let i=0;i<7;i++){const bx=cx(e)-r+i*r/3,by=E.gy-2,br=r*.16+Math.sin(Q.t*9+i)*2;ctx.moveTo(bx+br,by);ctx.arc(bx,by,br,0,6.29);}
-    ctx.fillStyle=pat;ctx.fill();ctx.restore();}
+  if(E.sink>2&&R17I.sandpit){const PIT=R17I.sandpit,w=Q.RX*2.35*Q.r,h=w*PIT.height/PIT.width,x0=Q.cx-w/2,y0=Q.cy-h*.5,r=Math.max(e.w*e.scale*.75,60);
+    ctx.save();ctx.globalAlpha=Q.a;ctx.beginPath();ctx.ellipse(cx(e),E.gy+2,r,r*.3,0,0,Math.PI);ctx.clip();ctx.drawImage(PIT,x0,y0,w,h);ctx.restore();
+    for(let i=0;i<2;i++)r21QsGrain(cx(e)+rnd(-r*.8,r*.8),E.gy,rnd(-60,60),-rnd(40,140),rnd(2,3.5));}
   r21QsArms(E,Q);
 };}
 
@@ -196,3 +167,27 @@ A.quicksand=async(u,ts,sk)=>{
 
 // a futóhomok saját maga süllyeszt: ne nyíljon utána még egy kráter is (r21Sink)
 {const sk0=r21Sink;r21Sink=function(){if(S._r21noSink)return;return sk0.apply(this,arguments);};}
+
+// ===== Hang iPhone-on néma (csengő ki) módban is (ia: „nem kapcsol be a hang”) =====
+// iOS néma módban a Web Audio hangeffektek elnémulnak. Megoldás: a hangmenet „lejátszás” típusú legyen
+// (iOS 17+: navigator.audioSession), régebbin pedig egy néma, ismétlődő <audio> elem tartja lejátszás-módban.
+{let silentEl=null;const SILENT='hangok/csend.mp3';
+ const unlock=()=>{try{if(navigator.audioSession&&navigator.audioSession.type!=='playback')navigator.audioSession.type='playback';}catch(e){}
+   try{if(!silentEl&&!(navigator.audioSession)){silentEl=new Audio(SILENT);silentEl.loop=true;silentEl.volume=0.01;silentEl.setAttribute('playsinline','');}
+     if(silentEl&&silentEl.paused&&!SND.muted)silentEl.play().catch(()=>{});}catch(e){}
+   try{if(SND.ctx&&SND.ctx.state!=='running')SND.ctx.resume();}catch(e){}};
+ try{if(navigator.audioSession)navigator.audioSession.type='playback';}catch(e){}
+ for(const ev of ['pointerdown','touchend','keydown'])addEventListener(ev,unlock,{passive:true});
+ // a „Hang” gombra kattintáskor azonnal szóljon egy próbahang, hogy hallani lehessen, működik
+ {const m0=sndMute;sndMute=function(on){const r=m0.apply(this,arguments);if(!on){unlock();setTimeout(()=>{try{sfx('heal');}catch(e){}},60);}return r;};}
+ // visszatéréskor (háttérből) újraindítjuk
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)unlock();});}
+
+// ===== Bolt: hány fejlesztés kell még az új (díszes) ruhához (ia ma09) =====
+{const sh=shopScreen;shopScreen=function(){const r=sh.apply(this,arguments);try{
+  if(S.shopTab&&S.shopTab!=='items'&&typeof GEAR_LOOK==='object'){const pool=(S.roster||S.heroes||[]),nm=(document.querySelector('.ov-box.shop .shop-list .shop-name')||{}).textContent||'',h=pool.find(x=>typeof GEAR_NAME==='object'&&GEAR_NAME[x.type]&&nm.startsWith(GEAR_NAME[x.type][0]))||pool.find(x=>x.type===S.shopTab)||S.heroes[0];
+    const box=document.querySelector('.ov-box.shop .shop-list');if(h&&h.gear&&box&&!box.querySelector('.r21look')){
+      const have=(h.gear.w||0)+(h.gear.a||0),need=Math.max(0,GEAR_LOOK_MIN-have),d=document.createElement('div');d.className='r21look';
+      d.innerHTML=need>0?`👗 <b>Új ruha:</b> még <b>${need}</b> fejlesztés kell (fegyver + ruha együtt: ${have}/${GEAR_LOOK_MIN})`:`👗 <b>Új ruha megvan!</b> (${have}/${GEAR_LOOK_MIN} fejlesztés)`;
+      const head=box.querySelector('.shop-head');box.insertBefore(d,head||null);}}}catch(e){}return r;};}
+{const st=document.createElement('style');st.textContent='.r21look{margin:4px 0 8px;padding:7px 10px;border-radius:10px;background:rgba(255,215,120,.12);border:1.5px solid rgba(255,215,120,.55);color:#ffe6a8;font-size:13px;font-weight:700}.r21look b{color:#fff}';document.head.appendChild(st);}
