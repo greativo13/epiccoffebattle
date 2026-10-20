@@ -289,3 +289,12 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Tündérököl (ma07): az áldás után fentről fénysugár csap le Grogra, majd fényrobbanás (fx7-goldburst), és abból lesz az aranyököl.
 - Bolt (ma09): a felszerelés alatt „👗 Új ruha: még N fejlesztés kell (x/12)” – a látható felszerelés nevéből azonosított hősre.
 - Sötét futóhomok (na01 „egy kör meg egy rúd”): festett homokhullám (fx7-sandwave) gördül Morgána öklétől, festett homoktölcsér (fx7-sandpit) nyílik az ellenfelek alatt; a rajzolt sáv/ellipszis/spirál kivéve; a besüllyedt test előtt a festett tölcsér alsó része.
+
+## 42. kör – tesztlap (ja05, ma05–ma10, na01, x02)
+- Új ruha (ma09): fegyver ≥3 ÉS ruha ≥3 fejlesztés (`gearLook`, r21p); a bolt kiírja, melyikből hány kell még.
+- Földrepesztés: lávakitörés ki (r21x). Földrengés: nagyobb kőhullám (Wd ≥520), Grogtól távolabb indul (nem „fejeli le”).
+- Tündérököl: a nagy aranyrobbanás minden ellenfélen, a fénysugár helyén (nem a képernyő szélén).
+- Árny-csapat: sötétebb kép, majdnem fekete árnyharcosok halvány lila peremmel, vörösen izzó szemek, egyszerre (130 ms eltolással) és gyorsabban csapnak le, nagyobb vágásív + sötét lángok.
+- Tempó: `r21Faster(név, szorzó)` – a jelenet változatlan, a tween/wait idők rövidebbek: Tusátok (inkWave) ×0,62, Cerberus ×0,75.
+- Futóhomok: guggolás áttűnéssel (`_crouch.a`), a hullám/tölcsér remegő méretezése ki.
+- Hang: retró 8 bites CC0 hangeffektek (`r8_*` minták, minden SFX-név leképezve; csengő nincs) és chiptune zene minden helyen (TRACK_FILE). Források: hang/FORRASOK.md.

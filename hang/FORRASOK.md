@@ -37,3 +37,7 @@ Az eredeti, tömörítetlen fájlok a hang-forras/ mappában vannak.
 | hangok/heal* | Cure Magic | (OpenGameArt, CC0) |
 | hangok/punch*, metal*, mine*, glassb* | Impact Sounds | Kenney (CC0) |
 | hangok/knife* | RPG Audio | Kenney (CC0) |
+
+## Retró hangok és zene (42. kör, a felhasználó választása: „Retró játékzene”)
+- Hangeffektek: Juhani Junkala – „The Essential Retro Video Game Sound Effects Collection [512 sounds]”, CC0, https://opengameart.org/content/512-sound-effects-8-bit-style → `hangok/r8/*.mp3`
+- Zene: Juhani Junkala – „Retro Game Music Pack” (5 Chiptunes), CC0, https://opengameart.org/content/5-chiptunes-action → `hang/r8-csata1.mp3` (Level 1), `r8-csata2.mp3` (Level 2), `r8-foellenseg.mp3` (Level 3), `r8-terkep.mp3` (Title Screen), `r8-vege.mp3` (Ending)

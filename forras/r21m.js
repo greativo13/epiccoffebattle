@@ -56,33 +56,33 @@ A.bloomRevive=async(u,ts,sk)=>{const t=ts[0];if(!t)return;const rel=keepPose(u);
 
 // ===== Árny-csapat (a felhasználó választása: „Árnysereg a földből”): a hősök árnyékából fekete-lila árnykezek és árnyharcosok törnek elő, lerántják és összetépik az ellenségeket, a végén visszahúzódnak a hősök lába alá
 {const sh=SUMMONS.find(x=>x.id==='shadows');if(sh){sh.img=()=>null;sh.desc='A hősök árnyékából árnysereg tör elő: árnykezek rántják le az ellenségeket, árnyharcosok tépik össze őket – erős sötét sebzés mindenkire.';
-  sh.run=async(P,S0)=>{const hs=S.heroes.filter(h=>h.alive),fs=foesAlive();if(!fs.length)return;await dimTo(.78,'10,0,22',350);sfx('dark');rumble&&rumble(1,8);
+  sh.run=async(P,S0)=>{const hs=S.heroes.filter(h=>h.alive),fs=foesAlive();if(!fs.length)return;await dimTo(.82,'4,0,10',300);sfx('dark');rumble&&rumble(1,8);
    const arm=R17I.wraitharm,E={t:0,on:true};
    // a hősök árnyéka kiterjed a földön az ellenségekig
    const pool={k:0,a:1};effects.unshift({update(dt){E.t+=dt;return pool.a>0;},draw(){if(pool.k<=0)return;const x0=Math.min(...hs.map(cx))-60,x1=Math.max(...fs.map(cx))+140,gy=Math.max(...fs.map(t=>t.y+t.oy))+6;ctx.save();ctx.globalAlpha=pool.a;
      const xe=x0+(x1-x0)*pool.k,g=ctx.createLinearGradient(x0,0,xe,0);g.addColorStop(0,'rgba(10,0,20,.85)');g.addColorStop(.9,'rgba(40,10,70,.8)');g.addColorStop(1,'rgba(60,20,110,0)');ctx.fillStyle=g;ctx.beginPath();ctx.ellipse((x0+xe)/2,gy,(xe-x0)/2,26,0,0,7);ctx.fill();ctx.restore();}});
-   await tween(600,k=>pool.k=easeIO(k));
+   await tween(420,k=>pool.k=easeIO(k));
    // árnyharcosok: minden hős fekete-lila mása kiemelkedik a saját árnyékából és rohan
    const war=hs.map((h,i)=>({h,x:cx(h),y:h.y+h.oy,rise:0,t:fs[i%fs.length],a:1}));
    const H=[];for(const t of fs)for(let i=0;i<3;i++)H.push({t,dx:(i-1)*t.w*t.scale*.45,k:0,rot:(i-1)*.35,grip:0});
    effects.push({update(){return E.on;},draw(){for(const q of H){if(q.k<=0)continue;const x=cx(q.t)+q.dx,gy=q.t.y+q.t.oy+10,L=Math.max(260,q.t.h*q.t.scale*1.4)*q.k;ctx.save();
        if(arm){ctx.globalAlpha=.95;ctx.translate(x,gy);ctx.rotate(q.rot*(1-q.grip*.6));r17Draw(tintSpr(arm,'rgb(18,4,30)',.65),0,0,L*arm.width/arm.height,{anchor:'bottom'});ctx.globalCompositeOperation='lighter';ctx.globalAlpha=.25;r17Draw(arm,0,0,L*arm.width/arm.height,{anchor:'bottom'});}ctx.restore();}
      for(const w of war){if(w.rise<=0)continue;const sp=ENEMY_SPR[w.h.type+'-attack']||ENEMY_SPR[w.h.type];if(!sp)continue;const hh=w.h.h*w.h.scale*1.1,ww=hh*sp.width/sp.height,vis=hh*w.rise;ctx.save();ctx.beginPath();ctx.rect(w.x-ww,w.y-hh-40,ww*2,hh+40);ctx.clip();
-       ctx.globalAlpha=w.a;ctx.drawImage(tintSpr(sp,'rgb(16,4,30)',.92),w.x-ww/2,w.y-vis,ww,hh);ctx.globalCompositeOperation='lighter';ctx.globalAlpha=w.a*.09;for(const [ox,oy] of [[-3,0],[3,0],[0,-3]])ctx.drawImage(tintSpr(sp,'rgb(170,90,255)',1),w.x-ww/2+ox,w.y-vis+oy,ww,hh);
-       ctx.globalCompositeOperation='source-over';for(const s of [-1,1]){ctx.fillStyle='rgba(255,60,200,.9)';ctx.beginPath();ctx.arc(w.x+s*ww*.08,w.y-vis+hh*.17,3,0,7);ctx.fill();}ctx.restore();}}});
-   sfx('wail');await tween(500,k=>{for(const w of war)w.rise=easeIO(k);});
+       ctx.globalAlpha=w.a;ctx.drawImage(tintSpr(sp,'rgb(6,0,12)',.98),w.x-ww/2,w.y-vis,ww,hh);ctx.globalCompositeOperation='lighter';ctx.globalAlpha=w.a*.08;for(const [ox,oy] of [[-3,0],[3,0],[0,-3]])ctx.drawImage(tintSpr(sp,'rgb(170,90,255)',1),w.x-ww/2+ox,w.y-vis+oy,ww,hh);
+       ctx.globalCompositeOperation='source-over';ctx.globalCompositeOperation='lighter';for(const s of [-1,1]){const ex=w.x+s*ww*.07,ey=w.y-vis+hh*.17;glow(ex,ey,14,'255,30,40',.9);ctx.fillStyle='rgba(255,220,220,1)';ctx.beginPath();ctx.arc(ex,ey,2.4,0,7);ctx.fill();}ctx.restore();}}});
+   sfx('wail');sfx('growl');await tween(380,k=>{for(const w of war)w.rise=easeIO(k);});
    // árnykezek törnek fel az ellenségek alól és megragadják őket
    // (a felhasználó kérésére nincsenek felnyúló árnykarok)
    // az árnyharcosok rohannak és lecsapnak
-   for(const w of war){const x0=w.x,tx=cx(w.t)-w.t.w*w.t.scale*.6;sfx('whoosh');await tween(200,k=>{w.x=x0+(tx-x0)*easeIO(k);});sfx('slash');shake(12);hitStop(60);
+   await Promise.all(war.map((w,wi)=>wait(wi*130).then(async()=>{const x0=w.x,tx=cx(w.t)-w.t.w*w.t.scale*.6;sfx('whoosh');await tween(160,k=>{w.x=x0+(tx-x0)*easeIO(k);});sfx('slash');shake(12);hitStop(60);
      // nincs karomnyom: az árnyhős felugrik és teljes testtel lehúz (lecsap) – sötét becsapódás
-     {const y0=w.y;await tween(170,k=>{w.y=y0-Math.sin(k*Math.PI)*70;});w.y=y0;}shake(14);
+     {const y0=w.y;await tween(150,k=>{w.y=y0-Math.sin(k*Math.PI)*90;});w.y=y0;}shake(14);
      // vágás-csapás (ia ma06): a lecsapás nyomán festett, sötétlila vágásív húz végig az ellenfélen, fentről lefelé
-     {const sl=R17I.darkslash,t2=w.t,sx=cx(t2),sy=midY(t2),sz=Math.max(220,t2.h*t2.scale*1.5),rot=-.9+rnd(-.25,.25),C={k:0,a:1};
+     {const sl=R17I.darkslash,t2=w.t,sx=cx(t2),sy=midY(t2),sz=Math.max(300,t2.h*t2.scale*2),rot=-.9+rnd(-.25,.25),C={k:0,a:1};
       if(sl)R18E({update(){return C.a>0;},draw(){if(C.k<=0)return;ctx.save();ctx.translate(sx,sy);ctx.rotate(rot);const w2=sz,h2=w2*sl.height/sl.width;
         ctx.beginPath();ctx.rect(-w2/2,-h2,w2*C.k,h2*2);ctx.clip();ctx.globalAlpha=C.a;ctx.drawImage(sl,-w2/2,-h2/2,w2,h2);ctx.globalCompositeOperation='lighter';ctx.globalAlpha=C.a*.45;ctx.drawImage(sl,-w2/2,-h2/2,w2,h2);ctx.restore();}});
-      sfx('slash');tween(120,k=>{C.k=k;}).then(()=>tween(320,k=>{C.a=1-k;}));sparks(sx,sy,['200,120,255','255,255,255'],16,420);}soundBlast&&soundBlast(cx(w.t),midY(w.t),'150,70,240',160,380);for(let n=0;n<10;n++)darkFlame({x:cx(w.t)+rnd(-30,30),y:midY(w.t)+rnd(-30,30),vx:rnd(-60,60),vy:-rnd(40,120),life:.5,size:rnd(14,22)});
-     hit(w.h,w.t,{...ATTACKS[w.h.type],name:'Árnycsapás',kind:'mag',pow:2.4,elem:'dark',anim:'summon'});w.t.hurt=.4;}
+      sfx('slash');tween(110,k=>{C.k=k;}).then(()=>tween(320,k=>{C.a=1-k;}));sparks(sx,sy,['200,120,255','255,255,255'],22,480);for(let n=0;n<12;n++)darkFlame({x:sx+rnd(-40,40),y:sy+rnd(-50,50),vx:rnd(-80,80),vy:-rnd(60,160),life:.6,size:rnd(18,30)});}soundBlast&&soundBlast(cx(w.t),midY(w.t),'150,70,240',160,380);for(let n=0;n<10;n++)darkFlame({x:cx(w.t)+rnd(-30,30),y:midY(w.t)+rnd(-30,30),vx:rnd(-60,60),vy:-rnd(40,120),life:.5,size:rnd(14,22)});
+     hit(w.h,w.t,{...ATTACKS[w.h.type],name:'Árnycsapás',kind:'mag',pow:2.4,elem:'dark',anim:'summon'});w.t.hurt=.4;})));
    await wait(300);flash('120,40,200',.45,.2);shake(22);sfx('boom');for(const t of fs){soundBlast&&soundBlast(cx(t),midY(t),'150,70,240',220,480);toss(t,40,320);}
    // visszahúzódnak a hősök lába alá
    await tween(400,k=>{for(const w of war){w.rise=1-k;w.a=1-k*.5;}pool.k=1-k;});for(const t of fs)if(t.oy0!=null){t.oy=t.oy0;delete t.oy0;}

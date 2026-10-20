@@ -142,7 +142,7 @@ const r21IsLim=sk=>!!sk&&(sk.isLimit||(typeof LIMITS==='object'&&Object.values(L
       sparks(cx(t),midY(t),['255,240,180','255,210,90','255,255,255'],44,700);toss(t,120,560);t.hurt=.6;hit(orc,t,sk);}});
   // hatalmas aranyrobbanás a képernyő szélén + csillámpor-eső
   sfx('boom');flash('255,240,180',.7,.25);shake(26);rumble&&rumble(1.2,10);
-  if(gb){const B={k:0};R18E({update(dt){B.k+=dt/1.1;return B.k<1;},draw(){r17Draw(gb,W-120,gy,1100*(.3+.7*eOutBack(Math.min(1,B.k*1.6))),{add:true,a:1-B.k*B.k});}});}
+  if(gb)for(const t of xs){const bx=cx(t),by=midY(t),B={k:0};lightPillar(bx,t.y+t.oy,190,1.1);R18E({update(dt){B.k+=dt/1.1;return B.k<1;},draw(){r17Draw(gb,bx,by,Math.max(560,t.h*t.scale*3)*(.3+.7*eOutBack(Math.min(1,B.k*1.6))),{add:true,a:1-B.k*B.k});}});}
   for(let i=0;i<120;i++)part({x:rnd(0,W),y:rnd(-20,120),vx:rnd(-30,30),vy:rnd(60,200),g:60,life:rnd(1,1.8),size:rnd(2,5),rgb:pick(['255,240,170','255,210,90','255,255,255']),shape:'star'});
   F.on=false;await tween(420,k=>{orc.alpha=oa0*k;orc.ox=o0+30*(1-k);orc.lean=.12*(1-k);orc._r16tint.a=.3*(1-k);orc.scale=s0*(1.22-.22*k);});orc.scale=s0;orc.ox=o0;orc.lean=0;orc._r16tint=null;
   for(const t of xs)if(!done.has(t)&&t.alive)hit(orc,t,sk);await wait(400);await dimTo(0,null,260);}finally{rel();orc.alpha=oa0;if(orc._ts0){orc.scale=orc._ts0;orc._ts0=0;}ENEMY_SPR['orc-cast']=SW0.a;ENEMY_SPR['orcG-cast']=SW0.b;orc._r16tint=null;}};}
