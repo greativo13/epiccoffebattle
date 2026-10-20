@@ -394,3 +394,23 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Üst-kitörés (3. koncepció): az üst megjelenik, lila gőz száll fel, felhőként az ellenfelek fölé úszik és rájuk ereszkedik; a nagy (nem fő) ellenfelek egy körre véletlen kis ellenféllé változnak (`poly` állapot, a rajz és az akció is: csak apró ütés), aztán visszaváltoznak; kis sötét sebzés.
 - Ellenőrzés: all.js (94 hősképesség), foe.js (177 ellenfél-támadás), camp.js (mind a 48 pálya) – hiba nélkül. Új eszköz: `forras/eszkozok/acap.js` (adott ellenfelekkel, közvetlen kóddal indított animáció képsora).
 - Tesztlap: pa01–pa30 (+ ma06, na01, oa01, oa02, oa04, oa05 frissítve; a jónak jelölt pontok törölve).
+
+## 50. kör – tesztlap (végigjáték a Kerámia-folyosóig) (r21zg.js + r21m, r21zb)
+- Körrend: 2 hős → 2 ellenfél → 2 hős → 2 ellenfél váltakozva (`runBattle` újraírva; a körvégi rész változatlan).
+- Mézdarázs, Habverő-manó: körönként egyszer lép. Kristálygólem, Lekvárdzsinn 1,3× nagyobb; a Lekvárdzsinn minibossz (ÉP ×1,4).
+- Lekvárhullám: utána egy véletlen hős festett lekvár-zselékockába (új Canva-kép: `fx7-jellycube`) ragad, 1 kör kimarad (`jelly` állapot).
+- Célpont: egy ellenfél legfeljebb kétszer egymás után támadja ugyanazt a hőst (`aiTarget` burkoló) – Álomlepke.
+- Ellenfél gyógyító/erősítő képessége a saját társára hat (Teafa-dryád eddig a hősöket gyógyította) – `useEnemySkill` burkoló.
+- Átokhomok (Sötét futóhomok): minden festett homok fekete-lilára színezve (`R21QS_F`).
+- Közös támadások: a megvett páros támadás 60%-os limitnél már használható; ha még nem, szürkén ott van a menüben, kiírva a hiányzó limitet; a Négyek ereje is látszik.
+- Mézkirálynő – Zümmögővihar: a saját lila palástja (bábu-testrész, `LIMBS.queenbee.cape`) szétnyílik, a raj onnan tör elő.
+- Kamilla 2. fázis: buborék helyett Álomfátyol (forgó, festett lila álomköd-gubó, a rémálmokból ködszalagok áramlanak bele; szétszakad, ha elestek).
+- 8-4 után „A második rész vége” → 3. térkép; a végső köszönő stáblista és az Új játék+ a 12-4 után (`credits3`, Kaelen is a hősök között).
+- 3. térkép: a négy hős mindig a négy klasszikus helyen áll (`r21Place`, Jázmin/Kaelen a kimaradó hős helyén) – eddig Jázmin és Kaelen egymáson állt.
+- Kaelen csatlakozásakor képregény (`R21_COMIC.druid`, 3 kocka: festett bambusz-háttér + Kaelen festett figurái).
+- Árny-csapat: csak a valódi árnyharcosok vágnak, mindegyik csak a saját célpontján, váltakozó irányban (rendezettebb).
+- Levéltánc: minden ellenfélre hat (a fő célpont körüli örvény minden vágása a többieket is eltalálja).
+- Kőőr – Kőfal: az ellenfél saját rétegében rajzolódik, követi a helyét és méretét.
+- Bambuszkígyó: a Rátekeredés ugyanolyan gyakori, mint a farokcsapás. Mochi-király – Királyi hasraesés: a saját teste gömbbé gyúródik, golyóként végiggurul a hősökön, visszapattan.
+- Ellenőrzés: all.js, foe.js, camp.js (mind a 48 pálya) – hiba nélkül. Tesztlap: qa01–qa19.
+- Canva: a zselékocka után ismét elfogyott a kredit (Lili/Grog/Jázmin farkasember továbbra sincs).

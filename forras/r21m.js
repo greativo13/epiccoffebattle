@@ -77,13 +77,13 @@ A.bloomRevive=async(u,ts,sk)=>{const t=ts[0];if(!t)return;const rel=keepPose(u);
    // az árnyharcosok rohannak és lecsapnak
    // (ma06 „száguldjanak végig az ellenfeleken”): minden árnyharcos egyetlen rohamban végigszáguld az összes ellenfélen
    // és kifut a kép szélén; ahol áthalad, ott festett sötétlila vágásív (fx7-darkslash) hasít, a saját célpontját meg is sebzi
-   const slashAt=(t2)=>{const sl=R17I.darkslash,sx=cx(t2),sy=midY(t2),sz=Math.max(320,t2.h*t2.scale*2.2),rot=-.9+rnd(-.25,.25),C={k:0,a:1};
+   const slashAt=(t2,wi)=>{const sl=R17I.darkslash,sx=cx(t2),sy=midY(t2),sz=Math.max(320,t2.h*t2.scale*2.2),rot=(wi%2?.75:-.75),C={k:0,a:1};
      if(sl)R18E({update(){return C.a>0;},draw(){if(C.k<=0)return;ctx.save();ctx.translate(sx,sy);ctx.rotate(rot);const w2=sz,h2=w2*sl.height/sl.width;
        ctx.beginPath();ctx.rect(-w2/2,-h2,w2*C.k,h2*2);ctx.clip();ctx.globalAlpha=C.a;ctx.drawImage(sl,-w2/2,-h2/2,w2,h2);ctx.globalCompositeOperation='lighter';ctx.globalAlpha=C.a*.45;ctx.drawImage(sl,-w2/2,-h2/2,w2,h2);ctx.restore();}});
      sfx('slash');tween(100,k=>{C.k=k;}).then(()=>tween(300,k=>{C.a=1-k;}));/* (ma06 4.: lángok nem kellenek) */t2.hurt=.4;shake(10);};
    await Promise.all(war.map((w,wi)=>wait(wi*110).then(async()=>{const x0=w.x,xe=W+260,passed=new Set();sfx('whoosh');if(wi%2===0)sfx('wail');
      await tween(620,k=>{const e=k<.15?k*k/.3:k-.075;w.x=x0+(xe-x0)*Math.min(1,e/.925);
-       for(const t2 of fs)if(!passed.has(t2)&&w.x>=cx(t2)){passed.add(t2);slashAt(t2);hitStop(40);
+       for(const t2 of fs)if(!passed.has(t2)&&w.x>=cx(t2)){passed.add(t2);/* (50. kör: „a pengék kuszák”) csak a valódi árnyharcos vág, és csak a saját célpontján */if(!w.ghost&&t2===w.t){slashAt(t2,wi);hitStop(40);}
          if(t2===w.t&&!w.ghost){S._r21noSink=true;try{hit(w.h,w.t,{...ATTACKS[w.h.type],name:'Árnycsapás',kind:'mag',pow:2.4,elem:'dark',anim:'summon'});}finally{S._r21noSink=false;}}}});
      w.a=0;})));
    // végső csapás: egy hatalmas festett vágásív hasít végig az összes ellenfélen, fölötte a festett viharkoponya

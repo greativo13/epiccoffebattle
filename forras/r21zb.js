@@ -31,14 +31,16 @@ function r21SandPat(){const T0=r21SandTex();if(!T0.pat)T0.pat=ctx.createPattern(
 let R21QS=null;
 // homokszemcsék (saját, gravitációval)
 // (na01 „darabos, mű”): a négyzet-pixel homokszemek helyett festett földrögök (fx7-clods) és festett porfelhők, ritkítva
-let R21QSG=0;function r21QsGrain(x,y,vx,vy,size){if(!R21QS||typeof r21PD!=='function')return;if((R21QSG++)%3)return;const im=R17I.clods||R17I.pebble;
+// (50. kör: „színeltérések az átokhomoknál – legyen fekete-lila”): minden festett homok-kép fekete-lilára színezve
+const R21QS_F='grayscale(.5) brightness(.42) sepia(.4) hue-rotate(225deg) saturate(2.4)';
+let R21QSG=0;function r21QsGrain(x,y,vx,vy,size){if(!R21QS||typeof r21PD!=='function')return;if((R21QSG++)%3)return;const im=r21Filt(R17I.clods||R17I.pebble,R21QS_F);
   r21PD(im,x,y,{vx,vy,g:900,life:rnd(.5,.9),size:(size||3.5)*7,vr:rnd(-8,8)});
-  if(Math.random()<.18&&R17I.teacloud)r21PD(r21Filt(R17I.teacloud,'saturate(.5) brightness(.7)'),x,y,{vx:vx*.3,vy:-rnd(20,60),life:rnd(.8,1.2),size:rnd(70,120),grow:60,vr:rnd(-.4,.4),a:.7});}
+  if(Math.random()<.18&&R17I.teacloud)r21PD(r21Filt(R17I.teacloud,'grayscale(1) brightness(.35) sepia(.5) hue-rotate(230deg) saturate(2)'),x,y,{vx:vx*.3,vy:-rnd(20,60),life:rnd(.8,1.2),size:rnd(70,120),grow:60,vr:rnd(-.4,.4),a:.7});}
 
 // a nagy homokmező: a lavina sávja Morgánától az ellenségekig + a nagy futóhomok-ellipszis az ellenségek alatt
 function r21QsField(){
   const Q=R21QS;if(!Q||Q.a<=0)return;
-  const PIT=R17I.sandpit,WV=R17I.sandwave,gY=x=>Q.y0+(Q.y1-Q.y0)*Math.max(0,Math.min(1,(x-Q.x0)/Math.max(1,Q.x1-Q.x0)));
+  const PIT=r21Filt(R17I.sandpit,R21QS_F),WV=r21Filt(R17I.sandwave,R21QS_F),gY=x=>Q.y0+(Q.y1-Q.y0)*Math.max(0,Math.min(1,(x-Q.x0)/Math.max(1,Q.x1-Q.x0)));
   ctx.save();ctx.globalAlpha=Q.a;
   // 1) a nagy futóhomok: FESTETT homoktölcsér (fx7-sandpit) az összes ellenfél alatt, lassan „lélegzik”
   if(Q.r>0&&PIT){const w=Q.RX*2.8*Q.r,h=w*PIT.height/PIT.width;
@@ -78,7 +80,7 @@ let R21QS_FR=-1;
   ctx.save();ctx.beginPath();ctx.rect(-50,-200,W+100,E.gy+2+200);ctx.clip();
   try{de.apply(this,arguments);}finally{ctx.restore();e.oy=oy0;e.lift=lift0;}
   // homokpárkány a besüllyedt test előtt
-  if(E.sink>2&&R17I.sandpit){const PIT=R17I.sandpit,w=Q.RX*2.8*Q.r,h=w*PIT.height/PIT.width,x0=Q.cx-w/2,y0=Q.cy-h*.5,r=Math.max(e.w*e.scale*.75,60);
+  if(E.sink>2&&R17I.sandpit){const PIT=r21Filt(R17I.sandpit,R21QS_F),w=Q.RX*2.8*Q.r,h=w*PIT.height/PIT.width,x0=Q.cx-w/2,y0=Q.cy-h*.5,r=Math.max(e.w*e.scale*.75,60);
     ctx.save();ctx.globalAlpha=Q.a;ctx.beginPath();ctx.ellipse(cx(e),E.gy+2,r,r*.3,0,0,Math.PI);ctx.clip();ctx.drawImage(PIT,x0,y0,w,h);ctx.restore();
     for(let i=0;i<2;i++)r21QsGrain(cx(e)+rnd(-r*.8,r*.8),E.gy,rnd(-60,60),-rnd(40,140),rnd(2,3.5));}
   r21QsArms(E,Q);
@@ -125,12 +127,12 @@ A.quicksand=async(u,ts,sk)=>{
   {const f=r21CrouchFist(u);Q.x0=f.x;Q.y0=f.y;Q.front=f.x;
   sfx('punch');sfx('earthm');shake(16);hitStop(80);flash('80,40,110',.25,.1);u._crouch.dy=4;tween(160,k=>{if(u._crouch)u._crouch.dy=4*(1-k);});
   for(let i=0;i<50;i++)r21QsGrain(f.x+rnd(-20,30),f.y-rnd(0,6),rnd(-160,320),-rnd(180,520),rnd(2.5,5));
-  for(let i=0;i<12;i++)part({x:f.x+rnd(-40,50),y:f.y-rnd(0,20),vx:rnd(-90,160),vy:-rnd(30,110),life:rnd(.7,1.2),size:rnd(20,36),grow:30,rgb:pick(['150,122,88','120,96,70']),add:false,shape:'smoke'});}
+  for(let i=0;i<12;i++)part({x:f.x+rnd(-40,50),y:f.y-rnd(0,20),vx:rnd(-90,160),vy:-rnd(30,110),life:rnd(.7,1.2),size:rnd(20,36),grow:30,rgb:pick(['40,20,55','60,30,80']),add:false,shape:'smoke'});}
   // 3) (na01 5.: „az eleje nem tetszik, se a csík, se a hullám, főleg hogy a hősök mögött megy el”): nincs talajcsík és
   //    gördülő hullám – a homok a FÖLD ALATT fut az ellenségekig, és útközben egymás után festett homokgejzírek
   //    (fx7-foamgeyser homokszínre festve) törnek ki a talajból, földrögökkel és porral; mind a hősök ELŐTT (effekt-réteg).
   sfx('quake');rumble&&rumble(1.2,7);
-  const dist=Q.fx1-Q.x0,SGY=r21Filt(R17I.foamgeyser,'sepia(1) saturate(1.25) hue-rotate(-14deg) brightness(.6)'),DU=R17I.teacloud;
+  const dist=Q.fx1-Q.x0,SGY=r21Filt(R17I.foamgeyser,'sepia(1) saturate(2.2) hue-rotate(225deg) brightness(.42)'),DU=r21Filt(R17I.teacloud,'grayscale(1) brightness(.35) sepia(.5) hue-rotate(230deg) saturate(2)');
   const geyser=(x,gy,h)=>{const st={t:0};sfx('rock');shake(9);
     R18E({update(dt){st.t+=dt;return st.t<.8;},draw(){if(!SGY)return;const r=Math.min(1,st.t/.13),a=st.t<.32?1:Math.max(0,1-(st.t-.32)/.48),hh=h*(.25+.75*(1-Math.pow(1-r,3)))*(st.t>.32?1-.25*(st.t-.32)/.48:1),w=hh*SGY.width/SGY.height*1.15;
       ctx.save();ctx.globalAlpha=a;ctx.beginPath();ctx.rect(x-w,gy-hh-60,w*2,hh+64);ctx.clip();ctx.drawImage(SGY,x-w/2,gy-hh+4,w,hh);ctx.restore();}});
