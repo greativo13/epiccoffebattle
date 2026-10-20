@@ -30,7 +30,10 @@ function r21SandPat(){const T0=r21SandTex();if(!T0.pat)T0.pat=ctx.createPattern(
 // a jelenet állapota (egyszerre egy futóhomok fut)
 let R21QS=null;
 // homokszemcsék (saját, gravitációval)
-function r21QsGrain(x,y,vx,vy,size){if(!R21QS)return;R21QS.grains.push({x,y,vx,vy,life:rnd(.5,1),max:1,s:size||rnd(2,4.5),c:pick(['110,86,60','150,120,84','78,58,40','196,166,120','60,44,30'])});}
+// (na01 „darabos, mű”): a négyzet-pixel homokszemek helyett festett földrögök (fx7-clods) és festett porfelhők, ritkítva
+let R21QSG=0;function r21QsGrain(x,y,vx,vy,size){if(!R21QS||typeof r21PD!=='function')return;if((R21QSG++)%3)return;const im=R17I.clods||R17I.pebble;
+  r21PD(im,x,y,{vx,vy,g:900,life:rnd(.5,.9),size:(size||3.5)*7,vr:rnd(-8,8)});
+  if(Math.random()<.18&&R17I.teacloud)r21PD(r21Filt(R17I.teacloud,'saturate(.5) brightness(.7)'),x,y,{vx:vx*.3,vy:-rnd(20,60),life:rnd(.8,1.2),size:rnd(70,120),grow:60,vr:rnd(-.4,.4),a:.7});}
 
 // a nagy homokmező: a lavina sávja Morgánától az ellenségekig + a nagy futóhomok-ellipszis az ellenségek alatt
 function r21QsField(){
@@ -38,7 +41,7 @@ function r21QsField(){
   const PIT=R17I.sandpit,WV=R17I.sandwave,gY=x=>Q.y0+(Q.y1-Q.y0)*Math.max(0,Math.min(1,(x-Q.x0)/Math.max(1,Q.x1-Q.x0)));
   ctx.save();ctx.globalAlpha=Q.a;
   // 1) a nagy futóhomok: FESTETT homoktölcsér (fx7-sandpit) az összes ellenfél alatt, lassan „lélegzik”
-  if(Q.r>0&&PIT){const w=Q.RX*2.35*Q.r,h=w*PIT.height/PIT.width;
+  if(Q.r>0&&PIT){const w=Q.RX*2.8*Q.r,h=w*PIT.height/PIT.width;
     ctx.drawImage(PIT,Q.cx-w/2,Q.cy-h*.5,w,h);}
   // 1b) (na01: „maradjon homoknyom, ahol végigment a hullám”) a hullám nyomában a talajon festett homokhát marad:
   // a festett homokhullám (fx7-sandwave) laposra nyomott, egymásba érő lenyomatai – a végén a mezővel együtt halványul el
@@ -75,7 +78,7 @@ let R21QS_FR=-1;
   ctx.save();ctx.beginPath();ctx.rect(-50,-200,W+100,E.gy+2+200);ctx.clip();
   try{de.apply(this,arguments);}finally{ctx.restore();e.oy=oy0;e.lift=lift0;}
   // homokpárkány a besüllyedt test előtt
-  if(E.sink>2&&R17I.sandpit){const PIT=R17I.sandpit,w=Q.RX*2.35*Q.r,h=w*PIT.height/PIT.width,x0=Q.cx-w/2,y0=Q.cy-h*.5,r=Math.max(e.w*e.scale*.75,60);
+  if(E.sink>2&&R17I.sandpit){const PIT=R17I.sandpit,w=Q.RX*2.8*Q.r,h=w*PIT.height/PIT.width,x0=Q.cx-w/2,y0=Q.cy-h*.5,r=Math.max(e.w*e.scale*.75,60);
     ctx.save();ctx.globalAlpha=Q.a;ctx.beginPath();ctx.ellipse(cx(e),E.gy+2,r,r*.3,0,0,Math.PI);ctx.clip();ctx.drawImage(PIT,x0,y0,w,h);ctx.restore();
     for(let i=0;i<2;i++)r21QsGrain(cx(e)+rnd(-r*.8,r*.8),E.gy,rnd(-60,60),-rnd(40,140),rnd(2,3.5));}
   r21QsArms(E,Q);
@@ -97,7 +100,7 @@ A.quicksand=async(u,ts,sk)=>{
   const al=(ts||[]).filter(t=>t&&t.alive);if(!al.length)return;
   const rel=typeof keepPose==='function'?keepPose(u):()=>{};
   try{
-  await dimTo(.35,'10,4,16',300);
+  await dimTo(.55,'10,4,16',300);
   // a homokmező adatai
   const gys=al.map(t=>t.y+t.oy+6),minX=Math.min(...al.map(t=>cx(t)-t.w*t.scale*.6)),maxX=Math.max(...al.map(t=>cx(t)+t.w*t.scale*.6));
   const ux=cx(u)+u.w*u.scale*.45,uy=u.y+u.oy+4;
@@ -129,8 +132,8 @@ A.quicksand=async(u,ts,sk)=>{
   await tween(Math.max(950,dist*1.7),k=>{const e=easeIO(k);Q.front=Q.x0+dist*e;Q.band=Math.min(1,k*3);Q.wave=Math.min(1,k*4);
     const gy=Q.y0+(Q.y1-Q.y0)*Math.max(0,Math.min(1,(Q.front-Q.x0)/Math.max(1,Q.x1-Q.x0)));
     for(let i=0;i<16;i++)r21QsGrain(Q.front+rnd(-40,40),gy-rnd(20,170),rnd(40,420),-rnd(160,620),rnd(2,6));
-    if(!Q.trail)Q.trail=[];{const l=Q.trail[Q.trail.length-1];if(!l||Q.front-l.x>34)Q.trail.push({x:Q.front-30,y:gy+6,w:rnd(120,170)*(.7+.5*k),a:0,fl:Math.random()<.5});}
-    for(const s2 of Q.trail)s2.a=Math.min(1,s2.a+.08);
+    if(!Q.trail)Q.trail=[];{const l=Q.trail[Q.trail.length-1];if(!l||Q.front-l.x>16)Q.trail.push({x:Q.front-30,y:gy+6,w:150*(.75+.5*k),a:0,fl:false});}
+    for(const s2 of Q.trail)s2.a=Math.min(.9,s2.a+.05);
     if(Q.front>Q.x1-40)Q.r=Math.max(Q.r,Math.min(1,(Q.front-(Q.x1-40))/Math.max(1,Q.fx1-Q.x1+40)));
     for(let n=0;n<2;n++)part({x:Q.front+rnd(-40,20),y:gy-rnd(10,90),vx:rnd(20,160),vy:-rnd(20,110),life:rnd(.8,1.4),size:rnd(30,60),grow:40,rgb:pick(['150,122,88','120,96,70','170,145,105']),add:false,shape:'smoke'});
     if(Math.random()<.45)shake(7);});
@@ -150,19 +153,19 @@ A.quicksand=async(u,ts,sk)=>{
   sfx('whoosh');await tween(200,k=>{for(const E of Q.list)E.grip=k*k;});sfx('bite');shake(12);flash('120,40,180',.22,.1);
   // 8) LEHÚZZÁK: mélyre rántják őket a homokba
   sfx('earthm');rumble&&rumble(1.4,10);
-  await tween(480,k=>{const kk=k*k;for(const E of Q.list){E.sink=E.H*(.1+.5*kk);E.t.hurt=.3;
+  await tween(480,k=>{const kk=k*k;for(const E of Q.list){E.sink=E.H*(.1+.65*kk);E.t.hurt=.3;
     for(let n=0;n<3;n++)r21QsGrain(cx(E.t)+rnd(-E.vr*.5,E.vr*.5),E.gy,rnd(-200,200),-rnd(200,480),rnd(2.5,5));}});
   shake(18);hitStop(90);flash('60,0,90',.3,.12);
   for(const E of Q.list){const t=E.t;sparks(cx(t),E.gy-10,['170,90,255','255,255,255'],14,400);
     for(let n=0;n<30;n++)r21QsGrain(cx(t)+rnd(-40,40),E.gy-rnd(0,10),rnd(-280,280),-rnd(260,560),rnd(3,6));
     if(t.alive){S._r21noSink=true;try{hit(u,t,sk);}finally{S._r21noSink=false;}}}
   // vergődnek
-  await tween(560,k=>{for(const E of Q.list){E.sink=E.H*(.6+.04*Math.sin(k*30));E.t.hurt=.2;}});
+  await tween(560,k=>{for(const E of Q.list){E.sink=E.H*(.75+.04*Math.sin(k*30));E.t.hurt=.2;}});
   // 9) a karok elengedik, visszasüllyednek, a homok kiköpi őket
   sfx('whoosh');
   await tween(380,k=>{for(const E of Q.list){E.grip=1-k;E.k=1-k;}});
   for(const E of Q.list)for(let n=0;n<20;n++)r21QsGrain(cx(E.t)+rnd(-40,40),E.gy,rnd(-220,220),-rnd(240,480),rnd(2.5,5));
-  await tween(360,k=>{for(const E of Q.list)E.sink=E.H*.6*(1-eOutBack(k));});
+  await tween(360,k=>{for(const E of Q.list)E.sink=E.H*.75*(1-eOutBack(k));});
   for(const E of Q.list)E.sink=0;
   // 10) a homok visszahúzódik
   await tween(420,k=>{Q.r=1-k*k;Q.band=1-k;Q.a=1-k;});

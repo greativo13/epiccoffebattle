@@ -24,7 +24,7 @@ A.magmaErupt=async(u,ts,sk)=>{const {al}=grp(ts);if(!al.length)return;await dimT
         const gr=ctx.createRadialGradient(b.x-b.r*.3,b.y-b.r*.3,1,b.x,b.y,b.r);gr.addColorStop(0,`rgb(255,${Math.min(255,g+60)|0},${Math.min(255,bb+30)|0})`);gr.addColorStop(.6,`rgb(${r|0},${g|0},${bb|0})`);gr.addColorStop(1,`rgb(${(r*.45)|0},${(g*.3)|0},${(bb*.3)|0})`);ctx.fillStyle=gr;
         const sp=Math.min(1.8,1+Math.abs(b.vy)/900);ctx.save();ctx.translate(b.x,b.y);ctx.rotate(Math.atan2(b.vy,b.vx)+Math.PI/2);ctx.beginPath();ctx.ellipse(0,0,b.r/Math.sqrt(sp),b.r*sp,0,0,6.29);ctx.fill();ctx.restore();}
       ctx.restore();}});
-  for(const v of vents)groundCrack(v.x,v.y,'255,120,30',320);await tween(600,k=>{for(const v of vents){v.pool=easeIO(k)*.7;v.a+=.05;}});
+  /* (ma05: Magmakitörésnél nem kellenek a kőtüskék – a groundCrack kőképet rajzolna) */await tween(600,k=>{for(const v of vents){v.pool=easeIO(k)*.7;v.a+=.05;}});
   for(const v of vents){const t=v.t,x=v.x,gy=v.y;sfx('fire');flash('255,140,40',.25,.12);shake(14);hitStop(60);
     for(let j=0;j<150;j++)setTimeout(()=>{const a=-Math.PI/2+rnd(-.3,.3)*(j<60?.8:1.5),sp=rnd(500,950);blobs.push({x:x+rnd(-14,14),y:gy-8,vx:Math.cos(a)*sp*.62,vy:Math.sin(a)*sp,r:rnd(10,24),age:rnd(.2,.42),gy:gy+rnd(-6,18)});},j*11);
     // a lávaoszlop magja

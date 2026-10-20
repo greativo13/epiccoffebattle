@@ -322,3 +322,19 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Sötét futóhomok (na01 „gagyi, látványosabb, maradjon homoknyom”): nagyobb, lassabban gördülő festett hullám, több homok és por, a nyomában festett homokhát marad (fx7-sandwave lapított lenyomatai) (r21zb).
 - Cerberus (x02 „túl lassú”): további ×0,74 tempó.
 - Új próbaeszköz: `forras/eszkozok/pcap.js` (a `?proba=` link képsora).
+
+## 45. kör – tesztlap (ja05, ma05, ma06, na01, oa01–oa08)
+- Új festett képek (Canva): `fx7-blackmoon2` (vérvörös, karmos koronájú fekete hold), `fx7-windslash` (szélvágás).
+- Közös: `r21PD` – festett képdarab-részecskék (forgó, gravitációs), `r21Filt` – festett kép egyszer előszínezve. A pötty-részecskék helyett ezek (A4).
+- Tusátok (ja05): a sárkány utáni fekete tusszalag teljesen kikerült, csak a festett sárkány marad.
+- Magmakitörés (ma05): a kőtüske-kép (groundCrack → fxImage 'rock') kikerült.
+- Árny-csapat (ma06 „túl nagy, száguldjanak végig”): 1,3× méret; minden árnyharcos egy rohamban végigszáguld az összes ellenfélen, mindegyiknél festett vágásív; a záró vékony kör helyett sötét lángok.
+- Futóhomok (na01 „darabos, mű”): a pixel-homokszemek helyett festett földrögök és porfelhő, sűrű és folytonos homoknyom, nagyobb tölcsér, mélyebb lehúzás, sötétebb ég.
+- Fejsze-hajítás (oa01): nagyobb fejsze, festett lángcsóva (fx7-meteor), lassított elengedés, festett tűzrobbanás és lángcsíkok, a fejsze beleáll.
+- Üst-kitörés (oa02): cseppek = a festett főzet kis darabjai, gőz = festett felhő lilára színezve.
+- Vállroham (oa03): hátralépés, gyorsuló roham festett szélvágással és porfelhővel, becsapódáskor két keresztbe vágó festett szélív, nagy hátralökés.
+- Holdfogyatkozás (oa04): szinte fekete ég, új vérvörös hold, a holdból festett sötét lángoszlopok minden ellenfélre, fölöttük viharkoponya, alattuk festett sötét lángok; funkció: 70% alvás 1 körre.
+- Bambuszfüggöny (oa05): nagyobb festett bambusznyilak sortüzekben, ívvel; egy-egy beleáll és rezeg; festett levelek.
+- Teaörvény-nyíl (oa06): a végén feldobja az ellenfeleket.
+- Bambuszdöfés (oa07): egy folyamatos mozdulat (lágy felhúzás, sima kitörés, utánkép nélkül), festett levelek.
+- Erdő haragja (oa08): a festett fakar Kaelen tenyeréből nő ki, magasra emeli, és a Rémült Vén Tölgyhöz hasonlóan villámgyorsan lecsap minden ellenfélre, majd visszahúzódik.

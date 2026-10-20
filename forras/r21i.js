@@ -37,7 +37,7 @@ A.inkWave=async(u,ts,sk)=>{const al=ts.filter(h=>h.alive);if(!al.length)return;c
   const RX=Math.min(210,(maxX-minX)/2+80),RY=56,cxs=Math.max(RX+40,(minX+maxX)/2),G={x:p0.x,y:p0.y-50,s:.05,ang:-1.2,flip:false,a:1,b:false,on:true,wob:0},rib=[];
   // tus-szalag: a sárkány után húzódó, elmosódó tuscsík (ez rajzolja a spirált a hősök körül)
   G.tr=[];R17E({update(){if(G.on){const l=G.tr[0];if(!l||Math.hypot(l.x-G.x,l.y-G.y)>2){G.tr.unshift({x:G.x,y:G.y,b:G.b});if(G.tr.length>400)G.tr.pop();}}if(G.on&&!G.nr){rib.unshift({x:G.x,y:G.y,b:G.b,a:1});if(rib.length>70)rib.pop();}for(const r of rib)r.a-=.012;return G.on||rib.some(r=>r.a>0);},
-    draw(){r21InkRibbon(rib);
+    draw(){/* (ja05: a tusszalag-csík nem kell – csak a festett sárkány) */
       if(G.a<=0)return;const D2=R17I.inkdragon2;
       // (fa08: „a sárkány csak egy kép, ezért darabos a mozgása”) a festett, egyenes testű tussárkány a saját nyomvonalán
       // hajlik végig, mint egy kígyó – a teste folyamatosan követi a fejét
