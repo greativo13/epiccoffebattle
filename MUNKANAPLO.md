@@ -298,3 +298,16 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Tempó: `r21Faster(név, szorzó)` – a jelenet változatlan, a tween/wait idők rövidebbek: Tusátok (inkWave) ×0,62, Cerberus ×0,75.
 - Futóhomok: guggolás áttűnéssel (`_crouch.a`), a hullám/tölcsér remegő méretezése ki.
 - Hang: retró 8 bites CC0 hangeffektek (`r8_*` minták, minden SFX-név leképezve; csengő nincs) és chiptune zene minden helyen (TRACK_FILE). Források: hang/FORRASOK.md.
+
+## 43. kör – új támadások (kevés volt az egyedi / mindenkire ható) (r21zc.js)
+- Új festett képek (Canva): `fx7-cauldron` (boszorkányüst, lila főzettel – a zöld lilára színezve), `fx7-brewsplash` (lila főzet-csobbanás), `fx7-blackmoon` (fekete hold lila koronával), `fx7-treearm` (karmos fakar). Grog fejszéje a saját `wpn-axe` képe.
+- Morgána – Üst-kitörés (`SK.cauldron`, 3-2, 1100 arany; mindenkire, méreg 60%/2 kör): az üst Morgána előtt a földből emelkedik, felforr, kitör, a festett főzet ívben minden ellenfélre zúdul és rajtuk szétfröccsen.
+- Morgána – Holdfogyatkozás (`SK.eclipse`, 6-1, 3200; mindenkire, altatás 35%/1 kör): sötét ég, festett fekete hold kel az ellenfelek fölött, a korona lüktet, a hold kicsinyített másai rájuk zuhannak.
+- Grog – Fejsze-hajítás (`SK.axethrow`, 2-3, 650; egy célpont, pow 2,4): a fejsze a rácson mért helyéről (.3/.17) pörögve repül, Grog közben fejsze nélküli képpel (`orcnoaxe-cast`, `r21NoAxe`), a fejsze visszatér a kezébe.
+- Grog – Vállroham (`SK.shouldercharge`, 4-3, 1600; egy célpont, kábítás 40%/1 kör): kaparás, roham porfelhővel, vállütés, hátralökés.
+- Jázmin – Bambuszfüggöny (`SK.bamboocurtain`, 8-2, 4400; mindenkire, védelemgyengítés 40%/1 kör): 5 hullám × 5 sor festett bambusznyíl (`fx7-bamboospear`) vízszintesen átfúr mindenkit.
+- Jázmin – Teaörvény-nyíl (`SK.teavortex`, 8-3, 4600; mindenkire, forrázás 50%/2 kör): nyíl a csoport közepére → teafröccs-korona → 3 festett tea-hullám (`fx7-teawave`) körbe forog (hátsó fele a figurák mögött, drawEntity-burkoló), a sugár a hősökig nem ér el.
+- Kaelen – Bambuszdöfés (`SK.bamboothrust`, 10-1, 5400; egy célpont, védelemgyengítés 50%/1 kör): `cast` póz, a lándzsa a nyitott tenyérből (rács: .85/.39) nő ki, előreugrás, átdöfés.
+- Kaelen – Erdő haragja (`SK.forestwrath`, 11-3, 6800; mindenkire, pow 1,75): minden ellenfél fölé festett fakar hajol be fentről és lecsap.
+- Minden új támadás sebzése kráter nélkül (`r21HitNS` → `S._r21noSink`). Próbafelvétel: `forras/eszkozok/hsk2.js` (teljes kép, 3 ellenfél).
+- Tesztlap: oa01–oa08.
