@@ -347,7 +347,7 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Futóhomok (na01 „darabos”): kevesebb részecske/lenyomat képkockánként (folyamatosabb telefonon).
 - Fejsze-hajítás (oa01 „vonja be lávás”): a földből festett lávaoszlop (lavafx, lighter) tör fel a fejszéig, a fejsze izzó lávás lesz (narancsra színezett másolat), repülés közben lávacseppek (fx7-brewsplash narancsra színezve).
 - Üst-kitörés (oa02 „az üst felborul”): Morgána belerúg, az üst felborul, a festett lila főzethullám (fx7-teawave lilára) végigömlik a talajon, az ellenfeleknél felcsap (fx7-brewsplash), festett lila tócsák maradnak.
-- Holdfogyatkozás (oa04 új koncepció): sötét felhők, a felhők közül előbukkan a telihold; egy véletlen társ sötét füstben farkasemberré (fx7-werewolf) válik, nagy ugrással rátámad a célpontra, háromszor karmol (fx7-darkslash ezüst-vörösre), visszaugrik, visszaváltozik. Egy célpont, pow 3,0, 60% védelemgyengítés.
+- Holdfogyatkozás → **Telihold átka** (oa04 új koncepció): sötét felhők, a felhők közül előbukkan a telihold; egy véletlen társ sötét füstben farkasemberré (fx7-werewolf) válik, nagy ugrással rátámad a célpontra, háromszor karmol (fx7-darkslash ezüst-vörösre), visszaugrik, visszaváltozik. Egy célpont, pow 3,0, 60% védelemgyengítés.
 - Bambuszfüggöny (oa05): a nyilak átfúródnak, nem állnak bele.
 - Teaörvény-nyíl (oa06): 5 nagyobb, magasabb tea-hullám, festett tea-cseppek és gőz, toss 300.
 - Bambuszdöfés (oa07 új): az ellenfél előtt ferdén vastag festett bambusz tör ki a földből, felnyársalja és hátralöki, kitart, majd visszahúzódik; az ellenfél (ha él) visszaesik.

@@ -302,7 +302,7 @@ A.bambooThrust=async(u,ts,sk)=>{
 // ---------- Morgána – Holdfogyatkozás (mindenkire, altatás) ----------
 // Festett fekete hold (fx7-blackmoon) emelkedik az ellenség fölé, elsötétül az ég; a korona lüktet, majd a hold
 // sötét fénydarabjai (a festett hold kicsinyített másai) rázuhannak minden ellenségre.
-SK.eclipse={name:'Holdfogyatkozás',mp:28,cd:2,tgt:'enemy',kind:'phys',pow:3.0,elem:'dark',anim:'eclipseMoon',status:['defDown',.6,1],
+SK.eclipse={name:'Telihold átka',mp:28,cd:2,tgt:'enemy',kind:'phys',pow:3.0,elem:'dark',anim:'eclipseMoon',status:['defDown',.6,1],
   desc:'Morgána elűzi a felhőket: előbukkan a telihold, és egy társa farkasemberré változik, aki széttépi a kiválasztott ellenséget. Nagy sebzés, 60% eséllyel 1 körre gyengíti a védelmét.'};
 SHOP_SKILLS.witch.push(['eclipse','6-1',3200]);
 A.eclipseMoon=async(u,ts,sk)=>{
@@ -325,7 +325,7 @@ A.eclipseMoon=async(u,ts,sk)=>{
   // 2) Morgána int, a felhők szétúsznak, a telihold kiragyog
   sfx('wind');{const h=handPos(u);for(let i=0;i<4;i++)r21PD(SM,h.x,h.y,{vx:rnd(-60,60),vy:-rnd(40,100),life:.8,size:rnd(50,80),grow:40,a:.6});}
   await tween(800,k=>{const e=easeIO(k);for(const c of CLS){c.x+=c.dx*6*(0.3+k);c.a=.95*(1-e*.85);}M.a=.35+.65*e;M.s=.85+.15*e;M.y=my+30-30*e;});
-  flash('200,220,255',.3,.2);sfx('holy');popLabel(ally,'TELIHOLD!','#cfe0ff');
+  flash('200,220,255',.3,.2);sfx('holy');popLabel(ally,'TELIHOLD ÁTKA!','#cfe0ff');
   // 3) a társ átváltozik: remeg, sötét füst gomolyog, a festett farkasember lép elő
   const W0={a:0,x:cx(ally),y:ally.y+ally.oy,h:ally.h*ally.scale*1.45,fl:false,lean:0,on:true};
   R18E({update(){return W0.on;},draw(){if(!WF||W0.a<=0)return;const w=W0.h*WF.width/WF.height;ctx.save();ctx.globalAlpha=W0.a;ctx.translate(W0.x,W0.y);ctx.rotate(W0.lean);if(W0.fl)ctx.scale(-1,1);
