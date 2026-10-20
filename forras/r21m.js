@@ -80,19 +80,19 @@ A.bloomRevive=async(u,ts,sk)=>{const t=ts[0];if(!t)return;const rel=keepPose(u);
    const slashAt=(t2)=>{const sl=R17I.darkslash,sx=cx(t2),sy=midY(t2),sz=Math.max(320,t2.h*t2.scale*2.2),rot=-.9+rnd(-.25,.25),C={k:0,a:1};
      if(sl)R18E({update(){return C.a>0;},draw(){if(C.k<=0)return;ctx.save();ctx.translate(sx,sy);ctx.rotate(rot);const w2=sz,h2=w2*sl.height/sl.width;
        ctx.beginPath();ctx.rect(-w2/2,-h2,w2*C.k,h2*2);ctx.clip();ctx.globalAlpha=C.a;ctx.drawImage(sl,-w2/2,-h2/2,w2,h2);ctx.globalCompositeOperation='lighter';ctx.globalAlpha=C.a*.45;ctx.drawImage(sl,-w2/2,-h2/2,w2,h2);ctx.restore();}});
-     sfx('slash');tween(100,k=>{C.k=k;}).then(()=>tween(300,k=>{C.a=1-k;}));for(let n=0;n<6;n++)darkFlame({x:sx+rnd(-40,40),y:sy+rnd(-50,50),vx:rnd(-80,80),vy:-rnd(60,160),life:.5,size:rnd(18,28)});t2.hurt=.4;shake(10);};
+     sfx('slash');tween(100,k=>{C.k=k;}).then(()=>tween(300,k=>{C.a=1-k;}));/* (ma06 4.: lángok nem kellenek) */t2.hurt=.4;shake(10);};
    await Promise.all(war.map((w,wi)=>wait(wi*110).then(async()=>{const x0=w.x,xe=W+260,passed=new Set();sfx('whoosh');if(wi%2===0)sfx('wail');
-     await tween(620,k=>{const e=k<.15?k*k/.3:k-.075;w.x=x0+(xe-x0)*Math.min(1,e/.925);if(R17I.darkflame&&typeof r21PD==='function'&&Math.random()<.5)r21PD(R17I.darkflame,w.x-40,w.y-rnd(10,w.h.h*w.h.scale),{vx:-rnd(80,200),vy:-rnd(20,80),life:.5,size:rnd(60,100),rot:-Math.PI/2,vr:0,a:.8});
+     await tween(620,k=>{const e=k<.15?k*k/.3:k-.075;w.x=x0+(xe-x0)*Math.min(1,e/.925);
        for(const t2 of fs)if(!passed.has(t2)&&w.x>=cx(t2)){passed.add(t2);slashAt(t2);hitStop(40);
          if(t2===w.t&&!w.ghost){S._r21noSink=true;try{hit(w.h,w.t,{...ATTACKS[w.h.type],name:'Árnycsapás',kind:'mag',pow:2.4,elem:'dark',anim:'summon'});}finally{S._r21noSink=false;}}}});
      w.a=0;})));
    // végső csapás: egy hatalmas festett vágásív hasít végig az összes ellenfélen, fölötte a festett viharkoponya
    {const sl=R17I.darkslash,sk2=R17I.stormskull,x0=Math.min(...fs.map(cx))-80,x1=Math.max(...fs.map(cx))+120,yy=Math.min(...fs.map(midY)),C={k:0,a:1};sfx('slash');sfx('roar');
     R18E({update(){return C.a>0;},draw(){const w2=(x1-x0)*1.6,h2=sl?w2*sl.height/sl.width:0;ctx.save();ctx.globalAlpha=C.a;
-      if(sk2)r17Draw(sk2,(x0+x1)/2,yy-170,Math.min(520,(x1-x0)+260),{a:C.a*.9});
+      /* (ma06 4.: a viharkoponya-felhő nem kell) */
       if(sl){ctx.translate((x0+x1)/2,yy);ctx.rotate(-.35);ctx.beginPath();ctx.rect(-w2/2,-h2,w2*C.k,h2*2);ctx.clip();ctx.drawImage(sl,-w2/2,-h2/2,w2,h2);ctx.globalCompositeOperation='lighter';ctx.globalAlpha=C.a*.5;ctx.drawImage(sl,-w2/2,-h2/2,w2,h2);}ctx.restore();}});
     await tween(160,k=>{C.k=k;});hitStop(120);tween(500,k=>{C.a=1-k;});}
-   await wait(200);flash('120,40,200',.45,.2);shake(22);sfx('boom');for(const t of fs){/* (A5: vékony kör nem kell) */for(let n=0;n<8;n++)darkFlame({x:cx(t)+rnd(-40,40),y:midY(t)+rnd(-40,40),vx:rnd(-90,90),vy:-rnd(60,160),life:.6,size:rnd(20,32)});toss(t,40,320);}
+   await wait(200);flash('120,40,200',.45,.2);shake(22);sfx('boom');for(const t of fs){/* (A5: vékony kör nem kell; ma06 4.: láng sem) */toss(t,40,320);}
    // visszahúzódnak a hősök lába alá
    await tween(400,k=>{for(const w of war){w.rise=1-k;w.a=1-k*.5;}pool.k=1-k;});for(const t of fs)if(t.oy0!=null){t.oy=t.oy0;delete t.oy0;}
    E.on=false;pool.a=0;await dimTo(0,null,300);};}}

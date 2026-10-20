@@ -126,20 +126,22 @@ A.quicksand=async(u,ts,sk)=>{
   sfx('punch');sfx('earthm');shake(16);hitStop(80);flash('80,40,110',.25,.1);u._crouch.dy=4;tween(160,k=>{if(u._crouch)u._crouch.dy=4*(1-k);});
   for(let i=0;i<50;i++)r21QsGrain(f.x+rnd(-20,30),f.y-rnd(0,6),rnd(-160,320),-rnd(180,520),rnd(2.5,5));
   for(let i=0;i<12;i++)part({x:f.x+rnd(-40,50),y:f.y-rnd(0,20),vx:rnd(-90,160),vy:-rnd(30,110),life:rnd(.7,1.2),size:rnd(20,36),grow:30,rgb:pick(['150,122,88','120,96,70']),add:false,shape:'smoke'});}
-  // 3) a homoklavina végiggördül a talajon az ellenségekig
+  // 3) (na01 5.: „az eleje nem tetszik, se a csík, se a hullám, főleg hogy a hősök mögött megy el”): nincs talajcsík és
+  //    gördülő hullám – a homok a FÖLD ALATT fut az ellenségekig, és útközben egymás után festett homokgejzírek
+  //    (fx7-foamgeyser homokszínre festve) törnek ki a talajból, földrögökkel és porral; mind a hősök ELŐTT (effekt-réteg).
   sfx('quake');rumble&&rumble(1.2,7);
-  const dist=Q.fx1-Q.x0;
-  await tween(Math.max(950,dist*1.7),k=>{const e=easeIO(k);Q.front=Q.x0+dist*e;Q.band=Math.min(1,k*3);Q.wave=Math.min(1,k*4);
-    const gy=Q.y0+(Q.y1-Q.y0)*Math.max(0,Math.min(1,(Q.front-Q.x0)/Math.max(1,Q.x1-Q.x0)));
-    for(let i=0;i<5;i++)r21QsGrain(Q.front+rnd(-40,40),gy-rnd(20,170),rnd(40,420),-rnd(160,620),rnd(2,6));
-    if(!Q.trail)Q.trail=[];{const l=Q.trail[Q.trail.length-1];if(!l||Q.front-l.x>30)Q.trail.push({x:Q.front-30,y:gy+6,w:150*(.75+.5*k),a:0,fl:false});}
-    for(const s2 of Q.trail)s2.a=Math.min(.9,s2.a+.05);
-    if(Q.front>Q.x1-40)Q.r=Math.max(Q.r,Math.min(1,(Q.front-(Q.x1-40))/Math.max(1,Q.fx1-Q.x1+40)));
-    for(let n=0;n<1;n++)part({x:Q.front+rnd(-40,20),y:gy-rnd(10,90),vx:rnd(20,160),vy:-rnd(20,110),life:rnd(.8,1.4),size:rnd(30,60),grow:40,rgb:pick(['150,122,88','120,96,70','170,145,105']),add:false,shape:'smoke'});
-    if(Math.random()<.45)shake(7);});
+  const dist=Q.fx1-Q.x0,SGY=r21Filt(R17I.foamgeyser,'sepia(1) saturate(1.25) hue-rotate(-14deg) brightness(.6)'),DU=R17I.teacloud;
+  const geyser=(x,gy,h)=>{const st={t:0};sfx('rock');shake(9);
+    R18E({update(dt){st.t+=dt;return st.t<.8;},draw(){if(!SGY)return;const r=Math.min(1,st.t/.13),a=st.t<.32?1:Math.max(0,1-(st.t-.32)/.48),hh=h*(.25+.75*(1-Math.pow(1-r,3)))*(st.t>.32?1-.25*(st.t-.32)/.48:1),w=hh*SGY.width/SGY.height*1.15;
+      ctx.save();ctx.globalAlpha=a;ctx.beginPath();ctx.rect(x-w,gy-hh-60,w*2,hh+64);ctx.clip();ctx.drawImage(SGY,x-w/2,gy-hh+4,w,hh);ctx.restore();}});
+    for(let i=0;i<5;i++)r21QsGrain(x+rnd(-24,24),gy-rnd(0,10),rnd(-200,260),-rnd(260,620),rnd(3,5));
+    if(DU)for(let i=0;i<2;i++)r21PD(DU,x+rnd(-30,30),gy-rnd(0,20),{vx:rnd(-80,120),vy:-rnd(30,90),life:rnd(.8,1.1),size:rnd(100,150),grow:60,vr:rnd(-.4,.4),a:.75});};
+  {const n=Math.max(4,Math.round(dist/95)),step=Math.max(650,dist*1.25)/n;
+   for(let i=1;i<=n;i++){const k=i/n,x=Q.x0+dist*k,gy=Q.y0+(Q.y1-Q.y0)*Math.max(0,Math.min(1,(x-Q.x0)/Math.max(1,Q.x1-Q.x0)));Q.front=x;
+     geyser(x,gy+4,150+170*k);if(x>Q.x1-40)Q.r=Math.max(Q.r,Math.min(1,(x-(Q.x1-40))/Math.max(1,Q.fx1-Q.x1+40)));await wait(step);}}
   // 4) a hullám szétterül: EGY nagy futóhomok-mező mindenki alatt
   sfx('earthm');shake(12);
-  await tween(420,k=>{Q.r=Math.max(Q.r,eOutBack(k));Q.wave=1-k;});Q.wave=0;
+  await tween(420,k=>{Q.r=Math.max(Q.r,eOutBack(k));});
   popLabel(al[0],'SÖTÉT FUTÓHOMOK!','#c890ff');
   // Morgána közben felegyenesedik
   // Morgána felegyenesedik
