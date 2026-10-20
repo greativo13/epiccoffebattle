@@ -1,0 +1,1 @@
+{"data_dir":"/home/user/epiccoffebattle/.token-saver","compact_level":2,"snapshot":{"auto_threshold_tokens":50000,"enabled":true,"layered":true},"qa_cache":{"enabled":true,"quiet_mode":false,"max_concepts_to_scan":30},"naming":{"use_chinese":false,"max_filename_length":60}}

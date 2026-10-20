@@ -1,0 +1,1 @@
+Tue Oct 20 15:30:22 UTC 2026: resolved=/home/user/epiccoffebattle/.token-saver (a felhős gép ideiglenes, ezért a játék tárolójában)
