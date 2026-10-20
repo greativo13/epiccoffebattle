@@ -311,3 +311,4 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Kaelen – Erdő haragja (`SK.forestwrath`, 11-3, 6800; mindenkire, pow 1,75): minden ellenfél fölé festett fakar hajol be fentről és lecsap.
 - Minden új támadás sebzése kráter nélkül (`r21HitNS` → `S._r21noSink`). Próbafelvétel: `forras/eszkozok/hsk2.js` (teljes kép, 3 ellenfél).
 - Tesztlap: oa01–oa08.
+- Képregény XI–XII. fejezet: festett képsor Higgsfielddel (`nano_banana_2_1`, 2:3, a hősök és főellenségek figurája referenciaként), `tx-cm11_<0-2>`, `tx-cm12_<0-2>`, `R21_COMIC[10/11].img`. Így mind a 12 fejezet + prológus festett. (A `gpt_image_2_5` az ingyenes csomagban nem megy; a nano_banana képenként 1,5 kredit, egyszerre csak egy kérés fut.) Tesztlap: oa09–oa10.

@@ -2,7 +2,7 @@
 // ===== 39. kör: képregényes történet =====
 // Fejezetenként 3 festett panel, szövegdobozzal és buborékkal, koppintásra lapozva.
 // A bevezető és az I–VI. fejezet saját festett képsort kapott (tx-cm<n>_<panel>),
-// a VII–XII. fejezet panelei a pálya festett hátteréből és a szereplők figuráiból állnak össze.
+// a VII–X. fejezet Canva-, a XI–XII. Higgsfield-festett képsort kapott (tx-cm11/12).
 const R21_COMIC={
   intro:{num:'Prológus',title:'Az ellopott Kanna',img:0,p:[
     {c:'Mesevölgy, hajnali hat óra. A Királyi Kávéházban szokatlan csend van.',w:'Zordon',t:'Morgána. Hol a Kanna?'},
@@ -48,11 +48,11 @@ const R21_COMIC={
     {c:'A hegy fölött zen-kertek húzódnak, a kavicsok maguktól mozognak.',w:'Zordon',t:'Itt minden lépésnek súlya van.'},
     {c:'A túl sok varázslat felriasztja a mozaiksárkányokat.',w:'Morgána',t:'Akkor most kivételesen… figyelmesen.'},
     {c:'A kert őre: a Zen-Kavics Sárkány.',w:'Grog',t:'Nagy kő. Grog nagyobb.'}]},
-  10:{p:[
+  10:{img:11,p:[
     {c:'A barlangban gőzölgő matcha-kádak bugyognak.',w:'Morgána',t:'Ez a gőz… zöld. És habos.'},
     {c:'Valaki itt veri a habot az egész völgynek – ezer és ezer habverővel.',w:'Zordon',t:'Hallod? Gong.'},
     {c:'A barlang végén a Bambusz-békakirály vár.',w:'Grog',t:'Béka. Grog szereti a brekegést. Grog üt.'}]},
-  11:{p:[
+  11:{img:12,p:[
     {c:'A felhők fölött áll a palota, kupolája mint egy hatalmas matcha-csésze.',w:'Zordon',t:'Itt készül a völgy utolsó teája.'},
     {c:'Az a tea végleg elvenné a világ ízeit – amíg meg nem tanulja becsülni őket.',w:'Morgána',t:'Akkor tanítsuk meg rá.'},
     {c:'Odabent Chasen, a Békemester vár. Mellette Lili ül, mosolyogva, csendben.',w:'Grog',t:'Lili! Grog hozott sütit. Ízetlent.'}]},
