@@ -366,3 +366,31 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Üst-kitörés (oa02 „mű és erőltetett”): újragondolva valódi fizikával – lila füstben megjelenik az üst, súlyosan a földre huppan (por, rugózás), hevesen forr; Morgána nekilendül és belerúg (saját teste: hátra-előre); az üst gyorsulva eldől, az oldalára zuhan, visszapattan; a nyílásból vastag sugárban ömlik a főzet, ami folyadékként szétterül és végigfolyik a talajon (festett csobbanás-darabok csúsznak és lassulnak, nem csúszó hullám-kép); az ellenfeleknél felcsap, lila mérgező buborékok (fx7-froth lilára) és gőz; a tócsa elpárolog, az üst füstben eltűnik.
 - Telihold átka (oa04 „nem mozog normálisan, darabos, élethűbb, látványosabb”): a farkasember teste rugalmasan, simítva mozog (lélegzés, összenyomódás/megnyúlás, dőlés követése, nincs hirtelen tükrözés); holdfény-izzás és hulló festett ezüstszikrák a társon; a holdfényben nő ki; vonyít a holdra (a hold felragyog); guggolás → hosszú ugrás → csúszó érkezés → két karmolás felhúzással → felugrós lecsapás nagy keresztbe vágással → hátraugrás szemben → visszaváltozás. Kevesebb füst (telefonon simább). Az átszínezett lángoszlop kikerült, mert villámnak hatott (A5).
 - Bambuszfüggöny (oa05 „nincs funkciója, gagyi, élethűbb”): új funkció – FOGSÁG (60% kábulat 1 körre a korábbi 40% védelemgyengítés helyett). A sortüzek nyilai átfúrják az ellenfeleket és körülöttük a földbe fúródnak; belőlük festett bambuszszárak (fx7-bamboostake) nőnek levelekkel, sűrű függönyként rázárnak az ellenfelekre („FOGSÁGBAN!”), aztán visszahúzódnak.
+
+## 49. kör – nagy tesztcsomag (végigjáték Cukorsivatagig, normál szint) (r21zf.js + game.html alap + r21x)
+- Felület: időjárás- és kihívás-jelvény a csatatér ALJÁN, egymás mellett, átlátszatlanul, minden réteg fölött; a sárga sáv (`showBanner`) szélessége a szöveghez igazodik, szükség esetén kisebb betű.
+- Barlangi béka – Nyelvcsapás: a nyelv a rácson mért szájzugból (`KP(u,.12,.33)`) indul, képkockánként követve.
+- Limit: lassabban töltődik (kapott sebzés ×55 a ×110 helyett, akciónként +2, találatonként +1, védekezés +2, idézés +2).
+- Átok: minden ellenségre hat, EGY nagy jelenet (Hádész, egy lánckör a csoport körül, egy koponya), a vékony gyűrű nélkül.
+- Normál szint: `DIFF_ATK[1]=1.0`, `DIFF_HP[1]=1.1`. II. Csavar: ÉP ×0,75, támadás ×0,85.
+- Többcsatás pálya: a csaták között nem támad fel magától a hős, csak a pálya végén.
+- Kóbor szellem – Hideg érintés: festett jeges pára (fx7-teacloud jégkékre), festett jégbörtön (fx7-glacier), festett szilánkok.
+- Égi áldás: MP-t is ad, és leveszi a negatív állapotokat.
+- Bolt: a közös/páros támadások vásárlása eddig minden sima mentéskor elveszett (újra megvehető volt) – a `saveGame` burkoló megőrzi az `owned` listát; dupla koppintás elleni zár; a Négyek ereje csak 4 hősnél vehető. Felszerelés: `GEAR_MAX=3` (a 3/3 az új ruha, utána nincs több), ár 300/900/2000, +15%/fokozat.
+- Bolt-elosztás (`SHOP_SKILLS` futáskor újraosztva): minden hős támadásai a csatlakozásától a 12-1-ig egyenletesen nyílnak, az ár a pálya simított bevételének ~42%-a. A később csatlakozó hős annyi támadást kap alapból (`HERO_DEF.skills`), amennyi a lista arányában addigra járna (Lili 1, Grog 2, Jázmin 6, Kaelen 7); ha valamelyiket már megvette, az árát visszakapja (`r21FreeFix`).
+- Kristálygólem: a Tükörpajzs ugyanaz, mint az idézés (`crystal` állapot, fx-crystalmirror), az ellenfélen a hősök köréig kitart, és tényleg visszaver; a vékony hatszög-körvonal (`SPR_OVER.cgolem`) kikerült. Kristályököl: a saját ökle kristállyá nő (festett fx7-glacier), nagy becsapódás, festett szilánkok és kristálytüskék, repedés nélkül. Szilánkeső: festett szilánkok hullámokban, minden becsapódás sebez.
+- Kőbőr: a kőpáncél kép tükrözve; kőbörtön: ha Grogot Kőbőrrel megütik, a kő a támadóra rakódik (szürke, kőpáncél rajta, kábulat 1 kör), Grogról lekerül.
+- Obszidián lovag, Kísértetlovag: 1,3× nagyobb.
+- Repedések: a főellenség dühfázisában nincs izzó repedés a testén (`r21RageDraw` üres), a krátert repedésvonal nélkül.
+- Sötét alku → Cerberus csak az adott csatában és amíg Morgána él (halálkor és új csatánál `_cerb` és a limit nullázva).
+- Folyamatos sebzés: a sok apró elemből álló támadások (Csillaghullás, Nyílzápor, Hóvihar, Virágvihar, Tövisvihar, Égiháború, Hegyomlás, az ellenfelek esői/viharai) a sebzés 60%-át 4 részletben adják becsapódás közben.
+- Rozsda-átok: rozsdabarna aura és festett rozsdapelyhek, amíg a védelemgyengítés tart.
+- Fekete lyuk: akit nem nyelhet el, annál „TÚL ERŐS – NEM NYELI EL” (nem „Eltűnt: immunis”).
+- Nagy gyógyital: mindenkinek az ÉP 60%-a (`sk.pct`).
+- Morcus: amíg a 2. és 3. fázis nem jött el, nem eshet 60%, illetve 30% alá, és nem halhat meg (lefelé kerekítve, különben a 3. fázis nem indul – ezt a kampányteszt fogta meg).
+- Meteorököl: becsapódáskor nincs sziklatüske-kép és gyűrű. Titáncsapás: a festett kőtüskék csak az ellenfél előtti félkörben (`r13Quake`), a nagy sziklakép sincs.
+- Jázmin limit-plakátja: a meditáló kép (`monk-meditate`).
+- Átöltözés: ha egy hős fegyvere és ruhája 3/3, a következő pálya első csatája előtt látványosan átöltözik (fény, pörgés, festett csillagok, villanás, „ÚJ RUHA!”), hősönként egyszer (`localStorage r21dressed`).
+- Üst-kitörés (3. koncepció): az üst megjelenik, lila gőz száll fel, felhőként az ellenfelek fölé úszik és rájuk ereszkedik; a nagy (nem fő) ellenfelek egy körre véletlen kis ellenféllé változnak (`poly` állapot, a rajz és az akció is: csak apró ütés), aztán visszaváltoznak; kis sötét sebzés.
+- Ellenőrzés: all.js (94 hősképesség), foe.js (177 ellenfél-támadás), camp.js (mind a 48 pálya) – hiba nélkül. Új eszköz: `forras/eszkozok/acap.js` (adott ellenfelekkel, közvetlen kóddal indított animáció képsora).
+- Tesztlap: pa01–pa30 (+ ma06, na01, oa01, oa02, oa04, oa05 frissítve; a jónak jelölt pontok törölve).

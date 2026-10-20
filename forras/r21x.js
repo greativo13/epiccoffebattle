@@ -41,7 +41,7 @@ function r21PairShop(){const box=document.querySelector('.ov-box.shop');if(!box)
   const row=(name,desc,right)=>{const r=el('div','shop-row');const l=el('div','shop-info');l.appendChild(el('div','shop-name',name));l.appendChild(el('div','shop-desc',desc));r.appendChild(l);r.appendChild(right);list.appendChild(r);};
   const buy=(k,price)=>btn('shop-buy',`${price} arany`,()=>{if(S.gold<price)return;S.gold-=price;(R21_OWN=R21_OWN||[]).push(k);saveGame();r21OwnSave();shopScreen('pairs');},S.gold<price);
   list.appendChild(el('div','shop-head','Közös támadás'));
-  row('Közös erő (Négyek ereje)','Az összes harcoló hős egyszerre csap le minden ellenségre. Akkor használható, ha mindenki limitje tele van; mindenki limitjét elhasználja.',R21_OWN.includes('combo')?el('span','shop-own','✓ Megvan'):buy('combo',R21_COMBO_PRICE));
+  row('Közös erő (Négyek ereje)','Az összes harcoló hős egyszerre csap le minden ellenségre. Akkor használható, ha mindenki limitje tele van; mindenki limitjét elhasználja.',R21_OWN.includes('combo')?el('span','shop-own','✓ Megvan'):roster.length<4?el('span','shop-lock','Ha már négy hős van a csapatban'):buy('combo',R21_COMBO_PRICE));
   list.appendChild(el('div','shop-head','Páros támadások'));
   for(const p of PAIRS){const k='pair:'+p.name,ok=roster.includes(p.a)&&roster.includes(p.b);const desc=`${nm(p.a)} + ${nm(p.b)}: ${p.desc} Mindkét hős limitje tele kell legyen; csatánként egyszer.`;
     row(p.name,desc,R21_OWN.includes(k)?el('span','shop-own','✓ Megvan'):!ok?el('span','shop-lock','Ha mindkét hős a csapatban van'):buy(k,R21_PAIR_PRICE));}
