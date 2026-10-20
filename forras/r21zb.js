@@ -131,11 +131,11 @@ A.quicksand=async(u,ts,sk)=>{
   const dist=Q.fx1-Q.x0;
   await tween(Math.max(950,dist*1.7),k=>{const e=easeIO(k);Q.front=Q.x0+dist*e;Q.band=Math.min(1,k*3);Q.wave=Math.min(1,k*4);
     const gy=Q.y0+(Q.y1-Q.y0)*Math.max(0,Math.min(1,(Q.front-Q.x0)/Math.max(1,Q.x1-Q.x0)));
-    for(let i=0;i<16;i++)r21QsGrain(Q.front+rnd(-40,40),gy-rnd(20,170),rnd(40,420),-rnd(160,620),rnd(2,6));
-    if(!Q.trail)Q.trail=[];{const l=Q.trail[Q.trail.length-1];if(!l||Q.front-l.x>16)Q.trail.push({x:Q.front-30,y:gy+6,w:150*(.75+.5*k),a:0,fl:false});}
+    for(let i=0;i<5;i++)r21QsGrain(Q.front+rnd(-40,40),gy-rnd(20,170),rnd(40,420),-rnd(160,620),rnd(2,6));
+    if(!Q.trail)Q.trail=[];{const l=Q.trail[Q.trail.length-1];if(!l||Q.front-l.x>30)Q.trail.push({x:Q.front-30,y:gy+6,w:150*(.75+.5*k),a:0,fl:false});}
     for(const s2 of Q.trail)s2.a=Math.min(.9,s2.a+.05);
     if(Q.front>Q.x1-40)Q.r=Math.max(Q.r,Math.min(1,(Q.front-(Q.x1-40))/Math.max(1,Q.fx1-Q.x1+40)));
-    for(let n=0;n<2;n++)part({x:Q.front+rnd(-40,20),y:gy-rnd(10,90),vx:rnd(20,160),vy:-rnd(20,110),life:rnd(.8,1.4),size:rnd(30,60),grow:40,rgb:pick(['150,122,88','120,96,70','170,145,105']),add:false,shape:'smoke'});
+    for(let n=0;n<1;n++)part({x:Q.front+rnd(-40,20),y:gy-rnd(10,90),vx:rnd(20,160),vy:-rnd(20,110),life:rnd(.8,1.4),size:rnd(30,60),grow:40,rgb:pick(['150,122,88','120,96,70','170,145,105']),add:false,shape:'smoke'});
     if(Math.random()<.45)shake(7);});
   // 4) a hullám szétterül: EGY nagy futóhomok-mező mindenki alatt
   sfx('earthm');shake(12);

@@ -5,7 +5,7 @@ function r21InkRibbon(rib){if(!rib||rib.length<3)return;
   for(const pass of [1,0]){let seg=[];const flush=()=>{if(seg.length<2){seg=[];return;}const n=seg.length,L=[],R=[];
       for(let j=0;j<n;j++){const p=seg[j],a=seg[Math.max(0,j-1)],b=seg[Math.min(n-1,j+1)];let dx=b.x-a.x,dy=b.y-a.y;const dl=Math.hypot(dx,dy)||1;dx/=dl;dy/=dl;
         const w=p.w/2;L.push({x:p.x-dy*w,y:p.y+dx*w});R.push({x:p.x+dy*w,y:p.y-dx*w});}
-      ctx.save();try{if('filter' in ctx)ctx.filter='blur(2.5px)';}catch(e){}for(let j=1;j<n;j++){const al=(seg[j].al+seg[j-1].al)/2;if(al<=.003)continue;ctx.fillStyle=`rgba(12,10,18,${al})`;ctx.beginPath();
+      ctx.save();for(let j=1;j<n;j++){const al=(seg[j].al+seg[j-1].al)/2;if(al<=.003)continue;ctx.fillStyle=`rgba(12,10,18,${al})`;ctx.beginPath();
         ctx.moveTo(L[j-1].x,L[j-1].y);ctx.lineTo(L[j].x,L[j].y);ctx.lineTo(R[j].x,R[j].y);ctx.lineTo(R[j-1].x,R[j-1].y);ctx.closePath();ctx.fill();}
       ctx.restore();seg=[];};
     for(let i=0;i<rib.length;i++){const r=rib[i];if((r.b?1:0)!==pass||r.a<=0){flush();continue;}const f=1-i/rib.length;
@@ -37,14 +37,14 @@ A.inkWave=async(u,ts,sk)=>{const al=ts.filter(h=>h.alive);if(!al.length)return;c
   const RX=Math.min(210,(maxX-minX)/2+80),RY=56,cxs=Math.max(RX+40,(minX+maxX)/2),G={x:p0.x,y:p0.y-50,s:.05,ang:-1.2,flip:false,a:1,b:false,on:true,wob:0},rib=[];
   // tus-szalag: a sárkány után húzódó, elmosódó tuscsík (ez rajzolja a spirált a hősök körül)
   G.tr=[];R17E({update(){if(G.on){const l=G.tr[0];if(!l||Math.hypot(l.x-G.x,l.y-G.y)>2){G.tr.unshift({x:G.x,y:G.y,b:G.b});if(G.tr.length>400)G.tr.pop();}}if(G.on&&!G.nr){rib.unshift({x:G.x,y:G.y,b:G.b,a:1});if(rib.length>70)rib.pop();}for(const r of rib)r.a-=.012;return G.on||rib.some(r=>r.a>0);},
-    draw(){/* (ja05: a tusszalag-csík nem kell – csak a festett sárkány) */
+    draw(){/* (ja05 2.: „kell a fekete csík”) a folytonos tusszalag vissza */r21InkRibbon(rib);
       if(G.a<=0)return;const D2=R17I.inkdragon2;
       // (fa08: „a sárkány csak egy kép, ezért darabos a mozgása”) a festett, egyenes testű tussárkány a saját nyomvonalán
       // hajlik végig, mint egy kígyó – a teste folyamatosan követi a fejét
       if(D2){const L=DW*G.s*1.45,th=L*D2.height/D2.width*1.1;const P=[{x:G.x,y:G.y,b:G.b}];let acc=0;for(const q of G.tr){const l=P[P.length-1];const dd=Math.hypot(q.x-l.x,q.y-l.y);if(dd<1)continue;acc+=dd;P.push(q);if(acc>=L)break;}
         if(acc<L){const l=P[P.length-1],pv=P.length>1?P[P.length-2]:{x:l.x+Math.cos(G.ang)*-1,y:l.y+Math.sin(G.ang)*-1};let dx=l.x-pv.x,dy=l.y-pv.y,dl=Math.hypot(dx,dy)||1;if(P.length<2){dx=-Math.cos(G.ang)*(G.flip?-1:1);dy=-Math.sin(G.ang)*(G.flip?-1:1);dl=1;}
           const rem=L-acc;for(let k2=1;k2<=6;k2++)P.push({x:l.x+dx/dl*rem*k2/6,y:l.y+dy/dl*rem*k2/6,b:l.b});}
-        ctx.save();if(G.cl!=null){ctx.beginPath();ctx.rect(G.x-3000,G.cl-3000,6000,3000);ctx.clip();}else{const Mo=mouth(),hw=86*PS;ctx.beginPath();ctx.rect(-3000,-3000,8000,8000);ctx.rect(Mo.x-hw,Mo.y+4,hw*2,900);ctx.clip('evenodd');}r21Snake2(D2,P,th,G.a,.6);ctx.restore();return;}
+        ctx.save();if(G.cl!=null){ctx.beginPath();ctx.rect(G.x-3000,G.cl-3000,6000,3000);ctx.clip();}else if(G.pc){/* (ja05 2.: „egy kocka előrébb van”) a tintatartó-takarás csak kibújáskor/visszabújáskor él */const Mo=mouth(),hw=86*PS;ctx.beginPath();ctx.rect(-3000,-3000,8000,8000);ctx.rect(Mo.x-hw,Mo.y+4,hw*2,900);ctx.clip('evenodd');}r21Snake2(D2,P,th,G.a,.6);ctx.restore();return;}
       if(!im)return;const w=DW*G.s,h=w*im.height/im.width;ctx.save();if(G.cl!=null){ctx.beginPath();ctx.rect(G.x-3000,G.cl-3000,6000,3000);ctx.clip();}ctx.globalAlpha=G.a*(G.b?.6:1);ctx.translate(G.x,G.y);ctx.rotate(G.ang);ctx.scale(G.flip?-1:1,1);
       // a fej (a kép bal széle) legyen elöl: a kép kb. 15%-ánál van a fej
       const N=48;for(let i=0;i<N;i++){const sx=i*im.width/N,dx=-w*.15+i*w/N,wy=Math.sin(T*6-i*.22)*h*.035*G.wob;ctx.drawImage(im,sx,0,im.width/N+1,im.height,dx,-h/2+wy,w/N+1,h);}ctx.restore();}});
@@ -55,7 +55,7 @@ A.inkWave=async(u,ts,sk)=>{const al=ts.filter(h=>h.alive);if(!al.length)return;c
    clearInterval(iv);G.cl=null;G.nr=false;sfx('boom');shake(8);splat(M.x,M.y-10,['12,10,18','40,36,60'],30,420,'drop');}
   // ív a hősök elé (a fej megy elöl: a kép balra néz, a mozgás balra tart, így nem kell tükrözni)
   const st0={x:G.x,y:G.y},ent={x:cxs+RX,y:gy2-10};let lx=G.x,ly=G.y;let vx=0,vy=0;const aim=()=>{const dx=G.x-lx,dy=G.y-ly;vx=vx*.85+dx*.15;vy=vy*.85+dy*.15;if(Math.hypot(vx,vy)>.4){const fl=Math.abs(vx)>1.2?vx>0:G.flip;if(fl!==G.flip){G.flip=fl;G.ang=-G.ang;}const ta=G.flip?Math.atan2(vy,vx):Math.atan2(-vy,-vx);let d=ta-G.ang;while(d>Math.PI)d-=6.283;while(d<-Math.PI)d+=6.283;G.ang+=d*.18;}lx=G.x;ly=G.y;};
-  G.wob=1;await tween(820,k=>{const ex=1-Math.pow(1-k,2.2),ey=k*k;G.x=st0.x+(ent.x-st0.x)*ex;G.y=st0.y+(ent.y-st0.y)*ey-Math.sin(k*Math.PI)*40;aim();});
+  G.pc=true;setTimeout(()=>{G.pc=false;},260);G.wob=1;await tween(820,k=>{const ex=1-Math.pow(1-k,2.2),ey=k*k;G.x=st0.x+(ent.x-st0.x)*ex;G.y=st0.y+(ent.y-st0.y)*ey-Math.sin(k*Math.PI)*40;aim();});
   // spirál alulról felfelé, 2,5 kör: hátul halványabb (a hősök mögött), elöl teljes
   const turns=2.5;const bz=setInterval(()=>sfx('whoosh'),320);
   await tween(1800,k=>{const th=k*turns*Math.PI*2,h=gy2-10-(gy2-top2+10)*k;G.x=cxs+Math.cos(th)*RX;G.y=h+Math.sin(th)*RY;G.b=Math.sin(th)<0;aim();G.s=.82-.08*k;});clearInterval(bz);G.b=false;
@@ -64,7 +64,7 @@ A.inkWave=async(u,ts,sk)=>{const al=ts.filter(h=>h.alive);if(!al.length)return;c
   flash('20,10,30',.45,.2);for(const t of al){if(!t.alive)continue;t.hurt=.55;sfx('bite');splat(cx(t),midY(t),['12,10,18','30,28,40'],44,520,'drop');r18InkBlot(cx(t),midY(t),Math.max(110,t.h*t.scale*.8));toss(t,50,380);hit(u,t,sk);}hitStop(140);shake(22);
   await wait(320);
   // vissza a tintatartóba
-  {const s1={x:G.x,y:G.y};await tween(850,k=>{const e=easeIO(k),M=mouth();G.x=s1.x+(M.x-s1.x)*e;G.y=s1.y+(M.y-60-s1.y)*e-Math.sin(k*Math.PI)*190;aim();if(k>.45){const tg=G.flip?Math.PI/2:-Math.PI/2,q=Math.min(1,(k-.45)/.4);G.ang+=(tg-G.ang)*q;}G.s=Math.max(.6,G.s-.004);});
+  G.pc=true;{const s1={x:G.x,y:G.y};await tween(850,k=>{const e=easeIO(k),M=mouth();G.x=s1.x+(M.x-s1.x)*e;G.y=s1.y+(M.y-60-s1.y)*e-Math.sin(k*Math.PI)*190;aim();if(k>.45){const tg=G.flip?Math.PI/2:-Math.PI/2,q=Math.min(1,(k-.45)/.4);G.ang+=(tg-G.ang)*q;}G.s=Math.max(.6,G.s-.004);});
    const M=mouth(),s0=G.s,y0=G.y;G.cl=M.y;G.nr=true;G.x=M.x;sfx('whoosh');
    await tween(700,k=>{const e=easeIO(k);G.s=s0-(s0-.3)*e;const len=DW*G.s*.85;G.y=y0+(M.y+40+len-y0)*e;G.ang=(G.flip?Math.PI/2:-Math.PI/2)+Math.sin(k*10)*.08;
      if(Math.random()<.7)part({x:M.x+rnd(-24,24),y:M.y-4,vx:rnd(-90,90),vy:-rnd(60,240),g:700,life:.6,size:rnd(3,8),rgb:'12,10,18',add:false,shape:'drop'});});

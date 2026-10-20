@@ -7,7 +7,7 @@
 // ---- festett részecskék (oa02/oa04: „festett kép kell, ne rajzolt”): a pötty-részecskék helyett kis, forgó, festett képdarabok
 const R21PP=[];let R21PPon=false;const R21FILT=new Map();
 // festett kép egyszer előszínezve (a szűrő nem képkockánként fut)
-function r21Filt(im,f){if(!im||!f)return im;let m=R21FILT.get(im);if(!m){m={};R21FILT.set(im,m);}if(m[f])return m[f];const c=document.createElement('canvas');c.width=im.width;c.height=im.height;const g=c.getContext('2d');try{g.filter=f;}catch(e){}g.drawImage(im,0,0);m[f]=c;return c;}
+function r21Filt(im,f){if(!im||!f||!im.width)return im;let m=R21FILT.get(im);if(!m){m={};R21FILT.set(im,m);}if(m[f])return m[f];const c=document.createElement('canvas');c.width=im.width;c.height=im.height;const g=c.getContext('2d');try{g.filter=f;}catch(e){}g.drawImage(im,0,0);m[f]=c;return c;}
 function r21PD(im,x,y,o={}){if(!im)return;if(R21PP.length>260)return;R21PP.push({im,x,y,vx:o.vx||0,vy:o.vy||0,g:o.g||0,life:o.life||.8,t:0,s:o.size||20,rot:o.rot!=null?o.rot:rnd(0,6.28),vr:o.vr!=null?o.vr:rnd(-4,4),add:!!o.add,grow:o.grow||0,a:o.a==null?1:o.a,drag:o.drag||0,front:o.front});
   if(!R21PPon){R21PPon=true;R18E({update(dt){for(const p of R21PP){p.t+=dt;p.vy+=p.g*dt;if(p.drag){p.vx*=Math.max(0,1-p.drag*dt);p.vy*=Math.max(0,1-p.drag*dt);}p.x+=p.vx*dt;p.y+=p.vy*dt;p.rot+=p.vr*dt;p.s=Math.max(1,p.s+p.grow*dt);}
       for(let i=R21PP.length-1;i>=0;i--)if(R21PP[i].t>=R21PP[i].life)R21PP.splice(i,1);if(!R21PP.length){R21PPon=false;return false;}return true;},
@@ -21,52 +21,58 @@ SK.cauldron={name:'Üst-kitörés',mp:22,cd:1,tgt:'enemies',kind:'mag',pow:1.3,e
   desc:'Morgána elé kiemelkedik a boszorkányüst, felforr, és mérgező főzetet zúdít minden ellenségre. 60% eséllyel megmérgezi őket.'};
 SHOP_SKILLS.witch.push(['cauldron','3-2',1100]);
 A.cauldronBurst=async(u,ts,sk)=>{
-  // (oa02) minden látvány festett kép: üst, főzet-csobbanás, a cseppek a csobbanás kis darabjai, a gőz festett felhő lilára színezve
+  // (oa02 2.: „az üst felborul”): Morgána előtt kiemelkedik az üst, felforr, Morgána belerúg – az üst a hősök felé nyitott
+  // szájjal felborul, és a festett lila főzethullám (fx7-teawave lilára színezve) végigömlik a talajon az ellenfelekig,
+  // ott festett csobbanásként (fx7-brewsplash) feléjük csap, és festett lila tócsa marad alattuk. Minden látvány festett kép.
   const al=(ts||[]).filter(t=>t&&t.alive);if(!al.length)return;const rel=keepPose(u,'cast');
   try{
-  const CI=R17I.cauldron,SP=R17I.brewsplash,STM=r21Filt(R17I.teacloud,'hue-rotate(230deg) saturate(.7) brightness(.8)'),Hs=u.h*u.scale,ch=Hs*.95;
-  const gx=cx(u)+u.w*u.scale*.35+ch*.5,gy=u.y+u.oy+4;
-  const C={a:1,rise:0,rot:0,sq:1,jolt:0};
-  const mouth=()=>({x:gx,y:gy-ch*C.rise*.86+C.jolt});
+  const CI=R17I.cauldron,SP=R17I.brewsplash,WV=r21Filt(R17I.teawave,'hue-rotate(245deg) saturate(1.3) brightness(.9)'),STM=r21Filt(R17I.teacloud,'hue-rotate(230deg) saturate(.7) brightness(.8)');
+  const Hs=u.h*u.scale,ch=Hs*.9,gx=cx(u)+u.w*u.scale*.35+ch*.5,gy=u.y+u.oy+4;
+  const C={a:1,rise:0,rot:0,jolt:0,dx:0};
   const drop=(x,y,vx,vy,sz)=>r21PD(SP,x,y,{vx,vy,g:900,life:rnd(.6,1),size:sz||rnd(26,54),vr:rnd(-8,8)});
   const steam=(x,y,sz)=>r21PD(STM,x,y,{vx:rnd(-30,30),vy:-rnd(40,110),life:rnd(.9,1.4),size:sz||rnd(90,150),grow:60,vr:rnd(-.6,.6),a:.75});
+  const lip=()=>{const w=ch*(CI?CI.width/CI.height:1);const px=gx+C.dx+w*.45,py=gy;const ang=C.rot;return {x:px+Math.cos(ang-Math.PI/2)*ch*.86*-Math.sin(0)+Math.sin(ang)*ch*.8,y:py-Math.cos(ang)*ch*.8};};
   R18E({update(){return C.a>0;},draw(){if(!CI||C.rise<=0)return;const w=ch*CI.width/CI.height;
-    ctx.save();ctx.globalAlpha=C.a;ctx.beginPath();ctx.rect(gx-w,gy-ch*1.6,w*2,ch*1.6+2);ctx.clip();
-    ctx.translate(gx,gy+ch*(1-C.rise)+C.jolt);ctx.rotate(C.rot);ctx.scale(1/C.sq,C.sq);ctx.drawImage(CI,-w/2,-ch,w,ch);ctx.restore();}});
+    ctx.save();ctx.globalAlpha=C.a;ctx.beginPath();ctx.rect(gx-w*2,gy-ch*2,w*5,ch*2+2);ctx.clip();
+    // a forgáspont az üst jobb alsó sarka (arra borul)
+    ctx.translate(gx+C.dx+w*.42,gy+ch*(1-C.rise)+C.jolt);ctx.rotate(C.rot);ctx.drawImage(CI,-w*.92,-ch,w,ch);ctx.restore();}});
+  // a talajon végigömlő főzethullám és a tócsák
+  const F={k:0,on:true,x0:0,x1:0,y0:gy,y1:gy,h:0,a:1},pools=[];
+  R18E({update(){return F.on||pools.some(p=>p.a>0);},draw(){
+    for(const p of pools){if(p.a<=0||!SP)continue;const w=p.w*p.k,h=w*SP.height/SP.width*.28;ctx.save();ctx.globalAlpha=p.a;ctx.translate(p.x,p.y);ctx.scale(1,1);ctx.drawImage(SP,-w/2,-h*.5,w,h);ctx.restore();}
+    if(!WV||F.k<=0||F.h<=0)return;const x=F.x0+(F.x1-F.x0)*F.k,y=F.y0+(F.y1-F.y0)*F.k,h=F.h,w=h*WV.width/WV.height;
+    ctx.save();ctx.globalAlpha=F.a;ctx.translate(x,y+h*.06);ctx.scale(-1,1);ctx.drawImage(WV,-w*.25,-h,w,h);ctx.restore();}});
   await dimTo(.45,'14,6,20',260);
-  // 1) Morgána int, az üst kiemelkedik a földből (festett porfelhő)
+  // 1) kiemelkedik a földből
   sfx('dark');sfx('earthm');rumble&&rumble(.6,5);
-  const DUST=R17I.teacloud;for(let i=0;i<5;i++)r21PD(DUST,gx+rnd(-ch*.5,ch*.5),gy-rnd(0,20),{vx:rnd(-120,120),vy:-rnd(20,80),life:1,size:rnd(90,150),grow:50,vr:rnd(-.5,.5),a:.8});
+  const DU=R17I.teacloud;for(let i=0;i<4;i++)r21PD(DU,gx+rnd(-ch*.4,ch*.4),gy-rnd(0,20),{vx:rnd(-120,120),vy:-rnd(20,80),life:1,size:rnd(90,140),grow:50,vr:rnd(-.5,.5),a:.75});
   await tween(460,k=>{C.rise=eOutBack(k);});C.rise=1;
-  // 2) felforr: bugyog, rázkódik, festett cseppek és lila gőz
+  // 2) felforr
   sfx('squish');sfx('poison');let lt=0;
-  await tween(760,k=>{C.rot=Math.sin(k*40)*.035*(.4+k);C.sq=1+Math.sin(k*28)*.03*(.5+k);const m=mouth();
-    if(k-lt>.06){lt=k;drop(m.x+rnd(-ch*.3,ch*.3),m.y,rnd(-60,60),-rnd(200,380),rnd(20,38));if(Math.random()<.6)steam(m.x+rnd(-ch*.25,ch*.25),m.y-20);if(Math.random()<.3)sfx('squish');}});
-  // 3) KITÖR: az üst megugrik, a festett főzet ívben minden ellenségre zúdul
-  C.rot=0;sfx('splash');sfx('boom');shake(16);hitStop(80);flash('150,60,210',.25,.12);
-  tween(160,k=>{C.jolt=-30*Math.sin(k*Math.PI);C.sq=1-.14*Math.sin(k*Math.PI);});
-  {const m=mouth();for(let i=0;i<16;i++)drop(m.x+rnd(-30,30),m.y,rnd(-200,320),-rnd(380,720));for(let i=0;i<4;i++)steam(m.x+rnd(-40,40),m.y-30,rnd(130,200));
-   const st={t:0};R18E({update(dt){st.t+=dt;return st.t<.6;},draw(){if(!SP)return;const k=Math.min(1,st.t/.15),a=1-Math.max(0,(st.t-.25)/.35);r17Draw(SP,m.x,m.y,ch*1.6*(.5+.5*k),{rot:-Math.PI/2+.2,a,anchor:'bottom'});}});}
+  await tween(700,k=>{C.jolt=Math.sin(k*50)*2*(.4+k);const w=ch*CI.width/CI.height;if(k-lt>.07){lt=k;drop(gx+rnd(-w*.25,w*.25),gy-ch*.85,rnd(-60,60),-rnd(200,360),rnd(20,36));if(Math.random()<.6)steam(gx+rnd(-w*.2,w*.2),gy-ch*.95);}});C.jolt=0;
+  // 3) Morgána belerúg, az üst felborul az ellenfelek felé
+  sfx('punch');sfx('block');shake(10);u.lean=-.08;tween(200,k=>{u.lean=-.08*(1-k);});
+  await tween(360,k=>{const e=eOutBack(k);C.rot=1.45*e;C.dx=14*e;});shake(14);hitStop(70);sfx('splash');sfx('boom');
+  // 4) a főzethullám végigömlik a talajon
+  const minX=Math.min(...al.map(t=>cx(t)-t.w*t.scale*.4)),maxX=Math.max(...al.map(t=>cx(t)+t.w*t.scale*.4));
+  const w0=ch*CI.width/CI.height;F.x0=gx+w0*.5;F.x1=maxX+60;F.y0=gy;F.y1=Math.max(...al.map(t=>t.y+t.oy))+4;
   popLabel(al[0],'ÜST-KITÖRÉS!','#c890ff');
-  await Promise.all(al.map((t,i)=>wait(i*90).then(()=>new Promise(res=>{
-    const m=mouth(),x0=m.x,y0=m.y,x1=cx(t),y1=midY(t),hgt=Math.max(160,Math.abs(x1-x0)*.36),ms=560+i*30,st={t:0,done:false,lt:0};
-    const pos=k=>[x0+(x1-x0)*k,y0+(y1-y0)*k-Math.sin(k*Math.PI)*hgt];
-    R18E({update(dt){st.t+=dt*1000;const k=Math.min(1,st.t/ms),[x,y]=pos(k);
-        if(k-st.lt>.08){st.lt=k;drop(x+rnd(-14,14),y+rnd(-10,10),rnd(-60,60),rnd(-40,80),rnd(18,32));}
-        if(k>=1&&!st.done){st.done=true;res();}return k<1;},
-      draw(){if(!SP)return;const k=Math.min(1,st.t/ms),[x,y]=pos(k),[px,py]=pos(Math.max(0,k-.03)),w=200+170*k;
-        r17Draw(SP,x,y,w,{rot:Math.atan2(y-py,x-px),fx:true});}});
-  }).then(()=>{
-    const x=cx(t),y=midY(t),st={t:0},rot=rnd(-.3,.3);sfx('splash');shake(10);
-    R18E({update(dt){st.t+=dt;return st.t<.9;},draw(){if(!SP)return;const k=Math.min(1,st.t/.16),a=st.t<.45?1:1-(st.t-.45)/.45;
-      r17Draw(SP,x-20,y+10,(t.w*t.scale*1.8+100)*(.5+.5*k),{rot:Math.PI/2+.35+rot,a:Math.max(0,a)*.95});
-      r17Draw(SP,x+10,y-10,(t.w*t.scale*1.4+80)*(.5+.5*k),{rot:-Math.PI/2+.4+rot,fx:true,a:Math.max(0,a)*.8});}});
-    for(let n=0;n<10;n++)drop(x+rnd(-20,20),y+rnd(-20,20),rnd(-340,340),-rnd(120,460));
-    for(let n=0;n<3;n++)steam(x+rnd(-30,30),y+rnd(-20,20),rnd(110,170));
-    t.hurt=.4;if(t.alive)r21HitNS(u,t,sk);}))));
-  // 4) az üst visszasüllyed a földbe
-  await wait(380);sfx('earthm');
+  const hitd=new Set();let lp=0;
+  await tween(Math.max(700,(F.x1-F.x0)*1.1),k=>{const e=k;F.k=e;F.h=Hs*(.5+.55*Math.min(1,k*1.6));const x=F.x0+(F.x1-F.x0)*e,y=F.y0+(F.y1-F.y0)*e;
+    if(k-lp>.05){lp=k;pools.push({x:x-40,y:y+2,w:rnd(150,210),k:1,a:.85});drop(x,y-F.h*.6,rnd(-80,160),-rnd(160,380),rnd(22,40));if(Math.random()<.4)steam(x,y-F.h*.4);}
+    if(Math.random()<.3)shake(5);
+    for(const t of al)if(!hitd.has(t)&&x>=cx(t)-20){hitd.add(t);const tx=cx(t),ty=midY(t),st={t:0};sfx('splash');shake(12);hitStop(50);
+      R18E({update(dt){st.t+=dt;return st.t<.8;},draw(){if(!SP)return;const k2=Math.min(1,st.t/.15),a=st.t<.35?1:1-(st.t-.35)/.45;
+        r17Draw(SP,tx,t.y+t.oy+10,(t.h*t.scale*1.9+90)*(.5+.5*k2),{rot:-Math.PI/2,a:Math.max(0,a),anchor:'bottom'});}});
+      for(let n=0;n<10;n++)drop(tx+rnd(-20,20),ty,rnd(-300,300),-rnd(200,520));steam(tx,ty,160);
+      pools.push({x:tx,y:t.y+t.oy+4,w:t.w*t.scale*2+80,k:1,a:.9});
+      t.hurt=.5;toss(t,30,300);if(t.alive)r21HitNS(u,t,sk);}});
+  for(const t of al)if(!hitd.has(t)&&t.alive)r21HitNS(u,t,sk);
+  await tween(300,k=>{F.a=1-k;});F.on=false;
+  // 5) az üst visszabillen és visszasüllyed, a tócsák felszívódnak
+  await tween(320,k=>{C.rot=1.45*(1-easeIO(k));C.dx=14*(1-k);});sfx('earthm');
   await tween(380,k=>{C.rise=1-k*k;});C.a=0;
+  await tween(500,k=>{for(const p of pools)p.a=Math.min(p.a,.9*(1-k));});
   await dimTo(0,null,220);
   }finally{rel();}
 };
@@ -88,25 +94,29 @@ A.axeThrow=async(u,ts,sk)=>{
   const ember=(x,y,vx,vy)=>r21PD(GB,x,y,{vx,vy,g:300,life:rnd(.35,.6),size:rnd(26,48),add:true,vr:rnd(-6,6)});
   try{
   await dimTo(.3,'40,16,4',200);
-  // 1) felhúzás: Grog hátradől, a fejsze lángra kap a feje fölött
+  // 1) (oa01 2.: „vonja be lávás”) Grog a földbe szúrja a fejszét: a földből festett lávaoszlop (lavafx) tör fel, és bevonja
+  //    a pengét – a fejsze izzó, csöpögő lávás lesz (festett csobbanás narancsra színezve = lávacseppek)
+  const LV=FX_IMG.lavafx,LD=r21Filt(R17I.brewsplash,'hue-rotate(112deg) saturate(2.2) brightness(1.2)');
+  const lavaDrop=(x,y,vx,vy,sz)=>r21PD(LD,x,y,{vx,vy,g:900,life:rnd(.5,.9),size:sz||rnd(20,36),vr:rnd(-6,6)});
   sfx('roar');const glowA={a:0};
-  R18E({update(){return glowA.a>0||!glowA.done;},draw(){if(glowA.a<=0||!MT)return;const p=KP(u,.3,.12);ctx.save();ctx.globalCompositeOperation='lighter';
-    for(let i=0;i<3;i++)r17Draw(MT,p.x+8,p.y+10,ah*1.2,{rot:-Math.PI/2-.3+i*.3+Math.sin(T*9+i)*.08,a:.55*glowA.a});ctx.restore();}});
-  tween(300,k=>{glowA.a=k;});sfx('fire');
-  await bodyWind(u,420,.24);
-  {const p=KP(u,.3,.12);for(let i=0;i<10;i++)ember(p.x+rnd(-30,30),p.y+rnd(-30,20),rnd(-60,60),-rnd(60,160));}
-  await wait(100);
+  R18E({update(){return glowA.a>0||!glowA.done;},draw(){if(glowA.a<=0)return;const p=KP(u,.55,.13);ctx.save();ctx.globalCompositeOperation='lighter';glow(p.x,p.y,ah*.7,'255,120,30',.6*glowA.a);ctx.restore();}});
+  await bodyWind(u,300,.22);
+  {const p=KP(u,.55,.13),gy2=u.y+u.oy,st={t:0};sfx('rock');sfx('fire');shake(12);rumble&&rumble(.8,6);
+   if(LV)R18E({update(dt){st.t+=dt;return st.t<.9;},draw(){const k=st.t/.9,rise=Math.min(1,k/.3),a=k<.6?1:1-(k-.6)/.4,top=p.y-30,hh=(gy2-top)*rise,w=hh*LV.width/LV.height*1.1;
+     ctx.save();ctx.globalAlpha=a;ctx.globalCompositeOperation='lighter';glow(p.x,gy2-hh*.5,hh*.5,'255,100,20',.45);ctx.drawImage(LV,p.x-w/2,gy2-hh,w,hh);ctx.drawImage(LV,p.x-w*.35,gy2-hh,w*.7,hh);ctx.restore();}});
+   await tween(520,k=>{glowA.a=k;if(Math.random()<.7)lavaDrop(p.x+rnd(-20,20),p.y+rnd(-10,30),rnd(-120,120),-rnd(80,300));});}
+  await wait(80);
   // 2) elengedés: rövid lassítás, a kép fejsze nélküli, a festett fejsze pörögve, lángcsóvát húzva repül
   hitStop(90);flash('255,180,80',.25,.1);glowA.a=0;glowA.done=true;r21NoAxe(true);pose='cast';sfx('whoosh');sfx('fire');bodyStrike(u,160,-.28);shake(8);
   const h0=KP(u,.3,.17),x1=cx(t)-t.w*t.scale*.15,y1=midY(t),A1={x:h0.x,y:h0.y,r:0,a:1,on:true,spin:true,vx:1,vy:0,trail:1},lx={x:h0.x,y:h0.y};
   R18E({update(dt){if(A1.spin)A1.r+=dt*26;A1.vx=A1.x-lx.x;A1.vy=A1.y-lx.y;lx.x=A1.x;lx.y=A1.y;
-      if(A1.on&&A1.trail>0&&Math.random()<.7)ember(A1.x+rnd(-ah*.25,ah*.25),A1.y+rnd(-ah*.25,ah*.25),rnd(-60,60),rnd(-60,40));return A1.on;},
+      if(A1.on&&Math.random()<.6)lavaDrop(A1.x+rnd(-ah*.3,ah*.3),A1.y+rnd(-ah*.3,ah*.3),rnd(-60,60),rnd(-40,80));if(A1.on&&A1.trail>0&&Math.random()<.4)ember(A1.x+rnd(-ah*.25,ah*.25),A1.y+rnd(-ah*.25,ah*.25),rnd(-60,60),rnd(-60,40));return A1.on;},
     draw(){if(!AX||!AX.width)return;
       // festett tűzcsóva a fejsze mögött, a repülés irányába fordítva
       if(MT&&A1.trail>0&&Math.hypot(A1.vx,A1.vy)>1.5){const ang=Math.atan2(A1.vy,A1.vx),L=ah*2.4;ctx.save();ctx.globalCompositeOperation='lighter';ctx.globalAlpha=.9*A1.trail;
         ctx.translate(A1.x,A1.y);ctx.rotate(ang-Math.atan2(MT.height*.62,MT.width*.9));const h=L*MT.height/MT.width;ctx.drawImage(MT,-L*.92,-h*.82,L,h);ctx.restore();}
       ctx.save();ctx.globalAlpha=A1.a;ctx.translate(A1.x,A1.y);ctx.rotate(A1.r);const w=ah*AX.width/AX.height;ctx.drawImage(AX,-w/2,-ah*.62,w,ah);
-      ctx.globalCompositeOperation='lighter';ctx.globalAlpha=.25*A1.trail;ctx.drawImage(AX,-w/2,-ah*.62,w,ah);ctx.restore();}});
+      ctx.globalCompositeOperation='lighter';ctx.globalAlpha=.55;ctx.drawImage(r21Filt(AX,'sepia(1) saturate(6) hue-rotate(-18deg) brightness(1.2)'),-w/2,-ah*.62,w,ah);ctx.restore();}});
   const d=Math.hypot(x1-h0.x,y1-h0.y),ms=Math.max(420,d*.8);let wh=0;
   await tween(ms,k=>{const e=k*(.55+.45*k);A1.x=h0.x+(x1-h0.x)*e;A1.y=h0.y+(y1-h0.y)*e-Math.sin(e*Math.PI)*110;if(k-wh>.2){wh=k;sfx('whoosh');}});
   // 3) becsapódás: a fejsze beleáll, hatalmas festett tűzrobbanás, lángcsíkok minden irányba
@@ -114,7 +124,7 @@ A.axeThrow=async(u,ts,sk)=>{
   {const bs={t:0};R18E({update(dt){bs.t+=dt;return bs.t<.7;},draw(){if(!GB)return;const k=Math.min(1,bs.t/.18),a=bs.t<.3?1:1-(bs.t-.3)/.4;ctx.save();ctx.globalCompositeOperation='lighter';
       r17Draw(GB,x1,y1,(t.h*t.scale*2.4+160)*(.4+.6*k),{a:Math.max(0,a)});r17Draw(GB,x1,y1,(t.h*t.scale*1.4+80)*(.6+.4*k),{rot:.6,a:Math.max(0,a)*.8});ctx.restore();}});}
   if(MT)for(let i=0;i<8;i++){const an=i/8*6.283+rnd(-.2,.2),sp=rnd(380,620);r21PD(MT,x1,y1,{vx:Math.cos(an)*sp,vy:Math.sin(an)*sp,life:.45,size:rnd(140,220),rot:an+Math.PI,vr:0,add:true,drag:2});}
-  for(let i=0;i<16;i++)ember(x1,y1,rnd(-420,420),rnd(-460,120));
+  for(let i=0;i<16;i++)ember(x1,y1,rnd(-420,420),rnd(-460,120));for(let i=0;i<14;i++)lavaDrop(x1,y1,rnd(-380,380),-rnd(120,520),rnd(24,44));
   t.hurt=.7;{const o0=t.ox||0;tween(320,k=>{t.ox=o0+70*Math.sin(Math.min(1,k*1.6)*Math.PI*.5)*(1-k*.6);t.spin=-.18*Math.sin(k*Math.PI);}).then(()=>{t.ox=o0;t.spin=0;});}
   if(t.alive)r21HitNS(u,t,sk);popLabel(t,'FEJSZE!','#ffb060');
   await wait(320);
@@ -191,7 +201,7 @@ A.bambooCurtain=async(u,ts,sk)=>{
     R18E({update(dt){st.t+=dt*1000;const k=Math.min(1,st.t/ms),[x,yy]=pos(k);
         for(const t of al){if(st.hit.has(t)||Math.abs(x-cx(t))>24||yy<topY(t)-10||yy>t.y+t.oy+6)continue;st.hit.add(t);t.hurt=.35;sfx('hit');shake(5);
           for(let n=0;n<5;n++)leaf(cx(t),yy,rnd(60,300),rnd(-200,40));
-          if(t===lodge&&!st.done){st.done=true;stuck.push({t,dx:rnd(-8,8),dy:yy-(t.y+t.oy),r:rnd(-.12,.12),a:1,w:.12});res();return false;}}
+          /* (oa05 2.: „haladjon át az ellenfeleken”) nem áll bele: átfúródik és továbbrepül */}
         if(k>=1){res();return false;}return true;},
       draw(){if(!BS||st.done)return;const k=Math.min(1,st.t/ms),[x,yy]=pos(k),[px,py]=pos(Math.max(0,k-.02)),h=len*BS.height/BS.width;
         ctx.save();ctx.translate(x,yy);ctx.rotate(Math.atan2(yy-py,x-px)+Math.sin(st.t*.06)*.03);ctx.drawImage(BS,-len*.82,-h/2,len,h);ctx.restore();}});});
@@ -213,33 +223,35 @@ A.teaVortexArrow=async(u,ts,sk)=>{
   const al=(ts||[]).filter(t=>t&&t.alive);if(!al.length)return;const rel=keepPose(u,'attack');let VV=null;
   try{
   const WV=R17I.teawave,SP=R17I.teasplash,{mx,gy}=grp(al),minX=Math.min(...al.map(t=>cx(t)-t.w*t.scale*.6)),maxX=Math.max(...al.map(t=>cx(t)+t.w*t.scale*.6));
-  const hx=Math.max(...S.heroes.filter(h=>h.alive).map(h=>cx(h)+h.w*h.scale*.4)),R=Math.max(130,Math.min((maxX-minX)/2+70,mx-hx-60)),cY=gy-30,maxH=Math.max(...al.map(t=>t.h*t.scale));
+  const hx=Math.max(...S.heroes.filter(h=>h.alive).map(h=>cx(h)+h.w*h.scale*.4)),R=Math.max(200,Math.min((maxX-minX)/2+140,mx-hx-30)),cY=gy-30,maxH=Math.max(...al.map(t=>t.h*t.scale));
   await dimTo(.35,'30,18,4',200);await chargeBow(u,380,'255,190,90');u.pose='attack';
   // 1) a nyíl a csoport közepére, a földbe csapódik
   sfx('slash');await bigArrow(bowPos(u),{x:mx,y:cY},{arc:60,size:150,trail:['255,190,90','255,230,160','255,255,255']});
   sfx('splash');shake(12);hitStop(70);flash('255,200,120',.25,.1);
   const SPL={t:0};R18E({update(dt){SPL.t+=dt;return SPL.t<1;},draw(){if(!SP)return;const k=Math.min(1,SPL.t/.2),a=SPL.t<.5?1:1-(SPL.t-.5)/.5;r17Draw(SP,mx,cY+30,(R*1.1)*(.4+.6*k),{anchor:'bottom',a:Math.max(0,a)});}});
   // 2) forró teaörvény: a festett tea-hullám három példányban körbe-körbe forog mindenki körül
-  const V={a:0,r:.3,ang:0,on:true},N=3;
+  const V={a:0,r:.3,ang:0,on:true},N=5;
   const wavePos=i=>{const an=V.ang+i*Math.PI*2/N;return {an,x:mx+Math.cos(an)*R*V.r,y:cY+Math.sin(an)*R*V.r*.32,front:Math.sin(an)>-.15};};
-  const drawWave=(i)=>{if(!WV)return;const p=wavePos(i),w=R*1.15*(.6+.4*V.r),h=w*WV.height/WV.width;
+  const drawWave=(i)=>{if(!WV)return;const p=wavePos(i),w=R*1.5*(.6+.4*V.r)*(1+.12*Math.sin(V.ang*2+i)),h=w*WV.height/WV.width*1.35;
     ctx.save();ctx.globalAlpha=V.a*(p.front?1:.75);ctx.translate(p.x,p.y);ctx.scale(Math.cos(p.an)>0?-1:1,1);ctx.drawImage(WV,-w/2,-h*.92,w,h);ctx.restore();};
   // a hátsó félkör a figurák MÖGÖTT (az első ellenség kirajzolása előtt), az első félkör előttük (effekt-rétegben)
   R18E({update(dt){V.frame=(V.frame||0)+1;if(V.on){for(let n=0;n<3;n++){const an=rnd(0,6.29);part({x:mx+Math.cos(an)*R*V.r,y:cY+Math.sin(an)*R*V.r*.32-rnd(0,40),vx:-Math.sin(an)*160,vy:-rnd(40,160),life:rnd(.4,.8),size:rnd(4,8),rgb:pick(['230,150,50','255,200,110','190,110,30']),add:false,g:300});}
-      if(Math.random()<.5)puffs(mx+rnd(-R,R)*V.r,cY-rnd(20,maxH*.6),1,['245,240,232','230,226,220'],[24,40],{w:10,h:10,up:120});}return V.on||V.a>0;},
+      if(Math.random()<.5)puffs(mx+rnd(-R,R)*V.r,cY-rnd(20,maxH*.6),1,['245,240,232','230,226,220'],[24,40],{w:10,h:10,up:120});
+      if(Math.random()<.45&&SP){const an=rnd(0,6.29);r21PD(SP,mx+Math.cos(an)*R*V.r,cY+Math.sin(an)*R*V.r*.32-rnd(20,80),{vx:-Math.sin(an)*260,vy:-rnd(220,480),g:800,life:rnd(.6,.9),size:rnd(40,70),vr:rnd(-6,6)});}
+      if(Math.random()<.25&&R17I.teacloud)r21PD(r21Filt(R17I.teacloud,'saturate(.2) brightness(1.3)'),mx+rnd(-R,R)*V.r,cY-rnd(40,maxH),{vx:rnd(-40,40),vy:-rnd(80,180),life:1.2,size:rnd(110,170),grow:70,vr:rnd(-.5,.5),a:.6});}return V.on||V.a>0;},
     draw(){if(V.a>0)for(let i=0;i<N;i++)if(wavePos(i).front)drawWave(i);}});
   {const de=drawEntity;let fr=-1;
    drawEntity=function(e){if(V.a>0&&al.includes(e)&&fr!==V.frame){fr=V.frame;try{for(let i=0;i<N;i++)if(!wavePos(i).front)drawWave(i);}catch(err){}}return de.apply(this,arguments);};
    V.restore=()=>{if(drawEntity!==de){drawEntity=de;}V.a=0;V.on=false;};VV=V;}
   sfx('water');sfx('wind');popLabel(al[0],'TEAÖRVÉNY!','#ffc070');
   let sp=0;
-  await tween(1500,k=>{V.a=Math.min(1,k*5);V.r=Math.min(1,.3+k*2);V.ang+=.13+.1*Math.sin(k*Math.PI);
+  await tween(1800,k=>{V.a=Math.min(1,k*5);V.r=Math.min(1,.3+k*2);V.ang+=.13+.1*Math.sin(k*Math.PI);
     for(const t of al){t.hurt=.2;t.oy=(t._r21vy0??(t._r21vy0=t.oy))-Math.abs(Math.sin(k*12+cx(t)))*8;}
     if(k-sp>.18){sp=k;sfx('splash');shake(5);}});
   // 3) az örvény összecsap mindenkin: forrázás
   shake(16);hitStop(90);flash('255,210,140',.28,.12);sfx('splash');sfx('steam');
   for(const t of al){t.oy=t._r21vy0??t.oy;delete t._r21vy0;puffs(cx(t),midY(t),10,['245,240,232','232,228,220'],[26,44],{w:50,h:50,up:140});
-    sparks(cx(t),midY(t),['255,200,110','255,255,255'],14,360);toss(t,150,640);/* (oa06: a végén feldobja az ellenfelet) */if(t.alive)r21HitNS(u,t,sk);}
+    sparks(cx(t),midY(t),['255,200,110','255,255,255'],14,360);toss(t,300,820);/* (oa06: a végén magasra feldobja az ellenfelet) */if(t.alive)r21HitNS(u,t,sk);}
   await tween(420,k=>{V.a=1-k;V.r=1+k*.25;V.ang+=.1;});V.on=false;V.a=0;V.restore();
   await wait(150);await dimTo(0,null,200);
   }finally{if(VV)VV.restore();for(const t of al)if(t._r21vy0!=null){t.oy=t._r21vy0;delete t._r21vy0;}rel();}
@@ -247,83 +259,103 @@ A.teaVortexArrow=async(u,ts,sk)=>{
 
 // ---------- Kaelen – Bambuszdöfés (egy célpont, páncéltörés) ----------
 SK.bamboothrust={name:'Bambuszdöfés',mp:16,cd:1,tgt:'enemy',kind:'phys',pow:2.2,elem:'nature',anim:'bambooThrust',status:['defDown',.5,1],
-  desc:'Kaelen előrelendül, és egy hosszú bambuszlándzsát döf át az ellenségen. 50% eséllyel 1 körre gyengíti a védelmét.'};
+  desc:'Kaelen parancsára az ellenség előtt vastag bambuszlándzsa tör ki ferdén a földből, és felnyársalja. 50% eséllyel 1 körre gyengíti a védelmét.'};
 SHOP_SKILLS.druid.push(['bamboothrust','10-1',5400]);
 A.bambooThrust=async(u,ts,sk)=>{
-  // (oa07 „darabos a mozgás”): egyetlen folyamatos mozdulat – lágy felhúzás, egy simán gyorsuló-lassuló kitörés, amely közben
-  // a lándzsa is egyenletesen nyúlik; nincs utánkép, nincs hirtelen méretugrás. Festett levelek (fx7-leaf).
+  // (oa07 2.: „a földből jöjjön ki a bambusz olyan szögben, ahogy most van, csak vastagabban; lökje hátra az ellenfelet,
+  // kvázi felnyársalja, aztán visszajöhet, ha életben marad”): Kaelen a földre irányítja a tenyerét; az ellenfél előtt
+  // a földből ferdén, vastag festett bambuszlándzsa (fx7-bamboospear) tör ki, átdöfi, hátralöki és megemeli; kitart,
+  // aztán a lándzsa visszahúzódik a földbe, az ellenfél (ha él) visszaesik a helyére.
   const t=ts&&ts[0];if(!t||!t.alive)return;const rel=keepPose(u,'cast');
+  const t0={ox:t.ox||0,oy:t.oy||0};
   try{
-  const BS=R17I.bamboospear,LF=R17I.leaf,o0=u.ox||0,tw=t.w*t.scale,dx=Math.max(0,(cx(t)-tw*.5-240)-cx(u));
+  const BS=R17I.bamboospear,LF=R17I.leaf,DU=r21Filt(R17I.teacloud,'saturate(.45) brightness(.8)'),CL=R17I.clods||R17I.pebble;
   const leaf=(x,y,vx,vy)=>r21PD(LF,x,y,{vx,vy,g:240,life:rnd(.7,1.2),size:rnd(18,30),vr:rnd(-6,6),drag:1.2});
-  const S1={len:0,a:0,on:true};
-  const palm=()=>{const p=KP(u,.85,.39),l=u.lean||0;if(!l)return p;const x0=cx(u),y0=u.y+u.oy,ddx=p.x-x0,dy=p.y-y0,c=Math.cos(l),sn=Math.sin(l);return {x:x0+ddx*c-dy*sn,y:y0+ddx*sn+dy*c};};
-  const aim=()=>{const h=palm();return {h,ang:Math.atan2(midY(t)-h.y,cx(t)-h.x)};};
-  R18E({update(){return S1.on;},draw(){if(!BS||S1.a<=0)return;const {h,ang}=aim(),L=S1.len,hh=Math.max(14,L*BS.height/BS.width);
-    ctx.save();ctx.globalAlpha=S1.a;ctx.translate(h.x,h.y);ctx.rotate(ang);ctx.drawImage(BS,-L*.22,-hh/2,L,hh);ctx.restore();}});
-  // 1) a lándzsa kinő a tenyeréből, Kaelen lágyan hátrahúzódik
-  sfx('spell');{const p=palm();for(let i=0;i<8;i++)leaf(p.x,p.y,rnd(-80,80),-rnd(40,140));}
-  await tween(420,k=>{const e=easeIO(k);S1.a=Math.min(1,k*2);S1.len=120+160*e;u.lean=.18*e;u.ox=o0-24*e;});
-  // 2) egy folyamatos kitörés: előrelendül, és közben a lándzsa átnyúlik az ellenfélen
-  sfx('whoosh');const need0=()=>{const {h}=aim();return Math.hypot(cx(t)+tw*.55-h.x,midY(t)-h.y)/.78;};
-  let lp=0;await tween(380,k=>{const e=1-Math.pow(1-k,3);u.ox=o0-24+(dx+24)*e;u.lean=.18-.42*e;S1.len=280+(need0()-280)*Math.max(0,(e-.35)/.65);
-    if(k-lp>.12){lp=k;leaf(cx(u)-20,u.y+u.oy-10,-rnd(60,160),-rnd(20,90));}});
-  hitStop(110);shake(18);flash('200,240,140',.25,.1);sfx('slash');sfx('crunch');
-  {const x=cx(t),y=midY(t);for(let n=0;n<16;n++)leaf(x+tw*.3,y,rnd(60,420),rnd(-300,120));const GB=r21Filt(R17I.goldburst,'hue-rotate(60deg) saturate(.8)');
-   const st={t:0};R18E({update(dt){st.t+=dt;return st.t<.45;},draw(){if(!GB)return;const k=st.t/.45;ctx.save();ctx.globalCompositeOperation='lighter';r17Draw(GB,x+tw*.3,y,(tw+120)*(.5+.8*k),{a:1-k});ctx.restore();}});}
-  t.hurt=.6;{const t0=t.ox||0;tween(300,k=>{t.ox=t0+34*Math.sin(k*Math.PI);}).then(()=>{t.ox=t0;});}
-  if(t.alive)r21HitNS(u,t,sk);popLabel(t,'ÁTDÖFVE!','#b8e07a');
-  await wait(260);
-  // 3) egyetlen lágy mozdulattal kihúzza és visszalép
-  sfx('whoosh');const L0=S1.len;
-  await tween(520,k=>{const e=easeIO(k);u.ox=o0+dx*(1-e);u.lean=-.24*(1-e);S1.len=L0+(160-L0)*e;S1.a=1-Math.max(0,(k-.5)/.5);});
-  u.ox=o0;u.lean=0;S1.on=false;await bodySettle(u,180);
-  }finally{rel();}
+  const tw=t.w*t.scale,th=t.h*t.scale,gy=t.y+t.oy+6,bx=cx(t)-tw*.75,ang=-.62;   // a kitörés helye az ellenfél előtt, ferdén előre-felfelé
+  const L=Math.max(380,Math.hypot(cx(t)+tw*.6-bx,gy-midY(t)+40)*1.25),TH=Math.max(170,th*.85);   // vastag bambusz (a kép csak kb. negyedmagasságú szárat tartalmaz)
+  const B={k:0,on:true};
+  R18E({update(){return B.on;},draw(){if(!BS||B.k<=0)return;const len=L*B.k;ctx.save();ctx.beginPath();ctx.rect(-50,-200,W+100,gy+4+200);ctx.clip();
+    ctx.translate(bx,gy+8);ctx.rotate(ang);ctx.drawImage(BS,len-L,-TH/2,L,TH);ctx.restore();}});
+  // 1) Kaelen a föld felé fordítja a tenyerét, zöld erő a talajban
+  sfx('spell');{const p=KP(u,.85,.39);for(let i=0;i<8;i++)leaf(p.x,p.y,rnd(-80,120),-rnd(40,140));}
+  await bodyWind(u,260,.12);
+  sfx('rock');rumble&&rumble(.5,5);let lt=0;
+  await tween(320,k=>{if(k-lt>.1){lt=k;r21PD(DU,bx+rnd(-30,30),gy,{vx:rnd(-60,60),vy:-rnd(20,60),life:.8,size:rnd(60,90),grow:40,a:.7});}});
+  // 2) KITÖR: a vastag bambusz ferdén kiszakad a földből, átdöfi és megemeli, hátralöki
+  sfx('crunch');sfx('slash');shake(20);hitStop(120);flash('200,240,140',.25,.1);bodyStrike(u,140,-.18);
+  for(let i=0;i<8;i++)r21PD(CL,bx+rnd(-20,30),gy-rnd(0,10),{vx:rnd(-160,260),vy:-rnd(240,520),g:950,life:rnd(.6,.9),size:rnd(24,40),vr:rnd(-8,8)});
+  for(let i=0;i<4;i++)r21PD(DU,bx+rnd(-30,40),gy-rnd(0,20),{vx:rnd(-120,160),vy:-rnd(40,120),life:1,size:rnd(90,140),grow:60,a:.8});
+  t.hurt=.8;
+  await tween(240,k=>{const e=1-Math.pow(1-k,3);B.k=e;t.ox=t0.ox+80*e;t.oy=t0.oy-70*e;t.spin=-.22*e;});
+  {const x=cx(t),y=midY(t);for(let n=0;n<16;n++)leaf(x,y,rnd(-200,380),rnd(-300,100));sparks(x,y,['200,240,150','255,255,255'],22,440);}
+  if(t.alive)r21HitNS(u,t,sk);popLabel(t,'FELNYÁRSALVA!','#b8e07a');
+  // 3) kitart: a nyárson rángatózik
+  await tween(900,k=>{t.oy=t0.oy-70-6*Math.sin(k*30)*(1-k);t.hurt=.4;});
+  // 4) a bambusz visszahúzódik a földbe, az ellenfél visszaesik a helyére
+  sfx('whoosh');
+  await tween(380,k=>{const e=easeIO(k);B.k=1-e;t.ox=t0.ox+80*(1-e);t.oy=t0.oy-70*(1-e)*(1-e);t.spin=-.22*(1-e);});
+  B.on=false;t.ox=t0.ox;t.oy=t0.oy;t.spin=0;shake(8);r21PD(DU,cx(t),gy,{vx:0,vy:-30,life:.8,size:110,grow:50,a:.7});
+  await bodySettle(u,200);
+  }finally{B_cleanup:{t.spin=0;}rel();}
 };
 
 // ---------- Morgána – Holdfogyatkozás (mindenkire, altatás) ----------
 // Festett fekete hold (fx7-blackmoon) emelkedik az ellenség fölé, elsötétül az ég; a korona lüktet, majd a hold
 // sötét fénydarabjai (a festett hold kicsinyített másai) rázuhannak minden ellenségre.
-SK.eclipse={name:'Holdfogyatkozás',mp:32,cd:2,tgt:'enemies',kind:'mag',pow:1.6,elem:'dark',anim:'eclipseMoon',status:['sleep',.7,1],
-  desc:'Morgána vérvörös fekete holdat idéz: sötét lángoszlopai mindenkire lesújtanak. 70% eséllyel 1 körre elaltatja az ellenfeleket (alvás közben nem támadnak).'};
+SK.eclipse={name:'Holdfogyatkozás',mp:28,cd:2,tgt:'enemy',kind:'phys',pow:3.0,elem:'dark',anim:'eclipseMoon',status:['defDown',.6,1],
+  desc:'Morgána elűzi a felhőket: előbukkan a telihold, és egy társa farkasemberré változik, aki széttépi a kiválasztott ellenséget. Nagy sebzés, 60% eséllyel 1 körre gyengíti a védelmét.'};
 SHOP_SKILLS.witch.push(['eclipse','6-1',3200]);
 A.eclipseMoon=async(u,ts,sk)=>{
-  // (oa04 „festett kép kell; sötétebb, félelmetesebb; nincs funkciója”): szinte fekete ég, festett vérvörös fekete hold
-  // (fx7-blackmoon2) karmos koronával, a holdból festett sötét lángoszlopok (fx7-firepillar) csapnak le minden ellenfélre,
-  // fölöttük festett viharkoponya (fx7-stormskull) villan, alattuk festett sötét lángok (fx7-darkflame) csapnak fel.
-  // Funkció: sötét sebzés mindenkire + 70% eséllyel 1 körre elalszanak (kiírja: ALVÁS).
-  const al=(ts||[]).filter(t=>t&&t.alive);if(!al.length)return;const rel=keepPose(u,'cast');
+  // (oa04 2.: „a felhők közül megjelenik a telihold, egy hős társa farkasemberré változik, és karmolással megtámad egy ellenfelet;
+  // festett és látványos”): festett felhők (fx7-teacloud, sötétre színezve) úsznak szét, mögülük előtűnik a festett telihold
+  // (fx7-fullmoon); egy véletlen társ sötét füstben a festett farkasemberré (fx7-werewolf) alakul, üvölt, nagy ugrással rátámad
+  // a célpontra és háromszor belekarmol (festett karomvágás: fx7-darkslash ezüst-vörösre színezve), aztán visszaugrik és visszaváltozik.
+  const t=ts&&ts[0];if(!t||!t.alive)return;const rel=keepPose(u,'cast');
+  const pals=S.heroes.filter(h=>h.alive&&h!==u),ally=pals.length?pick(pals):u;const a0=ally.alpha==null?1:ally.alpha;
   try{
-  const MI=R17I.blackmoon2||R17I.blackmoon,PL=R17I.firepillar,SKL=R17I.stormskull,DF=R17I.darkflame,{mx}=grp(al),top=Math.min(...al.map(t=>topY(t)));
-  const my=Math.max(120,top-170),R=Math.max(180,Math.min(290,(Math.max(...al.map(t=>cx(t)))-Math.min(...al.map(t=>cx(t))))*.5+140));
-  const flame=(x,y,sz)=>r21PD(DF,x,y,{vx:rnd(-30,30),vy:-rnd(60,140),life:rnd(.7,1.1),size:sz||rnd(60,100),rot:rnd(-.15,.15),vr:rnd(-.5,.5),grow:20});
-  const M={a:0,s:.3,rot:0,y:my-200,pulse:0,on:true};
-  R18E({update(dt){M.rot+=dt*.18;return M.on||M.a>0;},draw(){if(!MI||M.a<=0)return;
-    ctx.save();ctx.globalAlpha=M.a;r17Draw(MI,mx,M.y,R*2*M.s,{rot:M.rot});
-    ctx.globalCompositeOperation='lighter';r17Draw(MI,mx,M.y,R*2*M.s*(1.04+.1*M.pulse),{rot:-M.rot*1.4,a:.25+.35*M.pulse});ctx.restore();}});
-  // 1) Morgána felemeli a kezét, sötét lángok a tenyerében
-  sfx('dark');{const h=handPos(u);for(let i=0;i<5;i++)flame(h.x+rnd(-14,14),h.y+rnd(-10,10),rnd(40,70));}
-  // 2) szinte teljes sötétség, a hold vérvörös koronával felkel
-  dimTo(.9,'12,0,6',600);sfx('wail');rumble&&rumble(1.4,6);
-  await tween(900,k=>{const e=eOutBack(k);M.a=Math.min(1,k*1.6);M.s=.3+.7*e;M.y=my-200*(1-easeIO(k));});
-  popLabel(al[0],'HOLDFOGYATKOZÁS!','#ff6a7a');
-  // 3) a korona lüktet, a földből sötét lángok csapnak fel az ellenfelek alatt
-  sfx('growl');let lt=0;
-  await tween(800,k=>{M.pulse=Math.abs(Math.sin(k*Math.PI*3));if(k-lt>.09){lt=k;for(const t of al)flame(cx(t)+rnd(-t.w*t.scale*.5,t.w*t.scale*.5),t.y+t.oy+4,rnd(60,110));}if(Math.random()<.2)shake(4);});
-  // 4) a holdból lángoszlopok csapnak le mindenkire, fölöttük a viharkoponya villan
-  sfx('boom');flash('120,0,30',.35,.14);
-  await Promise.all(al.map((t,i)=>wait(i*130).then(async()=>{const x=cx(t),gy=t.y+t.oy+6,st={t:0};sfx('dark');shake(14);hitStop(70);
-    R18E({update(dt){st.t+=dt;return st.t<.85;},draw(){const k=st.t,a=k<.12?k/.12:Math.max(0,1-(k-.35)/.5);ctx.save();
-      if(PL){const H=gy-M.y,w=Math.max(160,t.w*t.scale*1.5);ctx.globalAlpha=a;ctx.drawImage(PL,x-w/2,M.y,w,H+20);ctx.globalCompositeOperation='lighter';ctx.globalAlpha=a*.5;ctx.drawImage(PL,x-w*.35,M.y,w*.7,H+20);}
-      ctx.restore();
-      if(SKL){ctx.save();const sk2=Math.min(1,k/.2);ctx.globalAlpha=Math.max(0,a);r17Draw(SKL,x,topY(t)-30,(t.w*t.scale+180)*(.7+.3*sk2));ctx.restore();}}});
-    for(let n=0;n<6;n++)flame(x+rnd(-40,40),gy-rnd(0,30),rnd(70,120));
-    t.hurt=.6;if(t.alive)r21HitNS(u,t,sk);})));
-  // 5) a hold lenyugszik, kivilágosodik
-  await wait(450);
-  await tween(600,k=>{M.a=1-k;M.y=my-140*k*k;M.pulse=0;});M.on=false;M.a=0;
-  await dimTo(0,null,350);
-  }finally{rel();}
+  const MO=R17I.fullmoon,CL=r21Filt(R17I.teacloud,'grayscale(.7) brightness(.35) hue-rotate(200deg)'),WF=R17I.werewolf,SL=r21Filt(R17I.darkslash,'hue-rotate(110deg) saturate(1.6) brightness(1.15)'),SM=r21Filt(R17I.teacloud,'grayscale(1) brightness(.25)');
+  const mx=W*.5,my=110,MR=Math.min(170,W*.14);
+  const M={a:0,s:.85,y:my+30},CLS=[];for(let i=0;i<5;i++)CLS.push({x:mx+(i-2)*MR*.55,y:my+rnd(-30,40),s:MR*rnd(1.3,1.9),dx:(i<2?-1:i>2?1:(Math.random()<.5?-1:1))*rnd(.9,1.4),a:0});
+  const SKY={on:true};
+  R18E({update(){return SKY.on;},draw(){if(MO&&M.a>0){ctx.save();ctx.globalAlpha=M.a;ctx.globalCompositeOperation='lighter';glow(mx,M.y,MR*1.9,'190,215,255',.35*M.a);ctx.restore();r17Draw(MO,mx,M.y,MR*2*M.s,{a:M.a});}
+    if(CL)for(const c of CLS){if(c.a<=0)continue;r17Draw(CL,c.x,c.y,c.s,{a:c.a});}}});
+  // 1) éjszaka: sötétség, felhők gyűlnek a hold elé
+  sfx('dark');dimTo(.82,'6,8,24',500);
+  await tween(500,k=>{for(const c of CLS)c.a=k*.95;M.a=k*.35;});
+  // 2) Morgána int, a felhők szétúsznak, a telihold kiragyog
+  sfx('wind');{const h=handPos(u);for(let i=0;i<4;i++)r21PD(SM,h.x,h.y,{vx:rnd(-60,60),vy:-rnd(40,100),life:.8,size:rnd(50,80),grow:40,a:.6});}
+  await tween(800,k=>{const e=easeIO(k);for(const c of CLS){c.x+=c.dx*6*(0.3+k);c.a=.95*(1-e*.85);}M.a=.35+.65*e;M.s=.85+.15*e;M.y=my+30-30*e;});
+  flash('200,220,255',.3,.2);sfx('holy');popLabel(ally,'TELIHOLD!','#cfe0ff');
+  // 3) a társ átváltozik: remeg, sötét füst gomolyog, a festett farkasember lép elő
+  const W0={a:0,x:cx(ally),y:ally.y+ally.oy,h:ally.h*ally.scale*1.45,fl:false,lean:0,on:true};
+  R18E({update(){return W0.on;},draw(){if(!WF||W0.a<=0)return;const w=W0.h*WF.width/WF.height;ctx.save();ctx.globalAlpha=W0.a;ctx.translate(W0.x,W0.y);ctx.rotate(W0.lean);if(W0.fl)ctx.scale(-1,1);
+    ctx.save();ctx.scale(1,.25);const g=ctx.createRadialGradient(0,0,0,0,0,w*.5);g.addColorStop(0,'rgba(0,0,0,.5)');g.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,w*.5,0,6.29);ctx.fill();ctx.restore();
+    ctx.drawImage(WF,-w*.45,-W0.h,w,W0.h);ctx.restore();}});
+  sfx('growl');let ls=0;
+  await tween(700,k=>{ally.ox=Math.sin(k*70)*4*k;if(k-ls>.08){ls=k;r21PD(SM,cx(ally)+rnd(-40,40),ally.y+ally.oy-rnd(20,ally.h*ally.scale*.8),{vx:rnd(-50,50),vy:-rnd(30,90),life:rnd(.8,1.2),size:rnd(80,130),grow:60,vr:rnd(-.5,.5),a:.85});}});
+  ally.ox=0;shake(12);flash('180,200,255',.25,.12);
+  for(let i=0;i<8;i++)r21PD(SM,W0.x+rnd(-50,50),W0.y-rnd(20,W0.h*.8),{vx:rnd(-160,160),vy:-rnd(40,140),life:rnd(.9,1.3),size:rnd(110,170),grow:70,vr:rnd(-.5,.5),a:.9});
+  await tween(260,k=>{ally.alpha=a0*(1-k);W0.a=k;});
+  sfx('roar');sfx('wail');shake(16);await tween(320,k=>{W0.lean=-.12*Math.sin(k*Math.PI);});
+  // 4) nagy ugrás a célpontra
+  const x0=W0.x,y0=W0.y,tx=cx(t)-t.w*t.scale*.55,ty=t.y+t.oy;sfx('whoosh');
+  await tween(420,k=>{const e=easeIO(k);W0.x=x0+(tx-x0)*e;W0.y=y0+(ty-y0)*e-Math.sin(k*Math.PI)*170;W0.lean=.25*Math.sin(k*Math.PI);});W0.lean=0;shake(10);
+  // 5) három karmolás
+  for(let i=0;i<3;i++){sfx('slash');sfx('bite');W0.lean=i%2?.18:-.14;
+    const sx=cx(t),sy=midY(t),sz=Math.max(300,t.h*t.scale*2),rot=[-.95,.85,-.5][i]+rnd(-.1,.1),C={k:0,a:1};
+    if(SL)R18E({update(){return C.a>0;},draw(){if(C.k<=0)return;ctx.save();ctx.translate(sx,sy);ctx.rotate(rot);if(i===1)ctx.scale(-1,1);const w2=sz,h2=w2*SL.height/SL.width;
+      ctx.beginPath();ctx.rect(-w2/2,-h2,w2*C.k,h2*2);ctx.clip();ctx.globalAlpha=C.a;ctx.drawImage(SL,-w2/2,-h2/2,w2,h2);for(const o of [-.12,.12]){ctx.drawImage(SL,-w2/2,-h2/2+h2*o,w2,h2);}ctx.restore();}});
+    tween(90,k=>{C.k=k;}).then(()=>tween(320,k=>{C.a=1-k;}));hitStop(70);shake(14);t.hurt=.5;{const o0=t.ox||0;tween(160,k=>{t.ox=o0+22*Math.sin(k*Math.PI);}).then(()=>{t.ox=o0;});}
+    if(i===2&&t.alive)r21HitNS(u,t,sk);await wait(230);}
+  W0.lean=0;
+  // 6) visszaugrik a helyére és visszaváltozik
+  const bx=W0.x,by=W0.y;W0.fl=true;sfx('whoosh');
+  await tween(420,k=>{const e=easeIO(k);W0.x=bx+(x0-bx)*e;W0.y=by+(y0-by)*e-Math.sin(k*Math.PI)*150;});W0.fl=false;
+  for(let i=0;i<6;i++)r21PD(SM,W0.x+rnd(-40,40),W0.y-rnd(20,W0.h*.8),{vx:rnd(-120,120),vy:-rnd(40,120),life:1,size:rnd(100,150),grow:60,a:.85});
+  sfx('dark');await tween(320,k=>{W0.a=1-k;ally.alpha=a0*k;});W0.on=false;
+  await tween(500,k=>{M.a=1-k;for(const c of CLS)c.a=0;});SKY.on=false;
+  await dimTo(0,null,300);
+  }finally{ally.alpha=a0;ally.ox=0;rel();}
 };
 
 // ---------- Kaelen – Erdő haragja (mindenkire) ----------
@@ -350,23 +382,22 @@ A.forestWrath=async(u,ts,sk)=>{
   R18E({update(){return A0.a>0||!A0.done;},draw(){if(!TA||A0.a<=0)return;const p=palm(),w=Wf*(.25+.75*A0.k),h=w*ih/iw;
     ctx.save();ctx.globalAlpha=A0.a;ctx.translate(p.x,p.y);ctx.rotate(A0.ang+Math.sin(T*14)*A0.wob);ctx.scale(-1,1);ctx.drawImage(TA,-w*.9,-h*.12,w,h);ctx.restore();}});
   // 1) Kaelen kinyújtja a kezét, az erdő felmordul, a tenyeréből kinő a fakar
-  sfx('spell');sfx('growl');await dimTo(.45,'6,20,4',300);rumble&&rumble(1,5);
+  sfx('spell');sfx('growl');await dimTo(.45,'6,20,4',200);rumble&&rumble(.8,5);
   {const p=palm();for(let i=0;i<14;i++)leaf(p.x,p.y,rnd(-160,200),-rnd(40,220));}
-  sfx('rock');await tween(560,k=>{const e=easeIO(k);A0.a=Math.min(1,k*3);A0.k=e;A0.ang=aimAng-1.2;});
+  sfx('rock');await tween(300,k=>{const e=easeIO(k);A0.a=Math.min(1,k*3);A0.k=e;A0.ang=aimAng-1.2-.45*e;u.lean=.16*e;});
   popLabel(al[0],'ERDŐ HARAGJA!','#9ee06a');
   // 2) magasra emeli (Kaelen hátradől), remeg a feszültségtől
-  sfx('wind');await tween(620,k=>{const e=easeIO(k);A0.ang=aimAng-1.2-.45*e;u.lean=.16*e;A0.wob=.02*e;});
+  sfx('wind');await tween(220,k=>{A0.wob=.015*k;});
   for(let i=0;i<10;i++)leaf(P0.x+rnd(0,Wf*.5),P0.y-rnd(60,200),rnd(-120,120),rnd(-60,60));
-  await wait(120);
   // 3) VILLÁMGYORS LECSAPÁS az összes ellenfélre
-  sfx('whoosh');A0.wob=0;await tween(170,k=>{const e=k*k;A0.ang=aimAng-1.65+(1.65+.08)*e;u.lean=.16-.36*e;});
+  sfx('whoosh');A0.wob=0;await tween(120,k=>{const e=k*k;A0.ang=aimAng-1.65+(1.65+.08)*e;u.lean=.16-.36*e;});
   hitStop(140);shake(26);flash('255,235,190',.25,.1);sfx('crunch');sfx('earthm');sfx('hit');
   for(const t of al){const x=cx(t),y=midY(t);for(let n=0;n<10;n++)leaf(x,y,rnd(-300,300),rnd(-340,-40));for(let n=0;n<8;n++)bark(x,y,rnd(-280,280),rnd(-420,-120));
     sparks(x,y,['255,240,200','210,190,140'],18,420);t.hurt=.7;toss(t,60,380);if(t.alive)r21HitNS(u,t,sk);}
-  await tween(160,k=>{A0.ang=aimAng+.08-.08*k;});
-  await wait(380);
+  await tween(140,k=>{A0.ang=aimAng+.08-.08*easeIO(k);});
+  await wait(220);
   // 4) visszahúzódik a tenyerébe
-  sfx('whoosh');await tween(520,k=>{const e=easeIO(k);A0.k=1-e;A0.a=1-Math.max(0,(k-.4)/.6);A0.ang=aimAng-.5*e;u.lean=-.2*(1-e);});
+  sfx('whoosh');await tween(340,k=>{const e=easeIO(k);A0.k=1-e;A0.a=1-Math.max(0,(k-.4)/.6);A0.ang=aimAng-.5*e;u.lean=-.2*(1-e);});
   A0.done=true;A0.a=0;u.lean=0;await dimTo(0,null,250);
   }finally{rel();}
 };

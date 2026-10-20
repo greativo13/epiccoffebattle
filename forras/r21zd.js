@@ -42,3 +42,6 @@ Object.assign(SK.titan,{name:'Kőhullám',desc:'Grog életerőt áldoz, és a f�
 
 // Cerberus (x02: „túl lassú”): még gyorsabb tempó (a jelenet változatlan)
 r21Faster('cerberus',.74);
+
+// (ma05 2.: „Földrepesztés – rossz a neve”) új neve: Tüskeroham
+SK.earthsplit.name='Tüskeroham';
