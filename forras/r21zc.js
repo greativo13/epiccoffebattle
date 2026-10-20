@@ -313,7 +313,7 @@ A.eclipseMoon=async(u,ts,sk)=>{
   const t=ts&&ts[0];if(!t||!t.alive)return;const rel=keepPose(u,'cast');
   const pals=S.heroes.filter(h=>h.alive&&h!==u),ally=pals.length?pick(pals):u;const a0=ally.alpha==null?1:ally.alpha;
   try{
-  const MO=R17I.fullmoon,CL=r21Filt(R17I.teacloud,'grayscale(.7) brightness(.35) hue-rotate(200deg)'),WF=R17I.werewolf,SL=r21Filt(R17I.darkslash,'hue-rotate(110deg) saturate(1.6) brightness(1.15)'),SM=r21Filt(R17I.teacloud,'grayscale(1) brightness(.25)');
+  const MO=R17I.fullmoon,CL=r21Filt(R17I.teacloud,'grayscale(.7) brightness(.35) hue-rotate(200deg)'),WF=R17I['werewolf_'+ally.type]||R17I.werewolf,SL=r21Filt(R17I.darkslash,'hue-rotate(110deg) saturate(1.6) brightness(1.15)'),SM=r21Filt(R17I.teacloud,'grayscale(1) brightness(.25)');
   const mx=W*.5,my=110,MR=Math.min(170,W*.14);
   const M={a:0,s:.85,y:my+30},CLS=[];for(let i=0;i<5;i++)CLS.push({x:mx+(i-2)*MR*.55,y:my+rnd(-30,40),s:MR*rnd(1.3,1.9),dx:(i<2?-1:i>2?1:(Math.random()<.5?-1:1))*rnd(.9,1.4),a:0});
   const SKY={on:true};

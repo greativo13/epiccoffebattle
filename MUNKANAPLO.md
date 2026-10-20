@@ -352,3 +352,8 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Teaörvény-nyíl (oa06): 5 nagyobb, magasabb tea-hullám, festett tea-cseppek és gőz, toss 300.
 - Bambuszdöfés (oa07 új): az ellenfél előtt ferdén vastag festett bambusz tör ki a földből, felnyársalja és hátralöki, kitart, majd visszahúzódik; az ellenfél (ha él) visszaesik.
 - Erdő haragja (oa08 „darabos, lassú”): gyorsabb (kinövés+emelés egy mozdulatban 300 ms, lecsapás 120 ms), simább.
+
+## 47. kör – hősönkénti farkasember (Telihold átka)
+- Új festett képek (Canva): `fx7-werewolf_wizard` (Zordon: ezüstszürke bunda, szakáll, tépett kék talár, kék süveg), `fx7-werewolf_druid` (Kaelen: barna bunda, sörény, tépett mohazöld levélköpeny, indák).
+- Telihold átka (r21zc): a farkasember képe az átváltozó társtól függ (`R17I['werewolf_'+ally.type]`); Lili, Grog és Jázmin változata még nincs (elfogyott a Canva-kredit, a Higgsfieldben 1 kredit maradt) – náluk a közös `fx7-werewolf` marad.
+- Próbaeszköz: `forras/eszkozok/hskw.js <skill> <ellenfél> <társ-típus>` – a hsk2 másolata, ahol a véletlen társ helyett a megadott hős változik át.
