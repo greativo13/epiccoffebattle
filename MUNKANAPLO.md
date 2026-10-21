@@ -441,3 +441,7 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Ellenőrzés: camp.js mind a 48 pálya győzelem, hiba nélkül. Tesztlap: sa01.
 - 52. kör: Lili és Jázmin farkasa újrafestve Higgsfield `nano_banana_2_1`-gyel (referencia: Zordon farkasa a stílushoz + a hős saját képe), így egyezik a Canvás farkasok stílusával.
 - 52. kör képellenőrzés (scan: kepek/*.webp, tiszta fehér zárt foltok): fehér háttérmaradék kivéve: dryad (ágak között), zencrow (köntös és szárny között), zendragon (gyűrű belseje), fx7-bearclaw (karmok között). A többi jelölt (hold, csésze, gőz, csillag, Mochi szája) szándékos fehér.
+- 52. kör – egyensúly (r21zi.js), valósághű gépi végigjátékkal mérve (scratchpad `bal.js <diff>`: új játék, valódi XP/arany, bolt, okos MI gyógyítással, gyógyital nélkül, 3 próba/pálya):
+  - Tapasztalat a csapat szintjéhez igazítva (cél: pálya +1; 3 szinttel fölötte nincs XP; egy győzelem legfeljebb pálya+3-ig emel; a plafonon nem gyűlik XP – a régi 60→78 ugrás megszűnt).
+  - Kihívás a felhasználó kérésére („nem muszáj mindent elsőre megnyerni”): Normál ÉP 1,35 / erő 1,2; Nehéz 1,8 / 1,6 (a régi korai Nehéz-plusz kivéve); főellenség ÉP ×1,45 (Normál) / ×1,3 (Nehéz), erő ×1,1; minibossz ÉP ×1,15; Normálon szint ≥31 +10%; 3. térkép (szint ≥60) ÉP ×1,35, erő ×1,25. Nehézen a 4+ csatás pályák 3. csatájától ×0,85.
+  - Eredmény (Normál): 1 pálya 3 próbára sem (4-3), főellenségeknél 12–48% marad; Nehéz: 2-4 és 4-4 3 próbára sem, 3 pálya 2–3. próbára. Hősszint végig pálya+2–3.
