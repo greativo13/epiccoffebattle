@@ -414,3 +414,19 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Bambuszkígyó: a Rátekeredés ugyanolyan gyakori, mint a farokcsapás. Mochi-király – Királyi hasraesés: a saját teste gömbbé gyúródik, golyóként végiggurul a hősökön, visszapattan.
 - Ellenőrzés: all.js, foe.js, camp.js (mind a 48 pálya) – hiba nélkül. Tesztlap: qa01–qa19.
 - Canva: a zselékocka után ismét elfogyott a kredit (Lili/Grog/Jázmin farkasember továbbra sincs).
+
+## 51. kör – tesztlap a teljes végigjáték után (r21zh.js + game.html, r12b, r21i, r21q)
+- „Felül homályos”: a vászon felbontása legfeljebb 2× volt (iPhone 3×) – most `Math.min(3,devicePixelRatio)`, így éles.
+- Habverő-manó: a Habverő-pörgés négy külön becsapódása helyett egy nagy csapás (ez látszott „dupla támadásnak”).
+- Kaelen teknősformája kisebb (175), és a hősök mögé rajzolódik.
+- Csészeharcos Teafröccs: több festett csobbanás és festett cseppek egyetlen kép helyett.
+- Közös támadások: a vásárlás és a menü a szimulációban működik (bolt → `owned` megmarad, a csatamenüben ott a gomb); a Négyek ereje csak 4 hőstől.
+- Mézkirálynő: új Canva-kép (`fx7-queencape`: szétnyitott palást, belül lép, méhek) – a támadásnál és az idézésnél is ebbe a pózba tűnik át, a raj onnan jön.
+- Fehér foltok ki: Gőzkád-szellem (a kar és a test közti tiszta fehér), Chasen, farkasember (`fixwh.py`).
+- Bambusz-békakirály idézés: a király saját festett nyelve nyúlik (LIMBS.frogking a nyújtott vásznon), festett arany hanghullámok (fx7-windslash), funkció: leveri a pajzsokat/erősítéseket + 50% kábulat.
+- Idézések sebzése ×0,6.
+- Árny-csapat: Vállroham-mintára (hátralépés, gyorsuló roham sötét szélvágással, vállütés két keresztívvel, hátralökés).
+- Lili (megbékítve): tükrözött hőskép (a hősök felé néz), új támadás Tündérfény, gyakrabban támad.
+- Öreg Matcha-gólem: saját új Canva-kép (mohos kő-kerámia gólem matchás tállal) – eddig a titkos Triplapresszó képét kölcsönözte.
+- Ősi Tölgy ökle a célponthoz méretezve (kisebb). Triplapresszó: a kávé a csőrből és a felső csövekből jön.
+- Nem készült el (Canva-kredit): Chasen egységes stílusú újrafestése, Lili/Grog/Jázmin farkasembere.
