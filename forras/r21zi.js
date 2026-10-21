@@ -10,11 +10,18 @@
 // ===== 52. kör: a hősök szintje ne szaladjon el a pályák ajánlott szintje elől =====
 // Végigjáték-mérés: a 2. térképen a hősök +8 szinttel a pálya fölött jártak, a 3. térkép elején a plafon alatt
 // felgyűlt tapasztalat egyszerre 60→78 szintet adott, a 10. fejezettől pedig minden csata 1 kör volt.
-// 1) A kapott tapasztalat a csapat átlagszintjéhez igazodik: cél = pálya szintje +2; szintenként 30%-kal kevesebb fölötte, ennyivel több alatta (0,05×–1,5×).
+// 1) A kapott tapasztalat a csapat átlagszintjéhez igazodik: cél = pálya szintje +1; szintenként 33%-kal kevesebb fölötte, ennyivel több alatta (legfeljebb 1,5×); 3 szinttel a cél fölött már nem jár tapasztalat.
 // 2) A szintplafonon nem gyűlik tovább a tapasztalat (a győzelem ELŐTTI plafon számít, mert a fejezetzáró győzelem után a plafon megemelkedik – különben a következő pályán egyszerre jönne 7–12 szint).
 {const _v=victory;victory=async function(){
   try{const L=S.level;if(L&&!S.arena&&L.elvl){const hs=S.heroes.filter(h=>h&&h.lvl);const avg=hs.reduce((a,h)=>a+h.lvl,0)/Math.max(1,hs.length);
-    const f=Math.max(.05,Math.min(1.5,1-.3*(avg-(L.elvl+2))));for(const e of S.enemies)if(e&&e.xp)e.xp=Math.max(1,Math.round(e.xp*f));}}catch(e){}
+    const over=avg-(L.elvl+1),f=over>=3?0:Math.max(0,Math.min(1.5,1-.33*over));for(const e of S.enemies)if(e&&e.xp)e.xp=Math.round(e.xp*f);}}catch(e){}
   const cap0=lvlCap();const r=await _v.apply(this,arguments);
   try{for(const h of (S.roster||S.heroes))if(h&&h.lvl>=cap0)h.xp=Math.min(h.xp,Math.max(0,xpNeed(h.lvl)-1));}catch(e){}
   return r;};}
+
+// ===== 52. kör: Nehéz szinten a hosszú (4+ csatás) pályák vége ne legyen lehetetlen =====
+// A csaták között nem gyógyul a csapat; a végigjáték-mérésben a 2-3 és a 4-3 utolsó csatáin fogyott el a csapat.
+// Nehéz szinten, legalább 4 csatás pályán a 3. csatától az ellenfelek élete és ereje ×0,85.
+{const _mk=mkEnemy;mkEnemy=function(){const e=_mk.apply(this,arguments);
+  try{const L=S.level;if(e&&S.diff===2&&L&&!S.arena&&L.battles&&L.battles.length>=4&&S.battleIdx>=2){e.maxHp=e.hp=Math.max(1,Math.round(e.maxHp*.85));e.atk*=.85;e.mag*=.85;}}catch(x){}
+  return e;};}
