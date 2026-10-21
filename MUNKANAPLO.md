@@ -434,3 +434,8 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Grog saját farkasembere (fx7-werewolf_orc, Canva). Lili és Jázmin változata még hiányzik (kredit).
 - Lili és Jázmin saját farkasembere (fx7-werewolf_fairy: rókaszőr, tündérszárny, csápok, levélruha; fx7-werewolf_monk: gesztenyebarna bunda, konty aranytűkkel, türkiz köntös, tegez) – Higgsfield z_image, flood + fehérfolt- és árnyékkivétel. Mostantól minden társnak saját farkasa van a Telihold átkában.
 - Tesztlap „🎮 Megnézem a játékban” javítva: 38 tesztpont `link` mezőjében a teljes cím állt (https://…?proba=…), a lap pedig még egyszer elé tette a játék címét, így a játék kettőzött, értelmetlen kódot kapott. FONTOS: a `tests/<id>.link` mezőbe CSAK a próbakód kerüljön (pl. `hero:witch:eclipse`, `foe:frog:tongue`, `summon:frogking`, `comic:6`), teljes cím soha.
+
+## 52. kör – a kis ellenfelek egy csapással kiütötték a hősöket (r21zi.js)
+- Mérés (szimuláció, Normál szint, a hősök várható szintjén): a kis ellenfelek egy ütése Lilinek/Zordonnak 50–70%, több pályán 90–118% volt; kritikussal (×1,5) egy csapás.
+- Javítás: `calcDmg` burkoló – az ellenfél hősre mért ütése ×0,75, és egy ütés felső határa a hős max. életerejéhez mérve: sima 40% (mindenkire ható 30%), minibossz 55%/40%, főellenség (`d.boss`) 65%/50%. Utána: kis ellenfél max. 40%.
+- Ellenőrzés: camp.js mind a 48 pálya győzelem, hiba nélkül. Tesztlap: sa01.
