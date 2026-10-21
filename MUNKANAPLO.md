@@ -430,3 +430,4 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Öreg Matcha-gólem: saját új Canva-kép (mohos kő-kerámia gólem matchás tállal) – eddig a titkos Triplapresszó képét kölcsönözte.
 - Ősi Tölgy ökle a célponthoz méretezve (kisebb). Triplapresszó: a kávé a csőrből és a felső csövekből jön.
 - Nem készült el (Canva-kredit): Chasen egységes stílusú újrafestése, Lili/Grog/Jázmin farkasembere.
+- Chasen: új, egységes stílusú festett kép (Canva), fehér foltok nélkül, a hősök felé néz.
