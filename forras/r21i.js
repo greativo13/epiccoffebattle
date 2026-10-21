@@ -75,9 +75,9 @@ A.inkWave=async(u,ts,sk)=>{const al=ts.filter(h=>h.alive);if(!al.length)return;c
 // ---- Kaelen – Medveforma (23. kör): nekiront, felágaskodik és háromszor lecsap; mély, véres karomnyomok
 A.wildshape=async(u,ts,sk)=>{const t=ts[0];const f=pick(['bear','turtle','snake']);const N={bear:'MEDVEFORMA!',turtle:'TEKNŐSFORMA!',snake:'KÍGYÓFORMA!'}[f];
   popLabel(u,N,'#9be07a');sfx('roar');kaeLeaves(cx(u),midY(u),60,380);flash('150,230,90',.3,.2);
-  const key={bear:'wsbear',turtle:'wsturtle',snake:'wsviper'}[f],W={bear:330,turtle:250,snake:300}[f];
+  const key={bear:'wsbear',turtle:'wsturtle',snake:'wsviper'}[f],W={bear:330,turtle:175,snake:300}[f];   /* (51. kör: a teknős kisebb, és a hősök mögé rajzolódik – ne takarja ki őket) */
   const F={x:cx(u),y:u.y+u.oy+6,a:0,s:.4,rot:0,fx:false,sy:1};const a0=u.alpha==null?1:u.alpha;
-  effects.push({update(){return !F.done;},draw(){if(F.a<=0)return;ctx.save();ctx.globalAlpha=F.a;if(!kaeImg(F.key||key,F.x,F.y,W*F.s,{anchor:'bottom',rot:F.rot,fx:F.fx,sy:F.sy})){ctx.font=`${Math.round(150*F.s)}px serif`;ctx.textAlign='center';ctx.fillText({bear:'🐻',turtle:'🐢',snake:'🐍'}[f],F.x,F.y);}ctx.restore();}});
+  (f==='turtle'?effects.unshift.bind(effects):effects.push.bind(effects))({update(){return !F.done;},draw(){if(F.a<=0)return;ctx.save();ctx.globalAlpha=F.a;if(!kaeImg(F.key||key,F.x,F.y,W*F.s,{anchor:'bottom',rot:F.rot,fx:F.fx,sy:F.sy})){ctx.font=`${Math.round(150*F.s)}px serif`;ctx.textAlign='center';ctx.fillText({bear:'🐻',turtle:'🐢',snake:'🐍'}[f],F.x,F.y);}ctx.restore();}});
   await tween(280,k=>{u.alpha=a0*(1-k);F.a=k;F.s=.4+.6*eOutBack(k);});
   if(f==='bear'&&t&&t.alive){const hx=F.x,tx=cx(t)-W*.42,gy=u.y+u.oy+6;sfx('roar');
     // nekiront: 3 nagy ugrás a földön, porfelhő a talpánál

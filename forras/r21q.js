@@ -87,7 +87,7 @@ A.druidSpears=async(u,ts,sk)=>{const t=ts[0];if(!t)return;const im=R17I.bamboosp
 
 // ---- Kaelen – Ősi Tölgy ökle: EGYENESEN tör fel (a festett ököl ferde volt – kiegyenesítve, függőlegesen emelkedik)
 {const of=A.oakFist;A.oakFist=async(u,ts,sk)=>{const im=R17I.oakfist,t=ts[0];if(!im||!t)return of(u,ts,sk);const rel=keepPose(u);try{u.pose='cast';await bodyWind(u,280,.14);sfx('quake');rumble&&rumble(1,8);
-  const bx=cx(t),gy=t.y+t.oy+20,Hh=Math.max(420,t.h*t.scale*2.4),Ww=Hh*im.width/im.height,F={k:0,a:1};
+  const bx=cx(t),gy=t.y+t.oy+20,Hh=Math.max(250,t.h*t.scale*1.6),Ww=Hh*im.width/im.height,F={k:0,a:1};
   groundCrack&&groundCrack(bx,gy-8,'120,90,60',220);await tween(360,k=>{t.spin=.04*Math.sin(k*60);if(Math.random()<.4)shake(3);});t.spin=0;
   // a kép ökle jobbra fent van: −0,32 rad-dal elforgatva, a tövét a talpponthoz igazítva az ököl pont az ellenség fölé kerül
   R18E({update(){return F.a>0;},draw(){if(F.k<=0)return;ctx.save();ctx.beginPath();ctx.rect(-200,-200,1400,gy+200+4);ctx.clip();ctx.globalAlpha=F.a;ctx.translate(bx,gy+Hh*(1-F.k));ctx.rotate(-.32);ctx.drawImage(im,-Ww*.38,-Hh,Ww,Hh);ctx.restore();}});
