@@ -25,3 +25,8 @@
 {const _mk=mkEnemy;mkEnemy=function(){const e=_mk.apply(this,arguments);
   try{const L=S.level;if(e&&S.diff===2&&L&&!S.arena&&L.battles&&L.battles.length>=4&&S.battleIdx>=2){e.maxHp=e.hp=Math.max(1,Math.round(e.maxHp*.85));e.atk*=.85;e.mag*=.85;}}catch(x){}
   return e;};}
+
+// ===== 52. kör: legyen kihívás (a felhasználó kérése: „nem muszáj mindent elsőre megnyerni… most végiggalopp, unalmas”) =====
+// Normál: ellenfél élete 1,1→1,35, ereje 1,0→1,2; Nehéz: 1,6→1,8 és 1,45→1,6. A Könnyű marad.
+// Az egy ütés felső határa (40/55/65%) megmarad, így nehezebb, de nem lesz egy csapásos kiütés.
+DIFF_HP[1]=1.35;DIFF_ATK[1]=1.2;DIFF_HP[2]=1.8;DIFF_ATK[2]=1.6;
