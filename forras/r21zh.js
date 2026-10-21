@@ -89,7 +89,7 @@ function r21QueenPose(getRect,on){const IM=R17I.queencape;const P={a:0,on:true};
         ctx.save();ctx.globalAlpha=Math.max(0,a);ctx.translate(ix,iy);ctx.rotate(r);ctx.scale(-f,1);ctx.drawImage(WS,-ww/2,-hh/2,ww,hh);ctx.restore();}});}
     if(DU)for(let n=0;n<4;n++)r21PD(DU,ix+rnd(-30,30),t.y+t.oy-rnd(0,20),{vx:rnd(-160,240),vy:-rnd(20,80),life:.9,size:rnd(90,130),grow:60,a:.85});
     t.hurt=.6;S._r21noSink=true;try{hit(w.h,t,{...ATTACKS[w.h.type],name:'Árnyroham',kind:'mag',pow:2.2,elem:'dark',anim:'summon'});}finally{S._r21noSink=false;}
-    const o0=t.ox||0;tween(300,k=>{t.ox=o0+90*Math.sin(Math.min(1,k*1.4)*Math.PI*.5)*(1-k*.6);}).then(()=>tween(300,k=>{t.ox=o0+54*(1-k);})).then(()=>{t.ox=o0;});
+    const o0=0;/* (52. kör) több ütés egymásra csúszásakor is a nyugalmi helyére álljon vissza */tween(300,k=>{t.ox=o0+90*Math.sin(Math.min(1,k*1.4)*Math.PI*.5)*(1-k*.6);}).then(()=>tween(300,k=>{t.ox=o0+54*(1-k);})).then(()=>{t.ox=o0;});
     await tween(160,k=>{w.lean=-.29+.29*k;});
     // visszaolvad az árnyékba
     await tween(300,k=>{w.a=1-k;});})));
