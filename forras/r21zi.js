@@ -32,8 +32,8 @@
 // Normál: ellenfél élete 1,1→1,35, ereje 1,0→1,2; Nehéz: 1,6→1,8 és 1,45→1,6. A Könnyű marad.
 // Az egy ütés felső határa (40/55/65%) megmarad, így nehezebb, de nem lesz egy csapásos kiütés.
 DIFF_HP[1]=1.35;DIFF_ATK[1]=1.2;DIFF_HP[2]=1.8;DIFF_ATK[2]=1.6;
-// Főellenség (Normál/Nehéz): élet ×1,3, erő ×1,1; minibossz: élet ×1,15. A 3. térképen (pálya szintje ≥60, Normál/Nehéz) minden ellenfél élete ×1,2, ereje ×1,15.
+// Főellenség (Normál/Nehéz): élet ×1,45 (Normál) / ×1,3 (Nehéz), erő ×1,1; Normálon a 2–3. térképen (szint ≥31) minden ellenfél +10%; Nehézen a régi „korai plusz” (+0,3 a játék elején) kivéve, mert az eleje túl kemény lett; minibossz: élet ×1,15. A 3. térképen (pálya szintje ≥60, Normál/Nehéz) minden ellenfél élete ×1,2, ereje ×1,15.
 {const _mk2=mkEnemy;mkEnemy=function(type,x,y,elvl){const e=_mk2.apply(this,arguments);
-  try{if(e&&S.diff>=1&&!S.arena){const D=e.d||{};let hp=1,at=1;if(D.boss){hp*=1.3;at*=1.1;}else if(D.miniboss)hp*=1.15;if((elvl||0)>=60){hp*=1.2;at*=1.15;}
+  try{if(e&&S.diff>=1&&!S.arena){const D=e.d||{};let hp=1,at=1;const lv=elvl||1;if(D.boss){hp*=S.diff===1?1.45:1.3;at*=1.1;}else if(D.miniboss)hp*=1.15;if(lv>=60){hp*=1.2;at*=1.15;}if(S.diff===1&&lv>=31){hp*=1.1;at*=1.1;}if(S.diff===2){const hb=.3*(1-Math.min(1,(lv-1)/24));if(hb>0){const k=DIFF_HP[2]/(DIFF_HP[2]+hb),ka=DIFF_ATK[2]/(DIFF_ATK[2]+hb);hp*=k;at*=ka;}}
     if(hp!==1){e.maxHp=e.hp=Math.round(e.maxHp*hp);}if(at!==1){e.atk*=at;e.mag*=at;}}}catch(x){}
   return e;};}
