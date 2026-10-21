@@ -439,3 +439,4 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Mérés (szimuláció, Normál szint, a hősök várható szintjén): a kis ellenfelek egy ütése Lilinek/Zordonnak 50–70%, több pályán 90–118% volt; kritikussal (×1,5) egy csapás.
 - Javítás: `calcDmg` burkoló – az ellenfél hősre mért ütése ×0,75, és egy ütés felső határa a hős max. életerejéhez mérve: sima 40% (mindenkire ható 30%), minibossz 55%/40%, főellenség (`d.boss`) 65%/50%. Utána: kis ellenfél max. 40%.
 - Ellenőrzés: camp.js mind a 48 pálya győzelem, hiba nélkül. Tesztlap: sa01.
+- 52. kör: Lili és Jázmin farkasa újrafestve Higgsfield `nano_banana_2_1`-gyel (referencia: Zordon farkasa a stílushoz + a hős saját képe), így egyezik a Canvás farkasok stílusával.
