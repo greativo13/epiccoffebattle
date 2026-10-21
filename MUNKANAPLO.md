@@ -431,3 +431,4 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Ősi Tölgy ökle a célponthoz méretezve (kisebb). Triplapresszó: a kávé a csőrből és a felső csövekből jön.
 - Nem készült el (Canva-kredit): Chasen egységes stílusú újrafestése, Lili/Grog/Jázmin farkasembere.
 - Chasen: új, egységes stílusú festett kép (Canva), fehér foltok nélkül, a hősök felé néz.
+- Grog saját farkasembere (fx7-werewolf_orc, Canva). Lili és Jázmin változata még hiányzik (kredit).
