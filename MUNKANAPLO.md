@@ -432,3 +432,4 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Nem készült el (Canva-kredit): Chasen egységes stílusú újrafestése, Lili/Grog/Jázmin farkasembere.
 - Chasen: új, egységes stílusú festett kép (Canva), fehér foltok nélkül, a hősök felé néz.
 - Grog saját farkasembere (fx7-werewolf_orc, Canva). Lili és Jázmin változata még hiányzik (kredit).
+- Lili és Jázmin saját farkasembere (fx7-werewolf_fairy: rókaszőr, tündérszárny, csápok, levélruha; fx7-werewolf_monk: gesztenyebarna bunda, konty aranytűkkel, türkiz köntös, tegez) – Higgsfield z_image, flood + fehérfolt- és árnyékkivétel. Mostantól minden társnak saját farkasa van a Telihold átkában.
