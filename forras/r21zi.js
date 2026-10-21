@@ -14,7 +14,9 @@
 // 2) A szintplafonon nem gyűlik tovább a tapasztalat (a győzelem ELŐTTI plafon számít, mert a fejezetzáró győzelem után a plafon megemelkedik – különben a következő pályán egyszerre jönne 7–12 szint).
 {const _v=victory;victory=async function(){
   try{const L=S.level;if(L&&!S.arena&&L.elvl){const hs=S.heroes.filter(h=>h&&h.lvl);const avg=hs.reduce((a,h)=>a+h.lvl,0)/Math.max(1,hs.length);
-    const over=avg-(L.elvl+1),f=over>=3?0:Math.max(0,Math.min(1.5,1-.33*over));for(const e of S.enemies)if(e&&e.xp)e.xp=Math.round(e.xp*f);}}catch(e){}
+    const over=avg-(L.elvl+1),f=over>=3?0:Math.max(0,Math.min(1.5,1-.33*over));for(const e of S.enemies)if(e&&e.xp)e.xp=Math.round(e.xp*f);
+    // egy győzelem legfeljebb a pálya szintje +3-ig emelhet (a főellenség óriási tapasztalata 6–8 szintet adott egyszerre)
+    {const top=hs.reduce((a,h)=>h.lvl>a.lvl?h:a,hs[0]);let need=0;for(let l=top.lvl;l<L.elvl+3;l++)need+=xpNeed(l);need=Math.max(0,need-(top.xp||0));const tot=S.enemies.filter(e=>e&&!e.fled).reduce((a,e)=>a+(e.xp||0),0);if(tot>need){const k=need/tot;for(const e of S.enemies)if(e&&e.xp)e.xp=Math.floor(e.xp*k);}}}}catch(e){}
   const cap0=lvlCap();const r=await _v.apply(this,arguments);
   try{for(const h of (S.roster||S.heroes))if(h&&h.lvl>=cap0)h.xp=Math.min(h.xp,Math.max(0,xpNeed(h.lvl)-1));}catch(e){}
   return r;};}
@@ -30,3 +32,8 @@
 // Normál: ellenfél élete 1,1→1,35, ereje 1,0→1,2; Nehéz: 1,6→1,8 és 1,45→1,6. A Könnyű marad.
 // Az egy ütés felső határa (40/55/65%) megmarad, így nehezebb, de nem lesz egy csapásos kiütés.
 DIFF_HP[1]=1.35;DIFF_ATK[1]=1.2;DIFF_HP[2]=1.8;DIFF_ATK[2]=1.6;
+// Főellenség (Normál/Nehéz): élet ×1,3, erő ×1,1; minibossz: élet ×1,15. A 3. térképen (pálya szintje ≥60, Normál/Nehéz) minden ellenfél élete ×1,2, ereje ×1,15.
+{const _mk2=mkEnemy;mkEnemy=function(type,x,y,elvl){const e=_mk2.apply(this,arguments);
+  try{if(e&&S.diff>=1&&!S.arena){const D=e.d||{};let hp=1,at=1;if(D.boss){hp*=1.3;at*=1.1;}else if(D.miniboss)hp*=1.15;if((elvl||0)>=60){hp*=1.2;at*=1.15;}
+    if(hp!==1){e.maxHp=e.hp=Math.round(e.maxHp*hp);}if(at!==1){e.atk*=at;e.mag*=at;}}}catch(x){}
+  return e;};}
