@@ -440,3 +440,4 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Javítás: `calcDmg` burkoló – az ellenfél hősre mért ütése ×0,75, és egy ütés felső határa a hős max. életerejéhez mérve: sima 40% (mindenkire ható 30%), minibossz 55%/40%, főellenség (`d.boss`) 65%/50%. Utána: kis ellenfél max. 40%.
 - Ellenőrzés: camp.js mind a 48 pálya győzelem, hiba nélkül. Tesztlap: sa01.
 - 52. kör: Lili és Jázmin farkasa újrafestve Higgsfield `nano_banana_2_1`-gyel (referencia: Zordon farkasa a stílushoz + a hős saját képe), így egyezik a Canvás farkasok stílusával.
+- 52. kör képellenőrzés (scan: kepek/*.webp, tiszta fehér zárt foltok): fehér háttérmaradék kivéve: dryad (ágak között), zencrow (köntös és szárny között), zendragon (gyűrű belseje), fx7-bearclaw (karmok között). A többi jelölt (hold, csésze, gőz, csillag, Mochi szája) szándékos fehér.
