@@ -445,3 +445,12 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
   - Tapasztalat a csapat szintjéhez igazítva (cél: pálya +1; 3 szinttel fölötte nincs XP; egy győzelem legfeljebb pálya+3-ig emel; a plafonon nem gyűlik XP – a régi 60→78 ugrás megszűnt).
   - Kihívás a felhasználó kérésére („nem muszáj mindent elsőre megnyerni”): Normál ÉP 1,35 / erő 1,2; Nehéz 1,8 / 1,6 (a régi korai Nehéz-plusz kivéve); főellenség ÉP ×1,45 (Normál) / ×1,3 (Nehéz), erő ×1,1; minibossz ÉP ×1,15; Normálon szint ≥31 +10%; 3. térkép (szint ≥60) ÉP ×1,35, erő ×1,25. Nehézen a 4+ csatás pályák 3. csatájától ×0,85.
   - Eredmény (Normál): 1 pálya 3 próbára sem (4-3), főellenségeknél 12–48% marad; Nehéz: 2-4 és 4-4 3 próbára sem, 3 pálya 2–3. próbára. Hősszint végig pálya+2–3.
+
+## 53. kör – külső átnézés (Gemini) alapján (r21zj.js)
+- Történet: V. fejezet kezdete – „Morcus hat hónap után felébredt, és a királynő ítélete szerint jóvátételként gyógyteát árul…” (a IV. fejezet végén hat hónapig alszik).
+- Kerekítés: minden SK/ESK `pow` 2 tizedesre (Lampionlidérc Lidércrobbanás 1.1700000000000002 → 1.17).
+- Életerő-áras képességek: a gomb szürke („Kevés ÉP”), ha a használat után 20% alá esne az ÉP (`setButtons`/`menuSkills` burkoló, `r21HpLow`). Az ár eddig is max. 1 ÉP-ig vont le.
+- Tisztítás (Lili) ≠ Ébresztő tea (Jázmin): Tisztítás = test bajai (burn, poison, curse, defDown, freeze, scald, plagued, jelly) + ward 1 kör (a ward már nem véd alvás/kábulat/némaság ellen); Ébresztő tea = elme bajai (sleep, stun, silence) + `awake` „Éber” 1 kör. Hab: Kaelen. Megvalósítás: az animáció előtti állapot-pillanatkép visszaállítása a másik csoportra.
+- Telefon (iPhone 13, álló/fekvő, playwright): térkép, Bestiárium, Napi kihívás (+500 arany naponta egyszer), bolt, csatamenü – nincs vízszintes kilógás, JS-hiba nincs. HIBA javítva: fekvőben a Bestiárium „Vissza” gombja rejtve volt (a bolt fekvő CSS-e elrejti) → „✕ Vissza a térképre” felül.
+- Build-ellenőrzés: a beillesztett blokk = a 62 rétegfájl összefűzése, jelölők 1-1, nincs dupla réteg; r19z.js (hangréteg) utolsó, nem ír felül újabb definíciót.
+- Teljes összefoglaló külső AI-nak: JATEK_TELJES_OSSZEFOGLALO.md (adatok a futó játékból, scratchpad sum/dump.js + mk.py).
