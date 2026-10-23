@@ -48,3 +48,15 @@ for(const k in SK){const s=SK[k];if(s&&typeof s.pow==='number')s.pow=Math.round(
 //    elrejti az alsó gombokat. Mint a boltban: „✕ Vissza a térképre” a lista tetején is.
 {const rb=r14Bestiary;r14Bestiary=function(back){const r=rb.apply(this,arguments);try{const box=document.querySelector('.ov-box.shop');
   if(box&&!box.querySelector('.shop-exit')){const top=el('div','shop-top');top.appendChild(btn('ov-btn sec shop-exit','✕ Vissza a térképre',back||(()=>mapScreen())));box.insertBefore(top,box.firstChild);}}catch(e){}return r;};}
+
+// 6) 3. térkép, Normál/Nehéz: a sima pályák (nem főellenség, nem minibossz) még könnyűek voltak (a csapat 60–80%-a megmaradt) → ÉP ×1,15, erő ×1,1.
+{const _mk3=mkEnemy;mkEnemy=function(type,x,y,elvl){const e=_mk3.apply(this,arguments);
+  try{if(e&&S.diff>=1&&!S.arena&&(elvl||0)>=60&&!(e.d&&(e.d.boss||e.d.miniboss))){e.maxHp=e.hp=Math.round(e.maxHp*1.15);e.atk*=1.1;e.mag*=1.1;}}catch(x){}
+  return e;};}
+
+// 7) Régi animáció-változat ne jöhessen elő: több új animáció (Tölgyököl, Földrepesztés, Tövisvihar, Bambusz-gólem, Habáradat,
+//    Kígyótekercs, Gombaspóra stb.) a régi, rajzolt változatra esik vissza, ha a festett képe még nincs betöltve.
+//    Telefonon a képek külön fájlból, lassabban jönnek → a csata indulása előtt megvárjuk a festett effektképeket (legfeljebb 3 mp).
+{const sb0=startBattle;startBattle=async function(){try{const ims=Object.values(R17I).filter(im=>im&&im instanceof HTMLImageElement&&!(im.complete&&im.naturalWidth));
+    if(ims.length)await Promise.race([Promise.all(ims.map(im=>im.decode?im.decode().catch(()=>{}):new Promise(r=>{im.onload=im.onerror=r;}))),new Promise(r=>setTimeout(r,3000))]);}catch(e){}
+  return sb0.apply(this,arguments);};}
