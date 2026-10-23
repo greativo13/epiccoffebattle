@@ -456,3 +456,15 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Teljes összefoglaló külső AI-nak: JATEK_TELJES_OSSZEFOGLALO.md (adatok a futó játékból, scratchpad sum/dump.js + mk.py).
 - 53. kör finomítások: Mochi bal oldali fehér rése (tésztaszál és test között) átlátszó; 3. térkép Normál/Nehéz sima ellenfelei ÉP ×1,15, erő ×1,1; régi animáció-visszaesés elleni védelem: 16 animáció a régi rajzolt változatra esik vissza, ha a festett kép nincs betöltve (mind megvan) → `startBattle` előtt megvárjuk az R17I képeket (max. 3 mp). A többi visszaesés szándékos (más ellenfél is használja az animációt).
 - 53. kör, nagy ellenőrzés + ötletek (r21zj.js 8–9.): 10 alap közelharci ellenséges támadás (lunge) a kódból rajzolt vágáscsík helyett saját FESTETT becsapódást kap (`R21_MELEE_FX`, a `slash` hívást a lunge alatt lecseréljük): Lélekvágás darkslash, Harapás hound, Kardvágás/Alabárdszúrás windslash (szürke), Karmolás/Karomcsapás bearclaw (vörös/narancs), Sodrófa csillagok, Bögreököl teasplash (kávébarna), Lángharapás goldburst (tűz), Szarvdöfés barna becsapódás + forgács. Rozsdakirály és Morcus ÉP ×0,8 (28 és 23 körös harc). Fénysugár: élőholtak/szellemek ×2 (`R21_UNDEAD`), a Pálcakoppintás mellett így saját szerepe van. Méreg 0: vase, teaset, sugarcube, cgolem. Kamilla: tűz ×1,3.
+
+## 54. kör – 16 pontos visszajelzés (r21zk.js + hátterek)
+- Homályos csatatér-tető: a hátterek kicsik voltak (1120×630), iPhone-on 1752 px-re nagyítva. Higgsfield `bytedance` felskálázás (2k→3840, 2 kredit/kép) → 1920×1080 webp. Kész: 1–4. fejezet (moss, cave, trunk, oakheart, gate, market, cathedral, clockhall, crystal, echo, lava, volcano, library, mirror, stairs, summit). A többi 22 háttér kreditre vár.
+- Kattintási hang ki (a `click` hang gombnyomásra; bolti érmehang marad). Falevél a zárt 1-3/1-4 pályán → porszem (R21WX).
+- Körrend (`runBattle` újraírva): hely szerint (beálló hős a kicserélt helyén lép), ellenfelek egyenletesen a hőspárok között (H H E H H E).
+- Közös támadás: tesztmódban nem mentődött (`r21OwnSave` S.test-kilépés) → most mentődik.
+- Limit a sebzésből ×0,6; DIFF_ATK Normál 1,1, Nehéz 1,5. Életszívás erő 1,7, visszagyógyít 75%.
+- Rémült Tölgy ÉP ×1,3, erő ×1,1, új képesség Gyökérfogás (`ESK.rootgrab`, a régi idézés: gyökérketrec mindenkire, 40% kábulat, makkok 8% gyógyítás). Tölgy idézés: a saját ágkarja (LIMBS.oak) kinyúlik és lecsap sorban.
+- II. Csavar: Villámcsapás a 2-3 után (eddig 3-3 – nem volt villám a 2-4-hez!), Rozsda-átok is letör egy lemezt, páncéllal 35%.
+- Rozsda-átok fémre (`R21_METAL`): 1 kör mozgásképtelen (`rusted` + stun, nem főellenségen), rozsdabarna szűrő a figurán + hulló rozsdapikkelyek.
+- Elit/arany: festett jel + felirat a fej fölött (név fölé emelve), és felirat minden hatásnál.
+- Festett képek: rózsa Tüskés inda (`rosestorm` spirál), Tüskezápor (új `fx7-rosethorn`), Tölgy Gyökérbörtön (gyökér-lény rajza → `rootcage`), barlangi béka nyelve (új `fx7-frogtongue`, lopáskor felvillan), Gombaeső ellenfél ÉS idézés közös festett gombával (`mushroom`) + festett lila spóra (teacloud).
