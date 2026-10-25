@@ -459,7 +459,7 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 
 ## 54. kör – 16 pontos visszajelzés (r21zk.js + hátterek)
 - Homályos csatatér-tető: a hátterek kicsik voltak (1120×630), iPhone-on 1752 px-re nagyítva. Higgsfield `bytedance` felskálázás (2k→3840, 2 kredit/kép) → 1920×1080 webp. Kész: 1–4. fejezet (moss, cave, trunk, oakheart, gate, market, cathedral, clockhall, crystal, echo, lava, volcano, library, mirror, stairs, summit). A többi 22 háttér kreditre vár.
-  - 54. kör folytatás: 5. fejezet (terrace, bamboo, teahouse, mistpeak) és a 6. fejezet porcgate is felskálázva. Hátravan 17 háttér (6–12. fejezet), kredit elfogyott (1,7).
+  - 54. kör folytatás: 5. fejezet (terrace, bamboo, teahouse, mistpeak) és a 6. fejezet porcgate is felskálázva. Hátravan 17 háttér (6–12. fejezet), kredit elfogyott (1,7). A felhasználó döntése: a maradék 17 háttér marad a régi, ne skálázzuk fel.
 - Kattintási hang ki (a `click` hang gombnyomásra; bolti érmehang marad). Falevél a zárt 1-3/1-4 pályán → porszem (R21WX).
 - Körrend (`runBattle` újraírva): hely szerint (beálló hős a kicserélt helyén lép), ellenfelek egyenletesen a hőspárok között (H H E H H E).
 - Közös támadás: tesztmódban nem mentődött (`r21OwnSave` S.test-kilépés) → most mentődik.
