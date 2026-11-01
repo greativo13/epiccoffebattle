@@ -469,3 +469,13 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Rozsda-átok fémre (`R21_METAL`): 1 kör mozgásképtelen (`rusted` + stun, nem főellenségen), rozsdabarna szűrő a figurán + hulló rozsdapikkelyek.
 - Elit/arany: festett jel + felirat a fej fölött (név fölé emelve), és felirat minden hatásnál.
 - Festett képek: rózsa Tüskés inda (`rosestorm` spirál), Tüskezápor (új `fx7-rosethorn`), Tölgy Gyökérbörtön (gyökér-lény rajza → `rootcage`), barlangi béka nyelve (új `fx7-frogtongue`, lopáskor felvillan), Gombaeső ellenfél ÉS idézés közös festett gombával (`mushroom`) + festett lila spóra (teacloud).
+
+## 55. kör – teljes tesztlista, 1. csomag: UI és gombok (r21zl.js)
+- Parancsmenü stabil: a régi rétegek (r14a, r21zg, alap közös gomb) elöl beszúrt / szürke, `limit` osztály miatt villogó várakozó gombjait a `menuMain` legkülső burkolója kiveszi. Sorrend fix: Támadás, Képességek, Tárgyak, Védekezés, Idézés, aztán (csak ha használható) LIMIT, PÁROS…, KÖZÖS.
+- Ellenséges kör alatt (`setButtons([])` csata közben) a gombok nem tűnnek el, csak `r21idle` (halvány, nem nyomható); a gombsor magassága csatán belül csak nőhet.
+- Páros feltétel: a két limit összege ≥ 2×küszöb (`R21_PAIR_THR` Könnyű 50 / Normál 75 / Nehéz 90). Minden páros csatánként egyszer (`S._r21pairDone`), a többi elérhető marad. A gomb mindkét limitet mutatja. Több elérhető páros mind látszik.
+- Közös támadás: az alap közös gomb (`KÖZÖS TÁMADÁS!` felirat) eddig vásárlás nélkül is megjelent (az r21x rossz szöveget szűrt) – ezért „működött, mégis megvehető”. Most csak ha `r21Owns('combo')`.
+- Bolt „ⓘ Mutasd”: 46 hiányzó előnézet (Jázmin, Kaelen, újabb képességek, Dobótőr, Tűzbomba) a mostani grafikával, automatikusan felvéve (scratchpad `prev.js`: Próbaterem, 60 ms-onként vászonkép, 10 kocka, 4000×225 webp q55) → `addimg.py bolt-<id>=…`.
+- Bestiárium: mentőhelyenkénti lista (`nagy-kaverablas-bestiarium-s<slot>`), a régi közösből csak a teljesített pályák ellenfelei; új játéknál üres.
+- Tesztlap: zl01–zl05.
+- Hátralévő csomagok: 2. bolt/gazdaság és nehézség; 3. harcrendszer/képességek/ellenfél MI/státuszok; 4. bossok és idézések; 5. VFX/animációk; 6. 3. térkép tartalom.
