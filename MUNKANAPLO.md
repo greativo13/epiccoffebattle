@@ -509,3 +509,12 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Kísértetlovag idézés: az ellenséges Sötét hullám füstje jobbra hömpölyög (dsmoke), pow 2,4 sötét, 60% átok. Mézkirálynő idézés: a queencape póz tükrözve (a hősök felé nézett), a méreg leszedve. A méhek iránya eredetileg is jó volt (BEE_SPR jobbra néz).
 - Zen-sárkány idézés: az ellenséges stoneCloudRain logikája (rockcloud + nagy pebble), 240 nagy + 320 apró kavics.
 - Tesztlap: zo01–zo07.
+
+## 59. kör – 5. csomag, 1. rész: látványelemek (r21zp.js)
+- Kráter-repedés az ellenfelek alatt ki (`r21Crater` üres). Sötét mágus: nincs Átok.
+- Fehér háttér: ENEMY_SPR.teaset (fül melletti rés, 3 folt), cupsoldier(-attack) fül belseje – gépi folt-keresés (≥244, ≥80 px, középpont szerint).
+- `sprPt` hiba: a `topY` nem szorozza a nagyítással → nagyított ellenfeleknél a pontok lejjebb csúsznak. Csak a Triplapresszóra javítva (máshol a régi pontok erre vannak hangolva); kávé a három felső csőből.
+- Béka nyelve: vastagság a száj méretére korlátozva, pont (.14,.35).
+- Csillagözön: apró csillagzápor. Tollvihar: +260 toll. Párnacsapás: testlendület, ívelt párna. Szökőár: magasra dob (toss 220). Őrület: imbolygás, zöldes szűrő, keringő zöld csillagok. Rozsda-átok: erős rozsdaréteg + sűrű pelyhek.
+- Kristálygólem Szilánkeső → Kristályöklök (goldfist kristálykékre színezve, glacier-szilánkok). Jégcsapok: festett glacier-csapok, dér, jégkék dermedés. Szikraharapás: `A.batBite` (odarepül, harap, bolt-villámok a hősön, remegés).
+- Tesztlap: a lap csak `order>=5500` pontokat mutat (MIN_ORDER); a „Támadások tesztlistája” levéve a kitűzöttek közül. Tesztpontok: zp01–zp09.
