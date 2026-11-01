@@ -24,7 +24,7 @@ A.roseCoil=async(u,ts,sk)=>{const t=ts[0];if(!t||!t.alive)return;const nm=(SPR_A
   const gx=cx(t),top=topY(t)+t.h*t.scale*.25,bot=t.y+t.oy-6,R=t.w*t.scale*.55+18,thick=Math.max(26,t.h*t.scale*.14),r0=r21RoseRect(u,ID),from={x:r0.x+r0.w*.55,y:r0.y+r0.h*.97};
   const C={k:0,sq:0,a:1,on:true};R18E({update(){return C.on;},draw(){if(C.a<=0)return;const P=r21CoilPath(gx,top,bot,R,2.2,C.k,from,C.sq,0);r21DrawCoil(VN,P,thick,C.a);}});
   sfx('rock');rumble&&rumble(.5,4);for(let i=0;i<10;i++)part({x:from.x+rnd(-30,30),y:from.y,vx:rnd(-80,80),vy:-rnd(60,180),g:500,life:.7,size:rnd(3,6),rgb:'110,85,60',add:false,shape:'rock'});
-  await tween(700,k=>{C.k=easeIO(k);});sfx('squish');for(let i=0;i<2;i++){await tween(170,k=>{C.sq=Math.sin(k*Math.PI);});t.hurt=.3;shake(6);}
+  C.a=0;C.on=false;
   // a fej odanyúlik: az alap (szár, levelek) a helyén, a fej a nyitott szájú képről, a nyak a megnyúló inda
   const a0=u.alpha==null?1:u.alpha,H={k:0,on:true,bite:0};const neck0={u:.62,v:.53},headB={u:.62,v:.6};
   R18E({update(){return H.on;},draw(){const rb=r21RoseRect(u,ID),ra=r21RoseRect(u,AT);
@@ -34,7 +34,7 @@ A.roseCoil=async(u,ts,sk)=>{const t=ts[0];if(!t||!t.alive)return;const nm=(SPR_A
     const ox=hx-(ra.x+ra.w*headB.u),oy=hy-(ra.y+ra.h*headB.v),sq=1-.12*H.bite;ctx.save();ctx.translate(hx,hy);ctx.scale(1,sq);ctx.translate(-hx,-hy);ctx.beginPath();ctx.rect(ra.x+ox-10,ra.y+oy-10,ra.w+20,ra.h*.62+10);ctx.clip();ctx.drawImage(AT,ra.x+ox,ra.y+oy,ra.w,ra.h);ctx.restore();}});
   u.alpha=0;sfx('whoosh');await tween(260,k=>{H.k=easeIO(k);});sfx('hit');sfx('crunch');H.bite=1;shake(14);hitStop(90);flash('255,200,200',.25,.08);
   sparks(cx(t),topY(t)+t.h*t.scale*.35,['255,120,120','255,255,255'],18,320);t.hurt=.6;hit(u,t,sk);await tween(160,k=>{H.bite=1-k;});await wait(120);
-  await tween(300,k=>{H.k=1-easeIO(k);});H.on=false;u.alpha=a0;await tween(380,k=>{C.k=1-k*.6;C.a=1-k;});C.on=false;u.pose='idle';};
+  await tween(300,k=>{H.k=1-easeIO(k);});H.on=false;u.alpha=a0;u.pose='idle';};
 {const tv=A.thornVolley;A.thornVolley=async function(u,ts,sk){if(!u||u.type!=='rose')return tv.apply(this,arguments);const TH=R17I.rosethorn;const r0=r17Draw;
   // zömökebb, háromszögletű tüske (rövidebb, vastagabb tővel), a rózsa szájából
   r17Draw=function(im,x,y,w,o={}){if(im===TH)return r0.call(this,im,x,y,w*.72,Object.assign({},o,{sy:(o.sy||1)*2.1}));return r0.apply(this,arguments);};
@@ -51,7 +51,7 @@ A.roseCoil=async(u,ts,sk)=>{const t=ts[0];if(!t||!t.alive)return;const nm=(SPR_A
 
 // ---- 5) Ősi Tölgy ökle („az alján a gyökerek ne jöjjenek ki ennyire”): a festett ököl alsó, gyökeres része levágva
 (function(){let n=0;const iv=setInterval(()=>{n++;const im=R17I.oakfist;if(im&&im.width&&!im._r21crop){const c=document.createElement('canvas');c.width=im.width;c.height=Math.round(im.height*.8);const g=c.getContext('2d');g.drawImage(im,0,0);
-    const gr=g.createLinearGradient(0,c.height*.85,0,c.height);gr.addColorStop(0,'rgba(0,0,0,1)');gr.addColorStop(1,'rgba(0,0,0,0)');g.globalCompositeOperation='destination-in';g.fillStyle=gr;g.fillRect(0,c.height*.85,c.width,c.height*.15);g.fillStyle='#000';g.fillRect(0,0,c.width,c.height*.85);c._r21crop=true;R17I.oakfist=c;clearInterval(iv);}if(n>80)clearInterval(iv);},300);})();
+    const gr=g.createLinearGradient(0,0,0,c.height);gr.addColorStop(.85,'rgba(0,0,0,1)');gr.addColorStop(0,'rgba(0,0,0,1)');gr.addColorStop(1,'rgba(0,0,0,0)');g.globalCompositeOperation='destination-in';g.fillStyle=gr;g.fillRect(0,0,c.width,c.height);c.naturalWidth=c.width;c.naturalHeight=c.height;c._r21crop=true;R17I.oakfist=c;clearInterval(iv);}if(n>80)clearInterval(iv);},300);})();
 
 // ---- 6) Bambuszfüggöny („ha több ellenfél van, ne külön-külön legyen, hanem egy nagy; amik beállnak a földbe, menjenek be a
 //    föld alá, és abból hirtelen robbanjanak ki a nagy tüskék”): Jázmin sortűzben kilövi a festett bambusznyilakat, azok
@@ -108,7 +108,7 @@ A.r21StoneWave=async(u,ts,sk)=>{const al=ts.filter(t=>t.alive);if(!al.length)ret
   const gy=Math.max(...al.map(t=>t.y+t.oy))+10,x0=cx(u)+u.w*u.scale*.5,x1=Math.max(...al.map(cx))+340,Wv={x:x0,on:true,h:0},hid=new Map(),done=new Set();
   R18E({front:true,update(){return Wv.on;},draw(){if(!SW||Wv.h<=0)return;const h=Wv.h,w=h*SW.width/SW.height;ctx.save();ctx.translate(Wv.x,gy+12);ctx.drawImage(SW,-w*.6,-h,w,h);ctx.restore();}});
   const H0=Math.max(...al.map(t=>t.h*t.scale))*1.25;
-  await tween(1300,k=>{Wv.x=x0+(x1-x0)*k;Wv.h=Math.min(1,k*5)*H0;if(Math.random()<.5)part({x:Wv.x+rnd(-40,40),y:gy-rnd(0,40),vx:rnd(60,200),vy:-rnd(60,200),g:800,life:.7,size:rnd(5,10),rgb:pick(['130,110,85','100,85,65']),add:false,shape:'rock'});
+  await tween(1300,k=>{Wv.x=x0+(x1-x0)*k;Wv.h=H0*(.3+1.1*easeIO(k));if(Math.random()<.5)part({x:Wv.x+rnd(-40,40),y:gy-rnd(0,40),vx:rnd(60,200),vy:-rnd(60,200),g:800,life:.7,size:rnd(5,10),rgb:pick(['130,110,85','100,85,65']),add:false,shape:'rock'});
     for(const t of al){const d=Wv.x-cx(t);if(d>-90&&d<160){if(!hid.has(t))hid.set(t,t.alpha==null?1:t.alpha);t.alpha=0;if(!done.has(t)&&d>0){done.add(t);t.hurt=.6;shake(10);hit(u,t,sk);}}else if(hid.has(t)&&d>=160){t.alpha=hid.get(t);hid.delete(t);}}});
   for(const [t,a] of hid)t.alpha=a;Wv.on=false;
   // kis törmelék marad

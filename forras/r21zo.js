@@ -143,18 +143,4 @@ const r21Stones=()=>(S.inv&&S.inv.summonstone)||0;
     const Q=R17I.queencape;if(Q&&Q.width&&!QF){QF=document.createElement('canvas');QF.width=Q.width;QF.height=Q.height;const g=QF.getContext('2d');g.translate(Q.width,0);g.scale(-1,1);g.drawImage(Q,0,0);}
     if(QF)R17I.queencape=QF;try{return await r0(P,S0);}finally{hit=h0;if(Q)R17I.queencape=Q;}};}}
 
-// ---- 7) Zen-Kavics Sárkány idézés („másold át az ellenség logikáját, csak mindkettőnél több kavics kell, a méret jó”):
-//    ugyanaz a festett kőfelhő és nagy, forgó festett kavicsok, mint ellenfélként (Kavicseső) – csak sokkal több
-//    (240 nagy + 320 apró, az ellenfélé 70, a régi idézésé 420 apró), és az ellenségekre zúdul.
-{const zd=SUMMONS.find(s=>s.id==='zendragon');if(zd){zd.run=async(P,S0)=>{const fs=foesAlive();if(!fs.length)return;const y0=S0.y,s0=S0.s||1;sfx('roar');
-  await tween(450,k=>{S0.s=s0*(1+.06*Math.sin(k*Math.PI));S0.y=y0-14*Math.sin(k*Math.PI);});shake(10);rumble&&rumble(1,6);
-  const cl=r21Img('rockcloud'),pb=r21Img('pebble'),xs=fs.map(cx),x0=Math.min(...xs)-160,x1=Math.max(...xs)+160,C={a:0,y:-120},PB=[];
-  R18E({update(){return C.a>0||!C.done;},draw(){if(C.a<=0||!cl)return;ctx.save();ctx.globalAlpha=C.a;r17Draw(cl,(x0+x1)/2,C.y,(x1-x0)+160);ctx.restore();}});
-  await tween(500,k=>{C.a=k;C.y=-120+210*easeIO(k);});
-  for(let i=0;i<240;i++){const t=pick(fs);PB.push({x:rnd(x0+30,x1-30),y:120+rnd(-30,20),vy:rnd(560,820),d:i*9,r:rnd(0,6),s:rnd(30,62),land:t.y+t.oy+rnd(-60,14)});}
-  for(let i=0;i<320;i++){const t=pick(fs);PB.push({x:rnd(x0,x1),y:110+rnd(-25,25),vy:rnd(640,920),d:100+i*7,r:rnd(0,6),s:rnd(10,20),land:t.y+t.oy+rnd(-120,10)});}
-  const E={t:0,a:1};R18E({update(dt){E.t+=dt*1000;for(const p of PB)if(E.t>p.d&&p.y<p.land){p.y+=p.vy*dt;p.r+=dt*6;if(p.y>=p.land&&p.s>28){if(Math.random()<.3)shake(2);for(let j=0;j<2;j++)part({x:p.x,y:p.land,vx:rnd(-120,120),vy:rnd(-160,-60),g:600,life:.5,size:rnd(3,6),rgb:'150,140,120',add:false,shape:'rock'});}}return E.a>0;},
-    draw(){if(!pb)return;ctx.save();ctx.globalAlpha=E.a;for(const p of PB){if(E.t<p.d)continue;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.drawImage(pb,-p.s/2,-p.s/2,p.s,p.s*pb.height/pb.width);ctx.restore();}ctx.restore();}});
-  sfx('quake');const iv=setInterval(()=>{sfx('rock');for(const t of foesAlive())t.hurt=.2;},170);
-  await wait(1700);clearInterval(iv);for(const t of foesAlive()){shake(10);hit(P,t,{name:'Kavicsözön',kind:'phys',pow:2.6,elem:'earth',tgt:'enemies',status:['defDown',1,1]});await wait(70);}
-  C.done=true;await wait(500);await tween(500,k=>{C.a=1-k;E.a=1-k;});S0.s=s0;S0.y=y0;};}}
+// ---- 7) Zen-Kavics Sárkány idézés: a felhasználó szerint a korábbi (apró kavicsos) változat volt a jó – az marad (r21j)

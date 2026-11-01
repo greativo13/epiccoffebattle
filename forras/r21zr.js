@@ -11,7 +11,7 @@
 //    a fejlesztett ruha meleg, krémszínű szárnyához színezve.
 (function(){const P=[['fairyG','fairy'],['fairyG-cast','fairy-cast'],['fairyG-attack','fairy-attack'],['fairyG-hurt','fairy-hurt']];const done=new Set();let n=0;
   const iv=setInterval(()=>{n++;try{if(typeof ENEMY_SPR==='object')for(const [a,b] of P){if(done.has(a))continue;const A0=ENEMY_SPR[a],B0=ENEMY_SPR[b];if(!A0||!B0||!A0.width||!B0.width)continue;
-      const c=document.createElement('canvas');c.width=A0.width;c.height=A0.height;const g=c.getContext('2d');try{g.filter='sepia(.45) saturate(1.15) brightness(1.55)';}catch(e){}g.drawImage(B0,0,0,A0.width,A0.height);g.drawImage(B0,0,0,A0.width,A0.height);try{g.filter='none';}catch(e){}g.drawImage(A0,0,0);
+      const c=document.createElement('canvas');c.width=A0.width;c.height=A0.height;const g=c.getContext('2d');g.globalAlpha=.85;try{g.filter='sepia(.85) saturate(1.8) hue-rotate(-8deg) brightness(1.05)';}catch(e){}g.drawImage(B0,0,0,A0.width,A0.height);g.globalAlpha=1;try{g.filter='none';}catch(e){}g.drawImage(A0,0,0);
       ENEMY_SPR[a]=c;done.add(a);}}catch(e){}if(done.size>=P.length||n>80)clearInterval(iv);},300);})();
 
 // ---- 3) Lebegés („minden szereplő és ellenség lebeg”): a hátsó sor lába (y≈344) a legtöbb háttéren a fal/lépcső magasságába
