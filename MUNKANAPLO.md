@@ -479,3 +479,9 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Bestiárium: mentőhelyenkénti lista (`nagy-kaverablas-bestiarium-s<slot>`), a régi közösből csak a teljesített pályák ellenfelei; új játéknál üres.
 - Tesztlap: zl01–zl05.
 - Hátralévő csomagok: 2. bolt/gazdaság és nehézség; 3. harcrendszer/képességek/ellenfél MI/státuszok; 4. bossok és idézések; 5. VFX/animációk; 6. 3. térkép tartalom.
+
+## 56. kör – 2. csomag: bolt, pénz, nehézség (r21zm.js)
+- Mérés: a játék végéig ~590 ezer arany jött, minden megvehető ~265 ezer; képesség ára = pálya-bevétel ×0,42; a hősök listái ugyanazon pályán nyíltak (r21zf elosztás eltolás nélkül).
+- Új elosztás: hősönként eltolva (`OFF`), így szinte minden pálya után 1 új képesség nyílik valakinél; ár = simított pálya-bevétel × `R21_GOLD_MULT` (0,8) × `R21_SKILL_PRICE` (1,15). Bevétel Normál/Nehéz ×0,8 (Könnyű marad ×0,6). Kumulált bevétel/képesség-ár zónánként ~0,9–1,1 (scratchpad `e5.js`).
+- A felhasználó Normálon játszott, „okosabb ellenfeleket” választott: Normál/Nehéz ÉP ×1,15; `weighted` burkoló (ellenfél kétszer egymás után nem ugyanazt, gyógyítás csak sérült társra, erősítés csak ha nincs rajta, sok hősnél a mindenkire ható ×1,3); `aiTarget` burkoló (55%-ban súlyozott: sérült, Lili/Jázmin ×1,35, védekező ×0,45, ugyanaz a hős max. 2× egymás után; provokálás köt).
+- Páros támadások ára marad 1200 (korán elérhetők). Tesztlap: zm01–zm02.
