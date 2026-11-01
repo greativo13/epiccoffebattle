@@ -499,3 +499,13 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Árnyékszegező nyíl: sötétlila árnyék kúszik fel a testen (szűrt másolat alulról vágva), a kábulat végéig rajta marad.
 - Nyitott: Életszívás „6-szor, 2/3-nál megakad” – nem reprodukálható, a felhasználótól kérdezni. Triplapresszó kávésugara (derék/könyök) → 5. csomag (VFX, rácsos mérés).
 - Tesztlap: zn01–zn09.
+
+## 58. kör – 4. csomag: bossok és idézések (r21zo.js)
+- A „Béka mester” = Chasen, a Békemester (az Öreg Matcha-gólem a Habvihart tőle kölcsönözte). A felhasználó döntése: Chasen marad öreg mester (nincs új kép), idézési ár = Idézőkő tárgy.
+- Irány: ENEMY_SPR.chasen és .oldgolem eredetileg jobbra néz → egyszer tükrözve (időzítővel, `_r21fl`); az idézés `flip:true`-ja így helyes (Chasen idézés az ellenség felé néz).
+- Chasen új ESK: chwhisk (Habverő-csapás), chleaf (Tealevél-örvény, festett levelek körpályán, defDown), chzen (Zen-csend, festett lótusz + teacloud, limit −30), chtea (önygyógyítás 15% + gyengítés le). Az r21b Örök Zen (50% alatt) megmaradt.
+- Öreg Matcha-gólem új ESK: ogfist (3 dübörgő lépés, crater+clods), ogquake (dobbantás, mohára színezett rockspike), ogpour (a tál `sprPt(u,.38,.38)` pontjából zöldre színezett teawave), ogmoss (defUp 2 + 8%). Mind bodyWind/Strike-kal.
+- Idézőkő: ITEMS.summonstone (a Tárgyak menüből kiszűrve), bolti ár = 150+55×legnagyobb teljesített elvl; új játék 2, régi mentés egyszer +3 (`seen:r21stones`), főellenség-győzelem +1; Próbaterem ingyenes.
+- Kísértetlovag idézés: az ellenséges Sötét hullám füstje jobbra hömpölyög (dsmoke), pow 2,4 sötét, 60% átok. Mézkirálynő idézés: a queencape póz tükrözve (a hősök felé nézett), a méreg leszedve. A méhek iránya eredetileg is jó volt (BEE_SPR jobbra néz).
+- Zen-sárkány idézés: az ellenséges stoneCloudRain logikája (rockcloud + nagy pebble), 240 nagy + 320 apró kavics.
+- Tesztlap: zo01–zo07.
