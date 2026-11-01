@@ -485,3 +485,17 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Új elosztás: hősönként eltolva (`OFF`), így szinte minden pálya után 1 új képesség nyílik valakinél; ár = simított pálya-bevétel × `R21_GOLD_MULT` (0,8) × `R21_SKILL_PRICE` (1,15). Bevétel Normál/Nehéz ×0,8 (Könnyű marad ×0,6). Kumulált bevétel/képesség-ár zónánként ~0,9–1,1 (scratchpad `e5.js`).
 - A felhasználó Normálon játszott, „okosabb ellenfeleket” választott: Normál/Nehéz ÉP ×1,15; `weighted` burkoló (ellenfél kétszer egymás után nem ugyanazt, gyógyítás csak sérült társra, erősítés csak ha nincs rajta, sok hősnél a mindenkire ható ×1,3); `aiTarget` burkoló (55%-ban súlyozott: sérült, Lili/Jázmin ×1,35, védekező ×0,45, ugyanaz a hős max. 2× egymás után; provokálás köt).
 - Páros támadások ára marad 1200 (korán elérhetők). Tesztlap: zm01–zm02.
+
+## 57. kör – 3. csomag: harcrendszer, képességek, ellenfelek (r21zn.js, r21q.js)
+- Sok darabos támadások (Csillaghullás, Égiháború stb.): az r21zf fix időzítésű részsebzése (0,5 mp-től) a becsapódás előtt sebzett. Most a részleteket sorba tesszük, és a `shake` hívásokhoz (becsapódás) kötve, ≥480 ms-onként adjuk ki; a maradék a záró ütés előtt. Mérés: első becsapódás 1276 ms, számok 1276/1759/2259/2759/3576.
+- Páros pow ×1,5 (PAIRS), LIMIT ×1,35, COMBO/COMBO_PART ×1,3.
+- Lili: HERO_DEF.fairy.hp 64→92 (`calcStats` a térképen/csata előtt), Virágvihar alapképesség (bolti árát visszakapja, `R21_FREE`).
+- Telihold átka: a társ-választás (első `Math.random`) irányítva: legkevesebbszer választott, nem ugyanaz kétszer.
+- Vad Alakváltás: alak előre kisorsolva (`h._r21ws`), a gombon „jön: …”; teknősnél `target` rögtön `finish`. Medve: r21q mindkét ágában 3 karmolás, mindegyik `hit` pow .75 (a régi egy 1,9-es ütés helyett).
+- Békakirály Gongütés: ha van néma hős, vagy 3 körön belül volt gong, másik képességet használ.
+- Elit „Tüskés” → „Visszaszúró”. Koffeines mókus: első alkalommal biztosan felbukkan (1-2/1-3, 2. csata, `seen:r21squirrel`). Mohacsiga Nyálkacsík → „Csúszó roham” (a zöld nyálka korábban tiltva).
+- Pálcakoppintás: új, festett aranycsillag (R17I.star) a pálcán, lesújt, R17I.goldburst robbanás, kör nélkül.
+- Óramű katona Felhúzott csapás: új `A.clockSlam` (pörgés festett acél-ívekkel, két keresztvágás, fémszikra; nincs földrepedés/kör), a felhúzásnál a kör helyett szikrák.
+- Árnyékszegező nyíl: sötétlila árnyék kúszik fel a testen (szűrt másolat alulról vágva), a kábulat végéig rajta marad.
+- Nyitott: Életszívás „6-szor, 2/3-nál megakad” – nem reprodukálható, a felhasználótól kérdezni. Triplapresszó kávésugara (derék/könyök) → 5. csomag (VFX, rácsos mérés).
+- Tesztlap: zn01–zn09.

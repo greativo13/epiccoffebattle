@@ -35,15 +35,15 @@ function r21DrawCoil(im,P,thick,a=1){if(!im||P.length<2)return;let L=0;for(let i
     await tween(900,k=>{B.x=x0+(x1-x0)*r21ease.io(k);if(Math.random()<.08)shake(3);});
     // (ga08: „az álló medve gagyi, és össze is megy”) – nincs felágaskodás: a futó medve kétszer nekiugrik az ellenségnek
     // (összehúzódik, elrugaszkodik, ívben ráveti magát, karommal hasít), a mérete végig ugyanaz
-    if(!R21BR())for(let i=0;i<2;i++){sfx('roar');await tween(300,k=>{const e=r21ease.io(k);B.run=1-e;B.R=e;B.rot=.12*e;});
+    if(!R21BR())for(let i=0;i<3;i++){sfx('roar');await tween(300,k=>{const e=r21ease.io(k);B.run=1-e;B.R=e;B.rot=.12*e;});
       sfx('whoosh');await tween(160,k=>{B.rot=.12-.3*r21ease.in(k);B.x+=3;});
-      shake(22);sfx('hit');r21Claw&&r21Claw(t,i);t.hurt=.6;toss(t,40+i*30,300);
+      shake(22);sfx('hit');r21Claw&&r21Claw(t,i);t.hurt=.6;toss(t,40+i*30,300);if(t.alive)hit(u,t,{...sk,name:'Medvekarmolás',pow:.75});
       await tween(220,k=>{B.rot=-.18*(1-k);B.R=1-r21ease.io(k);B.run=r21ease.io(k)*.4;});}
-    else for(let i=0;i<2;i++){const xa=B.x;sfx('growl');await tween(200,k=>{B.run=1;B.ph+=.012;B.x=xa-14*r21ease.out(k);});
+    else for(let i=0;i<3;i++){const xa=B.x;sfx('growl');await tween(200,k=>{B.run=1;B.ph+=.012;B.x=xa-14*r21ease.out(k);});
       sfx('roar');sfx('whoosh');await tween(300,k=>{B.x=xa-14+(i?26:48)*r21ease.io(k);B.ly=Math.sin(k*Math.PI)*70;});B.ly=0;
-      shake(22);sfx('hit');r21Claw&&r21Claw(t,i);t.hurt=.6;toss(t,40+i*30,300);for(let n=0;n<16;n++)part({x:B.x+W*.3,y:gy,vx:rnd(-200,200),vy:-rnd(60,200),life:.6,size:rnd(14,24),grow:20,rgb:'160,130,90',add:false,shape:'smoke'});
+      shake(22);sfx('hit');r21Claw&&r21Claw(t,i);t.hurt=.6;toss(t,40+i*30,300);if(t.alive)hit(u,t,{...sk,name:'Medvekarmolás',pow:.75});for(let n=0;n<16;n++)part({x:B.x+W*.3,y:gy,vx:rnd(-200,200),vy:-rnd(60,200),life:.6,size:rnd(14,24),grow:20,rgb:'160,130,90',add:false,shape:'smoke'});
       await tween(240,k=>{B.x=xa+(i?26:48)-14-(i?26:48)*.5*r21ease.io(k);});}
-    hit(u,t,{...sk,name:'Medvecsapás',pow:1.9});
+    /* (56. kör: háromszor karmol, mindegyik külön sebez) */
     // visszavágtat
     B.run=1;B.fx=true;const x2=B.x;await tween(700,k=>{B.x=x2+(x0-x2)*r21ease.io(k);});B.run=0;
     kaeLeaves(B.x,gy-150,50,360);await tween(300,k=>{B.a=1-k;u.alpha=a0*k;});B.on=false;}
