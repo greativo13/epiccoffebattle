@@ -518,3 +518,16 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Csillagözön: apró csillagzápor. Tollvihar: +260 toll. Párnacsapás: testlendület, ívelt párna. Szökőár: magasra dob (toss 220). Őrület: imbolygás, zöldes szűrő, keringő zöld csillagok. Rozsda-átok: erős rozsdaréteg + sűrű pelyhek.
 - Kristálygólem Szilánkeső → Kristályöklök (goldfist kristálykékre színezve, glacier-szilánkok). Jégcsapok: festett glacier-csapok, dér, jégkék dermedés. Szikraharapás: `A.batBite` (odarepül, harap, bolt-villámok a hősön, remegés).
 - Tesztlap: a lap csak `order>=5500` pontokat mutat (MIN_ORDER); a „Támadások tesztlistája” levéve a kitűzöttek közül. Tesztpontok: zp01–zp09.
+
+## 59. kör – 5. csomag, 2. rész (r21zq.js, új festett képek)
+- Új Canva-képek (generate-image → letöltött 200 px előnézet → conv.js flood): fx7-chamomile (kamillavirág), fx7-dizi (bambuszfuvola), fx7-note (arany hangjegy).
+- Kamilla: `part` burkoló – Kamilla körében/idézésekor a 'leaf' részecske helyett festett kamilla. `qDizi`/`qNote` festett képpel.
+- Harapós rózsa: Tüskés inda → Indaszorítás (`A.roseCoil`: snakebody zöldre színezve, r21CoilPath fej nélkül, aztán a rózsa feje – nyitott szájú attack-kép felső 62%-a – a megnyúló indán odanyúl és harap; a rózsát közben két részben rajzoljuk, alpha 0); Tüskezápor → Tüskeköpés (rosethorn rövidebb, 2,1× vastagabb).
+- Élő Tölgybárd: darkroots 3 példányos, sötétebb kompozit, a zöld lighter-fény kiszűrve (a glow felülírása try-ban).
+- Ősi Tölgy ökle: R17I.oakfist alsó 20% levágva, áttűnéssel.
+- Bambuszfüggöny: új (nyilak a földbe → lesüllyednek → egy összefüggő bambuszkaró-fal az egész sor alatt).
+- Fejsze-hajítás: előtte 10 festett kő gyűlik csillagba a kéz körül, izzik, forog. Sárkánynyíl: előtte lángoló óriásnyíl (bigArrow). Kőhullám (SK.titan): `A.r21StoneWave` – a hullám eltakarja az ellenségeket (alpha 0 alatta), utána kőtörmelék; láva nincs.
+- Tündérököl: új jelenet (Lili Grog vállára, megszórja, mindenki eltűnik csillogásban, balról növekvő aranyököl).
+- Morgána üst: Üst-kitörés → Üstborítás – felborul, főzet folyik, egybefüggő lila köd (sok egymásba érő teacloud), átváltozás bővebb körből (h≤125), különbözőek, az utóbbi 8-at kerüli.
+- Nyitott: Erdő haragja (robotos), Lili fejlesztett ruhás Égi áldás képe, lebegés, Ezer Kéz plakát fehérje – a felhasználótól pontosítás.
+- Tesztlap: zq01–zq07.
