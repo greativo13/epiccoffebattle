@@ -531,3 +531,11 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Morgána üst: Üst-kitörés → Üstborítás – felborul, főzet folyik, egybefüggő lila köd (sok egymásba érő teacloud), átváltozás bővebb körből (h≤125), különbözőek, az utóbbi 8-at kerüli.
 - Nyitott: Erdő haragja (robotos), Lili fejlesztett ruhás Égi áldás képe, lebegés, Ezer Kéz plakát fehérje – a felhasználótól pontosítás.
 - Tesztlap: zq01–zq07.
+
+## 60. kör – pontosítások (r21zr.js)
+- Életszívás „2/3-nál megakad”: a számláló jó volt, csak mesterfoknál eltűnt a jelvény → „★ 3/3 MESTER” jelvény.
+- Lili fejlesztett ruha (fairyG, -cast, -attack, -hurt): a szárnyak ki voltak rágva → a sima ruhás kép ugyanazon pózát (azonos méret) tesszük alá krémszínre szűrve.
+- Lebegés: a hátsó sor (y≈344) a háttereken a fal/lépcső magasságába esett. Minden hely (HERO_DEF.pos, SLOTS, pálya slots/bslots/slots3, titkos pályák) y' = 380 + (y−344)·0,8; mkEnemy is (y<376).
+- Jázmin plakát (monk-meditate): 4 világos háttérfolt (≥222) kivéve.
+- Erdő haragja: rugós (K/D) szögmozgás, túllendülés, remegés, összenyomódás, visszapattanás.
+- Tesztlap: zr01–zr04.
