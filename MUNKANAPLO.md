@@ -539,3 +539,11 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Jázmin plakát (monk-meditate): 4 világos háttérfolt (≥222) kivéve.
 - Erdő haragja: rugós (K/D) szögmozgás, túllendülés, remegés, összenyomódás, visszapattanás.
 - Tesztlap: zr01–zr04.
+
+## 61. kör – 6. csomag: 3. térkép (r21zs.js, 4 új festett ellenfél)
+- Új Canva-képek: bpanda (Bambuszpanda-szerzetes), komainu (Kőoroszlán-őr), torolamp (Kőlámpás-szellem), whiskspider (Habverő-pók). Az 5. (Ceremónia-őr) generálásánál elfogyott a Canva-kredit.
+- Teljes méret: a „csapatkép” terv (DAHW1ZtSXrE) 20. oldala („ellenfel-munkaoldal”, 2048×2048, 2×2 rács) → export PNG → darabolás → conv.js flood → zárt fehér foltok ki (komainu, whiskspider). A 2. oldal a csapatkép, azt NE írjuk felül.
+- A betöltő (cutWhite) a fehéret háttérnek venné (panda bundája) → WHITE_T[k]=999. Kell DRAW[t] is (enemySpriteDraw).
+- Saját támadások: pandaStaff, pandaRoll, lionPounce, lionRoar, lampFlame (tűzgolyó, narancsra színezett firewall), lampBless (társak atkUp), spiderWeb (habháló, stun), spiderBite.
+- Pályák: a leggyakoribb ellenfelek egy része lecserélve (zónánként); Kőmozaik Szentély 3→6, Barlang 6→7, Palota 10→11 típus. Változatos csaták: a 3. térkép sima csatáiban minden ellenfél 35% eséllyel a zóna készletéből cserélődik (max. 2 egyforma).
+- Ellenőrzés: n1.js képsor, camp2.js 10- (mind győzelem, hiba nincs). Tesztlap: zs01–zs02.
