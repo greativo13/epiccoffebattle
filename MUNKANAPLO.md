@@ -1,5 +1,7 @@
 # Munkanapló – A Nagy Kávérablás
 
+> **Először az `ALLAPOT.md`-t olvasd el** (rövid összefoglaló a legutóbbi körökről és a munkarendről).
+
 Ezt a fájlt Claude vezeti, hogy egy új munkamenet ott folytathassa, ahol az előző abbahagyta.
 
 ## Fontos tudnivalók a kódról
