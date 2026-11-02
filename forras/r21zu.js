@@ -84,8 +84,7 @@ STATUS.icecube=['Jégkocka','#9fe0ff'];if(typeof ONE_ROUND!=='undefined')ONE_ROU
 
 // ---- 8) Harapós rózsa – Rózsaharapás („jó, csak elszakad a rózsa”): a fej és a szár között vastag, összefüggő, zöld
 //    tüskés szár köti össze (nem vékony szál), a fej alja a szárhoz kapcsolódik
-{const dc=r21DrawCoil;const rc=A.roseCoil;A.roseCoil=async function(u,ts,sk){r21DrawCoil=function(im,P,thick,a){if(P&&P.length<=30){const G=r21Filt(R17I.snakebody,'hue-rotate(-12deg) saturate(1.1) brightness(.95)');return dc.call(this,G||im,P,Math.max(30,thick*2.2),a);}return dc.apply(this,arguments);};
-  try{return await rc.apply(this,arguments);}finally{r21DrawCoil=dc;}};}
+// (66. kör: kivéve – a betöltéskor rögzített rajzolóval felülírta a 64. körös festett rózsaszárat)
 
 // ---- 9) Bambuszfüggöny („nem áll bele a földbe, amikor belövi, és egyenként jöjjenek ki a bambuszok, és úgy alkossanak egy falat”):
 //    a nyíl látványosan beleáll a földbe (ferdén, félig a földben, rezeg), ott marad egy pillanatig, aztán lesüllyed; utána a

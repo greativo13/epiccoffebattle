@@ -116,13 +116,7 @@ function r21StonePrice(){let lv=1;try{for(const z of ZONES)for(const L of z.leve
 // az Idézőkő nem „használható” tárgy: a Tárgyak menüből és a Próbaterem tárgylistájából kimarad
 {const sb=setButtons;setButtons=function(list){try{if(Array.isArray(list))list=list.filter(b=>!(b&&typeof b.label==='string'&&/^Idézőkő/.test(b.label)));}catch(e){}return sb.call(this,list);};}
 const r21Stones=()=>(S.inv&&S.inv.summonstone)||0;
-{const mm=menuMain;menuMain=function(h){const r=mm.apply(this,arguments);try{if(S.arena)return r;const b=[...btnsEl.querySelectorAll('button')].find(x=>((x.querySelector('.bl')||x).textContent||'')==='Idézés');
-    if(b){const sub=b.querySelector('.bs'),n=r21Stones();if(!S.summonUsed){if(n<=0){b.disabled=true;if(sub)sub.textContent='nincs Idézőkő';}else if(sub)sub.textContent=`▸ Idézőkő: ${n}`;}
-      b.addEventListener('mouseenter',()=>{descEl.textContent=`Megidézel egy lényt, aki egyszer közbelép. Egy Idézőkőbe kerül (most ${r21Stones()} van), csatánként egyszer.`;});}}catch(e){}return r;};}
-{const pf=perform;perform=async function(h,act){if(act&&act.type==='summon'&&!S.arena){if(r21Stones()<=0){setPrompt('Nincs Idézőköved – a boltban vehetsz.');return;}S.inv.summonstone=r21Stones()-1;}return pf.apply(this,arguments);};}
-{const ng=newGame;newGame=function(){const r=ng.apply(this,arguments);try{S.inv.summonstone=2;if(S.save&&S.save.seen&&!S.save.seen.includes('r21stones'))S.save.seen.push('r21stones');}catch(e){}return r;};}
-{const ms=mapScreen;mapScreen=function(){try{if(S.save&&S.save.seen&&!S.save.seen.includes('r21stones')&&S.inv){S.save.seen.push('r21stones');S.inv.summonstone=(S.inv.summonstone||0)+3;saveGame();}}catch(e){}return ms.apply(this,arguments);};}
-{const v=victory;victory=async function(){try{const L=S.level;if(L&&!S.arena&&S.enemies.some(e=>e.d&&e.d.boss)&&S.inv){S.inv.summonstone=(S.inv.summonstone||0)+1;setTimeout(()=>{try{showBanner('+1 Idézőkő!',false);}catch(e){}},1200);}}catch(e){}return v.apply(this,arguments);};}
+// (66. kör: az Idézőkő menü-, levonás-, kezdőkő- és jutalom-logikája átkerült az r21zx.js-be – idézésenként 5–20 kő)
 
 // ---- 5) Kísértetlovag idézés („legyen az a füstös támadása, mint az ellenségnek”): ugyanaz a sötét füsthullám (Sötét hullám),
 //    mint amikor ellenfélként támad – csak most az ellenségek felé hömpölyög. Sötét sebzés mindenkire, 60% eséllyel átok.

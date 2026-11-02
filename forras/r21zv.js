@@ -3,8 +3,13 @@
 // ---- 1) Rózsaharapás („látszik, hogy az egy kígyó, ez így nagyon nem jó”): a nyak a festett tüskés rózsaszár (fx7-rosestem),
 //    nem a kígyótest – a szár a rózsa szárától a fejig nyúlik, enyhén hullámzik
 {const rc=A.roseCoil;A.roseCoil=async function(u,ts,sk){const ST=R17I.rosestem;if(!ST)return rc.apply(this,arguments);const dc=r21DrawCoil;
-  r21DrawCoil=function(im,P,thick,a){if(P&&P.length<=30){const p0=P[0],p1=P[P.length-1],L=Math.hypot(p1.x-p0.x,p1.y-p0.y),ang=Math.atan2(p1.y-p0.y,p1.x-p0.x),h=Math.max(34,L*ST.height/ST.width*1.1);
-      ctx.save();ctx.globalAlpha*=a==null?1:a;ctx.translate(p0.x,p0.y);ctx.rotate(ang+Math.sin(performance.now()/120)*.03);ctx.drawImage(ST,0,-h/2,L*1.04,h);ctx.restore();return;}return dc.apply(this,arguments);};
+  r21DrawCoil=function(im,P,thick,a){if(P&&P.length<=30){
+      // 66. kör: a festett szár a nyak ívét követi – a képet szeletekre vágva, minden szelet a saját szakaszán, elforgatva
+      let L=0;const d=[0];for(let i=1;i<P.length;i++){L+=Math.hypot(P[i].x-P[i-1].x,P[i].y-P[i-1].y);d.push(L);}if(L<2)return;
+      const h=Math.max(66,Math.min(120,thick*3.2)),W=ST.width,wob=Math.sin(performance.now()/140)*.04;ctx.save();ctx.globalAlpha*=a==null?1:a;
+      for(let i=1;i<P.length;i++){const p0=P[i-1],p1=P[i],seg=d[i]-d[i-1];if(seg<.5)continue;const sx=W*d[i-1]/L,sw=Math.max(1,W*seg/L);
+        ctx.save();ctx.translate(p0.x,p0.y);ctx.rotate(Math.atan2(p1.y-p0.y,p1.x-p0.x)+wob*Math.sin(i));ctx.drawImage(ST,sx,0,Math.min(sw+2,W-sx),ST.height,0,-h/2,seg+1.5,h);ctx.restore();}
+      ctx.restore();return;}return dc.apply(this,arguments);};
   try{return await rc.apply(this,arguments);}finally{r21DrawCoil=dc;}};}
 
 // ---- 2) Árnyékszegező nyíl („egyáltalán nem úgy néz ki, mint amit küldtem, és a sárga nyíl nem a játék stílusa”):
@@ -12,16 +17,27 @@
 //    körben a testén –, a lábánál festett lila rúnakör (fx7-runecircle) izzik, és lila lángnyelvek csapnak fel körülötte
 {const sp=A.shadowPin;A.shadowPin=async function(u,ts,sk){const A0=FX_IMG.jzarrow;let tint=null;try{if(A0&&A0.width){tint=r21Filt(A0,'grayscale(1) sepia(1) hue-rotate(230deg) saturate(4) brightness(.8)');FX_IMG.jzarrow=tint;}}catch(e){}
   try{return await sp.apply(this,arguments);}finally{if(A0)FX_IMG.jzarrow=A0;}};}
+// 66. kör („a földből törjenek elő a láncok, és láncolják le”): a lába körül megreped a föld, a festett rúnás láncok
+// egyenként kicsapnak a földből, felszaladnak a testére, megfeszülnek és lerántják; a kábulat alatt a láncok a földhöz kötik.
 {const de=drawEntity;drawEntity=function(e){if(!e||!e._r21pin)return de.apply(this,arguments);const P=e._r21pin;if(!e.alive||!e.st||!e.st.stun){e._r21pin=null;return de.apply(this,arguments);}
   const CH=R17I.runechain,RC=R17I.runecircle;if(!CH||!RC)return de.apply(this,arguments);
-  const t=(performance.now()-P.t0)/1000,k=Math.min(1,t/.6),feet=e.y+e.oy+4,H2=e.h*e.scale,W2=e.w*e.scale,x=cx(e);
-  try{const R=Math.max(150,W2*1.7)*eOutBack(Math.min(1,t/.5));ctx.save();ctx.globalCompositeOperation='lighter';ctx.globalAlpha=.85+.15*Math.sin(t*5);ctx.translate(x,feet);ctx.rotate(t*.3);ctx.scale(1,.32);ctx.drawImage(RC,-R/2,-R/2,R,R);ctx.restore();}catch(err){}
-  e._r21pin=null;let r;try{r=de.apply(this,arguments);}finally{e._r21pin=P;}
-  try{const L=Math.max(W2,H2)*1.15,h=Math.max(22,L*CH.height/CH.width*1.1);
-    const draw=(cx0,cy0,ang,len,al)=>{ctx.save();ctx.globalAlpha=al;ctx.translate(cx0,cy0);ctx.rotate(ang);ctx.drawImage(CH,-len/2*k,-h/2,len*k,h);ctx.restore();};
-    draw(x,feet-H2*.55,.62,L,.95);draw(x,feet-H2*.45,-.6,L,.95);draw(x,feet-H2*.3,.05,W2*1.3,.9);draw(x,feet-H2*.72,-.08,W2*1.15,.9);
-    if(Math.random()<.6)part({x:x+rnd(-W2*.8,W2*.8),y:feet-rnd(0,14),vx:rnd(-15,15),vy:-rnd(80,200),life:rnd(.4,.8),size:rnd(8,16),grow:16,rgb:pick(['120,40,220','180,100,255']),shape:'dsmoke'});
-    if(Math.random()<.3)part({x:x+rnd(-W2*.5,W2*.5),y:feet-rnd(0,H2),vx:rnd(-30,30),vy:-rnd(20,60),life:.5,size:rnd(2,4),rgb:'210,150,255',shape:'star'});}catch(err){}return r;};}
+  const t=(performance.now()-P.t0)/1000,feet=e.y+e.oy+4,H2=e.h*e.scale,W2=e.w*e.scale,x=cx(e),hh=Math.max(26,Math.min(48,W2*.2));
+  if(!P.ch){P.ch=[];const N=6;for(let i=0;i<N;i++){const sd=i%2?1:-1,f=Math.floor(i/2);P.ch.push({ax:x+sd*(W2*(.75+.28*f)),ay:feet+rnd(-6,10),bx:x-sd*W2*(.18+.1*f),by:feet-H2*(.32+.2*f),d:.12+i*.09,burst:false});}}
+  // repedt föld + rúnakör a lábnál
+  try{const CR=R17I.crater;if(CR){ctx.save();ctx.globalAlpha=Math.min(1,t*4)*.9;try{ctx.filter='grayscale(1) sepia(1) hue-rotate(225deg) saturate(3) brightness(.55)';}catch(err){}r17Draw(CR,x,feet+10,Math.max(220,W2*2.6),{sy:.42});ctx.restore();}
+    const R=Math.max(150,W2*1.9)*eOutBack(Math.min(1,t/.5));ctx.save();ctx.globalCompositeOperation='lighter';ctx.globalAlpha=.8+.2*Math.sin(t*5);ctx.translate(x,feet);ctx.rotate(t*.3);ctx.scale(1,.32);ctx.drawImage(RC,-R/2,-R/2,R,R);ctx.restore();}catch(err){}
+  // a láncok megfeszülésekor lerántja: a test összenyomódik a talp felé
+  const pull=Math.max(0,Math.min(1,(t-.75)/.15))*(1-Math.max(0,Math.min(1,(t-1.1)/.3))*.6),jerk=t>.75&&t<.95?Math.sin((t-.75)*60)*3:0;
+  e._r21pin=null;let r;try{ctx.save();ctx.translate(x,feet);ctx.scale(1,1-.08*pull);ctx.translate(-x+jerk,-feet+6*pull);r=de.apply(this,arguments);ctx.restore();}finally{e._r21pin=P;}
+  try{for(const c of P.ch){const k=Math.max(0,Math.min(1,(t-c.d)/.22));if(k<=0)continue;
+      if(!c.burst){c.burst=true;shake(5);try{sfx('chain');}catch(err){}const CL=window.R21_CLODS&&R21_CLODS.length?R21_CLODS:[R17I.clods];for(let n=0;n<5;n++)r21PD(CL[n%CL.length],c.ax,c.ay,{vx:rnd(-160,160),vy:-rnd(150,360),g:900,size:rnd(14,24),life:.7});
+        for(let n=0;n<8;n++)part({x:c.ax,y:c.ay,vx:rnd(-60,60),vy:-rnd(60,200),life:.6,size:rnd(8,14),grow:14,rgb:pick(['120,40,220','170,90,255']),shape:'dsmoke'});}
+      // a lánc a földből indul, és a testen túl a válla fölé tekeredik (a vége kicsit túlnyúlik)
+      const ex=c.ax+(c.bx-c.ax)*1.15*k,ey=c.ay+(c.by-c.ay)*1.15*k-(1-k)*30,L=Math.hypot(ex-c.ax,ey-c.ay),ang=Math.atan2(ey-c.ay,ex-c.ax),tight=pull?Math.sin(t*40)*.01*pull:0;
+      ctx.save();ctx.translate(c.ax,c.ay);ctx.rotate(ang+tight);ctx.drawImage(CH,0,-hh/2,L,hh);ctx.restore();}
+    // körbetekert láncok a derekán és a mellkasán, amikor már mind kint van
+    const kw=Math.max(0,Math.min(1,(t-.62)/.2));if(kw>0)for(const [fy,w] of [[.3,1.25],[.55,1.1]]){ctx.save();ctx.globalAlpha=.95;ctx.translate(x,feet-H2*fy);ctx.rotate(-.06+fy*.1);ctx.drawImage(CH,-W2*w/2*kw,-hh/2,W2*w*kw,hh);ctx.restore();}
+    if(Math.random()<.22)part({x:x+rnd(-W2*.8,W2*.8),y:feet-rnd(0,14),vx:rnd(-15,15),vy:-rnd(80,200),life:rnd(.4,.8),size:rnd(8,16),grow:16,rgb:pick(['120,40,220','180,100,255']),shape:'dsmoke'});}catch(err){}return r;};}
 
 // ---- 3) Fejsze-hajítás („nem is hasonlít a képre, amit küldtem, ez így nagyon gagyi”): a kőcsillag helyén a festett,
 //    csavart karú tűzcsillag (fx7-firestar, a felhasználó képe alapján) pörög, izzik és repül

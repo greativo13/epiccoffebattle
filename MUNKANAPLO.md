@@ -579,3 +579,12 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Matcha Ceremónia-palota: a Csészeharcos helyett és minden 3. Teamester helyett; a változatos-csata készletben is benne van.
 - Ellenőrzés: eatk2 képsorok (hiba nincs). Tesztlap: zw01.
 - Tesztlap rendezése (a felhasználó kérése: ne legyen két pont ugyanarra): összevonva oa01→zq04 (Fejsze-hajítás), oa05→zq03 (Bambuszfüggöny), zl02+zl03+zn03→zl01 (csata gombsor, PÁROS, KÖZÖS), zl04+zl05+zm01→zn09 (új játék: 1-2, Bestiárium, Bolt), zp09+zr02→zm02 (bármelyik csata figyelése), a palota-rész zw01→zs02. A levett pontok `order` 5500 alatt, `mergedInto` mezővel. Szabály a CLAUDE.md C részében.
+
+## 66. kör – Idézőkő-dobás, 5–20 kő idézésenként, két javítás (r21zx.js; r21zo/r21zu/r21zv/game.html törlések)
+- Új festett kép: fx7-summonstone (Canva → munkaoldal bal alsó 512 → conv.js flood).
+- Idézés: a hős hátralendül, a kezéből (handPos) ívben bedobja a követ → földet ér, pattan, rúnák izzanak, négy festett darabra reped → az eredeti summonShow ugyanott folytatja (a lény a kőből nő ki). Próbateremben is.
+- Ár (R21_SUMCOST): mókus/nyálka/gomba 5; tölgy, lovag, rozsdakirály, ágyú, denevér, kristálygólem 10; espresszó, koffeingólem, árnycsapat, démonkirály, Morcus, Oolong, Szerviz, Mézkirálynő, Kamilla 15; Főnix, Mochi, Zen-sárkány, békakirály, Chasen 20.
+- Kő: új játék 5, meglévő mentés egyszer min. 10 (r21stones2), minden megnyert csata +1, főellenség +3. Bolt: 1 kő = (30+szint·2,5) arany, 5-ös zsák 10% kedvezménnyel (vásárláskor átváltódik). A r21zo régi menü/levonás/jutalom-logikája kivéve.
+- Rózsaharapás: a r21zu burkoló a betöltéskor rögzített r21DrawCoil-lal felülírta a 64. körös rózsaszárat (ezért „nem változott semmi”) → kivéve; a szár most szeletekben az ív mentén.
+- Árnyékszegező: a láncok a földből csapnak ki (6 lánc, repedés, k ődarabok), felszaladnak, körbetekerednek, megfeszülnek, lerántják. A game.html alap shadowPin-jének lánckör-, sötét folt- és sárga nyíl-rajza kivéve.
+- Tesztlap: zx01 új; zn05, zq01 visszaállítva.
