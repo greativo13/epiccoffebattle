@@ -596,3 +596,7 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Dühkitörés előrejelzése: a második Dühkitöréstől egy körrel előbb „készül valamire…” (banner, vörös izzás), a következő körében feltöltött, 1,5× Dühkitörés.
 - Elit ellenfél halálakor 35% eséllyel +1 Idézőkő (festett kő a hősökhöz repül).
 - Ellenőrzés: feat.js, map.js, camp 1- (csillagok gyűlnek, hiba nincs).
+
+## 68. kör – tesztlap: Árnyékszegező és Idézőkő-dobás („gagyi, élethűbb, darabos”, Árnyékszegezőnél „sötétebb, félelmetesebb”)
+- Árnyékszegező (r21zv): sötét kráter, 7 festett fekete-lila lángnyelv (fx7-darkflame, villódzva, előtte/mögötte), 4 rúnalánc kígyózva kúszik fel (szeletelt festett lánc hullámzó íven, easeOut, megfeszüléskor egyenesbe ránt), 1 derékláncs, az ellenfél elsötétül (filter), 1,3 mp-enként rángatózik, sötétre színezett festett füstfelhő (teacloud). A game.html alap seal-részecskéi sötétre.
+- Idézőkő (r21zx): 150 px-es kő, sima ív elmosódó nyommal, festett kráter + 12 kődarab + por, lüktető izzás, szétreped → festett lila fényoszlop (firepillar) + lila fényrobbanás (goldburst), és a lény megszakítás nélkül ebből jelenik meg.

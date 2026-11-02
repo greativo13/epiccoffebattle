@@ -36,29 +36,39 @@ r21StonePrice=function(){let lv=1;try{for(const z of ZONES)for(const L of z.leve
 
 // ---- 4) a kő bedobása: a hős hátralendül, a kezéből ívben elhajítja a festett követ; földet ér, pattan, a rúnái
 //      felizzanak, szétreped négy festett darabra, és a fényből nő ki a lény (az eredeti megjelenés ugyanott folytatódik)
+// 68. kör („gagyi, élethűbb, darabos a mozgás”): nagyobb kő, sima, pörgő repülés elmosódó nyommal; becsapódáskor festett
+// kráter, kődarabok és porfelhő; a rúnák lüktetve felizzanak, a kő szétreped, a repedésből festett lila fényoszlop
+// (fx7-firepillar) és fényrobbanás (fx7-goldburst lilára) tör fel – és a lény MEGSZAKÍTÁS NÉLKÜL ebből a fényből bontakozik ki.
 async function r21ThrowStone(def,P){const ST=R17I.summonstone;if(!ST)return;
   const hero=S.heroes.find(x=>x.type===P.type&&x.alive)||S.heroes.find(x=>x.alive);if(!hero)return;
-  const tx=def.x||330,ty=470;await dimTo(.55,'10,6,30',220);
-  hero.pose='cast';try{await bodyWind(hero,260,-.16);}catch(e){}
+  const E3=k=>1-Math.pow(1-Math.max(0,Math.min(1,k)),3),PIL=r21Filt(R17I.firepillar,'saturate(1.2)'),GB=r21Filt(R17I.goldburst,'hue-rotate(225deg) saturate(1.3)'),CR=r21Filt(R17I.crater,'brightness(.75)');
+  const tx=def.x||330,ty=470;dimTo(.62,'10,6,30',380);
+  hero.pose='cast';try{await bodyWind(hero,300,-.18);}catch(e){}
   let hp;try{hp=handPos(hero);}catch(e){hp=null;}if(!hp||!isFinite(hp.x))hp={x:cx(hero)+30,y:topY(hero)+hero.h*hero.scale*.4};
-  const SZ=112,K={x:hp.x,y:hp.y,r:0,a:1,glow:0,on:true,split:0,s:1};
-  R18E({update(){return K.on;},draw(){ctx.save();ctx.globalAlpha=K.a;
-    if(K.glow>0){ctx.save();ctx.globalCompositeOperation='lighter';glow(K.x,K.y,SZ*(1.2+1.8*K.glow),'190,110,255',.75*K.glow);ctx.restore();}
+  const SZ=150,K={x:hp.x,y:hp.y,r:0,a:1,glow:0,on:true,split:0,s:.7,trail:[],crA:0,pil:0,pilA:0,burst:0};
+  R18E({update(){K.trail.unshift({x:K.x,y:K.y,r:K.r});if(K.trail.length>7)K.trail.pop();return K.on;},draw(){
+    if(CR&&K.crA>0){ctx.save();ctx.globalAlpha=K.crA;r17Draw(CR,tx,ty+14,260,{sy:.45});ctx.restore();}
+    if(PIL&&K.pilA>0){const h=520*E3(K.pil),w=h*PIL.width/PIL.height*1.25;ctx.save();ctx.globalCompositeOperation='lighter';ctx.globalAlpha=K.pilA;ctx.drawImage(PIL,tx-w/2,ty+20-h,w,h);ctx.restore();}
+    if(GB&&K.burst>0&&K.burst<1){ctx.save();ctx.globalCompositeOperation='lighter';r17Draw(GB,tx,ty-60,560*E3(K.burst),{a:1-K.burst});ctx.restore();}
+    if(K.glow>0){ctx.save();ctx.globalCompositeOperation='lighter';glow(K.x,K.y,SZ*(1+1.6*K.glow),'170,90,255',.7*K.glow);ctx.restore();}
     const w=SZ*K.s,h=w*ST.height/ST.width;
-    if(K.split<=0){ctx.translate(K.x,K.y);ctx.rotate(K.r);try{if(K.glow>0)ctx.filter=`brightness(${1+.9*K.glow}) saturate(${1+K.glow})`;}catch(e){}ctx.drawImage(ST,-w/2,-h/2,w,h);}
-    else for(let i=0;i<4;i++){const qx=i%2,qy=i>>1,dx=(qx?1:-1),dy=(qy?1:-.6),d=K.split;ctx.save();ctx.translate(K.x+dx*d*120,K.y+dy*d*70-Math.sin(d*Math.PI)*60*(1-qy));ctx.rotate(K.r+dx*d*3);
-      ctx.drawImage(ST,qx*ST.width/2,qy*ST.height/2,ST.width/2,ST.height/2,(qx-1)*w/2+dx*4,(qy-1)*h/2,w/2,h/2);ctx.restore();}
-    ctx.restore();}});
-  try{bodyStrike(hero,160,.22);}catch(e){}sfx('whoosh');
-  // ívben repül, pörögve, lila szikranyommal
-  const x0=K.x,y0=K.y;await tween(560,k=>{K.x=x0+(tx-x0)*k;K.y=y0+(ty-8-y0)*k-Math.sin(k*Math.PI)*190;K.r=k*9;
-    if(Math.random()<.8)part({x:K.x,y:K.y,vx:rnd(-40,40),vy:rnd(-40,40),life:.45,size:rnd(3,6),rgb:pick(['200,140,255','150,80,240','255,240,255']),shape:'star'});});
-  sfx('rock');shake(9);const CL=window.R21_CLODS&&R21_CLODS.length?R21_CLODS:[R17I.clods];for(let n=0;n<6;n++)r21PD(CL[n%CL.length],tx+rnd(-20,20),ty,{vx:rnd(-200,200),vy:-rnd(120,300),g:900,size:rnd(12,20),life:.6});
-  puffs&&puffs(tx,ty,6,['190,170,140','150,130,110'],[18,30],{w:80,up:30});
-  await tween(240,k=>{K.y=ty-8-Math.sin(k*Math.PI)*36;K.r=9+k*1.4;});hero.pose='idle';try{bodySettle(hero);}catch(e){}
-  // a rúnák felizzanak, a kő remeg
-  sfx('holy');await tween(520,k=>{K.glow=k;K.s=1+.18*k;K.x=tx+Math.sin(k*70)*3*k;if(Math.random()<.6)part({x:tx+rnd(-30,30),y:ty-10,vx:rnd(-30,30),vy:-rnd(60,200),life:.6,size:rnd(3,6),rgb:pick(['200,140,255','255,230,255']),shape:'star'});});
-  // szétreped
-  sfx('glass');sfx('boom');flash('200,150,255',.45,.18);shake(14);hitStop(80);sparks(tx,ty-20,['200,140,255','255,255,255'],40,520);
-  await tween(380,k=>{K.split=k;K.a=1-k*k;K.glow=1-k;});K.on=false;}
+    if(K.split<=0){if(!K.landed)K.trail.forEach((p,i)=>{if(!i)return;ctx.save();ctx.globalAlpha=.32*(1-i/K.trail.length)*K.a;ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.drawImage(ST,-w/2,-h/2,w,h);ctx.restore();});
+      ctx.save();ctx.globalAlpha=K.a;ctx.translate(K.x,K.y);ctx.rotate(K.r);try{if(K.glow>0)ctx.filter=`brightness(${1+.8*K.glow}) saturate(${1+K.glow})`;}catch(e){}ctx.drawImage(ST,-w/2,-h/2,w,h);ctx.restore();}
+    else for(let i=0;i<4;i++){const qx=i%2,qy=i>>1,dx=(qx?1:-1),d=K.split;ctx.save();ctx.globalAlpha=Math.max(0,1-d*d);ctx.translate(K.x+dx*d*190,K.y-Math.sin(Math.min(1,d*1.4)*Math.PI*.9)*(qy?90:170)+d*d*120);ctx.rotate(K.r+dx*d*5);
+      ctx.drawImage(ST,qx*ST.width/2,qy*ST.height/2,ST.width/2,ST.height/2,(qx-1)*w/2+dx*3,(qy-1)*h/2,w/2,h/2);ctx.restore();}}});
+  try{bodyStrike(hero,170,.24);}catch(e){}sfx('whoosh');
+  // sima ív: a vízszintes mozgás lassul a végén, a kő pörög és nő (közelebb jön)
+  const x0=K.x,y0=K.y;await tween(720,k=>{const kx=1-Math.pow(1-k,1.6);K.x=x0+(tx-x0)*kx;K.y=y0+(ty-10-y0)*k-Math.sin(k*Math.PI)*230;K.r=k*11;K.s=.7+.3*k;
+    if(Math.random()<.9)part({x:K.x+rnd(-10,10),y:K.y+rnd(-10,10),vx:rnd(-30,30),vy:rnd(-30,30),life:.55,size:rnd(3,7),rgb:pick(['200,140,255','150,80,240','255,240,255']),shape:'star'});});
+  K.landed=true;sfx('rock');sfx('boom');shake(16);hitStop(70);
+  const CL=window.R21_CLODS&&R21_CLODS.length?R21_CLODS:[R17I.clods];for(let n=0;n<12;n++)r21PD(CL[n%CL.length],tx+rnd(-30,30),ty,{vx:rnd(-280,280),vy:-rnd(160,420),g:1000,size:rnd(14,28),life:.9});
+  puffs&&puffs(tx,ty,12,['190,170,140','150,130,110'],[26,46],{w:150,up:50});tween(260,k=>{K.crA=E3(k);});
+  await tween(300,k=>{K.y=ty-10-Math.sin(k*Math.PI)*46*(1-k*.4);K.r=11+k*1.6;});hero.pose='idle';try{bodySettle(hero);}catch(e){}
+  // a rúnák lüktetve felizzanak, a kő remeg, apró szikrák szállnak
+  sfx('holy');await tween(620,k=>{K.glow=E3(k)*(.8+.2*Math.sin(k*30));K.s=1+.15*k;K.x=tx+Math.sin(k*80)*4*k;
+    if(Math.random()<.7)part({x:tx+rnd(-40,40),y:ty-10,vx:rnd(-30,30),vy:-rnd(80,240),life:.7,size:rnd(3,6),rgb:pick(['200,140,255','255,230,255']),shape:'star'});});
+  // szétreped: fényoszlop + fényrobbanás; a lény (eredeti megjelenés) azonnal indul ugyanott
+  sfx('glass');sfx('boom');flash('200,150,255',.5,.2);shake(16);hitStop(90);sparks(tx,ty-30,['200,140,255','255,255,255'],50,600);
+  tween(900,k=>{K.split=k;K.glow=1-k;K.crA=1-k*.6;});tween(260,k=>{K.pil=k;K.pilA=k;}).then(()=>tween(1100,k=>{K.pilA=1-k;}));tween(700,k=>{K.burst=k;}).then(()=>{K.burst=0;});
+  setTimeout(()=>{K.on=false;},2200);await wait(120);}
 {const ss=summonShow;summonShow=async function(def,P){try{await r21ThrowStone(def,P);}catch(e){console.error(e);}return ss.apply(this,arguments);};}
