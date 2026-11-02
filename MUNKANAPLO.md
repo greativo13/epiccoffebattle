@@ -572,3 +572,9 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Fejsze-hajítás: új A.axeThrow – a fejsze eltűnik, festett kődarabok (fx7-clods darabjaira vágva: window.R21_CLODS) gyűlnek, izzanak, összeolvadnak, fx7-firestar lobban fel és pörögve repül oda-vissza.
 - Bambuszfüggöny: a földbe állt nyíl nem látszik. Sárkánynyíl: Jázmin lean −0,55 (felfelé lő). Kőbörtön: csak R21_CLODS darabok, szürkítés nélkül.
 - A felhasználó: a 3 „ok” régi rúnás/kristályos stb. pont lezárva.
+
+## 65. kör – az 5. új 3. térképes ellenfél: Ceremónia-őr (r21zw.js)
+- Canva-kredit újra volt: generate-image → munkaoldal (DAHW1ZtSXrE 20. oldal, bal felső 1024×1024) → export → conv.js flood → a habverő-szálak közti zárt fehér rések kivéve → `teaguard`.
+- Ceremónia-őr: Merőkanál-csapás (testlendület, odalép, lecsap; festett teasplash matchazöldre színezve, gőz, levelek) és Forró matcha-áradat (a kanál fejéből – rácson .10,.37 – festett fröccsdarabok, 3 rétegű zöldre színezett teawave végigzúdul a hősökön, gőz, égés 2 kör).
+- Matcha Ceremónia-palota: a Csészeharcos helyett és minden 3. Teamester helyett; a változatos-csata készletben is benne van.
+- Ellenőrzés: eatk2 képsorok (hiba nincs). Tesztlap: zw01.

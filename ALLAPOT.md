@@ -41,7 +41,7 @@ Ezt kell először elolvasni. A részletek a `MUNKANAPLO.md` végén vannak (55�
 - **64. kör (r21zv):** 8 hiba; új festett képek: fx7-rosestem, fx7-runechain, fx7-runecircle, fx7-firestar (rózsa nyaka, Árnyékszegező láncok+kör, tűzcsillag-fejsze); kőbörtön a festett fx7-clods darabjaiból (R21_CLODS). Ezek újra kint vannak a tesztlapon.
 
 ## Nyitva
-- 5. új 3. térképes ellenfél (Ceremónia-őr): elfogyott a Canva-kredit.
+- (Kész a 65. körben: Ceremónia-őr, r21zw.js, tesztpont zw01.)
 - A felhasználó kipróbálja a tesztlapon a 64. kör javításait, utána a jelöléseit kell javítani.
 
 ## Fontos tiltások / kérések (a CLAUDE.md mellett)
