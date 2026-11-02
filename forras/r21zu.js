@@ -47,7 +47,7 @@ A.crystalBurst=async(u,ts,sk)=>{const al=ts.filter(t=>t.alive);if(!al.length)ret
   const f0=ctx.filter;try{ctx.filter=`grayscale(${stoned}) brightness(${1-.3*stoned}) contrast(1.1)`;}catch(x){}e._r21stone=false;let r;try{r=de.apply(this,arguments);}finally{e._r21stone=true;try{ctx.filter=f0||'none';}catch(x){}}
   try{for(const q of Sh.p){const k=Math.max(0,Math.min(1,(t-q.d)/.22));if(k<=0||!q.I)continue;if(k>=1&&!q.hit){q.hit=true;if(Math.random()<.5)sfx('rock');for(let i=0;i<3;i++)part({x:cx(e)+q.u*W2,y:base-q.v*H2,vx:rnd(-90,90),vy:-rnd(20,110),g:600,life:.5,size:rnd(3,6),rgb:'150,140,125',add:false,shape:'rock'});}
       const x=cx(e)+q.u*W2,y0=base+20,y1=base-q.v*H2,y=y0+(y1-y0)*eOutBack(k),s=Math.max(W2,H2)*q.s*.5,sh=t>1.2&&t<1.45?Math.sin(t*90)*2:0;
-      ctx.save();ctx.translate(x+sh,y);ctx.rotate(q.r);try{ctx.filter='grayscale(.7) brightness(.82) contrast(1.15)';}catch(x){}ctx.drawImage(q.I,-s/2,-s/2,s,s*q.I.height/q.I.width);ctx.restore();}
+      ctx.save();ctx.translate(x+sh,y);ctx.rotate(q.r);ctx.drawImage(q.I,-s/2,-s/2,s,s*q.I.height/q.I.width);ctx.restore();}
     if(t>1.2&&t<1.3&&!Sh.done){Sh.done=true;shake(10);sfx('quake');for(let i=0;i<14;i++)part({x:cx(e)+rnd(-W2*.5,W2*.5),y:base-rnd(0,H2),vx:rnd(-60,60),vy:-rnd(30,90),life:1,size:rnd(14,24),grow:30,rgb:'170,160,145',add:false,shape:'smoke'});}}catch(err){}return r;};}
 
 // ---- 5) Árnyékszegező nyíl (csatolt kép): a célpont köré lila rúnás láncok tekerednek (festett lánc), a lába alatt

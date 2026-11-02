@@ -565,3 +565,10 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Rózsaharapás: vastag zöld nyak (nem szakad el). Bambuszfüggöny: a nyíl rezegve beleáll a földbe, aztán a karók egyenként balról jobbra törnek elő.
 - Fejsze: a kőcsillag repüléskor 4 meteor-karú tűzcsillag (felhasználó képe alapján). Sárkánynyíl: Jázmin testtartás + lobogó lángnyelvek (sok kis firewall, parázs, füst). Tündérököl: becsapódás-fényrobbanás vissza. Kőhullám H0×2,1. Ősi Tölgy ökle ×1,5. Több darabos sebzés: flush ≥140 ms.
 - Ellenőrzés: n4/n5 képsorok, camp2 3- (hiba nincs).
+
+## 64. kör – tesztlap: 17 beküldött, 8 hibás (r21zv.js + 4 új Canva-kép)
+- Új festett képek (Canva → munkaoldal export → conv.js): fx7-rosestem (tüskés rózsaszár), fx7-runechain (lila rúnás lánc, a szemek belseje kitisztítva), fx7-runecircle (rúnakör, blackalpha), fx7-firestar (csavart karú tűzcsillag, blackalpha). Az 5. kép (kődarabok) generálásánál elfogyott a Canva-kredit.
+- Rózsaharapás nyaka: rosestem (nem kígyótest). Árnyékszegező: a nyíl lilára színezve (FX_IMG.jzarrow ideiglenesen), runechain keresztben + körben a testen, runecircle a lábnál, lila láng.
+- Fejsze-hajítás: új A.axeThrow – a fejsze eltűnik, festett kődarabok (fx7-clods darabjaira vágva: window.R21_CLODS) gyűlnek, izzanak, összeolvadnak, fx7-firestar lobban fel és pörögve repül oda-vissza.
+- Bambuszfüggöny: a földbe állt nyíl nem látszik. Sárkánynyíl: Jázmin lean −0,55 (felfelé lő). Kőbörtön: csak R21_CLODS darabok, szürkítés nélkül.
+- A felhasználó: a 3 „ok” régi rúnás/kristályos stb. pont lezárva.
