@@ -588,3 +588,11 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Rózsaharapás: a r21zu burkoló a betöltéskor rögzített r21DrawCoil-lal felülírta a 64. körös rózsaszárat (ezért „nem változott semmi”) → kivéve; a szár most szeletekben az ív mentén.
 - Árnyékszegező: a láncok a földből csapnak ki (6 lánc, repedés, k ődarabok), felszaladnak, körbetekerednek, megfeszülnek, lerántják. A game.html alap shadowPin-jének lánckör-, sötét folt- és sárga nyíl-rajza kivéve.
 - Tesztlap: zx01 új; zn05, zq01 visszaállítva.
+
+## 67. kör – izgalmasabb játék (r21zy.js)
+- FIGYELEM: a kombó (r21t, +15%/lépés), a főellenség-düh (r21t: r21Phase2 + Dühkitörés), a „GYENGE PONT!” felirat (r21r) és a gyengeség-nyilvántartás (r14a, R14_WEAK), valamint az ellenfél-szándék buborék (r21w) már megvoltak – ezeket nem duplikáltuk.
+- Új: csillagos pályák (★ senki nem esett el, ★ gyors: boss 9 kör / sima pálya csatánként 4, ★ idézés nélkül; új csillagonként +1 Idézőkő; a legjobb marad, slotonként localStorage `nagy-kaverablas-csillag-s<slot>`, új játék törli; a térképen a pálya pontja alatt; a győzelmi összesítőben sor).
+- Bestiárium: csak a harcban felfedezett gyengeségek (R14_WEAK) látszanak, a többi „felfedezetlen”.
+- Dühkitörés előrejelzése: a második Dühkitöréstől egy körrel előbb „készül valamire…” (banner, vörös izzás), a következő körében feltöltött, 1,5× Dühkitörés.
+- Elit ellenfél halálakor 35% eséllyel +1 Idézőkő (festett kő a hősökhöz repül).
+- Ellenőrzés: feat.js, map.js, camp 1- (csillagok gyűlnek, hiba nincs).
