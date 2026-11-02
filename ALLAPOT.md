@@ -1,4 +1,4 @@
-# Állapot – rövid összefoglaló (2026-11-01, 55–62. kör)
+# Állapot – rövid összefoglaló (2026-11-02, 55–63. kör)
 
 Ezt kell először elolvasni. A részletek a `MUNKANAPLO.md` végén vannak (55–62. kör).
 
@@ -36,14 +36,16 @@ Ezt kell először elolvasni. A részletek a `MUNKANAPLO.md` végén vannak (55�
    - 4 új festett ellenfél: Bambuszpanda-szerzetes, Kőoroszlán-őr, Kőlámpás-szellem, Habverő-pók.
    - A sima csaták minden indításkor keverednek.
 - **Pontosítások (r21zr):** mesterfok-jelvény (3/3 MESTER), Lili szárnya, padlóra állított felállás (lebegés ellen), Jázmin plakátja, rugós Erdő haragja.
-- **62. kör (r21zt):** a tesztlap 27 megjegyzéses hibája javítva; ezek újra kint vannak a tesztlapon.
+- **62. kör (r21zt):** a tesztlap 27 megjegyzéses hibája javítva.
+- **63. kör (r21zu):** a következő 17 hiba javítva (béka nyelve, Lili szárnya, Kristálykitörés, kőbörtön, rúnaláncok, ellenséges kavicseső, jégkocka, bambuszfal, tűzcsillag-fejsze, Sárkánynyíl lángjai); ezek újra kint vannak a tesztlapon.
 
 ## Nyitva
 - 5. új 3. térképes ellenfél (Ceremónia-őr): elfogyott a Canva-kredit.
-- A felhasználó kipróbálja a tesztlapon a 62. kör javításait, utána a jelöléseit kell javítani.
+- A felhasználó kipróbálja a tesztlapon a 63. kör javításait, utána a jelöléseit kell javítani.
 
 ## Fontos tiltások / kérések (a CLAUDE.md mellett)
 - Ne legyen fehér háttérfolt.
 - Tűz ne legyen lila.
 - Lili és a repülő ellenfelek lebeghetnek, más nem.
+- Árnyékszegező: a lábánál lévő rúnakört kifejezetten kérte (kivétel a „nincs varázskör” szabály alól).
 - Ne nyúlj ahhoz, amit nem kért (pl. Zen-sárkány idézés, Tündérököl ökle).
