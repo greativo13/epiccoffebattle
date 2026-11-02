@@ -578,3 +578,4 @@ A felhasználó kérte: most csak elmentve, majd ha kipróbálta a tesztlapot, e
 - Ceremónia-őr: Merőkanál-csapás (testlendület, odalép, lecsap; festett teasplash matchazöldre színezve, gőz, levelek) és Forró matcha-áradat (a kanál fejéből – rácson .10,.37 – festett fröccsdarabok, 3 rétegű zöldre színezett teawave végigzúdul a hősökön, gőz, égés 2 kör).
 - Matcha Ceremónia-palota: a Csészeharcos helyett és minden 3. Teamester helyett; a változatos-csata készletben is benne van.
 - Ellenőrzés: eatk2 képsorok (hiba nincs). Tesztlap: zw01.
+- Tesztlap rendezése (a felhasználó kérése: ne legyen két pont ugyanarra): összevonva oa01→zq04 (Fejsze-hajítás), oa05→zq03 (Bambuszfüggöny), zl02+zl03+zn03→zl01 (csata gombsor, PÁROS, KÖZÖS), zl04+zl05+zm01→zn09 (új játék: 1-2, Bestiárium, Bolt), zp09+zr02→zm02 (bármelyik csata figyelése), a palota-rész zw01→zs02. A levett pontok `order` 5500 alatt, `mergedInto` mezővel. Szabály a CLAUDE.md C részében.

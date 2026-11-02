@@ -77,5 +77,6 @@ A felhasználó 246 tesztlap-megjegyzéséből kiszűrt, ismétlődő minták. M
 - A felhasználó magyarul ír, a válasz is magyar legyen.
 - Nagy csomagokban dolgozz: kevés a kredit.
 - A tesztlapon csak a kipróbálandó pontok maradjanak, egyesével, a játék pontos neveivel.
+- **Ne legyen két pont ugyanarra.** Új pont előtt nézd át a lapon látható összes pontot (`tests`, `order>=5500`, nem `handled`): ha ugyanazt a képességet, ellenfelet, menüt vagy ugyanazt a végigjátszást (új játék, „bármelyik csata”) érinti, a meglévőt bővítsd. Az összevont pontot `order` 5500 alá téve (`mergedInto`) vedd le a lapról.
 - Javítás után a pont `review/t-<id>` jelölését vissza kell állítani (`status:''`, `sent:false`, `handled:false`, `note:''`, a `reply` maradhat), különben a tesztlap a „beküldve” miatt elrejti, és a felhasználó nem látja az újrapróbálandót.
 - Részletek a kódról és a körökről: `MUNKANAPLO.md`.
