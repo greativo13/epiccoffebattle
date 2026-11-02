@@ -107,7 +107,7 @@ A.r21StoneWave=async(u,ts,sk)=>{const al=ts.filter(t=>t.alive);if(!al.length)ret
   sfx('rock');sfx('boom');sfx('quake');shake(24);hitStop(100);rumble&&rumble(2,12);
   const gy=Math.max(...al.map(t=>t.y+t.oy))+10,x0=cx(u)+u.w*u.scale*.5,x1=Math.max(...al.map(cx))+340,Wv={x:x0,on:true,h:0},hid=new Map(),done=new Set();
   R18E({front:true,update(){return Wv.on;},draw(){if(!SW||Wv.h<=0)return;const h=Wv.h,w=h*SW.width/SW.height;ctx.save();ctx.translate(Wv.x,gy+12);ctx.drawImage(SW,-w*.6,-h,w,h);ctx.restore();}});
-  const H0=Math.max(...al.map(t=>t.h*t.scale))*1.25;
+  const H0=Math.max(...al.map(t=>t.h*t.scale))*2.1;
   await tween(1300,k=>{Wv.x=x0+(x1-x0)*k;Wv.h=H0*(.3+1.1*easeIO(k));if(Math.random()<.5)part({x:Wv.x+rnd(-40,40),y:gy-rnd(0,40),vx:rnd(60,200),vy:-rnd(60,200),g:800,life:.7,size:rnd(5,10),rgb:pick(['130,110,85','100,85,65']),add:false,shape:'rock'});
     for(const t of al){const d=Wv.x-cx(t);if(d>-90&&d<160){if(!hid.has(t))hid.set(t,t.alpha==null?1:t.alpha);t.alpha=0;if(!done.has(t)&&d>0){done.add(t);t.hurt=.6;shake(10);hit(u,t,sk);}}else if(hid.has(t)&&d>=160){t.alpha=hid.get(t);hid.delete(t);}}});
   for(const [t,a] of hid)t.alpha=a;Wv.on=false;
@@ -133,7 +133,7 @@ R16P['Tündérököl']=async(A1,B1,al,sk,p)=>{const fa=A1.type==='fairy'?A1:B1,o
   const mx=fs.reduce((s,t)=>s+cx(t),0)/fs.length,my=fs.reduce((s,t)=>s+midY(t),0)/fs.length,F={x:-120,y:my,s:80,a:1};
   R18E({update(){return F.a>0;},draw(){if(!FI)return;const w=F.s,h=w*FI.height/FI.width;ctx.save();ctx.globalCompositeOperation='lighter';glow(F.x,F.y,w*.5,'255,220,120',.35*F.a);ctx.restore();ctx.save();ctx.globalAlpha=F.a;ctx.drawImage(FI,F.x-w*.55,F.y-h/2,w,h);ctx.restore();}});
   sfx('whoosh');await tween(1100,k=>{const e=k*k;F.x=-120+(mx+40)*e;F.s=80+Math.max(380,fs.length*170)*e;if(Math.random()<.7)part({x:F.x-F.s*.4,y:F.y+rnd(-F.s*.25,F.s*.25),vx:-rnd(200,500),vy:rnd(-40,40),life:.4,size:rnd(3,6),rgb:pick(['255,230,120','255,255,255']),shape:'star'});});
-  sfx('boom');sfx('hit');shake(30);hitStop(140);flash('255,240,200',.6,.2);
+  sfx('boom');sfx('hit');shake(30);hitStop(140);flash('255,240,200',.6,.2);{const GB=R17I.goldburst,B={k:0};if(GB)R18E({update(){return B.k<1;},draw(){ctx.save();ctx.globalCompositeOperation='lighter';r17Draw(GB,mx,my,Math.max(520,fs.length*260)*(.3+B.k),{a:1-B.k});glow(mx,my,400*(.3+B.k),'255,240,180',.7*(1-B.k));ctx.restore();}});tween(700,k=>{B.k=k;});for(let i=0;i<70;i++){const a2=rnd(0,6.283),v=rnd(200,700);part({x:mx,y:my,vx:Math.cos(a2)*v,vy:Math.sin(a2)*v,drag:1.2,life:rnd(.6,1.1),size:rnd(4,9),rgb:pick(['255,230,120','255,255,255','255,200,80']),shape:'star'});}}
   for(const t of fs){t.hurt=.7;toss(t,140,640);hit(orc,t,sk);for(let i=0;i<20;i++)part({x:cx(t),y:midY(t),vx:rnd(-400,400),vy:rnd(-400,100),life:.7,size:rnd(3,7),rgb:pick(['255,230,120','255,255,255']),shape:'star'});}
   if(p&&p.heal)for(const h of hs){const n=Math.round(h.maxHp*p.heal);h.hp=Math.min(h.maxHp,h.hp+n);popNum(h,n,'heal');}
   await tween(420,k=>{F.a=1-k;F.s*=1.01;});await wait(200);

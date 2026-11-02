@@ -9,7 +9,7 @@
     A[an]=async function(u,ts,sk){const q=[],h0=hit,sh0=shake;let busy=false,last=0;const nT=Math.max(1,(ts||[]).filter(t=>t&&t.alive).length);
       const flush=(n)=>{busy=true;try{let k=0;while(q.length&&k<n){const a=q.shift();try{h0.apply(null,a);}catch(e){}k++;}}finally{busy=false;}};
       hit=function(a,t,s){if(busy)return h0.apply(this,arguments);if(s&&s._r21chunk&&a===u){q.push([a,t,s]);return;}if(a===u&&q.length)flush(q.length);return h0.apply(this,arguments);};
-      shake=function(){const r=sh0.apply(this,arguments);try{const now=performance.now();if(!busy&&q.length&&now-last>480){last=now;flush(nT);}}catch(e){}return r;};
+      shake=function(){const r=sh0.apply(this,arguments);try{const now=performance.now();if(!busy&&q.length&&now-last>140){last=now;flush(nT);}}catch(e){}return r;};
       try{return await w.apply(this,arguments);}finally{hit=h0;shake=sh0;flush(q.length);}};}})();
 
 // ---- 2) Pár- és limit-támadások erősebbek („alig sebeznek”): páros ×1,5, limit ×1,35, közös támadás ×1,3
